@@ -6,6 +6,3 @@ def  main():
         if len(s) % 2 == 0 and s[:len(s)//2] == s[len(s)//2:]:
             ans += 1
     print(ans)
-
-if __name__ == '__main__':
-    ()

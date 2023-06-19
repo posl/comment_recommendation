@@ -19,6 +19,3 @@ for k, v in gcds.items():
         max_gcd = k
         max_gcd_cnt = v
 print(max_gcd)
-
-if __name__ == '__main__':
-    gcd()

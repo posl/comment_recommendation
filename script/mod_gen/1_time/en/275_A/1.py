@@ -9,6 +9,3 @@ def highest_bridge(N, H):
 N = int(input())
 H = list(map(int, input().split()))
 print(highest_bridge(N, H))
-
-if __name__ == '__main__':
-    highest_bridge()

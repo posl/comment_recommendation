@@ -4,6 +4,3 @@ def s(n):
   else:
     return s(n-1) + [n] + s(n-1)
 print(" ".join(map(str, s(int(input())))))
-
-if __name__ == '__main__':
-    s()

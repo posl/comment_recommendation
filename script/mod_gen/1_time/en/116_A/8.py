@@ -6,6 +6,3 @@ def main():
     #print the area of the triangle
     print(area)
 main()
-
-if __name__ == '__main__':
-    main()

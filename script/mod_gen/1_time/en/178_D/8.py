@@ -15,6 +15,3 @@ def dp(s, n, m):
 s = int(input())
 dp_table = [[[-1 for i in range(s+1)] for j in range(s+1)] for k in range(s+1)]
 print(dp(s, s, s) % (10**9+7))
-
-if __name__ == '__main__':
-    dp()

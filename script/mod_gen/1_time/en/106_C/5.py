@@ -11,6 +11,3 @@ def main():
             break
     print(ans[K - 1])
 main()
-
-if __name__ == '__main__':
-    main()

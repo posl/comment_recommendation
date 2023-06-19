@@ -17,6 +17,3 @@ def solve():
         sumdp[i] = sumdp[i - 1] + dp[i]
     print(dp[N])
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -9,6 +9,3 @@ def main():
     elif V%C == 0:
         print("T")
 main()
-
-if __name__ == '__main__':
-    main()

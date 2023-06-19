@@ -7,6 +7,3 @@ def dp(s):
     return dp[s]
 S = int(input())
 print(dp(S)%(10**9+7))
-
-if __name__ == '__main__':
-    dp()

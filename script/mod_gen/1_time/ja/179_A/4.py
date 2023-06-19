@@ -5,6 +5,3 @@ def main():
     else:
         print(s + 'es')
 main()
-
-if __name__ == '__main__':
-    main()

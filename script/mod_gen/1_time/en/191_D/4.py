@@ -7,6 +7,3 @@ def solve(x,y,r):
     print(count)
 x,y,r = map(float,input().split())
 solve(x,y,r)
-
-if __name__ == '__main__':
-    solve()

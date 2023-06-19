@@ -9,6 +9,3 @@ def solve():
         names.add(name)
     print("No")
 solve()
-
-if __name__ == '__main__':
-    solve()

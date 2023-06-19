@@ -10,6 +10,3 @@ def main():
     else:
         print(math.ceil(math.sqrt(X**2 + Y**2)/R))
 main()
-
-if __name__ == '__main__':
-    main()

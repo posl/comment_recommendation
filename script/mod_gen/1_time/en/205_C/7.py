@@ -24,6 +24,3 @@ def pow(a,b,c):
         return '>'
 a,b,c = map(int,input().split())
 print(pow(a,b,c))
-
-if __name__ == '__main__':
-    pow()

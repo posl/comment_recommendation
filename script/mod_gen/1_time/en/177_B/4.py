@@ -10,6 +10,3 @@ def main():
         min_change = min(min_change, change)
     print(min_change)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -20,6 +20,3 @@ def solve():
             ans = min(ans, T2[i - X + 1] + (X - i - 1) * B[i])
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

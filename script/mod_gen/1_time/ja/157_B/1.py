@@ -16,6 +16,3 @@ for _ in range(n):
             if a[i][j] == b:
                 a[i][j] = 0
 print('Yes' if bingo_check(a) else 'No')
-
-if __name__ == '__main__':
-    bingo_check()

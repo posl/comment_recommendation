@@ -8,6 +8,3 @@ def solve(N, M):
             print(i, *j)
 N, M = map(int, input().split())
 solve(N, M)
-
-if __name__ == '__main__':
-    solve()

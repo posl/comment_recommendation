@@ -8,6 +8,3 @@ def swap():
     s = ''.join(s)
     print(s)
 swap()
-
-if __name__ == '__main__':
-    swap()

@@ -25,6 +25,3 @@ def main():
         components += 1
     print(components)
 main()
-
-if __name__ == '__main__':
-    main()

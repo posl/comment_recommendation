@@ -16,6 +16,3 @@ def main():
     for query in queries:
         print(sum[query[1]][query[1]] - sum[query[0]-1][query[1]] - sum[query[1]][query[0]-1] + sum[query[0]-1][query[0]-1])
 main()
-
-if __name__ == '__main__':
-    main()

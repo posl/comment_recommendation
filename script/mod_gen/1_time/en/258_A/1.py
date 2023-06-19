@@ -8,6 +8,3 @@ def main():
         h += 1
     print(str(h) + ":" + str(m).zfill(2))
 main()
-
-if __name__ == '__main__':
-    main()

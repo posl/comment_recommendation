@@ -11,6 +11,3 @@ def   main ():
              print ( len ( mod200 [ i ]),   * mod200 [ i ][ 2 :]) 
              return 
      print ( "No" )
-
-if __name__ == '__main__':
-    ()

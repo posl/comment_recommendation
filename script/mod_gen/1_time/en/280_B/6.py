@@ -9,6 +9,3 @@ def main():
             A.append(S[i]-sum(A))
     print(" ".join(map(str,A)))
 main()
-
-if __name__ == '__main__':
-    main()

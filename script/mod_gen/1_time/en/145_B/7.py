@@ -9,6 +9,3 @@ def check_concatenation(N, S):
 N = int(input())
 S = input()
 print(check_concatenation(N, S))
-
-if __name__ == '__main__':
-    check_concatenation()

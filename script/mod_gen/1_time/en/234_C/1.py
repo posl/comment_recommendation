@@ -16,6 +16,3 @@ def getNthSmallestNumber(k):
         return getNthSmallestNumber(k // 2 + 1) + "2" + "0" * (digits - 1)
 k = int(input())
 print(getNthSmallestNumber(k))
-
-if __name__ == '__main__':
-    getNthSmallestNumber()

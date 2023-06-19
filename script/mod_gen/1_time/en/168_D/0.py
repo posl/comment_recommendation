@@ -51,6 +51,3 @@ def main():
     for i in range(2, N+1):
         print(ans[i])
 main()
-
-if __name__ == '__main__':
-    main()

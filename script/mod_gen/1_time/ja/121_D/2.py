@@ -5,6 +5,3 @@ def f(a, b):
         return f(a-1, b) ^ f(a-1, a-1)
 A, B = map(int, input().split())
 print(f(A, B))
-
-if __name__ == '__main__':
-    f()

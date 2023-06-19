@@ -17,6 +17,3 @@ def main():
                 ans += 4 - cnt
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

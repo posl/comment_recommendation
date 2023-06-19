@@ -9,6 +9,3 @@ def main():
                 X -= 1
     print(X)
 main()
-
-if __name__ == '__main__':
-    main()

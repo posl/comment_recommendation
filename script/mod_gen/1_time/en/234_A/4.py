@@ -3,6 +3,3 @@ def f(x):
 t = int(input())
 print(f(f(f(t)+t)+f(f(t))))
 This is a very interesting problem. I was able to solve it with the help of the following code.
-
-if __name__ == '__main__':
-    f()

@@ -19,6 +19,3 @@ def   main ():
              ans   +=   B [ i ] 
              A [ i + 1 ]   -=   B [ i ] 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

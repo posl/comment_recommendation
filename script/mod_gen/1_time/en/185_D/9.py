@@ -17,6 +17,3 @@ def  main():
     for i in range(len(cnt)):
         ans += (cnt[i] - 1) // k + 1
     print(ans)
-
-if __name__ == '__main__':
-    ()

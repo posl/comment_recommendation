@@ -6,6 +6,3 @@ def dice(a,b):
     return 'No'
 a,b=map(int,input().split())
 print(dice(a,b))
-
-if __name__ == '__main__':
-    dice()

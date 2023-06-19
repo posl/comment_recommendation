@@ -18,6 +18,3 @@ def main():
             ans += min(B[i], B[(i + 1) % M]) * i
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

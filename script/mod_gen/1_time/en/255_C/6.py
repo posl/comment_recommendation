@@ -24,6 +24,3 @@ def main():
             print(min(A - X, X - A - (N - 1) * D))
             return
 main()
-
-if __name__ == '__main__':
-    main()

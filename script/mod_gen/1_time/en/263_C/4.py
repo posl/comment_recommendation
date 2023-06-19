@@ -9,6 +9,3 @@ def seq(n, m, s):
             s.pop()
 n, m = map(int, input().split())
 seq(n, m, [])
-
-if __name__ == '__main__':
-    seq()

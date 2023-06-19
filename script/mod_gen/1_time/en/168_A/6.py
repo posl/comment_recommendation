@@ -6,6 +6,3 @@ def   main ():
         print ( "pon" )
      else :
         print ( "hon" )
-
-if __name__ == '__main__':
-    ()

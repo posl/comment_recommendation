@@ -13,6 +13,3 @@ def   main ():
      print ( max ( color )) 
      for   i   in   range ( 2 ,   N + 1 ): 
          print ( color [ i ])
-
-if __name__ == '__main__':
-    ()

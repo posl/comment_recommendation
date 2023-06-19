@@ -5,6 +5,3 @@ def main():
         if int(input())==0:
             return
 main()
-
-if __name__ == '__main__':
-    main()

@@ -19,6 +19,3 @@ def main():
     # どの二人も少なくとも 1 回同じ舞踏会に参加している場合は Yes を出力
     print("Yes")
 main()
-
-if __name__ == '__main__':
-    main()

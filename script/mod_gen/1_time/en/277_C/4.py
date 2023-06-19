@@ -6,6 +6,3 @@ def main():
     ladders.sort(key=lambda x: x[0])
     print(ladders[-1][1])
 main()
-
-if __name__ == '__main__':
-    main()

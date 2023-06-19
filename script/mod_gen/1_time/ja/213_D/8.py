@@ -19,6 +19,3 @@ def solve():
                 stack.append(nv)
     print(*ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -20,6 +20,3 @@ def main():
                 break
     print(dp[N])
 main()
-
-if __name__ == '__main__':
-    main()

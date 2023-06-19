@@ -9,6 +9,3 @@ def checkWeak(pin):
     return "Weak"
 pin = input()
 print(checkWeak(pin))
-
-if __name__ == '__main__':
-    checkWeak()

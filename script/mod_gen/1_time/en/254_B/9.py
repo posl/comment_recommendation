@@ -3,6 +3,3 @@ def main():
     for i in range(N):
         print(*[1]+[n for n in range(1,i+1) if n!=i]+[1])
 main()
-
-if __name__ == '__main__':
-    main()

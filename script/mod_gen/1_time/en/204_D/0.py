@@ -3,6 +3,3 @@ def main():
     T = list(map(int, input().split()))
     print(sum(T) - max(T) // 2)
 main()
-
-if __name__ == '__main__':
-    main()

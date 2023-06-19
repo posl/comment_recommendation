@@ -9,6 +9,3 @@ def main():
         #print(a)
     print(sum(a))
 main()
-
-if __name__ == '__main__':
-    main()

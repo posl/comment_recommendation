@@ -25,8 +25,8 @@ if __name__ == '__main__':
     print('input times')
     time = input() + '_time'
 
-    #for language in ['en', 'ja']:
-    for language in ['zh']:
+    for language in ['en', 'ja', 'zh']:
+    #for language in ['zh']:
         base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)
         result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/'.format(time, language)
 

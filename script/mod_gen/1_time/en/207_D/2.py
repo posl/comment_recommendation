@@ -26,6 +26,3 @@ def main():
                 s[k][1] -= dy
     print('No')
 main()
-
-if __name__ == '__main__':
-    main()

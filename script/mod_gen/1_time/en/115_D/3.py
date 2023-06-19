@@ -11,6 +11,3 @@ def burger(n, x):
         return 1 + burger(n-1, 0) + burger(n-1, x-2-burger(n-1, 0))
 n, x = map(int, input().split())
 print(burger(n, x))
-
-if __name__ == '__main__':
-    burger()

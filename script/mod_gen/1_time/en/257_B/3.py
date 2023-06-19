@@ -23,6 +23,3 @@ def main():
         if B[i] == 1:
             print(i+1, end=' ')
 main()
-
-if __name__ == '__main__':
-    main()

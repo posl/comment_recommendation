@@ -11,6 +11,3 @@ def main():
     d.sort(reverse=True)
     print(sum(d[N-1:]))
 main()
-
-if __name__ == '__main__':
-    main()

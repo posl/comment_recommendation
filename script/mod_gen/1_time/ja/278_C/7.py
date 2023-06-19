@@ -12,6 +12,3 @@ def main():
         else:
             print('Yes' if f[a] & f[b] else 'No')
 main()
-
-if __name__ == '__main__':
-    main()

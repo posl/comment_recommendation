@@ -35,6 +35,3 @@ def solve():
                     break
         print(r_s, c_s)
 solve()
-
-if __name__ == '__main__':
-    solve()

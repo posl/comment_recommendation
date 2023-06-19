@@ -8,6 +8,3 @@ w = []
 for _ in range(n):
     w.append(input())
 print(shiritori(n, w))
-
-if __name__ == '__main__':
-    shiritori()

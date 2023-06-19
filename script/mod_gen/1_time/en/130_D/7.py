@@ -13,6 +13,3 @@ def solve():
         s -= A[l]
     return cnt
 print(solve())
-
-if __name__ == '__main__':
-    solve()

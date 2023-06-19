@@ -28,6 +28,3 @@ def main():
         #every turn until the pile is 1 stone, then he can remove the remaining number of stones every turn
         else:
             print(A[K-1] * turns + remaining_stones - 1)
-
-if __name__ == '__main__':
-    main()

@@ -23,6 +23,3 @@ def main():
         else:
             print("Road")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def xor_sum(n, a):
 n = int(input())
 a = [int(x) for x in input().split()]
 print(xor_sum(n, a) % (10**9 + 7))
-
-if __name__ == '__main__':
-    xor_sum()

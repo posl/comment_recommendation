@@ -13,6 +13,3 @@ def solve():
         i += 1
     return "Yes"
 print(solve())
-
-if __name__ == '__main__':
-    solve()

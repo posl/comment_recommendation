@@ -4,6 +4,3 @@ def round(x, k):
     return x
 x, k = map(int, input().split())
 print(round(x, k))
-
-if __name__ == '__main__':
-    round()

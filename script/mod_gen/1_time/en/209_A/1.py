@@ -5,6 +5,3 @@ def count_integers(a, b):
     return count
 a, b = map(int, input().split())
 print(count_integers(a, b))
-
-if __name__ == '__main__':
-    count_integers()

@@ -8,6 +8,3 @@ def main():
         else:
             S = S[-x:] + S[:-x]
 main()
-
-if __name__ == '__main__':
-    main()

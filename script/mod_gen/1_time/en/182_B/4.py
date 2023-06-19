@@ -10,6 +10,3 @@ for a in A:
         if a % i == 0:
             gcds[i] += 1
 print(gcds.index(max(gcds)))
-
-if __name__ == '__main__':
-    gcd()

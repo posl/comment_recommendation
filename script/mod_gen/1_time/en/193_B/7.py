@@ -10,6 +10,3 @@ def main():
             return shop[1]
     return -1
 print(main())
-
-if __name__ == '__main__':
-    main()

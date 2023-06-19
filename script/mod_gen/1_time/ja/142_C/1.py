@@ -7,6 +7,3 @@ def main():
     for i in range(N):
         print(B[i], end=" ")
 main()
-
-if __name__ == '__main__':
-    main()

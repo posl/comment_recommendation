@@ -13,6 +13,3 @@ def  main():
          print ( 0 )
          return 
      # 各文字の出現回数を 1 減らす
-
-if __name__ == '__main__':
-    ()

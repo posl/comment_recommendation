@@ -4,6 +4,3 @@ def main():
     S_B = sum(map(int, list(str(B))))
     print(max(S_A, S_B))
 main()
-
-if __name__ == '__main__':
-    main()

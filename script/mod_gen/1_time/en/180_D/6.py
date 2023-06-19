@@ -7,6 +7,3 @@ def solve():
     exp += (y - x - 1) // b
     return exp
 print(solve())
-
-if __name__ == '__main__':
-    solve()

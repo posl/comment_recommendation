@@ -15,6 +15,3 @@ def main():
     for i in range(M):
         print('{:06}{:06}'.format(P[i], P_list[P[i]].index(Y[i])+1))
 main()
-
-if __name__ == '__main__':
-    main()

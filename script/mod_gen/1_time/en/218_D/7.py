@@ -12,6 +12,3 @@ def main():
             result += count * (count - 1) // 2
     print(result)
 main()
-
-if __name__ == '__main__':
-    main()

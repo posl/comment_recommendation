@@ -5,6 +5,3 @@ def main():
     else:
         print(B - A - 2 * K)
 main()
-
-if __name__ == '__main__':
-    main()

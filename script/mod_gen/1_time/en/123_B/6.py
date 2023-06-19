@@ -13,6 +13,3 @@ def solve():
     ans -= max(a % 10, b % 10, c % 10, d % 10, e % 10)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

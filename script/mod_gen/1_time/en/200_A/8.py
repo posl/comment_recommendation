@@ -30,6 +30,3 @@ The function century() is well generalized.
 The function century() is well specialized.
 The function century() is well parameterized.
 The function century
-
-if __name__ == '__main__':
-    century()

@@ -12,6 +12,3 @@ def main():
             d[s] += 1
             print(s + "(" + str(d[s]) + ")")
 main()
-
-if __name__ == '__main__':
-    main()

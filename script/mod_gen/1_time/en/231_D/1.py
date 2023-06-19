@@ -17,6 +17,3 @@ def main():
             stack.append(u)
     print('Yes' if all(visited) else 'No')
 main()
-
-if __name__ == '__main__':
-    main()

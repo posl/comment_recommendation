@@ -17,6 +17,3 @@ for i in range(m):
     b.append(bi)
     c.append(ci)
 print(solve(n, m, a, b, c))
-
-if __name__ == '__main__':
-    solve()

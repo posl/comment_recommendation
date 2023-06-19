@@ -10,6 +10,3 @@ def main():
         declared.add(a)
     return
 main()
-
-if __name__ == '__main__':
-    main()

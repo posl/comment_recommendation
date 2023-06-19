@@ -15,6 +15,3 @@ def main():
     for i in range(q):
         print(sum(array[query[i][0]-1][query[i][1]-1]))
 main()
-
-if __name__ == '__main__':
-    main()

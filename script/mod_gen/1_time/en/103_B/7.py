@@ -10,6 +10,3 @@ def check_rotation(s, t):
 s = input()
 t = input()
 print(check_rotation(s, t))
-
-if __name__ == '__main__':
-    check_rotation()

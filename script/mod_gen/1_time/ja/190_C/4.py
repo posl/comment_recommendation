@@ -28,6 +28,3 @@ def main():
         ans = max(ans, cnt)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

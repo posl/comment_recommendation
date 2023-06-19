@@ -9,6 +9,3 @@ def main():
     
     print(dp[s])
 main()
-
-if __name__ == '__main__':
-    main()

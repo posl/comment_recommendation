@@ -5,6 +5,3 @@ def solve(l):
         return 2**(l//2)
 l = int(input())
 print(solve(l))
-
-if __name__ == '__main__':
-    solve()

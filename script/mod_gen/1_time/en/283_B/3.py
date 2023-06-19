@@ -9,6 +9,3 @@ def main():
         else:
             print(A[query[1]-1])
 main()
-
-if __name__ == '__main__':
-    main()

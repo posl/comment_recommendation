@@ -27,6 +27,3 @@ def main():
                 break
         print(r_s, c_s)
 main()
-
-if __name__ == '__main__':
-    main()

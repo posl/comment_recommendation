@@ -4,6 +4,3 @@ def round(x):
     else:
         return int(x)
 print(round(float(input())))
-
-if __name__ == '__main__':
-    round()

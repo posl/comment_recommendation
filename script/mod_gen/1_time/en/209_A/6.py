@@ -5,6 +5,3 @@ def findIntegers():
     else:
         print(B - A + 1)
 findIntegers()
-
-if __name__ == '__main__':
-    findIntegers()

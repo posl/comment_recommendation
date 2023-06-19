@@ -4,6 +4,3 @@ def main():
     H.sort(reverse=True)
     print(sum(H[K:]))
 main()
-
-if __name__ == '__main__':
-    main()

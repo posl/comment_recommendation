@@ -7,6 +7,3 @@ def main():
     exp += (y - x - 1) // b
     print(exp)
 main()
-
-if __name__ == '__main__':
-    main()

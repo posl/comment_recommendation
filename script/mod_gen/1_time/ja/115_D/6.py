@@ -17,6 +17,3 @@ def solve(N, X):
         return 2 ** N - 1
 N, X = map(int, input().split())
 print(solve(N, X))
-
-if __name__ == '__main__':
-    solve()

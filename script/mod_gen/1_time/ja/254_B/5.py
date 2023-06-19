@@ -7,6 +7,3 @@ def pascal_triangle(n):
 N = int(input())
 for i in range(N):
     print(*pascal_triangle(i+1))
-
-if __name__ == '__main__':
-    pascal_triangle()

@@ -12,6 +12,3 @@ def main():
             print(sum(ball[:array[i][1]]))
             del ball[:array[i][1]]
 main()
-
-if __name__ == '__main__':
-    main()

@@ -17,6 +17,3 @@ def main():
                 ans = min(ans, max(t[m] - x[i], x[i] - s[l]))
         print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

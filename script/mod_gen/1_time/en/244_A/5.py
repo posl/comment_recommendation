@@ -3,6 +3,3 @@ def last_character():
     S = input()
     print(S[-1])
 last_character()
-
-if __name__ == '__main__':
-    last_character()

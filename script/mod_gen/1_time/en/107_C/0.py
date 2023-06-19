@@ -9,6 +9,3 @@ def main():
             ans = min(ans,x[i+k-1]-x[i]+min(abs(x[i]),abs(x[i+k-1])))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

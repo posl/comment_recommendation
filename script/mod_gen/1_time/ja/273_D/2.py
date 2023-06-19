@@ -20,6 +20,3 @@ def solve():
                 r_s += 1
         print(r_s, c_s)
 solve()
-
-if __name__ == '__main__':
-    solve()

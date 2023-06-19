@@ -7,6 +7,3 @@ def main():
         ans = min(ans, K-(A[i+1]-A[i]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

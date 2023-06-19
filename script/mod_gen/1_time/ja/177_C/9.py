@@ -9,6 +9,3 @@ def main():
             sum += (A[i] * A[j])
     print(sum % mod)
 main()
-
-if __name__ == '__main__':
-    main()

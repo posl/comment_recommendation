@@ -17,6 +17,3 @@ def main():
     for i in color:
         print(i)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def find_unique(s):
     return -1
 s = input()
 print(find_unique(s))
-
-if __name__ == '__main__':
-    find_unique()

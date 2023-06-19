@@ -22,6 +22,3 @@ def main():
             cnt = 0
     print(' '.join(map(str, ans)))
 main()
-
-if __name__ == '__main__':
-    main()

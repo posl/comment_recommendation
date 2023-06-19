@@ -18,6 +18,3 @@ def main():
     for i in range(len(ans)):
         print(ans[i][0], ans[i][1])
 main()
-
-if __name__ == '__main__':
-    main()

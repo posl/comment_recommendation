@@ -10,6 +10,3 @@ def solve():
             x = x * 2 + 1
     print(x)
 solve()
-
-if __name__ == '__main__':
-    solve()

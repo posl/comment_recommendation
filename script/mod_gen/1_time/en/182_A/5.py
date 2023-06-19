@@ -5,6 +5,3 @@ def extra_users_followed():
     b = int(data[1])
     return 2 * a + 100 - b
 print(extra_users_followed())
-
-if __name__ == '__main__':
-    extra_users_followed()

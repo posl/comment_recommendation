@@ -6,6 +6,3 @@ def solve():
     b = a[n//2]
     print(sum([abs(a[i]-b) for i in range(n)]))
 solve()
-
-if __name__ == '__main__':
-    solve()

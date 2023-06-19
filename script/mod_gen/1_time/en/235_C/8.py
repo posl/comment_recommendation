@@ -14,6 +14,3 @@ A = list(map(int, input().split()))
 for _ in range(Q):
     x, k = map(int, input().split())
     print(search(A, x, k))
-
-if __name__ == '__main__':
-    search()

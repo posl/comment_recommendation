@@ -6,6 +6,3 @@ def main():
     print("TLE x", S.count("TLE"))
     print("RE x", S.count("RE"))
 main()
-
-if __name__ == '__main__':
-    main()

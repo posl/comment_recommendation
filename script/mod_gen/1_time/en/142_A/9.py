@@ -5,6 +5,3 @@ def main():
         return
     print((N//2)/N)
 main()
-
-if __name__ == '__main__':
-    main()

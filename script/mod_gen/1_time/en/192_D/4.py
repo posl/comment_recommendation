@@ -23,6 +23,3 @@ def main():
             low = mid
     print(low - d)
 main()
-
-if __name__ == '__main__':
-    main()

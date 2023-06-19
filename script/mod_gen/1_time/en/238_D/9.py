@@ -9,6 +9,3 @@ T = int(input())
 for i in range(T):
     a,s = map(int,input().split())
     print(check(a,s))
-
-if __name__ == '__main__':
-    check()

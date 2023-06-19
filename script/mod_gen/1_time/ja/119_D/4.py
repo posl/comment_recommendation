@@ -17,6 +17,3 @@ def main():
                 ans = min(ans,abs(i-sj)+abs(sj-tj),abs(i-tj)+abs(tj-sj))
         print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

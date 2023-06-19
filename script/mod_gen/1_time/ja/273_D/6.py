@@ -32,6 +32,3 @@ def   main ():
          elif   d   ==   'U' : 
              r_s   =   max ( r_s   -   l ,   1 ) 
          elif   d   ==   'D' :
-
-if __name__ == '__main__':
-    ()

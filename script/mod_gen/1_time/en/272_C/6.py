@@ -9,6 +9,3 @@ def main():
             return print(a[i] + a[i - 1])
     print(-1)
 main()
-
-if __name__ == '__main__':
-    main()

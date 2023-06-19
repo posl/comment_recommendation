@@ -7,6 +7,3 @@ def  main():
         if  l[i] != l[i+1]:
             count += 1
     print(count)
-
-if __name__ == '__main__':
-    ()

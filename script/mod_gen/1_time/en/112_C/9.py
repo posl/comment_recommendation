@@ -13,6 +13,3 @@ def get_center_and_height(n, points):
 n = int(input())
 points = [list(map(int, input().split())) for _ in range(n)]
 print(*get_center_and_height(n, points))
-
-if __name__ == '__main__':
-    get_center_and_height()

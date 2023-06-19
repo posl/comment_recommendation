@@ -9,6 +9,3 @@ def   main ():
              if   h [ i - 1 ]   <   h [ i ]: 
                  ans   +=   h [ i ]   -   h [ i - 1 ] 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

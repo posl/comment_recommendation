@@ -11,6 +11,3 @@ def  main():
         else:
             ans += p[i] / 2
     print(int(ans))
-
-if __name__ == '__main__':
-    ()

@@ -16,6 +16,3 @@ def main():
         dp[l] %= 998244353
     print(dp[1])
 main()
-
-if __name__ == '__main__':
-    main()

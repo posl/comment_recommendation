@@ -25,6 +25,3 @@ def  main():
         num.append(p**4)
     # 結果を出力
     print(len(num))
-
-if __name__ == '__main__':
-    ()

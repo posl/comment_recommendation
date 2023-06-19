@@ -3,6 +3,3 @@ def main():
     l = [a*c, a*d, b*c, b*d]
     print(max(l))
 main()
-
-if __name__ == '__main__':
-    main()

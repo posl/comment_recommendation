@@ -9,6 +9,3 @@ def main():
     elif b == 'T':
         print('A')
 main()
-
-if __name__ == '__main__':
-    main()

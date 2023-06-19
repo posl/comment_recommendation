@@ -13,6 +13,3 @@ def main():
         ans += max(0, R[i] - L[i + 1] - D)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

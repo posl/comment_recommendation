@@ -8,6 +8,3 @@ def isSplit(s):
         return 'No'
 s = input()
 print(isSplit(s))
-
-if __name__ == '__main__':
-    isSplit()

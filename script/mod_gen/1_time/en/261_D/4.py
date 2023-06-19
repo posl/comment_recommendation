@@ -13,6 +13,3 @@ def main():
                 dp[i + C[j]] = max(dp[i + C[j]], dp[i] + Y[j])
     print(dp[N])
 main()
-
-if __name__ == '__main__':
-    main()

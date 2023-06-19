@@ -15,6 +15,3 @@ def main():
         # Print the answer.
         print(count)
 main()
-
-if __name__ == '__main__':
-    main()

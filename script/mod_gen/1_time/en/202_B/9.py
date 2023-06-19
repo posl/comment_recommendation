@@ -11,6 +11,3 @@ def rotate_180(s):
     return s
 s = input()
 print(rotate_180(s))
-
-if __name__ == '__main__':
-    rotate_180()

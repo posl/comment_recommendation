@@ -9,6 +9,3 @@ def solve():
                 q.append(x * 10 + y)
     print(x)
 solve()
-
-if __name__ == '__main__':
-    solve()

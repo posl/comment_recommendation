@@ -7,6 +7,3 @@ def find_ocean_inns():
             ocean_inns += 1
     return ocean_inns
 print(find_ocean_inns())
-
-if __name__ == '__main__':
-    find_ocean_inns()

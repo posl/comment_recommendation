@@ -13,6 +13,3 @@ def   main ():
              sum   +=   x 
          else : 
              print ( heapq . heappop ( heap )   +   sum )
-
-if __name__ == '__main__':
-    ()

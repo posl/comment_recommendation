@@ -3,6 +3,3 @@ def main():
     c, d = [int(x) for x in input().split()]
     print(max(abs(a-c), abs(a-d), abs(b-c), abs(b-d)))
 main()
-
-if __name__ == '__main__':
-    main()

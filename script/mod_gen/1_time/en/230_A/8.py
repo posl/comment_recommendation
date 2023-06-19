@@ -4,6 +4,3 @@ def get_agc(n):
     else:
         return 'AGC%03d' % (n + 1)
 print(get_agc(int(input())))
-
-if __name__ == '__main__':
-    get_agc()

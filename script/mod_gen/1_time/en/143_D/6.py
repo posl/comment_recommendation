@@ -12,6 +12,3 @@ def main():
                     break
     print(cnt)
 main()
-
-if __name__ == '__main__':
-    main()

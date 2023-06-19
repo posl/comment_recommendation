@@ -7,6 +7,3 @@ def main():
             cnt += 1
     print(cnt // 2 + cnt % 2)
 main()
-
-if __name__ == '__main__':
-    main()

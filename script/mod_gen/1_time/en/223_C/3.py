@@ -49,6 +49,3 @@ def main():
         else:
             print(left)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def main():
     else:
         print(x[:-2] + '+')
 main()
-
-if __name__ == '__main__':
-    main()

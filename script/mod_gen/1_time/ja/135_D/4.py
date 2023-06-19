@@ -13,6 +13,3 @@ def solve():
             dp[i+1][(j*10)%13] %= MOD
     print(dp[len(S)][5])
 solve()
-
-if __name__ == '__main__':
-    solve()

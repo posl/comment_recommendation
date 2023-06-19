@@ -5,6 +5,3 @@ def main():
     n = n.replace("x","9")
     print(n)
 main()
-
-if __name__ == '__main__':
-    main()

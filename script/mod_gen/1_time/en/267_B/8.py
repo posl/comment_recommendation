@@ -17,6 +17,3 @@ def isSplit(S):
         return 'No'
 S = input()
 print(isSplit(S))
-
-if __name__ == '__main__':
-    isSplit()

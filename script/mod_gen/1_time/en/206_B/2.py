@@ -7,6 +7,3 @@ def main():
             print(i)
             break
 main()
-
-if __name__ == '__main__':
-    main()

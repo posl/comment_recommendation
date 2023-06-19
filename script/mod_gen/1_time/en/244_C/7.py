@@ -14,6 +14,3 @@ def main():
                 a[int(input()) - 1] = 1
                 break
 main()
-
-if __name__ == '__main__':
-    main()

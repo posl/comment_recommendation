@@ -5,6 +5,3 @@ def rounding(x, k):
         return rounding(round(x, -k), k-1)
 x, k = map(int, input().split())
 print(rounding(x, k))
-
-if __name__ == '__main__':
-    rounding()

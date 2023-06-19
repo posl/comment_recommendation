@@ -8,6 +8,3 @@ def  main():
             cnt[int(S[j][i])] += 1
         ans += N - max(cnt)
     print(ans)
-
-if __name__ == '__main__':
-    ()

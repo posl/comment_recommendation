@@ -6,6 +6,3 @@ def prefix(s, t):
 s = input()
 t = input()
 print(prefix(s, t))
-
-if __name__ == '__main__':
-    prefix()

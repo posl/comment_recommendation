@@ -12,6 +12,3 @@ def dfs(h,w,k):
         return dfs(h-1,w,k-1) + dfs(h-1,w,k+1)
 h,w,k = map(int,input().split())
 print(dfs(h,w,k) % 1000000007)
-
-if __name__ == '__main__':
-    dfs()

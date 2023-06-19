@@ -7,6 +7,3 @@ def nearest_10_pow(x, k):
     return x
 x, k = map(int, input().split())
 print(nearest_10_pow(x, k))
-
-if __name__ == '__main__':
-    nearest_10_pow()

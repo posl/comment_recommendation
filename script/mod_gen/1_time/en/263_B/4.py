@@ -6,6 +6,3 @@ def find_parent(n, parent):
 n = int(input())
 parent = [1] + list(map(int, input().split()))
 print(find_parent(n, parent))
-
-if __name__ == '__main__':
-    find_parent()

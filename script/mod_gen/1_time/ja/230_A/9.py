@@ -5,6 +5,3 @@ def main():
     else:
         print("AGC" + str(n + 1000)[1:])
 main()
-
-if __name__ == '__main__':
-    main()

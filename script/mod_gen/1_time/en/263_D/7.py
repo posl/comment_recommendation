@@ -6,6 +6,3 @@ def solve():
         B[i] = min(max(A[i], L), R)
     print(sum(B))
 solve()
-
-if __name__ == '__main__':
-    solve()

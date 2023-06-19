@@ -7,6 +7,3 @@ def main():
     else:
         print(min(x * (n // 3 + 1), y * (n // 3 + 1) - x))
 main()
-
-if __name__ == '__main__':
-    main()

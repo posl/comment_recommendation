@@ -7,6 +7,3 @@ def main():
     A.append(B[-1])
     print(sum(A))
 main()
-
-if __name__ == '__main__':
-    main()

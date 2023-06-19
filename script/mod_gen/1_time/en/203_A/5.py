@@ -11,6 +11,3 @@ def dice_game():
     else:
         print 0
 dice_game()
-
-if __name__ == '__main__':
-    dice_game()

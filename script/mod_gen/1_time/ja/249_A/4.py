@@ -12,6 +12,3 @@ def main():
     else:
         print("Draw")
 main()
-
-if __name__ == '__main__':
-    main()

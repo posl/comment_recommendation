@@ -5,6 +5,3 @@ def   main ( N ):
         if N % i == 0:
             max = i
     print(N // max + max - 2)
-
-if __name__ == '__main__':
-    ()

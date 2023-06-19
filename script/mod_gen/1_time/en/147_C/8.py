@@ -24,6 +24,3 @@ for i in range(n):
         b[i].append(x)
 x = [0]*n
 print(dfs(0, x, y))
-
-if __name__ == '__main__':
-    dfs()

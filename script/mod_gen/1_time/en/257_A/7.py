@@ -6,6 +6,3 @@ def main():
     else:
         print(s[(x-1)//n])
 main()
-
-if __name__ == '__main__':
-    main()

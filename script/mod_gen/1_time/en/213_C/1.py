@@ -11,6 +11,3 @@ def main():
     for i in range(N):
         print(A.index(A[i]) + 1, B.index(B[i]) + 1)
 main()
-
-if __name__ == '__main__':
-    main()

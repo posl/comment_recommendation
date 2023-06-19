@@ -9,6 +9,3 @@ t = int(input())
 for i in range(t):
     a, s = map(int, input().split())
     print(solve(a, s))
-
-if __name__ == '__main__':
-    solve()

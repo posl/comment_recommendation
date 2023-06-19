@@ -7,6 +7,3 @@ def dfs(s):
     return ret
 N = int(input())
 print(dfs('0'))
-
-if __name__ == '__main__':
-    dfs()

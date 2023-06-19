@@ -11,6 +11,3 @@ def solve(n,k,d):
     return -1
 n,k,d = map(int,input().split())
 print(solve(n,k,d))
-
-if __name__ == '__main__':
-    solve()

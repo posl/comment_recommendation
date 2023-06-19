@@ -6,6 +6,3 @@ def main():
         x = N
     print((A * x) // B - A * (x // B))
 main()
-
-if __name__ == '__main__':
-    main()

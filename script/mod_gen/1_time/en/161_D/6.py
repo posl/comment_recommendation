@@ -7,6 +7,3 @@ def lunlun(n):
         return (n % 10) + 10 * lunlun(n // 10) + 100 * lunlun(n // 100)
 K = int(input())
 print(lunlun(K))
-
-if __name__ == '__main__':
-    lunlun()

@@ -9,6 +9,3 @@ N = int(input())
 A = list(map(int,input().split()))
 X = int(input())
 print(solve(N,A,X))
-
-if __name__ == '__main__':
-    solve()

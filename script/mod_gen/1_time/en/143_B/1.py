@@ -7,6 +7,3 @@ def main():
             ans += d[i] * d[j]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

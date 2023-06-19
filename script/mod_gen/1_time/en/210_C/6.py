@@ -13,6 +13,3 @@ def  main():
              print ( 1 )
              return 
     print ( len(d) )
-
-if __name__ == '__main__':
-    ()

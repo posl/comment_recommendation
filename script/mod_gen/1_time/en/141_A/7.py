@@ -7,6 +7,3 @@ def weather_prediction(weather):
         return weather_list[weather_index + 1]
 weather = input()
 print(weather_prediction(weather))
-
-if __name__ == '__main__':
-    weather_prediction()

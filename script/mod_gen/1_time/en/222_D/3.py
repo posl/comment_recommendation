@@ -11,6 +11,3 @@ def solve():
             dp[i][j] = (dp[i - 1][j - 1] * (B[i - 1] - j + 1) + dp[i - 1][j] * (j - A[i - 1])) % mod
     print(sum(dp[N]) % mod)
 solve()
-
-if __name__ == '__main__':
-    solve()

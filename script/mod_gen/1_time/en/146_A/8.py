@@ -3,6 +3,3 @@ def main():
     x = input()
     print(7 - days.index(x))
 main()
-
-if __name__ == '__main__':
-    main()

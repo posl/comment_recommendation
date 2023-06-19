@@ -10,6 +10,3 @@ def main():
         for j in range(1, i):
             a[j] = a[j-1] + a[j]
 main()
-
-if __name__ == '__main__':
-    main()

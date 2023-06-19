@@ -20,6 +20,3 @@ def judgeBingo():
         return 'Yes'
     return 'No'
 print(judgeBingo())
-
-if __name__ == '__main__':
-    judgeBingo()

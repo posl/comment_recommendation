@@ -8,6 +8,3 @@ def solve():
         s, t = map(int, input().split())
         print(A[s-1][t-1])
 solve()
-
-if __name__ == '__main__':
-    solve()

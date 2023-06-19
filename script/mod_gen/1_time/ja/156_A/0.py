@@ -5,6 +5,3 @@ def main():
     else:
         print(r + 100 * (10 - n))
 main()
-
-if __name__ == '__main__':
-    main()

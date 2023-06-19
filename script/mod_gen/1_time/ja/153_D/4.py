@@ -5,6 +5,3 @@ def f(H):
         return 2*f(H//2)+1
 H = int(input())
 print(f(H))
-
-if __name__ == '__main__':
-    f()

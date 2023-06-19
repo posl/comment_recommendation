@@ -5,6 +5,3 @@ def sequence(n):
         return sequence(n-1) + [n] + sequence(n-1)
 n = int(input())
 print(*sequence(n))
-
-if __name__ == '__main__':
-    sequence()

@@ -9,6 +9,3 @@ def main():
         ans += max(cnt) * 10 ** (9 - i)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

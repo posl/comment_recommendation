@@ -6,6 +6,3 @@ def main():
     y_1 = (y_0 + y_N_2) / 2 + (x_0 - x_N_2) / (N / 2)
     print(x_1, y_1)
 main()
-
-if __name__ == '__main__':
-    main()

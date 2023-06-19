@@ -9,6 +9,3 @@ def is_arithmetic_sequence(a, b, c):
         return False
 a, b, c = map(int, input().split())
 print("Yes" if is_arithmetic_sequence(a, b, c) else "No")
-
-if __name__ == '__main__':
-    is_arithmetic_sequence()

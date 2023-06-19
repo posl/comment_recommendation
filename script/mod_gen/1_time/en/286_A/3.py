@@ -4,6 +4,3 @@ def swap(arr, p, q, r, s):
 n, p, q, r, s = map(int, input().split())
 arr = list(map(int, input().split()))
 print(*swap(arr, p, q, r, s))
-
-if __name__ == '__main__':
-    swap()

@@ -6,6 +6,3 @@ def main():
     # 0と1の数が少ない方を答えとする
     print(min(c0, c1))
 main()
-
-if __name__ == '__main__':
-    main()

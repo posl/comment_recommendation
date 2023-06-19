@@ -19,6 +19,3 @@ def main():
             k += 1
         print(k + (X - sumBk) // sumB * N)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def burger(n, x):
         return burger(n - 1, x - 2 - 2 ** (n - 1)) + 2 ** n
 n, x = map(int, input().split())
 print(burger(n, x))
-
-if __name__ == '__main__':
-    burger()

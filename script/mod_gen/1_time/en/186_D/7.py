@@ -8,6 +8,3 @@ def sum_abs_diffs(arr):
 n = int(input())
 arr = list(map(int, input().split()))
 print(sum_abs_diffs(arr))
-
-if __name__ == '__main__':
-    sum_abs_diffs()

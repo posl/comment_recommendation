@@ -15,6 +15,3 @@ def solve():
     for i in range(1, K+1):
         print(ans[i])
 solve()
-
-if __name__ == '__main__':
-    solve()

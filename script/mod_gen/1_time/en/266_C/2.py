@@ -8,6 +8,3 @@ B = list(map(int, input().split()))
 C = list(map(int, input().split()))
 D = list(map(int, input().split()))
 print("Yes" if isConvex(A, B, C, D) else "No")
-
-if __name__ == '__main__':
-    isConvex()

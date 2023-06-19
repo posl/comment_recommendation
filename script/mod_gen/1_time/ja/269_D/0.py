@@ -6,6 +6,3 @@ def main():
         X[i], Y[i] = map(int, input().split())
     print(N)
 main()
-
-if __name__ == '__main__':
-    main()

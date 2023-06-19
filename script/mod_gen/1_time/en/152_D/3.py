@@ -10,6 +10,3 @@ def main():
             ans += D[i * 10 + j] * D[j * 10 + i]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

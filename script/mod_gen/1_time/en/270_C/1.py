@@ -27,6 +27,3 @@ def main():
             if dist[i] + dist[j] + 1 == dist[Y]:
                 print(i+1, j+1)
 main()
-
-if __name__ == '__main__':
-    main()

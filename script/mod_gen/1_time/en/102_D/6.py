@@ -8,6 +8,3 @@ def solve():
         a.append(S)
     print(min(a))
 solve()
-
-if __name__ == '__main__':
-    solve()

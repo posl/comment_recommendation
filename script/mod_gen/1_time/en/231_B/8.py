@@ -20,6 +20,3 @@ def main():
             current_count += 1
     print(max_name)
 main()
-
-if __name__ == '__main__':
-    main()

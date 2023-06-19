@@ -4,6 +4,3 @@ def solve(a,b,c,d):
     return (a-b*d-1)//(b*c-b)+1
 a,b,c,d=map(int,input().split())
 print(solve(a,b,c,d))
-
-if __name__ == '__main__':
-    solve()

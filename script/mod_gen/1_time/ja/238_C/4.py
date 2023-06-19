@@ -21,6 +21,3 @@ def  main():
       ans  %=  998244353 
      # 出力
       print (ans)
-
-if __name__ == '__main__':
-    ()

@@ -7,6 +7,3 @@ def main():
     elif x[-1] == '7' or x[-1] == '8' or x[-1] == '9':
         print(x[:-2] + '+')
 main()
-
-if __name__ == '__main__':
-    main()

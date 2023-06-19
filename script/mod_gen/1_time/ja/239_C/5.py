@@ -5,6 +5,3 @@ def main():
     x5, y5 = x4 + x1, y4 + y1
     print('Yes' if x5 != x1 or y5 != y1 else 'No')
 main()
-
-if __name__ == '__main__':
-    main()

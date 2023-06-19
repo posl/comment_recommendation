@@ -15,6 +15,3 @@ def main():
                 dp[i][j] = (dp[i][j] + dp[i - 1][j + 1]) % mod
     print(sum(dp[-1]) % mod)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -10,6 +10,3 @@ def main():
         used[j] = True
     return
 main()
-
-if __name__ == '__main__':
-    main()

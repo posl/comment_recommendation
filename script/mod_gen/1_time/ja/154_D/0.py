@@ -10,6 +10,3 @@ def main():
         ans = max(ans, now)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

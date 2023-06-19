@@ -7,6 +7,3 @@ def main():
     else:
         print(S - 2 * min(abs(x) for x in A))
 main()
-
-if __name__ == '__main__':
-    main()

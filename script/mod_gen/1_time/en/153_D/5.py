@@ -6,6 +6,3 @@ def main():
         k += 1
     print(2 ** k - 1)
 main()
-
-if __name__ == '__main__':
-    main()

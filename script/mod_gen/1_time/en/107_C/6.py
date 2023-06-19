@@ -8,6 +8,3 @@ def main():
         ans = min(ans, min(abs(l) + abs(l - r), abs(r) + abs(l - r)))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

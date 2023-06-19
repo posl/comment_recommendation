@@ -14,6 +14,3 @@ def main():
     for s in S:
         print(s)
 main()
-
-if __name__ == '__main__':
-    main()

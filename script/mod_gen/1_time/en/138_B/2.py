@@ -6,6 +6,3 @@ def main():
         sum_inv += 1/a
     print(1/sum_inv)
 main()
-
-if __name__ == '__main__':
-    main()

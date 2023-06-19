@@ -3,6 +3,3 @@ def f(x):
 t = int(input())
 print(f(f(f(t)+t)+f(f(t))))
 The solution above is correct, but it is not efficient. In fact, it is a brute-force solution. You can find a more efficient solution below.
-
-if __name__ == '__main__':
-    f()

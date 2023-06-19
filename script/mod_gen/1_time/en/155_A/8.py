@@ -5,6 +5,3 @@ def poor(A,B,C):
         return "No"
 A,B,C = map(int,input().split())
 print(poor(A,B,C))
-
-if __name__ == '__main__':
-    poor()

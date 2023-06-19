@@ -5,6 +5,3 @@ def convert(n):
         return convert((n - 1) // 26) + convert((n - 1) % 26 + 1)
 N = int(input())
 print(convert(N))
-
-if __name__ == '__main__':
-    convert()

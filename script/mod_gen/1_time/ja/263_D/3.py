@@ -4,6 +4,3 @@ def main():
     A.sort()
     print(sum(A[:N//2])*L+sum(A[N//2:])*R)
 main()
-
-if __name__ == '__main__':
-    main()

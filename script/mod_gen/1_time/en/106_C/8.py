@@ -11,6 +11,3 @@ def findChar(s, k):
 s = input()
 k = int(input())
 print(findChar(s, k))
-
-if __name__ == '__main__':
-    findChar()

@@ -12,6 +12,3 @@ def main():
             print(sum(cylinder[:int(query[1])]))
             cylinder = cylinder[int(query[1]):]
 main()
-
-if __name__ == '__main__':
-    main()

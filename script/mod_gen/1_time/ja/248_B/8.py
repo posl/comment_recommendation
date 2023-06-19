@@ -7,6 +7,3 @@ def getAns(a,b,k):
         count += 1
 a,b,k = map(int,input().split())
 print(getAns(a,b,k))
-
-if __name__ == '__main__':
-    getAns()

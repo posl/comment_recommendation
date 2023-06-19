@@ -22,6 +22,3 @@ def  main():
     
      # Print the answer
       print(nearest)
-
-if __name__ == '__main__':
-    ()

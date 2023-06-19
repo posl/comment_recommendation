@@ -7,6 +7,3 @@ def main():
             ans += (a[i] - a[j])**2
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

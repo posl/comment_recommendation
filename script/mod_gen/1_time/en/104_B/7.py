@@ -10,6 +10,3 @@ def check(s):
     return True
 s = input()
 print('AC' if check(s) else 'WA')
-
-if __name__ == '__main__':
-    check()

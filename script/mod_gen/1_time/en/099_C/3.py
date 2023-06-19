@@ -13,6 +13,3 @@ def main():
             dp[i] = min(dp[i], dp[i-9**j] + 1)
     print(dp[N])
 main()
-
-if __name__ == '__main__':
-    main()

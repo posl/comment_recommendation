@@ -5,6 +5,3 @@ def solve():
     else:
         print((X*X+Y*Y)//(R*R))
 solve()
-
-if __name__ == '__main__':
-    solve()

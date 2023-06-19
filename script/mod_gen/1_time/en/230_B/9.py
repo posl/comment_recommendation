@@ -11,6 +11,3 @@ def is_substring(s):
         return 'No'
 s = input()
 print(is_substring(s))
-
-if __name__ == '__main__':
-    is_substring()

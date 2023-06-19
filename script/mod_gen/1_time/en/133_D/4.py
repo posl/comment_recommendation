@@ -7,6 +7,3 @@ def main():
         B[i] = A[i-1] - B[i-1]
     print(*B)
 main()
-
-if __name__ == '__main__':
-    main()

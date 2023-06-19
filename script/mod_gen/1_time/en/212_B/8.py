@@ -9,6 +9,3 @@ def main():
     else:
         print('Strong')
 main()
-
-if __name__ == '__main__':
-    main()

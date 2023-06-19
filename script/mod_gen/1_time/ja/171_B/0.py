@@ -4,6 +4,3 @@ def main():
     p.sort()
     print(sum(p[:K]))
 main()
-
-if __name__ == '__main__':
-    main()

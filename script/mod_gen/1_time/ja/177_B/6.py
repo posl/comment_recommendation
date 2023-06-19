@@ -6,6 +6,3 @@ def main():
         ans += 1 if t[i] != s[i] else 0
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

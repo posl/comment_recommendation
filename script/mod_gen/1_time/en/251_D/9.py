@@ -20,6 +20,3 @@ def solve():
             if dp[i] == 1:
                 print(i)
 solve()
-
-if __name__ == '__main__':
-    solve()

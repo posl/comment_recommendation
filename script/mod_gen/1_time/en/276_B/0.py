@@ -9,6 +9,3 @@ def main():
         G[i].sort()
         print(len(G[i]), *map(lambda x: x+1, G[i]))
 main()
-
-if __name__ == '__main__':
-    main()

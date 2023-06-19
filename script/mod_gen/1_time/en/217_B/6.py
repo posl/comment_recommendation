@@ -7,6 +7,3 @@ def main():
         if i not in s:
             print(i)
 main()
-
-if __name__ == '__main__':
-    main()

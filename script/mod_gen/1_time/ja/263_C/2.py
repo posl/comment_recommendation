@@ -7,6 +7,3 @@ def solve(N, M):
         solve(N-1, M-i)
 N, M = map(int, input().split())
 solve(N, M)
-
-if __name__ == '__main__':
-    solve()

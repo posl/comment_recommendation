@@ -26,6 +26,3 @@ def solve():
         else:
             print('R' if XY[i][0] < XY[i + 1][0] else 'L')
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -10,6 +10,3 @@ runrun_list = []
 runrun(0)
 K = int(input())
 print(sorted(runrun_list)[K-1])
-
-if __name__ == '__main__':
-    runrun()

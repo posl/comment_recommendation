@@ -8,6 +8,3 @@ def cal(N,K):
         return int((N/K)**3)
 N,K = map(int,input().split())
 print(cal(N,K))
-
-if __name__ == '__main__':
-    cal()

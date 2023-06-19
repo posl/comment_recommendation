@@ -10,6 +10,3 @@ def  main():
             if  i  ==  j:  continue 
             s.add((x[i] - x[j], y[i] - y[j]))
     print( len (s))
-
-if __name__ == '__main__':
-    ()

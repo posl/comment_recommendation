@@ -11,6 +11,3 @@ def main():
             ans = max(ans, i)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -10,6 +10,3 @@ def main():
             B[i] = (A[i]+A[i+1])//2
         print(*B)
 main()
-
-if __name__ == '__main__':
-    main()

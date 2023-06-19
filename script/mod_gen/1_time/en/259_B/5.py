@@ -5,6 +5,3 @@ def rotate(a,b,d):
     return x,y
 a,b,d=map(int,input().split())
 print(*rotate(a,b,d))
-
-if __name__ == '__main__':
-    rotate()

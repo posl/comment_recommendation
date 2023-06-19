@@ -42,6 +42,3 @@ def main():
                                                                                 else:
                                                                                     print("Error: N is too large.")
 main()
-
-if __name__ == '__main__':
-    main()

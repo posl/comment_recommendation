@@ -6,6 +6,3 @@ def  main():
      for  i  in   range (N - K +  1 ):
         ans = min(ans, H[i + K -  1 ] - H[i])
     print(ans)
-
-if __name__ == '__main__':
-    ()

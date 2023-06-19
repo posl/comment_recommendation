@@ -11,6 +11,3 @@ def f(A, B):
             return A ^ (B ^ 1) ^ 1
 a, b = map(int, input().split())
 print(f(a, b))
-
-if __name__ == '__main__':
-    f()

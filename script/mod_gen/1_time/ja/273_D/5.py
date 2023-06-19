@@ -34,6 +34,3 @@ def   main ():
      for   d_i ,   l_i   in   LRUD : 
          d [ d_i ]   -=   l_i 
      # 高橋
-
-if __name__ == '__main__':
-    ()

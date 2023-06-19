@@ -6,6 +6,3 @@ def main():
     else:
         print(*a[k:], *([0] * k))
 main()
-
-if __name__ == '__main__':
-    main()

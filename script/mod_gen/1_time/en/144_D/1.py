@@ -5,6 +5,3 @@ def solve(a, b, x):
         return math.degrees(math.atan(a * b * b / (2 * x)))
 a, b, x = map(int, input().split())
 print(solve(a, b, x))
-
-if __name__ == '__main__':
-    solve()

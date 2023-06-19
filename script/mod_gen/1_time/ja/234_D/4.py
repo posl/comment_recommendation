@@ -8,6 +8,3 @@ def main():
         print(P[i-K])
     return
 main()
-
-if __name__ == '__main__':
-    main()

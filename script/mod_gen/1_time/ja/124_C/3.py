@@ -21,6 +21,3 @@ def main():
             one += 1
     print(min(zero, one))
 main()
-
-if __name__ == '__main__':
-    main()

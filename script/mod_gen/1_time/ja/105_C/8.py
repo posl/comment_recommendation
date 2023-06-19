@@ -10,6 +10,3 @@ def n2(num, base):
     return ans
 num = int(input())
 print(n2(num, -2))
-
-if __name__ == '__main__':
-    n2()

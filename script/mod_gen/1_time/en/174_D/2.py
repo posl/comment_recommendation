@@ -8,6 +8,3 @@ def main():
         return
     print(min(c[:R].count('W'), c[-W:].count('R')))
 main()
-
-if __name__ == '__main__':
-    main()

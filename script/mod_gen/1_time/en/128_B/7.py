@@ -8,6 +8,3 @@ def main():
     for x in city_score:
         print(x[2])
 main()
-
-if __name__ == '__main__':
-    main()

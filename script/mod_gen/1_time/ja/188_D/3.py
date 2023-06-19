@@ -14,6 +14,3 @@ def main():
                 ans += (AB[i][1] - AB[i][0] + 1) * C
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

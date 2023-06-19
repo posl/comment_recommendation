@@ -5,6 +5,3 @@ def solution():
     result = result.replace('x', '9')
     print(result)
 solution()
-
-if __name__ == '__main__':
-    solution()

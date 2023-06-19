@@ -6,6 +6,3 @@ def solve():
         ans = min(ans, min(abs(x[i])+abs(x[i+K-1]-x[i]), abs(x[i+K-1])+abs(x[i+K-1]-x[i])))
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

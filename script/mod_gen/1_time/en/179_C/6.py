@@ -8,6 +8,3 @@ def sum_divisors(n):
     return ans
 N = int(input())
 print(sum_divisors(N) - N)
-
-if __name__ == '__main__':
-    sum_divisors()

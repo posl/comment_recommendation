@@ -14,6 +14,3 @@ def main():
             R = max(R, intervals[i][1])
     print(L, R)
 main()
-
-if __name__ == '__main__':
-    main()

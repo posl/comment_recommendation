@@ -13,6 +13,3 @@ def calc():
     print('Yes')
     return
 calc()
-
-if __name__ == '__main__':
-    calc()

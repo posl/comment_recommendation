@@ -11,6 +11,3 @@ def main():
                 ans = max(ans, (r - l + 1) * x)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def calc(n, m, a):
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
 print(calc(n, m, a))
-
-if __name__ == '__main__':
-    calc()

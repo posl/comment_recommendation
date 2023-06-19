@@ -7,6 +7,3 @@ def main():
             N -= 1
     print(N)
 main()
-
-if __name__ == '__main__':
-    main()

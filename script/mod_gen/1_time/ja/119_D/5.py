@@ -13,6 +13,3 @@ def main():
         tr=x-t if bisect_left(T,x)<B else float('inf')
         print(min(max(sl,tl),max(sr,tr),sl+tr+min(sl,tr),sr+tl+min(sr,tl)))
 main()
-
-if __name__ == '__main__':
-    main()

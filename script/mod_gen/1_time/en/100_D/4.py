@@ -10,6 +10,3 @@ def main():
     cakes.sort(reverse=True)
     print(sum(cakes[:m]))
 main()
-
-if __name__ == '__main__':
-    main()

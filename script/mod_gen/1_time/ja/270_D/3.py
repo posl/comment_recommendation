@@ -14,6 +14,3 @@ def solve():
     else:
         print("Aoki")
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -7,6 +7,3 @@ def  main():
              break 
         ans += solve(10 ** i - 1, i)
     print(ans % 998244353)
-
-if __name__ == '__main__':
-    ()

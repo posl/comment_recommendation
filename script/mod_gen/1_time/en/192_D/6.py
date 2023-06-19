@@ -22,6 +22,3 @@ def solve():
             r = m
     print(l - d)
 solve()
-
-if __name__ == '__main__':
-    solve()

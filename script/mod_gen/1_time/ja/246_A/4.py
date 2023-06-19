@@ -17,6 +17,3 @@ def main():
     else:
         print(y1, end = " ")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def main():
     C = ((A-B)/3) + B
     print(C)
 main()
-
-if __name__ == '__main__':
-    main()

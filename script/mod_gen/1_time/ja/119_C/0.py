@@ -9,6 +9,3 @@ def dfs(i, a, b, c):
 n, A, B, C = map(int, input().split())
 L = [int(input()) for _ in range(n)]
 print(dfs(0, 0, 0, 0))
-
-if __name__ == '__main__':
-    dfs()

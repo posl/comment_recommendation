@@ -10,6 +10,3 @@ def main():
             Y += x * 380000.0
     print(Y)
 main()
-
-if __name__ == '__main__':
-    main()

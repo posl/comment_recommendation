@@ -6,6 +6,3 @@ def main():
     for j in range(N):
         print(list[N-1-j])
 main()
-
-if __name__ == '__main__':
-    main()

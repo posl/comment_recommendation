@@ -3,6 +3,3 @@ def dfs(u, color):
     for v in edge[u]:
         if color[v] == 0:
             dfs(v, color)
-
-if __name__ == '__main__':
-    dfs()

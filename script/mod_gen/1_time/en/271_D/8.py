@@ -17,6 +17,3 @@ for _ in range(n):
     a.append(x)
     b.append(y)
 print(solve(n, s, a, b))
-
-if __name__ == '__main__':
-    solve()

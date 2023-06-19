@@ -21,6 +21,3 @@ def main():
         print(A[s - 1][t - 1])
     #print(A)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -12,6 +12,3 @@ def toMinus2(num):
     return s
 N = int(input())
 print(toMinus2(N))
-
-if __name__ == '__main__':
-    toMinus2()

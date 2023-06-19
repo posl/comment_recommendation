@@ -3,6 +3,3 @@ def  main ():
     A = list(map(int, input().split()))
     A.sort(reverse=True)
     print(sum(A[:K]) // K)
-
-if __name__ == '__main__':
-    ()

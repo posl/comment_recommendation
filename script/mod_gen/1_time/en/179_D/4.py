@@ -12,6 +12,3 @@ def solve():
         dp[i] %= 998244353
     print(dp[N])
 solve()
-
-if __name__ == '__main__':
-    solve()

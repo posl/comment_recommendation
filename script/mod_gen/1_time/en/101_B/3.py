@@ -6,6 +6,3 @@ def digit_sum(n):
     return sum
 n = int(input())
 print("Yes" if n % digit_sum(n) == 0 else "No")
-
-if __name__ == '__main__':
-    digit_sum()

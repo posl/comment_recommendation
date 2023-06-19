@@ -10,6 +10,3 @@ def main():
         m = max(m, s)
     print(m / 2 + K / 2)
 main()
-
-if __name__ == '__main__':
-    main()

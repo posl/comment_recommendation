@@ -11,6 +11,3 @@ def maxRainyDays():
             maxCount = count
     return maxCount
 print(maxRainyDays())
-
-if __name__ == '__main__':
-    maxRainyDays()

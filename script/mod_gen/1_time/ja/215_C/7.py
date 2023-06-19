@@ -18,6 +18,3 @@ def main():
     print(ans)
 import math
 main()
-
-if __name__ == '__main__':
-    main()

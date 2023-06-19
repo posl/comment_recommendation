@@ -7,6 +7,3 @@ def takoyaki_festival():
             sum += dish[i] * dish[j]
     print(sum)
 takoyaki_festival()
-
-if __name__ == '__main__':
-    takoyaki_festival()

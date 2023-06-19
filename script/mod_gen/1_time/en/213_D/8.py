@@ -18,6 +18,3 @@ def main():
     #print(A)
     print(*A, sep=' ')
 main()
-
-if __name__ == '__main__':
-    main()

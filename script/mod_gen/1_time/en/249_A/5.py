@@ -11,6 +11,3 @@ def main():
     elif takahashi < aoki:
         print("Aoki")
 main()
-
-if __name__ == '__main__':
-    main()

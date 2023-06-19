@@ -7,6 +7,3 @@ def func(n):
     return ans
 n = int(input())
 print(func(n))
-
-if __name__ == '__main__':
-    func()

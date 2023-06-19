@@ -5,6 +5,3 @@ def main():
         A = [int(x) for x in input().split()]
         print(sum(1 for x in A if x % 2 == 1))
 main()
-
-if __name__ == '__main__':
-    main()

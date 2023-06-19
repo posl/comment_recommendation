@@ -35,6 +35,3 @@ def  main():
      for  i  in  ans:
         print (i,  end = ' ' )
     print ()
-
-if __name__ == '__main__':
-    ()

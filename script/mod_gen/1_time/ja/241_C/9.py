@@ -26,6 +26,3 @@ def main():
         # 白マスが2つ以上あれば、2つのマスを黒く塗ればOK
         print('Yes' if is_6consecutive_black() else 'No')
 main()
-
-if __name__ == '__main__':
-    main()

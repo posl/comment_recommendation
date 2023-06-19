@@ -12,6 +12,3 @@ def main():
             count += train[j]
         print(count)
 main()
-
-if __name__ == '__main__':
-    main()

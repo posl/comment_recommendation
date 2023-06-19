@@ -5,6 +5,3 @@ def check(n, k):
         return n // k * n // k * n // k
 n, k = map(int, input().split())
 print(check(n, k))
-
-if __name__ == '__main__':
-    check()

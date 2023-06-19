@@ -8,6 +8,3 @@ def main():
                 x += 1
         print(x, end=' ')
 main()
-
-if __name__ == '__main__':
-    main()

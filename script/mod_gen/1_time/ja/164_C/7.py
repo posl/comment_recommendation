@@ -3,6 +3,3 @@ def main():
     S = [input() for _ in range(N)]
     print(len(set(S)))
 main()  # 出力結果: 実行時間制限超過
-
-if __name__ == '__main__':
-    main()

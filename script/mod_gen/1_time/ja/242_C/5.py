@@ -16,6 +16,3 @@ def main():
         dp[i][9] = dp[i-1][8]
     print(sum(dp[N-1]) % MOD)
 main()
-
-if __name__ == '__main__':
-    main()

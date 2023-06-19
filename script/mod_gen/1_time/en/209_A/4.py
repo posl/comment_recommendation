@@ -5,6 +5,3 @@ def solution():
     else:
         print(b - a + 1)
 solution()
-
-if __name__ == '__main__':
-    solution()

@@ -9,6 +9,3 @@ def solve(x, y):
         return (solve(x - 1, y) + solve(x, y - 1)) % 1000000007
 x, y = map(int, input().split())
 print(solve(x, y))
-
-if __name__ == '__main__':
-    solve()

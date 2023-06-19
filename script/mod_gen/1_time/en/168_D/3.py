@@ -24,6 +24,3 @@ def   main ():
                  if   dist [ i ]   ==   dist [ nv ]   +   1 : 
                      print ( nv ) 
                      break
-
-if __name__ == '__main__':
-    ()

@@ -24,6 +24,3 @@ def main():
     print("Yes")
     return
 main()
-
-if __name__ == '__main__':
-    main()

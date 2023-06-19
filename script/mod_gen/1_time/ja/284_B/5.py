@@ -9,6 +9,3 @@ for i in range(test_num):
     num = int(input())
     num_list = list(map(int, input().split()))
     print(get_odd_num(num_list))
-
-if __name__ == '__main__':
-    get_odd_num()

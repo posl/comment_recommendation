@@ -10,6 +10,3 @@ def main():
             break
     print(i**3)
 main()
-
-if __name__ == '__main__':
-    main()

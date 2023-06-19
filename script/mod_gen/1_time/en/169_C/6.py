@@ -4,6 +4,3 @@ def compute():
     b = int(b.replace('.',''))
     print(a*b//100)
 compute()
-
-if __name__ == '__main__':
-    compute()

@@ -8,6 +8,3 @@ def solve():
     else:
         print(":(")
 solve()
-
-if __name__ == '__main__':
-    solve()

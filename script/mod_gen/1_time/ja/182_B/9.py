@@ -11,6 +11,3 @@ for i in range(2, 1001):
         if a[j] % i == 0:
             gcd_list[i] += 1
 print(gcd_list.index(max(gcd_list)))
-
-if __name__ == '__main__':
-    gcd()

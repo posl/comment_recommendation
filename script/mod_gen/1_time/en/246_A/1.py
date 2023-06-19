@@ -16,6 +16,3 @@ def main():
         y4 = y1
     print(x4, y4)
 main()
-
-if __name__ == '__main__':
-    main()

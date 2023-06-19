@@ -12,6 +12,3 @@ def f(n):
     return ans
 N=int(input())
 print(f(N)%998244353)
-
-if __name__ == '__main__':
-    f()

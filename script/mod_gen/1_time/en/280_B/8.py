@@ -6,6 +6,3 @@ def main():
         A.append(S[i] - sum(A))
     print(*A)
 main()
-
-if __name__ == '__main__':
-    main()

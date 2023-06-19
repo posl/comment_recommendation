@@ -4,6 +4,3 @@ def main():
     S = '0' + S
     print(S)
 main()
-
-if __name__ == '__main__':
-    main()

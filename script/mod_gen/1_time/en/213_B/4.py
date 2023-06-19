@@ -9,6 +9,3 @@ def   main ():
          print (A_max_index  +   1 )
     else :
          print (A_max_index  +   1 )
-
-if __name__ == '__main__':
-    ()

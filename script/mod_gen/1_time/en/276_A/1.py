@@ -7,6 +7,3 @@ def find_last_occurence(string, char):
 string = input()
 char = 'a'
 print(find_last_occurence(string, char))
-
-if __name__ == '__main__':
-    find_last_occurence()

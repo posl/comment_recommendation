@@ -9,6 +9,3 @@ def main():
         else:
             print('Takahashi')
 main()
-
-if __name__ == '__main__':
-    main()

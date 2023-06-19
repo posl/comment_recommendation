@@ -15,6 +15,3 @@ def main():
                     break
     print('Yes')
 main()
-
-if __name__ == '__main__':
-    main()

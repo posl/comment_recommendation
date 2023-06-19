@@ -5,6 +5,3 @@ def main():
     else:
         print((N//2+1)/N)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -15,6 +15,3 @@ def main():
         prev = service[i][0]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

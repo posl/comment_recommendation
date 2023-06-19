@@ -24,6 +24,3 @@ def solve():
     print(ans)
 MOD = 10**9+7
 solve()
-
-if __name__ == '__main__':
-    solve()

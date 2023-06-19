@@ -16,6 +16,3 @@ def   main ():
          ans   +=   dp [ N ][ i ]   *   ( B [ i ]   -   A [ i ]   +   1 ) 
          ans   %=   MOD 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

@@ -11,6 +11,3 @@ def maze():
     else:
         return ans
 print(maze())
-
-if __name__ == '__main__':
-    maze()

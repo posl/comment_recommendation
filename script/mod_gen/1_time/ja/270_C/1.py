@@ -28,6 +28,3 @@ def main():
             print(i, end = " ")
     print(Y)
 main()
-
-if __name__ == '__main__':
-    main()

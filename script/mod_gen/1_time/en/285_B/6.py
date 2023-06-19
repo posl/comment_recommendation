@@ -11,6 +11,3 @@ def main():
             if j == n - i - 2:
                 print(cnt)
 main()
-
-if __name__ == '__main__':
-    main()

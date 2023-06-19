@@ -26,6 +26,3 @@ def main():
             C.append(i+1)
     print(y, *C)
 main()
-
-if __name__ == '__main__':
-    main()

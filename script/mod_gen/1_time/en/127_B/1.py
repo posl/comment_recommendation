@@ -4,6 +4,3 @@ def algae(r, D, x):
         print(x)
 r, D, x = map(int, input().split())
 algae(r, D, x)
-
-if __name__ == '__main__':
-    algae()

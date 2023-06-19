@@ -11,6 +11,3 @@ def  main():
             print("1", b[(a[i] % 200)])
             return
     print("No")
-
-if __name__ == '__main__':
-    ()

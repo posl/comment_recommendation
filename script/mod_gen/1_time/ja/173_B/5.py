@@ -19,6 +19,3 @@ def main():
     print('TLE x', tle)
     print('RE x', re)
 main()
-
-if __name__ == '__main__':
-    main()

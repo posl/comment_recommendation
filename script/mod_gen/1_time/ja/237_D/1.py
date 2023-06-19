@@ -9,6 +9,3 @@ def main():
             A.append(i+1)
     print(*A)
 main()
-
-if __name__ == '__main__':
-    main()

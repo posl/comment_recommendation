@@ -10,6 +10,3 @@ def main():
             return
     print(count)
 main()
-
-if __name__ == '__main__':
-    main()

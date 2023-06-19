@@ -9,6 +9,3 @@ def f(n, m, i, a):
 n, m = map(int, input().split())
 a = [0]*n
 f(n, m, 0, a)
-
-if __name__ == '__main__':
-    f()

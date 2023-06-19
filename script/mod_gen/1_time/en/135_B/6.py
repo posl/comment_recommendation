@@ -14,6 +14,3 @@ def main():
     else:
         print("NO")
 main()
-
-if __name__ == '__main__':
-    main()

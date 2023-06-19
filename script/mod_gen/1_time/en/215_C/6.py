@@ -11,6 +11,3 @@ def permutation(s, k):
         return l[k-1]
 s, k = input().split()
 print(permutation(s, int(k)))
-
-if __name__ == '__main__':
-    permutation()

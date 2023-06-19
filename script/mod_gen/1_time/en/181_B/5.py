@@ -6,6 +6,3 @@ def getSumOfIntegersWrittenOnBlackboard():
         sum += (B - A + 1) * (A + B) / 2
     print(int(sum))
 getSumOfIntegersWrittenOnBlackboard()
-
-if __name__ == '__main__':
-    getSumOfIntegersWrittenOnBlackboard()

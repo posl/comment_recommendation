@@ -6,6 +6,3 @@ def dfs(cand, path, n):
         dfs(cand[i+1:], path+[cand[i]], n)
 n, m = map(int, input().split())
 dfs(list(range(1, m+1)), [], n)
-
-if __name__ == '__main__':
-    dfs()

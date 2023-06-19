@@ -15,6 +15,3 @@ def main():
         ans += min(c[i], m-c[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

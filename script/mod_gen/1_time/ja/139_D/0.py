@@ -7,6 +7,3 @@ def calc(n):
         return n * (n - 1) // 2
 n = int(input())
 print(calc(n))
-
-if __name__ == '__main__':
-    calc()

@@ -16,6 +16,3 @@ def main():
             ans += S
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

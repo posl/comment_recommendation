@@ -11,6 +11,3 @@ def main():
     else:
         print("Error")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -30,6 +30,3 @@ def main():
                     s2 = s2[:a[i] - n - 1] + s2[b[i] - n - 1] + s2[a[i] - n:b[i] - n - 1] + s2[a[i] - n - 1] + s2[b[i] - n:]
     print(s1 + s2)
 main()
-
-if __name__ == '__main__':
-    main()

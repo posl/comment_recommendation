@@ -6,6 +6,3 @@ def   main ():
          ans   +=   ( N   -   10   **   i   +   1 )   *   ( 10   **   i )   %   mod 
          ans   %=   mod 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

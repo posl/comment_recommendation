@@ -9,6 +9,3 @@ def main():
         else:
             print(max_A)
 main()
-
-if __name__ == '__main__':
-    main()

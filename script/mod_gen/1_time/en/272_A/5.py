@@ -7,6 +7,3 @@ def main():
     # Print the answer
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

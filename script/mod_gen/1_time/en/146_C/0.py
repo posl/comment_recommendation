@@ -54,6 +54,3 @@ def main():
     x //= 9
     print(1000000000 + x)
 main()
-
-if __name__ == '__main__':
-    main()

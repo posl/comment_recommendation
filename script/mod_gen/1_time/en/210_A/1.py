@@ -5,6 +5,3 @@ def main():
     else:
         print(A*X + (N-A)*Y)
 main()
-
-if __name__ == '__main__':
-    main()

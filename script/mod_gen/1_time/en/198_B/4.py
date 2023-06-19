@@ -5,6 +5,3 @@ def palindrome(n):
         return 'No'
 n = input()
 print(palindrome(n))
-
-if __name__ == '__main__':
-    palindrome()

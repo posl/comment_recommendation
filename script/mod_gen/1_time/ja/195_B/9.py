@@ -11,6 +11,3 @@ def main():
     else:
         print("UNSATISFIABLE")
 main()
-
-if __name__ == '__main__':
-    main()

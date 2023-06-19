@@ -12,6 +12,3 @@ def main():
                 B = b
     print(A, B)
 main()
-
-if __name__ == '__main__':
-    main()

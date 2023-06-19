@@ -9,6 +9,3 @@ def main():
             B.append(A[i] * -1)
     print(sum(B))
 main()
-
-if __name__ == '__main__':
-    main()

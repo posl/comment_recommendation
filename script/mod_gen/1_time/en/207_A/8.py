@@ -22,6 +22,3 @@ def main():
     # print the sum of the other two
     print(a+b+c-max-min)
 main()
-
-if __name__ == '__main__':
-    main()

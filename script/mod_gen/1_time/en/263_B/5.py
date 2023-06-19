@@ -6,6 +6,3 @@ def main():
         ans = max(ans, P[i-2]+1)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

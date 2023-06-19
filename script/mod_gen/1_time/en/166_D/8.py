@@ -7,6 +7,3 @@ def solve():
                 print(a, b)
                 return
 solve()
-
-if __name__ == '__main__':
-    solve()

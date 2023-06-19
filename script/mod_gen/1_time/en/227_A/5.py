@@ -5,6 +5,3 @@ def get_last_person(N, K, A):
     return last_person
 N, K, A = map(int, input().split())
 print(get_last_person(N, K, A))
-
-if __name__ == '__main__':
-    get_last_person()

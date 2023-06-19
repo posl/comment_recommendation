@@ -5,6 +5,3 @@ def main():
     #出力
     print(Z,X,Y)
 main()
-
-if __name__ == '__main__':
-    main()

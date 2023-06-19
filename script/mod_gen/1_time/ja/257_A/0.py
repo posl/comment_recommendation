@@ -7,6 +7,3 @@ def main():
         X = (X - 1) // 26
     print(ans[::-1])
 main()
-
-if __name__ == '__main__':
-    main()

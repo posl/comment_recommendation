@@ -12,6 +12,3 @@ def calc_expectation(n, k, p):
 n, k = map(int, input().split())
 p = list(map(int, input().split()))
 print(calc_expectation(n, k, p))
-
-if __name__ == '__main__':
-    calc_expectation()

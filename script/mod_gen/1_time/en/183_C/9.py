@@ -24,6 +24,3 @@ def   main ():
                     if tmp == k:
                         ans += 1
     print(ans)
-
-if __name__ == '__main__':
-    ()

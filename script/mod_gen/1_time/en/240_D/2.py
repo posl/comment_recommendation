@@ -11,6 +11,3 @@ def main():
 		b[i] = 0
 		print(s)
 main()
-
-if __name__ == '__main__':
-    main()

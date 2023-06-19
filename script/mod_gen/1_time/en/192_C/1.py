@@ -9,6 +9,3 @@ for i in range(K):
     a = f(a)
 print(a)
 I think this is the best solution for this problem.
-
-if __name__ == '__main__':
-    f()

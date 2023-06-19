@@ -7,6 +7,3 @@ def calc(x):
     print(i)
 x = int(input())
 calc(x)
-
-if __name__ == '__main__':
-    calc()

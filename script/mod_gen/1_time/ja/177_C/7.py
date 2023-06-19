@@ -8,6 +8,3 @@ def main():
         ans -= (n-i-1)*a[i]
     print(ans%(10**9+7))
 main()
-
-if __name__ == '__main__':
-    main()

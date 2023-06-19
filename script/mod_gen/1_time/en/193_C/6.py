@@ -9,6 +9,3 @@ def main():
                 break
     print(N - len(set(div)))
 main()
-
-if __name__ == '__main__':
-    main()

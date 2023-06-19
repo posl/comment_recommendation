@@ -10,6 +10,3 @@ def main():
     angle %= 360
     print(angle)
 main()
-
-if __name__ == '__main__':
-    main()

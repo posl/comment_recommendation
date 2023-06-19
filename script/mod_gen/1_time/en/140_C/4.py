@@ -8,6 +8,3 @@ def solve():
         A[i] = min(B[i-1],B[i])
     print(sum(A))
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -10,6 +10,3 @@ def lunlun(n, k):
             return min(lunlun(n * 10 + n % 10 - 1, k - 1), lunlun(n * 10 + n % 10 + 1, k - 1))
 k = int(input())
 print(lunlun(0, k))
-
-if __name__ == '__main__':
-    lunlun()

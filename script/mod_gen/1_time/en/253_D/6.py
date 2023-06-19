@@ -7,6 +7,3 @@ def solve(n, a, b):
         return (n // a) * (a + b) + (n // b) * b - (n // (a * b)) * b
 n, a, b = map(int, input().split())
 print(solve(n, a, b))
-
-if __name__ == '__main__':
-    solve()

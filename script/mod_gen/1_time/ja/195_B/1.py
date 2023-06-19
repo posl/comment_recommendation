@@ -12,6 +12,3 @@ def main():
     else:
         print(min_n, max_n)
 main()
-
-if __name__ == '__main__':
-    main()

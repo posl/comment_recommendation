@@ -5,6 +5,3 @@ def main():
     else:
         print(min(R1, R2) - max(L1, L2))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -15,6 +15,3 @@ def main():
     print(abs(get_order(P) - get_order(Q)))
 import math
 main()
-
-if __name__ == '__main__':
-    main()

@@ -3,6 +3,3 @@ def area(a,b,c):
     return (s*(s-a)*(s-b)*(s-c))**0.5
 a,b,c = map(int,input().split())
 print(int(area(a,b,c)))
-
-if __name__ == '__main__':
-    area()

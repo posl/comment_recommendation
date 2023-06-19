@@ -41,6 +41,3 @@ print(a[r-1][c-1])
 This line prints the value at the intersection of the r-th row and the c-th column of the matrix A.
 10. Main Function
 I used the following main function:
-
-if __name__ == '__main__':
-    main()

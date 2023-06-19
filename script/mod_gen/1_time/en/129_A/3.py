@@ -6,6 +6,3 @@ def main():
     # Print the minimum of the sum of the flight times
     print(minSum)
 main()
-
-if __name__ == '__main__':
-    main()

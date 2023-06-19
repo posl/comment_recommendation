@@ -11,6 +11,3 @@ def main():
         print(sum)
         A = list(map(lambda x: C if x == B else x, A))
 main()
-
-if __name__ == '__main__':
-    main()

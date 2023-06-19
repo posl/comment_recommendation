@@ -12,6 +12,3 @@ def main():
                 y = j
     print(abs(x - (H-1)) + abs(y - (W-1)))
 main()
-
-if __name__ == '__main__':
-    main()

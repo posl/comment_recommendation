@@ -15,6 +15,3 @@ def main():
             for j in range(int(queue[i][1])):
                 del queue[0]
 main()
-
-if __name__ == '__main__':
-    main()

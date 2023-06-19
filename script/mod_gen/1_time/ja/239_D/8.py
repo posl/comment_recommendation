@@ -5,6 +5,3 @@ def takahashi(A, B, C, D):
         return "Takahashi"
 A, B, C, D = map(int, input().split())
 print(takahashi(A, B, C, D))
-
-if __name__ == '__main__':
-    takahashi()

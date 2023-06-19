@@ -12,6 +12,3 @@ def calc(n):
     return ans
 n = int(input())
 print(calc(n))
-
-if __name__ == '__main__':
-    calc()

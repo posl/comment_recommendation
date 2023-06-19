@@ -9,6 +9,3 @@ x = []
 for i in range(q):
     x.append(int(input()))
 solve(n, q, a, x)
-
-if __name__ == '__main__':
-    solve()

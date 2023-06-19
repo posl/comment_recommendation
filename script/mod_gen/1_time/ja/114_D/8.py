@@ -19,6 +19,3 @@ def main():
                 divisor_count_75 += 1
         print(divisor_count_75)
 main()
-
-if __name__ == '__main__':
-    main()

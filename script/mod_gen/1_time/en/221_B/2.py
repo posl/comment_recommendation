@@ -14,6 +14,3 @@ def main():
         s[i],s[i+1] = s[i+1],s[i]
     print("No")
 main()
-
-if __name__ == '__main__':
-    main()

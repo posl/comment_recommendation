@@ -18,6 +18,3 @@ def  main():
             continue
         ans += 2
     print(ans)
-
-if __name__ == '__main__':
-    ()

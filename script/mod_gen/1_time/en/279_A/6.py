@@ -4,6 +4,3 @@ def main():
     w = s.count("w")
     print(v * w)
 main()
-
-if __name__ == '__main__':
-    main()

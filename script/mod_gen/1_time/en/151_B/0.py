@@ -6,6 +6,3 @@ def main():
     else:
         print(max(0, N * M - sum(A)))
 main()
-
-if __name__ == '__main__':
-    main()

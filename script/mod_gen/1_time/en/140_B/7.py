@@ -13,6 +13,3 @@ def   main ():
              ans   +=   C [ A [ i   -   1 ]   -   1 ] 
      # output 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

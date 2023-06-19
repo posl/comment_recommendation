@@ -24,6 +24,3 @@ def main():
         return
     print(min(A, B)*count + B)
 main()
-
-if __name__ == '__main__':
-    main()

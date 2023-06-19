@@ -5,6 +5,3 @@ def coffee_like():
     else:
         print('No')
 coffee_like()
-
-if __name__ == '__main__':
-    coffee_like()

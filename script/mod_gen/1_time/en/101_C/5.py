@@ -7,6 +7,3 @@ def solve():
             ret += 1
     print(ret+1)
 solve()
-
-if __name__ == '__main__':
-    solve()

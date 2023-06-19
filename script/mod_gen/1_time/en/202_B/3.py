@@ -9,6 +9,3 @@ def rotate(s):
     return s
 s = input()
 print(rotate(s))
-
-if __name__ == '__main__':
-    rotate()
