@@ -109,7 +109,7 @@ class specific_test_script:
             if times == '2_time':
                 seg_test_case_l = ['3.txt', '7.txt', '8.txt', '11.txt', '12.txt', '14.txt', '16.txt', '17.txt', '19.txt', '20.txt', '21.txt', '23.txt', '27.txt', '29.txt', '33.txt']
             elif times == '5_time':
-                seg_test_case_l = []
+                seg_test_case_l = ['006.txt']
             if not len(seg_test_case_l) == 0:
                 for delete_number in seg_test_case_l:
                     self.input_path_l.remove(delete_number)
@@ -157,7 +157,6 @@ class specific_test_script:
 
         with open('{0}/{1}_seg_accuracy.csv'.format(self.accu_result_path, self.problem_number), 'a') as f:
             writer = csv.writer(f)
-            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
             writer.writerow(accuracy_l)
 
         
@@ -190,6 +189,8 @@ if __name__ == '__main__':
         os.makedirs('{0}/result/ALL/{1}/{2}'.format(base_path, times, language))
     # 2_time 111_D
     # seg_test_case_num = 3, 7, 8, 11, 12, 14, 16, 17, 19, 20, 21, 23, 27, 29, 33, 
+    # 5_time 234_D
+    # seg_test_case_num = 006, 
 
     if times == '2_time':
         problem_l = ['111_D']
@@ -221,6 +222,8 @@ if __name__ == '__main__':
         
         elif flag2 == 'test':
             if times == '2_time':
+                suggestion_number = 5
+            elif times == '5_time':
                 suggestion_number = 5
             else:
                 print('input suggestion number')
