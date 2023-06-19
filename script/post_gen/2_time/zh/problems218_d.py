@@ -3,172 +3,152 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def match_str(str1, str2):
-    for i in range(len(str1)):
-        if str1[i] != str2[i]:
-            return False
-    return True
+def main():
+    pass
 
 =======
 Suggestion 2
 
-def rotate(s):
-    s_new = []
-    for i in range(len(s)):
-        s_new.append([])
-        for j in range(len(s)):
-            s_new[i].append(s[j][len(s)-1-i])
-    return s_new
+def solve():
+    pass
 
 =======
 Suggestion 3
 
 def main():
     n = int(input())
-    s = [input() for i in range(n)]
-    t = [input() for i in range(n)]
+    x = []
+    y = []
     for i in range(n):
-        for j in range(n):
-            if s[i][j] != t[i][j]:
-                break
-        else:
-            continue
-        break
-    else:
-        print("Yes")
-        return
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    x.sort()
+    y.sort()
+    ans = 0
     for i in range(n):
-        for j in range(n):
-            if s[i][j] != t[j][n-i-1]:
-                break
-        else:
-            continue
-        break
-    else:
-        print("Yes")
-        return
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] != t[n-i-1][n-j-1]:
-                break
-        else:
-            continue
-        break
-    else:
-        print("Yes")
-        return
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] != t[n-j-1][i]:
-                break
-        else:
-            continue
-        break
-    else:
-        print("Yes")
-        return
-    print("No")
-main()
+        for j in range(i+1, n):
+            if x[i] == x[j]:
+                continue
+            for k in range(j+1, n):
+                if y[i] == y[k]:
+                    continue
+                if x[k] == x[j]:
+                    continue
+                if y[j] == y[k]:
+                    continue
+                if x[i] == x[k]:
+                    continue
+                ans += 1
+    print(ans)
 
 =======
 Suggestion 4
 
-def rotate(matrix):
-    return [list(reversed(col)) for col in zip(*matrix)]
+def getRectNum(pointList):
+    rectNum = 0
+    for i in range(len(pointList)):
+        for j in range(i+1, len(pointList)):
+            if pointList[i][0] < pointList[j][0] and pointList[i][1] < pointList[j][1]:
+                if [pointList[i][0], pointList[j][1]] in pointList and [pointList[j][0], pointList[i][1]] in pointList:
+                    rectNum += 1
+            elif pointList[i][0] > pointList[j][0] and pointList[i][1] > pointList[j][1]:
+                if [pointList[i][0], pointList[j][1]] in pointList and [pointList[j][0], pointList[i][1]] in pointList:
+                    rectNum += 1
+    return rectNum
 
 =======
 Suggestion 5
 
-def rotate90(S):
-    return list(map(list,zip(*S[::-1])))
+def get_input():
+    N = int(input())
+    points = []
+    for i in range(N):
+        points.append(tuple(map(int, input().split())))
+    return points
 
 =======
 Suggestion 6
 
-def rotate90(arr):
-    return list(zip(*arr[::-1]))
+def find(a,b):
+    count = 0
+    for i in range(len(a)-1):
+        for j in range(i+1,len(a)):
+            if a[i] == a[j] and b[i] == b[j]:
+                count += 1
+    return count
 
 =======
 Suggestion 7
 
-def do():
+def main():
     n = int(input())
-    s = []
-    t = []
+    x = []
+    y = []
     for i in range(n):
-        s.append(input())
+        x.append(int(input().split()[0]))
+        y.append(int(input().split()[1]))
+    count = 0
     for i in range(n):
-        t.append(input())
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i][j:] + s[i][:j]
-                break
-    for i in range(n):
-        for j in range(n):
-            if t[i][j] == '#':
-                t[i] = t[i][j:] + t[i][:j]
-                break
-    for i in range(n):
-        if s[i] != t[i]:
-            print('No')
-            return
-    print('Yes')
+        for j in range(i+1,n):
+            if x[i] != x[j] and y[i] != y[j]:
+                if x[i] in x and y[j] in y:
+                    count += 1
+    print(count)
 
 =======
 Suggestion 8
 
-def problem218_c():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        s.append(input())
-    for i in range(n):
-        t.append(input())
-
-    def rotate(x):
-        return list(zip(*x[::-1]))
-
-    def check():
-        for i in range(n):
-            for j in range(n):
-                if s[i][j] != t[i][j]:
-                    return False
-        return True
-
-    for i in range(4):
-        if check():
-            print('Yes')
-            return
-        t = rotate(t)
-    print('No')
+def get_input():
+    num = int(raw_input())
+    points = []
+    for i in range(num):
+        points.append(map(int, raw_input().split()))
+    return points
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        s.append(list(input()))
-    for i in range(n):
-        t.append(list(input()))
-    for i in range(4):
-        t = rotate(t)
-        if match(s, t):
-            print("Yes")
-            return
-    print("No")
+def get_count_of_rectangles(points):
+    # 1. 从所有点中找出位于x轴上的点
+    # 2. 从所有点中找出位于y轴上的点
+    # 3. 算出每个x轴上的点和y轴上的点的组合
+    # 4. 算出每个组合能组成的矩形个数
+    # 5. 累加每个组合的矩形个数
+    # 6. 返回累加的结果
+    count = 0
+    points_on_x = []
+    points_on_y = []
+    for point in points:
+        if point[1] == 0:
+            points_on_x.append(point)
+        if point[0] == 0:
+            points_on_y.append(point)
+    for point_on_x in points_on_x:
+        for point_on_y in points_on_y:
+            if (point_on_x[0], point_on_y[1]) in points and (point_on_y[0], point_on_x[1]) in points:
+                count += 1
+    return count
 
 =======
 Suggestion 10
 
-def rotate90(input):
-    result = []
-    for i in range(len(input)):
-        result.append([])
-        for j in range(len(input)):
-            result[i].append(input[j][i])
-    return result
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    d = {}
+    for i in range(N):
+        d[(x[i], y[i])] = 1
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if x[i] == x[j] or y[i] == y[j]:
+                continue
+            if (x[i], y[j]) in d and (x[j], y[i]) in d:
+                ans += 1
+    print(ans)

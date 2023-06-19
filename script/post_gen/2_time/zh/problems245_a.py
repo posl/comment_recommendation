@@ -4,89 +4,101 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    S = input().split()
-    T = input().split()
-    if S == T:
-        print('Yes')
+    a,b,c,d = map(int,input().split())
+    if a > c:
+        print("高桥")
+    elif a == c:
+        if b > d:
+            print("高桥")
+        else:
+            print("青木")
     else:
-        print('No')
+        print("青木")
 
 =======
 Suggestion 2
 
 def main():
-    s = input().split()
-    t = input().split()
-    if s == t:
-        print('Yes')
+    a, b, c, d = map(int, input().split())
+    if (a * 60 + b) < (c * 60 + d):
+        print("High")
     else:
-        print('No')
+        print("Low")
 
 =======
 Suggestion 3
 
-def check():
-    S = input()
-    T = input()
-    if S == T:
-        print('Yes')
+def main():
+    a,b,c,d = map(int,input().split())
+    if (a*60+b) < (c*60+d):
+        print("高桥")
     else:
-        print('No')
+        print("青木")
 
 =======
 Suggestion 4
 
-def main():
-    # 输入
-    s = input().split()
-    t = input().split()
-    # 处理
-    # 输出
-    if s[0] == t[0] and s[1] == t[1] and s[2] == t[2]:
-        print('Yes')
-    else:
-        print('No')
+def get_time():
+    A, B, C, D = map(int, input().split())
+    return A, B, C, D
 
 =======
 Suggestion 5
 
 def main():
-    s = input()
-    t = input()
-    if s == t:
-        print('Yes')
+    A, B, C, D = map(int, input().split())
+    if (A*60+B) < (C*60+D):
+        print('高桥')
     else:
-        print('No')
+        print('青木')
 
 =======
 Suggestion 6
 
-def solve():
-    s1, s2, s3 = input().split()
-    t1, t2, t3 = input().split()
-    if s1 == t1 and s2 == t2 and s3 == t3:
-        print("Yes")
+def main():
+    a,b,c,d = map(int,input().split())
+    if a > c:
+        print('高桥')
+    elif a < c:
+        print('青木')
+    elif b > d:
+        print('高桥')
+    elif b < d:
+        print('青木')
     else:
-        print("No")
-
-solve()
+        print('同時')
 
 =======
 Suggestion 7
 
 def main():
-    s = input()
-    t = input()
-    if s == t:
-        print("Yes")
+    A,B,C,D = map(int,input().split())
+    if A*60+B < C*60+D:
+        print("高桥")
     else:
-        print("No")
+        print("青木")
 
 =======
 Suggestion 8
 
-def solve():
-    s = input()
-    t = input()
-    print('Yes' if s == t else 'No')
-solve()
+def main():
+    A,B,C,D = map(int, input().split())
+    if (A > C) or (A == C and B > D):
+        print("高桥")
+    else:
+        print("青木")
+
+=======
+Suggestion 9
+
+def main():
+    a, b, c, d = map(int, input().split())
+    if a < c:
+        print("高桥")
+    elif a > c:
+        print("青木")
+    else:
+        if b < d:
+            print("高桥")
+        else:
+            print("青木")

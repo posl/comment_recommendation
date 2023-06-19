@@ -3,163 +3,192 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_primes(n):
-    primes = []
-    for i in range(2, n+1):
-        is_prime = True
-        for p in primes:
-            if i % p == 0:
-                is_prime = False
-                break
-        if is_prime:
-            primes.append(i)
-    return primes
+def main():
+    a,b = map(int,input().split())
+    if a <= b:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 2
 
-def is_prime(n):
-    if n <= 3:
-        return n > 1
-    elif n % 2 == 0 or n%3 == 0:
-        return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n%(i+2) == 0:
-            return False
-        i += 6
-    return True
+def main():
+    a,b = map(int,input().split())
+    if (a > 15 or a < 1) or (b > 15 or b < 1):
+        print("No")
+    elif (b - a == 1) or (b - a == 4):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 3
 
-def solve(n):
-    if n % 2 == 0:
-        if n % 4 == 0:
-            return int(n/4), 2
-        else:
-            return int(n/2), 2
-
-    for i in range(3, int(n**0.5)+1, 2):
-        if n % i == 0:
-            if n % (i**2) == 0:
-                return int(n/(i**2)), i
-            else:
-                return n//i, i
-    return n, 1
+def main():
+    a, b = map(int, input().split())
+    if b - a == 1 or b - a == 4 or b - a == 3:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
 
-def is_prime(n):
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-    x = 3
-    while x * x <= n:
-        if n % x == 0:
-            return False
-        x += 2
-    return True
+def solve(a, b):
+    if a == 1:
+        if b == 2 or b == 3 or b == 5 or b == 7 or b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 2:
+        if b == 3 or b == 5 or b == 7 or b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 3:
+        if b == 5 or b == 7 or b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 4:
+        if b == 5 or b == 7 or b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 5:
+        if b == 7 or b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 6:
+        if b == 7 or b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 7:
+        if b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 8:
+        if b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 9:
+        if b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 10:
+        if b == 11 or b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 11:
+        if b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 12:
+        if b == 13:
+            return "Yes"
+        else:
+            return "No"
+    elif a == 13:
+        return "No"
+    else:
+        return "No"
+
+a, b = map(int, input().split())
+print(solve(a, b))
 
 =======
 Suggestion 5
 
-def isPrime(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i ==0:
-            return False
-    return True
+def main():
+    a,b = map(int,input().split())
+    if a in [1,3,4,5,6,8,9,10,11,13,15] and b in [1,3,4,5,6,8,9,10,11,13,15]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 6
 
-def is_prime(n):
-    if n == 2:
-        return True
-    if n % 2 == 0 or n <= 1:
-        return False
-
-    sqr = int(n ** 0.5) + 1
-    for i in range(3, sqr, 2):
-        if n % i == 0:
-            return False
-    return True
+def main():
+    a, b = map(int, input().split())
+    if a == 1 and b == 2 or a == 2 and b == 3 or a == 3 and b == 4 or a == 4 and b == 5 or a == 5 and b == 6 or a == 6 and b == 7 or a == 7 and b == 8 or a == 8 and b == 15 or a == 15 and b == 14 or a == 14 and b == 13 or a == 13 and b == 12 or a == 12 and b == 11 or a == 11 and b == 10 or a == 10 and b == 9:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 7
 
-def primes(n):
-    primfac = []
-    d = 2
-    while d*d <= n:
-        while (n % d) == 0:
-            primfac.append(d)
-            n //= d
-        d += 1
-    if n > 1:
-       primfac.append(n)
-    return primfac
-
-T = int(input())
-for i in range(T):
-    N = int(input())
-    N = N * 2
-    primfac = primes(N)
-    primfac = list(set(primfac))
-    primfac.sort()
-    print(primfac[0], primfac[1])
+def main():
+    a, b = map(int, input().split())
+    if (a == 1 and b == 2) or (a == 2 and b == 3) or (a == 3 and b == 4) or (a == 3 and b == 5) or (a == 4 and b == 5) or (a == 4 and b == 6) or (a == 5 and b == 6) or (a == 5 and b == 7) or (a == 6 and b == 7) or (a == 6 and b == 8) or (a == 7 and b == 8) or (a == 7 and b == 9) or (a == 8 and b == 9) or (a == 8 and b == 10) or (a == 9 and b == 10) or (a == 9 and b == 11) or (a == 10 and b == 11) or (a == 10 and b == 12) or (a == 11 and b == 12) or (a == 11 and b == 13) or (a == 12 and b == 13) or (a == 12 and b == 14) or (a == 13 and b == 14) or (a == 13 and b == 15) or (a == 14 and b == 15):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 8
 
-def isPrime(n):
-    if n == 2:
-        return True
-    if n == 3:
-        return True
-    if n % 2 == 0:
-        return False
-    if n % 3 == 0:
-        return False
-    i = 5
-    j = 2
-    while i * i <= n:
-        if n % i == 0:
-            return False
-        i += j
-        j = 6 - j
-    return True
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    if (a == 1 and b == 2) or (a == 2 and b == 1) or (a == 3 and b == 4) or (a == 4 and b == 3) or (a == 5 and b == 6) or (a == 6 and b == 5) or (a == 7 and b == 8) or (a == 8 and b == 7) or (a == 9 and b == 10) or (a == 10 and b == 9) or (a == 11 and b == 12) or (a == 12 and b == 11) or (a == 13 and b == 14) or (a == 14 and b == 13) or (a == 15 and b == 16) or (a == 16 and b == 15):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 9
 
-def isPrime(n):
-    if n < 2:
-        return False
-    elif n == 2:
-        return True
-    elif n%2 == 0:
-        return False
+def main():
+    a, b = map(int, input().split())
+    if a == 1 and b == 2:
+        print("Yes")
+    elif a == 2 and b == 3:
+        print("Yes")
+    elif a == 3 and b == 4:
+        print("Yes")
+    elif a == 4 and b == 5:
+        print("Yes")
+    elif a == 5 and b == 6:
+        print("Yes")
+    elif a == 6 and b == 7:
+        print("Yes")
+    elif a == 7 and b == 8:
+        print("Yes")
+    elif a == 8 and b == 9:
+        print("Yes")
+    elif a == 9 and b == 10:
+        print("Yes")
+    elif a == 10 and b == 11:
+        print("Yes")
+    elif a == 11 and b == 12:
+        print("Yes")
+    elif a == 12 and b == 13:
+        print("Yes")
+    elif a == 13 and b == 14:
+        print("Yes")
+    elif a == 14 and b == 15:
+        print("Yes")
     else:
-        i = 3
-        while i*i <= n:
-            if n%i == 0:
-                return False
-            i += 2
-        return True
+        print("No")
+main()
 
 =======
 Suggestion 10
 
-def isPrime(x):
-    if x == 1:
-        return False
-    for i in range(2, x):
-        if x % i == 0:
-            return False
+def main():
+    a,b = map(int,input().split())
+    if (a==1 and b==2) or (a==2 and b==3) or (a==3 and b==4) or (a==3 and b==5) or (a==4 and b==5) or (a==4 and b==6) or (a==5 and b==6) or (a==5 and b==7) or (a==6 and b==7) or (a==6 and b==8) or (a==7 and b==8) or (a==7 and b==9) or (a==8 and b==9) or (a==8 and b==10) or (a==9 and b==10) or (a==9 and b==11) or (a==10 and b==11) or (a==10 and b==12) or (a==11 and b==12) or (a==11 and b==13) or (a==12 and b==13) or (a==12 and b==14) or (a==13 and b==14) or (a==13 and b==15):
+        print("Yes")
     else:
-        return True
+        print("No")

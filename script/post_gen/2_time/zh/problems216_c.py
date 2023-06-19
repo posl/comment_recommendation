@@ -4,147 +4,150 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input().split())
-    for i in range(n):
-        for j in range(i+1,n):
-            if name_list[i] == name_list[j]:
-                print("Yes")
-                return
-    print("No")
-main()
+    N = int(input())
+    result = ''
+    while N > 0:
+        if N % 2 == 0:
+            N = N // 2
+            result = 'B' + result
+        else:
+            N -= 1
+            result = 'A' + result
+    print(result)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    name_list.sort()
-    for i in range(n-1):
-        if name_list[i] == name_list[i+1]:
-            print('Yes')
-            return
-    print('No')
-main()
+def solve(n):
+    ans = ''
+    while n > 0:
+        if n % 2 == 0:
+            ans += 'B'
+            n //= 2
+        else:
+            ans += 'A'
+            n -= 1
+    return ans[::-1]
+n = int(input())
+print(solve(n))
 
 =======
 Suggestion 3
 
 def main():
     n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    name_list.sort()
-    for i in range(n-1):
-        if name_list[i] == name_list[i+1]:
-            print('Yes')
-            break
-    else:
-        print('No')
+    ans = []
+    while n > 0:
+        if n % 2 == 0:
+            ans.append("B")
+            n //= 2
+        else:
+            ans.append("A")
+            n -= 1
+    ans.reverse()
+    print("".join(ans))
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    if len(name_list) == len(set(name_list)):
-        print('No')
-    else:
-        print('Yes')
+    N = int(input())
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            N = N // 2
+            ans += "B"
+        else:
+            N -= 1
+            ans += "A"
+    print(ans[::-1])
 
 =======
 Suggestion 5
 
-def get_input():
-    input_data = []
-    while True:
-        try:
-            line = input()
-            if line == '':
-                break
-            input_data.append(line)
-        except EOFError:
-            break
-    return input_data
+def solve(n):
+    s=""
+    while n>0:
+        if n%2==0:
+            s="B"+s
+            n=n//2
+        else:
+            s="A"+s
+            n-=1
+    return s
+
+n=int(input())
+print(solve(n))
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    names = []
-    for i in range(n):
-        names.append(input().split())
-    for i in range(n):
-        for j in range(i+1,n):
-            if names[i][0]==names[j][0] and names[i][1]==names[j][1]:
-                print('Yes')
-                return
-    print('No')
-    return
+def solve(n):
+    ans = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            ans.append("B")
+        else:
+            n -= 1
+            ans.append("A")
+    return "".join(ans[::-1])
 
 =======
 Suggestion 7
 
 def main():
     n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    if len(set(name_list)) == len(name_list):
-        print("No")
-    else:
-        print("Yes")
+    ans = ''
+    while n > 0:
+        if n%2 == 1:
+            ans = 'A' + ans
+            n -= 1
+        else:
+            ans = 'B' + ans
+            n //= 2
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
     n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input().split())
-    name_list.sort()
-    for i in range(n-1):
-        if name_list[i] == name_list[i+1]:
-            print('Yes')
-            break
-    else:
-        print('No')
+    ans = ""
+    while n > 0:
+        if n % 2 == 0:
+            n //= 2
+            ans = "B" + ans
+        else:
+            n -= 1
+            ans = "A" + ans
+    print(ans)
 
 =======
 Suggestion 9
 
 def main():
     n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    for i in range(n):
-        for j in range(i + 1, n):
-            if name_list[i] == name_list[j]:
-                print("Yes")
-                return
-    print("No")
+    result = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            result.append('B')
+        else:
+            n = n - 1
+            result.append('A')
+    result.reverse()
+    print(''.join(result))
 
 =======
 Suggestion 10
 
-def main():
-    n = int(input())
-    names = []
-    for _ in range(n):
-        names.append(input())
-    if len(names) == len(set(names)):
-        print("No")
+def getA(n):
+    if n==0:
+        return ""
+    elif n==1:
+        return "A"
+    elif n%2==0:
+        return getA(n//2)+"B"
     else:
-        print("Yes")
+        return getA(n-1)+"A"

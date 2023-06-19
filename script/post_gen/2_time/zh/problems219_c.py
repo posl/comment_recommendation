@@ -1,189 +1,184 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    ans = ''
-    for i in range(len(t)):
-        if t[i] == '1':
-            ans += s1
-        elif t[i] == '2':
-            ans += s2
-        else:
-            ans += s3
-    print(ans)
+    x = input()
+    n = int(input())
+    s = [input() for i in range(n)]
+    x = x.lower()
+    s.sort(key=lambda x: [x.translate(str.maketrans(x, x.lower())), x])
+    for i in s:
+        print(i)
 
 =======
 Suggestion 2
 
-def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    result = ""
-    for i in range(len(t)):
-        if t[i] == '1':
-            result += s1
-        elif t[i] == '2':
-            result += s2
-        elif t[i] == '3':
-            result += s3
-    print(result)
+def get_order(s, order):
+    return order.index(s)
 
 =======
 Suggestion 3
 
-def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-
-    result = ""
-    for i in range(len(t)):
-        if t[i] == '1':
-            result += s1
-        elif t[i] == '2':
-            result += s2
-        elif t[i] == '3':
-            result += s3
-        else:
-            print("error")
-
-    print(result)
+def get_new_order():
+    new_order = input()
+    return new_order
 
 =======
 Suggestion 4
 
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    res = ''
-    for i in t:
-        if i == '1':
-            res += s1
-        elif i == '2':
-            res += s2
-        else:
-            res += s3
-    print(res)
+    x=input()
+    n=int(input())
+    s=[]
+    for i in range(n):
+        s.append(input())
+    #print(x)
+    #print(n)
+    #print(s)
+    #print(sorted(s))
+    #print(sorted(s,key=lambda x:x[1]))
+    #print(sorted(s,key=lambda x:x[0]))
+    #print(sorted(s,key=lambda x:x[0],reverse=True))
+    #print(sorted(s,key=lambda x:x[1]))
+    #print(sorted(s,key=lambda x:x[1],reverse=True))
+    #print(sorted(s,key=lambda x:x[2]))
+    #print(sorted(s,key=lambda x:x[2],reverse=True))
+    #print(sorted(s,key=lambda x:x[3]))
+    #print(sorted(s,key=lambda x:x[3],reverse=True))
+    #print(sorted(s,key=lambda x:x[4]))
+    #print(sorted(s,key=lambda x:x[4],reverse=True))
+    #print(sorted(s,key=lambda x:x[5]))
+    #print(sorted(s,key=lambda x:x[5],reverse=True))
+    #print(sorted(s,key=lambda x:x[6]))
+    #print(sorted(s,key=lambda x:x[6],reverse=True))
+    #print(sorted(s,key=lambda x:x[7]))
+    #print(sorted(s,key=lambda x:x[7],reverse=True))
+    #print(sorted(s,key=lambda x:x[8]))
+    #print(sorted(s,key=lambda x:x[8],reverse=True))
+    #print(sorted(s,key=lambda x:x[9]))
+    #print(sorted(s,key=lambda x:x[9],reverse=True))
+    #print(sorted(s,key=lambda x:x[10]))
+    #print(sorted(s,key=lambda x:x[10],reverse=True))
+    #print(sorted(s,key=lambda x:x[11]))
+    #print(sorted(s,key=lambda x:x[11],reverse=True))
+    #print(sorted(s,key=lambda x:x[12]))
+    #print(sorted(s,key=lambda x:x[12],reverse=True))
+    #print(sorted(s,key=lambda x:x[13]))
+    #print(sorted(s,key=lambda x:x[13],reverse=True))
+    #print(sorted(s,key=lambda x:x[14]))
+    #print(sorted(s,key=lambda x:x[14],reverse=True))
+    #print(sorted(s,key=lambda x:x[15]))
+    #print(sorted(s,key=lambda x:x[15],reverse=True))
+    #print(sorted(s,key=lambda x:x
 
 =======
 Suggestion 5
 
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    T = input()
-    ans = ''
-    for i in range(len(T)):
-        if T[i] == '1':
-            ans += s1
-        elif T[i] == '2':
-            ans += s2
-        elif T[i] == '3':
-            ans += s3
-    print(ans)
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key = lambda x: [x[i] for i in range(len(x))])
+    for i in s:
+        print(i)
 
 =======
 Suggestion 6
 
-def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
+def cmp(a,b):
+    if len(a) == len(b):
+        for i in range(len(a)):
+            if a[i] != b[i]:
+                if a[i] < b[i]:
+                    return -1
+                else:
+                    return 1
+        return 0
+    elif len(a) < len(b):
+        for i in range(len(a)):
+            if a[i] != b[i]:
+                if a[i] < b[i]:
+                    return -1
+                else:
+                    return 1
+        return -1
+    else:
+        for i in range(len(b)):
+            if a[i] != b[i]:
+                if a[i] < b[i]:
+                    return -1
+                else:
+                    return 1
+        return 1
 
-    ans = ''
-    for i in t:
-        if i == '1':
-            ans += s1
-        elif i == '2':
-            ans += s2
-        elif i == '3':
-            ans += s3
-    print(ans)
+x = input()
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+s.sort(key=lambda x:cmp(x,x.lower()))
+print('\n'.join(s))
 
 =======
 Suggestion 7
 
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    ans = ""
-    for i in range(len(t)):
-        if t[i] == "1":
-            ans += s1
-        elif t[i] == "2":
-            ans += s2
-        else:
-            ans += s3
-    print(ans)
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(x)
+    #print(n)
+    #print(s)
+    x_dict = {}
+    for i in range(len(x)):
+        x_dict[x[i]] = i
+    #print(x_dict)
+    #print(x_dict['a'])
+    for i in range(n):
+        s[i] = s[i][::-1]
+    #print(s)
+    s.sort()
+    #print(s)
+    for i in range(n):
+        s[i] = s[i][::-1]
+    #print(s)
+    s_dict = {}
+    for i in range(n):
+        s_dict[s[i]] = i
+    #print(s_dict)
+    #print(s_dict['a'])
+    s_dict_keys = list(s_dict.keys())
+    s_dict_keys.sort()
+    #print(s_dict_keys)
+    for i in range(n):
+        print(s[s_dict[s_dict_keys[i]]])
 
 =======
 Suggestion 8
 
-def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    ans = ''
-    for i in range(len(t)):
-        if t[i] == '1':
-            ans += s1
-        elif t[i] == '2':
-            ans += s2
-        elif t[i] == '3':
-            ans += s3
-    print(ans)
+def cmp(a,b):
+    if a==b:
+        return 0
+    if a>b:
+        return 1
+    else:
+        return -1
 
 =======
 Suggestion 9
 
 def main():
-    # 读入
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    result = ""
-    # 逐个字符读取t
-    for i in t:
-        if i == '1':
-            result += s1
-        elif i == '2':
-            result += s2
-        elif i == '3':
-            result += s3
-    # 打印结果
-    print(result)
-
-=======
-Suggestion 10
-
-def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    ans = ""
-    for i in range(len(t)):
-        if t[i] == "1":
-            ans += s1
-        elif t[i] == "2":
-            ans += s2
-        elif t[i] == "3":
-            ans += s3
-    print(ans)
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key=lambda x: [x.translate(str.maketrans(x, 'abcdefghijklmnopqrstuvwxyz'))])
+    for i in s:
+        print(i)

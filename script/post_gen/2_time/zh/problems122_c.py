@@ -3,143 +3,184 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    s = input()
-    max_len = 0
+def countAC(s):
     count = 0
-    for i in range(len(s)):
-        if s[i] in 'ACGT':
+    for i in range(len(s)-1):
+        if s[i] == 'A' and s[i+1] == 'C':
             count += 1
-            max_len = max(max_len, count)
-        else:
-            count = 0
-    print(max_len)
+    return count
+
+n, q = map(int, input().split())
+s = input()
+for i in range(q):
+    l, r = map(int, input().split())
+    print(countAC(s[l-1:r]))
 
 =======
 Suggestion 2
 
 def main():
+    n,q = map(int,input().split())
     s = input()
-    ans = 0
-    for i in range(len(s)):
-        for j in range(i, len(s)):
-            if isACGT(s[i:j+1]):
-                ans = max(ans, j-i+1)
-    print(ans)
+    l = []
+    for i in range(q):
+        l.append(list(map(int,input().split())))
+    
+    for i in range(q):
+        print(s.count('AC',l[i][0]-1,l[i][1]))
 
 =======
 Suggestion 3
 
-def solution():
-    s = input()
-    n = len(s)
-    max = 0
-    for i in range(n):
-        for j in range(i, n):
-            if check(s[i:j + 1]):
-                if max < j - i + 1:
-                    max = j - i + 1
-    print(max)
+def solve(s, l, r):
+    count = 0
+    for i in range(l-1, r):
+        if s[i:i+2] == 'AC':
+            count += 1
+    return count
 
 =======
 Suggestion 4
 
-def solve():
-    s = input()
-    max_len = 0
-    for i in range(len(s)):
-        for j in range(i+1, len(s)+1):
-            sub = s[i:j]
-            if is_acgt(sub):
-                max_len = max(max_len, len(sub))
-    print(max_len)
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    S = list(S)
+    #print(N, Q, S)
+    #print(S[1:3])
+    #print(S[0:8])
+    #print(S[0:9])
+    #print(S[0:10])
+    #print(S[0:11])
+    #print(S[0:12])
+    #print(S[0:13])
+    #print(S[0:14])
+    #print(S[0:15])
+    #print(S[0:16])
+    #print(S[0:17])
+    #print(S[0:18])
+    #print(S[0:19])
+    #print(S[0:20])
+    #print(S[0:21])
+    #print(S[0:22])
+    #print(S[0:23])
+    #print(S[0:24])
+    #print(S[0:25])
+    #print(S[0:26])
+    #print(S[0:27])
+    #print(S[0:28])
+    #print(S[0:29])
+    #print(S[0:30])
+    #print(S[0:31])
+    #print(S[0:32])
+    #print(S[0:33])
+    #print(S[0:34])
+    #print(S[0:35])
+    #print(S[0:36])
+    #print(S[0:37])
+    #print(S[0:38])
+    #print(S[0:39])
+    #print(S[0:40])
+    #print(S[0:41])
+    #print(S[0:42])
+    #print(S[0:43])
+    #print(S[0:44])
+    #print(S[0:45])
+    #print(S[0:46])
+    #print(S[0:47])
+    #print(S[0:48])
+    #print(S[0:49])
+    #print(S[0:50])
+    #print(S[0:51])
+    #print(S[0:52])
+    #print(S[0:53])
+    #print(S[0:54])
+    #print(S[0:55])
+    #print(S[0:56])
+    #print(S[0:57])
+    #print(S[0:
 
 =======
 Suggestion 5
 
-def main():
-    s = input()
-    max_len = 0
-    for i in range(len(s)):
-        for j in range(i, len(s)):
-            if is_acgt(s[i:j+1]):
-                max_len = max(max_len, j-i+1)
-    print(max_len)
+def countAC(s):
+    count = 0
+    for i in range(len(s)-1):
+        if s[i] == 'A' and s[i+1] == 'C':
+            count += 1
+    return count
 
 =======
 Suggestion 6
 
 def main():
+    N, Q = map(int, input().split())
     S = input()
-    ans = 0
-    cnt = 0
-    for s in S:
-        if s in ['A', 'C', 'G', 'T']:
-            cnt += 1
-        else:
-            cnt = 0
-        ans = max(ans, cnt)
-    print(ans)
+    lr_list = []
+    for i in range(Q):
+        lr_list.append(list(map(int, input().split())))
+    for i in range(Q):
+        l = lr_list[i][0]
+        r = lr_list[i][1]
+        count = 0
+        for j in range(l-1, r-1):
+            if S[j] == 'A' and S[j+1] == 'C':
+                count += 1
+        print(count)
 
 =======
 Suggestion 7
 
-def main():
-    S = input()
-    max_length = 0
-    length = 0
-    for i in range(len(S)):
-        if S[i] == "A" or S[i] == "C" or S[i] == "G" or S[i] == "T":
-            length += 1
-        else:
-            length = 0
-        if length > max_length:
-            max_length = length
-    print(max_length)
+def get_input():
+    n, q = [int(i) for i in input().split()]
+    s = input()
+    return n, q, s
 
 =======
 Suggestion 8
 
 def main():
-    s = input()
-    max_len = 0
-    for i in range(len(s)):
-        for j in range(i+1, len(s)+1):
-            if is_ACGT(s[i:j]):
-                max_len = max(max_len, j-i)
-    print(max_len)
+    N, Q = map(int, input().split())
+    S = input()
+    lr = []
+    for i in range(Q):
+        lr.append(list(map(int, input().split())))
+    ac = [0] * N
+    for i in range(1, N):
+        if S[i - 1] == 'A' and S[i] == 'C':
+            ac[i] = ac[i - 1] + 1
+        else:
+            ac[i] = ac[i - 1]
+    for i in range(Q):
+        print(ac[lr[i][1] - 1] - ac[lr[i][0] - 1])
 
 =======
 Suggestion 9
 
-def getStrLen(str):
-    maxLen = 0
-    count = 0
-    for i in range(len(str)):
-        if str[i] == 'A' or str[i] == 'C' or str[i] == 'G' or str[i] == 'T':
-            count += 1
-            if count > maxLen:
-                maxLen = count
-        else:
-            count = 0
-    return maxLen
-
-str = input()
-print(getStrLen(str))
+def solve():
+    N, Q = map(int, input().split())
+    S = input()
+    AC = [0] * N
+    for i in range(N - 1):
+        if S[i] == 'A' and S[i + 1] == 'C':
+            AC[i] = 1
+    for i in range(N - 2, -1, -1):
+        AC[i] += AC[i + 1]
+    for i in range(Q):
+        l, r = map(int, input().split())
+        print(AC[l - 1] - AC[r - 1])
 
 =======
 Suggestion 10
 
-def main():
+def problem122_c():
+    n,q = map(int,input().split())
     s = input()
-    n = len(s)
-    ans = 0
-    for i in range(n):
-        for j in range(i, n):
-            ok = True
-            for k in range(i, j + 1):
-                if s[k] != 'A' and s[k] != 'C' and s[k] != 'G' and s[k] != 'T':
-                    ok = False
-            if ok:
-                ans = max(ans, j - i + 1)
-    print(ans)
+    l = []
+    r = []
+    for i in range(q):
+        l_i,r_i = map(int,input().split())
+        l.append(l_i)
+        r.append(r_i)
+    for i in range(q):
+        print(s[l[i]-1:r[i]].count('AC'))

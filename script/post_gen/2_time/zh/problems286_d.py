@@ -4,177 +4,188 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def solve():
-    N, A, B = map(int, input().split())
-    S = input()
-    ans = 0
-    for i in range(N//2):
-        if S[i] != S[-i-1]:
-            ans += 1
-    if ans == 0:
-        print(0)
-    elif ans == 1:
-        print(A)
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    dp = [False] * (x + 1)
+    dp[0] = True
+    for i in range(n):
+        for j in range(x + 1):
+            if dp[j]:
+                dp[j] = True
+            elif j - a[i] >= 0 and dp[j - a[i]] and b[i] > 0:
+                dp[j] = True
+                b[i] -= 1
+
+    if dp[x]:
+        print('Yes')
     else:
-        print(ans * B + A)
+        print('No')
 
 =======
 Suggestion 2
 
-def isPalindromic(s):
-    for i in range(0, int(len(s)/2)):
-        if s[i] != s[-(i+1)]:
-            return False
-    return True
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    total = 0
+    for i in range(N):
+        total += A[i] * B[i]
+    if total <= X:
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 3
 
 def main():
-    pass
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    total = 0
+    for i in range(N):
+        total += A[i] * B[i]
+    if total <= X:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
 
-def main():
-    N, A, B = map(int, input().split())
-    S = input()
-    ans = 0
-    for i in range(N):
-        if S[i] == 'a':
-            if A > 0:
-                ans += 1
-                A -= 1
-        elif S[i] == 'b':
-            if B > 0:
-                ans += 1
-                B -= 1
-                if A > 0:
-                    ans += 1
-                    A -= 1
-        else:
-            if B > 0:
-                ans += 1
-                B -= 1
-                if A > 0:
-                    ans += 1
-                    A -= 1
-            elif A > 0:
-                ans += 1
-                A -= 1
-    print(ans)
+def solve():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    # print(a, b)
+    sum = 0
+    for i in range(n):
+        sum += a[i] * b[i]
+    if sum < x:
+        print("No")
+    else:
+        print("Yes")
+
+solve()
 
 =======
 Suggestion 5
 
-def getMinCost(s, a, b):
-    if len(s) == 0:
-        return 0
-    if len(s) == 1:
-        return a
-    if len(s) == 2:
-        if s[0] == s[1]:
-            return 0
-        else:
-            return min(a, b)
-    if s[0] == s[-1]:
-        return getMinCost(s[1:-1], a, b)
+def solve():
+    # 读取输入
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # 算法
+    for i in range(N):
+        X -= A[i] * B[i]
+    if X < 0:
+        print("No")
     else:
-        return min(getMinCost(s[1:], a, b) + a, getMinCost(s[:-1], a, b) + a, getMinCost(s[1:-1], a, b) + b)
+        print("Yes")
+
+
+solve()
 
 =======
 Suggestion 6
 
-def palindrome(s):
-    if s == s[::-1]:
+def canpay(x, a, b):
+    if x == 0:
         return True
+    elif x < 0 or len(a) == 0 or len(b) == 0:
+        return False
     else:
+        for i in range(b[0]+1):
+            if canpay(x-a[0]*i, a[1:], b[1:]):
+                return True
         return False
 
 =======
 Suggestion 7
 
 def solve():
-    n,a,b=input().split()
-    s=input()
-    n=int(n)
-    a=int(a)
-    b=int(b)
-    #print(n,a,b,s)
-    if n%2==0:
-        #print("n为偶数")
-        if a>b:
-            #print("a>b")
-            #print("b*(n//2)+a")
-            print(b*(n//2)+a)
-        else:
-            #print("a<=b")
-            #print("a*n")
-            print(a*n)
+    N,X = map(int,input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(N):
+        X -= A[i]*B[i]
+    if X < 0:
+        print("No")
     else:
-        #print("n为奇数")
-        if a>b:
-            #print("a>b")
-            #print("b*(n//2)+a")
-            print(b*(n//2)+a)
-        else:
-            #print("a<=b")
-            #print("a*(n-1)+b")
-            print(a*(n-1)+b)
+        print("Yes")
 
 =======
 Suggestion 8
 
 def main():
-    N,A,B = map(int,input().split())
-    S = input()
-    #print(N,A,B)
-    #print(S)
-    cnt = 0
+    N, X = map(int, input().split())
+    A = []
+    B = []
     for i in range(N):
-        if S[i] == S[N-1-i]:
-            cnt += 1
-    if cnt == N:
-        print(A*N+B*(N-1))
-    elif cnt == N-1:
-        print(A*N+B)
-    elif cnt < N-1:
-        print(A*N)
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum > X:
+        print("No")
+    else:
+        print("Yes")
+
+main()
 
 =======
 Suggestion 9
 
-def main():
-    N,A,B = map(int,input().split())
-    S = input()
-    S_r = S[::-1]
-    count = 0
-    for i in range(N//2):
-        if S[i] != S_r[i]:
-            if S[i] == 'a':
-                count += A
-                S = S[:i] + 'a' + S[i+1:]
-            elif S_r[i] == 'a':
-                count += A
-                S = S[:N-i-1] + 'a' + S[N-i:]
-            else:
-                count += B
-                S = S[:i] + 'a' + S[i+1:]
-                S = S[:N-i-1] + 'a' + S[N-i:]
-    if N % 2 == 1:
-        if S[N//2] == 'a':
-            count += A
-        else:
-            count += B
-    print(count)
+def search(x, y, z):
+    if x == 0:
+        return True
+    if y == 0:
+        return False
+    if x < z[0][0]:
+        return False
+    if x // z[0][0] <= z[0][1]:
+        return search(x % z[0][0], y - 1, z[1:])
+    else:
+        return search(x - z[0][0] * z[0][1], y - 1, z[1:])
 
 =======
 Suggestion 10
 
-def isPalindromic(s):
-    if len(s) == 1:
+def pay(N, X, A, B):
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum >= X:
         return True
     else:
-        if s[0] == s[-1]:
-            return isPalindromic(s[1:-1])
-        else:
-            return False
+        return False

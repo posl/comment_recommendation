@@ -4,188 +4,182 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def solve():
-    n=int(input())
-    s=[input() for i in range(n)]
-    dic={}
-    for i in range(n):
-        s[i]="".join(sorted(s[i]))
-        if s[i] in dic:
-            dic[s[i]]+=1
-        else:
-            dic[s[i]]=1
-    ans=0
-    for key in dic:
-        ans+=dic[key]*(dic[key]-1)//2
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    import heapq
+    heap = []
+    ans = 0
+    j = 0
+    for i in range(1, M + 1):
+        while j < N and AB[j][0] == i:
+            heapq.heappush(heap, -AB[j][1])
+            j += 1
+        if heap:
+            ans += -heapq.heappop(heap)
     print(ans)
-
-solve()
 
 =======
 Suggestion 2
 
-def main():
-    N = int(input())
-    s = []
+def solve():
+    N, M = map(int, input().split())
+    works = []
     for i in range(N):
-        s.append(input())
-    s.sort()
-    s.append('end')
-    cnt = 0
+        works.append(list(map(int, input().split())))
+    works.sort(key=lambda x: x[0])
     ans = 0
-    for i in range(N):
-        if s[i] == s[i+1]:
-            cnt += 1
+    i = 0
+    while M > 0:
+        if works[i][0] > M:
+            break
         else:
-            ans += (cnt+1)*cnt//2
-            cnt = 0
+            ans += works[i][1]
+            M -= works[i][0]
+            i += 1
     print(ans)
 
 =======
 Suggestion 3
 
-def count_chars(s):
-    chars = {}
-    for c in s:
-        if c in chars:
-            chars[c] += 1
+def main():
+    N, M = map(int, input().split())
+    jobs = [list(map(int, input().split())) for i in range(N)]
+    jobs.sort(key=lambda x:x[0])
+    ans = 0
+    i = 0
+    while i < N:
+        if M >= jobs[i][0]:
+            ans += jobs[i][1]
+            M -= 1
         else:
-            chars[c] = 1
-    return chars
-
-n = int(input())
-strings = []
-for i in range(n):
-    strings.append(input())
-
-strings_chars = []
-for s in strings:
-    strings_chars.append(count_chars(s))
-
-count = 0
-for i in range(n):
-    for j in range(i+1, n):
-        if strings_chars[i] == strings_chars[j]:
-            count += 1
-
-print(count)
+            break
+        i += 1
+    print(ans)
 
 =======
 Suggestion 4
 
-def count_anagrams(arr):
-    anagrams = {}
-    for s in arr:
-        key = ''.join(sorted(s))
-        if key in anagrams:
-            anagrams[key] += 1
-        else:
-            anagrams[key] = 1
-
-    count = 0
-    for key in anagrams:
-        n = anagrams[key]
-        count += n * (n-1) / 2
-
-    return count
+def main():
+    N, M = map(int, input().split())
+    works = []
+    for i in range(N):
+        works.append(tuple(map(int, input().split())))
+    works.sort(key=lambda x:x[0])
+    ans = 0
+    day = 0
+    for i in range(N):
+        if day + works[i][0] <= M:
+            ans += works[i][1]
+            day += works[i][0]
+    print(ans)
 
 =======
 Suggestion 5
 
-def problem137_c():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-
-    s.sort()
-    ans = 0
-    cnt = 1
-    for i in range(1, n):
-        if s[i] == s[i-1]:
-            cnt += 1
-        else:
-            ans += cnt * (cnt - 1) // 2
-            cnt = 1
-    ans += cnt * (cnt - 1) // 2
-    print(ans)
+def main():
+    pass
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort()
-    #print(s)
-    count = 0
-    for i in range(n-1):
-        if s[i] == s[i+1]:
-            count += 1
-    print(count)
-main()
+def getMaxReward(N,M,work):
+    work.sort(key=lambda x:x[0])
+    work.sort(key=lambda x:x[1],reverse=True)
+    #print(work)
+    reward = [0 for i in range(M)]
+    for i in range(N):
+        for j in range(work[i][0]-1,M):
+            if reward[j] == 0:
+                reward[j] = work[i][1]
+                break
+    return sum(reward)
 
 =======
 Suggestion 7
 
-def get_char_list(str):
-    char_list = []
-    for i in range(0, 26):
-        char_list.append(0)
-    for i in range(0, len(str)):
-        char_list[ord(str[i]) - ord('a')] += 1
-    return char_list
+def main():
+    N,M = map(int,input().split())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int,input().split())))
+    AB.sort(key=lambda x:x[0])
+    AB.sort(key=lambda x:x[1],reverse=True)
+    ans = 0
+    for i in range(M):
+        ans += AB[i][1]
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    N = int(input())
-    strs = []
-    for i in range(N):
-        strs.append(input())
-    strs.sort()
-    cnt = 0
-    ans = 0
-    for i in range(N):
-        if strs[i] == strs[i-1]:
-            cnt += 1
-        else:
-            cnt = 0
-        ans += cnt
-    print(ans)
+    # 读入数据
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    # 按照a_i的升序排序
+    ab.sort(key=lambda x: x[0])
+    # 用于记录已经完成的工作
+    done = []
+    # 用于记录已经完成的工作的奖励
+    done_b = []
+    # 用于记录已经完成的工作的奖励的累计
+    done_b_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值
+    done_b_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计
+    done_b_sum_max_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值
+    done_b_sum_max_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计
+    done_b_sum_max_sum_max_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计的最大值
+    done_b_sum_max_sum_max_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计的最大值的累计
+    done_b_sum_max_sum_max_sum_max_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计的最大值的累计的最大值
+    done_b_sum_max_sum_max_sum_max_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最
 
 =======
 Suggestion 9
 
-def get_char_list(str):
-    char_list = []
-    for i in range(len(str)):
-        if str[i] not in char_list:
-            char_list.append(str[i])
-    return char_list
+def main():
+    n,m = map(int,input().split())
+    ab = []
+    for i in range(n):
+        ab.append(list(map(int,input().split())))
+    ab.sort(key=lambda x:x[0])
+    ab.sort(key=lambda x:x[1],reverse=True)
+    print(ab)
+    ans = 0
+    for i in range(n):
+        if m >= ab[i][0]:
+            ans += ab[i][1]
+            m -= ab[i][0]
+        else:
+            ans += m * ab[i][1]
+            break
+    print(ans)
 
 =======
 Suggestion 10
 
-def hash(s):
-    h = 0
-    for i in range(0, len(s)):
-        h = h * 26 + ord(s[i]) - ord('a')
-    return h
-
-n = int(input())
-d = {}
-for i in range(0, n):
-    s = input()
-    h = hash(s)
-    if h in d:
-        d[h] += 1
-    else:
-        d[h] = 1
-ans = 0
-for k in d:
-    v = d[k]
-    ans += v * (v - 1) // 2
-print(ans)
+def main():
+    n, m = map(int, input().split())
+    jobs = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        jobs.append((a, b))
+    jobs.sort()
+    from collections import deque
+    dq = deque()
+    ans = 0
+    i = 0
+    for day in range(1, m + 1):
+        while i < n and jobs[i][0] <= day:
+            dq.append(jobs[i][1])
+            i += 1
+        if dq:
+            ans += dq.pop()
+    print(ans)

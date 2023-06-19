@@ -3,121 +3,175 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def f1():
-    N,A,B = map(int, input().split())
-    P,Q,R,S = map(int, input().split())
-    #print(N,A,B,P,Q,R,S)
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
-    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%
+def main():
+    pass
 
 =======
 Suggestion 2
 
-def main():
-    n, a, b = map(int, input().split())
-    p, q, r, s = map(int, input().split())
-    for i in range(p, q + 1):
-        for j in range(r, s + 1):
-            if (i + j) % 2 == (a + b) % 2:
-                print('#', end='')
-            else:
-                print('.', end='')
-        print()
+def solve():
+    pass
 
 =======
 Suggestion 3
 
 def main():
-    pass
+    n,d = map(int, input().split())
+    l = []
+    r = []
+    for i in range(n):
+        a,b = map(int, input().split())
+        l.append(a)
+        r.append(b)
+
+    l.sort()
+    r.sort()
+
+    ans = 0
+    i = 0
+    j = 0
+    while i < n:
+        if l[i] > r[j]:
+            j += 1
+        else:
+            i += 1
+            j += 1
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 4
 
-def paint(a,b,n):
-    #a,b表示起始点的坐标，n表示方块的大小
-    for i in range(a,a+n):
-        for j in range(b,b+n):
-            if i+j == a+b+n-1:
-                print('#',end='')
-            else:
-                print('.',end='')
-        print()
+def main():
+    N, D = map(int, input().split())
+    L_list = []
+    R_list = []
+    for i in range(N):
+        L, R = map(int, input().split())
+        L_list.append(L)
+        R_list.append(R)
+
+    L_list.sort()
+    R_list.sort()
+
+    # print(L_list)
+    # print(R_list)
+
+    if D == 1:
+        print(N)
+        return
+
+    ans = 0
+    L_index = 0
+    R_index = 0
+    while L_index < N:
+        if L_list[L_index] == R_list[R_index]:
+            L_index += 1
+            R_index += 1
+            continue
+
+        if L_list[L_index] < R_list[R_index]:
+            ans += 1
+            L_index += 1
+        else:
+            ans -= 1
+            R_index += 1
+
+        if ans > D:
+            print(ans)
+            return
+
+    print(ans)
 
 =======
 Suggestion 5
 
 def main():
-    #读取数据
-    n,a,b = map(int,input().split())
-    p,q,r,s = map(int,input().split())
-    #初始化
-    #矩阵
-    matrix = [['.' for i in range(n)] for j in range(n)]
-    #计算最大最小值
-    min1 = min(1-a,1-b)
-    max1 = max(n-a,n-b)
-    min2 = min(1-a,b-n)
-    max2 = max(n-a,b-1)
-    #对矩阵进行填充
-    for i in range(min1,max1+1):
-        matrix[a+i-1][b+i-1] = '#'
-    for i in range(min2,max2+1):
-        matrix[a+i-1][b-i-1] = '#'
-    #输出结果
-    for i in range(p-1,q):
-        print(''.join(matrix[i][r-1:s]))
+    n,d = map(int,input().split())
+    walls = []
+    for i in range(n):
+        walls.append(list(map(int,input().split())))
+    walls.sort(key=lambda x:x[0])
+    #print(walls)
+    #print(n,d)
+    #print(walls)
+    i = 0
+    j = 0
+    count = 0
+    while i < n:
+        if j < n and walls[j][0] - walls[i][0] < d:
+            count += 1
+            j += 1
+        else:
+            count -= 1
+            i += 1
+    print(count)
 
 =======
 Suggestion 6
 
-def main():
-    n, a, b = map(int, input().split())
-    p, q, r, s = map(int, input().split())
-    for i in range(p, q+1):
-        for j in range(r, s+1):
-            if (max(1-a, 1-b) <= i-j <= min(n-a, n-b)) or (max(1-a, b-n) <= i+j <= min(n-a, b-1)):
-                print('#', end='')
-            else:
-                print('.', end='')
-        print()
+def solve(N, D, L, R):
+    # print(N, D, L, R)
+    # print("L", L)
+    # print("R", R)
+    # print("L", L)
+    # print("R", R)
+    # print("L", L)
+    # print("R", R)
+    L.sort()
+    R.sort()
+    # print("L", L)
+    # print("R", R)
+    ans = 0
+    i = 0
+    j = 0
+    while i < N and j < N:
+        if L[i] <= R[j]:
+            ans += 1
+            i += 1
+        else:
+            ans -= 1
+            j += 1
+    return ans
 
 =======
 Suggestion 7
 
-def solve(n, a, b, p, q, r, s):
-    #print("n=%d, a=%d, b=%d, p=%d, q=%d, r=%d, s=%d" % (n, a, b, p, q, r, s))
-    ret = []
-    for i in range(p, q+1):
-        ret.append([])
-        for j in range(r, s+1):
-            ret[i-p].append('.')
-    for k in range(max(1-a, 1-b), min(n-a, n-b)+1):
-        ret[a+k-p][b+k-r] = '#'
-    for k in range(max(1-a, b-n), min(n-a, b-1)+1):
-        ret[a+k-p][b-k-r] = '#'
-    for k in range(max(a-n, 1-b), min(a-1, n-b)+1):
-        ret[a-k-p][b+k-r] = '#'
-    for k in range(max(a-n, b-n), min(a-1, b-1)+1):
-        ret[a-k-p][b-k-r] = '#'
-    for i in range(q-p+1):
-        print(''.join(ret[i]))
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    i = 0
+    j = 0
+    ans = 0
+    while i < N:
+        if L[i] < R[j]:
+            ans += 1
+            i += 1
+        else:
+            ans -= 1
+            j += 1
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    N, A, B = map(int, input().split())
-    P, Q, R, S = map(int, input().split())
-    for i in range(P, Q+1):
-        for j in range(R, S+1):
-            if (i+j)%2 == (A+B)%2:
-                print('#', end='')
-            else:
-                print('.', end='')
-        print()
+    n, d = map(int, input().split())
+    lr = [list(map(int, input().split())) for _ in range(n)]
+    lr.sort(key=lambda x: x[1])
+    r = 0
+    ans = 0
+    for l, r in lr:
+        if r - l + 1 <= d:
+            continue
+        ans += (r - l + 1 - d) // d
+        if (r - l + 1 - d) % d != 0:
+            ans += 1
+    print(ans)

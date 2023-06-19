@@ -1,348 +1,137 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def dfs(x, y):
-    if x < 0 or x >= 2000 or y < 0 or y >= 2000:
-        return
-    if c[x][y]:
-        return
-    c[x][y] = True
-    dfs(x - 1, y - 1)
-    dfs(x - 1, y)
-    dfs(x, y - 1)
-    dfs(x, y + 1)
-    dfs(x + 1, y)
-    dfs(x + 1, y + 1)
-
-n = int(input())
-c = [[False for i in range(2000)] for j in range(2000)]
-for i in range(n):
-    x, y = map(int, input().split())
-    x += 1000
-    y += 1000
-    c[x][y] = True
-ans = 0
-for i in range(2000):
-    for j in range(2000):
-        if c[i][j]:
-            dfs(i, j)
-            ans += 1
-print(ans)
+def solve():
+    a,b = map(int,input().split())
+    print(2**a+2**b)
 
 =======
 Suggestion 2
 
-def dfs(x, y):
-    if x < 0 or x >= 1000 or y < 0 or y >= 1000:
-        return
-    if graph[x][y] == 0:
-        return
-    if visited[x][y]:
-        return
-    visited[x][y] = True
-    dfs(x - 1, y - 1)
-    dfs(x - 1, y)
-    dfs(x, y - 1)
-    dfs(x, y + 1)
-    dfs(x + 1, y)
-    dfs(x + 1, y + 1)
-
-n = int(input())
-graph = [[0 for _ in range(1000)] for _ in range(1000)]
-visited = [[False for _ in range(1000)] for _ in range(1000)]
-for i in range(n):
-    x, y = map(int, input().split())
-    graph[x + 500][y + 500] = 1
-ans = 0
-for i in range(1000):
-    for j in range(1000):
-        if graph[i][j] == 1 and not visited[i][j]:
-            dfs(i, j)
-            ans += 1
-print(ans)
+def main():
+    input = raw_input()
+    input = input.split()
+    a = int(input[0])
+    b = int(input[1])
+    if a == 0 and b == 0:
+        print 0
+    elif a == 0:
+        print b
+    elif b == 0:
+        print a
+    else:
+        print 7 - a - b
 
 =======
 Suggestion 3
 
-def dfs(i,j):
-    if i < 0 or i >= 2000 or j < 0 or j >= 2000:
-        return
-    if color[i][j] == 0:
-        return
-    if visited[i][j]:
-        return
-    visited[i][j] = True
-    dfs(i-1,j-1)
-    dfs(i-1,j)
-    dfs(i,j-1)
-    dfs(i,j+1)
-    dfs(i+1,j)
-    dfs(i+1,j+1)
-
-n = int(input())
-color = [[0]*2000 for i in range(2000)]
-visited = [[False]*2000 for i in range(2000)]
-for i in range(n):
-    x,y = map(int,input().split())
-    x += 1000
-    y += 1000
-    color[x][y] = 1
-ans = 0
-for i in range(2000):
-    for j in range(2000):
-        if color[i][j] == 1 and not visited[i][j]:
-            dfs(i,j)
-            ans += 1
-print(ans)
+def main():
+    while True:
+        try:
+            a,b = map(int,input().split())
+            if a == 0 and b == 0:
+                print(0)
+            elif a == 1 and b == 1:
+                print(4)
+            elif a == 2 and b == 2:
+                print(3)
+            elif a == 3 and b == 3:
+                print(2)
+            elif a == 4 and b == 4:
+                print(1)
+            elif a == 0 and b == 1:
+                print(3)
+            elif a == 1 and b == 0:
+                print(3)
+            elif a == 0 and b == 2:
+                print(2)
+            elif a == 2 and b == 0:
+                print(2)
+            elif a == 0 and b == 3:
+                print(1)
+            elif a == 3 and b == 0:
+                print(1)
+            elif a == 1 and b == 2:
+                print(1)
+            elif a == 2 and b == 1:
+                print(1)
+            elif a == 1 and b == 3:
+                print(0)
+            elif a == 3 and b == 1:
+                print(0)
+            elif a == 2 and b == 3:
+                print(0)
+            elif a == 3 and b == 2:
+                print(0)
+        except:
+            break
 
 =======
 Suggestion 4
 
-def dfs(x, y):
-    if x < 0 or x >= 2001 or y < 0 or y >= 2001:
-        return
-    if visited[x][y]:
-        return
-    if not grid[x][y]:
-        return
-    visited[x][y] = True
-    for i in range(6):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        dfs(nx, ny)
+def main():
+    # 1. 输入数据
+    s = input()
+    a, b = map(int, s.split())
 
-
-dx = [-1, -1, 0, 0, 1, 1]
-dy = [-1, 0, -1, 1, 0, 1]
-grid = [[False] * 2001 for _ in range(2001)]
-visited = [[False] * 2001 for _ in range(2001)]
-n = int(input())
-for _ in range(n):
-    x, y = map(int, input().split())
-    x += 1000
-    y += 1000
-    grid[x][y] = True
-
-ans = 0
-for i in range(2001):
-    for j in range(2001):
-        if not visited[i][j] and grid[i][j]:
-            dfs(i, j)
-            ans += 1
-print(ans)
+    # 2. 计算并输出
+    print(7 - a - b)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(n):
-        xi, yi = map(int, input().split())
-        x.append(xi)
-        y.append(yi)
-
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            dx = x[i] - x[j]
-            dy = y[i] - y[j]
-            if dx*dx + dy*dy == 3:
-                ans += 1
-
-    print(ans)
+    a, b = map(int, input().split())
+    print(7-a+7-b)
 
 =======
 Suggestion 6
 
-def dfs(x,y):
-    if x<0 or x>1000 or y<0 or y>1000 or (x,y) in used or (x,y) not in black:
-        return
-    used.add((x,y))
-    for i in range(-1,2):
-        for j in range(-1,2):
-            if i!=j:
-                dfs(x+i,y+j)
-
-n=int(input())
-black=set()
-for i in range(n):
-    x,y=map(int,input().split())
-    black.add((x,y))
-used=set()
-ans=0
-for x,y in black:
-    if (x,y) not in used:
-        ans+=1
-        dfs(x,y)
-print(ans)
+def main():
+    a, b = map(int, input().split())
+    print(7 - a - b)
 
 =======
 Suggestion 7
 
-def main():
-    N = int(input())
-    X = []
-    Y = []
-    for i in range(N):
-        x,y = map(int,input().split())
-        X.append(x)
-        Y.append(y)
-    #print(X)
-    #print(Y)
-    #print(len(X))
-    #print(len(Y))
-    #print(X[0])
-    #print(Y[0])
-    #print(X[0] - Y[0])
-    #print(X[0] + Y[0])
-    #print(X[1] - Y[1])
-    #print(X[1] + Y[1])
-    #print(X[2] - Y[2])
-    #print(X[2] + Y[2])
-    #print(X[3] - Y[3])
-    #print(X[3] + Y[3])
-    #print(X[4] - Y[4])
-    #print(X[4] + Y[4])
-    #print(X[5] - Y[5])
-    #print(X[5] + Y[5])
-    #print(X[6] - Y[6])
-    #print(X[6] + Y[6])
-    #print(X[7] - Y[7])
-    #print(X[7] + Y[7])
-    #print(X[8] - Y[8])
-    #print(X[8] + Y[8])
-    #print(X[9] - Y[9])
-    #print(X[9] + Y[9])
-    #print(X[10] - Y[10])
-    #print(X[10] + Y[10])
-    #print(X[11] - Y[11])
-    #print(X[11] + Y[11])
-    #print(X[12] - Y[12])
-    #print(X[12] + Y[12])
-    #print(X[13] - Y[13])
-    #print(X[13] + Y[13])
-    #print(X[14] - Y[14])
-    #print(X[14] + Y[14])
-    #print(X[15] - Y[15])
-    #print(X[15] + Y[15])
-    #print(X[16] - Y[16])
-    #print(X[16] + Y[16])
-    #print(X[17] - Y[17])
+def solve():
+    A, B = map(int, input().split())
+    print(7 - A - B)
 
 =======
 Suggestion 8
 
-def dfs(i,j):
-    if i<0 or j<0 or i>=1000 or j>=1000:
-        return
-    if visit[i][j] == 1:
-        return
-    if grid[i][j] == 0:
-        return
-    visit[i][j] = 1
-    dfs(i-1,j-1)
-    dfs(i-1,j)
-    dfs(i,j-1)
-    dfs(i,j+1)
-    dfs(i+1,j)
-    dfs(i+1,j+1)
-
-N = int(input())
-grid = [[0 for i in range(1000)] for j in range(1000)]
-visit = [[0 for i in range(1000)] for j in range(1000)]
-for i in range(N):
-    x,y = input().split()
-    x = int(x)+500
-    y = int(y)+500
-    grid[x][y] = 1
-ans = 0
-for i in range(1000):
-    for j in range(1000):
-        if grid[i][j] == 1 and visit[i][j] == 0:
-            dfs(i,j)
-            ans += 1
-print(ans)
+def solve(a,b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 1 and b == 1:
+        return 4
+    elif a == 1 and b == 2:
+        return 3
+    elif a == 1 and b == 3:
+        return 2
+    elif a == 1 and b == 4:
+        return 1
+    elif a == 2 and b == 1:
+        return 3
+    elif a == 2 and b == 2:
+        return 2
+    elif a == 2 and b == 3:
+        return 1
+    elif a == 3 and b == 1:
+        return 2
+    elif a == 3 and b == 2:
+        return 1
+    elif a == 4 and b == 1:
+        return 1
+    else:
+        return 0
 
 =======
 Suggestion 9
 
-def main():
-    # 读入数据
-    N = int(input())
-    # 建立一个字典，记录黑色格子的坐标
-    black = {}
-    for i in range(N):
-        x, y = map(int, input().split())
-        black[(x, y)] = True
-    # 定义六个方向
-    dx = [-1, -1, 0, 0, 1, 1]
-    dy = [-1, 0, -1, 1, 0, 1]
-    # 定义一个集合，记录已经访问过的格子
-    visited = {}
-    # 定义一个函数，用于深度优先搜索
-    def dfs(x, y):
-        # 如果已经访问过了，则返回
-        if visited.get((x, y)):
-            return
-        # 访问格子(x, y)
-        visited[(x, y)] = True
-        # 深度优先搜索
-        for i in range(6):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            # 如果是白色格子，则返回
-            if not black.get((nx, ny)):
-                continue
-            # 递归地访问相邻的格子
-            dfs(nx, ny)
-    # 计算答案
-    ans = 0
-    for x, y in black.keys():
-        # 如果已经访问过，则返回
-        if visited.get((x, y)):
-            continue
-        # 如果是白色格子，则返回
-        if not black.get((x, y)):
-            continue
-        # 递归地访问相邻的格子
-        dfs(x, y)
-        # 计算答案
-        ans += 1
-    # 输出答案
-    print(ans)
-
-=======
-Suggestion 10
-
-def dfs(x,y):
-    if x<0 or x>=2000 or y<0 or y>=2000:
-        return
-    if m[x][y]==0:
-        return
-    if visited[x][y]:
-        return
-    visited[x][y]=True
-    dfs(x-1,y-1)
-    dfs(x-1,y)
-    dfs(x,y-1)
-    dfs(x,y+1)
-    dfs(x+1,y)
-    dfs(x+1,y+1)
-
-n=int(input())
-m=[[0]*2000 for _ in range(2000)]
-visited=[[False]*2000 for _ in range(2000)]
-for _ in range(n):
-    x,y=map(int,input().split())
-    m[x+1000][y+1000]=1
-ans=0
-for i in range(2000):
-    for j in range(2000):
-        if visited[i][j]==False and m[i][j]==1:
-            dfs(i,j)
-            ans+=1
-print(ans)
+def solve():
+    A, B = map(int, input().split())
+    print(3 - A - B)

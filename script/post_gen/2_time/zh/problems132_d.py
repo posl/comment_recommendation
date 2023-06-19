@@ -3,152 +3,136 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    # 读入数据
-    n = int(input())
-    d = list(map(int, input().split()))
-    # 排序
-    d.sort()
-    # 找到中位数
-    if n%2 == 0:
-        k = (d[int(n/2)-1] + d[int(n/2)])/2
-    else:
-        k = d[int((n-1)/2)]
-    # 找到中位数后面第一个不等于中位数的数字
-    i = 0
-    while d[int(n/2)+i] == k:
-        i += 1
-    # 计算答案
-    print(i)
+def comb(n, k):
+    if k == 0 or k == n:
+        return 1
+    return comb(n-1, k-1) + comb(n-1, k)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    d = list(map(int, input().split()))
-    d.sort()
-    print(d[n//2] - d[n//2-1])
+def solve(n, k):
+    dp = [[0] * (k + 1) for _ in range(n + 1)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(k + 1):
+            dp[i + 1][j] += dp[i][j]
+            dp[i + 1][j] %= mod
+            if j + 1 <= k:
+                dp[i + 1][j + 1] += dp[i][j] * (n - i - 1)
+                dp[i + 1][j + 1] %= mod
+    return dp[n][k]
+
+mod = 10 ** 9 + 7
+n, k = map(int, input().split())
+print(solve(n, k))
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    d = list(map(int, input().split()))
-    d = sorted(d)
-    print(d[n//2] - d[n//2-1])
+    n, k = map(int, input().split())
+    mod = 10 ** 9 + 7
+    dp = [[0] * (k + 1) for _ in range(n + 1)]
+    dp[0][0] = 1
+    for i in range(1, n + 1):
+        dp[i][0] = 1
+        for j in range(1, k + 1):
+            dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - 1]) % mod
+    for i in range(1, k + 1):
+        print(dp[n - k + 1][i] * dp[k - 1][i - 1] % mod)
 
 =======
 Suggestion 4
 
-def f(k):
-    arc = 0
-    abc = 0
-    for i in range(n):
-        if a[i] >= k:
-            arc += 1
-        else:
-            abc += 1
-    if arc == abc:
-        return True
-    else:
-        return False
+def count_kinds(n, k):
+    if k > n//2:
+        k = n - k
+    if k == 1:
+        return n - 1
+    if k == 2:
+        return n * (n - 1) // 2
+    if k == 3:
+        return n * (n - 1) * (n - 2) // 6
 
-n = int(input())
-a = list(map(int, input().split()))
-
-l = 0
-r = max(a)+1
-while r - l > 1:
-    m = (l + r) // 2
-    if f(m):
-        l = m
-    else:
-        r = m
-print(l)
+n, k = map(int, input().split())
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    d_list = [int(i) for i in input().split()]
-    d_list.sort()
-    #print(d_list)
-    #print(d_list[n//2])
-    print(d_list[n//2]-d_list[n//2-1])
+def problems132_d():
+    pass
 
 =======
 Suggestion 6
 
-def get_input():
-    n = int(input())
-    ds = list(map(int, input().split()))
-    return n, ds
+def main():
+    #N,K = map(int,input().split())
+    N,K = 5,3
+    print(N,K)
+    #arrange(N,K)
+    print(arrange(N,K))
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    d = [int(x) for x in input().split()]
-    d.sort()
-    if n % 2 == 0:
-        print(d[n//2] - d[n//2-1])
+def C(n, m):
+    if n == m:
+        return 1
+    elif m == 1:
+        return n
     else:
-        print(0)
+        return C(n-1, m-1) + C(n-1, m)
+
+n, k = map(int, input().split())
+for i in range(k):
+    print(C(n-k+1, i+1) * C(k-1, i) % (10**9+7))
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    d = list(map(int, input().split()))
-    d.sort()
-    if N%2 == 0:
-        print(d[int(N/2)] - d[int(N/2)-1])
-    else:
-        print(0)
+def f(n,k):
+    if n<k:
+        return 0
+    if k==0:
+        return 1
+    return f(n-1,k-1)+f(n-1,k)
+
+n,k=map(int,input().split())
+print(f(n,k)%1000000007)
+for i in range(2,k+1):
+    print((f(n,i)-f(n,i-1))%1000000007)
 
 =======
 Suggestion 9
 
 def main():
-    n = int(input())
-    ds = list(map(int, input().split()))
-    ds.sort()
-    #print(ds)
-    left = ds[n//2-1]
-    right = ds[n//2]
-    print(right-left)
+    n, k = map(int, input().split())
+    mod = 10**9 + 7
+    dp = [[0]*(k+1) for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(k+1):
+            dp[i+1][j] += dp[i][j]
+            dp[i+1][j] %= mod
+            if j+1 <= k:
+                dp[i+1][j+1] += dp[i][j]
+                dp[i+1][j+1] %= mod
+    for i in range(1, k+1):
+        print(dp[n-k][i] * dp[k][i] % mod)
 
 =======
 Suggestion 10
 
 def main():
-    # 读取输入
-    N = int(input())
-    d = list(map(int, input().split()))
-
-    # 求和
-    s = sum(d)
-
-    # 累积和
-    a = [0] * (N + 1)
-    for i in range(N):
-        a[i + 1] = a[i] + d[i]
-
-    # 确定最小值
-    m = 10**9
-    for i in range(1, N + 1):
-        m = min(m, abs(s - 2 * a[i]))
-
-    # 计数
-    ans = 0
-    for i in range(1, N + 1):
-        if abs(s - 2 * a[i]) == m:
-            ans += 1
-
-    # 输出
-    print(ans)
+    n, k = map(int, input().split())
+    mod = 10**9+7
+    dp = [[0 for _ in range(n+1)] for _ in range(k+1)]
+    dp[0][0] = 1
+    for i in range(1, k+1):
+        for j in range(n+1):
+            dp[i][j] = dp[i-1][j]
+            if j - i >= 0:
+                dp[i][j] += dp[i][j-i]
+            dp[i][j] %= mod
+    print(dp[k][n])

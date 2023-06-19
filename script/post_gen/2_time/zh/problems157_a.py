@@ -1,121 +1,92 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def gcd(a,b):
-    if b == 0:
-        return a
+def calc_print_pages(n):
+    if n % 2 == 0:
+        return n // 2
     else:
-        return gcd(b,a%b)
-n,a,b = map(int,input().split())
-g = gcd(a,b)
+        return n // 2 + 1
 
 =======
 Suggestion 2
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a%b)
+def solve():
+    N = int(input())
+    print(N//2 + N%2)
 
 =======
 Suggestion 3
 
-def gcd(a, b):
-    if b == 0:
-        return a
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(N // 2)
     else:
-        return gcd(b, a % b)
-
-n, a, b = map(int, input().split())
-g = gcd(a, b)
-a //= g
-b //= g
-p = 10 ** 9 + 7
+        print(N // 2 + 1)
 
 =======
 Suggestion 4
 
-def gcd(a, b):
-    if b == 0:
-        return a
+def f(n):
+    if n % 2 == 0:
+        return n/2
     else:
-        return gcd(b, a%b)
+        return n/2 + 1
 
 =======
 Suggestion 5
 
-def gcd(a, b):
-    if a > b:
-        a, b = b, a
-    while a > 0:
-        a, b = b % a, a
-    return b
+def solve():
+    n = int(input())
+    print((n+1)//2)
 
 =======
 Suggestion 6
 
 def main():
-    # 读入
-    n, a, b = map(int, input().split())
-    # 两个数的最大公约数
-    def gcd(x, y):
-        if y == 0:
-            return x
-        else:
-            return gcd(y, x % y)
-    # 两个数的最小公倍数
-    def lcm(x, y):
-        return x * y // gcd(x, y)
-    # 两个数的最小公倍数的倍数
-    l = lcm(a, b)
-    # 两个数的最小公倍数的倍数的个数
-    m = n // l
-    # 两个数的最小公倍数的倍数的最大个数
-    max = 2 * m
-    # 两个数的最小公倍数的倍数的最小个数
-    min = 2 * m - 1
-    # 两个数的最小公倍数的倍数的个数的差
-    d = max - min
-    # 两个数的最小公倍数的倍数的最小个数的最大值
-    max_min = max + d * (n % l == 0)
-    # 两个数的最小公倍数的倍数的最大个数的最小值
-    min_max = min - d * (n % l == 0)
-    # 两个数的最小公倍数的倍数的个数的和
-    sum = (max_min + min_max) * (n // l) // 2
-    # 两个数的最小公倍数的倍数的个数的和的差
-    diff = max_min - min_max
-    # 两个数的最小公倍数的倍数的个数的和的差的最小值
-    min_sum = sum - diff * (n % l == 0)
-    # 两个数的最小公倍数的倍数的个数的和的差的最大值
-    max_sum = sum + diff * (n % l == 0)
-    # 两个数的最小公倍数的倍数的个数的和
+    n = int(input())
+    print(n//2+n%2)
 
 =======
 Suggestion 7
 
-def gcd(a: int, b: int) -> int:
-    if b == 0:
-        return a
-    return gcd(b, a % b)
+def solve():
+    N = int(input())
+    if N % 2 == 0:
+        print(N // 2)
+    else:
+        print((N // 2) + 1)
 
 =======
 Suggestion 8
 
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(int(N/2))
+    else:
+        print(int((N+1)/2))
 
 =======
 Suggestion 9
 
-def gcd(x, y):
-    if y == 0:
-        return x
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(int(n/2))
     else:
-        return gcd(y, x%y)
+        print(int((n+1)/2))
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    if n%2 == 1:
+        print(int(n/2)+1)
+    else:
+        print(int(n/2))

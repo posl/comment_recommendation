@@ -4,110 +4,156 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    c1, c2, c3 = input().split()
-    if c1 == c2 == c3:
-        print("Won")
-    else:
-        print("Lost")
+    N,X = map(int,input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v,p = map(int,input().split())
+        V.append(v)
+        P.append(p)
+    sum = 0
+    for i in range(N):
+        sum += V[i] * P[i]
+        if sum > X * 100:
+            print(i+1)
+            return
+    print(-1)
 
 =======
 Suggestion 2
 
 def main():
-    c1, c2, c3 = input().split()
-    if c1 == c2 == c3:
-        print('Won')
-    else:
-        print('Lost')
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for _ in range(n):
+        v_, p_ = map(int, input().split())
+        v.append(v_)
+        p.append(p_)
+    alc = 0
+    for i in range(n):
+        alc = alc + v[i] * p[i]
+        if alc > x * 100:
+            print(i + 1)
+            exit()
+    print(-1)
 
 =======
 Suggestion 3
 
 def main():
-    # 输入
-    C = input()
-    # 处理
-    if C[0] == C[1] == C[2]:
-        result = "Won"
-    else:
-        result = "Lost"
-    # 输出
-    print(result)
+    n,x = map(int,input().split())
+    v = []
+    p = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        v.append(a)
+        p.append(b)
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i] / 100
+        if sum > x:
+            print(i+1)
+            return
+    print(-1)
+    return
 
 =======
 Suggestion 4
 
-def main():
-    print("请输入三个大写的英文字母，以空格隔开：")
-    str = input()
-    strList = str.split(" ")
-    if strList[0] == strList[1] == strList[2]:
-        print("Won")
-    else:
-        print("Lost")
+def get_ints():
+    return [int(x) for x in input().split()]
 
 =======
 Suggestion 5
 
-def problem189_a():
-    #读取输入
-    C = input()
-    #判断是否胜利
-    if C[0] == C[1] == C[2]:
-        print("Won")
-    else:
-        print("Lost")
+def main():
+    n, x = map(int, input().split())
+    x *= 100
+    cnt = 0
+    for i in range(n):
+        v, p = map(int, input().split())
+        cnt += v * p
+        if cnt > x:
+            print(i + 1)
+            return
+    print(-1)
 
 =======
 Suggestion 6
 
-def problem189_a():
-    c1,c2,c3 = input().split()
-    if c1 == c2 and c2 == c3:
-        print("Won")
-    else:
-        print("Lost")
+def solve():
+    n, x = map(int, input().split())
+    p = 0
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
 
-problem189_a()
+solve()
 
 =======
 Suggestion 7
 
-def main():
-    result = input()
-    if result[0] == result[1] == result[2]:
-        print('Won')
-    else:
-        print('Lost')
+def solve():
+    n, x = map(int, input().split())
+    x *= 100
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
 
 =======
 Suggestion 8
 
 def main():
-    s = input()
-    if s[0] == s[1] and s[1] == s[2]:
-        print("Won")
-    else:
-        print("Lost")
+    n, x = map(int, input().split())
+    sum = 0
+    for i in range(n):
+        v, p = map(int, input().split())
+        sum += v * p
+        if sum > x * 100:
+            print(i + 1)
+            exit()
+    print(-1)
 
 =======
 Suggestion 9
 
 def main():
-    # 读取输入
-    s = input()
-    # 判断是否胜利
-    if s[0] == s[1] and s[1] == s[2]:
-        print("Won")
-    else:
-        print("Lost")
+    n, x = map(int, input().split())
+    x *= 100
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
 
 =======
 Suggestion 10
 
 def main():
-    c1,c2,c3 = input().split()
-    if c1 == c2 and c2 == c3:
-        print("Won")
-    else:
-        print("Lost")
+    #读入数据
+    n,x = map(int,input().split())
+    v = []
+    p = []
+    for _ in range(n):
+        v_i,p_i = map(int,input().split())
+        v.append(v_i)
+        p.append(p_i)
+    #计算酒精含量
+    alcohol = 0
+    for i in range(n):
+        alcohol += v[i]*p[i]
+        if alcohol > x*100:
+            print(i+1)
+            return
+    print(-1)

@@ -4,90 +4,86 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    a,b,c = map(int,input().split())
-    if a == b:
-        print(c)
-    elif b == c:
-        print(a)
-    elif a == c:
-        print(b)
-    else:
-        print(0)
+    n,k = map(int,input().split())
+    print(n*100*k*(k+1)//2)
 
 =======
 Suggestion 2
 
-def main():
-    a,b,c = map(int,input().split())
-    if a == b:
-        print(c)
-    elif a == c:
-        print(b)
-    elif b == c:
-        print(a)
-    else:
-        print(0)
+def f(n, k):
+    sum = 0
+    for i in range(1, n + 1):
+        for j in range(1, k + 1):
+            sum = sum + i * 100 + j
+    return sum
 
 =======
 Suggestion 3
 
-def get_input():
-    a, b, c = map(int, input().split())
-    return a, b, c
+def main():
+    n,k = map(int,input().split())
+    sum = 0
+    for i in range(1,n+1):
+        for j in range(1,k+1):
+            sum += i*100 + j
+    print(sum)
 
 =======
 Suggestion 4
 
 def main():
-    a,b,c = input().split()
-    if a==b:
-        print(c)
-    elif a==c:
-        print(b)
-    elif b==c:
-        print(a)
-    else:
-        print(0)
+    N,K = map(int,input().split())
+    ans = 0
+    for i in range(N):
+        for j in range(K):
+            room = (i+1)*100 + (j+1)
+            ans += room
+    print(ans)
 
 =======
 Suggestion 5
 
-def dice_game(a,b,c):
-    if a == b:
-        return c
-    elif a == c:
-        return b
-    elif b == c:
-        return a
-    else:
-        return 0
+def main():
+    n,k = map(int, input().split())
+    print(100 * n * (n+1) * k // 2)
 
 =======
 Suggestion 6
 
-def main():
-    # 读取输入
-    a, b, c = map(int, input().split())
-    # 逻辑处理
-    if a == b:
-        print(c)
-    elif a == c:
-        print(b)
-    elif b == c:
-        print(a)
-    else:
-        print(0)
+def problems203_b(n,k):
+    sum = 0
+    for i in range(1,n+1):
+        for j in range(1,k+1):
+            sum += i*100+j
+    return sum
+
+n,k = map(int,input().split())
+print(problems203_b(n,k))
 
 =======
 Suggestion 7
 
+def sum_room_number(n,k):
+    sum=0
+    for i in range(1,n+1):
+        for j in range(1,k+1):
+            sum+=i*100+j
+    return sum
+
+=======
+Suggestion 8
+
 def main():
-    a,b,c = map(int,input().split())
-    if a==b:
-        print(c)
-    elif b==c:
-        print(a)
-    elif c==a:
-        print(b)
-    else:
-        print(0)
+    N, K = map(int, input().split())
+    print((N*K*100+N*(N+1)*K//2))
+
+=======
+Suggestion 9
+
+def solve():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(1, k+1):
+            ans += i * 100 + j
+    print(ans)

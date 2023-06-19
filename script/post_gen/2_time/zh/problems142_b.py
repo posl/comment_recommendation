@@ -1,95 +1,106 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    N = int(input())
-    a = 0
-    for i in range(1, N+1):
-        if i % 2 == 1:
-            a += 1
-    print(a/N)
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    print(len([i for i in h if i >= k]))
 
 =======
 Suggestion 2
 
-def problem142_a():
-    n = int(input())
-    if n % 2 == 0:
-        print(0.5)
-    else:
-        print((n // 2 + 1) / n)
-problem142_a()
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if h[i] >= k:
+            count += 1
+    print(count)
 
 =======
 Suggestion 3
 
 def main():
-    N = int(input())
-    if N%2 ==0:
-        print(0.5)
-    else:
-        print((N//2+1)/N)
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    count = 0
+    for i in h:
+        if i >= k:
+            count += 1
+    print(count)
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
     count = 0
-    for i in range(1,n+1):
-        if i%2 != 0:
+    for i in range(n):
+        if h[i] >= k:
             count += 1
-    print(count/n)
+    print(count)
+
+main()
 
 =======
 Suggestion 5
 
-def solve(n):
-    return (n+1)//2/n
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if h[i] >= k:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    ans = 0
-    for i in range(1, n+1):
-        if i % 2 != 0:
-            ans += 1
-    print(ans/n)
+    # 读取数据
+    N, K = map(int, input().split())
+    h = [int(i) for i in input().split()]
+
+    # 计算
+    count = 0
+    for i in range(N):
+        if h[i] >= K:
+            count += 1
+
+    # 输出结果
+    print(count)
 
 =======
 Suggestion 7
 
 def main():
     # 读取输入
-    n = int(input())
-    # 解决问题
-    ans = 0
-    for i in range(1, n+1):
-        if i % 2 == 1:
-            ans += 1
-    # 输出答案
-    print(ans/n)
+    num, height = map(int, input().split())
+    heights = list(map(int, input().split()))
+    # 计算
+    count = 0
+    for h in heights:
+        if h >= height:
+            count += 1
+    # 打印结果
+    print(count)
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    print((n+1)//2/n)
-
-=======
-Suggestion 9
-
-def main():
-    N = int(input())
-    print((N+1)//2/N)
-
-=======
-Suggestion 10
-
-def odd(n):
-    return (n+1)/2/n
+    # 获取输入
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    # 处理
+    count = 0
+    for i in range(n):
+        if h[i] >= k:
+            count += 1
+    # 输出
+    print(count)

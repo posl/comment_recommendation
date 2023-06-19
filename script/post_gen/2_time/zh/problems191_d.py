@@ -4,208 +4,142 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    H, W = map(int, input().split())
-    S = [list(input()) for _ in range(H)]
+    x,y,r = input().split(' ')
+    x = float(x)
+    y = float(y)
+    r = float(r)
+    x = int(x*10000)
+    y = int(y*10000)
+    r = int(r*10000)
     count = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == "#":
+    for i in range(x-r,x+r+1):
+        for j in range(y-r,y+r+1):
+            if (i-x)**2 + (j-y)**2 <= r**2:
                 count += 1
-
-    if count == 0:
-        return 0
-    else:
-        return 1
+    print(count)
 
 =======
 Suggestion 2
 
-def solve():
-    H, W = map(int, input().split())
-    S = [input() for _ in range(H)]
-    ans = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
-                ans += 1
-    print(ans - (H + W - 1))
-solve()
+def problem191_d():
+    x,y,r = map(float,input().split())
+    x,y,r = int(x*10000),int(y*10000),int(r*10000)
+    count = 0
+    for i in range(x-r,x+r+1):
+        for j in range(y-r,y+r+1):
+            if (i-x)*(i-x)+(j-y)*(j-y) <= r*r:
+                count += 1
+    print(count)
 
 =======
 Suggestion 3
 
-def solve():
-    H, W = map(int, input().split())
-    S = []
-    for i in range(H):
-        S.append(input())
+def main():
+    # 读入数据
+    X, Y, R = map(float, input().split())
+    # 计算圆内网格点的数量
     ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#':
-                if S[i - 1][j] == '.':
-                    ans += 1
-                if S[i + 1][j] == '.':
-                    ans += 1
-                if S[i][j - 1] == '.':
-                    ans += 1
-                if S[i][j + 1] == '.':
-                    ans += 1
-    if ans == 0:
-        print(0)
-    else:
-        print(ans // 2 + 1)
+    for x in range(int(X - R), int(X + R) + 1):
+        for y in range(int(Y - R), int(Y + R) + 1):
+            if (X - x) ** 2 + (Y - y) ** 2 <= R ** 2:
+                ans += 1
+    # 输出答案
+    print(ans)
 
 =======
 Suggestion 4
 
-def main():
-    h, w = map(int, input().split())
-    s = [input() for _ in range(h)]
+def solve():
+    x, y, r = map(float, input().split())
+    x, y, r = int(x*10000), int(y*10000), int(r*10000)
     ans = 0
-    for i in range(h-1):
-        for j in range(w-1):
-            cnt = 0
-            for di in range(2):
-                for dj in range(2):
-                    if s[i+di][j+dj] == '#':
-                        cnt += 1
-            if cnt == 1 or cnt == 3:
+    for i in range(y-r, y+r+1):
+        for j in range(x-r, x+r+1):
+            if (i-y)**2 + (j-x)**2 <= r**2:
                 ans += 1
     print(ans)
+solve()
 
 =======
 Suggestion 5
 
 def main():
-    h,w = map(int,input().split())
-    s = []
-    for i in range(h):
-        s.append(input())
-    count = 0
-    for i in range(h):
-        for j in range(w):
-            if s[i][j] == '#':
-                count += 1
-    print(count)
+    x, y, r = map(float, input().split())
+    ans = 0
+    for i in range(int(x - r), int(x + r) + 1):
+        for j in range(int(y - r), int(y + r) + 1):
+            if (i - x) * (i - x) + (j - y) * (j - y) <= r * r:
+                ans += 1
+    print(ans)
 
 =======
 Suggestion 6
 
-def problems191_c():
-    pass
+def main():
+    x,y,r = map(float,input().split())
+    x = int(x*10000)
+    y = int(y*10000)
+    r = int(r*10000)
+    x1 = x-r
+    x2 = x+r
+    y1 = y-r
+    y2 = y+r
+    count = 0
+    for i in range(x1,x2+1):
+        for j in range(y1,y2+1):
+            if (i-x)**2+(j-y)**2<=r**2:
+                count += 1
+    print(count)
 
 =======
 Suggestion 7
 
 def main():
-    H, W = map(int, input().split())
-    S = []
-    for i in range(H):
-        S.append(input())
+    X,Y,R = map(float,input().split())
+    X = int(X*10000)
+    Y = int(Y*10000)
+    R = int(R*10000)
     ans = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
+    for i in range(int(X-R),int(X+R+1)):
+        for j in range(int(Y-R),int(Y+R+1)):
+            if (i-X)**2+(j-Y)**2 <= R**2:
                 ans += 1
-    if ans == 0:
-        print(0)
-        return
-    ans += 4
-    ans -= 2 * (H + W)
     print(ans)
 
 =======
 Suggestion 8
 
-def main():
-    # H, W = map(int, input().split())
-    H, W = 5, 5
-    # S = [input() for _ in range(H)]
-    S = ['.....', '.###.', '.###.', '.###.', '.....']
-    # S = ['.....', '.###.', '.###.', '.###.', '.....']
-    print(S)
-    print(H, W)
-    print(S[0][0])
-    print(S[0][1])
-    print(S[0][2])
-    print(S[0][3])
-    print(S[0][4])
-    print(S[1][0])
-    print(S[1][1])
-    print(S[1][2])
-    print(S[1][3])
-    print(S[1][4])
-    print(S[2][0])
-    print(S[2][1])
-    print(S[2][2])
-    print(S[2][3])
-    print(S[2][4])
-    print(S[3][0])
-    print(S[3][1])
-    print(S[3][2])
-    print(S[3][3])
-    print(S[3][4])
-    print(S[4][0])
-    print(S[4][1])
-    print(S[4][2])
-    print(S[4][3])
-    print(S[4][4])
-
-    # print(S[0][0], S[0][1], S[0][2], S[0][3], S[0][4])
-    # print(S[1][0], S[1][1], S[1][2], S[1][3], S[1][4])
-    # print(S[2][0], S[2][1], S[2][2], S[2][3], S[2][4])
-    # print(S[3][0], S[3][1], S[3][2], S[3][3], S[3][4])
-    # print(S[4][0], S[4][1], S[4][2], S[4][3], S[4][4])
-
-    # print(S)
-    # print(S[0][0], S[0][1], S[0][2], S[0][3], S[0][4])
-    # print(S[1][0], S[
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
 
 =======
 Suggestion 9
 
-def main():
-    h,w = map(int, input().split())
-    s = [list(input()) for _ in range(h)]
-    ans = 0
-    for i in range(h):
-        for j in range(w):
-            if s[i][j] == '#':
-                ans += 1
-    print(ans-4)
+def count_point(x,y,r):
+    count = 0
+    for i in range(int(x-r),int(x+r)+1):
+        for j in range(int(y-r),int(y+r)+1):
+            if (i-x)**2+(j-y)**2 <= r**2:
+                count += 1
+    return count
+
+x,y,r = map(float,input().split())
+print(count_point(x,y,r))
 
 =======
 Suggestion 10
 
 def main():
-    H, W = map(int, input().split())
-    S = [input() for i in range(H)]
+    x,y,r = map(float,input().split())
+    x = int(x*10000)
+    y = int(y*10000)
+    r = int(r*10000)
+    r2 = r*r
     ans = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
+    for i in range(x-r,x+r+1):
+        for j in range(y-r,y+r+1):
+            if (i-x)*(i-x)+(j-y)*(j-y)<=r2:
                 ans += 1
-    if ans == 0:
-        print(0)
-        return
-    ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#' and S[i - 1][j] == '.' and S[i + 1][j] == '.' and S[i][j - 1] == '.' and S[i][j + 1] == '.':
-                ans += 1
-    if ans == 0:
-        print(1)
-        return
-    ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#' and ((S[i - 1][j] == '.' and S[i + 1][j] == '#' and S[i][j - 1] == '#' and S[i][j + 1] == '.') or (S[i - 1][j] == '#' and S[i + 1][j] == '.' and S[i][j - 1] == '.' and S[i][j + 1] == '#') or (S[i - 1][j] == '#' and S[i + 1][j] == '#' and S[i][j - 1] == '.' and S[i][j + 1] == '.') or (S[i - 1][j] == '.' and S[i + 1][j] == '#' and S[i][j - 1] == '#' and S[i][j + 1] == '#')):
-                ans += 1
-    if ans == 0:
-        print(2)
-        return
-    ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#' and ((S[i - 1][j] == '.' and S[i + 1][j] == '.' and S[i][j - 1
+    print(ans)

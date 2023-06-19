@@ -3,185 +3,124 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def is_ok():
-    for i in range(N):
-        if S[i] == T[i]:
-            return False
-        for j in range(i+1, N):
-            if S[i] == T[j] or T[i] == S[j]:
-                return False
-    return True
-
-N = int(input())
-S, T = [], []
-for i in range(N):
-    s, t = input().split()
-    S.append(s)
-    T.append(t)
+def swap_list(list, p, q, r, s):
+    tmp = list[p-1:q]
+    list[p-1:q] = list[r-1:s]
+    list[r-1:s] = tmp
+    return list
 
 =======
 Suggestion 2
 
-def check(s,t):
-    if len(s) != len(t):
-        return False
-    if s == t:
-        return False
-    if s[0] == t[0]:
-        return False
-    return True
+def swap(A, P, Q, R, S):
+    B = A.copy()
+    for i in range(P-1, Q):
+        B[i] = A[R+i-Q]
+    for i in range(R-1, S):
+        B[i] = A[P+i-R]
+    return B
 
 =======
 Suggestion 3
 
-def is_okay():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        a, b = input().split()
-        s.append(a)
-        t.append(b)
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                continue
-            if s[i] == s[j] or s[i] == t[j] or t[i] == s[j] or t[i] == t[j]:
-                return "No"
-    return "Yes"
+def swap(a, b, c, d, e):
+    for i in range(b, c):
+        a[i], a[i+d-b] = a[i+d-b], a[i]
+    return a
 
-print(is_okay())
+n, p, q, r, s = map(int, input().split())
+a = list(map(int, input().split()))
+swap(a, p-1, q, r, s)
+print(*a)
 
 =======
 Suggestion 4
 
-def check(s, t):
-    if len(s) != len(t):
-        return False
-    if s == t:
-        return True
-    if s[0] == t[0]:
-        return check(s[1:], t[1:])
-    if s[-1] == t[-1]:
-        return check(s[:-1], t[:-1])
-    return False
+def swap(a, b):
+    temp = a
+    a = b
+    b = temp
+    return a, b
 
 =======
 Suggestion 5
 
-def judge(n, s, t):
-    if n == 1:
-        return 'Yes'
-    else:
-        for i in range(n):
-            if s[i] == t[i]:
-                return 'No'
-        for i in range(n):
-            for j in range(i+1, n):
-                if s[i] == t[j] and s[j] == t[i]:
-                    return 'Yes'
-        return 'No'
+def swap(A, P, Q, R, S):
+    B = A.copy()
+    for i in range(P-1, Q):
+        B[i] = A[i+R-Q]
+    for i in range(R-1, S):
+        B[i] = A[i+P-R]
+    return B
 
 =======
 Suggestion 6
 
-def dfs(i):
-    global flag
-    if i == n:
-        flag = True
-        return
-    if not flag:
-        if used[s[i]] == 0 and used[t[i]] == 0:
-            used[s[i]] = 1
-            used[t[i]] = 1
-            dfs(i+1)
-            used[s[i]] = 0
-            used[t[i]] = 0
-        if used[s[i]] == 1 and used[t[i]] == 0:
-            used[t[i]] = 1
-            dfs(i+1)
-            used[t[i]] = 0
-        if used[s[i]] == 0 and used[t[i]] == 1:
-            used[s[i]] = 1
-            dfs(i+1)
-            used[s[i]] = 0
+def swap(a, p, q, r, s):
+    b = a.copy()
+    for i in range(q-p+1):
+        b[p+i-1] = a[s+i-1]
+    for i in range(s-r+1):
+        b[r+i-1] = a[q+i-1]
+    return b
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        si, ti = input().split()
-        s.append(si)
-        t.append(ti)
-    for i in range(n):
-        for j in range(n):
-            if i != j:
-                if s[i] == t[j]:
-                    s[i], s[j] = s[j], s[i]
-    if s == t:
-        print('Yes')
-    else:
-        print('No')
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A.copy()
+    for i in range(P-1, Q):
+        B[i] = A[i+R-Q]
+    for i in range(R-1, S):
+        B[i] = A[i+P-R]
+    for i in range(N):
+        print(B[i], end=' ')
+    print()
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        temp = input().split()
-        s.append(temp[0])
-        t.append(temp[1])
-    for i in range(n):
-        if s[i] in t:
-            print("No")
-            return
-    print("Yes")
+    N,P,Q,R,S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N):
+        if i >= P-1 and i <= Q-1:
+            B.append(A[i+R-Q])
+        elif i >= R-1 and i <= S-1:
+            B.append(A[i+P-R])
+        else:
+            B.append(A[i])
+    for i in range(N):
+        print(B[i], end = ' ')
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    s = []
-    t = []
+def problems286_a():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [0] * n
     for i in range(n):
-        s.append(input())
-        t.append(input())
-
-    for i in range(n):
-        for j in range(n):
-            if i != j and s[i] == t[j]:
-                print('No')
-                return
-
-    print('Yes')
+        if i < p - 1:
+            b[i + s - q] = a[i]
+        elif i < r - 1:
+            b[i - p + q] = a[i]
+        else:
+            b[i + s - r] = a[i]
+    print(*b)
 
 =======
 Suggestion 10
 
-def solve():
-    n = int(input())
-    ss = []
-    ts = []
-    for i in range(n):
-        s, t = input().split()
-        ss.append(s)
-        ts.append(t)
-    #print(ss, ts)
-    for i in range(n):
-        if ss[i] == ts[i]:
-            print('No')
-            return
-    for i in range(n):
-        for j in range(i+1, n):
-            if ss[i] == ts[j] and ss[j] == ts[i]:
-                print('Yes')
-                return
-    print('No')
+def main():
+    N,P,Q,R,S = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = A[0:P-1] + A[R-1:S] + A[Q-1:R-1] + A[P-1:Q-1] + A[S:]
+    for i in range(N):
+        if i == N-1:
+            print(B[i])
+        else:
+            print(B[i],end=' ')

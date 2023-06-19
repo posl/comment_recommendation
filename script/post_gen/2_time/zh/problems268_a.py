@@ -1,130 +1,79 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    dp = [[0] * m for _ in range(n)]
-    for i in range(n):
-        dp[i][0] = a[i]
-    for j in range(1, m):
-        for i in range(j, n):
-            dp[i][j] = max(dp[k][j - 1] + a[i] * (i - k) for k in range(j - 1, i))
-    print(max(dp[i][m - 1] for i in range(m - 1, n)))
+def get_distinct_num(list):
+    return len(set(list))
 
 =======
 Suggestion 2
 
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    dp = [[-float('inf')] * (m + 1) for _ in range(n + 1)]
-    dp[0][0] = 0
-    for i in range(n):
-        for j in range(m + 1):
-            if j > 0:
-                dp[i + 1][j] = max(dp[i + 1][j], dp[i][j - 1] + (j * a[i]))
-            dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
-    print(dp[n][m])
+    a, b, c, d, e = map(int, input().split())
+    list = [a, b, c, d, e]
+    print(len(set(list)))
 
 =======
 Suggestion 3
 
-def solve(n,m,a):
-    dp = [[0 for _ in range(m+1)] for _ in range(n+1)]
-    for i in range(1,n+1):
-        for j in range(1,m+1):
-            dp[i][j] = max(dp[i-1][j],dp[i-1][j-1]+i*a[i-1])
-    return dp[n][m]
+def main():
+    a,b,c,d,e = map(int,input().split())
+    print(len(set([a,b,c,d,e])))
 
 =======
 Suggestion 4
 
-def solve(n,m,a):
-    dp = [[0 for i in range(m+1)] for j in range(n+1)]
-    for i in range(1,n+1):
-        for j in range(1,m+1):
-            if i<j:
-                dp[i][j] = -100000000
-            else:
-                dp[i][j] = max(dp[i-1][j],dp[i-1][j-1]+a[i-1]*j)
-    return dp[n][m]
+def main():
+    input_str = input()
+    input_list = input_str.split()
+    input_list = list(map(int, input_list))
+    input_list = set(input_list)
+    print(len(input_list))
 
 =======
 Suggestion 5
 
-def max_sum_subsequence(N, M, A):
-    # dp[i][j]表示前i个数中取j个数的最大值
-    dp = [[0 for i in range(M + 1)] for j in range(N + 1)]
-    for i in range(1, N + 1):
-        for j in range(1, M + 1):
-            if j > i:
-                continue
-            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1] + A[i - 1] * j)
-    return dp[N][M]
+def main():
+    #print("请输入五个整数：")
+    num = input()
+    num_list = num.split()
+    num_set = set(num_list)
+    print(len(num_set))
 
 =======
 Suggestion 6
 
 def main():
-    pass
+    a,b,c,d,e = map(int, input().split())
+    print(len({a,b,c,d,e}))
 
 =======
 Suggestion 7
 
 def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    dp = [[-float("inf")]*(m+1) for _ in range(n+1)]
-    dp[0][0] = 0
-    for i in range(n):
-        for j in range(m):
-            dp[i+1][j+1] = max(dp[i+1][j+1],dp[i][j]+a[i]*(j+1))
-            dp[i+1][j] = max(dp[i+1][j],dp[i][j])
-    print(dp[n][m])
+    # 读取输入
+    nums = input().split()
+    # 去重
+    nums = set(nums)
+    # 打印输出
+    print(len(nums))
 
 =======
 Suggestion 8
 
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
+    a = [int(i) for i in input().split()]
     a.sort()
-    a.reverse()
-    dp = [[0 for i in range(m+1)] for j in range(n+1)]
-    for i in range(1, n+1):
-        for j in range(1, m+1):
-            dp[i][j] = max(dp[i-1][j], dp[i-1][j-1]+a[i-1])
-    print(dp[n][m])
+    res = 1
+    for i in range(1, len(a)):
+        if a[i] != a[i-1]:
+            res += 1
+    print(res)
 
 =======
 Suggestion 9
 
-def solve():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    dp = [[-float("inf")]*(m+1) for _ in range(n+1)]
-    dp[0][0] = 0
-    for i in range(1,n+1):
-        for j in range(1,m+1):
-            dp[i][j] = max(dp[i-1][j],dp[i-1][j-1]+i*a[i-1])
-    print(max(dp[-1]))
-
-=======
-Suggestion 10
-
-def solve():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    dp = [[-float("inf")]*(m+1) for _ in range(n+1)]
-    dp[0][0] = 0
-    for i in range(n):
-        for j in range(m+1):
-            if j == 0:
-                dp[i+1][j] = 0
-            else:
-                dp[i+1][j] = max(dp[i][j],dp[i][j-1]+j*a[i])
-    print(max(dp[n]))
+def main():
+    list = input().split()
+    print(len(set(list)))

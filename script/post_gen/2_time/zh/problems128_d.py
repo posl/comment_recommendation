@@ -1,189 +1,198 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    n,m = map(int,input().split())
-    k = [0] * m
-    s = [0] * m
-    for i in range(m):
-        k[i],*s[i] = map(int,input().split())
-    p = list(map(int,input().split()))
-    ans = 0
-    for i in range(2**n):
-        light = [0] * m
-        for j in range(n):
-            if (i >> j) & 1:
-                for l in range(m):
-                    if j+1 in s[l]:
-                        light[l] += 1
-        if all(light[l]%2 == p[l] for l in range(m)):
-            ans += 1
-    print(ans)
+    N,K = map(int,input().split())
+    V = list(map(int,input().split()))
+    max_sum = 0
+    for i in range(0,min(N,K)+1):
+        for j in range(0,min(N,K)-i+1):
+            left = V[:i]
+            right = V[N-j:]
+            if len(left) > 0:
+                left.sort()
+                for k in range(0,min(len(left),K-i-j)):
+                    if left[k] < 0:
+                        left[k] = 0
+                    else:
+                        break
+            if len(right) > 0:
+                right.sort(reverse=True)
+                for k in range(0,min(len(right),K-i-j)):
+                    if right[k] < 0:
+                        right[k] = 0
+                    else:
+                        break
+            if len(left) > 0:
+                left.sort(reverse=True)
+                max_sum = max(max_sum,sum(left[:K-i-j])+sum(right[:K-i-j]))
+            else:
+                max_sum = max(max_sum,sum(right[:K-i-j]))
+    print(max_sum)
 
 =======
 Suggestion 2
 
-def getSwitchState(switch_status, switch_num, bulb_num):
-    if switch_num == 1:
-        return [switch_status]
-    else:
-        switch_state = []
-        for i in range(switch_num):
-            if i == 0:
-                switch_state.append([switch_status[i]])
-            else:
-                switch_state[0].append(switch_status[i])
-        return switch_state
+def max_jewel_value(n, k, v):
+    max_v = 0
+    for i in range(min(n, k) + 1):
+        for j in range(min(n, k) + 1 - i):
+            v2 = v[:i] + v[-j:]
+            v2.sort()
+            max_v = max(max_v, sum(v2))
+    return max_v
 
 =======
 Suggestion 3
 
-def main():
-    pass
+def solve(n,k,nums):
+    dp = [[[-float('inf') for i in range(2)] for j in range(k+1)] for k in range(n+1)]
+    dp[0][0][0] = 0
+    dp[0][0][1] = 0
+    for i in range(n):
+        for j in range(k+1):
+            dp[i+1][j][0] = max(dp[i+1][j][0],dp[i][j][0])
+            dp[i+1][j][1] = max(dp[i+1][j][1],dp[i][j][1])
+            if j < k:
+                dp[i+1][j+1][1] = max(dp[i+1][j+1][1],dp[i][j][0]+nums[i])
+                dp[i+1][j+1][0] = max(dp[i+1][j+1][0],dp[i][j][1]-nums[i])
+    return max(dp[n][k][0],dp[n][k][1])
+
+n,k = [int(i) for i in input().split()]
+nums = [int(i) for i in input().split()]
+print(solve(n,k,nums))
 
 =======
 Suggestion 4
 
-def readinput():
-    line = input()
-    N,M = line.split()
-    N = int(N)
-    M = int(M)
-    switches = []
-    for i in range(M):
-        line = input()
-        switch = list(map(int, line.split()))
-        switches.append(switch)
-    line = input()
-    P = list(map(int, line.split()))
-    return (N,M,switches,P)
+def solve():
+    n,k = map(int,input().split())
+    v = list(map(int,input().split()))
+    ans = 0
+    for i in range(min(n,k)+1):
+        for j in range(min(n,k)-i+1):
+            a = v[:i]
+            b = v[n-j:]
+            c = a + b
+            c.sort()
+            ans = max(ans,sum(c[max(0,k-i-j):]))
+    print(ans)
+
+solve()
 
 =======
 Suggestion 5
 
-def main():
-    n,m = map(int,input().split())
-    k = []
-    for _ in range(m):
-        k.append(list(map(int,input().split()))[1:])
-    p = list(map(int,input().split()))
-
-    ans = 0
-    for i in range(2**n):
-        light = [0]*m
-        for j in range(n):
-            if (i>>j)&1 == 1:
-                for l in range(m):
-                    if j+1 in k[l]:
-                        light[l] += 1
-        if light == p:
-            ans += 1
-
-    print(ans)
+def get_max_value(N, K, V):
+    max_value = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i+j <= N and i+j <= K:
+                temp = 0
+                for k in range(i):
+                    temp += V[k]
+                for k in range(N-j, N):
+                    temp += V[k]
+                if temp > max_value:
+                    max_value = temp
+    return max_value
 
 =======
 Suggestion 6
 
-def get_switch_status(n, m, k, s, p):
-    # n:开关个数
-    # m:灯泡个数
-    # k:灯泡与开关的关联关系
-    # s:开关与灯泡的关联关系
-    # p:开关状态
-    # 灯泡i与k_i个开关相连：开关s_{i1}，s_{i2}，...，和s_{ik_i}。当这些开关中 "开 "的开关数与p_i的模数一致时，它就被点亮。
-    # 有多少种开关的 "开 "和 "关 "状态的组合可以点亮所有的灯泡？
+def solve(N,K,V):
+    ans = 0
+    for l in range(min(N,K)+1):
+        for r in range(min(N,K)-l+1):
+            s = 0
+            t = []
+            for i in range(l):
+                s += V[i]
+                t.append(V[i])
+            for i in range(r):
+                s += V[N-1-i]
+                t.append(V[N-1-i])
+            t.sort()
+            for i in range(min(K-l-r,l+r)):
+                if t[i] < 0:
+                    s -= t[i]
+            ans = max(ans,s)
+    return ans
 
-    # 灯泡状态
-    bulb_status = [0] * m
-
-    # 开关状态
-    switch_status = [0] * n
-
-    # 开关与灯泡的关联关系
-    switch_bulb = {}
-    for i in range(m):
-        switch_bulb[i + 1] = s[i]
-
-    # 灯泡与开关的关联关系
-    bulb_switch = {}
-    for i in range(n):
-        bulb_switch[i + 1] = k[i]
-
-    # 开关状态组合
-    switch_status_combination = []
-
-    # 灯泡状态组合
-    bulb_status_combination = []
-
-    # 灯泡与开关的关联关系组合
-    bulb_switch_combination = []
-
-    # 开关与灯泡的关联关系组合
-    switch_bulb_combination = []
-
-    # 灯泡状态组合
-    bulb_status_combination = get_status_combination(bulb_status, bulb_status_combination)
-
-    # 灯泡与开关的关联关系组合
-    bulb_switch_combination = get_combination(bulb_switch_combination, bulb_switch)
-
-    # 开关与灯泡的关联关系组合
-    switch_bulb_combination = get_combination(switch_bulb_combination, switch_bulb)
-
-    # 开关状态组合
+N,K = map(int,input().split())
+V = list(map(int,input().split()))
+print(solve(N,K,V))
 
 =======
 Suggestion 7
 
-def problems128_c():
-    pass
+def max_sum(n,k,v):
+    if n == k:
+        return sum(v)
+    if k == 0:
+        return 0
+    if n == 1:
+        return max(v[0],0)
+    if k == 1:
+        return max(v[0],v[-1],0)
+    if n == 2:
+        return max(v[0]+v[1],v[0],v[1],0)
+    if k == 2:
+        return max(v[0]+v[1],v[0]+v[-1],v[-1]+v[-2],v[0],v[1],v[-1],v[-2],0)
+    if n == 3:
+        return max(v[0]+v[1]+v[2],v[0]+v[1],v[0]+v[2],v[1]+v[2],v[0],v[1],v[2],0)
+    if k == 3:
+        return max(v[0]+v[1]+v[2],v[0]+v[1]+v[-1],v[0]+v[-2]+v[-1],v[-3]+v[-2]+v[-1],v[0]+v[1],v[0]+v[2],v[1]+v[2],v[0]+v[-1],v[-1]+v[-2],v[-2]+v[-3],v[0],v[1],v[2],v[-1],v[-2],v[-3],0)
+    if n == 4:
+        return max(v[0]+v[1]+v[2]+v[3],v[0]+v[1]+v[2],v[0]+v[1]+v[3],v[0]+v[2]+v[3],v[1]+v[2]+v[3],v[0]+v[1],v[0]+v[2],v[0]+v[3],v[1]+v[2],v[1]+v[3],v[2]+v[3],v[0],v[1],v[2],v[3],0)
+    if k == 4:
+        return max(v[0]+v[1]+v[2]+v
 
 =======
 Suggestion 8
 
-def main():
-    n,m = map(int,input().split())
-    k = []
-    s = []
-    p = []
-    for i in range(m):
-        k.append(list(map(int,input().split())))
-    for i in range(m):
-        p.append(list(map(int,input().split())))
-    print(k)
-    print(p)
+def input():
+    N,K = map(int,raw_input().split())
+    V = map(int,raw_input().split())
+    return N,K,V
 
 =======
 Suggestion 9
 
-def main():
-    N, M = list(map(int, input().split()))
-    k = []
-    s = []
-    for i in range(M):
-        k.append(list(map(int, input().split()))[0])
-        s.append(list(map(int, input().split())))
-    p = list(map(int, input().split()))
+def f(n,k,vs):
+    if k==0:
+        return 0
+    if n==0:
+        return 0
+    if n==1:
+        return vs[0]
+    if n==2:
+        return max(vs[0],vs[1])
+    if n==3:
+        return max(vs[0],vs[1],vs[2])
+    if n==4:
+        return max(vs[0]+vs[3],vs[1]+vs[2])
+    if n==5:
+        return max(vs[0]+vs[3],vs[1]+vs[2],vs[0]+vs[4],vs[1]+vs[3],vs[2]+vs[3],vs[3]+vs[4])
+    if n==6:
+        return max(vs[0]+vs[3]+vs[5],vs[1]+vs[2]+vs[4],vs[0]+vs[4]+vs[5],vs[0]+vs[1]+vs[3],vs[1]+vs[2]+vs[3],vs[2]+vs[3]+vs[4],vs[3]+vs[4]+vs[5])
+    if n==7:
+        return max(vs[0]+vs[3]+vs[5],vs[1]+vs[2]+vs[4],vs[0]+vs[4]+vs[5],vs[0]+vs[1]+vs[3]+vs[6],vs[1]+vs[2]+vs[3]+vs[5],vs[2]+vs[3]+vs[4]+vs[6],vs[3]+vs[4]+vs[5]+vs[6],vs[0]+vs[3]+vs[4]+vs[6],vs[1]+vs[2]+vs[5]+vs[6],vs[2]+vs[4]+vs[5]+vs[6],vs[0]+vs[1]+vs[2]+vs[3],vs[1]+vs[2]+vs[3]+vs[4],vs[2]+vs[3]+vs[4]+vs[5],vs[3]+vs[4]+vs[5]+vs[6])
+    if n==8:
+        return max(vs[0]+vs[3]+vs[5]+vs[7],vs
 
-    # print(N, M)
-    # print(k)
-    # print(s)
-    # print(p)
+=======
+Suggestion 10
 
-    # 2**N - 1种可能
-    cnt = 0
-    for i in range(2**N):
-        # print("i = ", i)
-        # print("bin(i) = ", bin(i))
-        # print("bin(i)[2:] = ", bin(i)[2:])
-        # print("len(bin(i)[2:]) = ", len(bin(i)[2:]))
-        # print("N - len(bin(i)[2:]) = ", N - len(bin(i)[2:]))
-        # print("str(bin(i)[2:]) = ", str(bin(i)[2:]))
-        # print("str(bin(i)[2:]).zfill(N) = ", str(bin(i)[2:]).zfill(N))
-        # print("str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):] = ", str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):])
-        # print("len(str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):]) = ", len(str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):]))
-        # print("list(str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):]) = ", list(str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):]))
-        # print("list(map(int, str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):])) = ", list(map(int, str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):])))
-        # print("list(map(int, str(bin(i)[2:]).zfill(N)[N - len(bin(i)[2:]):])) == [1] * N = ", list(map(int, str(bin(i)[2:]).zfill(N)[N -
+def problem128_d():
+    n,k = map(int,input().split())
+    v = list(map(int,input().split()))
+    ans = 0
+    for l in range(min(n,k)+1):
+        for r in range(min(n,k)-l+1):
+            t = v[:l]+v[n-r:]
+            t.sort()
+            ans = max(ans,sum(t[max(0,k-l-r):]))
+    print(ans)

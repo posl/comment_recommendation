@@ -1,160 +1,112 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def get_score(A, B, C):
-    score = 0
-    for i in range(len(A)):
-        score += B[A[i]-1]
-        if i < len(A)-1:
-            if A[i+1] == A[i] + 1:
-                score += C[A[i]-1]
-    return score
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0]*n
+    a[0] = b[0]
+    a[n-1] = b[n-2]
+    for i in range(1, n-1):
+        a[i] = min(b[i-1], b[i])
+    print(sum(a))
 
 =======
 Suggestion 2
 
-def cal_satisfaction():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    satisfaction = 0
-    for i in range(n):
-        satisfaction += b[a[i]-1]
-        if i < n-1 and a[i]+1 == a[i+1]:
-            satisfaction += c[a[i]-1]
-    print(satisfaction)
+def get_max_sum(n, b):
+    a = [0] * n
+    a[0] = b[0]
+    for i in range(1, n-1):
+        a[i] = max(b[i], b[i-1])
+    a[n-1] = b[n-2]
+    return sum(a)
 
 =======
 Suggestion 3
 
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    C = list(map(int, input().split()))
-    total = 0
-    for i in range(N):
-        total += B[A[i]-1]
-        if i != N-1 and A[i] == A[i+1] - 1:
-            total += C[A[i]-1]
-    print(total)
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    a[-1] = b[-1]
+    for i in range(n-2):
+        a[i+1] = min(b[i], b[i+1])
+    print(sum(a))
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-
-    score = 0
-    for i in range(n):
-        score += b[a[i]-1]
-        if i < n-1 and a[i+1] == a[i] + 1:
-            score += c[a[i]-1]
-    print(score)
+def maxsum(n, b):
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    for i in range(1, n-1):
+        a[i] = max(b[i], b[i-1])
+    a[-1] = b[-1]
+    return sum(a)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-
-    satisfaction = 0
-    prev = a[0]
-    satisfaction += b[prev-1]
-    for i in range(1, n):
-        current = a[i]
-        satisfaction += b[current-1]
-        if prev + 1 == current:
-            satisfaction += c[prev-1]
-        prev = current
-    print(satisfaction)
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0]*N
+    A[0] = B[0]
+    for i in range(1, N-1):
+        A[i] = max(B[i], B[i-1])
+    A[-1] = B[-1]
+    print(sum(A))
 
 =======
 Suggestion 6
 
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
     b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-
-    sum = 0
-    for i in range(n):
-        sum += b[a[i]-1]
-        if i < n-1 and a[i] == a[i+1]-1:
-            sum += c[a[i]-1]
-    print(sum)
+    a = [0] * n
+    a[0] = b[0]
+    for i in range(n-2):
+        a[i+1] = min(b[i], b[i+1])
+    a[n-1] = b[n-2]
+    print(sum(a))
 
 =======
 Suggestion 7
 
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    C = list(map(int, input().split()))
-
-    sum = 0
-    for i in range(N):
-        sum += B[A[i] - 1]
-        if i < N - 1 and A[i] + 1 == A[i + 1]:
-            sum += C[A[i] - 1]
-
-    print(sum)
+def solve(n, b):
+    a = [0] * n
+    a[0] = b[0]
+    for i in range(1, n-1):
+        a[i] = max(b[i-1], b[i])
+    a[n-1] = b[n-2]
+    return sum(a)
 
 =======
 Suggestion 8
 
 def main():
     N = int(input())
-    A = [int(x) for x in input().split()]
-    B = [int(x) for x in input().split()]
-    C = [int(x) for x in input().split()]
-    total = 0
-    for i in range(N):
-        total += B[A[i]-1]
-        if i < N-1 and A[i+1] == A[i]+1:
-            total += C[A[i]-1]
-    print(total)
-
-main()
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[N-1] = B[N-2]
+    for i in range(1, N-1):
+        A[i] = min(B[i-1], B[i])
+    print(sum(A))
 
 =======
 Suggestion 9
 
 def main():
     n = int(input())
-    a = [int(i) for i in input().split()]
-    b = [int(i) for i in input().split()]
-    c = [int(i) for i in input().split()]
-    total = 0
-    for i in range(n):
-        total += b[a[i]-1]
-        if i < n - 1 and a[i+1] - a[i] == 1:
-            total += c[a[i]-1]
-    print(total)
-
-=======
-Suggestion 10
-
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
     b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-
-    sum = 0
-    for i in range(n):
-        sum += b[a[i]-1]
-        if i != n-1 and a[i] == a[i+1]-1:
-            sum += c[a[i]-1]
-    print(sum)
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    a[n-1] = b[n-2]
+    for i in range(n-2):
+        a[i+1] = min(b[i], b[i+1])
+    print(sum(a))

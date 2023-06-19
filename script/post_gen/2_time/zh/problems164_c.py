@@ -4,83 +4,49 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    a, b, c, d = map(int, input().split())
-    while True:
-        c -= b
-        if c <= 0:
-            print('Yes')
-            break
-        a -= d
-        if a <= 0:
-            print('No')
-            break
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(len(set(s)))
 
 =======
 Suggestion 2
 
 def main():
-    a,b,c,d = map(int,input().split())
-    if (c-1)//b > (a-1)//d:
-        print("否")
-    else:
-        print("是")
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print(len(set(S)))
+
+main()
 
 =======
 Suggestion 3
 
-def main():
-    a,b,c,d = map(int,input().split())
-    while True:
-        c -= b
-        if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
+def count_words(words):
+    #print(words)
+    words_list = words.split()
+    #print(words_list)
+    return len(set(words_list))
 
 =======
 Suggestion 4
 
-def problem164_b():
-    A, B, C, D = map(int, input().split())
-    while True:
-        C = C - B
-        if C <= 0:
-            print('Yes')
-            break
-        A = A - D
-        if A <= 0:
-            print('No')
-            break
+def unique(l):
+    return list(set(l))
+
+N = int(input())
+S = [input() for i in range(N)]
+print(len(unique(S)))
 
 =======
 Suggestion 5
 
 def main():
-    a,b,c,d = map(int,input().split())
-    while a > 0 and c > 0:
-        c -= b
-        if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
-
-=======
-Suggestion 6
-
-def main():
-    a, b, c, d = map(int, input().strip().split())
-    while True:
-        c -= b
-        if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    print(len(s))

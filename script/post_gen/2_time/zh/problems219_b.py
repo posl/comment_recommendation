@@ -1,138 +1,191 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    x = int(input())
-    if x < 40:
-        print(40 - x)
-    elif x < 70:
-        print(70 - x)
-    elif x < 90:
-        print(90 - x)
-    else:
-        print("expert")
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            result += s1
+        elif t[i] == "2":
+            result += s2
+        elif t[i] == "3":
+            result += s3
+    print(result)
 
 =======
 Suggestion 2
 
-def get_score_level(score):
-    if score >= 0 and score < 40:
-        return "新手"
-    elif score >= 40 and score < 70:
-        return "中级"
-    elif score >= 70 and score < 90:
-        return "高级"
-    elif score >= 90 and score <= 100:
-        return "专家"
-    else:
-        return "输入分数有误"
+def get_s(s, t):
+    s1 = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            s1 += s[0]
+        elif t[i] == '2':
+            s1 += s[1]
+        else:
+            s1 += s[2]
+    return s1
+
+s1 = input()
+s2 = input()
+s3 = input()
+t = input()
+print(get_s(s1, t) + get_s(s2, t) + get_s(s3, t))
 
 =======
 Suggestion 3
 
 def main():
-    x = int(input())
-    if x < 40:
-        print(40-x)
-    elif x < 70:
-        print(70-x)
-    elif x < 90:
-        print(90-x)
-    else:
-        print('专家')
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    ans = ""
+    for i in t:
+        if i == "1":
+            ans += s1
+        elif i == "2":
+            ans += s2
+        else:
+            ans += s3
+    print(ans)
 
 =======
 Suggestion 4
 
-def get_level(score):
-    if score >= 0 and score < 40:
-        return "新手"
-    elif score >= 40 and score < 70:
-        return "中级"
-    elif score >= 70 and score < 90:
-        return "高级"
-    elif score >= 90 and score <= 100:
-        return "专家"
-    else:
-        return "输入错误"
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            result += s1
+        elif t[i] == '2':
+            result += s2
+        else:
+            result += s3
+    print(result)
 
 =======
 Suggestion 5
 
-def get_level(x):
-    if x < 40:
-        return 40
-    elif x < 70:
-        return 70
-    elif x < 90:
-        return 90
-    else:
-        return 'expert'
+def main():
+    # 读取输入
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+
+    # 计算结果
+    result = ""
+    for i in t:
+        if i == '1':
+            result += s1
+        elif i == '2':
+            result += s2
+        else:
+            result += s3
+
+    # 打印结果
+    print(result)
 
 =======
 Suggestion 6
 
-def getScore():
-    score = int(input())
-    if score >= 0 and score < 40:
-        print(40-score)
-    elif score >= 40 and score < 70:
-        print(70-score)
-    elif score >= 70 and score < 90:
-        print(90-score)
-    elif score >= 90 and score <= 100:
-        print('专家')
-    else:
-        print('输入错误')
-
-getScore()
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    ans = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            ans += s1
+        elif t[i] == "2":
+            ans += s2
+        elif t[i] == "3":
+            ans += s3
+    print(ans)
 
 =======
 Suggestion 7
 
-def exam_grade(n):
-    if n < 40:
-        return 40 - n
-    elif n < 70:
-        return 70 - n
-    elif n < 90:
-        return 90 - n
-    else:
-        return 'expert'
-
-n = int(input())
-print(exam_grade(n))
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    for i in t:
+        if i == "1":
+            print(s1, end="")
+        elif i == "2":
+            print(s2, end="")
+        else:
+            print(s3, end="")
+    print()
 
 =======
 Suggestion 8
 
-def get_score():
-    while True:
-        score = input("请输入你的分数：")
-        if score.isdigit():
-            score = int(score)
-            if score >= 0 and score <= 100:
-                break
-            else:
-                print("请输入0到100之间的数字")
-                continue
-        else:
-            print("请输入数字")
-            continue
-    return score
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = []
+    for i in range(len(t)):
+        if t[i] == '1':
+            result.append(s1)
+        elif t[i] == '2':
+            result.append(s2)
+        elif t[i] == '3':
+            result.append(s3)
+    print(''.join(result))
 
 =======
 Suggestion 9
 
 def main():
-    x = int(input())
-    if x < 40:
-        print(40 - x)
-    elif x < 70:
-        print(70 - x)
-    elif x < 90:
-        print(90 - x)
-    else:
-        print("专家")
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    ans = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            ans += s1
+        elif t[i] == '2':
+            ans += s2
+        else:
+            ans += s3
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    # 读入三个字符串
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    # 读入T
+    T = input()
+    # 用T中的字符决定输出的字符
+    ans = ""
+    for i in T:
+        if i == "1":
+            ans += s1
+        elif i == "2":
+            ans += s2
+        else:
+            ans += s3
+    # 打印答案
+    print(ans)

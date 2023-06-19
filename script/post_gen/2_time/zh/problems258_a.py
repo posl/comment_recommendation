@@ -3,114 +3,130 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    pass
+def problems258_a():
+    k = int(input())
+    h = int(k / 60)
+    m = k - h * 60
+    print("%02d:%02d" % (h + 21, m))
 
 =======
 Suggestion 2
 
 def main():
-    N = int(input())
-    x = []
-    y = []
-    P = []
-    for _ in range(N):
-        x_i, y_i, P_i = map(int, input().split())
-        x.append(x_i)
-        y.append(y_i)
-        P.append(P_i)
-    ans = 0
-    for i in range(N):
-        for j in range(N):
-            if i == j:
-                continue
-            if P[i] * ans >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
-                break
+    k = int(input())
+    h = 21
+    m = 0
+    if k >= 60:
+        h = h + k // 60
+        m = k % 60
+    else:
+        m = k
+    if h >= 24:
+        h = h - 24
+    if h < 10:
+        if m < 10:
+            print("0" + str(h) + ":" + "0" + str(m))
         else:
-            ans += 1
-    print(ans)
+            print("0" + str(h) + ":" + str(m))
+    else:
+        if m < 10:
+            print(str(h) + ":" + "0" + str(m))
+        else:
+            print(str(h) + ":" + str(m))
 
 =======
 Suggestion 3
 
-def solve():
-    n = int(input())
-    x = []
-    y = []
-    p = []
-    for i in range(n):
-        a, b, c = map(int, input().split())
-        x.append(a)
-        y.append(b)
-        p.append(c)
-    INF = 10 ** 9
-    # dp[i][j]表示第i个蹦床训练j次能访问的蹦床
-    dp = [[0] * (n + 1) for _ in range(n)]
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                dp[i][j] = INF
-            else:
-                if p[i] * j >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
-                    dp[i][j] = 1
-    # floyd
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
-    res = INF
-    for i in range(n):
-        res = min(res, max(dp[i]))
-    print(res + 1)
-solve()
+def main():
+    K = int(input())
+    hour = K // 60
+    minute = K % 60
+    print(f"{21 + hour:02}:{minute:02}")
 
 =======
 Suggestion 4
 
-def get_distance(x1,y1,x2,y2):
-    return abs(x1-x2)+abs(y1-y2)
+def main():
+    k = int(input())
+    h = k // 60
+    m = k % 60
+    print("{:02d}:{:02d}".format(21+h, m))
 
 =======
 Suggestion 5
 
-def getPower(s, x, y, xi, yi, pi):
-    return pi * s >= abs(x - xi) + abs(y - yi)
+def main():
+    K = int(input())
+    H = 21
+    M = 0
+    for i in range(K):
+        M += 1
+        if M == 60:
+            M = 0
+            H += 1
+            if H == 24:
+                H = 0
+    if H < 10:
+        print("0", end = "")
+    print(H, end = ":")
+    if M < 10:
+        print("0", end = "")
+    print(M)
 
 =======
 Suggestion 6
 
 def main():
-    n=int(input())
-    x=[]
-    y=[]
-    p=[]
-    for i in range(n):
-        x1,y1,p1=map(int,input().split())
-        x.append(x1)
-        y.append(y1)
-        p.append(p1)
-    ans=0
-    for i in range(n):
-        for j in range(n):
-            if i==j:
-                continue
-            if p[i]*ans>=abs(x[i]-x[j])+abs(y[i]-y[j]):
-                ans+=1
-                break
-    print(ans)
-main()
+    k = int(input())
+    hour = k // 60
+    minute = k % 60
+    if hour < 10:
+        hour = '0'+str(hour)
+    if minute < 10:
+        minute = '0'+str(minute)
+    print(str(21+hour)+':'+str(minute))
 
 =======
 Suggestion 7
 
 def main():
-    N = int(input())
-    x = []
-    y = []
-    P = []
-    for i in range(N):
-        x1, y1, P1 = map(int, input().split())
-        x.append(x1)
-        y.append(y1)
-        P.append(P1)
-    print(N)
+    k = int(input())
+    hour, minute = divmod(k, 60)
+    hour = hour + 21
+    minute = minute
+    if hour > 23:
+        hour = hour - 24
+    if hour < 10:
+        hour = "0" + str(hour)
+    else:
+        hour = str(hour)
+    if minute < 10:
+        minute = "0" + str(minute)
+    else:
+        minute = str(minute)
+    print(hour + ":" + minute)
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    h = k // 60
+    m = k % 60
+    print("{0:02d}:{1:02d}".format(21+h%24,m))
+    return
+
+=======
+Suggestion 9
+
+def get_time(k):
+    h = 21
+    m = 0
+    for i in range(k):
+        m += 1
+        if m == 60:
+            m -= 60
+            h += 1
+            if h == 24:
+                h -= 24
+    return h, m

@@ -1,133 +1,196 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    num = int(input())
-    res = ""
-    while num > 0:
-        num -= 1
-        res = chr(ord('a') + num % 26) + res
-        num //= 26
-    print(res)
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = []
+    c = []
+    for i in range(q):
+        b1, c1 = map(int, input().split())
+        b.append(b1)
+        c.append(c1)
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    for i in range(q):
+        sum += (c[i] - b[i]) * a.count(b[i])
+        print(sum)
+        for j in range(n):
+            if a[j] == b[i]:
+                a[j] = c[i]
+        #print(a)
 
 =======
 Suggestion 2
 
-def dogName(N):
-    dogName = ""
-    while N > 0:
-        N -= 1
-        dogName = chr(ord('a') + N % 26) + dogName
-        N /= 26
-    return dogName
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = []
+    c = []
+    for i in range(q):
+        b1, c1 = map(int, input().split())
+        b.append(b1)
+        c.append(c1)
+    s = sum(a)
+    for i in range(q):
+        s = s + (c[i] - b[i]) * a.count(b[i])
+        print(s)
 
 =======
 Suggestion 3
 
-def dogname(n):
-    if n<=26:
-        return chr(n+96)
-    elif n<=702:
-        return chr(n//26+96)+chr(n%26+96)
-    elif n<=18278:
-        return chr(n//702+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=475254:
-        return chr(n//18278+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=12356630:
-        return chr(n//475254+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=321272406:
-        return chr(n//12356630+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=8451004008:
-        return chr(n//321272406+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=222651511842:
-        return chr(n//8451004008+96)+chr(n//321272406%26+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=5843183014110:
-        return chr(n//222651511842+96)+chr(n//8451004008%26+96)+chr(n//321272406%26+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
-    elif n<=153
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    q = int(input())
+    B = []
+    C = []
+    for i in range(q):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+
+    sum = 0
+    for i in range(n):
+        sum += A[i]
+
+    for i in range(q):
+        sum += (C[i] - B[i]) * A.count(B[i])
+        print(sum)
+        sum = sum - (C[i] - B[i]) * A.count(B[i])
+        A = list(map(lambda x: C[i] if x == B[i] else x, A))
 
 =======
 Suggestion 4
 
 def main():
     n = int(input())
-    ans = ""
-    while n > 0:
-        n -= 1
-        ans += chr(ord('a') + n % 26)
-        n //= 26
-    print(ans[::-1])
+    a_list = list(map(int, input().split()))
+    q = int(input())
+    bc_list = [list(map(int, input().split())) for _ in range(q)]
+
+    sum_a = sum(a_list)
+    d = {}
+    for a in a_list:
+        if a in d:
+            d[a] += 1
+        else:
+            d[a] = 1
+
+    for b, c in bc_list:
+        if b in d:
+            sum_a += (c - b) * d[b]
+            if c in d:
+                d[c] += d[b]
+            else:
+                d[c] = d[b]
+            d.pop(b)
+        print(sum_a)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = ''
-    while n > 0:
-        n -= 1
-        a = chr(ord('a') + n % 26) + a
-        n //= 26
-    print(a)
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    BC = [list(map(int, input().split())) for _ in range(Q)]
+    print(N, A, Q, BC)
+    for i in range(Q):
+        B = BC[i][0]
+        C = BC[i][1]
+        for j in range(N):
+            if A[j] == B:
+                A[j] = C
+        print(sum(A))
 
 =======
 Suggestion 6
 
-def get_name(n):
-    name = ""
-    while n > 0:
-        n -= 1
-        name = chr(n%26+97) + name
-        n //= 26
-    return name
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    bc = []
+    for _ in range(q):
+        bc.append(list(map(int, input().split())))
+    s = sum(a)
+    for b, c in bc:
+        s += (c - b) * a.count(b)
+        print(s)
+        a = list(map(lambda x: c if x == b else x, a))
 
 =======
 Suggestion 7
 
-def get_new_name(n):
-    name = ''
-    while n > 0:
-        n -= 1
-        name = chr(ord('a') + n % 26) + name
-        n //= 26
-    return name
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = []
+    c = []
+    for i in range(q):
+        b_temp, c_temp = map(int, input().split())
+        b.append(b_temp)
+        c.append(c_temp)
+
+    sum_a = sum(a)
+    for i in range(q):
+        sum_a += (c[i] - b[i]) * a.count(b[i])
+        print(sum_a)
+        sum_a -= (c[i] - b[i]) * a.count(b[i])
 
 =======
 Suggestion 8
 
-def main():
+def solve():
     n = int(input())
-    name = ''
-    while n > 0:
-        n -= 1
-        name = chr(n%26 + ord('a')) + name
-        n //= 26
-    print(name)
+    a = list(map(int, input().split()))
+    q = int(input())
+    bc = [list(map(int, input().split())) for _ in range(q)]
+
+    sum_a = sum(a)
+    cnt = [0] * 10**5
+    for i in range(n):
+        cnt[a[i]-1] += 1
+
+    for i in range(q):
+        sum_a += (bc[i][1]-bc[i][0]) * cnt[bc[i][0]-1]
+        cnt[bc[i][1]-1] += cnt[bc[i][0]-1]
+        cnt[bc[i][0]-1] = 0
+        print(sum_a)
 
 =======
 Suggestion 9
 
 def solve():
-    N = int(input())
-    res = ""
-    while N > 0:
-        N -= 1
-        res = chr(ord('a') + N % 26) + res
-        N //= 26
-    print(res)
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    q = int(input())
+    b = []
+    c = []
+    for i in range(q):
+        b_i, c_i = [int(i) for i in input().split()]
+        b.append(b_i)
+        c.append(c_i)
+
+    # print(n)
+    # print(a)
+    # print(q)
+    # print(b)
+    # print(c)
+
+    sum_a = sum(a)
+    # print(sum_a)
+
+    for i in range(q):
+        sum_a = sum_a - a.count(b[i]) * b[i] + a.count(b[i]) * c[i]
+        print(sum_a)
+
 solve()
-
-=======
-Suggestion 10
-
-def get_s(n):
-    s = ""
-    while n > 0:
-        n -= 1
-        s = chr(ord('a') + n % 26) + s
-        n //= 26
-    return s
-
-n = int(input())
-print(get_s(n))

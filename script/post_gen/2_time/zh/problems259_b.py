@@ -3,134 +3,114 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_height(N, M, X, T, D):
-    height = T
-    for i in range(X, N):
-        height += D
-    return height
+def get_new_coordinate(x, y, d):
+    import math
+    rad = d * math.pi / 180
+    new_x = x * math.cos(rad) - y * math.sin(rad)
+    new_y = x * math.sin(rad) + y * math.cos(rad)
+    return new_x, new_y
 
 =======
 Suggestion 2
 
-def solve():
-    N, M, X, T, D = map(int, input().split())
-    height = T
-    for i in range(X, M):
-        height += D
-    for i in range(M, N):
-        height += D
-    print(height)
+def problem259_b():
+    a,b,d = input().split(' ')
+    a = float(a)
+    b = float(b)
+    d = float(d)
+    import math
+    d = math.radians(d)
+    a1 = a * math.cos(d) - b * math.sin(d)
+    b1 = a * math.sin(d) + b * math.cos(d)
+    print('{0:.20f} {1:.20f}'.format(a1,b1))
 
 =======
 Suggestion 3
 
-def main():
-    N,M,X,T,D = map(int,input().split())
-    if M == 0:
-        print(T)
-    else:
-        for i in range(M):
-            if i < X-1:
-                T += D
-            elif i == X-1:
-                T += 0
-            elif i >= X:
-                T += D
-        print(T)
+def rotate(x, y, d):
+    import math
+    d = math.radians(d)
+    x2 = x * math.cos(d) - y * math.sin(d)
+    y2 = x * math.sin(d) + y * math.cos(d)
+    return x2, y2
+
+a, b, d = map(int, input().split())
+x, y = rotate(a, b, d)
+print(x, y)
 
 =======
 Suggestion 4
 
-def solve():
-    # 读取输入
-    n, m, x, t, d = map(int, input().split())
-    # 计算
-    h = t
-    for i in range(x, m):
-        h += d
-    for i in range(m, n):
-        h += d
-    # 输出
-    print(h)
-
-solve()
+def rotate(x, y, d):
+    import math
+    pi = math.pi
+    r = d * pi / 180
+    x1 = x * math.cos(r) - y * math.sin(r)
+    y1 = x * math.sin(r) + y * math.cos(r)
+    return x1, y1
 
 =======
 Suggestion 5
 
-def main():
-    #输入
-    n,m,x,t,d = map(int,input().split())
-    #计算
-    for i in range(m,n):
-        if i == x:
-            t += d
-        else:
-            t += d
-    #输出
-    print(t)
+def rotate(x, y, d):
+    import math
+    rad = math.radians(d)
+    x1 = x * math.cos(rad) - y * math.sin(rad)
+    y1 = x * math.sin(rad) + y * math.cos(rad)
+    return x1, y1
 
 =======
 Suggestion 6
 
 def main():
-    n,m,x,t,d = map(int,input().split())
-    height = t
-    for i in range(1,n):
-        if i < x:
-            height += d
-        elif i == x:
-            height += d
-        else:
-            height += d
-    print(height)
+    a, b, d = map(int, input().split())
+    import math
+    rad = math.radians(d)
+    x = a * math.cos(rad) - b * math.sin(rad)
+    y = a * math.sin(rad) + b * math.cos(rad)
+    print(x, y)
 
 =======
 Suggestion 7
 
-def get_height(n, m, x, t, d):
-    height = t
-    for i in range(1, n):
-        if i == x:
-            continue
-        height += d
-    return height
+def rotate(a,b,d):
+    import math
+    d=math.radians(d)
+    a_=a*math.cos(d)-b*math.sin(d)
+    b_=a*math.sin(d)+b*math.cos(d)
+    return a_,b_
+a,b,d=map(float,input().split())
+a_,b_=rotate(a,b,d)
+print(a_,b_)
 
 =======
 Suggestion 8
 
-def main():
-    N,M,X,T,D = map(int,input().split())
-    height = T
-    for i in range(1,M):
-        height += D
-    for i in range(M,N):
-        height += D
-        if i == X:
-            height -= D
-    print(height)
+def rotate(x, y, d):
+    import math
+    x2 = x * math.cos(math.radians(d)) - y * math.sin(math.radians(d))
+    y2 = x * math.sin(math.radians(d)) + y * math.cos(math.radians(d))
+    return x2, y2
 
 =======
 Suggestion 9
 
-def get_height(n, m, x, t, d):
-    height = t
-    if m <= x:
-        for i in range(m, x):
-            height += d
-    else:
-        for i in range(x, m):
-            height -= d
-    return height
+def rotate(a, b, d):
+    import math
+    theta = math.radians(d)
+    a_ = a * math.cos(theta) - b * math.sin(theta)
+    b_ = a * math.sin(theta) + b * math.cos(theta)
+    return a_, b_
 
 =======
 Suggestion 10
 
-def get_height(n,m,x,t,d):
-    height = t
-    for i in range(1, n):
-        if x == i:
-            height += d
-        else:
-            height += d
-    return height
+def rotate(a,b,d):
+    import math
+    # 将角度转换为弧度
+    d = math.radians(d)
+    # 计算新的x坐标
+    x = a * math.cos(d) - b * math.sin(d)
+    # 计算新的y坐标
+    y = a * math.sin(d) + b * math.cos(d)
+    return x,y

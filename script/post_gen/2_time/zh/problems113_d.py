@@ -3,248 +3,154 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    n, m = map(int, input().split())
-    data = [tuple(map(int, input().split())) for _ in range(m)]
-    data.sort(key=lambda x: x[1])
-
-    cnt = [0] * (n + 1)
-    for p, y in data:
-        cnt[p] += 1
-
-    ans = {}
-    for p, y in data:
-        ans[y] = (str(p).zfill(6) + str(cnt[p]).zfill(6))
-        cnt[p] -= 1
-
-    for p, y in data:
-        print(ans[y])
+def amidakuji(h,w,k):
+    #h:垂直线的高度
+    #w:垂直线的数量
+    #k:从最左边的垂直线的顶部追踪到底部，当我们遇到水平线时，我们会从左边到达第K条垂直线的底部。
+    #返回值：满足条件的羊皮纸的数量
+    #思路：将问题分解为两部分，第一部分是垂直线的排序，第二部分是水平线的排序
+    #第一部分垂直线的排序
+    #第一步：计算垂直线的排序
+    #第二步：计算水平线的排序
+    #第三步：计算满足条件的羊皮纸的数量
+    #第一步�
 
 =======
 Suggestion 2
 
-def main():
-    n,m = map(int,input().split())
-    data = []
-    for i in range(m):
-        p,y = map(int,input().split())
-        data.append([p,y,i])
-    data.sort(key=lambda x:x[1])
-    ans = []
-    cnt = [0]*n
-    for i in range(m):
-        p,y,i = data[i]
-        cnt[p-1] += 1
-        ans.append([i,cnt[p-1]])
-    ans.sort(key=lambda x:x[0])
-    for i in range(m):
-        p,x = ans[i]
-        print(str(p+1).zfill(6)+str(x).zfill(6))
+def solve(h,w,k):
+    #dp[i][j]表示第i行，第j个位置的方案数
+    #dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1]
+    dp = [[0 for i in range(w+2)] for j in range(h+1)]
+    dp[0][k] = 1
+    mod = 10**9 + 7
+    for i in range(1,h+1):
+        for j in range(1,w+1):
+            dp[i][j] = (dp[i-1][j-1] + dp[i-1][j+1]) % mod
+    return dp[h][1]
+
+h,w,k = map(int,input().split())
+print(solve(h,w,k))
 
 =======
 Suggestion 3
 
-def main():
-    N, M = map(int, input().split())
-    py = [list(map(int, input().split())) for _ in range(M)]
-    py.sort()
-    city = [0] * N
-    for i, (p, y) in enumerate(py):
-        city[p - 1] += 1
-        py[i].append(city[p - 1])
-    for p, y, c in py:
-        print(str(p).zfill(6) + str(c).zfill(6))
+def amidakuji(h,w,k):
+    if h == 1:
+        if k == 1:
+            return 1
+        elif k == w:
+            return 2
+        else:
+            return 0
+    else:
+        if k == 1:
+            return amidakuji(h-1,w,k)
+        elif k == w:
+            return amidakuji(h-1,w-1,k-1)
+        else:
+            return amidakuji(h-1,w,k) + amidakuji(h-1,w-1,k-1)
+
+h,w,k = map(int,input().split())
+print(amidakuji(h,w,k)%1000000007)
 
 =======
 Suggestion 4
 
-def main():
-    pass
+def amidakuji(h,w,k):
+    if h==1:
+        return 1
+    elif w==1:
+        return 2
+    elif k==1:
+        return 2**(w-1)
+    elif k==w:
+        return 2**(w-1)
+    else:
+        return 2**(w-2)
 
 =======
 Suggestion 5
 
-def main():
-    n,m = map(int,input().split())
-    p_y = [list(map(int,input().split())) for _ in range(m)]
-    p_y.sort(key=lambda x:x[1])
-    # print(p_y)
-    ans = [0]*m
-    cnt = [0]*n
-    for i in range(m):
-        cnt[p_y[i][0]-1] += 1
-        ans[i] = str(p_y[i][0]).zfill(6) + str(cnt[p_y[i][0]-1]).zfill(6)
-    for i in ans:
-        print(i)
+def amidakuji(h,w,k):
+    if w == 1:
+        return 1
+    elif k == 1:
+        return amidakuji(h-1,w-1,1)
+    elif k == w:
+        return amidakuji(h-1,w-1,w-1)
+    else:
+        return amidakuji(h-1,w-1,k-1) + amidakuji(h-1,w-1,k)
 
 =======
 Suggestion 6
 
-def main():
-    N, M = map(int, input().split())
-    P_Y = [list(map(int, input().split())) for _ in range(M)]
-    P_Y.sort(key=lambda x: x[1])
+def amidakuji(h, w, k):
+    if w == 1:
+        return 1
+    if k == 1:
+        return amidakuji(h-1, w-1, 1) + amidakuji(h-1, w, 2)
+    if k == w:
+        return amidakuji(h-1, w-1, w-1) + amidakuji(h-1, w, w-2)
+    return amidakuji(h-1, w-1, k-1) + amidakuji(h-1, w, k) + amidakuji(h-1, w-1, k+1)
 
-    P = [0] * N
-    Y = [0] * N
-    for i in range(M):
-        P[i] = P_Y[i][0]
-        Y[i] = P_Y[i][1]
-
-    cnt = [0] * N
-    for i in range(M):
-        cnt[P[i] - 1] += 1
-
-    ans = [0] * M
-    for i in range(M):
-        ans[i] = str(P[i]).zfill(6) + str(cnt[P[i] - 1]).zfill(6)
-        cnt[P[i] - 1] -= 1
-
-    for i in range(M):
-        print(ans[i])
+h, w, k = map(int, input().split())
+print(amidakuji(h, w, k) % 1000000007)
 
 =======
 Suggestion 7
 
-def main():
-    N, M = map(int, input().split())
-    P = [0] * M
-    Y = [0] * M
-    for i in range(M):
-        P[i], Y[i] = map(int, input().split())
-
-    #print(N, M, P, Y)
-
-    #P = [1, 2, 1]
-    #Y = [32, 63, 12]
-    #N = 2
-    #M = 3
-
-    #P = [2, 2, 2]
-    #Y = [55, 77, 99]
-    #N = 2
-    #M = 3
-
-    #print(N, M, P, Y)
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
-    #    print("%06d%06d" % (P[i], Y[i]))
-
-    #print("")
-
-    #print(N, M, P, Y)
-
-    #print("")
-
-    #for i in range(M):
+def amidakuji(h,w,k):
+    #print(h,w,k)
+    if k == 1:
+        return 2**(w-1)
+    elif k == w:
+        return 2**(w-1)
+    else:
+        return 2**(w-2)
 
 =======
 Suggestion 8
 
-def main():
-    N, M = map(int, input().split())
-    P_Y = [tuple(map(int, input().split())) for _ in range(M)]
-    P_Y.sort(key=lambda x: x[1])
-    P = [0] * N
-    P[P_Y[0][0] - 1] = 1
-    c = 1
-    for i in range(1, M):
-        if P_Y[i - 1][0] != P_Y[i][0]:
-            c = 1
-        else:
-            c += 1
-        P[P_Y[i][0] - 1] = c
-    for i in range(M):
-        print(str(P_Y[i][0]).zfill(6) + str(P[i]).zfill(6))
+def dfs(h,w,k):
+    #print(h,w,k)
+    if h==0:
+        return 1
+    if dp[h][w][k]!=-1:
+        return dp[h][w][k]
+    if k==1:
+        dp[h][w][k]=dfs(h-1,w,k)+dfs(h-1,w+1,k+1)
+    elif k==w:
+        dp[h][w][k]=dfs(h-1,w-1,k-1)+dfs(h-1,w,k)
+    else:
+        dp[h][w][k]=dfs(h-1,w-1,k-1)+dfs(h-1,w,k)+dfs(h-1,w+1,k+1)
+    dp[h][w][k]%=1000000007
+    return dp[h][w][k]
+
+H,W,K=map(int,input().split())
+dp=[[[-1 for _ in range(W+2)] for _ in range(W+2)] for _ in range(H+1)]
+print(dfs(H,W,K))
 
 =======
 Suggestion 9
 
-def main():
-    N, M = map(int, input().split())
-    PY = [list(map(int, input().split())) for i in range(M)]
-    PY = sorted(PY, key=lambda x: x[1])
-    # print(PY)
-    # print(N, M)
-    # print(PY)
-    city = [0] * N
-    for i in range(M):
-        city[PY[i][0] - 1] += 1
-        PY[i].append(city[PY[i][0] - 1])
-    # print(PY)
-    for i in range(M):
-        print(str(PY[i][0]).zfill(6) + str(PY[i][3]).zfill(6))
+def draw(h, w, k):
+    if w == 1:
+        return 1
+    if k == 1:
+        return draw(h, w-1, 1) + draw(h, w-1, 2)
+    if k == w:
+        return draw(h, w-1, w-1) + draw(h, w-1, w)
+    return draw(h, w-1, k-1) + draw(h, w-1, k) + draw(h, w-1, k+1)
 
 =======
 Suggestion 10
 
-def main():
-    n, m = map(int, input().split())
-    p_y = [list(map(int, input().split())) for _ in range(m)]
-    p_y.sort(key=lambda x: x[1])
-    p_y_dict = {}
-    for p, y in p_y:
-        if p not in p_y_dict:
-            p_y_dict[p] = 1
-        else:
-            p_y_dict[p] += 1
-    ans = []
-    for p, y in p_y:
-        ans.append(str(p).zfill(6) + str(p_y_dict[p]).zfill(6))
-        p_y_dict[p] -= 1
-    for a in ans:
-        print(a)
+def amidakuji(h,w,k):
+    if w == 1:
+        return 1
+    if k == 1:
+        return amidakuji(h,w-1,k)
+    if k == w:
+        return amidakuji(h,w-1,k-1)
+    return amidakuji(h,w-1,k-1) + amidakuji(h,w-1,k)

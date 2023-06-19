@@ -1,180 +1,214 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    s = input()
-    count = 0
-    for i in range(10000):
-        pin = str(i).zfill(4)
-        flag = True
-        for j in range(10):
-            if s[j] == 'o' and str(j) not in pin:
-                flag = False
-            if s[j] == 'x' and str(j) in pin:
-                flag = False
-        if flag:
-            count += 1
-    print(count)
-    return 0
+    pass
 
 =======
 Suggestion 2
 
 def main():
-    s = input()
-    count = 0
-    for i in range(10000):
-        i = str(i).zfill(4)
-        if all([i[int(j)] == s[int(j)] for j in range(len(s)) if s[int(j)] in '0123456789']):
-            count += 1
-    print(count)
+    print('Hello World!')
 
 =======
 Suggestion 3
 
-def f(S):
-    S = S.replace('o','1')
-    S = S.replace('x','0')
-    S = S.replace('?','2')
-    S = S.replace('2','?')
-    return int(S,3)
-
-S = input()
-print(f(S))
+def readinput():
+    h,w=map(int,input().split())
+    a=[]
+    for _ in range(h):
+        a.append(input())
+    return h,w,a
 
 =======
 Suggestion 4
 
 def main():
-    s = input()
-    s = list(s)
-    count = 0
-    for i in range(10000):
-        i = str(i).zfill(4)
-        flag = True
-        for j in range(10):
-            if s[j] == 'o' and str(j) not in i:
-                flag = False
-                break
-            elif s[j] == 'x' and str(j) in i:
-                flag = False
-                break
-        if flag:
-            count += 1
-    print(count)
+    print("hello world!")
 
 =======
 Suggestion 5
 
 def main():
-    s = input()
-    cnt = 0
-
-    for i in range(10000):
-        pin = "{:0>4}".format(i)
-        flag = True
-        for j in range(10):
-            if s[j] == 'o' and str(j) not in pin:
-                flag = False
-                break
-            if s[j] == 'x' and str(j) in pin:
-                flag = False
-                break
-        if flag:
-            cnt += 1
-    print(cnt)
+    h,w=map(int,input().split())
+    a=[input() for i in range(h)]
+    dp=[[0]*w for i in range(h)]
+    for i in range(h-1,-1,-1):
+        for j in range(w-1,-1,-1):
+            if i==h-1 and j==w-1:
+                continue
+            if (i+j)%2==0:
+                if i==h-1:
+                    dp[i][j]=dp[i][j+1]
+                elif j==w-1:
+                    dp[i][j]=dp[i+1][j]
+                else:
+                    dp[i][j]=max(dp[i+1][j],dp[i][j+1])
+                if a[i][j]=="+":
+                    dp[i][j]+=1
+                else:
+                    dp[i][j]-=1
+            else:
+                if i==h-1:
+                    dp[i][j]=dp[i][j+1]
+                elif j==w-1:
+                    dp[i][j]=dp[i+1][j]
+                else:
+                    dp[i][j]=min(dp[i+1][j],dp[i][j+1])
+                if a[i][j]=="+":
+                    dp[i][j]-=1
+                else:
+                    dp[i][j]+=1
+    if dp[0][0]>0:
+        print("Takahashi")
+    elif dp[0][0]<0:
+        print("Aoki")
+    else:
+        print("Draw")
 
 =======
 Suggestion 6
 
 def main():
-    s = input()
-    cnt = 0
-    for i in range(10000):
-        i = str(i).zfill(4)
-        flag = True
-        for j in range(10):
-            if s[j] == 'o' and str(j) not in i:
-                flag = False
-            elif s[j] == 'x' and str(j) in i:
-                flag = False
-        if flag:
-            cnt += 1
-    print(cnt)
+    #输入
+    H,W = map(int,input().split())
+    A = []
+    for i in range(H):
+        A.append(list(input()))
+
+    #动态规划
+    dp = [[0 for i in range(W)] for j in range(H)]
+    dp[H-1][W-1] = 0
+    for i in range(H-1,-1,-1):
+        for j in range(W-1,-1,-1):
+            if i == H-1 and j == W-1:
+                continue
+            elif i == H-1:
+                if A[i][j] == "+":
+                    dp[i][j] = dp[i][j+1]-1
+                else:
+                    dp[i][j] = dp[i][j+1]+1
+            elif j == W-1:
+                if A[i][j] == "+":
+                    dp[i][j] = dp[i+1][j]-1
+                else:
+                    dp[i][j] = dp[i+1][j]+1
+            else:
+                if A[i][j] == "+":
+                    dp[i][j] = max(dp[i+1][j]-1,dp[i][j+1]-1)
+                else:
+                    dp[i][j] = min(dp[i+1][j]+1,dp[i][j+1]+1)
+
+    #判断
+    if dp[0][0] > 0:
+        print("Takahashi")
+    elif dp[0][0] < 0:
+        print("Aoki")
+    else:
+        print("Draw")
 
 =======
 Suggestion 7
 
-def count_passwords(s):
-    count = 0
-    for i in range(10000):
-        password = str(i).zfill(4)
-        if all([password[int(c)] == s[int(c)] for c in range(10) if s[int(c)] != '?']):
-            count += 1
-    return count
+def main():
+    # 读取输入
+    h, w = map(int, input().split())
+    a = [list(input()) for _ in range(h)]
+    # dp[i][j]表示从(i,j)到达(h-1,w-1)的最大分数差
+    dp = [[0]*w for _ in range(h)]
+    # 从后往前
+    for i in range(h-1, -1, -1):
+        for j in range(w-1, -1, -1):
+            # 如果是最后一个元素
+            if i == h-1 and j == w-1:
+                continue
+            # 如果是最后一行
+            if i == h-1:
+                if a[i][j] == '+':
+                    dp[i][j] = dp[i][j+1]
+                else:
+                    dp[i][j] = dp[i][j+1] - 1
+            # 如果是最后一列
+            elif j == w-1:
+                if a[i][j] == '+':
+                    dp[i][j] = dp[i+1][j]
+                else:
+                    dp[i][j] = dp[i+1][j] - 1
+            # 如果不是最后一行或最后一列
+            else:
+                if a[i][j] == '+':
+                    dp[i][j] = max(dp[i][j+1], dp[i+1][j])
+                else:
+                    dp[i][j] = max(dp[i][j+1], dp[i+1][j]) - 1
+    # 输出结果
+    if dp[0][0] == 0:
+        print('Draw')
+    elif dp[0][0] > 0:
+        print('Takahashi')
+    else:
+        print('Aoki')
 
 =======
 Suggestion 8
 
 def main():
-    S = input()
-    #print(S)
-    #print(S[0:10])
-    #print(S[0:10].count("o"))
-    #print(S[0:10].count("x"))
-    #print(S[0:10].count("?"))
-    #print(S[0:10].count("o") + S[0:10].count("?"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o") + S[0:10].count("?"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x"))
-    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") +
+    h,w = map(int,input().split())
+    a = [input() for _ in range(h)]
+    dp = [[0]*w for _ in range(h)]
+    for i in range(h-1,-1,-1):
+        for j in range(w-1,-1,-1):
+            if i == h-1 and j == w-1:
+                continue
+            if (i+j)%2 == 0:
+                dp[i][j] = max(dp[i+1][j],dp[i][j+1])
+                if a[i][j] == '+':
+                    dp[i][j] += 1
+                else:
+                    dp[i][j] -= 1
+            else:
+                dp[i][j] = min(dp[i+1][j],dp[i][j+1])
+                if a[i][j] == '+':
+                    dp[i][j] -= 1
+                else:
+                    dp[i][j] += 1
+    if dp[0][0] > 0:
+        print("Takahashi")
+    elif dp[0][0] == 0:
+        print("Draw")
+    else:
+        print("Aoki")
 
 =======
 Suggestion 9
 
 def main():
-    s = input()
-    count = 0
-    for i in range(10000):
-        i = str(i).zfill(4)
-        flag = True
-        for j in range(10):
-            if s[j] == 'o' and str(j) not in i:
-                flag = False
-                break
-            elif s[j] == 'x' and str(j) in i:
-                flag = False
-                break
-        if flag:
-            count += 1
-    print(count)
-
-=======
-Suggestion 10
-
-def main():
-    s = input()
-    count = 0
-    for i in range(10000):
-        if i < 1000:
-            i = '0' * (4 - len(str(i))) + str(i)
-        else:
-            i = str(i)
-        flag = True
-        for j in range(10):
-            if s[j] == 'o':
-                if str(j) not in i:
-                    flag = False
-                    break
-            elif s[j] == 'x':
-                if str(j) in i:
-                    flag = False
-                    break
-        if flag:
-            count += 1
-    print(count)
+    h,w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    dp = [[0] * w for _ in range(h)]
+    for i in range(h-1, -1, -1):
+        for j in range(w-1, -1, -1):
+            if i == h-1 and j == w-1:
+                continue
+            if i == h-1:
+                if a[i][j+1] == '+':
+                    dp[i][j] = -dp[i][j+1] + 1
+                else:
+                    dp[i][j] = -dp[i][j+1] - 1
+            elif j == w-1:
+                if a[i+1][j] == '+':
+                    dp[i][j] = -dp[i+1][j] + 1
+                else:
+                    dp[i][j] = -dp[i+1][j] - 1
+            else:
+                if a[i][j+1] == '+':
+                    dp[i][j] = max(-dp[i][j+1] + 1, -dp[i+1][j])
+                else:
+                    dp[i][j] = max(-dp[i][j+1] - 1, -dp[i+1][j])
+    if dp[0][0] > 0:
+        print('Takahashi')
+    elif dp[0][0] < 0:
+        print('Aoki')
+    else:
+        print('Draw')

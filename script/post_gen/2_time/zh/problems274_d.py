@@ -1,144 +1,114 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = [0] * (2 * n + 1)
-    for i in range(n):
-        ans[a[i]] = i + 1
-    for i in range(1, n + 1):
-        x = i
-        while x != 1:
-            ans[x // 2] = max(ans[x // 2], ans[x] + 1)
-            x //= 2
-    for i in range(1, 2 * n + 1):
-        print(ans[i])
+def solve():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().s
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = [0] * (2 * n + 1)
+    n,x,y = map(int,input().split())
+    a = list(map(int,input().split()))
+    #print(n,x,y)
+    #print(a)
     for i in range(n):
-        ans[a[i]] = i + 1
-    for i in range(2 * n - 1, 0, -1):
-        ans[i // 2] += ans[i]
-    for i in range(2 * n + 1):
-        print(ans[i])
+        for j in range(i+1,n):
+            if i!=j:
+                if (x-a[i])**2+(y-a[j])**2 == a[i]**2+a[j]**2:
+                    print("Yes")
+                    return
+    print("No")
+    return
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = [0] * (2 * n + 1)
-    for i in range(n):
-        ans[a[i]] = i + 1
-    for i in range(2, 2 * n + 1):
-        ans[i] = ans[i // 2] + 1
-    for i in range(1, 2 * n + 1):
-        print(ans[i])
+def is90(x1, y1, x2, y2, x3, y3):
+    x1 = x1 - x2
+    y1 = y1 - y2
+    x3 = x3 - x2
+    y3 = y3 - y2
+    if x1*x3 + y1*y3 == 0:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * (2 * n + 1)
-    for i in range(n):
-        b[a[i]] = i + 1
-    for i in range(1, 2 * n + 1):
-        j = i
-        while j <= 2 * n:
-            b[j] = max(b[j], b[i] + 1)
-            j += i
-    for i in range(1, 2 * n + 1):
-        print(b[i] - 1)
+def is_90degree(x1,y1,x2,y2,x3,y3):
+    if (x2-x1)*(x3-x2)+(y2-y1)*(y3-y2)==0:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 5
 
 def main():
-    n=int(input())
-    a=list(map(int,input().split()))
-    ans=[0]*(2*n+1)
-    for i in range(n):
-        ans[a[i]]=i+1
-    for i in range(2*n,0,-1):
-        ans[i//2]+=ans[i]
-    for i in range(2*n+1):
-        print(ans[i])
+    n,x,y = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.append(abs(x))
+    a.append(abs(y))
+    a.sort()
+    a.reverse()
+    if a[0] == a[1]:
+        print("No")
+    else:
+        for i in range(1,n+1):
+            if a[i-1] == a[i]:
+                print("No")
+                break
+        else:
+            print("Yes")
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.insert(0,0)
-    ans = [0] * (2 * n + 1)
-    for i in range(1, n + 1):
-        ans[i] = 1
-    for i in range(n, 0, -1):
-        ans[i] += max(ans[2 * i], ans[2 * i + 1])
-    for i in range(1, 2 * n + 1):
-        print(ans[i])
+    pass
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    a = [0] + list(map(int, input().split()))
-    ans = [0] * (2 * n + 1)
-    for i in range(1, n + 1):
-        p = i
-        cnt = 0
-        while True:
-            cnt += 1
-            p = a[p]
-            if p == 1:
-                break
-        ans[i] = cnt
-    for i in range(1, 2 * n + 1):
-        print(ans[i])
+    n,x,y = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    for i in range(n-1):
+        for j in range(i+1,n):
+            if a[i]+a[j] == abs(x-y):
+                print("Yes")
+                exit()
+    print("No")
 
 =======
 Suggestion 8
 
 def solve():
-  n = int(input())
-  a = [int(i) - 1 for i in input().split()]
-  b = [0] * (2 * n + 1)
-  for i in range(n):
-    b[a[i]] = i + 1
-  for i in range(2 * n - 1, 0, -1):
-    b[i // 2] += b[i]
-  for i in range(1, 2 * n + 1):
-    print(b[i])
+    n, x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(0)
+    a.append(0)
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            for k in range(j + 1, n + 2):
+                if (a[i] - a[j]) * (a[j] - a[k]) == 0 and (a[i] - a[j]) + (a[j] - a[k]) == 0:
+                    print("Yes")
+                    return
+    print("No")
 
 solve()
 
 =======
 Suggestion 9
 
-def get_generation_distance(n, a):
-    generation_distance = [0 for i in range(2*n+1)]
-    generation_distance[1] = 0
-    for i in range(n):
-        generation_distance[2*(i+1)] = generation_distance[a[i]] + 1
-        generation_distance[2*(i+1)+1] = generation_distance[a[i]] + 1
-    return generation_distance
-
-=======
-Suggestion 10
-
-def read_ints():
-    return list(map(int, input().split()))
+def is_right_angle(a, b, c):
+    if a**2 + b**2 == c**2:
+        return True
+    else:
+        return False

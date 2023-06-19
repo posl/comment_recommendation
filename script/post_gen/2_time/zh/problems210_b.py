@@ -1,62 +1,118 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def buy_cabbage(n,a,x,y):
-    if n<=a:
-        return n*x
+def main():
+    N = int(input())
+    S = input()
+    if S[0] == '1':
+        print('高桥')
     else:
-        return a*x+(n-a)*y
+        print('青木')
 
 =======
 Suggestion 2
 
-def problems210_a():
-    N, A, X, Y = map(int, input().split())
-    if N <= A:
-        print(N * X)
+def main():
+    n = int(input())
+    s = input()
+    if s.count('1') % 2 == 1:
+        print('高桥')
     else:
-        print(A * X + (N - A) * Y)
+        print('青木')
 
 =======
 Suggestion 3
 
 def main():
-    N, A, X, Y = map(int, input().split())
-    if N <= A:
-        print(N * X)
+    n = int(input())
+    s = input()
+    if s[0] == '0':
+        print("Takahashi")
     else:
-        print(A * X + (N - A) * Y)
+        print("Aoki")
 
 =======
 Suggestion 4
 
 def main():
-    n, a, x, y = map(int, input().split())
-    if n > a:
-        print(a*x+(n-a)*y)
+    n = int(input())
+    s = input()
+    if s.count('1')%2 == 0:
+        print('Takahashi')
     else:
-        print(n*x)
+        print('Aoki')
+
+main()
 
 =======
 Suggestion 5
 
 def main():
-    n, a, x, y = map(int, input().split())
-    if n <= a:
-        print(n*x)
+    N = int(input())
+    S = input()
+    if S[0] == '1' or N % 2 == 0:
+        print("Takahashi")
     else:
-        print(a*x + (n-a)*y)
+        print("Aoki")
 
 =======
 Suggestion 6
 
 def main():
-    n, a, x, y = map(int, input().split())
-    ans = 0
-    if n > a:
-        ans = a * x + (n - a) * y
+    N = int(input())
+    S = input()
+    if S.count('1') % 2 == 1:
+        print('高桥')
     else:
-        ans = n * x
-    print(ans)
+        print('青木')
+
+=======
+Suggestion 7
+
+def main():
+    # N = int(input())
+    # S = input()
+    N = 5
+    S = '00101'
+    for i in range(N):
+        if S[i] == '1':
+            if i % 2 == 0:
+                print('高桥')
+            else:
+                print('青木')
+            break
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    if S.find('1') % 2 == 0:
+        print('Takahashi')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    if s[0] == "1":
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = input()
+    if s.find('1') % 2 == 0:
+        print("Takahashi")
+    else:
+        print("Aoki")

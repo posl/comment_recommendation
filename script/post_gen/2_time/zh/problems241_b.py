@@ -1,83 +1,202 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    a = raw_input().split()
-    b = [0]*10
-    for i in range(10):
-        b[i] = int(a[i])
-    for j in range(3):
-        b[0] = b[b[0]]
-    print b[0]
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    if m > n:
+        print("No")
+        return
+
+    a.sort()
+    b.sort()
+
+    for i in range(m):
+        if b[i] <= a[i]:
+            print("No")
+            return
+
+    print("Yes")
 
 =======
 Suggestion 2
 
 def main():
-    a = [int(x) for x in input().split()]
-    n = 0
-    for i in range(10):
-        n = a[n]
-    print(n)
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    if a[-1] >= b[-1]:
+        print("No")
+        return
+    for i in range(m):
+        if a[-1] >= b[i]:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 3
 
-def get_next_number(k, a):
-    return a[k]
+def solve(n, m, a, b):
+    a.sort()
+    b.sort()
+    if n < m:
+        return "No"
+    else:
+        for i in range(m):
+            if a[i] >= b[i]:
+                return "No"
+        return "Yes"
 
 =======
 Suggestion 4
 
 def main():
+    n, m = map(int, input().split())
     a = list(map(int, input().split()))
-    k = 0
-    for i in range(3):
-        k = a[k]
-    print(k)
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    if n < m:
+        print("No")
+    else:
+        for i in range(m):
+            if a[i] < b[i]:
+                print("No")
+                exit()
+        print("Yes")
 
 =======
 Suggestion 5
 
-def get_next_number(n):
-    return a[n]
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    if N < M:
+        print('No')
+        return
+    i = 0
+    for a in A:
+        if a == B[i]:
+            i += 1
+            if i == M:
+                print('Yes')
+                return
+    print('No')
 
-a = [int(i) for i in input().split()]
-n = 0
-for i in range(3):
-    n = get_next_number(n)
-print(n)
+solve()
 
 =======
 Suggestion 6
 
-def read_ints():
-    return list(map(int, input().split()))
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    if m > n:
+        print("No")
+    else:
+        a.sort()
+        b.sort()
+        for i in range(m):
+            if a[i] > b[i]:
+                print("No")
+                exit()
+        print("Yes")
 
 =======
 Suggestion 7
 
-def main():
+def solve():
+    n, m = map(int, input().split())
     a = list(map(int, input().split()))
-    for i in range(10):
-        if a[0] == a[i]:
-            print(i)
-            break
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    if n < m:
+        print('No')
+        return
+
+    for i in range(m):
+        if a[i] < b[i]:
+            print('No')
+            return
+
+    print('Yes')
 
 =======
 Suggestion 8
 
 def main():
-    a = list(map(int, input().split()))
-    b = [0]
-    for i in range(100):
-        b.append(a[b[-1]])
-    print(b[3])
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    if m > n:
+        print("No")
+        return
+    for i in range(m):
+        if b[i] < a[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+main()
 
 =======
 Suggestion 9
 
-def get_a_k(a, k):
-    return a[k]
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] <= b[j]:
+            i += 1
+        j += 1
+    if i == n:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    if n < m:
+        print("No")
+        return
+
+    for i in range(m):
+        if b[i] < a[i]:
+            print("No")
+            return
+
+    print("Yes")

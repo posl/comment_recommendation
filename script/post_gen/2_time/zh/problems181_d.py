@@ -3,144 +3,256 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
-
-=======
-Suggestion 2
-
-def gcd(x,y):
-    if y == 0:
-        return x
-    else:
-        return gcd(y,x%y)
-
-=======
-Suggestion 3
-
-def get_line(x1,y1,x2,y2):
-    if x1==x2:
-        return 'x='+str(x1)
-    elif y1==y2:
-        return 'y='+str(y1)
-    else:
-        k=(y1-y2)/(x1-x2)
-        b=y1-k*x1
-        return 'y='+str(k)+'x+'+str(b)
-
-=======
-Suggestion 4
-
-def solve():
-    n = int(input())
-    points = []
-    for i in range(n):
-        x, y = map(int, input().split())
-        points.append((x, y))
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                x1, y1 = points[i]
-                x2, y2 = points[j]
-                x3, y3 = points[k]
-                if x1 == x2 and x2 == x3:
-                    print('Yes')
-                    return
-                elif x1 == x2 or x2 == x3:
-                    continue
-                else:
-                    if (y2 - y1) / (x2 - x1) == (y3 - y2) / (x3 - x2):
-                        print('Yes')
-                        return
-    print('No')
-solve()
-
-=======
-Suggestion 5
-
-def isLine(x1, y1, x2, y2, x3, y3):
-    if x1 == x2 and x1 == x3:
-        return True
-    elif y1 == y2 and y1 == y3:
-        return True
-    elif (y1 - y2) * (x1 - x3) == (y1 - y3) * (x1 - x2):
+def judge(num):
+    if num%8==0:
         return True
     else:
         return False
 
 =======
+Suggestion 2
+
+def judge(s):
+    for i in range(1,10):
+        if s.count(str(i))>0:
+            if i%8==0:
+                return True
+    return False
+
+s=input()
+
+=======
+Suggestion 3
+
+def judge(s):
+    if len(s) == 1:
+        if s == "8":
+            return True
+        else:
+            return False
+    elif len(s) == 2:
+        if int(s) % 8 == 0 or int(s[::-1]) % 8 == 0:
+            return True
+        else:
+            return False
+    else:
+        d = {}
+        for i in s:
+            if i in d:
+                d[i] += 1
+            else:
+                d[i] = 1
+        for i in range(112, 1000, 8):
+            t = str(i)
+            dt = {}
+            for j in t:
+                if j in dt:
+                    dt[j] += 1
+                else:
+                    dt[j] = 1
+            if dt == d:
+                return True
+        return False
+
+s = input()
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = list(S)
+    #print(S)
+    for i in range(len(S)):
+        S[i] = int(S[i])
+    #print(S)
+    S.sort()
+    #print(S)
+    if len(S) == 1:
+        if S[0] == 8:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if len(S) == 2:
+        if (S[0]*10 + S[1]) % 8 == 0 or (S[1]*10 + S[0]) % 8 == 0:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if len(S) == 3:
+        if (S[0]*100 + S[1]*10 + S[2]) % 8 == 0 or (S[0]*100 + S[2]*10 + S[1]) % 8 == 0 or (S[1]*100 + S[0]*10 + S[2]) % 8 == 0 or (S[1]*100 + S[2]*10 + S[0]) % 8 == 0 or (S[2]*100 + S[0]*10 + S[1]) % 8 == 0 or (S[2]*100 + S[1]*10 + S[0]) % 8 == 0:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if len(S) == 4:
+        if (S[0]*1000 + S[1]*100 + S[2]*10 + S[3]) % 8 == 0 or (S[0]*1000 + S[1]*100 + S[3]*10 + S[2]) % 8 == 0 or (S[0]*1000 + S[2]*100 + S[1]*10 + S[3]) % 8 == 0 or (S[0]*1000 + S[2]*100 + S[3]*10 + S[1]) % 8 == 0 or (S[0]*1000 + S[3]*100 + S[1]*10 + S[2]) % 8 == 0 or (S[0]*1000 + S[3]*100 + S[
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if len(S) == 1:
+        if S == '8':
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 2:
+        if int(S)%8 == 0 or int(S[1]+S[0])%8 == 0:
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 3:
+        if int(S)%8 == 0 or int(S[2]+S[0]+S[1])%8 == 0 or int(S[1]+S[2]+S[0])%8 == 0 or int(S[2]+S[1]+S[0])%8 == 0 or int(S[1]+S[0]+S[2])%8 == 0:
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 4:
+        if int(S)%8 == 0 or int(S[3]+S[0]+S[1]+S[2])%8 == 0 or int(S[2]+S[3]+S[0]+S[1])%8 == 0 or int(S[1]+S[2]+S[3]+S[0])%8 == 0 or int(S[0]+S[1]+S[2]+S[3])%8 == 0 or int(S[3]+S[2]+S[1]+S[0])%8 == 0 or int(S[2]+S[1]+S[0]+S[3])%8 == 0 or int(S[1]+S[0]+S[3]+S[2])%8 == 0:
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 5:
+        if int(S)%8 == 0 or int(S[4]+S[0]+S[1]+S[2]+S[3])%8 == 0 or int(S[3]+S[4]+S[0]+S[1]+S[2])%8 == 0 or int(S[2]+S[3]+S[4]+S[0]+S[1])%8 == 0 or int(S[1
+
+=======
 Suggestion 6
 
-def get_slope(x1, y1, x2, y2):
-    if x1 == x2:
-        return float('inf')
-    else:
-        return (y2 - y1) / (x2 - x1)
+def main():
+    s = input()
+    #s = "1234"
+    #s = "1333"
+    #s = "8"
+    #s = "1234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "1234567890123456789012345678901234567890123456789012345678901234567890"
+    #s = "123456789012345678901234567890123456789012345678901234567890123456789"
+
+    #print(s)
+    s = list(s)
+    #print(s)
+    #print(len(s))
+    #print(s[0])
+    #print(s[1])
+    #print(s[2])
+    #print(s[3])
+    #print(s[4])
+    #print(s[5])
+    #print(s[6])
+    #print(s[7])
+    #print(s[8])
+    #print(s[9])
+    #print(s[10])
+    #print(s[11])
+    #print(s[12])
+    #print(s[13])
+    #print(s[14])
+    #print(s
 
 =======
 Suggestion 7
 
 def main():
-    N = int(input())
-    points = []
-    for i in range(N):
-        x,y = map(int,input().split())
-        points.append((x,y))
-    for i in range(N):
-        for j in range(i+1,N):
-            for k in range(j+1,N):
-                if points[i][0] == points[j][0]:
-                    if points[i][0] == points[k][0]:
-                        print('Yes')
-                        return
-                elif points[i][1] == points[j][1]:
-                    if points[i][1] == points[k][1]:
-                        print('Yes')
-                        return
-                else:
-                    if (points[i][0]-points[j][0])*(points[i][1]-points[k][1]) == (points[i][0]-points[k][0])*(points[i][1]-points[j][1]):
-                        print('Yes')
-                        return
-    print('No')
-main()
+    s = input()
+    d = {}
+    for c in s:
+        if c in d:
+            d[c] += 1
+        else:
+            d[c] = 1
+    for i in range(1000, 2000, 8):
+        dd = {}
+        for c in str(i):
+            if c in dd:
+                dd[c] += 1
+            else:
+                dd[c] = 1
+        for c in dd:
+            if not c in d or dd[c] > d[c]:
+                break
+        else:
+            print("是")
+            break
+    else:
+        print("否")
 
 =======
 Suggestion 8
 
-def get_slope(x1, y1, x2, y2):
-    if x1 == x2:
-        return "inf"
-    else:
-        return (y2-y1)/(x2-x1)
+def is_8(n):
+    for i in range(1,10):
+        if n.count(str(i)) == 0:
+            continue
+        if n.count(str(i)) > 3:
+            return False
+    return True
 
 =======
 Suggestion 9
 
-def is_same_line(p1, p2, p3):
-    if p1[0] == p2[0] and p2[0] == p3[0]:
-        return True
-    if p1[1] == p2[1] and p2[1] == p3[1]:
-        return True
-    if p1[0] == p2[0] or p1[1] == p2[1]:
-        return False
-    if p1[0] == p3[0] or p1[1] == p3[1]:
-        return False
-    if p2[0] == p3[0] or p2[1] == p3[1]:
-        return False
-    if (p1[0] - p2[0]) * (p1[1] - p3[1]) == (p1[0] - p3[0]) * (p1[1] - p2[1]):
-        return True
+def is_8(x):
+    x = str(x)
+    if len(x) == 1:
+        if x == '8':
+            return True
+        else:
+            return False
+    elif len(x) == 2:
+        if int(x) % 8 == 0:
+            return True
+        elif int(x[1] + x[0]) % 8 == 0:
+            return True
+        else:
+            return False
     else:
+        for i in range(len(x)):
+            for j in range(len(x)):
+                for k in range(len(x)):
+                    if i != j and j != k and k != i:
+                        if int(x[i] + x[j] + x[k]) % 8 == 0:
+                            return True
         return False
+
+s = input()
 
 =======
 Suggestion 10
 
-def find(a, b):
-    if a[0] == b[0]:
-        return 0
-    elif a[1] == b[1]:
-        return 1
-    else:
-        return 2
+def solve():
+    s = input()
+    if len(s) <= 2:
+        if int(s) % 8 == 0 or int(s[::-1]) % 8 == 0:
+            print('是')
+        else:
+            print('否')
+        return
+
+    cnt = [0] * 10
+    for c in s:
+        cnt[int(c)] += 1
+
+    for i in range(112, 1000, 8):
+        t = [0] * 10
+        t[i % 10] += 1
+        t[(i // 10) % 10] += 1
+        t[i // 100] += 1
+        if all(t[j] <= cnt[j] for j in range(10)):
+            print('是')
+            return
+    print('否')
+
+solve()

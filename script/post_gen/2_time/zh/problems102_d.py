@@ -4,308 +4,296 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = []
-    for i in range(N):
-        if i == 0:
-            B.append(A[i])
-        else:
-            B.append(B[i-1] + A[i])
-    C = []
-    for i in range(N):
-        if i == 0:
-            C.append(A[i])
-        else:
-            C.append(C[i-1] + B[i])
-    D = []
-    for i in range(N):
-        if i == 0:
-            D.append(A[i])
-        else:
-            D.append(D[i-1] + C[i])
-    E = []
-    for i in range(N):
-        if i == 0:
-            E.append(A[i])
-        else:
-            E.append(E[i-1] + D[i])
-    min_value = 10**9
-    for i in range(N-3):
-        for j in range(i+1,N-2):
-            for k in range(j+1,N-1):
-                for l in range(k+1,N):
-                    P = B[i]
-                    Q = B[j] - B[i]
-                    R = B[k] - B[j]
-                    S = B[l] - B[k]
-                    max_value = max(P,Q,R,S)
-                    min_value = min(min_value, max_value - min(P,Q,R,S))
-    print(min_value)
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    ans = s
+    t = 0
+    for i in range(n - 1):
+        t += a[i]
+        ans = min(ans, abs(s - t - t))
+    print(ans)
 
 =======
 Suggestion 2
 
-def get_max_min_diff(nums):
-    max_num = max(nums)
-    min_num = min(nums)
-    max_diff = max_num - min_num
-    return max_diff
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_sum = [0] * (N + 1)
+    A_sum[0] = 0
+    for i in range(N):
+        A_sum[i + 1] = A_sum[i] + A[i]
+    #print(A_sum)
+    min_diff = 10 ** 9
+    for i in range(2, N - 1):
+        for j in range(1, i):
+            P = A_sum[j]
+            Q = A_sum[i] - A_sum[j]
+            for k in range(i + 1, N):
+                R = A_sum[k] - A_sum[i]
+                S = A_sum[N] - A_sum[k]
+                max_num = max(P, Q, R, S)
+                min_num = min(P, Q, R, S)
+                min_diff = min(min_diff, max_num - min_num)
+    print(min_diff)
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    sums = [0]
-    for i in range(n):
-        sums.append(sums[-1] + a[i])
-
-    def get_diff(i, j):
-        return abs(sums[j] - sums[i])
-
-    def get_max_diff(i, j):
-        return max(get_diff(i, j), get_diff(j, i))
-
-    ans = 10**9
-    for i in range(1, n - 2):
-        for j in range(i + 1, n - 1):
-            ans = min(ans, max(get_max_diff(0, i), max(get_max_diff(i, j), get_max_diff(j, n))))
-
-    print(ans)
+def get_min_max_diff(A):
+    N = len(A)
+    min_diff = 10 ** 9
+    for i in range(1, N - 2):
+        for j in range(i + 1, N - 1):
+            for k in range(j + 1, N):
+                P = sum(A[:i])
+                Q = sum(A[i:j])
+                R = sum(A[j:k])
+                S = sum(A[k:])
+                diff = max(P, Q, R, S) - min(P, Q, R, S)
+                if diff < min_diff:
+                    min_diff = diff
+    return min_diff
 
 =======
 Suggestion 4
 
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    # print(N)
-    # print(A)
-    # print(type(N))
-    # print(type(A))
-    # print(len(A))
-    # print(A[0])
-    # print(A[1])
-    # print(A[2])
-    # print(A[3])
-    # print(A[4])
-    # print(A[5])
-    # print(A[6])
-    # print(A[7])
-    # print(A[8])
-    # print(A[9])
-    # print(A[10])
-    # print(A[11])
-    # print(A[12])
-    # print(A[13])
-    # print(A[14])
-    # print(A[15])
-    # print(A[16])
-    # print(A[17])
-    # print(A[18])
-    # print(A[19])
-    # print(A[20])
-    # print(A[21])
-    # print(A[22])
-    # print(A[23])
-    # print(A[24])
-    # print(A[25])
-    # print(A[26])
-    # print(A[27])
-    # print(A[28])
-    # print(A[29])
-    # print(A[30])
-    # print(A[31])
-    # print(A[32])
-    # print(A[33])
-    # print(A[34])
-    # print(A[35])
-    # print(A[36])
-    # print(A[37])
-    # print(A[38])
-    # print(A[39])
-    # print(A[40])
-    # print(A[41])
-    # print(A[42])
-    # print(A[43])
-    # print(A[44])
-    # print(A[45])
-    # print(A[46])
-    # print(A[47])
-    # print(A[48])
-    # print(A[49])
-    # print(A[50])
-    # print(A[51])
-    # print(A[52])
-    # print(A[53])
-    # print(A[54])
-    # print(A[55])
-    # print(A[56])
-    # print(A[57])
-    # print(A[58])
-    # print(A[59])
-    # print(A[60])
-    # print(A[61])
-    # print(A[62])
-    # print(A[63])
-    # print(A[
-
-=======
-Suggestion 5
-
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * (n + 1)
-    c = [0] * (n + 1)
-    d = [0] * (n + 1)
-    e = [0] * (n + 1)
-    for i in range(n):
-        b[i + 1] = b[i] + a[i]
-    for i in range(n):
-        c[i + 1] = c[i] + b[i]
-    for i in range(n):
-        d[i + 1] = d[i] + c[i]
-    for i in range(n):
-        e[i + 1] = e[i] + d[i]
-    ans = 10 ** 18
-    for i in range(1, n - 2):
-        for j in range(i + 1, n - 1):
-            for k in range(j + 1, n):
-                p = b[i]
-                q = c[j] - c[i]
-                r = d[k] - d[j]
-                s = e[n] - e[k]
-                ans = min(ans, max(p, q, r, s) - min(p, q, r, s))
-    print(ans)
-
-=======
-Suggestion 6
-
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    s = sum(a)
-    ans = float('inf')
-    now = 0
-    for i in range(n - 1):
-        now += a[i]
-        ans = min(ans, abs(s - 2 * now))
-    print(ans)
-
-=======
-Suggestion 7
-
-def main():
-    # 读取输入
-    N = int(input())
-    A = list(map(int, input().split()))
-
-    # 累计和
-    S = [0] * (N + 1)
-    for i in range(N):
-        S[i + 1] = S[i] + A[i]
-
-    # 二分查找
-    result = 10**9
-    for i in range(2, N - 1):
-        for j in range(i + 1, N):
-            # P = S[i]
-            # Q = S[j] - S[i]
-            # R = S[N] - S[j]
-            # S = S[N] - S[i]
-            # result = min(result, max(P, Q, R, S) - min(P, Q, R, S))
-            # 优化
-            P = S[i]
-            Q = S[j] - S[i]
-            R = S[N] - S[j]
-            S = S[N] - S[i]
-            result = min(result, max(P, Q, R, S) - min(P, Q, R, S))
-            # 二分查找
-            # 1. 二分查找的对象是什么？是最大值和最小值的绝对差
-            # 2. 二分查找的范围是什么？是最大值和最小值的绝对差的范围
-            # 3. 二分查找的条件是什么？是最大值和最小值的绝对差是否大于等于当前值
-            # 4. 二分查找的结果是什么？是最大值和最小值的绝对差的最小值
-            # 5. 二分查找的返回值是什么？是最大值和最小值的绝对差的最小值
-            # 6. 二分查找的实现是什么？是二分查找的实现
-            # 7. 二分查找的时间复杂度是什么？是O(log N)
-            # 8. 二分查找的空
-
-=======
-Suggestion 8
-
 def solve(n, a):
-    # write your code here
-    # return the correct answer
-    # 1. 二分法，找到最大值和最小值的中间值，然后从数组中找到最接近这个中间值的两个数，计算差值，然后比较差值和中间值的大小，如果差值小于中间值，那么中间值就是最大和最小值的绝对差值
-    # 2. 从数组中找到最大值和最小值，然后从数组中找到最接近这个最大值和最小值的两个数，计算差值，然后比较差值和最大值和最小值的大小，如果差值小于最大值和最小值，那么最大值和最小值就是最大和最小值的绝对差值
-    a.sort()
-    min = a[0]
-    max = a[n-1]
-    mid = int((min + max) / 2)
-    min_diff = max - min
+    a = [0] + a + [0]
     for i in range(n):
-        if a[i] < mid:
-            diff = mid - a[i]
-            if min_diff > diff:
-                min_diff = diff
-        else:
-            diff = a[i] - mid
-            if min_diff > diff:
-                min_diff = diff
-    return min_diff
-
+        a[i + 1] += a[i]
+    ans = 10 ** 9
+    l = 0
+    r = 3
+    for i in range(1, n - 2):
+        while l < i - 1 and abs(a[l] - a[i] - a[i]) >= abs(a[l + 1] - a[i] - a[i]):
+            l += 1
+        while r < n - 1 and abs(a[r] - a[n] - a[n] + a[i]) >= abs(a[r + 1] - a[n] - a[n] + a[i]):
+            r += 1
+        ans = min(ans, max(abs(a[l] - a[i] - a[i]), abs(a[r] - a[n] - a[n] + a[i])))
+    return ans
 
 n = int(input())
 a = list(map(int, input().split()))
 print(solve(n, a))
 
 =======
-Suggestion 9
+Suggestion 5
 
-def solution():
-    N = int(input())
-    A = list(map(int, input().split()))
-    ans = 10 ** 9
-    for i in range(1, N - 2):
-        for j in range(i + 1, N - 1):
-            p = sum(A[:i])
-            q = sum(A[i:j])
-            r = sum(A[j:N])
-            s = sum(A) - p - q - r
-            ans = min(ans, max(p, q, r, s) - min(p, q, r, s))
+def solve():
+    n = int(input())
+    a = list(map(int,input().split()))
+    s = [0]*(n+1)
+    for i in range(n):
+        s[i+1] = s[i]+a[i]
+    ans = 10**9
+    for i in range(1,n-2):
+        l = 0
+        r = i
+        while l+1<r:
+            m = (l+r)//2
+            if s[m]<=s[i+1]-s[m]:
+                l = m
+            else:
+                r = m
+        p = s[l]
+        q = s[i+1]-s[l]
+        l = i+1
+        r = n
+        while l+1<r:
+            m = (l+r)//2
+            if s[m]-s[i+1]<=s[n]-s[m]:
+                l = m
+            else:
+                r = m
+        r = l
+        l = i+1
+        while l+1<r:
+            m = (l+r)//2
+            if s[m]-s[i+1]<=s[n]-s[m]:
+                l = m
+            else:
+                r = m
+        r = l
+        s = s[n]-s[r]
+        r = s[i+1]-s[l]
+        ans = min(ans,max(p,q,r,s)-min(p,q,r,s))
+        ans = min(ans,max(p,q,s-r,s)-min(p,q,s-r,s))
+        ans = min(ans,max(p,r,s-q,s)-min(p,r,s-q,s))
+        ans = min(ans,max(q,r,s-p,s)-min(q,r,s-p,s))
+        ans = min(ans,max(p,s-q-r,s)-min(p,s-q-r,s))
+        ans = min(ans,max(q,s-p-r,s)-min(q,s-p-r,s))
+        ans = min(ans,max(r,s-p-q,s)-min(r,s-p-q,s))
     print(ans)
 
-solution()
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 前から累積和
+    B = [0] * (N + 1)
+    for i in range(N):
+        B[i + 1] = B[i] + A[i]
+
+    # 二分探索
+    ans = float('inf')
+    for i in range(2, N - 1):
+        # B[i]がPの累積和
+        # B[N] - B[i]がQ,R,Sの累積和
+        # 二分探索でPを探索
+        # 二分探索でQ,R,Sの中で最大と最小を探索
+        # 二分探索でP,Q,R,Sの中で最大と最小を探索
+        p = B[i] // 2
+        l = 0
+        r = i
+        while r - l > 1:
+            m = (l + r) // 2
+            if B[i] - B[m] >= p:
+                l = m
+            else:
+                r = m
+        q = B[l]
+        r = B[i] - q
+        s = B[N] - B[i]
+        ans = min(ans, max(p, q, r, s) - min(p, q, r, s))
+        p = B[N] // 2
+        l = i
+        r = N
+        while r - l > 1:
+            m = (l + r) // 2
+            if B[m] - B[i] >= p:
+                r = m
+            else:
+                l = m
+        q = B[i] - B[l]
+        r = B[N] - B[m]
+        s = B[N] - B[i]
+        ans = min(ans, max(p, q, r, s) - min(p, q, r, s))
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    #print(A)
+    S = sum(A)
+    #print(S)
+    min_diff = S
+    for i in range(1, N):
+        #print(i)
+        for j in range(i+1, N):
+            #print(j)
+            for k in range(j+1, N):
+                #print(k)
+                P = sum(A[0:i])
+                Q = sum(A[i:j])
+                R = sum(A[j:k])
+                S = sum(A[k:])
+                #print(P, Q, R, S)
+                min_diff = min(min_diff, max(P, Q, R, S) - min(P, Q, R, S))
+    print(min_diff)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*(N+1)
+    for i in range(N):
+        B[i+1] = B[i]+A[i]
+    C = [0]*(N+1)
+    for i in range(N):
+        C[i+1] = C[i]+A[i]
+    D = [0]*(N+1)
+    for i in range(N):
+        D[i+1] = D[i]+A[i]
+    E = [0]*(N+1)
+    for i in range(N):
+        E[i+1] = E[i]+A[i]
+    for i in range(1,N+1):
+        C[i] = max(C[i], C[i-1])
+    for i in range(N-1,-1,-1):
+        D[i] = min(D[i], D[i+1])
+    ans = 10**18
+    j = N
+    for i in range(N+1):
+        while j > 0 and B[i] + D[j] < B[N]//2:
+            j -= 1
+        if j > 0:
+            ans = min(ans, max(B[i], B[N]-B[i]) - max(C[i], D[j]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    s = sum(a)
+    ans = s
+    p = 0
+    q = 0
+    for i in range(1,n):
+        p += a[i-1]
+        q += a[i-1]
+        r = s-p
+        s = r
+        ans = min(ans,abs(max(p,q,r,s)-min(p,q,r,s)))
+    print(ans)
 
 =======
 Suggestion 10
 
-def solve(n, a):
-    # 1. 先确定前三个数的范围
-    # 2. 然后确定第四个数的范围
-    # 3. 然后确定第五个数的范围
-    # 4. 然后确定第六个数的范围
-    # 5. 然后确定第七个数的范围
-    # 6. 然后确定第八个数的范围
-    # 7. 然后确定第九个数的范围
-    # 8. 然后确定第十个数的范围
-    # 9. 然后确定第十一个数的范围
-    # 10. 然后确定第十二个数的范围
-    # 11. 然后确定第十三个数的范围
-    # 12. 然后确定第十四个数的范围
-    # 13. 然后确定第十五个数的范围
-    # 14. 然后确定第十六个数的范围
-    # 15. 然后确定第十七个数的范围
-    # 16. 然后确定第十八个数的范围
-    # 17. 然后确定第十九个数的范围
-    # 18. 然后确定第二十个数的范围
-    # 19. 然后确定第二十一个数的范围
-    # 20. 然后确定第二十二个数的范围
-    # 21. 然后确定第二十三个数的范围
-    # 22. 然后确定第二十四个数的范围
-    # 23. 然后确定第二十五个数的范围
-    # 24. 然后确定第
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print("N:", N, "A:", A)
+    #A = [3,2,4,1,2]
+    #A = [10,71,84,33,6,47,23,25,52,64]
+    #A = [1,2,3,1000000000,4,5,6]
+    #N = 7
+    #N = 10
+    #N = 5
+    #print("N:", N, "A:", A)
+    B = [0] * (N + 1)
+    C = [0] * (N + 1)
+    D = [0] * (N + 1)
+    E = [0] * (N + 1)
+    for i in range(1, N + 1):
+        B[i] = B[i - 1] + A[i - 1]
+    for i in range(1, N + 1):
+        C[i] = C[i - 1] + A[i - 1]
+    for i in range(1, N + 1):
+        D[i] = D[i - 1] + A[i - 1]
+    for i in range(1, N + 1):
+        E[i] = E[i - 1] + A[i - 1]
+    #print("B:", B)
+    #print("C:", C)
+    #print("D:", D)
+    #print("E:", E)
+    #print("N:", N, "A:", A)
+    #print("B:", B)
+    #print("C:", C)
+    #print("D:", D)
+    #print("E:", E)
+    #print("N:", N, "A:", A)
+    #print("B:", B)
+    #print("C:", C)
+    #print("D:", D)
+    #print("E:", E)
+    #print("N:", N, "A:", A)
+    #print("B:", B)
+    #print("C:", C)
+    #print("D:", D)
+    #print("E:", E)
+    #print("N:", N, "A:", A)
+    #print("B:", B)
+    #print("C:", C)

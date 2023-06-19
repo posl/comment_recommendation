@@ -1,72 +1,99 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    print(n-1)
+def is_palindrome(n):
+    n = str(n)
+    return n == n[::-1]
 
 =======
 Suggestion 2
 
-def solve(n):
-    if n<3:
-        return 0
-    if n%2==1:
-        return int((n-1)/2)
-    else:
-        return int((n-2)/2)
+def isPalindrome(s):
+    return s == s[::-1]
+
+N = input()
 
 =======
 Suggestion 3
 
-def main():
-    N = int(input())
-    if N % 2 == 0:
-        print(int(N/2-1))
+def isPalindrome(n):
+    if n == n[::-1]:
+        return True
     else:
-        print(int(N/2))
+        return False
 
 =======
 Suggestion 4
 
-def main():
-    print("请输入糖果的数目：")
-    N = int(input())
-    print("共有",count(N),"种方法可以使每个男孩得到正整数的糖果。")
+def isPalindrome(num):
+    num = str(num)
+    return num == num[::-1]
 
 =======
 Suggestion 5
 
-def main():
-    N = int(input())
-    print(int(N/2))
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+
+n = int(input())
 
 =======
 Suggestion 6
 
-def get_input():
-    n = int(input())
-    return n
+def isPalindrome(str):
+    if str == str[::-1]:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 7
 
-def problems198_a(n):
-    if n%2 == 0:
-        return n//2 - 1
+def isPalindromic(num):
+    numStr = str(num)
+    length = len(numStr)
+    if length == 1:
+        return True
     else:
-        return n//2
+        for i in range(length//2):
+            if numStr[i] != numStr[length-i-1]:
+                return False
+        return True
 
 =======
 Suggestion 8
 
-def get_candy():
-    n = int(input())
-    if n == 1:
-        return 0
-    elif n == 2:
-        return 1
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+
+num = int(input())
+print('Yes' if is_palindrome(num) else 'No')
+
+=======
+Suggestion 9
+
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+
+=======
+Suggestion 10
+
+def isHuiWen(s):
+    if len(s) == 0:
+        return False
+    if len(s) == 1:
+        return True
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return True
+        else:
+            return False
+    if s[0] == s[-1]:
+        return isHuiWen(s[1:-1])
     else:
-        return n-1
+        return False

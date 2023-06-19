@@ -4,159 +4,161 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    S = input()
-    for i in range(len(S)):
-        if i % 2 == 0:
-            if S[i] == 'L':
-                print('No')
-                exit()
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    score = [K - Q] * N
+    for i in A:
+        score[i - 1] += 1
+    for i in score:
+        if i > 0:
+            print('Yes')
         else:
-            if S[i] == 'R':
-                print('No')
-                exit()
-    print('Yes')
+            print('No')
 
 =======
 Suggestion 2
 
-def solve():
-    S = input()
-    for i in range(len(S)):
-        if i & 1 and S[i] in 'RL':
-            print('No')
-            return
-        if not i & 1 and S[i] in 'UD':
-            print('No')
-            return
-    print('Yes')
-solve()
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    b = [0] * n
+    for i in range(q):
+        b[a[i] - 1] += 1
+    for i in range(n):
+        if k - q + b[i] > 0:
+            print("Yes")
+        else:
+            print("No")
+
+main()
 
 =======
 Suggestion 3
 
 def main():
-    s = input()
-    if s[::2] == s[::2].replace('L', '').replace('U', '').replace('D', '') and s[1::2] == s[1::2].replace('R', '').replace('U', '').replace('D', ''):
-        print('Yes')
-    else:
-        print('No')
-
-main()
+    n, k, q = map(int, input().split())
+    a = []
+    for i in range(q):
+        a.append(int(input()))
+    
+    score = [k] * n
+    for i in range(q):
+        score[a[i]-1] += 1
+    for i in range(n):
+        if score[i] <= q:
+            print('No')
+        else:
+            print('Yes')
 
 =======
 Suggestion 4
 
 def main():
-    S = input()
-    odd = S[0::2]
-    even = S[1::2]
-    if odd.find('L') == -1 and odd.find('R') == -1 and even.find('U') == -1 and even.find('D') == -1:
-        print('Yes')
-    else:
-        print('No')
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for i in range(Q)]
+    P = [K-Q for i in range(N)]
+    for i in A:
+        P[i-1] += 1
+    for i in P:
+        if i > 0:
+            print("Yes")
+        else:
+            print("No")
 
 =======
 Suggestion 5
 
 def main():
-    S = input()
-    if len(S) % 2 == 0:
-        print("Yes" if S[0::2].count("L") == 0 and S[1::2].count("R") == 0 else "No")
-    else:
-        print("No")
+    # 读取输入
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    # 初始化
+    s = [k - q] * n
+    # 逐个减分
+    for i in a:
+        s[i - 1] += 1
+    # 输出
+    for i in s:
+        if i > 0:
+            print('Yes')
+        else:
+            print('No')
 
 =======
 Suggestion 6
 
 def main():
-    s = input()
-    for i in range(0, len(s)):
-        if i % 2 == 0:
-            if s[i] == 'L':
-                print('No')
-                return
+    N, K, Q = map(int, input().split())
+    A = []
+    for i in range(Q):
+        A.append(int(input()))
+    B = [0] * N
+    for i in range(Q):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        if K + B[i] - Q > 0:
+            print("Yes")
         else:
-            if s[i] == 'R':
-                print('No')
-                return
-    print('Yes')
+            print("No")
 
 =======
 Suggestion 7
 
 def main():
-    S = input()
-    if len(S) % 2 == 0:
-        for i in range(0, len(S), 2):
-            if S[i] == "L":
-                print("No")
-                exit()
-        for i in range(1, len(S), 2):
-            if S[i] == "R":
-                print("No")
-                exit()
-    else:
-        for i in range(0, len(S), 2):
-            if S[i] == "R":
-                print("No")
-                exit()
-        for i in range(1, len(S), 2):
-            if S[i] == "L":
-                print("No")
-                exit()
-    print("Yes")
+    n, k, q = map(int, input().split())
+    score = [k] * n
+    for i in range(q):
+        a = int(input())
+        score[a-1] += 1
+    for i in range(n):
+        if score[i] <= q:
+            print('No')
+        else:
+            print('Yes')
 
 =======
 Suggestion 8
 
 def main():
-    s = input()
-    for i in range(len(s)):
-        if i % 2 == 0:
-            if s[i] == 'L':
-                print('No')
-                exit()
+    n,k,q = map(int,input().split())
+    a = []
+    for i in range(q):
+        a.append(int(input()))
+    b = [0 for i in range(n)]
+    for i in range(q):
+        b[a[i]-1]+=1
+    for i in range(n):
+        if k+ b[i] -q >0:
+            print("Yes")
         else:
-            if s[i] == 'R':
-                print('No')
-                exit()
-    print('Yes')
+            print("No")
 
 =======
 Suggestion 9
 
 def main():
-    # 读入输入
-    s = input()
-    # 计算奇数位置的字符是否是R、U或D
-    for i in range(0, len(s), 2):
-        if s[i] not in ['R', 'U', 'D']:
+    n,k,q = map(int, input().split())
+    score = [k]*n
+    for i in range(q):
+        a = int(input())
+        score[a-1] = score[a-1] - 1
+    for i in score:
+        if i > 0:
+            print('Yes')
+        else:
             print('No')
-            return
-    # 计算偶数位置的字符是否是L、U或D
-    for i in range(1, len(s), 2):
-        if s[i] not in ['L', 'U', 'D']:
-            print('No')
-            return
-    # 输出结果
-    print('Yes')
 
 =======
 Suggestion 10
 
 def main():
-    s=input()
-    flag=True
-    for i in range(len(s)):
-        if i%2==0:
-            if s[i] not in ['R','U','D']:
-                flag=False
-                break
+    n, k, q = map(int, input().split())
+    score = [0] * n
+    for i in range(q):
+        a = int(input())
+        score[a-1] += 1
+    for i in range(n):
+        if score[i] + k - q > 0:
+            print('Yes')
         else:
-            if s[i] not in ['L','U','D']:
-                flag=False
-                break
-    if flag:
-        print('Yes')
-    else:
-        print('No')
+            print('No')

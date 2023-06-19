@@ -3,224 +3,212 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def problems211_c():
-    pass
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    A = sorted(A)
+    B = sorted(B)
+
+    if A[0] <= B[-1]:
+        print(0)
+    else:
+        print(N - 1)
 
 =======
 Suggestion 2
 
 def main():
-    s = input()
-    chokudai = "chokudai"
-    mod = 10**9 + 7
-    dp = [[0 for _ in range(len(chokudai))] for _ in range(len(s))]
-    for i in range(len(s)):
-        if s[i] == chokudai[0]:
-            dp[i][0] = 1
-        if i > 0:
-            dp[i][0] += dp[i-1][0]
-            dp[i][0] %= mod
-    for i in range(1, len(s)):
-        for j in range(1, len(chokudai)):
-            if s[i] == chokudai[j]:
-                dp[i][j] = dp[i-1][j-1]
-            dp[i][j] += dp[i-1][j]
-            dp[i][j] %= mod
-    print(dp[len(s)-1][len(chokudai)-1])
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    for i in range(M):
+        if AB[i][0] == 1:
+            ans += 1
+        if AB[i][1] == N:
+            break
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    s = input()
-    s = s[::-1]
-    t = "chokudai"[::-1]
-    mod = 10**9+7
-    dp = [[0]*9 for _ in range(len(s)+1)]
-    dp[0][0] = 1
-    for i in range(len(s)):
-        for j in range(9):
-            if s[i] != t[j]:
-                dp[i+1][j] = dp[i][j]
-            else:
-                dp[i+1][j] = (dp[i][j] + dp[i][j-1]) % mod
-    print(dp[-1][-1])
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(M)]
+    AB.sort(key=lambda x: x[1])
+    # print(AB)
+    count = 0
+    for i in range(M):
+        if AB[i][0] == 1:
+            count += 1
+        else:
+            break
+    # print(count)
+    if count == 0:
+        print(0)
+        exit()
+    else:
+        count += 1
+    end = AB[count - 1][1]
+    # print(end)
+    for i in range(count, M):
+        if AB[i][0] <= end:
+            continue
+        else:
+            count += 1
+            end = AB[i][1]
+    print(count)
 
 =======
 Suggestion 4
 
 def main():
-    s = input()
-    chokudai = 'chokudai'
-    mod = 10 ** 9 + 7
-    n = len(s)
-    m = len(chokudai)
-    dp = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
-    for i in range(n + 1):
-        dp[0][i] = 1
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
-            if chokudai[i - 1] == s[j - 1]:
-                dp[i][j] = (dp[i - 1][j - 1] + dp[i][j - 1]) % mod
-            else:
-                dp[i][j] = dp[i][j - 1]
-    print(dp[-1][-1])
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.sort(key=lambda x: x[1])
+
+    ans = 0
+    now = 0
+    for a, b in AB:
+        if a > now:
+            now = b-1
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 5
 
-def main():
-    s = input()
-    chokudai = "chokudai"
-    mod = 10 ** 9 + 7
-    dp = [0] * 9
-    dp[0] = 1
-    for i in range(len(s)):
-        for j in range(8, -1, -1):
-            if s[i] == chokudai[j]:
-                dp[j + 1] += dp[j]
-                dp[j + 1] %= mod
-    print(dp[8])
+def solve(n,m,ab):
+    #n,m = map(int,input().split())
+    #ab = [list(map(int,input().split())) for i in range(m)]
+    #print(n,m,ab)
+    ab.sort(key=lambda x:x[1])
+    #print(ab)
+    #print(ab[0][1])
+    #print(ab[1][1])
+    #print(ab[2][1])
+    #print(ab[3][1])
+    #print(ab[4][1])
+    #print(ab[5][1])
+    #print(ab[6][1])
+    #print(ab[7][1])
+    ans = 0
+    if ab[0][0] == 1:
+        ans += 1
+    for i in range(1,m):
+        if ab[i][0] >= ab[i-1][1]:
+            ans += 1
+    return ans
 
 =======
 Suggestion 6
 
 def main():
-    # 读入字符串
-    s = input()
-    # 计数
-    count = 0
-    # 遍历字符串
-    for i in range(len(s)):
-        # 如果当前字符是c
-        if s[i] == "c":
-            # 遍历剩下的字符串
-            for j in range(i+1,len(s)):
-                # 如果当前字符是h
-                if s[j] == "h":
-                    # 遍历剩下的字符串
-                    for k in range(j+1,len(s)):
-                        # 如果当前字符是o
-                        if s[k] == "o":
-                            # 遍历剩下的字符串
-                            for l in range(k+1,len(s)):
-                                # 如果当前字符是k
-                                if s[l] == "k":
-                                    # 遍历剩下的字符串
-                                    for m in range(l+1,len(s)):
-                                        # 如果当前字符是u
-                                        if s[m] == "u":
-                                            # 遍历剩下的字符串
-                                            for n in range(m+1,len(s)):
-                                                # 如果当前字符是d
-                                                if s[n] == "d":
-                                                    # 遍历剩下的字符串
-                                                    for o in range(n+1,len(s)):
-                                                        # 如果当前字符是a
-                                                        if s[o] == "a":
-                                                            # 遍历剩下的字符串
-                                                            for p in range(o+1,len(s)):
-                                                                # 如果当前字符是i
-                                                                if s[p] == "i":
-                                                                    # 计数+1
-                                                                    count += 1
-    # 打印结果
-    print(count % (10**9+7))
+    N, M = map(int, input().split())
+    #print(N, M)
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        #print(a, b)
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    #print(A[1])
+    #print(B[1])
+    #print(A[1] == 1)
+    #print(B[1] == N)
+    #print(A[1] == 1 and B[1] == N)
+    #print(A[1] == 1 or B[1] == N)
+    #print(A[1] == 1 or B[1] == N or A[1] == 1 and B[1] == N)
+    #print(A[1] == 1 or B[1] == N or A[1] == 1 and B[1] == N or A[2] == 1 or B[2] == N or A[2] == 1 and B[2] == N)
+    #print(A[1] == 1 or B[1] == N or A[1] == 1 and B[1] == N or A[2] == 1 or B[2] == N or A[2] == 1 and B[2] == N or A[3] == 1 or B[3] == N or A[3] == 1 and B[3] == N)
+    #print(A[1] == 1 or B[1] == N or A[1] == 1 and B[1] == N or A[2] == 1 or B[2] == N or A[2] == 1 and B[2] == N or A[3] == 1 or B[3] == N or A[3] == 1 and B[3] == N or A[4] == 1 or B[4] == N or A[4] == 1 and B[4] == N)
+    #print(A[1] == 1 or B[1] == N or A[1] == 1 and B[1] == N or A[2] == 1 or B
 
 =======
 Suggestion 7
 
 def main():
-    s = input()
-    chokudai = "chokudai"
-    MOD = 10 ** 9 + 7
-    dp = [0] * (len(chokudai) + 1)
-    dp[0] = 1
-    for c in s:
-        for i, c2 in enumerate(chokudai):
-            if c == c2:
-                dp[i + 1] += dp[i]
-                dp[i + 1] %= MOD
-    print(dp[-1])
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+    print(N)
+    print(M)
+    return
 
 =======
 Suggestion 8
 
 def main():
-    s = input()
-    s_len = len(s)
-    chokudai = 'chokudai'
-    chokudai_len = len(chokudai)
-    dp = [[0] * (s_len + 1) for _ in range(chokudai_len + 1)]
-    for i in range(s_len + 1):
-        dp[0][i] = 1
-    for i in range(1, chokudai_len + 1):
-        for j in range(1, s_len + 1):
-            if chokudai[i - 1] == s[j - 1]:
-                dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1]
-            else:
-                dp[i][j] = dp[i][j - 1]
-    print(dp[-1][-1] % (10 ** 9 + 7))
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    AB.sort(key=lambda x: x[1])
+    AB.sort(key=lambda x: x[0])
+
+    #print(AB)
+
+    count = 0
+    now = 0
+    for i in range(M):
+        if AB[i][0] > now:
+            count += 1
+            now = AB[i][1]
+        elif AB[i][1] < now:
+            now = AB[i][1]
+
+    print(count)
 
 =======
 Suggestion 9
 
 def main():
-    s = input()
-    t = 'chokudai'
-    mod = 10**9+7
-    dp = [[0]*(len(s)+1) for _ in range(len(t)+1)]
-    dp[0] = [1]*(len(s)+1)
-    for i in range(1,len(t)+1):
-        for j in range(1,len(s)+1):
-            if t[i-1] == s[j-1]:
-                dp[i][j] = (dp[i][j-1] + dp[i-1][j-1]) % mod
-            else:
-                dp[i][j] = dp[i][j-1]
-    print(dp[-1][-1])
+    n,m = map(int,input().split())
+    a = [0] * n
+    b = [0] * n
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    a.sort()
+    b.sort()
+    ans = 0
+    for i in range(m):
+        if a[i] != a[i-1]:
+            ans += 1
+        if b[i] != b[i-1]:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 10
 
-def count(s):
-    s = list(s)
-    chokudaichokudaichokudai = list("chokudaichokudaichokudai")
-    if len(s) < len(chokudaichokudaichokudai):
-        return 0
-    count = 0
-    for i in range(len(s)):
-        if s[i] == chokudaichokudaichokudai[0]:
-            s[i] = ""
-            for j in range(i+1, len(s)):
-                if s[j] == chokudaichokudaichokudai[1]:
-                    s[j] = ""
-                    for k in range(j+1, len(s)):
-                        if s[k] == chokudaichokudaichokudai[2]:
-                            s[k] = ""
-                            for l in range(k+1, len(s)):
-                                if s[l] == chokudaichokudaichokudai[3]:
-                                    s[l] = ""
-                                    for m in range(l+1, len(s)):
-                                        if s[m] == chokudaichokudaichokudai[4]:
-                                            s[m] = ""
-                                            for n in range(m+1, len(s)):
-                                                if s[n] == chokudaichokudaichokudai[5]:
-                                                    s[n] = ""
-                                                    for o in range(n+1, len(s)):
-                                                        if s[o] == chokudaichokudaichokudai[6]:
-                                                            s[o] = ""
-                                                            for p in range(o+1, len(s)):
-                                                                if s[p] == chokudaichokudaichokudai[7]:
-                                                                    s[p] = ""
-                                                                    for q in range(p+1, len(s)):
-                                                                        if s[q] == chokudaichokudaichokudai[8]:
-                                                                            s[q] = ""
-                                                                            for r in range(q+1, len(s)):
-                                                                                if s[r] == chokudaichokudaichokudai[9]:
-                                                                                    s[r] = ""
-                                                                                    for t in range(r+1, len(s)):
-                                                                                        if s[t] == chokudaichokudaichokudai[10]:
-                                                                                            s[t] = ""
-                                                                                            for u in range(t+1, len(s)):
-                                                                                                if s[u] == chokudaichokudaichokudai[11]:
-                                                                                                    s
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.sort(key=lambda x: x[1])
+    #print(AB)
+    ans = 0
+    tmp = 0
+    for i in range(M):
+        if AB[i][0] == 1:
+            tmp += 1
+            if AB[i][1] == N:
+                ans += 1
+        else:
+            if tmp > 0:
+                ans += 1
+            break
+    print(ans)

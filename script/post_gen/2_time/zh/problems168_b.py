@@ -3,86 +3,99 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def solve():
-    N = int(input())
-    if N % 10 in [2, 4, 5, 7, 9]:
-        print("hon")
-    elif N % 10 in [0, 1, 6, 8]:
-        print("pon")
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
     else:
-        print("bon")
+        print(s[:k] + '...')
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    if n % 10 == 3:
-        print("bon")
-    elif n % 10 in [0, 1, 6, 8]:
-        print("pon")
+    K = int(input())
+    S = input()
+    if len(S) <= K:
+        print(S)
     else:
-        print("hon")
+        print(S[:K] + '...')
 
 =======
 Suggestion 3
 
-def pronun(n):
-    if n%10==2 or n%10==4 or n%10==5 or n%10==7 or n%10==9:
-        return 'hon'
-    elif n%10==0 or n%10==1 or n%10==6 or n%10==8:
-        return 'pon'
-    elif n%10==3:
-        return 'bon'
-
-n=int(input())
-print(pronun(n))
+def main():
+    K = int(input())
+    S = input()
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[0:K] + '...')
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    if n%10 in [2, 4, 5, 7, 9]:
-        print("hon")
-    elif n%10 in [0, 1, 6, 8]:
-        print("pon")
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        print(s[0:k] + "...")
     else:
-        print("bon")
+        print(s)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    if n%10 == 2 or n%10 == 4 or n%10 == 5 or n%10 == 7 or n%10 == 9:
-        print("hon")
-    elif n%10 == 0 or n%10 == 1 or n%10 == 6 or n%10 == 8:
-        print("pon")
-    elif n%10 == 3:
-        print("bon")
+    K = int(input())
+    S = input()
+    if len(S) > K:
+        print(S[:K] + "...")
+    else:
+        print(S)
 
 =======
 Suggestion 6
 
 def main():
-    n = input()
-    n = int(n)
-    if n%10 == 2 or n%10 == 4 or n%10 == 5 or n%10 == 7 or n%10 == 9:
-        print("hon")
-    elif n%10 == 0 or n%10 == 1 or n%10 == 6 or n%10 == 8:
-        print("pon")
-    elif n%10 == 3:
-        print("bon")
+    K = int(input())
+    S = input()
+    if len(S) > K:
+        print(S[0:K] + "...")
+    else:
+        print(S)
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    if n % 10 == 2 or n % 10 == 4 or n % 10 == 5 or n % 10 == 7 or n % 10 == 9:
-        print("hon")
-    elif n % 10 == 0 or n % 10 == 1 or n % 10 == 6 or n % 10 == 8:
-        print("pon")
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        print(s[:k] + '...')
     else:
-        print("bon")
+        print(s)
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) > K:
+        S = S[0:K] + '...'
+    print(S)
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    k = int(input())
+    s = input()
+    # 请在此添加代码
+    if k < len(s):
+        print(s[0:k] + "...")
+    else:
+        print(s)

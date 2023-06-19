@@ -3,113 +3,65 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def problem161_b():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    total = sum(a)
-    for i in range(m):
-        if a[i] < (total/(4*m)):
-            print('否')
-            return
-    print('是')
+def main():
+    N, K = map(int, input().split())
+    print(min(N%K, K-N%K))
 
 =======
 Suggestion 2
 
 def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    sum = 0
-    for i in range(n):
-        sum += a[i]
-    if a[m-1] >= sum/(4*m):
-        print("Yes")
-    else:
-        print("No")
+    n, k = map(int, input().split())
+    print(n%k if n%k < k else k - n%k)
 
 =======
 Suggestion 3
 
-def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    total = sum(a)
-    for i in range(m):
-        if a[i] < total/(4*m):
-            print("否")
-            return
-    print("是")
+def solve(n,k):
+    if k==1:
+        return 0
+    if n<k:
+        return min(n,abs(n-k))
+    return min(n%k,abs(n%k-k))
 
 =======
 Suggestion 4
 
-def readinput():
-    n,m=list(map(int,input().split()))
-    a=list(map(int,input().split()))
-    return n,m,a
+def main():
+    # 读取输入
+    N, K = map(int, input().split())
+    # 一次操作后的值
+    N = N % K
+    # 取两者的最小值
+    print(min(N, abs(N-K)))
 
 =======
 Suggestion 5
 
-def problems161_b():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort(reverse=True)
-    sum_a = sum(a)
-    if a[m-1] >= sum_a / (4*m):
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n , k = map(int, input().split())
+    n = n % k
+    print(min(n, k - n))
 
 =======
 Suggestion 6
 
-def problems161_b():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    s = sum(a)
-    if a[m-1] >= s/(4*m):
-        print("是")
-    else:
-        print("否")
+def main():
+    n, k = [int(x) for x in input().split()]
+    print(min(n % k, k - n % k))
 
 =======
 Suggestion 7
 
 def main():
-    N,M=map(int,input().split())
-    A=list(map(int,input().split()))
-    A.sort(reverse=True)
-    total=sum(A)
-    if A[M-1]*4*M>=total:
-        print("是")
-    else:
-        print("否")
+    n, k = map(int, input().split())
+    print(min(n % k, k - n % k))
 
 =======
 Suggestion 8
 
-def get_input():
-    n,m = input().split()
-    n = int(n)
-    m = int(m)
-    A = input().split()
-    A = [int(i) for i in A]
-    return n,m,A
-
-=======
-Suggestion 9
-
-def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    total = sum(a)
-    if a[m-1]*4*m >= total:
-        print("是")
+def solve(n,k):
+    if n == 0:
+        return 0
     else:
-        print("否")
+        return min(n%k,k-n%k)

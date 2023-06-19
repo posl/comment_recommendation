@@ -3,109 +3,156 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    num = int(input())
-    if num % 10 == 7:
-        print("是")
-    else:
-        print("否")
+def FizzBuzz(n):
+  if n % 15 == 0:
+    return "FizzBuzz"
+  elif n % 5 == 0:
+    return "Buzz"
+  elif n % 3 == 0:
+    return "Fizz"
+  else:
+    return n
+
+n = int(input())
+s = 0
+for i in range(1, n + 1):
+  s += FizzBuzz(i)
+print(s)
 
 =======
 Suggestion 2
 
-def main():
-    N = int(input())
-    if N % 10 == 7:
-        print("是")
-    else:
-        print("否")
+def FizzBuzz(n):
+    a = []
+    for i in range(1, n+1):
+        if i % 3 == 0 and i % 5 == 0:
+            a.append("FizzBuzz")
+        elif i % 3 == 0:
+            a.append("Fizz")
+        elif i % 5 == 0:
+            a.append("Buzz")
+        else:
+            a.append(i)
+    return a
 
 =======
 Suggestion 3
 
-def is_include_7(num):
-    if num % 10 == 7:
-        return True
-    else:
-        return False
+def FizzBuzz(n):
+    result = 0
+    for i in range(1,n+1):
+        if i % 3 == 0 and i % 5 == 0:
+            result += 0
+        elif i % 3 == 0:
+            result += 0
+        elif i % 5 == 0:
+            result += 0
+        else:
+            result += i
+    return result
 
 =======
 Suggestion 4
 
-def is_contain_seven(n):
-    if n % 10 == 7:
-        return True
-    elif n // 10 % 10 == 7:
-        return True
-    elif n // 100 % 10 == 7:
-        return True
-    else:
-        return False
-
-n = int(input())
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(1,N+1):
+        if i%15 == 0:
+            pass
+        elif i%3 == 0:
+            sum = sum + i
+        elif i%5 == 0:
+            sum = sum + i
+        else:
+            sum = sum + i
+    print(sum)
 
 =======
 Suggestion 5
 
-def is_contain_seven(num):
-    return num % 10 == 7 or num // 10 % 10 == 7 or num // 100 == 7
-
-num = int(input())
-print("是" if is_contain_seven(num) else "否")
+def fizzbuzz(n):
+    sum = 0
+    for i in range(1,n+1):
+        if i % 3 == 0 and i % 5 == 0:
+            sum += 0
+        elif i % 3 == 0:
+            sum += 0
+        elif i % 5 == 0:
+            sum += 0
+        else:
+            sum += i
+    return sum
 
 =======
 Suggestion 6
 
-def problem162_a():
-    n = input()
-    if '7' in n:
-        print('是')
-    else:
-        print('否')
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(1, n+1):
+        if i%3 == 0 or i%5 == 0:
+            sum += i
+    print(sum)
 
 =======
 Suggestion 7
 
-def solution():
-    n = int(input())
-    if n%10 == 7:
-        print("是")
-    else:
-        print("否")
+def get_fizzbuzz_sum(n):
+    sum = 0
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            sum += i
+        elif i % 3 == 0:
+            sum += i
+        elif i % 5 == 0:
+            sum += i
+        else:
+            pass
+    return sum
 
 =======
 Suggestion 8
 
 def main():
     n = int(input())
-    if n % 10 == 7:
-        print("是")
-    else:
-        print("否")
+    sum = 0
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            continue
+        elif i % 3 == 0:
+            continue
+        elif i % 5 == 0:
+            continue
+        else:
+            sum += i
+    print(sum)
 
 =======
 Suggestion 9
 
-def isSevenInNum(num):
-    if num%10==7:
-        return True
-    elif num/10%10==7:
-        return True
-    elif num/100%10==7:
-        return True
-    else:
-        return False
-
-num = int(raw_input())
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if i % 3 == 0 or i % 5 == 0:
+            continue
+        ans += i
+    print(ans)
 
 =======
 Suggestion 10
 
 def main():
-    # 读取输入
-    n = int(input())
-    # 计算
-    if n % 10 == 7:
-        print("是")
-    else:
-        print("否")
+    N = int(input())
+    sum = 0
+    for i in range(1, N+1):
+        if i % 3 == 0 and i % 5 == 0:
+            sum += 0
+        elif i % 3 == 0:
+            sum += 0
+        elif i % 5 == 0:
+            sum += 0
+        else:
+            sum += i
+    print(sum)

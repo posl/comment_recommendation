@@ -4,166 +4,199 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N, K = map(int, input().split())
-    A = [0]*K
-    for i in range(K):
-        A[i] = list(map(int, input().split()))
-    #print(A)
-    #print(A[0][0])
-    #print(A[0][1])
-    #print(A[1][0])
-    #print(A[1][1])
-    #print(A[2][0])
-    #print(A[2][1])
-    #print(A[0][0])
-    #print(A[1][0])
-    #print(A[2][0])
-    #print(A[0][1])
-    #print(A[1][1])
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    ab = [list(map(int,input().split())) for _ in range(m)]
+    ans = 0
+    for i in range(n):
+        flag = True
+        for j in range(m):
+            if i+1 == ab[j][0] and h[i] <= h[ab[j][1]-1]:
+                flag = False
+                break
+            elif i+1 == ab[j][1] and h[i] <= h[ab[j][0]-1]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 2
 
-def func1():
-    n,k=map(int,input().split())
-    d=[]
-    for i in range(k):
-        d.append(int(input()))
-        a=list(map(int,input().split()))
-    res=n
-    for i in range(n):
-        for j in range(k):
-            if i+1 in a:
-                res-=1
-                break
-    print(res)
+def main():
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    a = []
+    b = []
+    for i in range(m):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    #print(n,m,h,a,b)
+    ans = 0
+    for i in range(m):
+        if h[a[i]-1] > h[b[i]-1]:
+            ans += 1
+        elif h[a[i]-1] < h[b[i]-1]:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    # 读入数据
-    N, K = map(int, input().split())
-    A = []
-    for i in range(K):
-        d = int(input())
-        A.append(list(map(int, input().split())))
-    # 算法
-    # 1. 初始化
-    snuke = [0] * N
-    # 2. 遍历
-    for i in range(K):
-        for j in range(len(A[i])):
-            snuke[A[i][j] - 1] += 1
-    # 3. 输出
-    print(snuke.count(0))
+    N,M = map(int,input().split())
+    H = list(map(int,input().split()))
+    path = [list(map(int,input().split())) for _ in range(M)]
+    good = [True] * N
+    for i in range(M):
+        if H[path[i][0]-1] <= H[path[i][1]-1]:
+            good[path[i][0]-1] = False
+        if H[path[i][1]-1] <= H[path[i][0]-1]:
+            good[path[i][1]-1] = False
+    print(good.count(True))
 
 =======
 Suggestion 4
 
-def solve():
-    n, k = map(int, input().split())
-    snukes = [0 for i in range(n)]
-    for i in range(k):
-        d = int(input())
-        a = list(map(int, input().split()))
-        for i in range(d):
-            snukes[a[i]-1] += 1
-    print(snukes.count(0))
-solve()
+def main():
+    n, m = map(int, input().split())
+    h = list(map(int, input().split()))
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    good = [True] * n
+    for i in range(m):
+        if h[a[i]-1] <= h[b[i]-1]:
+            good[a[i]-1] = False
+        if h[b[i]-1] <= h[a[i]-1]:
+            good[b[i]-1] = False
+    print(good.count(True))
 
 =======
 Suggestion 5
 
 def main():
-    n, k = map(int, input().split())
-    l = [0] * n
-    for i in range(k):
-        d = int(input())
-        a = list(map(int, input().split()))
-        for j in range(d):
-            l[a[j] - 1] += 1
-    print(l.count(0))
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    a = [0]*m
+    b = [0]*m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    for i in range(m):
+        if h[a[i]-1] > h[b[i]-1]:
+            h[b[i]-1] = 0
+        elif h[a[i]-1] < h[b[i]-1]:
+            h[a[i]-1] = 0
+        else:
+            h[a[i]-1] = 0
+            h[b[i]-1] = 0
+    count = 0
+    for i in range(n):
+        if h[i] != 0:
+            count += 1
+    print(count)
 
 =======
 Suggestion 6
 
 def main():
-    N, K = map(int, input().split())
-    A = []
-    for i in range(K):
-        d = int(input())
-        A.append(list(map(int, input().split())))
-    count = 0
-    for i in range(N):
-        for j in range(K):
-            if i+1 not in A[j]:
-                count += 1
-                break
-    print(count)
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    ab = [list(map(int,input().split())) for _ in range(m)]
+    ans = 0
+    for i in range(m):
+        if h[ab[i][0]-1] > h[ab[i][1]-1]:
+            ans += 1
+        elif h[ab[i][0]-1] < h[ab[i][1]-1]:
+            ans += 1
+        else:
+            pass
+    print(ans)
 
 =======
 Suggestion 7
 
 def main():
-    n,k = map(int, input().split())
-    a = []
-    for _ in range(k):
-        a.append(list(map(int, input().split()))[1:])
-    a = set(sum(a, []))
-    print(n-len(a))
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    print(N, M)
+    print(H)
+    print(A)
+    print(B)
+    cnt = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if A[j] == i + 1:
+                if H[i] <= H[B[j] - 1]:
+                    flag = False
+            if B[j] == i + 1:
+                if H[i] <= H[A[j] - 1]:
+                    flag = False
+        if flag:
+            cnt += 1
+    print(cnt)
 
 =======
 Suggestion 8
 
-def readinput():
-    n,k=list(map(int,input().split()))
-    d=[]
-    a=[]
-    for i in range(k):
-        d.append(int(input()))
-        a.append(list(map(int,input().split())))
-    return n,k,d,a
+def is_higher(h, i):
+    for j in range(len(h)):
+        if h[j] > h[i]:
+            return False
+    return True
 
 =======
 Suggestion 9
 
-def main():
-    n,k = map(int, input().split())
-    d = []
-    for i in range(k):
-        d.append(list(map(int, input().split()))[1:])
-    print(n - len(set([x for y in d for x in y])))
+def problems166_c():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = list()
+    B = list()
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if i+1 == A[j] and H[i] <= H[B[j]-1]:
+                flag = False
+            if i+1 == B[j] and H[i] <= H[A[j]-1]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
 
-main()
+problems166_c()
 
 =======
 Suggestion 10
 
 def main():
-    # 读入数据
-    n, k = map(int, input().split())
-    # 零食的种类
-    d = []
-    # 零食的编号
-    a = []
-    for i in range(k):
-        d.append(int(input()))
-        a.append(list(map(int, input().split())))
-    # 零食的种类
-    # print(d)
-    # 零食的编号
-    # print(a)
-    # 零食的编号集合
-    a_set = set()
-    for i in range(k):
-        for j in range(d[i]):
-            a_set.add(a[i][j])
-    # print(a_set)
-
-    # 受害者的数量
-    count = 0
-    for i in range(1, n+1):
-        if i not in a_set:
-            count += 1
-    print(count)
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    a = [0]*n
+    b = [0]*n
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    for i in range(m):
+        if h[a[i]-1] > h[b[i]-1]:
+            b[i] = 0
+        elif h[a[i]-1] < h[b[i]-1]:
+            a[i] = 0
+        else:
+            a[i] = 0
+            b[i] = 0
+    a = list(set(a))
+    b = list(set(b))
+    print(len(a)+len(b))

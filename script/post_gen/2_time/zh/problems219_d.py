@@ -3,215 +3,268 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_input():
-    x = input()
+def main():
     n = int(input())
-    s = []
+    x, y = map(int, input().split())
+    a = []
+    b = []
     for i in range(n):
-        s.append(input())
-    return x, n, s
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    min_num = 300
+    for i in range(n):
+        if a[i] >= x and b[i] >= y:
+            if a[i] + b[i] < min_num:
+                min_num = a[i] + b[i]
+    if min_num == 300:
+        print(-1)
+    else:
+        print(min_num)
 
 =======
 Suggestion 2
 
 def main():
-    x = input()
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    for i in range(n):
-        s[i] = s[i].translate(str.maketrans(x, 'abcdefghijklmnopqrstuvwxyz'))
-    s.sort()
-    for i in range(n):
-        s[i] = s[i].translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', x))
-    print(*s, sep='\n')
-    return
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[[False for _ in range(Y + 1)] for _ in range(X + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = True
+    for i in range(N):
+        for j in range(X + 1):
+            for k in range(Y + 1):
+                dp[i + 1][min(j + A[i], X)][min(k + B[i], Y)] |= dp[i][j][k]
+                dp[i + 1][j][k] |= dp[i][j][k]
+    ans = -1
+    for i in range(1, N + 1):
+        if dp[i][X][Y]:
+            ans = i
+            break
+    print(ans)
 
 =======
 Suggestion 3
 
-def str2int(str):
-    int = 0
-    for s in str:
-        int = int * 26 + ord(s) - ord('a')
-    return int
+def get_input():
+    n = int(input())
+    x,y = input().split()
+    x = int(x)
+    y = int(y)
+    a = []
+    b = []
+    for i in range(n):
+        ai,bi = input().split()
+        a.append(int(ai))
+        b.append(int(bi))
+    return n,x,y,a,b
 
 =======
 Suggestion 4
 
-def get_order():
-    return input()
+def solve():
+    n = int(input())
+    x, y = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[float('inf')] * (y+1) for _ in range(x+1)]
+    dp[0][0] = 0
+    for i in range(n):
+        for j in range(x,-1,-1):
+            for k in range(y,-1,-1):
+                if dp[j][k] != float('inf'):
+                    dp[min(x,j+A[i])][min(y,k+B[i])] = min(dp[min(x,j+A[i])][min(y,k+B[i])],dp[j][k]+1)
+    if dp[x][y] == float('inf'):
+        print(-1)
+    else:
+        print(dp[x][y])
 
 =======
 Suggestion 5
 
 def main():
-    x = input()
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort(key=lambda x: [x.index(c) for c in x])
-    s.sort(key=lambda x: [x.index(c) for c in x], reverse=True)
-    print(s)
-    print(x)
-    print(n)
-    print(s)
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    # print(N, X, Y, A, B)
+    # N = 3
+    # X, Y = 5, 6
+    # A = [2, 3, 2]
+    # B = [1, 4, 3]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A
 
 =======
 Suggestion 6
 
 def main():
-    #print("请输入字母表顺序：")
-    #x = input()
-    #print("请输入人数：")
-    #n = int(input())
-    #print("请输入人名：")
-    #s = []
-    #for i in range(n):
-    #    s.append(input())
-    #print("字母表顺序为：",x)
-    #print("人数为：",n)
-    #print("人名为：",s)
-    x = "bacdefghijklmnopqrstuvwxzy"
-    n = 4
-    s = ["abx","bzz","bzy","caa"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 5
-    #s = ["a","ab","abc","ac","b"]
-    #x = "abcdefghijklmnopqrstuvwxyz"
-    #n = 2
-    #s = ["ac","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 2
-    #s = ["ac","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 2
-    #s = ["ab","ac"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ab","ac","abc"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["abc","ab","ac"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["abc","ac","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ac","abc","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ac","ab","abc"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ab","abc","ac"]
-    #x =
+    n = int(input())
+    x, y = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    dp = [[[float('inf') for _ in range(y+1)] for _ in range(x+1)] for _ in range(n+1)]
+    dp[0][0][0] = 0
+    for i in range(n):
+        for j in range(x+1):
+            for k in range(y+1):
+                if dp[i][j][k] == float('inf'):
+                    continue
+                dp[i+1][j][k] = min(dp[i+1][j][k], dp[i][j][k])
+                a, b = ab[i]
+                dp[i+1][min(j+a, x)][min(k+b, y)] = min(dp[i+1][min(j+a, x)][min(k+b, y)], dp[i][j][k]+1)
+    print(dp[n][x][y] if dp[n][x][y] != float('inf') else -1)
 
 =======
 Suggestion 7
 
-def main():
-    x = input()
+def solve():
     n = int(input())
-    s = []
+    x, y = map(int, input().split())
+    a = []
+    b = []
     for i in range(n):
-        s.append(input())
-    #print(x)
-    #print(n)
-    #print(s)
-    d = {}
-    for i in range(len(x)):
-        d[x[i]] = i
-    #print(d)
-    s.sort(key = lambda x: [d[c] for c in x])
-    for i in s:
-        print(i)
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    dp = [[[False for _ in range(301)] for _ in range(301)] for _ in range(n+1)]
+    dp[0][0][0] = True
+    for i in range(n):
+        for j in range(x+1):
+            for k in range(y+1):
+                if dp[i][j][k]:
+                    dp[i+1][j][k] = True
+                    if j + a[i] <= x and k + b[i] <= y:
+                        dp[i+1][j+a[i]][k+b[i]] = True
+    ans = -1
+    for i in range(1, n+1):
+        if dp[i][x][y]:
+            ans = i
+            break
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    X = input()
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    X = list(X)
-    X.sort()
-    X = ''.join(X)
-    X = X[::-1]
-    S.sort(key = lambda x:X.index(x[0]))
-    S.sort(key = lambda x:X.index(x[1]))
-    S.sort(key = lambda x:X.index(x[2]))
-    S.sort(key = lambda x:X.index(x[3]))
-    S.sort(key = lambda x:X.index(x[4]))
-    S.sort(key = lambda x:X.index(x[5]))
-    S.sort(key = lambda x:X.index(x[6]))
-    S.sort(key = lambda x:X.index(x[7]))
-    S.sort(key = lambda x:X.index(x[8]))
-    S.sort(key = lambda x:X.index(x[9]))
-    S.sort(key = lambda x:X.index(x[10]))
-    S.sort(key = lambda x:X.index(x[11]))
-    S.sort(key = lambda x:X.index(x[12]))
-    S.sort(key = lambda x:X.index(x[13]))
-    S.sort(key = lambda x:X.index(x[14]))
-    S.sort(key = lambda x:X.index(x[15]))
-    S.sort(key = lambda x:X.index(x[16]))
-    S.sort(key = lambda x:X.index(x[17]))
-    S.sort(key = lambda x:X.index(x[18]))
-    S.sort(key = lambda x:X.index(x[19]))
-    S.sort(key = lambda x:X.index(x[20]))
-    S.sort(key = lambda x:X.index(x[21]))
-    S.sort(key = lambda x:X.index(x[22]))
-    S.sort(key = lambda x:X.index(x[23]))
-    S.sort(key = lambda x:X.index(x[24]))
-    S.sort(key = lambda x:X.index(x[25]))
-    for i in range(N):
-        print(S[i])
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    dp = [[False for i in range(y+1)] for j in range(x+1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(x, -1, -1):
+            for k in range(y, -1, -1):
+                if j >= a[i] and k >= b[i]:
+                    dp[j][k] = dp[j][k] or dp[j-a[i]][k-b[i]]
+    if dp[x][y]:
+        print(0)
+        return
+    for i in range(n):
+        for j in range(x, -1, -1):
+            for k in range(y, -1, -1):
+                if j >= a[i] and k >= b[i]:
+                    dp[j][k] = dp[j][k] or dp[j-a[i]][k-b[i]]
+    if dp[x][y]:
+        print(1)
+        return
+    print(-1)
 
 =======
 Suggestion 9
 
-def main():
-    # 读取输入
-    x = raw_input()
-    n = int(raw_input())
-    s = []
-    for i in range(n):
-        s.append(raw_input())
-    # 解决问题
-    # 排序
-    # 用一个字典来存储字母和新字母的映射
-    x_dict = {}
-    for i in range(26):
-        x_dict[x[i]] = chr(ord('a')+i)
-    # 用一个字典来存储新字母和字母的映射
-    x_dict_reverse = {}
-    for i in range(26):
-        x_dict_reverse[chr(ord('a')+i)] = x[i]
-    # 用一个字典来存储字符串和新字符串的映射
-    s_dict = {}
-    for i in range(n):
-        s_dict[s[i]] = ''
-        for j in range(len(s[i])):
-            s_dict[s[i]] += x_dict[s[i][j]]
-    # 排序
-    s_dict_sorted = sorted(s_dict.items(), key=lambda d:d[1])
-    # 输出
-    for i in range(n):
-        print s_dict_sorted[i][0]
+def solve():
+    N = int(input())
+    X,Y = map(int,input().split())
+    AB = []
+    for i in range(N):
+        A,B = map(int,input().split())
+        AB.append((A,B))
+    dp = [[False]*(Y+1) for _ in range(X+1)]
+    dp[0][0] = True
+    for A,B in AB:
+        for x in range(X,-1,-1):
+            for y in range(Y,-1,-1):
+                if x-A >= 0 and y-B >= 0:
+                    dp[x][y] = dp[x][y] or dp[x-A][y-B]
+    ans = float('inf')
+    for x in range(X+1):
+        for y in range(Y+1):
+            if dp[x][y]:
+                ans = min(ans,x+y)
+    if ans == float('inf'):
+        print(-1)
+    else:
+        print(ans)
+solve()
 
 =======
 Suggestion 10
 
-def main():
-    x = input()
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort(key = lambda a: [x.index(c) for c in a])
-    for i in s:
-        print(i)
+def solve():
+    N = int(input())
+    X, Y = map(int, input().split())
+    AB = [[int(i) for i in input().split()] for _ in range(N)]
+    #dp[i][j][k]表示前i种便当中选出j个章鱼烧和k个鱼形蛋糕的最小数量
+    dp = [[[float('inf') for _ in range(Y+1)] for _ in range(X+1)] for _ in range(N+1)]
+    dp[0][0][0] = 0
+    for i in range(N):
+        a, b = AB[i]
+        for j in range(X+1):
+            for k in range(Y+1):
+                if j >= a and k >= b:
+                    dp[i+1][j][k] = min(dp[i][j][k], dp[i][j-a][k-b]+1)
+                else:
+                    dp[i+1][j][k] = dp[i][j][k]
+    if dp[N][X][Y] == float('inf'):
+        print(-1)
+    else:
+        print(dp[N][X][Y])

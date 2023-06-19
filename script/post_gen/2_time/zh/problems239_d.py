@@ -1,116 +1,160 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def distance(x1, y1, x2, y2):
-    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+def is_prime(num):
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    for x in range(3, int(num ** 0.5) + 1):
+        if num % x == 0:
+            return False
+    return True
+
+a, b, c, d = map(int, input().split())
 
 =======
 Suggestion 2
 
-def main():
-    x1,y1,x2,y2=map(int,input().split())
-    if ((x1-x2)**2+(y1-y2)**2)**(1/2)==(5)**(1/2):
-        print('Yes')
+def is_prime(x):
+    if x == 1:
+        return False
     else:
-        print('No')
+        for i in range(2, int(x**0.5)+1):
+            if x % i == 0:
+                return False
+        else:
+            return True
+
+a, b, c, d = map(int, input().split())
+
+for i in range(a, b+1):
+    if is_prime(i):
+        for j in range(c, d+1):
+            if is_prime(j):
+                print('Y')
+                break
+        else:
+            print('N')
+        break
+else:
+    print('N')
 
 =======
 Suggestion 3
 
-def solve():
-    x_1, y_1, x_2, y_2 = map(int, input().split())
-    if (x_1 - x_2) ** 2 + (y_1 - y_2) ** 2 == 5:
-        print("Yes")
-    elif (x_1 - x_2) ** 2 + (y_1 - y_2 + 1) ** 2 == 5:
-        print("Yes")
-    elif (x_1 - x_2) ** 2 + (y_1 - y_2 - 1) ** 2 == 5:
-        print("Yes")
-    elif (x_1 - x_2 + 1) ** 2 + (y_1 - y_2) ** 2 == 5:
-        print("Yes")
-    elif (x_1 - x_2 - 1) ** 2 + (y_1 - y_2) ** 2 == 5:
-        print("Yes")
+def is_prime(num):
+    if num == 1:
+        return False
     else:
-        print("No")
+        for i in range(2, num):
+            if num % i == 0:
+                return False
+    return True
 
 =======
 Suggestion 4
 
-def distance(x1,y1,x2,y2):
-    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    for i in range(3, n, 2):
+        if n%i == 0:
+            return False
+    return True
 
 =======
 Suggestion 5
 
-def main():
-    x1,y1,x2,y2 = map(int,input().split())
-    if x1 == x2 and y1 == y2:
-        print("No")
-        return
-    elif (x1-x2)**2 + (y1-y2)**2 == 5:
-        print("Yes")
-        return
-    elif (x1-x2)**2 + (y1-y2)**2 == 50:
-        print("Yes")
-        return
+def is_prime(x):
+    if x <= 1:
+        return False
     else:
-        print("No")
-        return
+        for i in range(2, x):
+            if x % i == 0:
+                return False
+        else:
+            return True
+
+a, b, c, d = map(int, input().split())
+
+for i in range(a, b+1):
+    for j in range(c, d+1):
+        if is_prime(i+j):
+            print("高桥")
+            exit()
+else:
+    print("青木")
 
 =======
 Suggestion 6
 
-def problems239_c(x_1, y_1, x_2, y_2):
-    if x_1 == x_2 and y_1 == y_2:
-        return "No"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 10:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 50:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 90:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 130:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 170:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 210:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 250:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 290:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 330:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 370:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 410:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 450:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 490:
-        return "Yes"
-    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 530:
-        return "Yes"
-    if (x_1 - x_2
+def is_prime(x):
+    if x == 1:
+        return False
+    else:
+        for i in range(2, int(x ** 0.5) + 1):
+            if x % i == 0:
+                return False
+
+    return True
 
 =======
 Suggestion 7
 
-def main():
-    x1, y1, x2, y2 = map(int, input().split())
-    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
-        print('Yes')
+def is_prime(x):
+    if x < 2:
+        return False
+    elif x == 2:
+        return True
     else:
-        print('No')
+        for i in range(2, x):
+            if x % i == 0:
+                return False
+        return True
 
 =======
 Suggestion 8
 
-def main():
-    x1, y1, x2, y2 = map(int, input().split())
-    if (x1 + y1) % 2 == (x2 + y2) % 2:
-        if abs(x1 - x2) + abs(y1 - y2) <= 6:
-            print('Yes')
-            return
-    print('No')
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, int(n**0.5)+1): # 从2开始到n的平方根+1
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 9
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2,int(n**0.5)+1):
+        if n%i == 0:
+            return False
+    return True
+
+a,b,c,d = map(int,input().split())
+for i in range(a,b+1):
+    for j in range(c,d+1):
+        if is_prime(i+j):
+            print("高桥")
+            exit()
+print("青木")
+
+=======
+Suggestion 10
+
+def is_prime(n):
+    if n % 2 == 0 and n > 2:
+        return False
+    return all(n % i for i in range(3, int(n**0.5)+1,2))
+
+a,b,c,d = map(int,input().split())

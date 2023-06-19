@@ -4,141 +4,136 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    a,b,c = map(int,input().split())
-    if a == b and b != c:
-        print("Yes")
-    elif a == c and b != c:
-        print("Yes")
-    elif b == c and a != c:
-        print("Yes")
-    else:
-        print("No")
+    N = int(input())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if A[i] % 2 == 0:
+            if A[i] % 3 != 0 and A[i] % 5 != 0:
+                print("DENIED")
+                return
+    print("APPROVED")
 
 =======
 Suggestion 2
 
 def main():
-    a,b,c=map(int,input().split())
-    if a==b and b!=c:
-        print("是")
-    elif b==c and c!=a:
-        print("是")
-    elif c==a and a!=b:
-        print("是")
-    else:
-        print("否")
+    n = int(input())
+    a_list = list(map(int, input().split()))
+
+    for a in a_list:
+        if a % 2 == 0:
+            if a % 3 != 0 and a % 5 != 0:
+                print('DENIED')
+                return
+    print('APPROVED')
 
 =======
 Suggestion 3
 
 def main():
-    a, b, c = map(int, input().split())
-    if a == b and a != c:
-        print("Yes")
-    elif a == c and a != b:
-        print("Yes")
-    elif b == c and b != a:
-        print("Yes")
-    else:
-        print("No")
+    # input
+    n = int(input())
+    a = list(map(int, input().split()))
+    # compute
+    for i in a:
+        if i%2 == 0:
+            if i%3 != 0 and i%5 != 0:
+                print("DENIED")
+                exit()
+    # output
+    print("APPROVED")
 
 =======
 Suggestion 4
 
-def answer(A,B,C):
-    if A == B and B != C:
-        return "是"
-    elif A == C and B != C:
-        return "是"
-    elif B == C and A != B:
-        return "是"
-    else:
-        return "否"
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for a in A:
+        if a % 2 == 0:
+            if a % 3 == 0 or a % 5 == 0:
+                continue
+            else:
+                print('DENIED')
+                return
+    print('APPROVED')
+    return
 
 =======
 Suggestion 5
 
-def is_diff(a, b, c):
-    if a == b and a != c:
-        return True
-    elif a == c and a != b:
-        return True
-    elif b == c and b != a:
+def judge(n, a):
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 != 0 and a[i] % 5 != 0:
+                return False
+    return True
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 == 0 or a[i] % 5 == 0:
+                continue
+            else:
+                print('DENIED')
+                exit()
+    print('APPROVED')
+
+=======
+Suggestion 7
+
+def isEven(num):
+    if num % 2 == 0:
         return True
     else:
         return False
 
 =======
-Suggestion 6
-
-def problem155_a():
-    a,b,c = map(int,input().split())
-    if a==b and b!=c:
-        print('是')
-    elif a==c and b!=c:
-        print('是')
-    elif b==c and a!=b:
-        print('是')
-    else:
-        print('否')
-
-=======
-Suggestion 7
-
-def main():
-    # 读取输入
-    a, b, c = map(int, input().split())
-    # 判断
-    if a == b:
-        if a == c:
-            print("否")
-        else:
-            print("是")
-    elif b == c:
-        print("是")
-    elif a == c:
-        print("是")
-    else:
-        print("否")
-
-=======
 Suggestion 8
 
 def main():
-    a,b,c = map(int,input().split())
-    if a==b and a!=c:
-        print("是")
-    elif a==c and a!=b:
-        print("是")
-    elif b==c and b!=a:
-        print("是")
-    else:
-        print("否")
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if i % 2 == 0:
+            if i % 3 != 0 and i % 5 != 0:
+                print('DENIED')
+                exit()
+    print('APPROVED')
+main()
 
 =======
 Suggestion 9
 
-def problem155_a():
-    a,b,c = map(int,input().split())
-    if a == b and a != c:
-        print("Yes")
-    elif a == c and a != b:
-        print("Yes")
-    elif b == c and b != a:
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0 and a[i] % 3 != 0 and a[i] % 5 != 0:
+            print("DENIED")
+            exit()
+    print("APPROVED")
+main()
 
 =======
 Suggestion 10
 
 def main():
-    a, b, c = map(int, input().split())
-    if a == b and b != c:
-        print("是")
-    elif b == c and a != c:
-        print("是")
-    elif a == c and b != c:
-        print("是")
-    else:
-        print("否")
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 处理
+    for i in range(N):
+        if A[i] % 2 == 0:
+            if A[i] % 3 != 0 and A[i] % 5 != 0:
+                print('DENIED')
+                exit()
+
+    # 输出结果
+    print('APPROVED')

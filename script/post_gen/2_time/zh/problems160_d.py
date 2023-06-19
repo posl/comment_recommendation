@@ -1,136 +1,181 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.append(A[0] + K)
-    ans = K
-    for i in range(N):
-        ans = min(ans, K - (A[i + 1] - A[i]))
-    print(ans)
+def bfs(graph, start, end):
+    queue = []
+    queue.append([start])
+    visited = set()
+    while queue:
+        path = queue.pop(0)
+        node = path[-1]
+        if node == end:
+            return len(path)-1
+        if node in visited:
+            continue
+        for adjacent in graph.get(node, []):
+            new_path = list(path)
+            new_path.append(adjacent)
+            queue.append(new_path)
+        visited.add(node)
+    return -1
 
 =======
 Suggestion 2
 
 def main():
-    # 读入数据
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    # 计算距离
-    A.append(K)
-    A.append(K + A[0])
-    A.sort()
-    # print(A)
-    dist = [A[i] - A[i - 1] for i in range(1, N + 2)]
-    # print(dist)
-    print(K - max(dist))
+    pass
 
 =======
 Suggestion 3
 
 def main():
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.append(K+A[0])
-    max = 0
-    for i in range(N):
-        if A[i+1] - A[i] > max:
-            max = A[i+1] - A[i]
-    print(K - max)
+    # n, x, y = map(int, input().split())
+    # print(n, x, y)
+    # print(type(n), type(x), type(y))
+    # print(n + x + y)
+    n = 10
+    x = 4
+    y = 8
+    for k in range(1, n):
+        if k < x:
+            print(n - k)
+        elif k < y:
+            print(n - x + k - x)
+        else:
+            print(n - x + y - x - (k - y))
+    return 0
 
 =======
 Suggestion 4
 
 def main():
-    # 读入数据
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    # 计算最短距离
-    max_len = 0
-    for i in range(N):
-        if i == N - 1:
-            max_len = max(max_len, K - A[i] + A[0])
-        else:
-            max_len = max(max_len, A[i + 1] - A[i])
-    print(K - max_len)
+    N, X, Y = map(int, input().split())
+    ans = [0]*N
+    for i in range(1, N):
+        for j in range(i+1, N+1):
+            ans[min(abs(i-j), abs(X-i)+1+abs(Y-j), abs(Y-i)+1+abs(X-j))] += 1
+    for i in range(1, N):
+        print(ans[i])
 
 =======
 Suggestion 5
 
-def solve(K, N, A):
-    A.append(K)
-    A.sort()
-    ans = 0
-    for i in range(N):
-        ans = max(ans, A[i + 1] - A[i])
-    return K - ans
-K, N = map(int, input().split())
-A = list(map(int, input().split()))
-print(solve(K, N, A))
+def problem160_d():
+    pass
 
 =======
 Suggestion 6
 
-def solve(k, n, a):
-    a.sort()
-    a.append(a[0] + k)
-    ans = 0
-    for i in range(n):
-        ans = max(ans, a[i + 1] - a[i])
-    return k - ans
-
-k, n = map(int, input().split())
-a = list(map(int, input().split()))
-print(solve(k, n, a))
+def find_shortest_path(n, x, y):
+    # n = 10
+    # x = 4
+    # y = 8
+    # n = 7
+    # x = 3
+    # y = 7
+    # n = 3
+    # x = 1
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 5
+    # x = 1
+    # y = 5
+    # n = 5
+    # x = 1
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 5
+    # n = 5
+    # x = 3
+    # y = 5
+    # n = 5
+    # x = 4
+    # y = 5
+    # n = 5
+    # x = 1
+    # y = 2
+    # n = 5
+    # x = 1
+    # y = 3
+    # n = 5
+    # x = 1
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 5
+    # x = 3
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 5
+    # x = 3
+    # y = 4
+    # n = 5
+    # x = 1
+    # y = 2
+    # n = 5
+    # x = 1
+    # y = 3
+    # n = 5
+    # x = 1
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 3
 
 =======
 Suggestion 7
 
-def main():
-    K,N = map(int,input().split())
-    A = list(map(int,input().split()))
-    A.append(A[0]+K)
-    distance = []
-    for i in range(N):
-        distance.append(A[i+1]-A[i])
-    print(K-max(distance))
+def solve(n, x, y):
+    result = [0] * n
+    for i in range(1, n):
+        for j in range(i+1, n+1):
+            d = min(j-i, abs(x-i)+1+abs(y-j), abs(y-i)+1+abs(x-j))
+            result[d] += 1
+    return result[1:]
 
 =======
 Suggestion 8
 
-def solve(k, n, a):
-    ans = k
-    for i in range(n - 1):
-        ans = min(ans, k - abs(a[i + 1] - a[i]))
-    return ans
+def main():
+    N, X, Y = map(int, input().strip().split())
+    ans = [0 for i in range(N)]
+    for i in range(1, N):
+        for j in range(i+1, N+1):
+            k = min(j-i, abs(X-i)+1+abs(Y-j), abs(Y-i)+1+abs(X-j))
+            ans[k] += 1
+    for i in range(1, N):
+        print(ans[i])
 
 =======
 Suggestion 9
 
 def main():
-    k,n = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.append(a[0]+k)
-    d = [a[i+1]-a[i] for i in range(n)]
-    print(k-max(d))
-
-=======
-Suggestion 10
-
-def main():
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-
-    max = 0
-    for i in range(N):
-        if i == N-1:
-            if max < K - A[i] + A[0]:
-                max = K - A[i] + A[0]
-        else:
-            if max < A[i+1] - A[i]:
-                max = A[i+1] - A[i]
-
-    print(K-max)
+    n,x,y = map(int,input().split())
+    for k in range(1,n):
+        ans = 0
+        for i in range(1,n):
+            for j in range(i+1,n+1):
+                if i == x and j == y:
+                    continue
+                d = min(j-i,abs(x-i)+1+abs(y-j))
+                if d == k:
+                    ans += 1
+        print(ans)

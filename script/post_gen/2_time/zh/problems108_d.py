@@ -1,163 +1,99 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    n,k = map(int,input().split())
-    ans = 0
-    for i in range(1,n+1):
-        if i%k==0:
-            ans += 1
-        elif k%2==0 and i%k==k//2:
-            ans += 1
-    print(ans**3)
+    L = int(input())
+    N = 0
+    M = 0
+    # 1. 从L开始，逐渐减小，直到找到一个L，使得N*M<=60
+    while True:
+        N = L
+        while N >= 2:
+            M = L // N
+            if M * N == L:
+                break
+            N -= 1
+        if M * N == L:
+            break
+        L -= 1
+    print(N, M)
+    # 2. 构建图
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, M-1):
+        print(i, i+1, i)
+    print(1, M, L)
 
 =======
 Suggestion 2
 
 def main():
-    N, K = map(int, input().split())
-    ans = 0
-    for a in range(1, N+1):
-        ans += (N//a) * max(0, a-K)
-        ans += max(0, (N%a) - K + 1)
-        if K == 0:
-            ans -= 1
-    print(ans)
+    pass
 
 =======
 Suggestion 3
 
 def main():
-    N,K = map(int,input().split())
-    if K%2 == 0:
-        k = K//2
-        if N >= k:
-            n = N//k
-            if N%k >= k//2:
-                n += 1
-        else:
-            n = 0
-    else:
-        k = K
-        if N >= k:
-            n = N//k
-            if N%k >= k//2:
-                n += 1
-        else:
-            n = 0
-    print(n**3)
+    L = int(input())
+    N = 2
+    M = 2
+    print(N,M)
+    print(1,2,0)
+    print(1,2,1)
 
 =======
 Suggestion 4
 
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-
-n,k=map(int,input().split())
-ans=0
-for a in range(1,n+1):
-    for b in range(1,n+1):
-        for c in range(1,n+1):
-            if (a+b)%k==0 and (b+c)%k==0 and (a+c)%k==0:
-                ans+=1
-print(ans)
+def main():
+    L = int(input())
+    N = 20
+    M = 60
+    print(N, M)
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, N-1):
+        print(i, i+2, L-i)
+    print(1, 3, L)
 
 =======
 Suggestion 5
 
-def get_num(N,K):
-    count = 0
-    for a in range(1,N+1):
-        if a % K == 0:
-            for b in range(1,N+1):
-                if b % K == 0:
-                    for c in range(1,N+1):
-                        if c % K == 0:
-                            if (a+b)%K == 0 and (b+c)%K == 0 and (c+a)%K == 0:
-                                count += 1
-    return count
+def solve(L):
+    N = 20
+    M = 60
+    print(N, M)
+    for i in range(N - 1):
+        print(i + 1, i + 2, 0)
+    for i in range(M - N + 1):
+        print(i + 1, i + N, i % L + 1)
 
 =======
 Suggestion 6
 
 def main():
-    N, K = map(int, input().split())
-    ans = 0
-    for a in range(1, N+1):
-        ans += (N // a) * max(0, a-K)
-        ans += max(0, (N % a) - K + 1)
-    print(ans)
-
-main()
+    L = int(input())
+    N = 0
+    M = 0
+    print(N, M)
+    print()
 
 =======
 Suggestion 7
 
-def main():
-    n,k = map(int,input().split())
-    ans = 0
-    for i in range(1,n+1):
-        if i%k==0:
-            ans+=1
-        elif (i*2)%k==0:
-            ans+=1
-        elif (i*3)%k==0:
-            ans+=1
-    print(ans)
+def problem108d():
+    pass
 
 =======
 Suggestion 8
 
-def solve(n, k):
-    ans = 0
-    for i in range(1, n + 1):
-        if i % k == 0:
-            ans += 1
-        else:
-            ans += 2
-    return ans
-
-=======
-Suggestion 9
-
 def main():
-    N, K = map(int, input().split())
-    if K % 2 == 0:
-        # Kが偶数の場合
-        # a + b ≡ b + c ≡ c + a ≡ 0 (mod K) となる組み合わせの数を数える
-        # まず、a ≡ b ≡ c ≡ 0 (mod K) の場合
-        ans = (N // K) ** 3
-        # 次に、a ≡ c (mod K) かつ b ≡ 0 (mod K) の場合
-        ans += (N // K) ** 2 * (N % K + 1)
-        # 最後に、a ≡ b ≡ c (mod K) かつ a, b, c はすべて 0 でない場合
-        ans += (N // K) * (N % K + 1) ** 2
-    else:
-        # Kが奇数の場合
-        # a + b ≡ b + c ≡ c + a ≡ 0 (mod K) となる組み合わせの数を数える
-        # まず、a ≡ b ≡ c ≡ 0 (mod K) の場合
-        ans = (N // K) ** 3
-        # 次に、a ≡ c (mod K) かつ b ≡ 0 (mod K) の場合
-        ans += (N // K + 1) ** 3
-        # 最後に、a ≡ b ≡ c (mod K) かつ a, b, c はすべて 0 でない場合
-        ans += (N // K) * (N % K + 1) ** 2
-    print(ans)
-
-=======
-Suggestion 10
-
-def main():
-    n,k = map(int,input().split())
-    sum = 0
-    for a in range(1,n+1):
-        if a%k == 0:
-            sum += n//k
-        elif k%2 == 0 and a%k == k//2:
-            sum += n//k
-        else:
-            sum += n//k+1
-    print(sum)
+    L = int(input())
+    N = 2
+    M = 2 * L + 1
+    print(N, M)
+    print(1, 2, 0)
+    for i in range(1, L + 1):
+        print(2 * i - 1, 2 * i + 1, 1)
+        print(2 * i, 2 * i + 1, 0)

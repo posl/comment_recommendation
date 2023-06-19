@@ -1,134 +1,142 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    n = int(input())
-    w = list(map(int, input().split()))
+    n,m = map(int,input().split())
+    a = [0]*(n+1)
+    for i in range(m):
+        a[int(input())]=1
+    a[0]=1
+    a[1]=0
+    for i in range(2,n+1):
+        if a[i]==1:
+            a[i]=0
+        else:
+            a[i]=a[i-1]+a[i-2]
+            a[i]%=1000000007
+    print(a[n])
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    W = list(map(int, input().split()))
-    min_diff = 10000000000
-    for i in range(1, n):
-        S1 = sum(W[:i])
-        S2 = sum(W[i:])
-        diff = abs(S1 - S2)
-        if diff < min_diff:
-            min_diff = diff
-    print(min_diff)
+    pass
 
 =======
 Suggestion 3
 
-def get_min_diff(N, W):
-    min_diff = 10000
-    for i in range(1, N):
-        sum1 = sum(W[:i])
-        sum2 = sum(W[i:])
-        if abs(sum1 - sum2) < min_diff:
-            min_diff = abs(sum1 - sum2)
-    return min_diff
+def climb_stairs(n, m, a):
+    if m == 0:
+        return 1
+
+    a.append(n)
+    a.insert(0, 0)
+    result = 1
+    for i in range(1, m + 2):
+        result *= (a[i] - a[i - 1])
+
+    return result % 1000000007
 
 =======
 Suggestion 4
 
-def problem129_b():
-    N = int(input())
-    W = list(map(int,input().split()))
-    min = 100000
-    for i in range(1,N):
-        s1 = sum(W[:i])
-        s2 = sum(W[i:])
-        if abs(s1-s2) < min:
-            min = abs(s1-s2)
-    print(min)
+def main():
+    N, M = map(int, input().split())
+    broken = set()
+    for _ in range(M):
+        broken.add(int(input()))
 
-problem129_b()
+    dp = [0 for _ in range(N+1)]
+    dp[0] = 1
+    if 1 not in broken:
+        dp[1] = 1
+
+    for i in range(2, N+1):
+        if i not in broken:
+            dp[i] = dp[i-1] + dp[i-2]
+
+    print(dp[N] % 1000000007)
 
 =======
 Suggestion 5
 
-def get_min_diff():
-    N = int(input())
-    W = list(map(int, input().split()))
-    min_diff = 10000
-    for t in range(1, N):
-        S1 = sum(W[:t])
-        S2 = sum(W[t:])
-        min_diff = min(min_diff, abs(S1 - S2))
-    return min_diff
+def main():
+    N,M = list(map(int,input().split()))
+    a = []
+    for i in range(M):
+        a.append(int(input()))
+    a.append(N+1)
+    dp = [0 for i in range(N+1)]
+    dp[0] = 1
+    for i in range(1,N+1):
+        if i in a:
+            continue
+        if i == 1:
+            dp[i] = dp[i-1]
+        else:
+            dp[i] = (dp[i-2] + dp[i-1]) % 1000000007
+    print(dp[N])
 
 =======
 Suggestion 6
 
-def problems129_b():
-    N = int(input())
-    W = [int(i) for i in input().split()]
-    min_diff = sum(W)
-    for i in range(N):
-        S1 = sum(W[0:i+1])
-        S2 = sum(W[i+1:N])
-        diff = abs(S1 - S2)
-        if diff < min_diff:
-            min_diff = diff
-    print(min_diff)
+def main():
+    n, m = map(int, input().split())
+    a = []
+    for i in range(m):
+        a.append(int(input()))
+    a.append(n)
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in range(1, n + 1):
+        if i not in a:
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007
+    print(dp[n])
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    W = list(map(int, input().split()))
-    min_diff = 100 * 100
-    for i in range(1, n):
-        diff = abs(sum(W[:i]) - sum(W[i:]))
-        min_diff = min(min_diff, diff)
-    print(min_diff)
+def problems129_c():
+    n,m = map(int,input().split())
+    a = [0]
+    for i in range(m):
+        a.append(int(input()))
+    a.append(n+1)
+    dp = [0]*(n+1)
+    dp[0] = 1
+    for i in range(1,n+1):
+        dp[i] = dp[i-1]
+        for j in range(1,m+1):
+            if a[j] == i:
+                dp[i] = 0
+                break
+            elif a[j] > i:
+                break
+            else:
+                dp[i] = (dp[i]+dp[i-a[j]-1])%1000000007
+    print(dp[n])
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    w = list(map(int, input().split()))
-    ans = 100
-    for i in range(1, n):
-        s1 = sum(w[:i])
-        s2 = sum(w[i:])
-        ans = min(ans, abs(s1 - s2))
-    print(ans)
+    # 读取输入
+    n, m = map(int, input().split())
+    a = [int(input()) for _ in range(m)]
+    # 从第0阶开始爬楼梯
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    # 爬楼梯
+    for i in range(1, n + 1):
+        if i not in a:
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007
+    # 打印结果
+    print(dp[n])
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    W = list(map(int, input().split()))
-    min_diff = 1000
-    for t in range(1, n):
-        s1 = sum(W[0:t])
-        s2 = sum(W[t:])
-        diff = abs(s1 - s2)
-        if diff < min_diff:
-            min_diff = diff
-    print(min_diff)
-
-=======
-Suggestion 10
-
-def get_min_diff(l):
-    l.sort()
-    T = sum(l)/2
-    S1 = 0
-    S2 = 0
-    for i in range(len(l)):
-        if S1 + l[i] <= T:
-            S1 += l[i]
-        else:
-            S2 += l[i]
-    return abs(S1 - S2)
+def problems129_c():
+    pass

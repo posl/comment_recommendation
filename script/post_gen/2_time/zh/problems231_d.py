@@ -3,167 +3,187 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    n, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    x = [int(input()) for _ in range(q)]
-    for i in range(q):
-        count = 0
-        for j in range(n):
-            if a[j] >= x[i]:
-                count += 1
-        print(count)
+def solve():
+    # 读取输入
+    n, m = map(int, input().split())
+    # 用来记录每个人的左右边界
+    l, r = [0] * n, [0] * n
+    # 用来记录每个人的右边界的最小值和左边界的最大值
+    min_right, max_left = n, 0
+    for i in range(m):
+        a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        # 更新左右边界
+        l[b] = max(l[b], a + 1)
+        r[a] = max(r[a], b + 1)
+        # 更新右边界的最小值和左边界的最大值
+        min_right = min(min_right, b)
+        max_left = max(max_left, a)
+    # 用来记录当前人的左边界的最大值
+    max_l = 0
+    for i in range(n):
+        # 更新当前人的左边界的最大值
+        max_l = max(max_l, l[i])
+        # 如果当前人的左边界的最大值大于右边界的最小值，说明不满足条件
+        if max_l > min_right:
+            print("No")
+            return
+        # 如果当前人的右边界的最小值大于左边界的最大值，说明不满足条件
+        if r[i] > max_left:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 2
 
-def binary_search(x, array, left, right):
-    if left == right:
-        return left
-    if left + 1 == right:
-        if array[left] >= x:
-            return left
-        else:
-            return right
-    middle = (left + right) // 2
-    if array[middle] >= x:
-        return binary_search(x, array, left, middle)
-    else:
-        return binary_search(x, array, middle, right)
+def main():
+    n, m = map(int, input().split())
+    a = [0] * (n + 1)
+    for i in range(m):
+        x, y = map(int, input().split())
+        a[x] += 1
+        a[y] += 1
+    for i in range(1, n + 1):
+        if a[i] % 2 == 1:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 3
 
-def binary_search(a, x):
-    """二分查找"""
-    n = len(a)
-    left = 0
-    right = n - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if a[mid] == x:
-            return mid
-        elif a[mid] < x:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return -1
-
-n, q = map(int, input().split())
-a = list(map(int, input().split()))
-a = sorted(a)
-for _ in range(q):
-    x = int(input())
-    print(binary_search(a, x) + 1)
+def solve():
+    # 读取输入
+    n, m = map(int, input().split())
+    # 初始化并查集
+    uf = UnionFind(n)
+    # 读取条件
+    for _ in range(m):
+        a, b = map(int, input().split())
+        uf.union(a - 1, b - 1)
+    # 判断是否满足条件
+    print("Yes" if uf.all_same() else "No")
+    return
 
 =======
 Suggestion 4
 
 def main():
-    n,q = map(int, input().split())
-    A = list(map(int, input().split()))
-    x = [int(input()) for _ in range(q)]
+    N, M = map(int, input().split())
+    edge = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        edge[A-1].append(B-1)
+        edge[B-1].append(A-1)
 
-    for i in range(q):
-        count = 0
-        for j in range(n):
-            if A[j] >= x[i]:
-                count += 1
-        print(count)
+    #print(edge)
+    #print(len(edge[0]))
+    #print(len(edge[1]))
+    #print(len(edge[2]))
+    #print(len(edge[3]))
+    for i in range(N):
+        if len(edge[i]) % 2 == 1:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 5
 
-def main():
-    n, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    x = [int(input()) for _ in range(q)]
-    for i in range(q):
-        print(n - (len(a) - bisect.bisect_left(a, x[i])))
+def solve(n, m, a, b):
+    if m == 0:
+        return True
+    for i in range(m):
+        if a[i] == 1:
+            if b[i] == 2:
+                return False
+        elif a[i] == n:
+            if b[i] == n-1:
+                return False
+        elif a[i] == b[i]-1:
+            if b[i] == a[i]+1:
+                return False
+    return True
 
 =======
 Suggestion 6
 
-def main():
-    n,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort()
-    for i in range(q):
-        x = int(input())
-        cnt = 0
-        for j in range(n):
-            if a[j] >= x:
-                cnt += 1
-        print(cnt)
+def solve():
+    N,M = map(int,input().split())
+    AB = [list(map(int,input().split())) for _ in range(M)]
+    AB.sort(key=lambda x:x[1])
+    right = 0
+    ans = 0
+    for a,b in AB:
+        if right < a:
+            ans += 1
+            right = b - 1
+    print('Yes' if ans == 1 else 'No')
 
 =======
 Suggestion 7
 
-def binary_search(array, x):
-    left = 0
-    right = len(array) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if array[mid] == x:
-            return mid
-        elif array[mid] > x:
-            right = mid - 1
-        else:
-            left = mid + 1
-    return left
-
-n, q = map(int, input().split())
-a = list(map(int, input().split()))
-x = [int(input()) for _ in range(q)]
-a.sort()
-
-for i in range(q):
-    print(n - binary_search(a, x[i]))
+def main():
+    n,m = map(int,input().split())
+    A = [0]*m
+    B = [0]*m
+    for i in range(m):
+        A[i],B[i] = map(int,input().split())
+    print(A,B)
+    print(n,m)
 
 =======
 Suggestion 8
 
-def main():
-    n,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    x = [int(input()) for _ in range(q)]
-    a.sort()
-    for i in x:
-        print(n - (a.index(i) if i in a else len(a) - 1 - a[::-1].index(i) + 1))
+def solve():
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if A[-1] < B[0]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 9
 
-def solve():
-    N, Q = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort()
-    for i in range(Q):
-        x = int(input())
-        low = 0
-        high = N - 1
-        while low < high:
-            mid = (low + high) // 2
-            if A[mid] >= x:
-                high = mid
-            else:
-                low = mid + 1
-        if A[low] >= x:
-            print(N - low)
-        else:
-            print(N - low - 1)
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for i in range(m):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    a.sort()
+    b.sort()
+    if a[0] < b[0] and b[0] < a[1] and a[1] < b[1]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 10
 
-def binary_search(a, x, low, high):
-    if low > high:
-        return -1
-    mid = (low + high) // 2
-    if a[mid] == x:
-        return mid
-    elif a[mid] > x:
-        return binary_search(a, x, low, mid - 1)
+def main():
+    n,m = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    a = sorted(a)
+    b = sorted(b)
+    if a[0] > b[-1]:
+        print('No')
     else:
-        return binary_search(a, x, mid + 1, high)
+        print('Yes')

@@ -1,84 +1,106 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def replace1with9(n):
-    return int(str(n).replace('1','x').replace('9','1').replace('x','9'))
+def main():
+    N = int(input())
+    if N%111 == 0:
+        print(N)
+    else:
+        print((N//111+1)*111)
 
 =======
 Suggestion 2
 
-def replace_1_9(n):
-    return int(str(n).replace('1', 'a').replace('9', '1').replace('a', '9'))
+def main():
+    n = int(input())
+    if n <= 111:
+        print(111)
+    elif n <= 222:
+        print(222)
+    elif n <= 333:
+        print(333)
+    elif n <= 444:
+        print(444)
+    elif n <= 555:
+        print(555)
+    elif n <= 666:
+        print(666)
+    elif n <= 777:
+        print(777)
+    elif n <= 888:
+        print(888)
+    else:
+        print(999)
 
 =======
 Suggestion 3
 
-def swap(num):
-    num = str(num)
-    num = num.replace('1','x')
-    num = num.replace('9','1')
-    num = num.replace('x','9')
-    return num
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print((n // 111 + 1) * 111)
 
 =======
 Suggestion 4
 
-def problems111_a():
-    n = input("请输入一个三位数：")
-    if 111 <= int(n) <= 999:
-        result = ''
-        for i in n:
-            if i == '1':
-                result += '9'
-            else:
-                result += '1'
-        print(result)
-    else:
-        print("输入的数字不符合要求，请重新输入！")
-        problems111_a()
-
-problems111_a()
+def main():
+    N = int(input())
+    for i in range(N, N+1000):
+        if i % 111 == 0:
+            print(i)
+            break
 
 =======
 Suggestion 5
 
 def main():
     n = int(input())
-    print(1110-n)
+    print((n+110)//111*111)
 
 =======
 Suggestion 6
 
 def main():
-    n = input()
-    for i in range(len(n)):
-        if n[i] == '1':
-            print('9', end='')
-        else:
-            print('1', end='')
-main()
+    N = int(input())
+    n = N//111
+    if N%111 != 0:
+        n += 1
+    print(n*111)
 
 =======
 Suggestion 7
 
 def main():
-    n = input()
-    n = n.replace('1','x')
-    n = n.replace('9','1')
-    n = n.replace('x','9')
-    print(n)
+    n = int(input())
+    print(((n+110)//111)*111)
 
 =======
 Suggestion 8
 
+def problems111_b():
+    n = int(input())
+    if n % 111 != 0:
+        print((n // 111 + 1) * 111)
+    else:
+        print(n)
+
+=======
+Suggestion 9
+
 def main():
-    n = input()
-    for i in range(len(n)):
-        if n[i] == '1':
-            print('9', end='')
-        elif n[i] == '9':
-            print('1', end='')
-        else:
-            print(n[i], end='')
+    n = int(input())
+    if n == 999:
+        print(999)
+    else:
+        print(n+1)
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    print(111 * (N//111 + 1))

@@ -1,165 +1,151 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-
-n,x=map(int,raw_input().split())
-a=map(int,raw_input().split())
-a.sort()
-ans=abs(x-a[0])
-for i in range(1,n):
-    ans=gcd(ans,abs(x-a[i]))
-print ans
+def main():
+    pass
 
 =======
 Suggestion 2
 
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-
-n,x=map(int,input().split())
-a=list(map(int,input().split()))
-a.append(x)
-a.sort()
-b=[a[i+1]-a[i] for i in range(n)]
-ans=b[0]
-for i in range(1,n):
-    ans=gcd(ans,b[i])
-print(ans)
+def solution(H,W,coins):
+    N = 0
+    operation = []
+    for i in range(H):
+        for j in range(W):
+            if coins[i][j] % 2 == 1:
+                if j < W - 1:
+                    coins[i][j] -= 1
+                    coins[i][j+1] += 1
+                    N += 1
+                    operation.append([i+1,j+1,i+1,j+2])
+                elif i < H - 1:
+                    coins[i][j] -= 1
+                    coins[i+1][j] += 1
+                    N += 1
+                    operation.append([i+1,j+1,i+2,j+1])
+    print(N)
+    for i in range(N):
+        print(operation[i][0], operation[i][1], operation[i][2], operation[i][3])
 
 =======
 Suggestion 3
 
 def main():
-    n,x = map(int,input().split())
-    x_list = list(map(int,input().split()))
-    x_list.append(x)
-    x_list.sort()
-    x_list = [x_list[i+1]-x_list[i] for i in range(n)]
-    import math
-    def gcd(a,b):
-        if b == 0:
-            return a
-        else:
-            return gcd(b,a%b)
-    answer = x_list[0]
-    for i in range(1,n):
-        answer = gcd(answer,x_list[i])
-    print(answer)
+    h,w = map(int,input().split())
+    a = [[int(i) for i in input().split()] for _ in range(h)]
+    ans = []
+    for i in range(h):
+        for j in range(w):
+            if a[i][j]%2 == 1:
+                if j != w-1:
+                    a[i][j+1] += 1
+                    ans.append([i+1,j+1,i+1,j+2])
+                elif i != h-1:
+                    a[i+1][j] += 1
+                    ans.append([i+1,j+1,i+2,j+1])
+    print(len(ans))
+    for i in ans:
+        print(*i)
 
 =======
 Suggestion 4
 
-def solve(n, x, xs):
-    xs.sort()
-    ds = []
-    for i in range(n-1):
-        ds.append(xs[i+1] - xs[i])
-    ds.sort()
-    if n == 1:
-        return ds[0]
-    else:
-        return gcd(ds[0], ds[1])
+def solve():
+    H,W = map(int,input().split())
+    a = []
+    for i in range(H):
+        a.append(list(map(int,input().split())))
+
+    ans = []
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] % 2 == 1:
+                if j < W - 1:
+                    a[i][j+1] += 1
+                    ans.append([i+1,j+1,i+1,j+2])
+                elif i < H - 1:
+                    a[i+1][j] += 1
+                    ans.append([i+1,j+1,i+2,j+1])
+    print(len(ans))
+    for i in range(len(ans)):
+        print(ans[i][0],ans[i][1],ans[i][2],ans[i][3])
+
+solve()
 
 =======
 Suggestion 5
 
 def main():
-    n, x = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    x_list.append(x)
-    x_list.sort()
-    if n == 1:
-        print(x_list[1] - x_list[0])
-    else:
-        x_list_diff = [x_list[i+1] - x_list[i] for i in range(n)]
-        x_list_diff.sort()
-        print(x_list_diff[0])
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    ans = []
+    for i in range(h):
+        for j in range(w):
+            if a[i][j] % 2 == 1:
+                if j < w - 1:
+                    a[i][j] -= 1
+                    a[i][j + 1] += 1
+                    ans.append([i + 1, j + 1, i + 1, j + 2])
+                elif i < h - 1:
+                    a[i][j] -= 1
+                    a[i + 1][j] += 1
+                    ans.append([i + 1, j + 1, i + 2, j + 1])
+    print(len(ans))
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1], ans[i][2], ans[i][3])
 
 =======
 Suggestion 6
 
-def main():
-    n,x = map(int,input().split())
-    x_list = list(map(int,input().split()))
-    x_list.append(x)
-    x_list.sort()
-    d_list = []
-    for i in range(n):
-        d_list.append(x_list[i+1] - x_list[i])
-    d = d_list[0]
-    for i in range(1,n):
-        d = gcd(d,d_list[i])
-    print(d)
+def print_list(l):
+    for i in l:
+        print(i)
 
 =======
 Suggestion 7
 
-def main():
-    n, x = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    x_list.append(x)
-    x_list.sort()
-    d_list = []
-    for i in range(n):
-        d_list.append(x_list[i+1] - x_list[i])
-    d_list.sort()
-    d = d_list[0]
-    for i in range(n):
-        d = gcd(d, d_list[i])
-    print(d)
+def solve(h,w,coins):
+    #先将偶数的单元格填满
+    ans=[]
+    for i in range(h):
+        for j in range(w):
+            if coins[i][j]%2==1:
+                if j<w-1:
+                    coins[i][j+1]+=1
+                    ans.append((i+1,j+1,i+1,j+2))
+                elif i<h-1:
+                    coins[i+1][j]+=1
+                    ans.append((i+1,j+1,i+2,j+1))
+    #再将奇数的单元格填满
+    for i in range(h):
+        for j in range(w):
+            while coins[i][j]%2==1:
+                if j<w-1:
+                    coins[i][j+1]+=1
+                    ans.append((i+1,j+1,i+1,j+2))
+                elif i<h-1:
+                    coins[i+1][j]+=1
+                    ans.append((i+1,j+1,i+2,j+1))
+    return ans
 
 =======
 Suggestion 8
 
-def main():
-    N, X = map(int, input().split())
-    x = list(map(int, input().split()))
-    x.append(X)
-    x.sort()
-    d = [x[i + 1] - x[i] for i in range(N)]
-    import math
-    ans = math.gcd(*d)
-    print(ans)
-
-=======
-Suggestion 9
-
-def main():
-    n,x = map(int,input().split())
-    x_list = list(map(int,input().split()))
-    x_list.sort()
-    if n == 1:
-        print(abs(x_list[0]-x))
-    else:
-        x_list.append(x)
-        x_list.sort()
-        x_list2 = []
-        for i in range(n+1):
-            x_list2.append(abs(x_list[i+1]-x_list[i]))
-        print(gcd_list(x_list2))
-
-=======
-Suggestion 10
-
-def main():
-    N, X = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    x_list.append(X)
-    x_list.sort()
-    d_list = []
-    for i in range(N):
-        d_list.append(x_list[i + 1] - x_list[i])
-    gcd = d_list[0]
-    for i in range(N - 1):
-        gcd = calc_gcd(gcd, d_list[i + 1])
-    print(gcd)
+def solve(h, w, a):
+    ans = []
+    for i in range(h):
+        for j in range(w-1):
+            if a[i][j] % 2 == 1:
+                a[i][j+1] += 1
+                ans.append((i+1, j+1, i+1, j+2))
+    for i in range(h-1):
+        if a[i][w-1] % 2 == 1:
+            a[i+1][w-1] += 1
+            ans.append((i+1, w, i+2, w))
+    print(len(ans))
+    for i in ans:
+        print(*i)

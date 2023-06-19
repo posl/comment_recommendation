@@ -3,209 +3,160 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def f(n):
-    if n == 1:
-        return "A"
-    elif n == 2:
-        return "B"
-    elif n % 2 == 0:
-        return f(n // 2) + "B"
-    else:
-        return f(n - 1) + "A"
-
-n = int(input())
-print(f(n))
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(N, M, k, a)
+    print("Yes" if N == 2 else "No")
 
 =======
 Suggestion 2
 
-def solve(n):
-    if n == 1:
-        return 'A'
-    if n % 2 == 0:
-        return solve(n // 2) + 'B'
-    else:
-        return solve(n - 1) + 'A'
+def main():
+    N, M = map(int, input().split())
+    A = []
+    for _ in range(M):
+        A.append(list(map(int, input().split()))[1:])
+    from collections import Counter
+    C = Counter()
+    for a in A:
+        C.update(a)
+    for v in C.values():
+        if v % 2 == 1:
+            print('No')
+            return
+    print('Yes')
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    if n == 1:
-        print("A")
+def solve():
+    n,m = map(int,input().split())
+    k = [int(input()) for _ in range(m)]
+    a = [list(map(int,input().split())) for _ in range(m)]
+    if m%2!=0:
+        print("No")
         return
-    if n == 2:
-        print("AA")
-        return
-    if n == 3:
-        print("AAA")
-        return
-    if n == 4:
-        print("AABA")
-        return
-
-    # 2, 4, 8, 16, 32, 64
-    # 3, 6, 12, 24, 48, 96
-    # 5, 10, 20, 40, 80
-    # 7, 14, 28, 56
-    # 9, 18, 36, 72
-    # 11, 22, 44, 88
-    # 13, 26, 52
-    # 15, 30, 60
-    # 17, 34, 68
-    # 19, 38, 76
-    # 21, 42, 84
-    # 23, 46, 92
-    # 25, 50
-    # 27, 54
-    # 29, 58
-    # 31, 62
-    # 33, 66
-    # 35, 70
-    # 37, 74
-    # 39, 78
-    # 41, 82
-    # 43, 86
-    # 45, 90
-    # 47, 94
-    # 49
-    # 51
-    # 53
-    # 55
-    # 57
-    # 59
-    # 61
-    # 63
-    # 65
-    # 67
-    # 69
-    # 71
-    # 73
-    # 75
-    # 77
-    # 79
-    # 81
-    # 83
-    # 85
-    # 87
-    # 89
-    # 91
-    # 93
-    # 95
-    # 97
-    # 99
-    # 101
-    # 103
-    # 105
-    # 107
-    # 109
-    # 111
-    # 113
-    # 115
+    for i in range(m):
+        for j in range(k[i]-1):
+            if a[i][j]==a[i][j+1]:
+                print("No")
+                return
+    for i in range(1,m,2):
+        if k[i]!=k[i-1]:
+            print("No")
+            return
+        for j in range(k[i]):
+            if a[i][j]!=a[i-1][j]:
+                print("No")
+                return
+    print("Yes")
+    return
 
 =======
 Suggestion 4
 
-def f(n):
-    if n==0:
-        return ''
-    if n%2==0:
-        return f(n//2)+'B'
-    else:
-        return f(n-1)+'A'
-
-print(f(int(input())))
+def main():
+    N,M = map(int,input().split())
+    k = [0]*M
+    a = [0]*M
+    for i in range(M):
+        k[i] = int(input())
+        a[i] = list(map(int,input().split()))
+    print(N,M)
+    print(k)
+    print(a)
+    return 0
 
 =======
 Suggestion 5
 
-def solve(n):
-    if n == 0:
-        return ''
-    elif n == 1:
-        return 'A'
-    elif n % 2 == 0:
-        return solve(n // 2) + 'B'
-    else:
-        return solve(n - 1) + 'A'
-
-n = int(input())
-print(solve(n))
+def main():
+    n,m = map(int,input().split())
+    cnt = [0] * (n+1)
+    for i in range(m):
+        k = int(input())
+        a = list(map(int,input().split()))
+        for j in range(k):
+            cnt[a[j]] += 1
+    for i in range(1,n+1):
+        if cnt[i] % 2 != 0:
+            print("No")
+            return
+    print("Yes")
+    return
 
 =======
 Suggestion 6
 
-def f(n):
-    if n == 0:
-        return ''
-    if n % 2 == 0:
-        return f((n - 2) // 2) + 'b'
-    else:
-        return f((n - 1) // 2) + 'a'
-
-n = int(input())
-print(f(n))
+def main():
+    N, M = map(int, input().split())
+    k = [0] * M
+    a = [[] for _ in range(M)]
+    for i in range(M):
+        k[i] = int(input())
+        a[i] = list(map(int, input().split()))
+    print(solve(N, M, k, a))
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    s = []
-    while n > 0:
-        if n % 2 == 0:
-            s.append('B')
-            n = n // 2
-        else:
-            s.append('A')
-            n -= 1
-    print(''.join(reversed(s)))
+def solve(N, M, k, a):
+    if M % 2 == 1:
+        return False
+    for i in range(M // 2):
+        if len(a[2 * i] & a[2 * i + 1]) == 0:
+            return False
+    return True
+
+N, M = map(int, input().split())
+k = [0] * M
+a = [set() for _ in range(M)]
+for i in range(M):
+    k[i] = int(input())
+    a[i] = set(map(int, input().split()))
+print("Yes" if solve(N, M, k, a) else "No")
 
 =======
 Suggestion 8
 
-def solve(n):
-    res = []
-    while n > 0:
-        if n % 2 == 0:
-            n = n // 2
-            res.append('B')
-        else:
-            n = n - 1
-            res.append('A')
-    return ''.join(res[::-1])
-
-n = int(input())
-print(solve(n))
+def solve():
+    pass
 
 =======
 Suggestion 9
 
-def solve(n):
-    ans = ''
-    while n > 0:
-        if n % 2 == 0:
-            n //= 2
-            ans += 'B'
-        else:
-            n -= 1
-            ans += 'A'
-    return ans[::-1]
-
-n = int(input())
-print(solve(n))
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(N, M, k, a)
 
 =======
 Suggestion 10
 
-def getMinSteps(n):
-    steps = []
-    while n > 0:
-        if n % 2 == 0:
-            n = n / 2
-            steps.append('B')
-        else:
-            n = n - 1
-            steps.append('A')
-    return steps[::-1]
+def main():
+    N, M = map(int, input().split())
+    k = []
+    for i in range(M):
+        k.append(int(input()))
+        a = list(map(int, input().split()))
+    if N % 2 == 1:
+        print("No")
+        exit()
+    for i in range(M):
+        if k[i] % 2 == 1:
+            print("No")
+            exit()
+        for j in range(k[i]):
+            if a[j] == a[j + 1]:
+                print("No")
+                exit()
+    print("Yes")

@@ -3,151 +3,152 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def triangle(L):
-    L.sort()
-    cnt = 0
-    for i in range(len(L)-2):
-        for j in range(i+1,len(L)-1):
-            for k in range(j+1,len(L)):
-                if L[i] != L[j] and L[j] != L[k] and L[i] + L[j] > L[k]:
-                    cnt += 1
-    return cnt
+def abs(x):
+    if x >= 0:
+        return x
+    else:
+        return -x
 
-N = int(input())
-L = list(map(int,input().split()))
-print(triangle(L))
+x, k, d = map(int, input().split())
+
+x = abs(x)
 
 =======
 Suggestion 2
 
-def triangle(n, l):
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if l[i] != l[j] and l[j] != l[k] and l[k] != l[i]:
-                    if l[i] + l[j] > l[k]:
-                        ans += 1
-    return ans
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x-k*d)
+        return
+    else:
+        k -= x//d
+        x %= d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(d-x)
+        return
 
 =======
 Suggestion 3
 
-def triangle():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if l[i] != l[j] and l[j] != l[k] and l[i] + l[j] > l[k]:
-                    ans += 1
-    print(ans)
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x/d >= k:
+        print(x-d*k)
+        return
+    k -= x//d
+    x %= d
+    if k%2 == 0:
+        print(x)
+    else:
+        print(abs(x-d))
 
 =======
 Suggestion 4
 
-def triangles(l):
-    l.sort()
-    n = len(l)
-    cnt = 0
-    for i in range(n-2):
-        for j in range(i+1,n-1):
-            for k in range(j+1,n):
-                if l[i] != l[j] and l[j] != l[k] and l[i] + l[j] > l[k]:
-                    cnt += 1
-    return cnt
+def solve():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D >= K:
+        print(X - K * D)
+    else:
+        K -= X // D
+        X %= D
+        if K % 2 == 0:
+            print(X)
+        else:
+            print(D - X)
+
+solve()
 
 =======
 Suggestion 5
 
-def triangle_count(n, l):
-    l.sort()
-    count = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if l[i] != l[j] and l[j] != l[k] and l[k] < l[i] + l[j]:
-                    count += 1
-                elif l[k] >= l[i] + l[j]:
-                    break
-    return count
+def solve():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x//d > k:
+        return x-d*k
+    else:
+        k -= x//d
+        x = x%d
+        if k%2 == 0:
+            return x
+        else:
+            return d-x
+
+print(solve())
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i + 1, n):
-            for k in range(j + 1, n):
-                if l[i] != l[j] and l[j] != l[k] and l[k] < l[i] + l[j]:
-                    ans += 1
-    print(ans)
+def solve(x, k, d):
+    x = abs(x)
+    if x / d > k:
+        return x - k * d
+    else:
+        k -= x / d
+        x %= d
+        if k % 2 == 0:
+            return x
+        else:
+            return d - x
+
+x, k, d = map(int, raw_input().split())
+print solve(x, k, d)
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    L = list(map(int, input().split()))
-    L.sort()
-    cnt = 0
-    for i in range(n-2):
-        for j in range(i+1, n-1):
-            for k in range(j+1, n):
-                if L[i] != L[j] and L[j] != L[k] and L[k] != L[i] and L[i]+L[j] > L[k]:
-                    cnt += 1
-    print(cnt)
-main()
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if k*d <= x:
+        print(x-k*d)
+    else:
+        t = x//d
+        if (k-t)%2 == 0:
+            print(x-t*d)
+        else:
+            print(d-(x-t*d))
 
 =======
 Suggestion 8
 
-def isTriangle(a, b, c):
-    return a + b > c and a + c > b and b + c > a
-
-n = int(input())
-l = list(map(int, input().split()))
-l.sort()
-ans = 0
-for i in range(n):
-    for j in range(i + 1, n):
-        for k in range(j + 1, n):
-            if isTriangle(l[i], l[j], l[k]):
-                ans += 1
-print(ans)
+def input():
+    x,k,d = map(int, input().split())
+    return x,k,d
 
 =======
 Suggestion 9
 
-def triangle(n, l):
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            for k in range(j+1,n):
-                if l[i]+l[j] > l[k] and l[i] != l[j] and l[j] != l[k] and l[k] != l[i]:
-                    ans += 1
-    return ans
+def problems175_c():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x-k*d)
+    else:
+        k = k - x//d
+        x = x%d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(d-x)
 
 =======
 Suggestion 10
 
-def solve():
-    N = int(input())
-    L = list(map(int, input().split()))
-    L.sort()
-    ans = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            for k in range(j+1, N):
-                if L[i] != L[j] and L[j] != L[k] and L[k] != L[i] and L[i]+L[j] > L[k]:
-                    ans += 1
-    print(ans)
-solve()
+def main():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k * d:
+        print(x - k * d)
+        return
+    if (k - x // d) % 2 == 0:
+        print(x % d)
+    else:
+        print(abs(x % d - d))

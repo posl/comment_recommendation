@@ -4,311 +4,371 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    pass
+    N, P, Q, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    # print(N, P, Q, R)
+    # print(A)
+    # print()
+    # print()
+    # pr
 
 =======
 Suggestion 2
 
-def problems265_c():
-    pass
+def solve():
+    n, p, q, r = map(int, input().split())
+    a = list(map(int, input().split()))
+    max_a = [0] * n
+    min_a = [0] * n
+    max_a[0] = a[0]
+    min_a[0] = a[0]
+    for i in range(1, n):
+        max_a[i] = max(max_a[i - 1], a[i])
+        min_a[i] = min(min_a[i - 1], a[i])
+    ans = 0
+    for i in range(n):
+        if min_a[i] < p and max_a[i] > r:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 3
 
-def main():
-    #H, W = map(int, input().split())
-    #G = [input() for i in range(H)]
-    H, W = 9, 44
-    G = ['RRDDDDRRRDDDRRRRRRDDDRDDDDRDDRDDDDDDRRDRRRRR',
-         'RRRDLRDRDLLLLRDRRLLLDDRDLLLRDDDLLLDRRLLLLLDD',
-         'DRDLRLDRDLRDRLDRLRDDLDDLRDRLDRLDDRLRRLRRRDRR',
-         'DDLRRDLDDLDDRLDDLDRDDRDDDDRLRRLRDDRRRLDRDRDD',
-         'RDLRRDLRDLLLLRRDLRDRRDRRRDLRDDLLLLDDDLLLLRDR',
-         'RDLLLLLRDLRDRLDDLDDRDRRDRLDRRRLDDDLDDDRDDLDR',
-         'RDLRRDLDDLRDRLRDLDDDLDDRLDRDRDLDRDLDDLRRDLRR',
-         'RDLDRRLDRLLLLDRDRLLLRDDLLLLLRDRLLLRRRRLLLDDR',
-         'RRRRDRDDRRRDDRDDDRRRDRDRDRDRRRRRRDDDRDDDDRRR']
-    i, j = 0, 0
-    while True:
-        if G[i][j] == 'U' and i != 0:
-            i -= 1
-        elif G[i][j] == 'D' and i != H - 1:
-            i += 1
-        elif G[i][j] == 'L' and j != 0:
-            j -= 1
-        elif G[i][j] == 'R' and j != W - 1:
-            j += 1
-        else:
+def solve():
+    N, P, Q, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, P, Q, R)
+    #print(A)
+    ans = "No"
+    for i in range(N-3+1):
+        x = A[i]
+        for j in range(i+1, N-2+1):
+            y = A[j]
+            for k in range(j+1, N-1+1):
+                z = A[k]
+                for l in range(k+1, N+1):
+                    w = A[l]
+                    if (x+y+z+w) == (P+Q+R) and (x+y) == P and (y+z) == Q and (z+w) == R:
+                        ans = "Yes"
+                        break
+                if ans == "Yes":
+                    break
+            if ans == "Yes":
+                break
+        if ans == "Yes":
             break
-    if len(set(G[i][j])) == 1:
-        print(-1)
-    else:
-        print(i + 1, j + 1)
+    print(ans)
+
+solve()
 
 =======
 Suggestion 4
 
-def main():
-    h, w = map(int, input().split())
-    grid = []
-    for i in range(h):
-        grid.append(input())
-    visited = [[0 for i in range(w)] for j in range(h)]
-    curx, cury = 0, 0
-    while True:
-        if visited[curx][cury] == 1:
-            print(-1)
+def solve():
+    # 读取数据
+    N, p, q, r = map(int, input().split())
+    A = list(map(int, input().split()))
+    # 逆序累积和
+    R = [0] * (N + 1)
+    for i in range(N - 1, -1, -1):
+        R[i] = max(R[i + 1], A[i])
+    # 正序累积和
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = S[i] + A[i]
+    # 二分查找
+    ans = 'No'
+    for i in range(1, N - 1):
+        if p * i > q:
             break
-        visited[curx][cury] = 1
-        if grid[curx][cury] == 'U':
-            if curx == 0:
-                print(curx + 1, cury + 1)
+        while True:
+            j = N - 1
+            while j > i and (S[j] - S[i]) * p > r:
+                j -= 1
+            if j <= i:
                 break
-            else:
-                curx -= 1
-        elif grid[curx][cury] == 'D':
-            if curx == h - 1:
-                print(curx + 1, cury + 1)
+            if (S[j] - S[i]) * p == r:
+                if (S[j] - S[i]) * q == (S[i] - S[0]) * r:
+                    ans = 'Yes'
                 break
-            else:
-                curx += 1
-        elif grid[curx][cury] == 'L':
-            if cury == 0:
-                print(curx + 1, cury + 1)
+            if (S[j] - S[i]) * q > (S[i] - S[0]) * r:
                 break
-            else:
-                cury -= 1
-        elif grid[curx][cury] == 'R':
-            if cury == w - 1:
-                print(curx + 1, cury + 1)
+            if (S[j] - S[i]) * q == (S[i] - S[0]) * r:
+                ans = 'Yes'
+            if R[j] * q > (S[i] - S[0]) * r:
                 break
-            else:
-                cury += 1
-        else:
-            print(curx + 1, cury + 1)
+            if R[j] * q == (S[i] - S[0]) * r:
+                ans = 'Yes'
             break
+    print(ans)
 
 =======
 Suggestion 5
 
 def main():
-    h,w = map(int,input().split())
-    grid = []
-    for i in range(h):
-        grid.append(input())
-    x = 0
-    y = 0
-    visited = [[0 for i in range(w)] for j in range(h)]
-    visited[x][y] = 1
-    while True:
-        if grid[x][y] == 'U':
-            x -= 1
-        elif grid[x][y] == 'D':
-            x += 1
-        elif grid[x][y] == 'L':
-            y -= 1
-        elif grid[x][y] == 'R':
-            y += 1
-        if x < 0 or x >= h or y < 0 or y >= w:
-            print(x+1,y+1)
-            return
-        if visited[x][y] == 1:
-            print(-1)
-            return
-        visited[x][y] = 1
+    n, p, q, r = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 从左到右扫描，记下当前最大值
+    max_a = [0] * n
+    max_a[0] = a[0]
+    for i in range(1, n):
+        max_a[i] = max(a[i], max_a[i - 1])
+
+    # 从右到左扫描，记下当前最大值
+    max_a_r = [0] * n
+    max_a_r[n - 1] = a[n - 1]
+    for i in range(n - 2, -1, -1):
+        max_a_r[i] = max(a[i], max_a_r[i + 1])
+
+    # 计算Q
+    q_list = [0] * n
+    for i in range(n):
+        q_list[i] = q * a[i]
+
+    # 计算Q
+    q_list_r = [0] * n
+    for i in range(n):
+        q_list_r[i] = q * a[i]
+
+    # 计算P
+    p_list = [0] * n
+    for i in range(n):
+        p_list[i] = p * a[i]
+
+    # 计算R
+    r_list = [0] * n
+    for i in range(n):
+        r_list[i] = r * a[i]
+
+    # 从左到右扫描，记下当前最大值
+    max_q = [0] * n
+    max_q[0] = q_list[0]
+    for i in range(1, n):
+        max_q[i] = max(q_list[i], max_q[i - 1])
+
+    # 从右到左扫描，记下当前最大值
+    max_q_r = [0] * n
+    max_q_r[n - 1] = q_list[n - 1]
+    for i in range(n - 2, -1, -1):
+        max_q_r[i] = max(q_list[i], max_q_r[i + 1])
+
+    # 从左到右扫描，记下当前最大值
+    max_p = [0] * n
 
 =======
 Suggestion 6
 
-def main():
-    h, w = map(int, input().split())
-    g = [list(input()) for _ in range(h)]
-    pos = [0, 0]
-    while True:
-        if g[pos[0]][pos[1]] == "U":
-            if pos[0] == 0:
-                print(pos[0] + 1, pos[1] + 1)
-                break
-            else:
-                pos[0] -= 1
-        elif g[pos[0]][pos[1]] == "D":
-            if pos[0] == h - 1:
-                print(pos[0] + 1, pos[1] + 1)
-                break
-            else:
-                pos[0] += 1
-        elif g[pos[0]][pos[1]] == "L":
-            if pos[1] == 0:
-                print(pos[0] + 1, pos[1] + 1)
-                break
-            else:
-                pos[1] -= 1
-        elif g[pos[0]][pos[1]] == "R":
-            if pos[1] == w - 1:
-                print(pos[0] + 1, pos[1] + 1)
-                break
-            else:
-                pos[1] += 1
+def solve():
+    N, P, Q, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    max_p = A[0]
+    min_p = A[0]
+    max_q = A[0]
+    min_q = A[0]
+    max_r = A[0]
+    min_r = A[0]
+    for i in range(1, N):
+        max_p = max(max_p, A[i])
+        min_p = min(min_p, A[i])
+        max_q = max(max_q, A[i] + max_p - P)
+        min_q = min(min_q, A[i] + min_p - P)
+        max_r = max(max_r, A[i] + max_q - Q)
+        min_r = min(min_r, A[i] + min_q - Q)
+    if max_r == R and min_r == R:
+        print("Yes")
     else:
-        print(-1)
+        print("No")
+
+solve()
 
 =======
 Suggestion 7
 
-def find_path(grid, x, y):
-    #print(grid)
-    #print(x, y)
-    if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]):
-        return -1
-    if grid[x][y] == 'U':
-        return find_path(grid, x-1, y)
-    elif grid[x][y] == 'D':
-        return find_path(grid, x+1, y)
-    elif grid[x][y] == 'L':
-        return find_path(grid, x, y-1)
-    elif grid[x][y] == 'R':
-        return find_path(grid, x, y+1)
-    else:
-        return [x+1, y+1]
+def solve():
+    N,P,Q,R = map(int, input().split())
+    A = list(map(int, input().split()))
+    # print(N, P, Q, R)
+    # print(A)
+    if N < 4:
+        print("No")
+        return
+
+    # 从左到右扫描，找到满足条件的最小的x
+    # 从左到右扫描，找到满足条件的最大的y
+    # 从左到右扫描，找到满足条件的最大的z
+    # 从左到右扫描，找到满足条件的最大的w
+    # 判断是否存在满足条件的(x,y,z,w)
+    # print("A[0] = ", A[0])
+    # print("A[1] = ", A[1])
+    # print("A[2] = ", A[2])
+    # print("A[3] = ", A[3])
+    # print("A[4] = ", A[4])
+    # print("A[5] = ", A[5])
+    # print("A[6] = ", A[6])
+    # print("A[7] = ", A[7])
+    # print("A[8] = ", A[8])
+    # print("A[9] = ", A[9])
+    # print("A[10] = ", A[10])
+    # print("A[11] = ", A[11])
+    # print("A[12] = ", A[12])
+    # print("A[13] = ", A[13])
+    # print("A[14] = ", A[14])
+    # print("A[15] = ", A[15])
+    # print("A[16] = ", A[16])
+    # print("A[17] = ", A[17])
+    # print("A[18] = ", A[18])
+    # print("A[19] = ", A[19])
+    # print("A[20] = ", A[20])
+    # print("A[21] = ", A[21])
+    # print("A[22] = ", A[22])
+    # print("
 
 =======
 Suggestion 8
 
 def main():
-    h, w = map(int, input().split())
-    grid = [list(input()) for _ in range(h)]
-    x, y = 0, 0
-    visited = [[False] * w for _ in range(h)]
-    while True:
-        if grid[x][y] == 'U' and x != 0:
-            x -= 1
-        elif grid[x][y] == 'D' and x != h - 1:
-            x += 1
-        elif grid[x][y] == 'L' and y != 0:
-            y -= 1
-        elif grid[x][y] == 'R' and y != w - 1:
-            y += 1
-        else:
-            break
-        if visited[x][y]:
-            print(-1)
-            return
-        visited[x][y] = True
-    print(x + 1, y + 1)
+    N, P, Q, R = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 从左到右扫描，找到最小的A_x
+    x = 0
+    for i in range(1, N):
+        if A[i] < A[x]:
+            x = i
+
+    # 从右到左扫描，找到最大的A_w
+    w = N - 1
+    for j in range(N - 2, -1, -1):
+        if A[j] > A[w]:
+            w = j
+
+    # 从左到右扫描，找到最小的A_y
+    y = x
+    for i in range(x + 1, w + 1):
+        if A[i] < A[y]:
+            y = i
+
+    # 从右到左扫描，找到最大的A_z
+    z = w
+    for j in range(w - 1, y - 1, -1):
+        if A[j] > A[z]:
+            z = j
+
+    # 从左到右扫描，找到最小的A_y
+    y = x
+    for i in range(x + 1, z + 1):
+        if A[i] < A[y]:
+            y = i
+
+    # 从右到左扫描，找到最大的A_z
+    z = w
+    for j in range(w - 1, y - 1, -1):
+        if A[j] > A[z]:
+            z = j
+
+    # 从左到右扫描，找到最小的A_y
+    y = x
+    for i in range(x + 1, z + 1):
+        if A[i] < A[y]:
+            y = i
+
+    # 从右到左扫描，找到最大的A_z
+    z = w
+    for j in range(w - 1, y - 1, -1):
+        if A[j] > A[z]:
+            z = j
+
+    # 从左到右扫描，找到最小的A_y
+    y = x
+    for i in range
 
 =======
 Suggestion 9
 
-def solve():
-    # 读入数据
-    H, W = map(int, input().split())
-    S = [list(input()) for i in range(H)]
-    # print(S)
-    # 初始化
-    i, j = 0, 0
-    # 无限循环
-    while True:
-        # 判断当前位置的字符
-        if S[i][j] == 'U':
-            # 如果是U，且i≠1，则移动到（i-1,j）。
-            if i == 0:
-                print(i+1, j+1)
-                break
-            else:
-                i -= 1
-        elif S[i][j] == 'D':
-            # 如果是D，且i≠H，则移动到（i+1,j）。
-            if i == H-1:
-                print(i+1, j+1)
-                break
-            else:
-                i += 1
-        elif S[i][j] == 'L':
-            # 如果是L且j≠1，则移动到（i,j-1）。
-            if j == 0:
-                print(i+1, j+1)
-                break
-            else:
-                j -= 1
-        elif S[i][j] == 'R':
-            # 如果是R且j≠W，则移动到（i,j+1）。
-            if j == W-1:
-                print(i+1, j+1)
-                break
-            else:
-                j += 1
+def main():
+    n,p,q,r = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = []
+    y = []
+    z = []
+    w = []
+    for i in range(n):
+        if i == 0:
+            x.append(a[i])
+        else:
+            x.append(x[i-1]+a[i])
+    for i in range(n):
+        if i == 0:
+            y.append(a[i])
+        elif i == 1:
+            y.append(y[i-1]+a[i])
+        else:
+            y.append(y[i-1]+a[i])
+    for i in range(n):
+        if i == 0:
+            z.append(a[i])
+        elif i == 1:
+            z.append(z[i-1]+a[i])
+        elif i == 2:
+            z.append(z[i-1]+a[i])
+        else:
+            z.append(z[i-1]+a[i])
+    for i in range(n):
+        if i == 0:
+            w.append(a[i])
+        elif i == 1:
+            w.append(w[i-1]+a[i])
+        elif i == 2:
+            w.append(w[i-1]+a[i])
+        elif i == 3:
+            w.append(w[i-1]+a[i])
+        else:
+            w.append(w[i-1]+a[i])
+    for i in range(n):
+        if x[i] == p and y[i] == q and z[i] == r:
+            print('Yes')
+            break
+        elif i == n-1:
+            print('No')
 
 =======
 Suggestion 10
 
-def main():
-    # 读取输入
-    h, w = map(int, input().split())
-    g = []
-    for i in range(h):
-        g.append(input())
-    # print(g)
+def solve():
+    N, P, Q, R = map(int, input().split())
+    A = list(map(int, input().split()))
 
-    # 起点
-    x = 0
-    y = 0
-    # 方向
-    direction = g[x][y]
-    # print(direction)
+    #累加和
+    Asum = [0] * (N + 1)
+    for i in range(N):
+        Asum[i + 1] = Asum[i] + A[i]
 
-    # 记录是否走过
-    visited = [[False for _ in range(w)] for _ in range(h)]
-    # print(visited)
+    #最大值和最小值
+    maxA = A[0]
+    minA = A[0]
+    for i in range(N):
+        maxA = max(maxA, A[i])
+        minA = min(minA, A[i])
 
-    # 记录走过的坐标
-    path = []
-    # print(path)
+    #最大值和最小值的累加和
+    maxAsum = [0] * (N + 1)
+    minAsum = [0] * (N + 1)
+    for i in range(N):
+        maxAsum[i + 1] = maxAsum[i] + maxA - A[i]
+        minAsum[i + 1] = minAsum[i] + minA - A[i]
 
-    # 记录是否无限循环
-    infinite = False
+    #最大值和最小值的累加和的最大值和最小值
+    maxmaxAsum = maxAsum[0]
+    minminAsum = minAsum[0]
+    for i in range(N):
+        maxmaxAsum = max(maxmaxAsum, maxAsum[i])
+        minminAsum = min(minminAsum, minAsum[i])
 
-    # 重复走
-    while not visited[x][y]:
-        # print(x, y)
-        # print(visited)
-        # print(path)
-        # print(infinite)
-        # print()
-        # 标记走过
-        visited[x][y] = True
-        path.append((x, y))
-
-        # 判断方向
-        if direction == 'U':
-            if x == 0:
-                infinite = True
-                break
-            else:
-                x -= 1
-        elif direction == 'D':
-            if x == h - 1:
-                infinite = True
-                break
-            else:
-                x += 1
-        elif direction == 'L':
-            if y == 0:
-                infinite = True
-                break
-            else:
-                y -= 1
-        elif direction == 'R':
-            if y == w - 1:
-                infinite = True
-                break
-            else:
-                y += 1
-
-        # 判断方向
-        direction = g[x][y]
-
-    # 判断是否无限循环
-    if infinite:
-        print(-1)
+    #判断
+    if maxmaxAsum - minminAsum <= R - P and maxAsum[N] - minAsum[N] == R - P and \
+            maxAsum[N] - minAsum[N] == Q - R and Asum[N] == Q:
+        print("Yes")
     else:
-        print(x + 1, y + 1)
+        print("No")

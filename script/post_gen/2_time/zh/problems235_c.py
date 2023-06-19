@@ -4,129 +4,159 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def get_input():
-    n = int(input())
-    h = list(map(int, input().split()))
-    return n, h
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    xk = []
+    for _ in range(q):
+        xk.append(list(map(int, input().split())))
+    return n, q, a, xk
 
 =======
 Suggestion 2
 
 def main():
-    N = int(input())
-    H = list(map(int, input().split()))
-    maxH = 0
-    for i in range(N):
-        if H[i] >= maxH:
-            maxH = H[i]
-    print(maxH)
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for _ in range(Q):
+        x, k = map(int, input().split())
+        print(find_kth(A, x, k))
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    h = [int(i) for i in input().split()]
-    maxh = 0
-    for i in range(n-1):
-        if h[i] < h[i+1]:
-            maxh = h[i+1]
-    print(maxh)
+def get_index(num, k, list):
+    count = 0
+    for i in range(len(list)):
+        if list[i] == num:
+            count += 1
+            if count == k:
+                return i + 1
+    return -1
 
 =======
 Suggestion 4
 
-def main():
-    # 读取输入
-    n = int(input())
-    h = list(map(int, input().split()))
-
-    # 从左到右，找到最后一个比左边高的平台
-    ans = 0
-    for i in range(n - 1):
-        if h[i] < h[i + 1]:
-            ans = h[i + 1]
-
-    print(ans)
+def find_kth_number_in_array(arr, x, k):
+    if arr.count(x) < k:
+        return -1
+    else:
+        count = 0
+        for i in range(0, len(arr)):
+            if arr[i] == x:
+                count += 1
+                if count == k:
+                    return i+1
+        return -1
 
 =======
 Suggestion 5
 
-def solve():
-    n = int(input())
-    h = list(map(int, input().split()))
-    res = h[0]
-    for i in range(1, n):
-        if h[i] > h[i-1]:
-            res = h[i]
-    print(res)
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(Q):
+        x, k = map(int, input().split())
+        tmp = 0
+        for j in range(N):
+            if A[j] == x:
+                k -= 1
+            if k == 0:
+                tmp = j
+                break
+        if tmp:
+            print(tmp+1)
+        else:
+            print(-1)
 
 =======
 Suggestion 6
 
 def main():
-    num = int(input())
-    height = list(map(int, input().split()))
-    max_height = 0
-    for i in range(num):
-        if height[i] > max_height:
-            max_height = height[i]
-    print(max_height)
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        count = 0
+        for j in range(n):
+            if a[j] == x:
+                count += 1
+            if count == k:
+                print(j+1)
+                break
+        if count < k:
+            print(-1)
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    H = list(map(int, input().split()))
-    max_height = 0
-    for i in range(n):
-        if H[i] >= max_height:
-            max_height = H[i]
-    print(max_height)
+def binary_search(a, x, k):
+    low = 0
+    high = len(a) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if a[mid] == x:
+            if mid == 0 or a[mid - 1] != x:
+                return mid + 1
+            else:
+                high = mid - 1
+        elif a[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    h.append(0)
-    ans = 0
-    for i in range(n):
-        if h[i] < h[i + 1]:
-            ans = h[i + 1]
-    print(ans)
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(q):
+        x,k = map(int,input().split())
+        cnt = 0
+        for j in range(n):
+            if a[j] == x:
+                cnt += 1
+            if cnt == k:
+                print(j+1)
+                break
+        else:
+            print(-1)
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-
-    # 从左边开始，找到最大的那个，然后从右边开始，找到最大的那个，然后比较两个最大的那个，取最大的那个
-    # 从左边开始，找到最大的那个
-    max_left = 0
-    for i in range(n):
-        if h[i] > max_left:
-            max_left = h[i]
-    # 从右边开始，找到最大的那个
-    max_right = 0
-    for i in range(n-1, -1, -1):
-        if h[i] > max_right:
-            max_right = h[i]
-    # 比较两个最大的那个，取最大的那个
-    if max_right > max_left:
-        print(max_right)
-    else:
-        print(max_left)
+def problem235_c():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        count = 0
+        for j in range(n):
+            if a[j] == x:
+                count += 1
+                if count == k:
+                    print(j+1)
+                    break
+        else:
+            print(-1)
 
 =======
 Suggestion 10
 
-def findLastPlatform(heights):
-    lastPlatform = heights[0]
-    for i in range(1, len(heights)):
-        if heights[i] > lastPlatform:
-            lastPlatform = heights[i]
-    return lastPlatform
+def solve():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for _ in range(Q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for i in range(N):
+            if A[i] == x:
+                cnt += 1
+                if cnt == k:
+                    print(i + 1)
+                    break
+        else:
+            print(-1)
+
+solve()

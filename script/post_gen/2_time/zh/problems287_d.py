@@ -3,190 +3,203 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def solve():
-    N,M=map(int,input().split())
-    u=[0]*M
-    v=[0]*M
-    for i in range(M):
-        u[i],v[i]=map(int,input().spli
+def main():
+    s = input()
+    t = input()
+    t_len = len(t)
+    s_len = len(s)
+    if t_len == 1:
+        for i in range(s_len):
+            if s[i] == '?':
+                s = s[:i] + t + s[i+1:]
+        if s == t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        for i in range(s_len-t_len+1):
+            if s[i] == '?':
+                s = s[:i] + t + s[i+t_len:]
+            elif s[i] != t[0]:
+                continue
+            else:
+                if s[i:i+t_len] == t:
+                    print('Yes')
+                else:
+                    print('No')
+        if s[i+t_len] == '?':
+            s = s[:i+t_len] + t + s[i+t_len+1:]
+        elif s[i+t_len] != t[0]:
+            pass
+        else:
+            if s[i+t_len:i+2*t_len] == t:
+                print('Yes')
+            else:
+                print('No')
 
 =======
 Suggestion 2
 
-def find(x):
-    if x == par[x]:
-        return x
-    else:
-        par[x] = find(par[x])
-        return par[x]
+def main():
+    s = input()
+    t = input()
+    len_s = len(s)
+    len_t = len(t)
+    for i in range(len_t + 1):
+        s1 = s[:i] + t[i:] #用t的后半部分替换s的前半部分
+        s2 = s[len_s - len_t + i:] + s[:i] #用t的后半部分替换s的前半部分
+        if (s1.replace('?', 'a') == t) or (s2.replace('?', 'a') == t):
+            print('Yes')
+        else:
+            print('No')
 
 =======
 Suggestion 3
 
 def main():
-    pass
+    s = input()
+    t = input()
+    s = list(s)
+    t = list(t)
+    for i in range(len(t)):
+        if t[i] == '?':
+            t[i] = s[i]
+    t = ''.join(t)
+    for i in range(len(s)-len(t)+1):
+        t1 = s[i:i+len(t)]
+        flag = True
+        for j in range(len(t)):
+            if t1[j] != t[j] and t1[j] != '?':
+                flag = False
+                break
+        if flag:
+            print('Yes')
+        else:
+            print('No')
 
 =======
 Suggestion 4
 
 def main():
-    print("Hello World!")
-    return
+    S = input()
+    T = input()
+    S = S.replace('?', 'a')
+    T = T.replace('?', 'a')
+    for i in range(len(S)-len(T)+1):
+        if S[i:i+len(T)] == T:
+            print('Yes')
+        else:
+            print('No')
 
 =======
 Suggestion 5
 
-def check_path_graph(n,m,edges):
-    if m != n-1:
-        return False
-    if n == 2:
-        return True
-    if n == 3:
-        if edges[0][0] == 1 and edges[0][1] == 3:
-            return True
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+
+    for i in range(0, t_len + 1):
+        s_new = s[0:i] + t_len * "?" + s[i + t_len:s_len]
+        flag = True
+        for j in range(0, s_len):
+            if s_new[j] == "?":
+                continue
+            elif s_new[j] == t[j]:
+                continue
+            else:
+                flag = False
+                break
+        if flag:
+            print("Yes")
         else:
-            return False
-    if n == 4:
-        if edges[0][0] == 1 and edges[0][1] == 3 and edges[1][0] == 3 and edges[1][1] == 2 and edges[2][0] == 2 and edges[2][1] == 4:
-            return True
-        else:
-            return False
-    if n == 5:
-        if edges[0][0] == 1 and edges[0][1] == 2 and edges[1][0] == 2 and edges[1][1] == 3 and edges[2][0] == 3 and edges[2][1] == 4 and edges[3][0] == 4 and edges[3][1] == 5 and edges[4][0] == 5 and edges[4][1] == 1:
-            return True
-        else:
-            return False
-    return False
+            print("No")
 
 =======
 Suggestion 6
 
-def main():
-    n,m = map(int,input().split())
-    if n == 2 and m == 0:
-        print("No")
-        return
-    if m == 0:
-        print("Yes")
-        return
-    data = []
-    for i in range(m):
-        data.append(list(map(int,input().split())))
-    data = sorted(data,key = lambda x:x[0])
-    for i in range(len(data)-1):
-        if data[i][0] == data[i+1][0]:
-            print("No")
-            return
-    data = sorted(data,key = lambda x:x[1])
-    for i in range(len(data)-1):
-        if data[i][1] == data[i+1][1]:
-            print("No")
-            return
-    print("Yes")
-    return
+def match(s, t):
+    for i in range(len(s)):
+        if s[i] != '?' and t[i] != s[i]:
+            return False
+    return True
+
+s = input()
+t = input()
+
+for i in range(len(s) - len(t) + 1):
+    if match(s[i:i+len(t)], t):
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 7
 
-def solve():
-    N, M = map(int, input().split())
-    if M == 0:
-        print('No')
-        return
-    edges = [tuple(map(int, input().split())) for _ in range(M)]
-    edges.sort()
-    if edges[0][0] != 1:
-        print('No')
-        return
-    for i in range(1, M):
-        if edges[i][0] != edges[i-1][1]:
-            print('No')
-            return
-    print('Yes')
-    return
+def main():
+    S = input()
+    T = input()
+    lenS = len(S)
+    lenT = len(T)
+
+    for x in range(lenT+1):
+        S1 = S[0:x] + S[lenS-lenT+x:lenS]
+        if len(S1) == len(T):
+            flag = True
+            for i in range(lenT):
+                if S1[i] != T[i] and S1[i] != "?":
+                    flag = False
+                    break
+            if flag:
+                print("Yes")
+            else:
+                print("No")
+        else:
+            print("No")
 
 =======
 Suggestion 8
 
-def solve():
-    pass
+def match(s, t):
+    if len(s) != len(t):
+        return False
+    for i in range(len(s)):
+        if s[i] == '?':
+            continue
+        if s[i] != t[i]:
+            return False
+    return True
 
 =======
 Suggestion 9
 
 def main():
-    N, M = map(int, input().split())
-    u, v = [], []
-    for _ in range(M):
-        u_i, v_i = map(int, input().split())
-        u.append(u_i)
-        v.append(v_i)
-    
-    # 邻接表
-    adj = [[] for _ in range(N)]
-    for i in range(M):
-        adj[u[i]-1].append(v[i]-1)
-        adj[v[i]-1].append(u[i]-1)
-    
-    # 遍历
-    for i in range(N):
-        if len(adj[i]) > 2:
-            print("No")
-            return
-        elif len(adj[i]) == 2:
-            if adj[i][0] == adj[i][1]:
-                print("No")
+    s = input()
+    t = input()
+    len_s = len(s)
+    len_t = len(t)
+    if len_s < len_t:
+        print('No')
+        return
+    for i in range(len_s - len_t + 1):
+        if s[i] == t[0] or s[i] == '?':
+            for j in range(1, len_t):
+                if s[i + j] != t[j] and s[i + j] != '?':
+                    break
+            else:
+                print('Yes')
                 return
-        elif len(adj[i]) == 1:
-            if i == 0 or i == N-1:
-                print("No")
-                return
-            elif adj[i-1][0] == adj[i][0] or adj[i-1][0] == i or adj[i][0] == i+1:
-                print("No")
-                return
-        elif len(adj[i]) == 0:
-            if i != N-1:
-                print("No")
-                return
-    print("Yes")
+    print('No')
 
 =======
 Suggestion 10
 
 def main():
-    N, M = map(int, input().split())
-    # print(N, M)
-    uv = []
-    for i in range(M):
-        u, v = map(int, input().split())
-        uv.append([u, v])
-    # print(uv)
-    uv.sort()
-    # print(uv)
-    # print(uv[0][0], uv[0][1])
-    # print(uv[1][0], uv[1][1])
-    # print(uv[2][0], uv[2][1])
-    # print(uv[3][0], uv[3][1])
-    # print(uv[4][0], uv[4][1])
-    # print(uv[5][0], uv[5][1])
-    # print(uv[6][0], uv[6][1])
-    # print(uv[7][0], uv[7][1])
-    # print(uv[8][0], uv[8][1])
-    # print(uv[9][0], uv[9][1])
-    # print(uv[10][0], uv[10][1])
-    # print(uv[11][0], uv[11][1])
-    # print(uv[12][0], uv[12][1])
-    # print(uv[13][0], uv[13][1])
-    # print(uv[14][0], uv[14][1])
-    # print(uv[15][0], uv[15][1])
-    # print(uv[16][0], uv[16][1])
-    # print(uv[17][0], uv[17][1])
-    # print(uv[18][0], uv[18][1])
-    # print(uv[19][0], uv[19][1])
-    # print(uv[20][0], uv[20][1])
-    # print(uv[21][0], uv[21][1])
-    # print(uv[22][0], uv[22][1])
-    # print(uv[23][0], uv[23][1])
-    # print(uv[24][0], uv[24][1])
-    # print(uv[25][0], uv[25][1])
-    # print(uv[26][0], uv[26][1])
+    S = input()
+    T = input()
+    for i in range(len(S) - len(T) + 1):
+        if S[i:i + len(T)].replace('?', 'a') >= T.replace('?', 'a'):
+            print('Yes')
+        else:
+            print('No')

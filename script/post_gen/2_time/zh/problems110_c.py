@@ -4,148 +4,223 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    x_list.append(x)
-    y_list.append(y)
-    x_list.sort()
-    y_list.sort()
-    if x_list[-1] < y_list[0] and x < y:
-        print('No War')
-    else:
-        print('War')
+    S = input()
+    T = input()
+    s = S
+    t = T
+    s_list = list(s)
+    t_list = list(t)
+    s_list.sort()
+    t_list.sort()
+    if s_list != t_list:
+        print("No")
+        return
+    s_list = list(s)
+    t_list = list(t)
+    for i in range(len(s_list)):
+        for j in range(i+1,len(s_list)):
+            s_list[i],s_list[j] = s_list[j],s_list[i]
+            if s_list == t_list:
+                print("Yes")
+                return
+            s_list[i],s_list[j] = s_list[j],s_list[i]
+    print("No")
 
 =======
 Suggestion 2
 
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    if max(x_list) < min(y_list) and x < min(y_list) and max(x_list) < y:
-        print('No War')
+    S = input()
+    T = input()
+    S_list = list(S)
+    T_list = list(T)
+    S_list.sort()
+    T_list.sort()
+    if S_list == T_list:
+        print("Yes")
     else:
-        print('War')
+        print("No")
 
 =======
 Suggestion 3
 
-def main():
-    n, m, x, y = map(int, input().split())
-    x = x + 1
-    y = y - 1
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    x_list.append(x)
-    y_list.append(y)
-    x_list.sort()
-    y_list.sort()
-    if x_list[-1] > y_list[0]:
-        print('War')
+def solve():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    if s == t:
+        print("Yes")
+        return
+    s_map = {}
+    t_map = {}
+    for i in range(len(s)):
+        if s[i] not in s_map:
+            s_map[s[i]] = 1
+        else:
+            s_map[s[i]] += 1
+        if t[i] not in t_map:
+            t_map[t[i]] = 1
+        else:
+            t_map[t[i]] += 1
+    if s_map == t_map:
+        print("Yes")
     else:
-        print('No War')
+        print("No")
 
 =======
 Suggestion 4
 
-def main():
-    n,m,x,y = map(int,input().split())
-    x_list = list(map(int,input().split()))
-    y_list = list(map(int,input().split()))
-    x_list.append(x)
-    y_list.append(y)
-    x_list.sort()
-    y_list.sort()
-    if x_list[-1] < y_list[0]:
-        print("No War")
-    else:
-        print("War")
+def check(s, t):
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            return False
+    return True
 
 =======
 Suggestion 5
 
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    for z in range(x + 1, y + 1):
-        if max(x_list) < z and min(y_list) >= z:
-            print("No War")
-            return
-    print("War")
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    
+    s_dict = {}
+    t_dict = {}
+    for s, t in zip(S, T):
+        if s not in s_dict:
+            s_dict[s] = t
+        else:
+            if s_dict[s] != t:
+                print("No")
+                return
+        if t not in t_dict:
+            t_dict[t] = s
+        else:
+            if t_dict[t] != s:
+                print("No")
+                return
+    print("Yes")
+    return
 
 =======
 Suggestion 6
 
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
+    S = input()
+    T = input()
 
-    for z in range(x+1, y+1):
-        if max(x_list) < z and min(y_list) >= z:
-            print("No War")
+    if len(S) != len(T):
+        print('No')
+        return
+
+    alphabets = [0] * 26
+    for i in range(len(S)):
+        alphabets[ord(S[i]) - ord('a')] += 1
+        alphabets[ord(T[i]) - ord('a')] -= 1
+
+    for i in range(26):
+        if alphabets[i] != 0:
+            print('No')
             return
 
-    print("War")
-
-main()
+    print('Yes')
+    return
 
 =======
 Suggestion 7
 
 def main():
-    N,M,X,Y = map(int, input().split())
-    x = list(map(int, input().split()))
-    y = list(map(int, input().split()))
-    x.append(X)
-    y.append(Y)
-    x.sort()
-    y.sort()
-    if x[-1] < y[0]:
-        print('No War')
-    else:
-        print('War')
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    if s == t:
+        print("Yes")
+        return
+    dic = {}
+    for i in range(len(s)):
+        if s[i] not in dic:
+            dic[s[i]] = t[i]
+        else:
+            if dic[s[i]] != t[i]:
+                print("No")
+                return
+    print("Yes")
 
 =======
 Suggestion 8
 
 def main():
-    n,m,x,y = map(int,input().split())
-    x_list = list(map(int,input().split()))
-    y_list = list(map(int,input().split()))
-    for i in range(x+1,y+1):
-        if i in x_list and i in y_list:
-            print("No War")
-            break
+    S = input()
+    T = input()
+    #print(S,T)
+    #print(len(S),len(T))
+    #print(len(S) == len(T))
+    #print(S.islower(),T.islower())
+    #print(S.isalpha(),T.isalpha())
+    if len(S) == len(T) and S.islower() and T.islower() and S.isalpha() and T.isalpha():
+        S_list = list(S)
+        T_list = list(T)
+        S_list.sort()
+        T_list.sort()
+        #print(S_list)
+        #print(T_list)
+        if S_list == T_list:
+            print("Yes")
+        else:
+            print("No")
     else:
-        print("War")
+        print("No")
 
 =======
 Suggestion 9
 
 def main():
-    N, M, X, Y = map(int, input().split())
-    x = list(map(int, input().split()))
-    y = list(map(int, input().split()))
-    x.sort()
-    y.sort()
-    x_max = x[N-1]
-    y_min = y[0]
-    if x_max >= y_min:
-        print("War")
+    s = input()
+    t = input()
+    s_list = list(s)
+    t_list = list(t)
+    s_list.sort()
+    t_list.sort(reverse=True)
+    if s_list < t_list:
+        print('Yes')
     else:
-        if X < x_max < Y and X < y_min < Y:
-            print("No War")
-        else:
-            print("War")
+        print('No')
 
 =======
 Suggestion 10
 
-def readinput():
-    n,m,x,y=map(int,input().split())
-    xlist=list(map(int,input().split()))
-    ylist=list(map(int,input().split()))
-    return n,m,x,y,xlist,ylist
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    if s == t:
+        print("Yes")
+        return
+    s_dict = {}
+    t_dict = {}
+    for i in range(len(s)):
+        if s[i] not in s_dict:
+            s_dict[s[i]] = set()
+        s_dict[s[i]].add(i)
+        if t[i] not in t_dict:
+            t_dict[t[i]] = set()
+        t_dict[t[i]].add(i)
+    s_set = set(s)
+    t_set = set(t)
+    if s_set != t_set:
+        print("No")
+        return
+    for i in s_set:
+        if s_dict[i] != t_dict[i]:
+            print("No")
+            return
+    print("Yes")
+    return

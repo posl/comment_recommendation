@@ -1,78 +1,168 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    a, b = map(int, input().split())
-    print(b - a + 1 if b > a else 0)
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if i%2 == 1:
+            a[i] -= 1
+    if sum(a) <= x:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 2
 
 def main():
-    A,B = map(int,input().split())
-    if A > B:
-        print(0)
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        if i % 2 == 1:
+            sum += a[i] - 1
+        else:
+            sum += a[i]
+    if sum <= x:
+        print("Yes")
     else:
-        print(B-A+1)
+        print("No")
 
 =======
 Suggestion 3
 
 def main():
-    a, b = map(int, input().split())
-    count = 0
-    for i in range(a, b + 1):
-        count += 1
-    print(count)
+    # input
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    # process
+    sum = 0
+    for i in range(n):
+        if i%2 == 1:
+            sum += a[i]-1
+        else:
+            sum += a[i]
+    # output
+    if sum <= x:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
 
-def func():
-    a,b = map(int,input().split())
-    if a > b:
-        print(0)
+def main():
+    # 读取输入
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 计算
+    sum = 0
+    for i in range(n):
+        if i % 2 == 1:
+            sum += a[i] - 1
+        else:
+            sum += a[i]
+    # 输出
+    if sum <= x:
+        print("Yes")
     else:
-        print(b-a+1)
+        print("No")
 
 =======
 Suggestion 5
 
-def main():
-    a, b = map(int, input().split())
-    print(b - a + 1 if b - a >= 0 else 0)
+def buy_product(N, X, A):
+    for i in range(N):
+        if i % 2 == 0:
+            X -= A[i]
+        else:
+            X -= A[i] - 1
+    if X >= 0:
+        return "Yes"
+    else:
+        return "No"
 
 =======
 Suggestion 6
 
-def count_integer(a,b):
-    if a <= b and a >= 1 and b <= 100:
-        return b - a + 1
+def problems209_b():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    count = 0
+    for i in range(n):
+        if i % 2 == 1:
+            count += a[i] - 1
+        else:
+            count += a[i]
+    if count > x:
+        print("No")
     else:
-        return 0
+        print("Yes")
 
 =======
 Suggestion 7
 
-def main():
-    A, B = map(int, input().split())
-    print(B-A+1 if B-A>=0 else 0)
+def isAllCanBuy(n, x, a):
+    for i in range(n):
+        if i % 2 == 1:
+            a[i] -= 1
+    if sum(a) <= x:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 8
 
 def main():
-    a,b = map(int,input().split())
-    if a > b:
-        print(0)
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    total = 0
+    for i in range(n):
+        if i%2 == 1:
+            total += a[i]-1
+        else:
+            total += a[i]
+    if total <= x:
+        print('Yes')
     else:
-        print(b-a+1)
+        print('No')
 
 =======
 Suggestion 9
 
+def solve():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        if i % 2 == 1:
+            sum += A[i] - 1
+        else:
+            sum += A[i]
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+solve()
+
+=======
+Suggestion 10
+
 def main():
-    a,b = map(int,input().split())
-    print(b-a+1 if b-a+1 > 0 else 0)
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        if i % 2 == 1:
+            sum += A[i] - 1
+        else:
+            sum += A[i]
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")

@@ -1,25 +1,23 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    pass
+    a,b = map(int, input().split())
+    for i in range(1, a+1):
+        for j in range(1, a+1):
+            if i+j == b:
+                print('Yes')
+                exit()
+    print('No')
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    S = []
-    T = []
-    for i in range(n):
-        a,b = map(int,input().split())
-        S.append([a,b])
-    for i in range(n):
-        a,b = map(int,input().split())
-        T.append([a,b])
-    if S == T:
+    a, b = map(int, input().split())
+    if a * 6 >= b and a <= b:
         print('Yes')
     else:
         print('No')
@@ -28,116 +26,136 @@ def main():
 Suggestion 3
 
 def main():
-    #n = int(input())
-    #s = []
-    #for _ in range(n):
-    #    s.append([int(x) for x in input().split()])
-    #t = []
-    #for _ in range(n):
-    #    t.append([int(x) for x in input().split()])
-    n = 3
-    s = [[0,0],[0,1],[1,0]]
-    t = [[2,0],[3,0],[3,1]]
-    print(s)
-    print(t)
+    a, b = map(int, input().split())
+    for i in range(1, a+1):
+        if b <= i*6 and b >= i*1:
+            print('Yes')
+            exit()
+    print('No')
 
 =======
 Suggestion 4
 
-def isMatch(point1,point2):
-    if point1[0]*point2[0]+point1[1]*point2[1] == 0:
-        return True
+def main():
+    a,b = map(int,input().split())
+    if a*6>=b and a<=b:
+        print("Yes")
     else:
-        return False
+        print("No")
 
 =======
 Suggestion 5
 
-def solve():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        s.append(list(map(int, input().split())))
-    for i in range(n):
-        t.append(list(map(int, input().split())))
-    s.sort()
-    t.sort()
-    for i in range(n):
-        for j in range(n):
-            if s[i][0] == t[j][0] and s[i][1] == t[j][1]:
-                break
-        else:
-            print('No')
-            return
-    for i in range(n):
-        s[i][0] -= t[0][0]
-        s[i][1] -= t[0][1]
-    for i in range(n):
-        for j in range(n):
-            if s[i][0] == t[j][0] and s[i][1] == t[j][1]:
-                break
-        else:
-            print('No')
-            return
-    print('Yes')
+def solve(a,b):
+    if a*6 < b:
+        return 'No'
+    elif a <= b:
+        return 'Yes'
+    else:
+        return 'No'
 
-
-solve()
+a,b = map(int,input().split())
+print(solve(a,b))
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    s = [list(map(int, input().split())) for _ in range(n)]
-    t = [list(map(int, input().split())) for _ in range(n)]
-
-    s.sort(key=lambda x: x[0]**2+x[1]**2)
-    t.sort(key=lambda x: x[0]**2+x[1]**2)
-
-    for i in range(n):
-        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
-            print('No')
-            return
-
-    print('Yes')
+    A,B = map(int,input().split())
+    if A*6 >= B and A <= B:
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 7
 
-def getAngle(x1, y1, x2, y2):
-    if x1 == x2:
-        return 0
-    else:
-        return (y2 - y1) / (x2 - x1)
+def dice_sum(A, B):
+    for i in range(1, 7):
+        for j in range(1, 7):
+            if A == 2:
+                if i + j == B:
+                    return True
+            elif A == 3:
+                for k in range(1, 7):
+                    if i + j + k == B:
+                        return True
+            elif A == 4:
+                for k in range(1, 7):
+                    for l in range(1, 7):
+                        if i + j + k + l == B:
+                            return True
+            elif A == 5:
+                for k in range(1, 7):
+                    for l in range(1, 7):
+                        for m in range(1, 7):
+                            if i + j + k + l + m == B:
+                                return True
+            elif A == 6:
+                for k in range(1, 7):
+                    for l in range(1, 7):
+                        for m in range(1, 7):
+                            for n in range(1, 7):
+                                if i + j + k + l + m + n == B:
+                                    return True
+            elif A == 7:
+                for k in range(1, 7):
+                    for l in range(1, 7):
+                        for m in range(1, 7):
+                            for n in range(1, 7):
+                                for o in range(1, 7):
+                                    if i + j + k + l + m + n + o == B:
+                                        return True
+            elif A == 8:
+                for k in range(1, 7):
+                    for l in range(1, 7):
+                        for m in range(1, 7):
+                            for n in range(1, 7):
+                                for o in range(1, 7):
+                                    for p in range(1, 7):
+                                        if i + j + k + l + m + n + o + p == B:
+                                            return True
+            elif A == 9:
+                for k in range(1, 7):
+                    for l in range(1, 7):
+                        for m in range(1, 7):
+                            for n in range(1, 7):
+                                for o in range(1, 7):
+                                    for p in
 
 =======
 Suggestion 8
 
-def get_angle(a,b):
-    import math
-    return math.atan2(b,a) / math.pi * 180
+def main():
+    a,b = map(int,input().split())
+    if a * 6 < b or a > b:
+        print('No')
+    else:
+        print('Yes')
 
 =======
 Suggestion 9
 
-def solve(n, s, t):
-    for i in range(n):
-        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
-            break
+def main():
+    a, b = map(int, input().split())
+    if a <= b <= 6 * a:
+        print("Yes")
     else:
-        return 'Yes'
-    for i in range(n):
-        for j in range(n):
-            if s[(i + j) % n][0] != t[j][0] or s[(i + j) % n][1] != t[j][1]:
-                break
+        print("No")
+
+=======
+Suggestion 10
+
+def dice_sum(A, B):
+    if A <= 0:
+        return False
+    if A == 1:
+        if B >= 1 and B <= 6:
+            return True
         else:
-            return 'Yes'
-    for i in range(n):
-        for j in range(n):
-            if s[(i + j) % n][0] != t[-j][0] or s[(i + j) % n][1] != t[-j][1]:
-                break
+            return False
+    else:
+        if B >= A and B <= 6 * A:
+            return True
         else:
-            return 'Yes'
-    return 'No'
+            return False

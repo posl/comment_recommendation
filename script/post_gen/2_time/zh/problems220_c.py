@@ -1,96 +1,124 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    k = int(input())
-    a,b = input().split()
-    a = int(a, k)
-    b = int(b, k)
-    print(a*b)
-main()
+def sumB(A, N, X):
+    B = A * 100
+    k = 0
+    sumB = 0
+    while sumB <= X:
+        sumB += B[k]
+        k += 1
+    return k
 
 =======
 Suggestion 2
 
-def convert_to_decimal(number, base):
-    multiplier, result = 1, 0
-    while number > 0:
-        result += number % 10 * multiplier
-        multiplier *= base
-        number //= 10
-    return result
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    sum = 0
+    for i in range(10 ** 100):
+        sum += a[i % n]
+        if sum > x:
+            print(i + 1)
+            break
 
 =======
 Suggestion 3
 
 def main():
-    k = int(input())
-    a,b = map(int,input().split())
-    a = int(str(a),k)
-    b = int(str(b),k)
-    print(a*b)
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    b = a * 10 ** 100
+    s = 0
+    for i in range(len(b)):
+        s += b[i]
+        if s > x:
+            print(i + 1)
+            break
 
 =======
 Suggestion 4
 
-def main():
-    k = int(input())
-    a, b = input().split()
-    a = int(a, k)
-    b = int(b, k)
-    print(a*b)
+def get_input():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    X = int(input())
+    return N,A,X
 
 =======
 Suggestion 5
 
-def f(k, a, b):
-    a10 = 0
-    for i in range(len(a)):
-        a10 += int(a[-i-1]) * (k ** i)
-    b10 = 0
-    for i in range(len(b)):
-        b10 += int(b[-i-1]) * (k ** i)
-    return a10 * b10
-
-k = int(input())
-a, b = input().split()
-print(f(k, a, b))
+def main():
+    pass
 
 =======
 Suggestion 6
 
 def main():
-    k = int(input())
-    a, b = map(int, input().split())
-
-    print(int(str(a*b), k))
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    b = a * 100
+    sum = 0
+    for i in range(len(b)):
+        sum += b[i]
+        if sum > x:
+            print(i+1)
+            break
 
 =======
 Suggestion 7
 
-def main():
-    k = int(input())
-    a, b = input().split(" ")
-    a = int(a, k)
-    b = int(b, k)
-    print(a*b)
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * (10 ** 100)
+    sum = 0
+    for i in range(len(B)):
+        sum += B[i]
+        if sum > X:
+            print(i + 1)
+            break
 
 =======
 Suggestion 8
 
-def main():
-    k = int(input())
-    a, b = map(int, input().split())
-    print(a*b)
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A*100
+    s = 0
+    for i in range(1, 10**5+1):
+        s += B[i-1]
+        if s > X:
+            print(i)
+            break
 
 =======
 Suggestion 9
 
 def main():
-    base = int(input())
-    a, b = map(str, input().split())
-    a = int(a, base)
-    b = int(b, base)
-    print(a*b)
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+    if sum > X:
+        print(N)
+    else:
+        print((X // sum) * N + N)
+main()
+
+=======
+Suggestion 10
+
+def solve():
+    return 0

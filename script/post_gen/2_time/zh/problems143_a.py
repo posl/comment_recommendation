@@ -3,106 +3,79 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-a, b = map(int, input().split())
-g = gcd(a, b)
-ans = 1
-for i in range(2, int(g**0.5)+1):
-    if g % i == 0:
-        ans += 1
-        while g % i == 0:
-            g //= i
+def problem143_a():
+    a,b = map(int,input().split())
+    print(max(0,a-2*b))
 
 =======
 Suggestion 2
 
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 计算并打印答案
+    print(max(0, a - b * 2))
 
 =======
 Suggestion 3
 
-def gcd(a,b):
-    if a < b:
-        a,b = b,a
-    while b:
-        a,b = b,a%b
-    return a
+def main():
+    a, b = map(int, input().split())
+    print(max(a - b * 2, 0))
 
 =======
 Suggestion 4
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    while b != 0:
-        c = a % b
-        a = b
-        b = c
-    return a
+def main():
+    a,b = map(int,input().split())
+    if a <= b:
+        print(0)
+    else:
+        print(a - b * 2)
 
 =======
 Suggestion 5
 
-def gcd(x,y):
-    if y == 0:
-        return x
+def main():
+    A, B = map(int, input().split())
+    if A >= B:
+        print(A - B)
     else:
-        return gcd(y,x%y)
-
-A,B = map(int,input().split())
-g = gcd(A,B)
-cnt = 1
-for i in range(2,int(g**0.5)+1):
-    if g % i == 0:
-        cnt += 1
-        while g % i == 0:
-            g //= i
+        print(0)
 
 =======
 Suggestion 6
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-a, b = map(int, input().split())
-g = gcd(a, b)
-ans = 1
-
-for i in range(2, int(g**0.5)+1):
-    if g % i == 0:
-        ans += 1
-        while g % i == 0:
-            g //= i
+def main():
+    A, B = map(int, input().split())
+    print(max(0, A - 2 * B))
 
 =======
 Suggestion 7
 
-def gcd(a, b):
-    if a % b == 0:
-        return b
+def main():
+    A,B = map(int,input().split())
+    if A > B:
+        print(A-B)
     else:
-        return gcd(b, a % b)
+        print(0)
 
-a, b = map(int, input().split())
+=======
+Suggestion 8
 
-g = gcd(a, b)
-ans = 1
-for i in range(2, int(g**0.5)+1):
-    if g % i == 0:
-        ans += 1
-        while g % i == 0:
-            g //= i
+def main():
+    a,b=map(int,input().split())
+    if a<=b:
+        print(0)
+    else:
+        print(a-2*b)
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int, input().split())
+    if a > b:
+        print(a-b)
+    else:
+        print(0)

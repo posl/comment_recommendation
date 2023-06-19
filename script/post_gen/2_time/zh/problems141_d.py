@@ -1,145 +1,115 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def survive(N, K, Q, A):
-    score = [K] * N
-    for i in range(Q):
-        score[A[i]-1] -= 1
-    for i in range(N):
-        if score[i] > 0:
-            print("Yes")
-        else:
-            print("No")
+def main():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[0] = a[0]>>1
+        a.sort(reverse=True)
+    print(sum(a))
 
 =======
 Suggestion 2
 
-def main():
-    N, K, Q = map(int, input().split())
-    score = [K] * N
-    for _ in range(Q):
-        ans = int(input())
-        score[ans - 1] += 1
-    for i in range(N):
-        if score[i] - Q <= 0:
-            print("No")
-        else:
-            print("Yes")
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 ** (m - i))
+    print(ans // (2 ** m))
 
 =======
 Suggestion 3
 
 def main():
-    n,k,q = map(int, input().split())
-    players = [k] * n
-    for _ in range(q):
-        players[int(input())-1] -= 1
-    for p in players:
-        if p > 0:
-            print("Yes")
-        else:
-            print("No")
-
-main()
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[0] = a[0] // 2
+        a.sort(reverse=True)
+    print(sum(a))
 
 =======
 Suggestion 4
 
-def main():
-    n, k, q = map(int, input().split())
-    a = [int(input()) for _ in range(q)]
-    ans = [0] * n
-    for i in range(q):
-        ans[a[i] - 1] += 1
-    for i in range(n):
-        if k - q + ans[i] > 0:
-            print("Yes")
-        else:
-            print("No")
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    for i in range(M):
+        A[0] = A[0] // 2
+        A.sort(reverse=True)
+    print(sum(A))
+
+solve()
 
 =======
 Suggestion 5
 
-def main():
-    n,k,q = map(int,input().split())
-    scores = [k]*n
-    for i in range(q):
-        scores[int(input())-1] += 1
+def buy_goods(n, m, a):
+    a.sort()
+    cost = 0
     for i in range(n):
-        if scores[i] <= q:
-            print("No")
-        else:
-            print("Yes")
-    return 0
+        cost += a[i]
+    for i in range(m):
+        cost = cost / 2
+    return int(cost)
 
 =======
 Suggestion 6
 
-def main():
-    n,k,q = map(int,input().split())
-    a = []
-    for i in range(q):
-        a.append(int(input()))
-    #print(n,k,q,a)
-    b = [k for i in range(n)]
-    for i in range(q):
-        b[a[i]-1] -= 1
-    #print(b)
-    for i in range(n):
-        if b[i] > 0:
-            print("Yes")
-        else:
-            print("No")
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    ans = 0
+    for i in range(m):
+        a[-1] = a[-1]//2
+        a.sort()
+    print(sum(a))
 
 =======
 Suggestion 7
 
-def main():
-    pass
+def solve(n,m,a):
+    a.sort()
+    for i in range(m):
+        a[-1] = a[-1]//2
+        a.sort()
+    return sum(a)
 
 =======
 Suggestion 8
 
-def solve():
-    n, k, q = map(int, input().split())
-    score = [k for _ in range(n)]
-    for _ in range(q):
-        a = int(input())
-        score[a - 1] += 1
-    for i in range(n):
-        if score[i] <= q:
-            print("No")
-        else:
-            print("Yes")
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[i] = a[i] // 2
+    print(sum(a))
 
 =======
 Suggestion 9
 
 def main():
-    N, K, Q = map(int, input().split())
-    A = [int(input()) for _ in range(Q)]
-    score = [K-Q for _ in range(N)]
-    for i in range(Q):
-        score[A[i]-1] += 1
-    for i in range(N):
-        if score[i] > 0:
-            print("Yes")
-        else:
-            print("No")
-
-=======
-Suggestion 10
-
-def main():
-    n,k,q = map(int,input().split())
-    a = [int(input()) for i in range(q)]
-    score = [k]*n
-    for i in range(q):
-        score[a[i]-1] = score[a[i]-1] - 1
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    a.append(0)
+    count = 0
     for i in range(n):
-        if score[i] > 0:
-            print('Yes')
+        if a[i] > a[i+1]:
+            count += 1
         else:
-            print('No')
+            count += 1
+            break
+    print(count)
+    return 0

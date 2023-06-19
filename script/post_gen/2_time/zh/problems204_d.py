@@ -3,189 +3,180 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    # 读入数据
-    N, M = map(int, input().split())
-    #print(N,M)
+def solve():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    ans = 0
+    for i in range(N):
+        ans += T[i] * (N - i)
+    print(ans)
 
 =======
 Suggestion 2
 
 def main():
-    #读取数据
-    N, M = map(int, input().split())
-    #print(N, M)
-    #print(type(N), type(M))
-    #print(N, M)
-    #A, B = map(int, input().split())
-    #print(A, B)
-    #print(type(A), type(B))
-    #print(A, B)
+    # 读取输入
+    N = int(input())
+    T = list(map(int, input().split()))
+    # 通过排序，从大到小排列
+    T.sort(reverse=True)
+    # 用两个烤箱
+    oven1 = 0
+    oven2 = 0
+    for i in range(N):
+        if oven1 < oven2:
+            oven1 += T[i]
+        else:
+            oven2 += T[i]
+    print(max(oven1, oven2))
 
 =======
 Suggestion 3
 
 def main():
-    N,M = map(int, input().split())
-    a = []
-    for i in range(M):
-        a.append(list(map(int, input().split())))
-    print(len(a))
-    return
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    T.reverse()
+    t1 = 0
+    t2 = 0
+    for i in range(N):
+        if t1 <= t2:
+            t1 += T[i]
+        else:
+            t2 += T[i]
+    print(max(t1, t2))
 
 =======
 Suggestion 4
 
 def main():
-    n,m = map(int,input().split())
-    a = []
-    b = []
-    for i in range(m):
-        x,y = map(int,input().split())
-        a.append(x)
-        b.append(y)
-    count = 0
-    for i in range(1,n+1):
-        for j in range(1,n+1):
-            if i != j:
-                if a.count(i) + b.count(i) == a.count(j) + b.count(j) == 0:
-                    count += 1
-    print(count)
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+
+    if N == 1:
+        print(T[0])
+        return
+
+    if N == 2:
+        print(max(T[0], T[1]))
+        return
+
+    if N == 3:
+        print(max(T[0] + T[1], T[2]))
+        return
+
+    if N == 4:
+        print(max(T[0] + T[3], T[1] + T[2]))
+        return
+
+    if N == 5:
+        print(max(T[0] + T[3] + T[4], T[1] + T[2] + T[4]))
+        return
+
+    if N == 6:
+        print(max(T[0] + T[5] + T[4], T[1] + T[2] + T[3]))
+        return
+
+    if N == 7:
+        print(max(T[0] + T[1] + T[6] + T[5], T[0] + T[2] + T[3] + T[4]))
+        return
+
+    if N == 8:
+        print(max(T[0] + T[1] + T[6] + T[7], T[0] + T[2] + T[3] + T[4], T[0] + T[1] + T[2] + T[5]))
+        return
+
+    if N == 9:
+        print(max(T[0] + T[1] + T[2] + T[3] + T[7] + T[8], T[0] + T[1] + T[2] + T[4] + T[5] + T[8], T[0] + T[1] + T[2] + T[4] + T[6] + T[7]))
+        return
 
 =======
 Suggestion 5
 
 def main():
-    N, M = map(int, input().split())
-    if M == 0:
-        print(N)
-    else:
-        A = list()
-        B = list()
-        for i in range(M):
-            a, b = map(int, input().split())
-            A.append(a)
-            B.append(b)
-        # print(A)
-        # print(B)
-        for i in range(M):
-            A.append(B[i])
-            B.append(A[i])
-        # print(A)
-        # print(B)
-        C = [0 for i in range(N)]
-        for i in range(M * 2):
-            C[A[i] - 1] += 1
-        # print(C)
-        sum = 0
-        for i in range(N):
-            sum += C[i] * (C[i] - 1) / 2
-        print(int(sum))
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    T.reverse()
+    T1 = 0
+    T2 = 0
+    for i in range(N):
+        if T1 <= T2:
+            T1 += T[i]
+        else:
+            T2 += T[i]
+    print(max(T1, T2))
 
 =======
 Suggestion 6
 
 def main():
-    N, M = map(int, input().split())
-    roads = [list(map(int, input().split())) for _ in range(M)]
-    # print(N, M)
-    # print(roads)
+    n = int(input())
+    t = list(map(int, input().split()))
 
-    # 从任意城市出发，能到达的城市
-    can_reach = [set() for _ in range(N)]
-    for road in roads:
-        can_reach[road[0]-1].add(road[1]-1)
-    # print(can_reach)
+    if n == 1:
+        print(t[0])
+        return
 
-    # 从任意城市出发，能到达的城市
-    can_be_reached = [set() for _ in range(N)]
-    for road in roads:
-        can_be_reached[road[1]-1].add(road[0]-1)
-    # print(can_be_reached)
+    if n == 2:
+        print(max(t))
+        return
 
-    # 从任意城市出发，能到达的城市
-    can_reach_2 = [set() for _ in range(N)]
-    for road in roads:
-        for city in can_reach[road[0]-1]:
-            can_reach_2[road[0]-1].add(city)
-            can_reach_2[road[0]-1].update(can_reach[city])
-    # print(can_reach_2)
-
-    # 从任意城市出发，能到达的城市
-    can_be_reached_2 = [set() for _ in range(N)]
-    for road in roads:
-        for city in can_be_reached[road[1]-1]:
-            can_be_reached_2[road[1]-1].add(city)
-            can_be_reached_2[road[1]-1].update(can_be_reached[city])
-    # print(can_be_reached_2)
-
-    # 从任意城市出发，能到达的城市
-    can_reach_3 = [set() for _ in range(N)]
-    for road in roads:
-        for city in can_reach_2[road[0]-1]:
-            can_reach_3[road[0]-1].add(city)
-            can_reach_3[road[0]-1].update(can_reach_2[city])
-    # print(can_reach_3)
-
-    # 从任意城市出发，能到达的城市
+    t.sort(reverse=True)
+    a = t[0]
+    b = t[1]
+    for i in range(2, n):
+        if a > b:
+            b += t[i]
+        else:
+            a += t[i]
+    print(max(a, b))
 
 =======
 Suggestion 7
 
-def solve():
-    n, m = map(int, input().split())
-    if m == 0:
-        print(n)
-        return
-    edge = [[] for _ in range(n)]
-    for _ in range(m):
-        a, b = map(int, input().split())
-        edge[a - 1].append(b - 1)
-    ans = 0
-    for i in range(n):
-        visited = [False] * n
-        visited[i] = True
-        stack = [i]
-        while stack:
-            now = stack.pop()
-            for next in edge[now]:
-                if not visited[next]:
-                    visited[next] = True
-                    stack.append(next)
-        ans += sum(visited)
-    print(ans)
+def solve(n, t):
+    if n == 1:
+        return t[0]
+    elif n == 2:
+        return max(t[0], t[1])
+    else:
+        return max(t[0] + solve(n-1, t[1:]), t[-1] + solve(n-1, t[:-1]))
 
 =======
 Suggestion 8
 
-def main():
-    n, m = map(int, input().split())
-    a = [list(map(int, input().split())) for _ in range(m)]
-    ans = 0
-    for i in range(1, n + 1):
-        for j in range(1, n + 1):
-            cnt = 0
-            for k in range(m):
-                if a[k][0] == i and a[k][1] == j:
-                    cnt += 1
-            ans += cnt * cnt
-    print(ans)
+def get_input():
+    #get N
+    N = int(input())
+    #get T_i
+    T_i = list(map(int, input().split()))
+    return N, T_i
 
 =======
 Suggestion 9
 
 def main():
-    N, M = map(int, input().split())
-    A = []
-    B = []
-    for i in range(M):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    print(N * (N - 1) // 2 - M)
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort()
+    t.reverse()
+    a = 0
+    b = 0
+    for i in range(n):
+        if a < b:
+            a += t[i]
+        else:
+            b += t[i]
+    print(max(a, b))
 
 =======
 Suggestion 10
 
-def calc(n,m):
-    return n*(n-1)//2
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort()
+    print(t[-1] + sum(t[:-1]) // 2)

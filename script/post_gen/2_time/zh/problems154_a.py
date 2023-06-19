@@ -3,90 +3,117 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def f(x):
-    if x == 1:
-        return 1
-    else:
-        return 2 * f(x // 2) + 1
+def main():
+    #读取输入
+    S,T = input().split()
+    A,B = input().split()
+    U = input()
 
-H = int(input())
-print(f(H))
+    #处理输入
+    if S == U:
+        A = str(int(A) - 1)
+    else:
+        B = str(int(B) - 1)
+
+    #输出结果
+    print(A,B)
 
 =======
 Suggestion 2
 
-def get_answer(h):
-    if h == 1:
-        return 1
+def main():
+    s,t = input().split()
+    a,b = map(int, input().split())
+    u = input()
+    if s == u:
+        a -= 1
     else:
-        return 2*get_answer(h//2) + 1
+        b -= 1
+    print(a,b)
 
 =======
 Suggestion 3
 
 def main():
-    H = int(input())
-    print(int(H.bit_length()))
+    S, T = input().split()
+    A, B = input().split()
+    U = input()
+    if S == U:
+        print(int(A)-1, B)
+    else:
+        print(A, int(B)-1)
 
 =======
 Suggestion 4
 
-def solve(h):
-  if h == 1:
-    return 1
-  elif h % 2 == 0:
-    return solve(h//2) * 2 + 1
-  else:
-    return solve(h//2) * 2 + 1
+def main():
+    S,T = input().split()
+    A,B = map(int,input().split())
+    U = input()
 
-print(solve(int(input())))
+    if U == S:
+        A -= 1
+    elif U == T:
+        B -= 1
+
+    print(A,B)
 
 =======
 Suggestion 5
 
-def solve(h):
-    if h == 1:
-        return 1
+def main():
+    s,t = input().split()
+    a,b = input().split()
+    u = input()
+    a = int(a)
+    b = int(b)
+    if s == u:
+        a = a - 1
     else:
-        return 2 * solve(h // 2) + 1
-print(solve(int(input())))
+        b = b - 1
+    print(a,b)
 
 =======
 Suggestion 6
 
-def attack(h):
-    if h == 1:
-        return 1
-    else:
-        return 2 * attack(h // 2) + 1
+def main():
+    #输入
+    s,t = input().split()
+    a,b = map(int,input().split())
+    u = input()
+    #处理
+    if s == u:
+        a -= 1
+    elif t == u:
+        b -= 1
+    #输出
+    print(a,b)
 
 =======
 Suggestion 7
 
-def solve(h):
-    if h == 1:
-        return 1
+def main():
+    S, T = input().split(' ')
+    A, B = map(int, input().split(' '))
+    U = input()
+    if S == U:
+        A -= 1
     else:
-        return 2 * solve(h // 2) + 1
-
-h = int(input())
-print(solve(h))
+        B -= 1
+    print(A, B)
 
 =======
 Suggestion 8
 
-def solve():
-    H = int(input())
-    print(2**(H.bit_length())-1)
-
-=======
-Suggestion 9
-
-def calc(n):
-    if n == 1:
-        return 1
-    else:
-        return 2 * calc(n//2) + 1
-
-H = int(input())
-print(calc(H))
+def main():
+    # 读入S和T
+    s, t = input().split()
+    # 读入A和B
+    a, b = map(int, input().split())
+    # 读入U
+    u = input()
+    # 计算答案并打印
+    if u == s:
+        print(a - 1, b)
+    elif u == t:
+        print(a, b - 1)

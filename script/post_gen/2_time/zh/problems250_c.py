@@ -1,126 +1,98 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    n,a,b = map(int,input().split())
-    for i in range(n*a):
-        if i%a == 0:
-            for j in range(n*b):
-                if j%b == 0:
-                    print("#",end="")
-                else:
-                    print(".",end="")
-            print("")
-        else:
-            for j in range(n*b):
-                if j%b == 0:
-                    print(".",end="")
-                else:
-                    print("#",end="")
-            print("")
+def swap(a, b, li):
+    tmp = li[a-1]
+    li[a-1] = li[b-1]
+    li[b-1] = tmp
 
 =======
 Suggestion 2
 
 def main():
-    N,A,B = map(int, input().split())
-    for i in range(N):
-        for j in range(A):
-            for k in range(N):
-                for l in range(B):
-                    if (i+j)%2 == 0:
-                        print("#", end='')
-                    else:
-                        print(".", end='')
-                print("", end='')
-            print("")
-        print("")
+    N, Q = map(int, input().split())
+    x = [int(input()) for _ in range(Q)]
+    a = [i for i in range(1, N+1)]
+    for i in range(Q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    print(*a)
 
 =======
 Suggestion 3
 
-def main():
-    pass
+def swap(a, b):
+    return b, a
 
 =======
 Suggestion 4
 
-def print_tile(a,b):
-    for i in range(a):
-        if i%2==0:
-            print("#"*b,end="")
-        else:
-            print("."*b,end="")
-        print()
-    return
+def solve():
+    N, Q = map(int, input().split())
+    x = [int(input()) for _ in range(Q)]
+    x = x[::-1]
+    ans = [i for i in range(N, 0, -1)]
+    for i in range(Q):
+        ans[x[i]-1], ans[x[i]] = ans[x[i]], ans[x[i]-1]
+    print(*ans)
+solve()
 
 =======
 Suggestion 5
 
-def problems250_b(n, a, b):
-    #print(n, a, b)
-    for i in range(a*n):
-        for j in range(b*n):
-            if (i//a + j//b) % 2 == 0:
-                print('.', end='')
-            else:
-                print('#', end='')
-        print()
+def swap(arr, i, j):
+    arr[i], arr[j] = arr[j], arr[i]
 
 =======
 Suggestion 6
 
-def main():
-    n, a, b = map(int, input().split())
-    for i in range(n):
-        for j in range(a):
-            for k in range(n):
-                for l in range(b):
-                    if (i + j) % 2 == 0:
-                        print("#", end="")
-                    else:
-                        print(".", end="")
-            print()
-        print()
+def get_input():
+    input = raw_input()
+    return input
 
 =======
 Suggestion 7
 
-def main():
-    n,a,b = map(int,input().split())
-    #n = int(n)
-    #a = int(a)
-    #b = int(b)
-    for i in range(n):
-        for j in range(a):
-            for k in range(n):
-                for l in range(b):
-                    if (i+j)%2 == 0:
-                        print('.',end='')
-                    else:
-                        print('#',end='')
-            print()
-main()
+def swap(a, b):
+    return b, a
+
+N, Q = map(int, input().split())
+balls = [i for i in range(1, N+1)]
+for i in range(Q):
+    x = int(input())
+    balls[x-1], balls[x] = swap(balls[x-1], balls[x])
+print(' '.join(map(str, balls)))
 
 =======
 Suggestion 8
 
-def print_tile(n,a,b):
-    n = int(n)
-    a = int(a)
-    b = int(b)
-    for i in range(a*n):
-        for j in range(b*n):
-            if ((i//a)+(j//b))%2 == 0:
-                print('.',end='')
-            else:
-                print('#',end='')
-        print('')
+def swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
 
 =======
 Suggestion 9
 
-def problems250_b():
-    pass
+def swap(a, i, j):
+    a[i], a[j] = a[j], a[i]
+
+=======
+Suggestion 10
+
+def func1():
+    N, Q = map(int, input().split())
+    ball = [i+1 for i in range(N)]
+    #print(ball)
+    for i in range(Q):
+        x = int(input())
+        #print(x)
+        index = ball.index(x)
+        #print(index)
+        if index != N-1:
+            ball[index], ball[index+1] = ball[index+1], ball[index]
+        else:
+            ball[index], ball[0] = ball[0], ball[index]
+        #print(ball)
+    print(*ball)

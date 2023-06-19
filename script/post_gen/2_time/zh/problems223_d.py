@@ -1,222 +1,220 @@
-Synthesizing 9/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def getDistance(a, b, n):
-    # a: length of wire
-    # b: burning speed
-    # n: number of wires
-    # return: distance between two fires
-    # the distance between two fires is determin
+def main():
+    pass
 
 =======
 Suggestion 2
 
 def solve():
-    N = int(input())
-    A = []
-    B = []
-    for i in range(N):
-        a,b = map(int,input().split())
-        A.append(a)
-        B.append(b)
-    #print(A)
-    #print(B)
-    left = 0
-    right = 0
-    for i in range(N):
-        left += A[i]/B[i]
-        right += A[N-1-i]/B[N-1-i]
-    ans = 0
-    for i in range(N):
-        ans += A[i]*(left-right)/2
-        left -= A[i]/B[i]
-        right += A[N-1-i]/B[N-1-i]
-    print(ans)
+    n, m = map(int, input().split())
+    g = [[] for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        g[a-1].append(b-1)
+    ans = []
+    from collections import deque
+    q = deque()
+    for i in range(n):
+        if not g[i]:
+            q.append(i)
+    while q:
+        v = q.popleft()
+        ans.append(v)
+        for i in range(n):
+            if v in g[i]:
+                g[i].remove(v)
+                if not g[i]:
+                    q.append(i)
+    if len(ans) != n:
+        print(-1)
+    else:
+        print(*[x+1 for x in ans])
+
+solve()
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    a = []
-    b = []
-    for i in range(n):
-        x, y = map(int, input().split())
-        a.append(x)
-        b.append(y)
-    #print(a)
-    #print(b)
-    if n == 1:
-        print(a[0])
-        return
-    if n == 2:
-        print(a[0] + a[1])
-        return
-    total = 0
-    for i in range(n):
-        total += a[i] / b[i]
-    #print(total)
-    half = total / 2
-    #print(half)
-    for i in range(n):
-        if half < a[i] / b[i]:
-            print(half * b[i])
-            return
-        half -= a[i] / b[i]
-    print(total - half)
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+    print("Hello World!")
 
 =======
 Suggestion 4
 
-def solve(n, ab):
-    s = 0
-    for a, b in ab:
-        s += a / b
-    t = s / 2
-    s = 0
-    for a, b in ab:
-        if a / b < t:
-            s += a
-        else:
-            s += t * b
-            break
-    return s
+def solve():
+    pass
 
 =======
 Suggestion 5
 
-def calc_distance(a, b):
-    return float(a) / (a + b)
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    #print(A)
+    #print(B)
+
+    # A_i在P中比B_i早出现。
+    # 1. A_i, B_i都在P中
+    # 2. A_i在P中，B_i不在P中
+    # 3. A_i不在P中，B_i在P中
+    # 4. A_i, B_i都不在P中
+    # 1. A_i, B_i都在P中
+    # 2. A_i在P中，B_i不在P中
+    # 3. A_i不在P中，B_i在P中
+    # 4. A_i, B_i都不在P中
+    # 1. A_i, B_i都在P中
+    # 2. A_i在P中，B_i不在P中
+    # 3. A_i不在P中，B_i在P中
+    # 4. A_i, B_i都不在P中
+    # 1. A_i, B_i都在P中
+    # 2. A_i在P中，B_i不在P中
+    # 3. A_i不在P中，B_i在P中
+    # 4. A_i, B_i都不在P中
+    # 1. A_i, B_i都在P中
+    # 2. A_i在P中，B_i不在P中
+    # 3. A_i不在P中，B_i在P中
+    # 4. A_i, B_i都不在P中
+    # 1. A_i, B_i都在P中
+    # 2. A_i在P中，B_i不在P中
+    # 3. A_i不在P中，B_i在P中
+    # 4. A_i, B_i都不在P中
 
 =======
 Suggestion 6
 
-def cal_distance(AB):
-    N = len(AB)
-    if N == 1:
-        return AB[0][0]
-    else:
-        left = AB[0][0]
-        right = AB[N-1][0]
-        while left < right:
-            mid = (left + right) / 2
-            sum = 0
-            for i in range(N):
-                if mid < AB[i][0]:
-                    sum += AB[i][0] - mid
-            if sum == mid:
-                return mid
-            elif sum > mid:
-                left = mid
-            else:
-                right = mid
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for i in range(m):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
 
-N = int(raw_input())
-AB = []
-for i in range(N):
-    AB.append(map(int, raw_input().split()))
-AB.sort()
-print cal_distance(AB)
+    # 逆向思维，从后往前找，即从N开始
+    ans = [i for i in range(1,n+1)]
+    for i in range(m):
+        if ans.index(a[m-1-i]) < ans.index(b[m-1-i]):
+            continue
+        else:
+            ans.remove(a[m-1-i])
+            ans.insert(ans.index(b[m-1-i]), a[m-1-i])
+
+    print(*ans)
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
+    n, m = map(int, input().split())
     a = []
     b = []
+    for _ in range(m):
+        a1, b1 = map(int, input().split())
+        a.append(a1)
+        b.append(b1)
+    ans = [0] * n
     for i in range(n):
-        ai, bi = input().split()
-        a.append(int(ai))
-        b.append(int(bi))
-
-    # print(a)
-    # print(b)
-
-    # 从左到右
-    left = 0
-    for i in range(n):
-        left += a[i]
-    # print(left)
-
-    # 从右到左
-    right = 0
-    for i in range(n):
-        right += a[n - 1 - i]
-    # print(right)
-
-    # 从左到右
-    left_speed = 0
-    for i in range(n):
-        left_speed += b[i]
-    # print(left_speed)
-
-    # 从右到左
-    right_speed = 0
-    for i in range(n):
-        right_speed += b[n - 1 - i]
-    # print(right_speed)
-
-    # 两团火焰将在距离物体左端3厘米处相遇。
-    # 两个火焰相遇的位置与物体的左端之间的距离
-    # 两个火焰相遇的位置与物体的右端之间的距离
-    # 两个火焰相遇的时间
-    # 两个火焰相遇的位置与物体的左端之间的距离
-    # 两个火焰相遇的位置与物体的右端之间的距离
-    # 两个火焰相遇的时间
-    # 两个火焰相遇的位置与物体的左端之间的距离
-    # 两个火焰相遇的位置与物体的右端之间的距离
-    # 两个火焰相遇的时间
-
-    # 两个火焰相遇的时间
-    t = left / (left_speed + right_speed)
-    # print(t)
-
-    # 两个火焰相遇的位置与物体的左端之间的距离
-    # 两个火焰相遇
+        ans[i] = i + 1
+    for i in range(m):
+        if ans[a[i] - 1] > ans[b[i] - 1]:
+            ans[a[i] - 1], ans[b[i] - 1] = ans[b[i] - 1], ans[a[i] - 1]
+    print(*ans)
 
 =======
 Suggestion 8
 
-def get_distance(a, b, n):
-    """
-    二分法
-    :param a: a
-    :param b: b
-    :param n: n
-    :return: distance
-    """
-    left = 0
-    right = 1000
-    while left < right:
-        mid = (left + right) / 2
-        sum = 0
-        for i in range(n):
-            sum += a[i] / (mid - b[i])
-        if sum < 1:
-            right = mid
-        else:
-            left = mid
-    return left
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    p = list(range(1, N+1))
+    for i in range(M):
+        if A[i] > B[i]:
+            A[i], B[i] = B[i], A[i]
+    for i in range(M):
+        if A[i] == p[0] and B[i] == p[1]:
+            p[0], p[1] = p[1], p[0]
+            break
+    for i in range(2, N):
+        for j in range(M):
+            if A[j] == p[i]:
+                if B[j] == p[i-1]:
+                    p[i-1], p[i] = p[i], p[i-1]
+                    break
+                elif B[j] == p[i-2]:
+                    p[i-2], p[i-1] = p[i-1], p[i-2]
+                    p[i-1], p[i] = p[i], p[i-1]
+                    break
+    print(*p)
 
 =======
 Suggestion 9
 
 def solve():
-    N = int(input())
+    N, M = map(int, input().split())
     A = []
     B = []
-    for i in range(N):
-        a,b = map(int, input().split())
+    for i in range(M):
+        a, b = map(int, input().split())
         A.append(a)
         B.append(b)
-    total = sum(A)
-    half = total / 2
-    time = 0
+
+    # 逆向きに解く
+    # ある数値が出現する回数を数える
+    # ある数値より小さい数値の出現回数を数える
+    # ある数値より大きい数値の出現回数を数える
+    count = [0] * N
+    smaller = [0] * N
+    bigger = [0] * N
+    for i in range(M):
+        count[B[i]-1] += 1
+        if A[i] < B[i]:
+            smaller[B[i]-1] += 1
+        if A[i] > B[i]:
+            bigger[B[i]-1] += 1
+
+    # 答えを格納する配列
+    ans = []
+    # ある数値を出現させるかどうかを決める
+    # ある数値より小さい数値が出現していない
+    # かつ、ある数値より大きい数値が出現していない
+    # ある数値より小さい数値の出現回数を減らす
+    # ある数値より大きい数値の出現回数を増やす
     for i in range(N):
-        time += A[i] / B[i]
-        if time >= half:
-            print(half * 2 - total)
-            break
+        if smaller[i] == 0 and bigger[i] == 0:
+            ans.append(i+1)
+            for j in range(N):
+                if smaller[j] > 0:
+                    smaller[j] -= 1
+                if bigger[j] > 0:
+                    bigger[j] += 1
+
+    # 答えを出力する
+    if len(ans) == N:
+        print(*ans)
+    else:
+        print(-1)

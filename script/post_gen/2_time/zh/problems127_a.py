@@ -3,204 +3,120 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def dfs(node, color, color_id):
-    color[node] = color_id
-    for edge in graph[node]:
-        if color[edge[0]] == -1:
-            dfs(edge[0], color, color_id ^ edge[1])
+def solve(a, b):
+    if a >= 13:
+        return b
+    elif a >= 6:
+        return b//2
+    else:
+        return 0
 
-N = int(input())
-graph = [[] for _ in range(N)]
-for _ in range(N - 1):
-    u, v, w = map(int, input().split())
-    graph[u - 1].append((v - 1, w % 2))
-    graph[v - 1].append((u - 1, w % 2))
-
-color = [-1] * N
-dfs(0, color, 0)
-print(*color, sep="\n")
+a, b = map(int, input().split())
+print(solve(a, b))
 
 =======
 Suggestion 2
 
-def dfs(v, c):
-    color[v] = c
-    for i in range(len(edge[v])):
-        if color[edge[v][i]] == -1:
-            dfs(edge[v][i], c ^ w[v][i])
-
-n = int(input())
-edge = [[] for i in range(n)]
-w = [[] for i in range(n)]
-color = [-1 for i in range(n)]
-
-for i in range(n - 1):
-    u, v, weight = map(int, input().split())
-    edge[u - 1].append(v - 1)
-    edge[v - 1].append(u - 1)
-    w[u - 1].append(weight % 2)
-    w[v - 1].append(weight % 2)
-
-dfs(0, 0)
-for i in range(n):
-    print(color[i])
+def problem127_a():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6 and a <= 12:
+        print(b//2)
+    else:
+        print(0)
 
 =======
 Suggestion 3
 
-def dfs(v, p, c):
-    color[v] = c
-    for i in range(len(G[v])):
-        if G[v][i] == p:
-            continue
-        if L[i] % 2 == 0:
-            dfs(G[v][i], v, c)
-        else:
-            dfs(G[v][i], v, 1 - c)
+def func(a,b):
+    if a >= 13:
+        return b
+    elif 6 <= a <= 12:
+        return b//2
+    else:
+        return 0
 
-n = int(input())
-G = [[] for _ in range(n)]
-L = [0] * (n - 1)
-color = [0] * n
-for i in range(n - 1):
-    u, v, w = map(int, input().split())
-    u -= 1
-    v -= 1
-    G[u].append(v)
-    G[v].append(u)
-    L[i] = w
-
-dfs(0, -1, 0)
-for i in range(n):
-    print(color[i])
+a,b = map(int,input().split())
+print(func(a,b))
 
 =======
 Suggestion 4
 
-def dfs(u, c, color):
-    color[u] = c
-    for v, w in edge[u]:
-        if color[v] == -1:
-            dfs(v, c ^ w % 2, color)
-
-n = int(input())
-edge = [[] for _ in range(n)]
-for _ in range(n - 1):
-    u, v, w = map(int, input().split())
-    edge[u - 1].append((v - 1, w))
-    edge[v - 1].append((u - 1, w))
-color = [-1] * n
-dfs(0, 0, color)
-for c in color:
-    print(c)
+def cost(A, B):
+    if A >= 13:
+        return B
+    elif A >= 6:
+        return B // 2
+    else:
+        return 0
 
 =======
 Suggestion 5
 
-def main():
-    pass
+def problem127_a():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(int(B/2))
+    else:
+        print(0)
 
 =======
 Suggestion 6
 
-def dfs(u, c):
-    color[u] = c
-    for v, w in g[u]:
-        if color[v] == -1:
-            dfs(v, c ^ w)
-
-N = int(input())
-g = [[] for _ in range(N)]
-color = [-1] * N
-for _ in range(N - 1):
-    x, y, w = map(int, input().split())
-    g[x - 1].append((y - 1, w % 2))
-    g[y - 1].append((x - 1, w % 2))
-
-dfs(0, 0)
-for c in color:
-    print(c)
+def main():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(int(b/2))
+    else:
+        print(0)
 
 =======
 Suggestion 7
 
-def dfs(node, color):
-    global ans
-    ans[node] = color
-    for i in range(len(graph[node])):
-        if ans[graph[node][i]] == -1:
-            dfs(graph[node][i], color ^ cost[node][i])
-
-n = int(input())
-graph = [[] for _ in range(n)]
-cost = [[] for _ in range(n)]
-ans = [-1] * n
-for _ in range(n - 1):
-    u, v, w = map(int, input().split())
-    u -= 1
-    v -= 1
-    graph[u].append(v)
-    graph[v].append(u)
-    cost[u].append(w % 2)
-    cost[v].append(w % 2)
-dfs(0, 0)
-for i in range(n):
-    print(ans[i])
+def get_price(age, price):
+    if age >= 13:
+        return price
+    elif age >= 6:
+        return int(price / 2)
+    else:
+        return 0
 
 =======
 Suggestion 8
 
-def dfs(node, color):
-    global colors, nodes, edges
-    colors[node] = color
-    for edge in edges[node]:
-        if colors[edge[0]] == -1:
-            dfs(edge[0], color ^ edge[1])
-
-n = int(input())
-nodes = []
-for i in range(n):
-    nodes.append([])
-edges = {}
-for i in range(n - 1):
-    u, v, w = map(int, input().split())
-    nodes[u - 1].append([v - 1, w % 2])
-    nodes[v - 1].append([u - 1, w % 2])
-    edges[i] = [u - 1, v - 1, w % 2]
-colors = [-1 for i in range(n)]
-dfs(0, 0)
-for color in colors:
-    print(color)
+def ride_ferris_wheel(age, fee):
+    if age >= 13:
+        return fee
+    elif age >= 6 and age <= 12:
+        return fee / 2
+    else:
+        return 0
 
 =======
 Suggestion 9
 
 def main():
-    n = int(input())
-    edges = []
-    for i in range(n - 1):
-        edges.append(list(map(int, input().split())))
-
-    tree = [[] for i in range(n + 1)]
-    for edge in edges:
-        tree[edge[0]].append(edge[1])
-        tree[edge[1]].append(edge[0])
-
-    color = [-1] * (n + 1)
-    color[1] = 0
-    stack = [1]
-    while stack:
-        v = stack.pop()
-        for u in tree[v]:
-            if color[u] == -1:
-                color[u] = color[v] ^ 1
-                stack.append(u)
-
-    for v in range(1, n + 1):
-        print(color[v])
+    a, b = map(int, input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(b//2)
+    else:
+        print(0)
 
 =======
 Suggestion 10
 
 def main():
-    print('hello world')
+    A,B = map(int,input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6 and A <= 12:
+        print(B//2)
+    else:
+        print(0)

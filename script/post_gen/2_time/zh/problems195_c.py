@@ -3,176 +3,126 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    a,b,w = map(int, input().split())
-    min = 0
-    max = 0
-    for i in range(1,1000):
-        if a*i <= w*1000 <= b*i:
-            if min == 0:
-                min = i
-            max = i
-    if min == 0:
-        print("UNSATISFIABLE")
+def solve(N):
+    N_str = str(N)
+    N_len = len(N_str)
+    if N_len <= 3:
+        return 0
+    elif N_len <= 6:
+        return N_len - 3
+    elif N_len <= 9:
+        return N_len - 3 + (N_len - 3) // 3
+    elif N_len <= 12:
+        return N_len - 3 + (N_len - 3) // 3 + (N_len - 6) // 3
+    elif N_len <= 15:
+        return N_len - 3 + (N_len - 3) // 3 + (N_len - 6) // 3 + (N_len - 9) // 3
     else:
-        print(min,max)
+        return N_len - 3 + (N_len - 3) // 3 + (N_len - 6) // 3 + (N_len - 9) // 3 + (N_len - 12) // 3
 
 =======
 Suggestion 2
 
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    min = 0
-    max = 0
-    for i in range(a,b+1):
-        if w%i == 0:
-            min = w//i
-            break
-    for i in range(b,a-1,-1):
-        if w%i == 0:
-            max = w//i
-            break
-    if min == 0 and max == 0:
-        print('UNSATISFIABLE')
+def f(n):
+    s = str(n)
+    if len(s) <= 3:
+        return 0
+    if len(s) % 3 == 0:
+        return len(s) // 3 - 1
     else:
-        print(min,max)
+        return len(s) // 3
 
 =======
 Suggestion 3
 
-def solve():
-    a,b,w=map(int,input().split())
-    w*=1000
-    min=0
-    max=0
-    for i in range(1,w+1):
-        if(a*i<=w and w<=b*i):
-            if(min==0):
-                min=i
-            max=i
-    if(min==0):
-        print("UNSATISFIABLE")
-    else:
-        print(min,max)
+def solve(n):
+    ans = 0
+    for i in range(1, len(str(n))+1):
+        if i % 3 == 0:
+            continue
+        ans += 9 * 10 ** (i-1) * i
+    ans += (n - 10 ** (len(str(n))-1) + 1) * len(str(n))
+    return ans
 
 =======
 Suggestion 4
 
-def main():
-    a, b, w = map(int, input().split())
-    w *= 1000
-    ans = [0, 0]
-    for i in range(1, w+1):
-        if a*i <= w and w <= b*i:
-            ans[0] = i
-            break
-    for i in range(w, 0, -1):
-        if a*i <= w and w <= b*i:
-            ans[1] = i
-            break
-    if ans[0] == 0:
-        print("UNSATISFIABLE")
+def comma_count(n):
+    if n < 1000:
+        return 0
     else:
-        print(ans[0], ans[1])
+        return comma_count(n//1000) + 1
 
 =======
 Suggestion 5
 
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    min = w // b
-    max = w // a
-    if min * a > w or max * b < w:
-        print("UNSATISFIABLE")
+def num_of_comma(n):
+    n_str = str(n)
+    len_n = len(n_str)
+    if len_n <= 3:
+        return 0
     else:
-        print(min,max)
+        num = 0
+        for i in range(len_n//3):
+            num += 1
+        return num-1
 
 =======
 Suggestion 6
 
 def main():
-    a,b,w=map(int,input().split())
-    w*=1000
-    min_num=w//b
-    max_num=w//a
-    if w%b==0:
-        min_num=w//b
-    else:
-        min_num=w//b+1
-    if w%a==0:
-        max_num=w//a
-    else:
-        max_num=w//a
-    if min_num>max_num:
-        print("UNSATISFIABLE")
-    else:
-        print(min_num,max_num)
+    n = int(input())
+    ans = 0
+    if n >= 1000:
+        ans += n - 999
+    if n >= 1000000:
+        ans += n - 999999
+    if n >= 1000000000:
+        ans += n - 999999999
+    if n >= 1000000000000:
+        ans += n - 999999999999
+    if n >= 1000000000000000:
+        ans += n - 999999999999999
+    print(ans)
 
 =======
 Suggestion 7
 
-def main():
-    # 读取输入
-    a,b,w = map(int,input().split())
-    # 由于题目要求输出最大最小，所以先把最小的橙子数量算出来
-    min_num = w*1000//b
-    # 由于题目要求输出最大最小，所以先把最大的橙子数量算出来
-    max_num = w*1000//a
-    # 如果最小的橙子数量乘以最小的重量大于总重量或者最大的橙子数量乘以最大的重量小于总重量，那么就不存在这样的橙子
-    if min_num*a > w*1000 or max_num*b < w*1000:
-        print("UNSATISFIABLE")
+def count_comma(n):
+    if n < 1000:
+        return 0
     else:
-        print(min_num,max_num)
+        return n // 1000 + count_comma(n // 1000)
 
 =======
 Suggestion 8
 
-def main():
-    a,b,w = map(int,input().split())
-    w = w*1000
-    min = 0
-    max = 0
-    for i in range(1,1000001):
-        if a*i <= w and w <= b*i:
-            if min == 0:
-                min = i
-            max = i
-    if min == 0:
-        print('UNSATISFIABLE')
-    else:
-        print(min,max)
+def count_comma(n):
+    count = 0
+    for i in range(1, len(str(n))+1):
+        if i % 3 == 0:
+            count += 1
+    return count
 
 =======
 Suggestion 9
 
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    ans = []
-    for i in range(1,w+1):
-        if a*i <= w <= b*i:
-            ans.append(i)
-    if len(ans) == 0:
-        print("UNSATISFIABLE")
+def count_comma(num):
+    count = 0
+    num = str(num)
+    num_len = len(num)
+    if num_len <= 3:
+        return 0
     else:
-        print(min(ans),max(ans))
+        for i in range(1, num_len):
+            if i % 3 == 0:
+                count += 1
+    return count
 
 =======
 Suggestion 10
 
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    min = 0
-    max = 0
-    for i in range(1,1001):
-        if a*i <= w <= b*i:
-            if min == 0:
-                min = i
-            max = i
-    if min == 0:
-        print('UNSATISFIABLE')
+def count_commas(n):
+    if n < 1000:
+        return 0
     else:
-        print(min,max)
+        return n//1000 + count_commas(n//1000)

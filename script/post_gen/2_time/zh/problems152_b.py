@@ -4,73 +4,86 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    N,M = map(int, input().split())
-    if N == M:
-        print("Yes")
-    else:
-        print("No")
+    a,b = map(int,input().split())
+    print(str(a)*b if str(a)*b < str(b)*a else str(b)*a)
 
 =======
 Suggestion 2
 
 def main():
-    n, m = map(int, input().split())
-    if n == m:
-        print("Yes")
+    a,b = map(int,input().split())
+    if a <= b:
+        print(str(a)*b)
     else:
-        print("No")
+        print(str(b)*a)
+
+main()
 
 =======
 Suggestion 3
 
-def solve():
-    n,m = map(int,input().split())
-    if n == m:
-        print('Yes')
+def main():
+    a, b = map(int, input().split())
+    if a > b:
+        print(str(b)*a)
     else:
-        print('No')
+        print(str(a)*b)
 
 =======
 Suggestion 4
 
-def main():
-    n, m = map(int, input().split())
-    if n == m:
-        print("Yes")
+def solve():
+    a,b = map(int, input().split())
+    if a == b:
+        print(str(a)*a)
+    elif a > b:
+        print(str(b)*a)
     else:
-        print("No")
-main()
+        print(str(a)*b)
+solve()
 
 =======
 Suggestion 5
 
 def main():
-    N, M = map(int, input().split())
-    if N == M:
-        print('Yes')
-    else:
-        print('No')
+    a,b = map(int,input().split())
+    a = str(a)
+    b = str(b)
+    a = a * int(b)
+    b = b * int(a)
+    print(min(a,b))
 
 =======
 Suggestion 6
 
 def main():
-    n,m = map(int, input().split())
-    print("Yes" if n == m else "No")
+    a = int(input())
+    b = int(input())
+    if a == b:
+        print(str(a) * a)
+    elif a > b:
+        print(str(b) * a)
+    else:
+        print(str(a) * b)
 
 =======
 Suggestion 7
 
 def main():
-    n,m = map(int,input().split())
-    if n == m:
-        print('Yes')
+    a, b = map(int, input().split())
+    if a < b:
+        print(str(a)*b)
+    elif a > b:
+        print(str(b)*a)
     else:
-        print('No')
+        print(str(a)*b)
 
 =======
 Suggestion 8
 
-def get_input():
-    n, m = map(int, input().split())
-    return n, m
+def main():
+    a,b = map(int,input().split())
+    if a < b:
+        print(str(a) * b)
+    else:
+        print(str(b) * a)

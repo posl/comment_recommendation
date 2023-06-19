@@ -1,152 +1,84 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    n,x = map(int,input().split())
-    l = list(map(int,input().split()))
-    d = [0]
-    for i in range(n):
-        d.append(d[i]+l[i])
-    for i in range(n+1):
-        if d[i]>x:
-            print(i)
-            break
+    W,H,x,y = map(int,input().split())
+    if x == W/2 and y == H/2:
+        print(W*H/2,1)
+    else:
+        print(W*H/2,0)
 
 =======
 Suggestion 2
 
-def main():
-    N,X = map(int,input().split())
-    L = list(map(int,input().split()))
-    D = [0]
-    for i in range(N):
-        D.append(D[i]+L[i])
-    for i in range(N+1):
-        if D[i] > X:
-            print(i)
-            break
-        elif D[i] == X:
-            print(i+1)
-            break
-        elif i == N:
-            print(i+1)
-
-main()
+def solve(w, h, x, y):
+    s = w * h / 2
+    if (x == w / 2 and y == h / 2):
+        return [s, 1]
+    else:
+        return [s, 0]
 
 =======
 Suggestion 3
 
-def main():
-    N, X = map(int, input().split())
-    L = list(map(int, input().split()))
-    D = [0] * (N + 1)
-    for i in range(1, N + 1):
-        D[i] = D[i - 1] + L[i - 1]
-        if D[i] > X:
-            print(i)
-            break
-    else:
-        print(N + 1)
+def solve():
+    W, H, x, y = map(int, input().split())
+    print(W*H/2, 1 if W/2 == x and H/2 == y else 0)
 
 =======
 Suggestion 4
 
 def main():
-    N,X = map(int,input().split())
-    L = list(map(int,input().split()))
-    D = [0]
-    for i in range(N):
-        D.append(D[-1]+L[i])
-    count = 0
-    for i in range(N+1):
-        if D[i] <= X:
-            count += 1
-    print(count)
+    w,h,x,y = map(int,input().split())
+    print(w*h/2,end=' ')
+    if w/2 == x and h/2 == y:
+        print(1)
+    else:
+        print(0)
 
 =======
 Suggestion 5
 
 def main():
-    n, x = map(int, input().split())
-    l = list(map(int, input().split()))
-    d = 0
-    ans = 1
-    for i in range(n):
-        d += l[i]
-        if d <= x:
-            ans += 1
-    print(ans)
+    W,H,x,y = map(int, input().split())
+    print(W*H/2, 1 if W/2 == x and H/2 == y else 0)
 
 =======
 Suggestion 6
 
-def main():
-    n,x = map(int,input().split())
-    l = list(map(int,input().split()))
-    d = [0]
-    for i in range(n):
-        d.append(d[i]+l[i])
-    print(sum([1 for i in d if i<=x]))
+def solve():
+    W,H,x,y = map(int,input().split())
+    if x*2 == W and y*2 == H:
+        print(W*H/2,1)
+    else:
+        print(W*H/2,0)
 
 =======
 Suggestion 7
 
 def main():
-    n, x = map(int, input().split())
-    l = list(map(int, input().split()))
-    d = [0]
-    for i in range(n):
-        d.append(d[i]+l[i])
-    print(len(list(filter(lambda y: y <= x, d))))
+    W,H,x,y = map(int,input().split())
+    area = W*H/2
+    if x*2 == W and y*2 == H:
+        print(area,1)
+    else:
+        print(area,0)
 
 =======
 Suggestion 8
 
-def problem130_b():
-    N,X = map(int,input().split())
-    L = list(map(int,input().split()))
-    D = [0]
-    for i in range(N):
-        D.append(D[i]+L[i])
-    print(len([i for i in D if i<=X]))
+def main():
+    W,H,x,y = map(int,input().split())
+    print(W*H/2,1 if W==x*2 and H==y*2 else 0)
 
 =======
 Suggestion 9
 
 def main():
-    n,x = map(int,input().split())
-    l = list(map(int,input().split()))
-    d = [0]
-    for i in range(n):
-        d.append(d[i]+l[i])
-    count = 0
-    for i in range(n+1):
-        if d[i] <= x:
-            count += 1
-    print(count)
-
-main()
-
-=======
-Suggestion 10
-
-def main():
-    n,x = map(int,input().split())
-    l = list(map(int,input().split()))
-    d = 0
-    for i in range(n+1):
-        if i == 0:
-            d = 0
-        else:
-            d = d + l[i-1]
-        if d > x:
-            print(i)
-            break
-        elif d == x:
-            print(i+1)
-            break
-        elif i == n:
-            print(i+1)
-            break
+    w,h,x,y = map(int,input().split())
+    if x == w/2 and y == h/2:
+        print(w*h/2,1)
+    else:
+        print(w*h/2,0)

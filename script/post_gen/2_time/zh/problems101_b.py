@@ -3,109 +3,111 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    N = int(input())
-    sum = 0
-    for i in range(len(str(N))):
-        sum += int(str(N)[i])
-    if N % sum == 0:
-        print("Yes")
-    else:
-        print("No")
-
-=======
-Suggestion 2
-
-def sum(n):
+def S(n):
     sum = 0
     while n > 0:
         sum += n % 10
         n = n // 10
     return sum
 
+=======
+Suggestion 2
+
+def f(n):
+    return sum(map(int, str(n)))
+
 n = int(input())
+print('Yes' if n % f(n) == 0 else 'No')
 
 =======
 Suggestion 3
 
 def S(n):
+    n_str = str(n)
     sum = 0
-    while n != 0:
-        sum += n % 10
-        n //= 10
+    for i in n_str:
+        sum += int(i)
     return sum
-
-N = int(input())
 
 =======
 Suggestion 4
 
-def S(n):
-    if n < 10:
-        return n
+def problem101_b():
+    n = int(input())
+    s = sum([int(i) for i in str(n)])
+    if n%s == 0:
+        print("Yes")
     else:
-        return n % 10 + S(n // 10)
-
-N = int(input())
+        print("No")
 
 =======
 Suggestion 5
 
-def sum_of_digits(n):
-    return sum([int(x) for x in str(n)])
+def main():
+    N = int(input())
+    S = 0
+    for i in str(N):
+        S += int(i)
+    if N % S == 0:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 6
 
-def sum_digits(n):
-    s = 0
-    while n:
-        s += n % 10
-        n //= 10
-    return s
+def S(n):
+    result = 0
+    while n > 0:
+        result += n % 10
+        n = n // 10
+    return result
 
 =======
 Suggestion 7
 
-def sum_digits(n):
-    s = 0
-    while n:
-        s += n % 10
-        n //= 10
-    return s
-
-N = int(input())
-print("Yes" if N % sum_digits(N) == 0 else "No")
+def main():
+    # 读取输入
+    N = int(input())
+    # 计算S(N)
+    S = 0
+    for i in str(N):
+        S += int(i)
+    # 判断是否能够整除
+    if N % S == 0:
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 8
 
-def S(n):
+def problem101_b(n):
     sum = 0
-    while n != 0:
-        sum += n % 10
-        n = n / 10
-    return sum
-
-n = int(raw_input())
+    for i in range(len(n)):
+        sum += int(n[i])
+    if int(n) % sum == 0:
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 9
 
-def S(n):
-    sum=0
-    while n!=0:
-        sum+=n%10
-        n=n//10
+def s(n):
+    sum = 0
+    while n > 0:
+        sum = sum + n % 10
+        n = n // 10
     return sum
 
-N=int(input())
+n = int(input())
 
 =======
 Suggestion 10
 
 def s(n):
-    sum = 0
-    for i in str(n):
-        sum += int(i)
-    return sum
+    return sum([int(i) for i in str(n)])
+
+n = int(input())
+print("Yes" if n % s(n) == 0 else "No")

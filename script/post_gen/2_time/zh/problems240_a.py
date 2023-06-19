@@ -1,180 +1,150 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def prime(n):
-    if n == 1:
-        return False
-    for i in range(2, n):
-        if n % i==0:
-            return False
-    return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(100):
-    if prime(a + b - i):
-        print('高桥')
-        break
-    elif prime(c + d - i):
-        print('青木')
-        break
+def judge():
+    a,b = map(int,input().split())
+    if (a>=1 and a<=10) and (b>=1 and b<=10) and a<b:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 2
 
-def is_prime(n):
-    if n == 1:
-        return False
+def main():
+    a,b = map(int,input().split())
+    if a+1 == b:
+        print("Yes")
     else:
-        for i in range(2, int(n**(1/2))+1):
-            if n % i == 0:
-                return False
-        return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(a, b+1):
-    if is_prime(i+c) == True:
-        print("高桥")
-        exit()
-print("青木")
+        print("No")
 
 =======
 Suggestion 3
 
-def is_prime(x):
-    if x == 1:
-        return False
-    for i in range(2,int(x**0.5)+1):
-        if x % i == 0:
-            return False
-    return True
-
-A,B,C,D = map(int,input().split())
-for i in range(B+1,D+2):
-    if is_prime(i):
-        if i == A+C or i == A+D or i == B+C or i == B+D:
-            print("High")
-            exit()
-print("Low")
+def main():
+    a,b = map(int,input().split())
+    if a+1 == b or a == 1 and b == 10:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
 
-def is_prime(n):
-    if n == 1:
-        return False
-    for i in range(2, n):
-        if n%i == 0:
-            return False
-    return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(a, b+1):
-    for j in range(c, d+1):
-        if is_prime(i+j):
-            print("高桥")
-            exit(0)
-print("青木")
+def main():
+    a, b = map(int, input().split())
+    if a == 1 and b == 10 or a == 10 and b == 1:
+        print("Yes")
+    elif a == 2 and b == 9 or a == 9 and b == 2:
+        print("Yes")
+    elif a == 3 and b == 8 or a == 8 and b == 3:
+        print("Yes")
+    elif a == 4 and b == 7 or a == 7 and b == 4:
+        print("Yes")
+    elif a == 5 and b == 6 or a == 6 and b == 5:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 5
 
-def isPrime(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i ==0:
-            return False
-    return True
-
-a, b, c, d = map(int, input().split())
-for i in range(a, b+1):
-    if isPrime(i):
-        for j in range(c, d+1):
-            if isPrime(j):
-                if i+j == 9:
-                    print("高桥")
-                    exit()
-                else:
-                    print("青木")
-                    exit()
+def main():
+    a,b = map(int,input().split())
+    if a == 1 and b == 3:
+        print("Yes")
+    elif a == 1 and b == 2:
+        print("Yes")
+    elif a == 1 and b == 4:
+        print("Yes")
+    elif a == 1 and b == 5:
+        print("Yes")
+    elif a == 1 and b == 6:
+        print("Yes")
+    elif a == 1 and b == 7:
+        print("Yes")
+    elif a == 1 and b == 8:
+        print("Yes")
+    elif a == 1 and b == 9:
+        print("Yes")
+    elif a == 1 and b == 10:
+        print("Yes")
+    elif a == 2 and b == 3:
+        print("Yes")
+    elif a == 2 and b == 4:
+        print("Yes")
+    elif a == 2 and b == 5:
+        print("Yes")
+    elif a == 2 and b == 6:
+        print("Yes")
+    elif a == 2 and b == 7:
+        print("Yes")
+    elif a == 2 and b == 8:
+        print("Yes")
+    elif a == 2 and b == 9:
+        print("Yes")
+    elif a == 2 and b == 10:
+        print("Yes")
+    elif a == 3 and b == 4:
+        print("Yes")
+    elif a == 3 and b == 5:
+        print("Yes")
+    elif a == 3 and b == 6:
+        print("Yes")
+    elif a == 3 and b == 7:
+        print("Yes")
+    elif a == 3 and b == 8:
+        print("Yes")
+    elif a == 3 and b == 9:
+        print("Yes")
+    elif a == 3 and b == 10:
+        print("Yes")
+    elif a == 4 and b == 5:
+        print("Yes")
+    elif a == 4 and b == 6:
+        print("Yes")
+    elif a == 4 and b == 7:
+        print("Yes")
+    elif a == 4 and b == 8:
+        print("Yes")
+    elif a == 4 and b == 9:
 
 =======
 Suggestion 6
 
-def isPrime(n):
-    if n == 1:
-        return False
-    for i in range(2, int(n**0.5)+1): #平方根まで
-        if n%i == 0:
-            return False
-    return True
+def problems240_a():
+    a,b = map(int,input().split())
+    if a+1 == b:
+        print('Yes')
+    else:
+        print('No')
 
-a, b, c, d = map(int, input().split())
+problems240_a()
 
 =======
 Suggestion 7
 
-def is_prime(n):
-    if n == 1:
-        return False
-    for i in range(2, int(n**0.5)+1): # n**0.5+1
-        if n % i == 0:
-            return False
-    return True
-
-A, B, C, D = map(int, input().split())
-
-=======
-Suggestion 8
-
-def is_prime(n):
-    if n == 2:
-        return True
-    if n % 2 == 0 or n < 2:
-        return False
-    for i in range(3, n, 2):
-        if n % i == 0:
-            return False
-    return True
-
-a, b, c, d = map(int, input().split())
-
-for n in range(1, 100):
-    if a <= n <= b and c <= n <= d:
-        print('High') if is_prime(n) else print('Low')
-        exit()
-
-=======
-Suggestion 9
-
-def is_prime(n):
-    if n == 1:
-        return False
-    elif n == 2:
-        return True
-    elif n%2 == 0:
-        return False
+def main():
+    a,b = map(int,input().split())
+    if (a == 4 and b == 5) or (a == 5 and b == 4):
+        print("Yes")
+    elif (a == 8 and b == 10) or (a == 10 and b == 8):
+        print("Yes")
+    elif (a == 1 and b == 3) or (a == 3 and b == 1):
+        print("Yes")
+    elif (a == 1 and b == 6) or (a == 6 and b == 1):
+        print("Yes")
+    elif (a == 2 and b == 7) or (a == 7 and b == 2):
+        print("Yes")
+    elif (a == 3 and b == 8) or (a == 8 and b == 3):
+        print("Yes")
+    elif (a == 4 and b == 9) or (a == 9 and b == 4):
+        print("Yes")
+    elif (a == 6 and b == 9) or (a == 9 and b == 6):
+        print("Yes")
+    elif (a == 7 and b == 10) or (a == 10 and b == 7):
+        print("Yes")
     else:
-        for i in range(3,int(n**0.5)+1,2):
-            if n%i == 0:
-                return False
-        return True
-
-=======
-Suggestion 10
-
-def isPrime(n):
-    if n < 2:
-        return False
-    elif n == 2:
-        return True
-    else:
-        for i in range(2,int(n**0.5)+1):
-            if n%i == 0:
-                return False
-        return True
+        print("No")

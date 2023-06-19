@@ -3,86 +3,92 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    print(*b)
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(n):
-        b[a[i]-1] = i + 1
-    print(' '.join(map(str, b)))
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b = map(int, input().split())
+ans = 1
+for i in range(2, b+1):
+    if b % i == 0:
+        if gcd(a, b//i) == 1:
+            ans = max(ans, b//i)
+print(ans)
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    r = []
-    for i in range(n):
-        r.insert(a[i] - 1, i + 1)
-    print(' '.join(map(str, r)))
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+ans = 1
+for i in range(2, int(g ** 0.5) + 1):
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    a = [int(x) for x in input().split()]
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    print(' '.join([str(x) for x in b]))
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
+
+a, b = map(int, input().split())
+c = gcd(a, b)
+ans = 1
+i = 2
+while i * i <= c:
+    if c % i == 0:
+        ans += 1
+        while c % i == 0:
+            c //= i
+    i += 1
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    a_list = list(map(int, input().split()))
-    order = [0 for _ in range(n)]
-    for i in range(n):
-        order[a_list[i] - 1] = i + 1
-    print(' '.join(map(str, order)))
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    for i in range(n):
-        print(b[i], end=" ")
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
 
-=======
-Suggestion 7
-
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = [0] * N
-    for i in range(N):
-        B[A[i]-1] = i+1
-    print(*B)
-
-=======
-Suggestion 8
-
-def order(n, a):
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    return b
+a, b = map(int, input().split())
+c = gcd(a, b)
+ans = 1
+for i in range(2, int(c ** 0.5) + 1):
+    if c % i == 0:
+        ans += 1
+        while c % i == 0:
+            c //= i

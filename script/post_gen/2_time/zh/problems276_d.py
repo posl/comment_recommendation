@@ -3,194 +3,199 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def getPerm(num, k):
-    num.sort()
-    k -= 1
-    while k > 0:
-        for i in range(len(num) - 2, -1, -1):
-            if num[i] < num[i + 1]:
-                break
-        for j in range(len(num) - 1, -1, -1):
-            if num[j] > num[i]:
-                break
-        num[i], num[j] = num[j], num[i]
-        num[i + 1:] = num[len(num) - 1:i:-1]
-        k -= 1
-    return num
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if all([a[i] % 2 == 0 for i in range(N)]):
+            a = [a[i] // 2 for i in range(N)]
+            ans += 1
+        else:
+            break
+    print(ans)
+
+    return
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    q = [0] * n
-    for i in range(n):
-        q[p[i]-1] = i+1
-    print(*q)
+def solve():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    ans = 0
+    while True:
+        if all(x % 2 == 0 for x in A):
+            A = [x // 2 for x in A]
+            ans += 1
+        else:
+            break
+    print(ans)
+
+solve()
 
 =======
 Suggestion 3
 
-def find_permutation(n, p):
-    # find the largest i such that p[i] < p[i+1]
-    for i in range(n-2, -1, -1):
-        if p[i] < p[i+1]:
-            break
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    count = 0
+    while True:
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+            elif a[i] % 3 == 0:
+                a[i] = a[i] / 3
+            else:
+                break
+        else:
+            count += 1
+            continue
+        break
+    if count == 0:
+        print(-1)
     else:
-        # p is the largest permutation
-        return p[::-1]
-    # find the largest j such that p[j] > p[i]
-    for j in range(n-1, i, -1):
-        if p[j] > p[i]:
-            break
-    # swap p[i] and p[j]
-    p[i], p[j] = p[j], p[i]
-    # reverse p[i+1:]
-    return p[:i+1] + p[i+1:][::-1]
-
-n = int(input())
-p = list(map(int, input().split()))
-q = find_permutation(n, p)
-print(' '.join(map(str, q)))
+        print(count)
+main()
+#解答1
 
 =======
 Suggestion 4
 
-def find_kth_permutation(n, k, permutation):
-    if n == 0:
-        return permutation
-    index, fac = 0, factorial(n - 1)
-    while k > fac:
-        index += 1
-        k -= fac
-    permutation.append(index + 1)
-    return find_kth_permutation(n - 1, k, permutation)
+def solution():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if sum([i % 2 for i in a]) != 0:
+            break
+        a = [i // 2 for i in a]
+        ans += 1
+    print(ans)
 
 =======
 Suggestion 5
 
-def f(n,p):
-    q = [0]*n
-    for i in range(n):
-        q[p[i]-1] = i+1
-    return q
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    cnt = 0
+    while True:
+        flag = True
+        for i in range(len(A)):
+            if A[i] % 2 == 0:
+                A[i] = A[i] / 2
+                flag = False
+                break
+
+        if flag:
+            break
+
+        cnt += 1
+
+    print(cnt)
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    p = [int(i) for i in input().split()]
-    q = [0] * n
-    for i in range(n):
-        q[p[i]-1] = i+1
-    print(' '.join(map(str, q)))
+def func(a):
+    if a % 2 == 0:
+        return a/2
+    elif a % 3 == 0:
+        return a/3
+    else:
+        return -1
 
 =======
 Suggestion 7
 
-def get_min_permutation(n, p):
-    q = []
-    for i in range(n):
-        q.append(p[i])
-    for i in range(n):
-        for j in range(n-1-i):
-            if q[j] > q[j+1]:
-                tmp = q[j]
-                q[j] = q[j+1]
-                q[j+1] = tmp
-    return q
+def solve(N, A):
+    count = 0
+    while True:
+        if all(a % 2 == 0 for a in A):
+            count += 1
+            A = [a / 2 for a in A]
+        elif all(a % 3 == 0 for a in A):
+            count += 1
+            A = [a / 3 for a in A]
+        elif all(a == A[0] for a in A):
+            break
+        else:
+            return -1
+    return count
 
-n = int(input())
-p = list(map(int, input().split()))
-q = get_min_permutation(n, p)
-for i in range(n):
-    if i == n-1:
-        print(q[i])
-    else:
-        print(q[i], end=' ')
+N = int(raw_input())
+A = map(int, raw_input().split())
+print solve(N, A)
 
 =======
 Suggestion 8
 
-def get_next_permutation(perm):
-    n = len(perm)
-    # 从后向前寻找第一个顺序对(i, i+1)，满足perm[i] < perm[i+1]
-    i = n - 2
-    while i >= 0 and perm[i] >= perm[i + 1]:
-        i -= 1
-    if i == -1:
-        return None
-    # 从后向前寻找第一个满足perm[i] < perm[j]的j
-    j = n - 1
-    while perm[i] >= perm[j]:
-        j -= 1
-    # 交换perm[i]和perm[j]
-    perm[i], perm[j] = perm[j], perm[i]
-    # 将perm[i+1:]翻转
-    perm[i + 1:] = perm[i + 1:][::-1]
-    return perm
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        flag = True
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] // 2
+            else:
+                flag = False
+                break
+        if flag:
+            ans += 1
+        else:
+            break
+    print(ans)
 
 =======
 Suggestion 9
 
-def get_next_permutation(a):
-    n = len(a)
-    i = n - 1
-    while i > 0 and a[i - 1] >= a[i]:
-        i -= 1
-    if i <= 0:
-        return False
-
-    j = n - 1
-    while a[j] <= a[i - 1]:
-        j -= 1
-
-    a[i - 1], a[j] = a[j], a[i - 1]
-
-    j = n - 1
-    while i < j:
-        a[i], a[j] = a[j], a[i]
-        i += 1
-        j -= 1
-
-    return True
-
-
-n = int(input())
-p = list(map(int, input().split()))
-
-p1 = p[:]
-p2 = p[:]
-get_next_permutation(p1)
-get_next_permutation(p2)
-
-for i in range(n):
-    if p1[i] != p2[i]:
-        print(*p1)
-        exit()
-
-print(-1)
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    count = 0
+    while True:
+        if all([a%2==0 for a in A]):
+            A = [a/2 for a in A]
+            count += 1
+        elif all([a%3==0 for a in A]):
+            A = [a/3 for a in A]
+            count += 1
+        else:
+            break
+    if all([a==A[0] for a in A]):
+        print(count)
+    else:
+        print(-1)
 
 =======
 Suggestion 10
 
-def change(A):
-    for i in range(len(A)-1,0,-1):
-        if A[i-1]<A[i]:
-            for j in range(len(A)-1,0,-1):
-                if A[i-1]<A[j]:
-                    A[i-1],A[j]=A[j],A[i-1]
-                    A[i:]=A[len(A)-1:i-1:-1]
-                    return A
-    return A
-
-N=int(input())
-P=list(map(int,input().split()))
-K=0
-for i in range(1,N+1):
-    K+=i*(N-1)**(i-1)
-for i in range(K-1):
-    P=change(P)
-print(" ".join(map(str,P)))
+def main():
+    n=int(input())
+    A=list(map(int,input().split()))
+    count=0
+    while True:
+        flag=0
+        for i in range(n):
+            if A[i]%2==0:
+                A[i]=A[i]/2
+                flag=1
+            if A[i]%3==2:
+                A[i]=A[i]/3
+                flag=1
+        if flag==1:
+            count+=1
+        else:
+            break
+    for i in range(1,n):
+        if A[i]!=A[0]:
+            count=-1
+            break
+    print(count)
+    
+main()

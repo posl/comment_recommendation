@@ -1,72 +1,148 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def coins(a,b):
-    if a>b:
-        return a+a-1
-    elif a<b:
-        return b+b-1
-    else:
-        return a+b
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    cnt = 1
+    for i in range(1, n):
+        flag = True
+        for j in range(i):
+            if h[j] >= h[i]:
+                flag = False
+        if flag:
+            cnt += 1
+    print(cnt)
 
 =======
 Suggestion 2
 
 def main():
-    a, b = map(int, input().split())
-    print(max(a + a - 1, a + b, b + b - 1))
+    N = int(input())
+    H = list(map(int, input().split()))
+    max_h = 0
+    res = 0
+    for i in range(N):
+        if H[i] >= max_h:
+            res += 1
+            max_h = H[i]
+    print(res)
 
 =======
 Suggestion 3
 
-def problems124_a():
-    A, B = map(int, input().split())
-    print(max(A + A - 1, B + B - 1, A + B))
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        flag = True
+        for j in range(i):
+            if h[j] >= h[i]:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
 
 =======
 Suggestion 4
 
 def main():
-    a,b = map(int,input().split())
-    if a == b:
-        print(a*2)
-    else:
-        print(max(a,b)*2-1)
+    n = int(input())
+    h = list(map(int, input().split()))
+    max = 0
+    cnt = 0
+    for i in range(n):
+        if max <= h[i]:
+            cnt += 1
+        if max < h[i]:
+            max = h[i]
+    print(cnt)
 
 =======
 Suggestion 5
 
 def main():
-    A, B = map(int, input().split())
-    if A > B:
-        print(A + A - 1)
-    elif A < B:
-        print(B + B - 1)
-    else:
-        print(A + B)
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 1
+    for i in range(1, N):
+        for j in range(i):
+            if H[j] > H[i]:
+                break
+        else:
+            count += 1
+    print(count)
 
 =======
 Suggestion 6
 
-def main():
-    A,B = map(int,input().split())
-    if A == B:
-        print(A+B)
-    elif A > B:
-        print(2*A-1)
-    else:
-        print(2*B-1)
+def problems124_b():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        if h[i] >= max(h[:i]):
+            count += 1
+    print(count)
+
+problems124_b()
 
 =======
 Suggestion 7
 
 def main():
-    a,b = map(int,input().split())
-    if a == b:
-        print(a+b)
-    elif a > b:
-        print(a+a-1)
-    else:
-        print(b+b-1)
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if i == 0:
+            count += 1
+        else:
+            if max(h[:i]) <= h[i]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        flag = True
+        for j in range(i):
+            if H[i] < H[j]:
+                flag = False
+                break
+        if flag:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(0, n):
+        if i == 0 or max(h[0:i]) <= h[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    H = [int(i) for i in input().split()]
+    count = 1
+    for i in range(1,N):
+        if max(H[:i]) <= H[i]:
+            count += 1
+    print(count)

@@ -4,170 +4,114 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N, A, B = map(int, input().split())
-    print(N // (A+B) * A + min(N % (A+B), A))
+    a, b = map(int, input().split())
+    for i in range(1, 101):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            print(i)
+            exit()
+    print(-1)
 
 =======
 Suggestion 2
 
-def ball(n,a,b):
-    if a+b == 0:
-        return 0
-    elif a+b == 1:
-        if a == 1:
-            return 0
-        else:
-            return 1
-    elif n <= a:
-        return 0
-    elif n <= a+b:
-        return 1
+def main():
+    a,b = map(int,input().split())
+    for i in range(1,10000):
+        if int(i*0.08) == a and int(i*0.1) == b:
+            print(i)
+            break
     else:
-        return ball(n-a-b,a,b)
+        print(-1)
 
 =======
 Suggestion 3
 
-def main():
-    n,a,b = map(int,input().split())
-    print((n // (a+b)) * a + min(n % (a+b),a))
+def find_price(A, B):
+    for i in range(100):
+        if int(i * 0.08) == A and int(i * 0.1) == B:
+            return i
+    return -1
+
+A, B = map(int, input().split())
+print(find_price(A, B))
 
 =======
 Suggestion 4
 
-def main():
-    n, a, b = map(int, input().split())
-    if a == 0:
-        print(0)
-    else:
-        print((n // (a + b)) * a + min(n % (a + b), a))
+def get_price(a, b):
+    for i in range(1, 100):
+        if (int(i*1.08) == a) and (int(i*1.1) == b):
+            return i
+    return -1
 
 =======
 Suggestion 5
 
-def f(n, a, b):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return a
-    elif n == 2:
-        return a + b
-    else:
-        return f(n - 1, a, b) + f(n - 2, a, b)
+def fun(a,b):
+    for i in range(1,100):
+        if int(i*0.08) == a and int(i*0.1) == b:
+            return i
+    return -1
+
+a,b = map(int,input().split())
+print(fun(a,b))
 
 =======
 Suggestion 6
 
-def problem158_b():
-    n, a, b = map(int, input().split())
-    print(min(n, a + b))
-    return
-
-problem158_b()
+def main():
+    a,b = map(int,input().split())
+    for i in range(1,1000):
+        if int(i*0.08) == a and int(i*0.1) == b:
+            print(i)
+            break
+        if i == 999:
+            print(-1)
 
 =======
 Suggestion 7
 
-def cal_balls(n, a, b):
-    if n == 0:
-        return 0
-    if n == 1:
-        return a
-    if n == 2:
-        return a + b
-    return cal_balls(n - 1, a, b) + cal_balls(n - 2, a, b)
+def main():
+    import sys
+    A, B = map(int, sys.stdin.readline().split())
+    for i in range(1, 101):
+        if int(i * 0.08) == A and int(i * 0.1) == B:
+            print(i)
+            exit()
+    print(-1)
+
+main()
 
 =======
 Suggestion 8
 
-def main():
-    n, a, b = map(int, input().split())
-    print(n // (a + b) * a + min(n % (a + b), a))
+def solve(a,b):
+    for i in range(1,101):
+        if int(i*0.08) == a and int(i*0.1) == b:
+            return i
+    return -1
+
+a,b = map(int,input().split())
+print(solve(a,b))
 
 =======
 Suggestion 9
 
-def main():
-    n,a,b = map(int,input().split())
-    if a == 0:
-        print(0)
-    elif n <= a+b:
-        print(a)
-    else:
-        print(a*(n//(a+b)) + min(a,n%(a+b)))
+def tax(a,b):
+    for i in range(1,101):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            return i
+    return -1
+a,b = map(int,input().split())
+print(tax(a,b))
 
 =======
 Suggestion 10
 
-def countBalls(N, A, B):
-    if A == 0 and B == 0:
-        return 0
-    if A == 0:
-        return 0
-    if B == 0:
-        return N
-    if A + B == 1:
-        return 1
-    if A + B == 2:
-        return 1
-    if A + B == 3:
-        return 2
-    if A + B == 4:
-        return 2
-    if A + B == 5:
-        return 3
-    if A + B == 6:
-        return 3
-    if A + B == 7:
-        return 4
-    if A + B == 8:
-        return 4
-    if A + B == 9:
-        return 5
-    if A + B == 10:
-        return 5
-    if A + B == 11:
-        return 6
-    if A + B == 12:
-        return 6
-    if A + B == 13:
-        return 7
-    if A + B == 14:
-        return 7
-    if A + B == 15:
-        return 8
-    if A + B == 16:
-        return 8
-    if A + B == 17:
-        return 9
-    if A + B == 18:
-        return 9
-    if A + B == 19:
-        return 10
-    if A + B == 20:
-        return 10
-    if A + B == 21:
-        return 11
-    if A + B == 22:
-        return 11
-    if A + B == 23:
-        return 12
-    if A + B == 24:
-        return 12
-    if A + B == 25:
-        return 13
-    if A + B == 26:
-        return 13
-    if A + B == 27:
-        return 14
-    if A + B == 28:
-        return 14
-    if A + B == 29:
-        return 15
-    if A + B == 30:
-        return 15
-    if A + B == 31:
-        return 16
-    if A + B == 32:
-        return 16
-    if A
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 1000):
+        if a == int(i * 0.08) and b == int(i * 0.1):
+            print(i)
+            exit()
+    print(-1)

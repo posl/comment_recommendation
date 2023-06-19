@@ -3,141 +3,132 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def problems270_d():
-    pass
+def toHex(n):
+    return hex(int(n))[2:].upper().zfill(2)
 
 =======
 Suggestion 2
 
-def get_num_of_stones(n, k, a):
-    num_of_stones = 0
-    for i in range(k-1, -1, -1):
-        num_of_stones += (n//a[i])
-        n = n%a[i]
-    return num_of_stones
+def hex(n):
+    if n < 10:
+        return str(n)
+    elif n == 10:
+        return 'A'
+    elif n == 11:
+        return 'B'
+    elif n == 12:
+        return 'C'
+    elif n == 13:
+        return 'D'
+    elif n == 14:
+        return 'E'
+    elif n == 15:
+        return 'F'
+    else:
+        return '0'
+
+n = int(input())
 
 =======
 Suggestion 3
 
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    ans = 0
-    a.append(n + 1)
-    for i in range(k):
-        ans += max(0, a[i + 1] - a[i] - 1)
-    print(n - ans)
+def hex(n):
+    if n < 10:
+        return str(n)
+    elif n == 10:
+        return "A"
+    elif n == 11:
+        return "B"
+    elif n == 12:
+        return "C"
+    elif n == 13:
+        return "D"
+    elif n == 14:
+        return "E"
+    elif n == 15:
+        return "F"
+    else:
+        return "error"
+
+n = int(input())
+print(hex(n//16) + hex(n%16))
 
 =======
 Suggestion 4
 
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.append(n+1)
-    ans = 0
-    for i in range(k):
-        ans += (a[i+1]-a[i])*(i+1)
-    print(ans)
+def hexa(n):
+    if n < 10:
+        return str(n)
+    else:
+        return chr(ord('A') + n - 10)
+
+n = int(input())
+a = n // 16
+b = n % 16
+print(hexa(a) + hexa(b))
 
 =======
 Suggestion 5
 
 def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    ans = 0
-    for i in range(K - 1, -1, -1):
-        if N >= A[i]:
-            ans += (N // A[i]) * A[i]
-            N %= A[i]
-    print(ans)
+    n = int(input())
+    print("%02X" % n)
 
 =======
 Suggestion 6
 
-def get_max_take(n,k,a):
-    if n == 0:
-        return 0
-    if k == 1:
-        return n
-    if k == 2:
-        return n - 1
-    if k == 3:
-        return n - 2
-    if k == 4:
-        return n - 3
-    if k == 5:
-        return n - 4
-    if k == 6:
-        return n - 5
-    if k == 7:
-        return n - 6
-    if k == 8:
-        return n - 7
-    if k == 9:
-        return n - 8
-    if k == 10:
-        return n - 9
+def convertHex(n):
+    if n < 10:
+        return str(n)
+    elif n == 10:
+        return 'A'
+    elif n == 11:
+        return 'B'
+    elif n == 12:
+        return 'C'
+    elif n == 13:
+        return 'D'
+    elif n == 14:
+        return 'E'
+    elif n == 15:
+        return 'F'
+    else:
+        return None
 
 =======
 Suggestion 7
 
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.append(n)
-    ans = 0
-    cur = 0
-    for i in range(k+1):
-        ans += (a[i]-cur+1)//2
-        cur = a[i]
-    print(ans)
+def problem271_a(n):
+    if n < 10:
+        print('0' + str(hex(n))[2:])
+    else:
+        print(str(hex(n))[2:])
 
 =======
 Suggestion 8
 
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    s = [0] * (n + 1)
-    for i in range(n):
-        s[i + 1] = s[i] + 1
-        for j in range(k):
-            if i + 1 - a[j] >= 0:
-                s[i + 1] = min(s[i + 1], s[i + 1 - a[j]])
-            else:
-                break
-        s[i + 1] = 1 - s[i + 1]
-    print(s[n])
+def get_hex(n):
+    if n < 10:
+        return str(n)
+    else:
+        return chr(ord('A') + n - 10)
 
 =======
 Suggestion 9
 
-def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] * (n + 1)
-    for i in range(n + 1):
-        B[i] = i
-    for i in range(1, n + 1):
-        for j in range(k):
-            if i - A[j] >= 0:
-                B[i] = min(B[i], B[i - A[j]] + 1)
-    print(B[n])
+def hex(n):
+    if n < 0 or n > 255:
+        return None
+    if n < 16:
+        return "0" + hex(n)
+    elif n < 256:
+        return hex(n // 16) + hex(n % 16)
+    else:
+        return None
 
 =======
 Suggestion 10
 
 def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-
-    ans = 0
-    for i in range(k):
-        ans += a[i]
-        if ans >= n:
-            print(ans - n)
-            return
-        ans *= 2
-    print(ans + 1 - n)
+    N = int(input())
+    print("{:02X}".format(N))

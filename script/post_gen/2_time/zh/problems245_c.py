@@ -3,140 +3,186 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def find_min_int_not_in_list(list):
-    list.sort()
-    min = 0
-    for i in list:
-        if i == min:
-            min += 1
-    return min
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    #print(N, K, A, B)
+    #print(len(A), len(B))
+    #print(A[0], A[1])
+    #print(B[0], B[1])
+
+    for i in range(N):
+        if abs(A[i] - B[i]) > K:
+            print("No")
+            return
+
+    print("Yes")
 
 =======
 Suggestion 2
 
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    m = 0
-    for i in range(0, N):
-        if A[i] > m:
-            print(m)
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    a.sort()
+    b.sort()
+    
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            print('No')
             exit()
-        elif A[i] == m:
-            m += 1
-    print(m)
+    print('Yes')
 
 =======
 Suggestion 3
 
-def problems245_b():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    num = 0
-    for i in range(N):
-        if A[i] > num:
-            print(num)
-            return
-        elif A[i] == num:
-            num += 1
-    print(num)
-    return
+def main():
+    pass
 
 =======
 Suggestion 4
 
-def findMinNum(n, arr):
-    arr.sort()
-    if arr[0] > 0:
-        return 0
-    if arr[-1] < 0:
-        return 0
-    for i in range(n-1):
-        if arr[i] >= 0:
-            if arr[i+1] - arr[i] > 1:
-                return arr[i] + 1
-    return arr[-1] + 1
+def readinput():
+    n,k=list(map(int,input().split()))
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    return n,k,a,b
 
 =======
 Suggestion 5
 
-def answer(n, a):
-    result = 0
-    for i in range(0, n):
-        if a[i] == result:
-            result += 1
-    return result
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a_max = max(a)
+    a_min = min(a)
+    b_max = max(b)
+    b_min = min(b)
+
+    if a_max - a_min > k or b_max - b_min > k:
+        print("No")
+        return
+
+    print("Yes")
+    if a_max > b_max:
+        for i in range(n):
+            if a[i] > b[i]:
+                print(b_max, end=" ")
+            else:
+                print(a[i], end=" ")
+    else:
+        for i in range(n):
+            if a[i] < b[i]:
+                print(a_max, end=" ")
+            else:
+                print(b[i], end=" ")
 
 =======
 Suggestion 6
 
-def getMinNum(a):
-    # a.sort()
-    # print(a)
-    # for i in range(0,len(a)):
-    #     if a[i] != i:
-    #         return i
-    # return len(a)
-    b = [0]*len(a)
-    for i in range(0,len(a)):
-        if a[i] < len(a):
-            b[a[i]] = 1
-    for i in range(0,len(b)):
-        if b[i] == 0:
-            return i
-    return len(a)
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # 二分探索
+    def check(x):
+        cnt = 0
+        for i in range(N):
+            cnt += abs(A[i] - x)
+            cnt += abs(B[i] - x)
+            cnt -= abs(A[i] - B[i])
+        return cnt <= 2 * K
+
+    # 二分探索
+    ok = 0
+    ng = 2 * 10 ** 9 + 1
+    while abs(ok - ng) > 1:
+        mid = (ok + ng) // 2
+        if check(mid):
+            ok = mid
+        else:
+            ng = mid
+    print('Yes' if ok == 0 else 'No')
 
 =======
 Suggestion 7
 
-def findMinInt(N, A):
-    for i in range(N):
-        if A.count(i) == 0:
-            return i
-    return N
+def solve():
+    pass
 
 =======
 Suggestion 8
 
-def get_min_non_negative_integer(N, A):
-    A.sort()
-    if A[0] != 0:
-        return 0
-    for i in range(N-1):
-        if A[i+1] - A[i] > 1:
-            return A[i] + 1
-    return A[N-1] + 1
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
 
-N = int(input())
-A = list(map(int, input().split()))
-print(get_min_non_negative_integer(N, A))
+    # 二分法
+    def check(x):
+        cnt = 0
+        for i in range(n):
+            if a[i] > x:
+                cnt += 1
+            else:
+                cnt -= 1
+        for i in range(n):
+            if b[i] > x:
+                cnt += 1
+            else:
+                cnt -= 1
+        return cnt >= 0
+
+    left = -1
+    right = 10 ** 9 + 1
+    while right - left > 1:
+        mid = (left + right) // 2
+        if check(mid):
+            right = mid
+        else:
+            left = mid
+    if right == 10 ** 9 + 1:
+        print("No")
+    else:
+        print("Yes")
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for i in range(n):
-        if A[i] <= ans:
-            ans += A[i]
-        else:
-            break
-    print(ans)
+def check(a,b,k):
+    # a,b,k = map(int, input().split())
+    a = list(map(int, a.split()))
+    b = list(map(int, b.split()))
+    for i in range(len(a)):
+        if abs(a[i]-b[i])>k:
+            return "No"
+    return "Yes"
+
+a = "1 1 1000000000 1000000000"
+b = "1 1000000000 1 1000000000"
+k = 1000000000
+print(check(a,b,k))
 
 =======
 Suggestion 10
 
-def main():
-    N = int(input())
+def solve():
+    N, K = map(int, input().split())
     A = list(map(int, input().split()))
-    A.sort()
-    min = 0
+    B = list(map(int, input().split()))
+    m = 0
     for i in range(N):
-        if min == A[i]:
-            min += 1
-    print(min)
+        m = max(m, abs(A[i] - B[i]))
+    if m <= K:
+        print('Yes')
+    else:
+        print('No')
+
+solve()

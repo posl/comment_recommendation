@@ -4,111 +4,194 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def solve():
-    N = int(input())
-    L = [int(i) for i in input().split()]
-    L.sort()
-    if L[N-1] < sum(L[:N-1]):
-        print("是")
-    else:
-        print("否")
-
-solve()
+    N,M = map(int,input().split())
+    X = list(map(int,input().split()))
+    X.sort()
+    #print(X)
+    if N >= M:
+        print(0)
+        return
+    #print(X)
+    d = []
+    for i in range(M-1):
+        d.append(X[i+1] - X[i])
+    #print(d)
+    d.sort()
+    #print(d)
+    ans = 0
+    for i in range(M-N):
+        ans += d[i]
+    print(ans)
+    return
 
 =======
 Suggestion 2
 
-def isPolygon(L):
-    L.sort(reverse=True)
-    return L[0] < sum(L[1:])
+def solution():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    if N >= M:
+        print(0)
+        return
+    else:
+        X_diff = []
+        for i in range(M-1):
+            X_diff.append(X[i+1]-X[i])
+        X_diff.sort(reverse=True)
+        print(sum(X_diff[N-1:]))
+        return
 
-N = int(input())
-L = list(map(int, input().split()))
-print("是" if isPolygon(L) else "否")
+solution()
 
 =======
 Suggestion 3
 
-def get_input():
-    N = int(input())
-    L = list(map(int,input().split()))
-    return N,L
+def solve():
+    N,M = map(int,input().split())
+    X = list(map(int,input().split()))
+    X.sort()
+
+    if N >= M:
+        print(0)
+        return
+
+    D = []
+    for i in range(M-1):
+        D.append(X[i+1]-X[i])
+
+    D.sort()
+    print(sum(D[:M-N]))
+
+solve()
 
 =======
 Suggestion 4
 
-def is_polygon(n, L):
-    L.sort(reverse=True)
-    if L[0] < sum(L[1:]):
-        return True
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n == 1:
+        print(abs(x[0]))
     else:
-        return False
+        x_diff = []
+        for i in range(m - 1):
+            x_diff.append(abs(x[i + 1] - x[i]))
+        x_diff.sort()
+        print(sum(x_diff[:n - 1]))
 
 =======
 Suggestion 5
 
 def main():
-    # input
-    n = int(input())
-    l = list(map(int, input().split()))
-
-    # output
-    if max(l) < sum(l) - max(l):
-        print('是')
-    else:
-        print('否')
+    # 输入
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    # 排序
+    x.sort()
+    # 计算每个点的距离
+    diffs = []
+    for i in range(m-1):
+        diffs.append(x[i+1] - x[i])
+    # 排序
+    diffs.sort()
+    # 计算总和
+    sum = 0
+    for i in range(m-n):
+        sum += diffs[i]
+    # 输出
+    print(sum)
 
 =======
 Suggestion 6
 
-def is_polygon(n, data):
-    max_len = max(data)
-    sum_len = sum(data) - max_len
-    if max_len < sum_len:
-        print("是")
-    else:
-        print("否")
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+    #print(x)
+    if n == 1:
+        print(abs(x[0]-x[m-1]))
+        return
+    l = []
+    for i in range(m-1):
+        l.append(x[i+1]-x[i])
+    l.sort()
+    print(sum(l[:m-n]))
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    L = list(map(int, input().split()))
-    L.sort()
-    if L[-1] < sum(L[:-1]):
-        print("是")
+def solve():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    if N >= M:
+        return 0
     else:
-        print("否")
+        Y = []
+        for i in range(M-1):
+            Y.append(X[i+1]-X[i])
+        Y.sort()
+        return sum(Y[:M-N])
+
+print(solve())
 
 =======
 Suggestion 8
 
-def is_polygon(n, edges):
-    edges.sort()
-    if edges[-1] < sum(edges[:-1]):
-        return '是'
-    else:
-        return '否'
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+
+    if n >= m:
+        print(0)
+        return
+
+    diff = []
+    for i in range(1,m):
+        diff.append(x[i]-x[i-1])
+    diff.sort()
+    ans = sum(diff[:m-n])
+    print(ans)
 
 =======
 Suggestion 9
 
-def check_polygon(l):
-    max_l = max(l)
-    sum_l = sum(l) - max_l
-    if max_l < sum_l:
-        return True
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+    if n == 1:
+        print(x[m-1]-x[0])
+        return
     else:
-        return False
+        l = []
+        for i in range(m-1):
+            l.append(x[i+1]-x[i])
+        l.sort()
+        print(sum(l[:m-n]))
 
 =======
 Suggestion 10
 
 def main():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort(reverse=True)
-    if l[0] < sum(l[1:]):
-        print("是")
-    else:
-        print("否")
+    # 读取输入
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    # 排序
+    X.sort()
+    # 计算相邻两个棋子之间的距离
+    dist = []
+    for i in range(M-1):
+        dist.append(X[i+1] - X[i])
+    # 排序
+    dist.sort()
+    # 计算距离之和
+    sum_dist = 0
+    for i in dist:
+        sum_dist += i
+    # 输出
+    print(sum_dist - (N-1))

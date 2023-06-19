@@ -1,93 +1,103 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    s1 = input()
-    s2 = input()
-    if s1[0] == '#' and s1[2] == '#' and s2[0] == '#' and s2[2] == '#':
-        print('Yes')
+    A, B = map(int, input().split())
+    sum = A + B
+    if sum >= 10**18:
+        print("Hard")
     else:
-        print('No')
+        print("Easy")
 
 =======
 Suggestion 2
 
 def main():
-    s1 = input()
-    s2 = input()
-    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
-        print('Yes')
+    A,B = map(int,input().split())
+    if (A+B) < 10**10:
+        print("Easy")
     else:
-        print('No')
+        print("Hard")
 
 =======
 Suggestion 3
 
-def solve():
-    s1 = input()
-    s2 = input()
-    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
-        print('Yes')
+def main():
+    a, b = map(int, input().split())
+    if (a + b) < 10 ** 9:
+        print("Easy")
     else:
-        print('No')
+        print("Hard")
 
 =======
 Suggestion 4
 
-def check(s):
-    if s[0][0] == '#' and s[0][1] == '#' and s[1][0] == '#' and s[1][1] == '#':
-        print('Yes')
+def easy_or_hard():
+    A, B = map(int, input().split())
+    if A + B >= 10 ** 10:
+        print("Hard")
     else:
-        print('No')
+        print("Easy")
 
 =======
 Suggestion 5
 
-def main():
-    # 读入数据
-    S_1 = input()
-    S_2 = input()
-    # 处理数据
-    if S_1[0] == '#' and S_1[1] == '#' and S_2[0] == '#' and S_2[1] == '#':
-        print('Yes')
-    else:
-        print('No')
-    # 输出结果
+def sumAB(a, b):
+    return a+b
 
 =======
 Suggestion 6
 
-def get_input():
-    s1 = input()
-    s2 = input()
-    return s1, s2
+def main():
+    a,b = map(int, input().split())
+    if a+b >= 10**10:
+        print('Hard')
+    else:
+        print('Easy')
 
 =======
 Suggestion 7
 
 def main():
-    s1 = input()
-    s2 = input()
-    if(s1[0] == "#" and s1[1] == "#" and s2[0] == "#" and s2[1] == "#"):
-        print("Yes")
+    a, b = map(int, input().split())
+    if a+b >= 10**10:
+        print("Hard")
     else:
-        print("No")
+        print("Easy")
 
 =======
 Suggestion 8
 
-def main():
-    s1 = input()
-    s2 = input()
-    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
-        print('Yes')
-    elif s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '.':
-        print('Yes')
-    elif s1[0] == '.' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
-        print('Yes')
-    elif s1[0] == '#' and s1[1] == '.' and s2[0] == '#' and s2[1] == '#':
-        print('Yes')
+def problem229_b():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    if a+b >= 10**10:
+        print("Hard")
     else:
-        print('No')
+        print("Easy")
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+
+    # 处理
+    if a + b >= 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 10
+
+def main():
+    A,B = map(int, input().split())
+    if A+B >= 10**10:
+        print("Hard")
+    else:
+        print("Easy")

@@ -3,108 +3,93 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    s, t = input().split()
-    result = ''
-    for i in range(n):
-        result += s[i]
-        result += t[i]
-    print(result)
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    s, t = map(str, input().split())
-    ans = ''
-    for i in range(n):
-        ans += s[i] + t[i]
-    print(ans)
+def gcd(x, y):
+    if x < y:
+        x, y = y, x
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
+
+a, b = map(int, input().split())
+print(a * b // gcd(a, b))
 
 =======
 Suggestion 3
 
-def getStr():
-    n = int(input())
-    s = input()
-    t = input()
-    result = ""
-    for i in range(n):
-        result += s[i]
-        result += t[i]
-    print(result)
+def lcm(x, y):
+    import math
+    return (x * y) // math.gcd(x, y)
 
 =======
 Suggestion 4
 
-def problems148_b():
-    n = int(input())
-    s, t = input().split()
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
 
-    result = ""
-    for i in range(n):
-        result += s[i] + t[i]
-
-    print(result)
+    # 输出
+    print(A * B)
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    s, t = input().split()
-    ans = ''
-    for i in range(n):
-        ans += s[i] + t[i]
-    print(ans)
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+a,b=map(int,input().split())
+g=gcd(a,b)
+print(a*b//g)
 
 =======
 Suggestion 6
 
-def main():
-    # N = int(input())
-    # s, t = input().split()
-    N = 8
-    s = "hmhmnknk"
-    t = "uuuuuuuu"
-    result = ""
-    for i in range(N):
-        result += s[i] + t[i]
-    print(result)
+def lcm(a, b):
+    from fractions import gcd
+    return a * b / gcd(a, b)
+
+a,b = map(int,input().split())
+print(int(lcm(a,b)))
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    s, t = input().split()
-    result = ""
-    for i in range(n):
-        result += s[i] + t[i]
-    print(result)
+def lcm(a,b):
+    from fractions import gcd
+    return a*b//gcd(a,b)
 
-main()
+a,b = map(int,input().split())
+print(lcm(a,b))
 
 =======
 Suggestion 8
 
-def problem148_b():
-    n = int(input())
-    s, t = input().split()
-    res = ""
-    for i in range(n):
-        res += s[i] + t[i]
-    print(res)
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while a % b != 0:
+        a, b = b, a % b
+    return b
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+print(a * b // g)
 
 =======
 Suggestion 9
 
 def main():
-    n = int(input())
-    s, t = input().split()
-    result = ''
-    for i in range(n):
-        result += s[i] + t[i]
-    print(result)
+    a,b = map(int, input().split())
+    print((a*b)//math.gcd(a,b))

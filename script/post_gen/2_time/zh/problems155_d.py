@@ -3,229 +3,228 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def solve():
-    n = int(input())
-    d = {}
-    for _ in range(n):
-        s = input()
-        if s not in d:
-            d[s] = 1
-        else:
-            d[s] += 1
-    
-    max_v = max(d.values())
-    for k, v in d.items():
-        if v == max_v:
-            print(k)
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split(
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    list = []
+def func(n,k,nums):
+    nums.sort()
+    count = 0
     for i in range(n):
-        list.append(input())
-    list.sort()
-    d = {}
-    for i in list:
-        if i in d:
-            d[i] += 1
-        else:
-            d[i] = 1
-    max = 0
-    for i in d:
-        if d[i] > max:
-            max = d[i]
-    for i in d:
-        if d[i] == max:
-            print(i)
+        for j in range(i+1,n):
+            count += 1
+            if count == k:
+                return nums[i]*nums[j]
+    return 0
 
 =======
 Suggestion 3
 
 def solve():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.sort()
-    max_count = 0
-    max_word = ''
-    count = 0
-    for i in range(N):
-        if i == 0:
-            count = 1
-        else:
-            if S[i] == S[i-1]:
-                count += 1
-            else:
-                count = 1
-        if count > max_count:
-            max_count = count
-            max_word = S[i]
-    print(max_word)
+    return
 
 =======
 Suggestion 4
 
-def get_input():
-    n = int(input())
-    arr = []
-    for i in range(n):
-        arr.append(input())
-    return arr
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    mul = []
+    for i in range(n-1):
+        for j in range(i+1, n):
+            mul.append(a[i]*a[j])
+    mul.sort()
+    print(mul[k-1])
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    s.sort()
-    res = []
-    max_cnt = 0
-    cnt = 0
-    for i in range(n):
-        if s[i] != s[i-1]:
-            if cnt > max_cnt:
-                max_cnt = cnt
-                res = [s[i-1]]
-            elif cnt == max_cnt:
-                res.append(s[i-1])
-            cnt = 1
-        else:
-            cnt += 1
-    if cnt > max_cnt:
-        res = [s[-1]]
-    elif cnt == max_cnt:
-        res.append(s[-1])
-    for r in res:
-        print(r)
+def find_kth_min_num(list_num, k):
+    list_num.sort()
+    return list_num[k-1]
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort()
-    count = 1
-    max = 0
-    for i in range(n-1):
-        if s[i] == s[i+1]:
-            count += 1
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    left = -10**18
+    right = 10**18
+    while left + 1 < right:
+        mid = (left + right) // 2
+        cnt = 0
+        for i in range(n):
+            if a[i] < 0:
+                l = -1
+                r = n
+                while l + 1 < r:
+                    m = (l + r) // 2
+                    if a[m] * a[i] < mid:
+                        r = m
+                    else:
+                        l = m
+                cnt += n - r
+            else:
+                l = -1
+                r = n
+                while l + 1 < r:
+                    m = (l + r) // 2
+                    if a[m] * a[i] < mid:
+                        l = m
+                    else:
+                        r = m
+                cnt += r
+            if a[i] * a[i] < mid:
+                cnt -= 1
+        cnt //= 2
+        if cnt < k:
+            left = mid
         else:
-            if count > max:
-                max = count
-            count = 1
-    if count > max:
-        max = count
-    count = 1
-    for i in range(n-1):
-        if s[i] == s[i+1]:
-            count += 1
-        else:
-            if count == max:
-                print(s[i])
-            count = 1
-    if count == max:
-        print(s[n-1])
+            right = mid
+    print(left)
+
+solve()
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    dic = {}
-    for i in range(n):
-        s = input()
-        if s in dic:
-            dic[s] += 1
+def solve():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    #print(a)
+    l = -10**18
+    r = 10**18
+    while l < r:
+        mid = (l+r)//2
+        #print(mid)
+        cnt = 0
+        for i in range(n):
+            if a[i] < 0:
+                l2 = -1
+                r2 = n
+                while l2 < r2:
+                    mid2 = (l2+r2)//2
+                    if a[i]*a[mid2] <= mid:
+                        r2 = mid2
+                    else:
+                        l2 = mid2+1
+                cnt += n-l2
+            else:
+                l2 = -1
+                r2 = n
+                while l2 < r2:
+                    mid2 = (l2+r2)//2
+                    if a[i]*a[mid2] <= mid:
+                        l2 = mid2+1
+                    else:
+                        r2 = mid2
+                cnt += l2
+            if a[i]*a[i] <= mid:
+                cnt -= 1
+        #print(cnt)
+        if cnt >= k:
+            r = mid
         else:
-            dic[s] = 1
-    max = 0
-    for key in dic:
-        if dic[key] > max:
-            max = dic[key]
-    for key in sorted(dic):
-        if dic[key] == max:
-            print(key)
+            l = mid+1
+    print(l)
+
+solve()
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    S = [input() for i in range(N)]
-    S.sort()
-    max_count = 0
-    count = 0
-    for i in range(1, N):
-        if S[i] == S[i - 1]:
-            count += 1
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    l = -10**18-1
+    r = 10**18+1
+    while l+1 < r:
+        m = (l+r)//2
+        cnt = 0
+        for i in range(n):
+            if a[i] > 0:
+                cnt += n - i - 1
+                continue
+            l2 = i + 1
+            r2 = n
+            while l2+1 < r2:
+                m2 = (l2+r2)//2
+                if a[i]*a[m2] <= m:
+                    r2 = m2
+                else:
+                    l2 = m2
+            cnt += n - r2
+        if cnt < k:
+            l = m
         else:
-            if count > max_count:
-                max_count = count
-            count = 0
-    if count > max_count:
-        max_count = count
-    count = 0
-    for i in range(1, N):
-        if S[i] == S[i - 1]:
-            count += 1
-        else:
-            if count == max_count:
-                print(S[i - 1])
-            count = 0
-    if count == max_count:
-        print(S[i - 1])
+            r = m
+    print(r)
 
 =======
 Suggestion 9
 
 def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.sort()
-    max = 0
-    count = 0
-    for i in range(N):
-        if S[i] == S[i-1]:
-            count += 1
-        else:
-            count = 1
-        if count > max:
-            max = count
-    count = 0
-    for i in range(N):
-        if S[i] == S[i-1]:
-            count += 1
-        else:
-            count = 1
-        if count == max:
-            print(S[i])
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    print(a[k-1])
 
 =======
 Suggestion 10
 
 def main():
-    n = int(input())
-    d = {}
-    for i in range(n):
-        s = input()
-        if s in d:
-            d[s] += 1
+    # 读入数据
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 二分探索
+    a.sort()
+    l = -10**18
+    r = 10**18
+    while l + 1 < r:
+        x = (l + r) // 2
+        # x未満の個数を数える
+        num = 0
+        for i in range(n):
+            if a[i] < 0:
+                # 負の数の場合
+                l2 = -1
+                r2 = n
+                while l2 + 1 < r2:
+                    c = (l2 + r2) // 2
+                    if a[c] * a[i] < x:
+                        r2 = c
+                    else:
+                        l2 = c
+                num += n - r2
+            else:
+                # 0または正の数の場合
+                l2 = -1
+                r2 = n
+                while l2 + 1 < r2:
+                    c = (l2 + r2) // 2
+                    if a[c] * a[i] < x:
+                        l2 = c
+                    else:
+                        r2 = c
+                num += r2
+            # 自身の数を引く
+            if a[i] * a[i] < x:
+                num -= 1
+        num //= 2
+        if num < k:
+            l = x
         else:
-            d[s] = 1
-    max = 0
-    for s in d:
-        if d[s] > max:
-            max = d[s]
-    for s in sorted(d):
-        if d[s] == max:
-            print(s)
+            r = x
+
+    print(l)
+
+main()

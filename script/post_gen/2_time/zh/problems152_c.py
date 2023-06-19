@@ -4,129 +4,141 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    a, b = map(int, input().split())
-    if a == b:
-        print(str(a) * a)
-    elif a > b:
-        print(str(b) * a)
-    else:
-        print(str(a) * b)
+    N = int(input())
+    P = input().split()
+    P = [int(i) for i in P]
+    count = 0
+    for i in range(1, N+1):
+        if P[i-1] <= i:
+            count += 1
+    print(count)
 
 =======
 Suggestion 2
 
 def main():
-    # 读取输入
-    input_line = input()
-    a, b = map(int, input_line.split())
-
-    # 求解并输出
-    if a < b:
-        print(str(a) * b)
-    else:
-        print(str(b) * a)
+    n = int(input())
+    p = list(map(int, input().split()))
+    min_p = p[0]
+    count = 1
+    for i in range(1, n):
+        if min_p >= p[i]:
+            count += 1
+        min_p = min(min_p, p[i])
+    print(count)
 
 =======
 Suggestion 3
 
-def problem152_b(a,b):
-    a = int(a)
-    b = int(b)
-    a_str = str(a)
-    b_str = str(b)
-    a_str = a_str * b
-    b_str = b_str * a
-    if a_str < b_str:
-        print(a_str)
-    else:
-        print(b_str)
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min_num = P[0]
+    count = 1
+    for i in range(1, N):
+        if P[i] <= min_num:
+            count += 1
+            min_num = P[i]
+    print(count)
 
 =======
 Suggestion 4
 
 def main():
-    a,b = map(int, input().split())
-    a_str = str(a)
-    b_str = str(b)
-    if a_str == b_str:
-        print(a_str*a)
-    elif a_str < b_str:
-        print(a_str*b)
-    else:
-        print(b_str*a)
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    min_p = n + 1
+    for i in range(n):
+        if min_p > p[i]:
+            count += 1
+            min_p = p[i]
+    print(count)
 
 =======
 Suggestion 5
 
 def main():
-    a, b = map(int, input().split())
-    if a>b:
-        print(str(b)*a)
-    elif a<b:
-        print(str(a)*b)
-    else:
-        print(str(a)*b)
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    min_p = p[0]
+    for i in range(n):
+        if min_p >= p[i]:
+            ans += 1
+            min_p = p[i]
+    print(ans)
 
 =======
 Suggestion 6
 
 def main():
-    a,b = map(int,input().split())
-    if a > b :
-        print(str(b)*a)
-    else:
-        print(str(a)*b)
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 1
+    min = p[0]
+    for i in range(1, n):
+        if p[i] <= min:
+            min = p[i]
+            count += 1
+    print(count)
 
 =======
 Suggestion 7
 
-def main():
-    a,b = [int(i) for i in input().split()]
-    if a > b:
-        print(str(b)*a)
-    else:
-        print(str(a)*b)
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    min_p = n + 1
+    for i in range(n):
+        if p[i] <= min_p:
+            min_p = p[i]
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    a = input("请输入a：")
-    b = input("请输入b：")
-    if a<b:
-        print(a*a)
-    elif a>b:
-        print(b*b)
-    else:
-        print(a*a)
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    min = 0
+    for i in range(n):
+        if i == 0:
+            min = p[i]
+            count += 1
+        else:
+            if p[i] <= min:
+                count += 1
+                min = p[i]
+    print(count)
 
 =======
 Suggestion 9
 
 def main():
-    a,b = map(int,input().split())
-    if a == b:
-        print(str(a)*b)
-    elif a < b:
-        print(str(a)*b)
-    else:
-        print(str(b)*a)
+    N = int(input())
+    P = list(map(int,input().split()))
+    count = 0
+    min = N+1
+    for i in range(N):
+        if P[i] < min:
+            count += 1
+            min = P[i]
+    print(count)
 
 =======
 Suggestion 10
 
-def main():
-    # 读取输入
-    a, b = input().split()
-    # 计算
-    a = int(a)
-    b = int(b)
-    a_str = str(a)
-    b_str = str(b)
-    a_str *= b
-    b_str *= a
-    if a_str < b_str:
-        print(a_str)
-    else:
-        print(b_str)
-    return
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    min_ = p[0]
+    ans = 1
+    for i in range(1, n):
+        if p[i] <= min_:
+            ans += 1
+        min_ = min(min_, p[i])
+    print(ans)

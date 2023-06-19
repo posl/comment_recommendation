@@ -1,55 +1,52 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
     s = input()
-    count = 0
-    for i in range(0,4):
-        if s[i] == '+':
-            count += 1
-        else:
-            count -= 1
-    print(count)
+    print(s.count('+') - s.count('-'))
 
 =======
 Suggestion 2
 
-def solve():
+def main():
     s = input()
-    result = 0
-    for i in s:
-        if i == "+":
-            result += 1
+    ans = 0
+    for i in range(4):
+        if s[i] == '+':
+            ans += 1
         else:
-            result -= 1
-    print(result)
-solve()
+            ans -= 1
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
+    # 读取输入
     s = input()
-    sum = 0
-    for i in range(4):
-        if s[i] == '+':
-            sum += 1
+    # 初始化
+    result = 0
+    # 遍历字符串
+    for i in s:
+        if i == '+':
+            result += 1
         else:
-            sum -= 1
-    print(sum)
+            result -= 1
+    # 打印结果
+    print(result)
 
 =======
 Suggestion 4
 
 def main():
-    s = input()
+    S = input()
     num = 0
-    for i in s:
-        if i == '+':
+    for i in range(4):
+        if S[i] == '+':
             num += 1
-        elif i == '-':
+        else:
             num -= 1
     print(num)
 
@@ -57,61 +54,80 @@ def main():
 Suggestion 5
 
 def main():
-    S = input()
-    count = 0
-    for i in range(4):
-        if S[i] == '+':
-            count += 1
+    s = input()
+    n = 0
+    for c in s:
+        if c == '+':
+            n += 1
         else:
-            count -= 1
-    print(count)
+            n -= 1
+    print(n)
 
 =======
 Suggestion 6
 
 def main():
-    # 读取输入
     S = input()
-    # 初始化变量
-    num = 0
-    # 计算
+    result = 0
     for i in range(len(S)):
         if S[i] == '+':
-            num += 1
+            result += 1
         else:
-            num -= 1
-    # 输出结果
-    print(num)
+            result -= 1
+    print(result)
 
 =======
 Suggestion 7
 
 def main():
     S = input()
-    x = 0
+    count = 0
     for i in range(4):
-        if S[i] == "+":
-            x += 1
+        if S[i] == '+':
+            count += 1
         else:
-            x -= 1
-    print(x)
+            count -= 1
+    print(count)
 
 =======
 Suggestion 8
 
-def problem101_a():
-    S = raw_input()
-    print S.count('+') - S.count('-')
+def main():
+    s = input()
+    result = 0
+    for i in s:
+        if i == '+':
+            result += 1
+        else:
+            result -= 1
+    print(result)
 
 =======
 Suggestion 9
 
 def main():
-    S = input()
-    count = 0
-    for i in S:
+    s = input()
+    sum = 0
+    for i in s:
         if i == '+':
-            count += 1
+            sum += 1
         else:
-            count -= 1
-    print(count)
+            sum -= 1
+    print(sum)
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    s = input()
+    # 初始化
+    result = 0
+    # 处理
+    for i in range(4):
+        if s[i] == '+':
+            result += 1
+        else:
+            result -= 1
+    # 输出
+    print(result)

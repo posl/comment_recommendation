@@ -4,230 +4,270 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n, w = map(int, input().split())
-    cheese = []
-    for i in range(n):
-        cheese.append(list(map(int, input().split())))
-    cheese = sorted(cheese, key=lambda x: x[0] / x[1])
-    cheese = cheese[::-1]
-    ans = 0
-    for i in range(n):
-        if w <= 0:
-            break
-        if w >= cheese[i][1]:
-            ans += cheese[i][0]
-            w -= cheese[i][1]
-        else:
-            ans += cheese[i][0] * w / cheese[i][1]
-            w = 0
-    print(int(ans))
+    S = input()
+    K = int(input())
+    l = len(S)
+    #print(l)
+    #print(K)
+    #pr
 
 =======
 Suggestion 2
 
-def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-
-    #dp[i][w]表示前i个物品中总重量不超过w时的最大价值
-    dp = [[0]*(W+1) for i in range(N+1)]
-    for i in range(N):
-        for w in range(W+1):
-            if w >= B[i]:
-                dp[i+1][w] = max(dp[i][w], dp[i+1][w-B[i]]+A[i])
-            else:
-                dp[i+1][w] = dp[i][w]
-    print(dp[N][W])
+def solve():
+    s = input()
+    k = int(input())
+    n = len(s)
+    ans = 0
+    for i in range(n):
+        if s[i] == 'X':
+            ans += 1
+        elif k > 0 and (i == 0 or s[i - 1] != 'X') and (i == n - 1 or s[i + 1] != 'X'):
+            ans += 1
+            k -= 1
+    print(ans)
 
 =======
 Suggestion 3
 
-def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    max_a = max(A)
-    max_b = max(B)
-    if (max_a * max_b * N) < W:
-        print(sum(A) * sum(B))
-        return
-    dp = [0] * (W + 1)
-    for i in range(N):
-        for j in range(W, -1, -1):
-            if j >= B[i]:
-                dp[j] = max(dp[j], dp[j - B[i]] + A[i])
-    print(dp[W])
+def solve(s, k):
+    n = len(s)
+    max_consecutive_x = 0
+    consecutive_x = 0
+    for i in range(n):
+        if s[i] == 'X':
+            consecutive_x += 1
+        else:
+            max_consecutive_x = max(max_consecutive_x, consecutive_x)
+            consecutive_x = 0
+    max_consecutive_x = max(max_consecutive_x, consecutive_x)
+    max_consecutive_x += k
+    max_consecutive_x = min(max_consecutive_x, n)
+    return max_consecutive_x
+
+s = input()
+k = int(input())
+print(solve(s, k))
 
 =======
 Suggestion 4
 
-def get_input():
-    N, W = input().split()
-    N = int(N)
-    W = int(W)
-    A = []
-    B = []
-    for i in range(N):
-        a, b = input().split()
-        A.append(int(a))
-        B.append(int(b))
-    return N, W, A, B
+def main():
+    S = input()
+    K = int(input())
+    max = 0
+    count = 0
+    for i in range(len(S)):
+        if S[i] == "X":
+            count += 1
+        else:
+            if max < count:
+                max = count
+            count = 0
+    if max < count:
+        max = count
+    if K == 0:
+        print(max)
+        return
+    if max + K > len(S):
+        print(len(S))
+        return
+    print(max + K)
 
 =======
 Suggestion 5
 
 def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    dp = [[0 for i in range(W+1)] for i in range(N+1)]
-    for i in range(1, N+1):
-        for j in range(1, W+1):
-            if j >= B[i-1]:
-                dp[i][j] = max(dp[i-1][j], dp[i-1][j-B[i-1]] + A[i-1])
-            else:
-                dp[i][j] = dp[i-1][j]
-    print(dp[N][W])
+    s = input()
+    k = int(input())
+
+    # s = "XX...X.X.X."
+    # k = 2
+
+    # s = "XXXX"
+    # k = 200000
+
+    s = s.replace(".", "0")
+    s = s.replace("X", "1")
+    s = s.replace("0", "X")
+    s = s.replace("1", "0")
+
+    s = "0" + s + "0"
+
+    count = 0
+    max_count = 0
+
+    for i in range(1, len(s)):
+        if s[i] == "0":
+            count += 1
+        else:
+            if max_count < count:
+                max_count = count
+            count = 0
+
+    if max_count < count:
+        max_count = count
+
+    print(max_count + k)
 
 =======
 Suggestion 6
 
 def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-
-    #dp[i][j]表示前i种奶酪中总重量为j时的最大美味度
-    dp = [[0 for i in range(W+1)] for j in range(N+1)]
-    for i in range(1, N+1):
-        for j in range(1, W+1):
-            if j-B[i-1] >= 0:
-                dp[i][j] = max(dp[i-1][j], dp[i-1][j-B[i-1]]+A[i-1])
-            else:
-                dp[i][j] = dp[i-1][j]
-
-    print(dp[N][W])
+    s = input()
+    k = int(input())
+    n = len(s)
+    ans = 0
+    for i in range(n - 1):
+        if s[i] == s[i + 1] == 'X':
+            ans += 1
+    ans += min(ans + k, n - 1)
+    print(ans)
 
 =======
 Suggestion 7
 
 def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    dp = [0] * (W + 1)
-    for i in range(N):
-        for j in range(W, B[i] - 1, -1):
-            dp[j] = max(dp[j], dp[j - B[i]] + A[i])
-    print(dp[W])
+    S = input()
+    K = int(input())
+    N = len(S)
+    if K == 0:
+        ans = 0
+        count = 0
+        for s in S:
+            if s == "X":
+                count += 1
+            else:
+                ans = max(ans, count)
+                count = 0
+        ans = max(ans, count)
+        print(ans)
+        return
+    ans = 0
+    count = 0
+    for s in S:
+        if s == "X":
+            count += 1
+        else:
+            ans = max(ans, count)
+            count = 0
+    ans = max(ans, count)
+    if K >= 2:
+        count = 0
+        for s in S:
+            if s == "X":
+                count += 1
+            else:
+                ans = max(ans, count + 1)
+                count = 0
+        ans = max(ans, count + 1)
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    # print(A)
-    # print(B)
-    # print(N)
-    # print(W)
-    # print(len(A))
-    # print(len(B))
-    # print(A[0])
-    # print(B[0])
-
-    # print(A[0] * B[0])
-    # print(A[1] * B[1])
-    # print(A[2] * B[2])
-    # print(A[3] * B[3])
-    # print(A[4] * B[4])
-    # print(A[5] * B[5])
-    # print(A[6] * B[6])
-    # print(A[7] * B[7])
-    # print(A[8] * B[8])
-    # print(A[9] * B[9])
-    # print(A[10] * B[10])
-    # print(A[11] * B[11])
-    # print(A[12] * B[12])
-    # print(A[13] * B[13])
-    # print(A[14] * B[14])
-    # print(A[15] * B[15])
-    # print(A[16] * B[16])
-    # print(A[17] * B[17])
-    # print(A[18] * B[18])
-    # print(A[19] * B[19])
-    # print(A[20] * B[20])
-    # print(A[21] * B[21])
-    # print(A[22] * B[22])
-    # print(A[23] * B[23])
-    # print(A[24] * B[24])
-    # print(A[25] * B[25])
-    # print(A[26] * B[26])
-    # print(A[27] * B[27])
-    # print(A[28] * B[28])
-    # print(A[29] * B[29])
-    # print(A[30] * B[30])
-    # print(A[31] * B[31])
-    # print(A[32] * B[32])
-    # print(A[33]
+    s = input()
+    k = int(input())
+    s = s.replace('X', 'XX')
+    s = s.replace('.', 'X')
+    s = s.replace('X', '.')
+    s = s.replace('..', '.')
+    s = s.replace('X', 'XX')
+    print(min(len(s), len(s) + k))
 
 =======
 Suggestion 9
 
-def solve(N, W, A, B):
-    dp = [[0 for j in range(W+1)] for i in range(N+1)]
-    for i in range(1, N+1):
-        for j in range(W+1):
-            if j < B[i-1]:
-                dp[i][j] = dp[i-1][j]
+def main():
+    s = input()
+    k = int(input())
+    s0 = s.replace('.', ' ')
+    s1 = s0.split()
+    s2 = list(map(len, s1))
+    l = len(s2)
+    if l == 1:
+        if s[0] == '.':
+            if k == 0:
+                print(0)
             else:
-                dp[i][j] = max(dp[i-1][j], dp[i-1][j-B[i-1]] + A[i-1])
-    return dp[N][W]
+                print(min(k, s2[0]))
+        else:
+            print(s2[0])
+    else:
+        if s[0] == '.':
+            if k == 0:
+                print(s2[0])
+            else:
+                print(min(k, s2[0]))
+        else:
+            ans = s2[0]
+            for i in range(1, l):
+                ans = max(ans, s2[i - 1] + s2[i])
+            if s[-1] == '.':
+                ans = max(ans, s2[-1])
+            else:
+                ans = max(ans, s2[-1] + min(k, s2[-1]))
+            print(ans)
 
 =======
 Suggestion 10
 
 def main():
-    N,W = map(int,input().split())
-    A = [0]*N
-    B = [0]*N
-    for i in range(N):
-        A[i],B[i] = map(int,input().split())
-    #print(N,W,A,B)
-
-    #dp[i][j]表示使用前i种奶酪，总重量为j时的最大美味值
-    dp = [[0]*(W+1) for i in range(N+1)]
-    for i in range(1,N+1):
-        for j in range(W+1):
-            if j < B[i-1]:
-                dp[i][j] = dp[i-1][j]
-            else:
-                dp[i][j] = max(dp[i-1][j],dp[i-1][j-B[i-1]]+A[i-1]*B[i-1])
-    #print(dp)
-    print(dp[N][W])
+    s = input()
+    k = int(input())
+    # print(s, k)
+    # print(len(s))
+    # print(s.find('X'))
+    # print(s.rfind('X'))
+    # print(s[0:1])
+    # print(s[1:2])
+    # print(s[2:3])
+    # print(s[3:4])
+    # print(s[4:5])
+    # print(s[5:6])
+    # print(s[6:7])
+    # print(s[7:8])
+    # print(s[8:9])
+    # print(s[9:10])
+    # print(s[10:11])
+    # print(s[11:12])
+    # print(s[12:13])
+    # print(s[13:14])
+    # print(s[14:15])
+    # print(s[15:16])
+    # print(s[16:17])
+    # print(s[17:18])
+    # print(s[18:19])
+    # print(s[19:20])
+    # print(s[20:21])
+    # print(s[21:22])
+    # print(s[22:23])
+    # print(s[23:24])
+    # print(s[24:25])
+    # print(s[25:26])
+    # print(s[26:27])
+    # print(s[27:28])
+    # print(s[28:29])
+    # print(s[29:30])
+    # print(s[30:31])
+    # print(s[31:32])
+    # print(s[32:33])
+    # print(s[33:34])
+    # print(s[34:35])
+    # print(s[35:36])
+    # print(s[36:37])
+    # print(s[37:38])
+    # print(s[38:39])
+    # print(s[39:40])
+    # print(s[40:41])
+    # print(s[41:42])
+    # print(s[42:43])
+    # print(s[43:44])
+    # print(s[44:45])
+    # print(s[45:46])
+    # print(s[46:47])
+    # print(s[47:48])
+    # print(s[48:49])
+    # print(s[49:50])
+    # print(s[50:

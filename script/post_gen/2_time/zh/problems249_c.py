@@ -4,161 +4,141 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    s = input()
-    if s.islower() or s.isupper():
-        print('No')
-    else:
-        print('Yes')
+    # 读入数据
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+
+    # 求解
+    ans = 0
+    for bit in range(1 << N):
+        # 选择的字符串
+        T = [i for i in range(N) if bit & (1 << i)]
+        # 选择的字符串的字母集合
+        U = set()
+        for t in T:
+            U |= set(S[t])
+        # 选择的字符串的字母集合的大小
+        if len(U) == K:
+            ans = max(ans, len(T))
+
+    # 输出结果
+    print(ans)
 
 =======
 Suggestion 2
 
-def is_wonderful_string(s):
-    if len(s) < 2 or len(s) > 100:
-        return False
-    if s.islower() or s.isupper():
-        return False
-    if s.isalnum():
-        return False
-    if s.isalpha():
-        return True
-    return False
+def main():
+    N,K = map(int,input().split())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print(S)
 
 =======
 Suggestion 3
 
-def check(s):
-    if(s.islower() or s.isupper() or len(s)%2!=0):
-        return False
-    else:
-        return True
-
-s=input()
-if(check(s)):
-    print("Yes")
-else:
-    print("No")
+def main():
+    N,K = map(int,input().split())
+    S = []
+    for i in range(N):
+        S.append(input())
+    ans = 0
+    for i in range(2**N):
+        cnt = 0
+        tmp = []
+        for j in range(N):
+            if i&(1<<j):
+                tmp.append(S[j])
+                cnt += 1
+        if cnt != K:
+            continue
+        ans = max(ans,len(set("".join(tmp))))
+    print(ans)
 
 =======
 Suggestion 4
 
-def main():
-    s = input()
-    if s.islower():
-        print('No')
-    elif s.isupper():
-        print('No')
-    elif len(s) == 1:
-        print('No')
-    elif len(s) == 2:
-        if s[0] == s[1]:
-            print('No')
-        else:
-            print('Yes')
-    else:
-        if s[0] == s[1]:
-            print('No')
-        elif s[0] == s[-1]:
-            print('No')
-        elif s[1] == s[-1]:
-            print('No')
-        else:
-            print('Yes')
+def getStrList():
+    N, K = map(int, input().split())
+    strList = []
+    for i in range(N):
+        strList.append(input())
+    return strList
 
 =======
 Suggestion 5
 
-def is_wonderful_string(s):
-    if not s.islower() and not s.isupper():
-        return False
-    if not s.islower():
-        if s[0].isupper():
-            return True
-        else:
-            return False
-    if not s.isupper():
-        if s[0].islower():
-            return True
-        else:
-            return False
-
-s = input()
+def get_all_subsets(input_set):
+    return get_all_subsets_rec(input_set,0)
 
 =======
 Suggestion 6
 
-def is_wonderful_string(string):
-    if len(string) < 2:
-        return False
-    if len(string) == 2:
-        return string[0] != string[1]
-    if len(string) % 2 == 1:
-        return False
-    if string[0].isupper():
-        return False
-    if string[-1].islower():
-        return False
-    if string[0].islower() and string[-1].isupper():
-        return False
-
-    return True
+def get_input():
+    n,k = map(int,input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    return n,k,s
 
 =======
 Suggestion 7
 
-def check(s):
-    if len(s) < 2:
-        return False
-    if len(s) % 2 != 0:
-        return False
-    if s[0].isupper() == False:
-        return False
-    if s[-1].islower() == False:
-        return False
-    for i in range(1, len(s)-1):
-        if i % 2 != 0:
-            if s[i].isupper() == True:
-                return False
-        else:
-            if s[i].islower() == True:
-                return False
-    return True
-
-s = input()
+def is_included(Si, Sj):
+    for c in Si:
+        if c in Sj:
+            return True
+    return False
 
 =======
 Suggestion 8
 
-def is_wonderful(s):
-    if len(s) < 3:
-        return False
-    if s.islower():
-        return False
-    if s.isupper():
-        return False
-    if s.lower() == s.upper():
-        return False
-    for i in range(0, len(s)):
-        if s[i].islower():
-            if s[i].upper() not in s[i+1:]:
-                return False
-        if s[i].isupper():
-            if s[i].lower() not in s[i+1:]:
-                return False
-    return True
+def main():
+    n,k = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    ans = 0
+    for i in range(1<<n):
+        t = set()
+        for j in range(n):
+            if i&(1<<j):
+                t |= set(s[j])
+
+        if len(t) == k:
+            ans = max(ans, bin(i).count("1"))
+
+    print(ans)
 
 =======
 Suggestion 9
 
-def main():
-    S = input()
-    if S.islower() or S.isupper():
-        print('No')
-    else:
-        print('Yes')
+def f(s):
+    return set(s)
+
+n, k = map(int, input().split())
+s = [input() for _ in range(n)]
+ans = 0
+for i in range(1 << n):
+    if bin(i).count('1') != k:
+        continue
+    t = set()
+    for j in range(n):
+        if i >> j & 1:
+            t |= f(s[j])
+    if len(t) == k:
+        ans = max(ans, bin(i).count('1'))
+print(ans)
 
 =======
 Suggestion 10
 
-def is_upper(s):
-    return s.isupper()
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    # 递归求解
+    print(solve(s, k))

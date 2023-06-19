@@ -1,165 +1,114 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    n,m = map(int, input().split())
-    s = []
-    t = []
-    for i in range(n):
-        s.append(input())
-    for i in range(m):
-        t.append(input())
-    count = 0
-    for i in range(m):
-        for j in range(n):
-            if t[i] == s[j][3:6]:
-                count += 1
-    print(count)
+def solve():
+    return
 
 =======
 Suggestion 2
 
-def main():
-    n, m = map(int, input().split())
-    s = [input() for i in range(n)]
-    t = [input() for i in range(m)]
-    ans = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][3:6] == t[j]:
-                ans += 1
-                break
-    print(ans)
+def solve():
+    pass
 
 =======
 Suggestion 3
 
-def main():
+def get_graph():
     n,m = map(int,input().split())
-    s = [input() for _ in range(n)]
-    t = [input() for _ in range(m)]
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                count += 1
-    print(count)
-main()
+    graph = [[0 for i in range(n)] for i in range(n)]
+    for i in range(m):
+        u,v = map(int,input().split())
+        graph[u-1][v-1] = 1
+        graph[v-1][u-1] = 1
+    return graph
 
 =======
 Suggestion 4
 
-def problem287_b():
-    n,m = map(int, input().split())
-    s_list = []
-    for i in range(n):
-        s_list.append(input())
-    t_list = []
-    for i in range(m):
-        t_list.append(input())
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if s_list[i][-3:] == t_list[j]:
-                count += 1
-    print(count)
+def main():
+    n,m = map(int,input().split())
+    if n == 1:
+        print('Yes')
+        return
+    if m == 0:
+        print('No')
+        return
+    # 有m条边，n个点，m>=n-1
+    if m < n-1:
+        print('No')
+        return
+    # 有m条边，n个点，m<=n(n-1)/2
+    if m > n*(n-1)/2:
+        print('No')
+        return
+    # 有m条边，n个点，m>=n-1, m<=n(n-1)/2
+    print('Yes')
 
 =======
 Suggestion 5
 
 def main():
-    n, m = map(int, input().split())
-    s = [input() for i in range(n)]
-    t = [input() for i in range(m)]
-    ans = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                ans += 1
-    print(ans)
+    N, M = map(int, input().split())
+    G = [[] for i in range(N+1)]
+    for i in range(M):
+        u, v = map(int, input().split())
+        G[u].append(v)
+        G[v].append(u)
+    for i in range(1, N+1):
+        if len(G[i]) > 2:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 6
 
 def main():
-    n,m = map(int,input().split())
-    s = [input() for i in range(n)]
-    t = [input() for i in range(m)]
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                count += 1
-    print(count)
+    n, m = map(int, input().split())
+    a = []
+    for i in range(m):
+        a.append(list(map(int, input().split())))
+    a.sort(key=lambda x: x[0])
+    for i in range(n - 1):
+        if a[i][0] != a[i + 1][0] - 1:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 7
 
 def main():
-    n, m = map(int, input().split())
-    s = [input() for _ in range(n)]
-    t = [input() for _ in range(m)]
-    #print(s)
-    #print(t)
-    #print(len(s))
-    #print(len(t))
-    #print(s[0])
-    #print(t[0])
-    #print(s[0][-3:])
-    #print(t[0])
-    #print(s[0][-3:] == t[0])
-    ans = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                ans += 1
-    print(ans)
+    pass
 
 =======
 Suggestion 8
 
 def main():
-    n, m = map(int, input().split())
-    s = [input() for _ in range(n)]
-    t = [input() for _ in range(m)]
-    ans = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][3:] == t[j]:
-                ans += 1
-    print(ans)
+    N, M = map(int, input().split())
+    edges = []
+    for i in range(M):
+        edges.append(list(map(int, input().split())))
+    edges.sort()
+    print(edges)
+    for i in range(M):
+        if edges[i][0] == edges[i+1][0] or edges[i][1] == edges[i+1][1]:
+            print("No")
+            break
+        else:
+            print("Yes")
+            break
 
 =======
 Suggestion 9
 
-def main():
-    N, M = map(int, input().split())
-    S = [input() for i in range(N)]
-    T = [input() for i in range(M)]
-    ans = 0
-    for s in S:
-        for t in T:
-            if s[-3:] == t:
-                ans += 1
-    print(ans)
-
-=======
-Suggestion 10
-
-def main():
-    N, M = map(int, input().split())
-    S = []
-    T = []
-    for i in range(N):
-        S.append(input())
-    for i in range(M):
-        T.append(input())
-    count = 0
-    for i in range(M):
-        for j in range(N):
-            if T[i] == S[j][3:6]:
-                count += 1
-                break
-    print(count)
+def isPathGraph(n, m, edges):
+    if m != n-1:
+        return False
+    edges = sorted(edges, key=lambda x: x[0])
+    for i in range(0, n-1):
+        if edges[i][0] != i+1 or edges[i][1] != i+2:
+            return False
+    return True

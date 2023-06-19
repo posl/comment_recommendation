@@ -1,169 +1,136 @@
-Synthesizing 10/10 solutions
+Synthesizing 9/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-
-    max_A = max(A)
-    max_B = max(B)
-
-    if max_A > max_B:
-        print('Yes')
-    else:
-        print('No')
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(s)
+    #print(len(s))
 
 =======
 Suggestion 2
 
-def main():
-    n,k = input().split()
-    n = int(n)
-    k = int(k)
-    a = input().split()
-    b = input().split()
-    a = [int(i) for i in a]
-    b = [int(i) for i in b]
-    max_a = max(a)
-    max_b = max(b)
-    if max_a > max_b:
-        print('Yes')
-    else:
-        print('No')
+def solve():
+    pass
 
 =======
 Suggestion 3
 
-def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-
-    maxA = max(A)
-
-    for i in range(K):
-        if B[i] == A.index(maxA)+1:
-            print('No')
-            exit()
-    print('Yes')
+def solve():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ans = 1e9
+    for i in range(n):
+        t = 0
+        for j in range(n):
+            cnt = 0
+            for k in range(10):
+                if s[i][k] == s[j][k]:
+                    cnt += 1
+            t = max(t, cnt)
+        ans = min(ans, t)
+    print(ans)
+solve()
 
 =======
 Suggestion 4
 
 def main():
-    #输入数据
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-
-    #解决问题
-    maxA = max(A)
-    maxB = max(B)
-    if maxA > maxB:
-        print('Yes')
-    else:
-        print('No')
+    n = int(input())
+    s = []
+    for _ in range(n):
+        s.append(input())
+    ans = 0
+    for i in range(10):
+        for j in range(n):
+            if s[j][i] == str((i+1)%10):
+                ans += 1
+                break
+    print(ans)
 
 =======
 Suggestion 5
 
-def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    for i in range(K):
-        A[B[i]-1] = 0
-    if max(A) != 0:
-        print('Yes')
+def get_min_time(s1, s2):
+    s1 = list(s1)
+    s2 = list(s2)
+    if s1 == s2:
+        return 0
     else:
-        print('No')
+        count = 0
+        for i in range(len(s1)):
+            if s1[i] != s2[i]:
+                count += 1
+        return count
 
 =======
 Suggestion 6
 
 def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    A.sort()
-    B.sort()
-    for i in range(K):
-        if A[-1] == B[i]:
-            print("No")
-            exit()
-    print("Yes")
+    # 获取输入内容
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    # 求解
+    ans = 0
+    for i in range(10):
+        for j in range(n):
+            if s[j][i] == str(i):
+                ans += 1
+                break
+    print(ans)
 
 =======
 Suggestion 7
 
-def main():
-    n, k = map(int, input().split())
-    foods = list(map(int, input().split()))
-    hate_foods = list(map(int, input().split()))
-    foods.sort()
-    hate_foods.sort()
-    for i in range(k):
-        if foods[n-1] == hate_foods[i]:
-            print("No")
-            exit()
-    print("Yes")
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    # 1つ目のリールのボタンを押す回数を全探索する
+    ans = 10 ** 100
+    for i in range(10):
+        # 各リールのボタンを押す回数を記録する配列
+        cnt = [0] * N
+        # 1つ目のリールのボタンを押す回数
+        cnt[0] = i
+        # 各リールのボタンを押す回数を決める
+        for j in range(1, N):
+            # 1つ前のリールのボタンを押す回数
+            cnt[j] = (10 + int(S[j - 1][j - 1]) - cnt[j - 1]) % 10
+        # 各リールのボタンを押す回数を全て決めたときの合計時間
+        sum_cnt = sum(cnt)
+        # 合計時間が最小の場合は、その時間を解とする
+        if ans > sum_cnt:
+            ans = sum_cnt
+
+    print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-
-    c = [0] * n
-    for i in b:
-        c[i - 1] = 1
-
-    d = []
+    n = int(input())
+    s = []
     for i in range(n):
-        if c[i] == 0:
-            d.append(a[i])
-
-    if len(d) == 0:
-        print('No')
-    else:
-        d.sort()
-        if d[-1] > a[-1]:
-            print('Yes')
-        else:
-            print('No')
+        s.append(input())
+    print(s)
+    print(n)
 
 =======
 Suggestion 9
 
-def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    A.sort(reverse=True)
-    B.sort(reverse=True)
-    i = 0
-    j = 0
-    while i < N:
-        if j < K and A[i] == B[j]:
-            j += 1
-        else:
-            print("Yes")
-            return
-        i += 1
-    print("No")
-
-=======
-Suggestion 10
-
-def problems252_b():
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
-    for i in range(k):
-        a[b[i]-1] = 0
-    print("Yes" if max(a)>0 else "No")
+def get_min_time(arr):
+    # arr = [[1, 9, 3, 7, 4, 5, 8, 0, 6, 2], [8, 1, 2, 4, 6, 9, 0, 3, 5, 7], [2, 3, 8, 5, 7, 6, 0, 1, 4, 9]]
+    # arr = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+    # arr = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[8, 1, 2, 4, 6, 9, 0, 3, 5, 7],[2, 3, 8, 5, 7, 6, 0, 1, 4, 9]]
+    # arr = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],[8, 1, 2, 4, 6, 9, 0, 3, 5, 7],[2, 3, 8, 5, 7, 6, 0, 1, 4, 9],[2, 3, 8, 5, 7, 6, 0, 1, 4, 9],[2, 3, 8, 5, 7, 6, 0, 1, 4, 9]]
+    # arr = [[0, 1

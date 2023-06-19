@@ -1,139 +1,106 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def prime_factorization(N):
-    prime_factor = []
-    i = 2
-    while i * i <= N:
-        while N % i == 0:
-            prime_factor.append(i)
-            N //= i
-        i += 1
-    if N > 1:
-        prime_factor.append(N)
-    return prime_factor
+def main():
+    # 读取输入
+    line = input()
+    # 用空格分隔输入的字符串
+    line = line.split()
+    # 将字符串转换为数值
+    line = [int(x) for x in line]
+    # 找出0
+    for i in range(len(line)):
+        if line[i] == 0:
+            print(i+1)
+            break
 
 =======
 Suggestion 2
 
 def main():
-    pass
+    x = list(map(int, input().split()))
+    for i in range(5):
+        if x[i] == 0:
+            print(i+1)
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    count = 0
-    while True:
-        flag = False
-        for i in range(2, n):
-            if n % i == 0:
-                flag = True
-                n = n // i
-                count += 1
-                break
-        if not flag:
+    x = list(map(int, input().split()))
+    for i in range(5):
+        if x[i] == 0:
+            print(i + 1)
             break
-    print(count)
+
+main()
 
 =======
 Suggestion 4
 
-def prime_factors(n):
-    i = 2
-    factors = []
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            if i not in factors:
-                factors.append(i)
-    if n > 1:
-        if n not in factors:
-            factors.append(n)
-    return factors
+def main():
+    # 读入数据
+    x = list(map(int, input().split()))
+    # 计算结果
+    for i in range(5):
+        if x[i] == 0:
+            print(i + 1)
+            break
 
 =======
 Suggestion 5
 
-def isPrime(n):
-    if n <= 1:
-        return False
-    for i in range(2, int(n**0.5)+1):
-        if n % i == 0:
-            return False
-
-    return True
+def main():
+    x = input()
+    x = x.split()
+    for i in range(0,5):
+        if x[i] == '0':
+            print(i+1)
+            break
 
 =======
 Suggestion 6
 
-def prime_factorize(n):
-    a = []
-    while n % 2 == 0:
-        a.append(2)
-        n //= 2
-    f = 3
-    while f * f <= n:
-        if n % f == 0:
-            a.append(f)
-            n //= f
-        else:
-            f += 2
-    if n != 1:
-        a.append(n)
-    return a
+def main():
+    n = input().split()
+    for i in range(len(n)):
+        if n[i] == '0':
+            print(i+1)
+            break
 
 =======
 Suggestion 7
 
-def prime_factors(n):
-    i = 2
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            yield i
-    if n > 1:
-        yield n
+def problems170_a(x):
+    for i in range(len(x)):
+        if x[i] == 0:
+            return i+1
 
 =======
 Suggestion 8
 
-def get_prime_factor(n):
-    factor = []
-    if n < 2:
-        return factor
-    for i in range(2, n + 1):
-        if i * i > n:
-            break
-        while n % i == 0:
-            n //= i
-            factor.append(i)
-    if n > 1:
-        factor.append(n)
-    return factor
+def main():
+    x = input().split()
+    for i in range(len(x)):
+        if x[i] == '0':
+            print(i+1)
 
 =======
 Suggestion 9
 
-def prime_factors(n):
-    i = 2
-    factors = []
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            factors.append(i)
-    if n > 1:
-        factors.append(n)
-    return factors
+def main():
+    x = input()
+    x = x.split()
+    for i in range(0, len(x)):
+        if x[i] == '0':
+            print(i+1)
+            break
 
-import sys
-N = int(sys.stdin.readline())
+=======
+Suggestion 10
+
+def main():
+    x = list(map(int,input().split()))
+    print(x.index(0)+1)

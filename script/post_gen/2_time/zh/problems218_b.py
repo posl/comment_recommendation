@@ -1,97 +1,101 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    s = input()
-    if s[n-1] == 'o':
-        print('Yes')
-    else:
-        print('No')
+def get_char(num):
+    return chr(ord('a') + num - 1)
 
 =======
 Suggestion 2
 
-def weather():
-    N = int(input())
-    S = input()
-    if S[N-1] == "o":
-        print("Yes")
-    else:
-        print("No")
+def main():
+    p=list(map(int,input().split()))
+    a=[chr(96+i) for i in p]
+    print(''.join(a))
 
 =======
 Suggestion 3
 
 def main():
-    n = input()
-    s = input()
-    print("是" if s[n-1] == "o" else "否")
+    p = list(map(int, input().split()))
+    p = [chr(ord('a') + x - 1) for x in p]
+    print(''.join(p))
 
 =======
 Suggestion 4
 
 def main():
-    N = int(input())
-    S = input()
-    if S[N-1] == 'o':
-        print('是')
-    else:
-        print('否')
+    str = input()
+    num = str.split(' ')
+    for i in range(26):
+        print(chr(int(num[i])+96), end='')
 
 =======
 Suggestion 5
 
 def main():
-    N = int(input())
-    S = input()
-    if S[N-1] == "o":
-        print("Yes")
-    else:
-        print("No")
+    p = list(map(int,input().split()))
+    s = []
+    for i in range(26):
+        s.append(chr(p[i]+96))
+    print("".join(s))
 
 =======
 Suggestion 6
 
-def get_weather(n,s):
-    if s[n-1] == 'o':
-        print('Yes')
-    else:
-        print('No')
+def main():
+    p = list(map(int, input().split()))
+    s = []
+    for i in range(26):
+        s.append(chr(p[i]+96))
+    print(''.join(s))
 
 =======
 Suggestion 7
 
-def solve():
-    n = int(input())
-    s = input()
-    if s[n-1] == 'o':
-        print('Yes')
-    else:
-        print('No')
+def main():
+    p = list(map(int, input().split()))
+    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    ans = ''
+    for i in p:
+        ans += alpha[i-1]
+    print(ans)
 
 =======
 Suggestion 8
 
-def weather():
-    n=int(input())
-    s=input()
-    if s[n-1]=='o':
-        print('Yes')
-    else:
-        print('No')
-
-weather()
+def main():
+    p = list(map(int, input().split()))
+    s = [None] * 26
+    for i in range(26):
+        s[i] = chr(ord('a') + p[i] - 1)
+    print("".join(s))
 
 =======
 Suggestion 9
 
 def main():
-    N = int(input())
-    S = input()
-    if S[N-1] == 'o':
-        print("Yes")
-    else:
-        print("No")
+    p = list(map(int, input().split()))
+    s = []
+    for i in p:
+        s.append(chr(ord('a') + i - 1))
+    print(''.join(s))
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    input_line = input()
+    # 用空格分隔输入
+    input_line = input_line.split(" ")
+    # 创建一个长度为26的列表
+    output_list = [0 for i in range(26)]
+    # 用循环把输入的数字转换为字母
+    for i in range(26):
+        output_list[int(input_line[i]) - 1] = chr(i + 97)
+    # 把列表转换为字符串
+    output_str = "".join(output_list)
+    # 输出结果
+    print(output_str)

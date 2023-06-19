@@ -4,89 +4,69 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    pass
+    a,b,c = map(int, input().split())
+    print(max(a+b+c, a+b*c, a*b+c, a*b*c))
 
 =======
 Suggestion 2
 
 def main():
-    H,W = map(int,input().split())
-    a = [list(map(int,input().split())) for i in range(H)]
-    ans = []
-    for i in range(H):
-        for j in range(W):
-            if a[i][j] % 2 == 1:
-                if j != W-1:
-                    a[i][j] -= 1
-                    a[i][j+1] += 1
-                    ans.append([i+1,j+1,i+1,j+2])
-                elif i != H-1:
-                    a[i][j] -= 1
-                    a[i+1][j] += 1
-                    ans.append([i+1,j+1,i+2,j+1])
-    print(len(ans))
-    for i in range(len(ans)):
-        print(*ans[i])
+    A,B,C = map(int,input().split())
+    print(max(A+B+C,10*A+B+C,A+10*B+C,A+B+10*C))
 
 =======
 Suggestion 3
 
-def printList(l):
-    print(' '.join(map(str, l)))
+def solve():
+    a, b, c = map(int, input().split())
+    print(a + b + c + max(a, b, c) * 9)
+
+solve()
 
 =======
 Suggestion 4
 
-def solve():
-    pass
+def main():
+    A, B, C = map(int, input().split())
+    print(10 * A + B + C)
 
 =======
 Suggestion 5
 
-def solve():
-    H, W = map(int, input().split())
-    a = [list(map(int, input().split())) for _ in range(H)]
-    ans = []
-    for i in range(H):
-        for j in range(W - 1):
-            if a[i][j] % 2 == 1:
-                a[i][j] -= 1
-                a[i][j + 1] += 1
-                ans.append((i + 1, j + 1, i + 1, j + 2))
-    for i in range(H - 1):
-        if a[i][W - 1] % 2 == 1:
-            a[i][W - 1] -= 1
-            a[i + 1][W - 1] += 1
-            ans.append((i + 1, W, i + 2, W))
-    print(len(ans))
-    for i in range(len(ans)):
-        print(*ans[i])
-
-solve()
+def main():
+    a,b,c = map(int, input().split())
+    print(a+b+c+max(a,b,c)*9)
 
 =======
 Suggestion 6
 
 def main():
-    h,w = map(int,input().split())
-    a = [list(map(int,input().split())) for _ in range(h)]
-    ans = []
-    for i in range(h):
-        for j in range(w-1):
-            if a[i][j]%2==1:
-                a[i][j+1]+=1
-                ans.append((i+1,j+1,i+1,j+2))
-    for i in range(h-1):
-        if a[i][w-1]%2==1:
-            a[i+1][w-1]+=1
-            ans.append((i+1,w,i+2,w))
-    print(len(ans))
-    for i in range(len(ans)):
-        print(ans[i][0],ans[i][1],ans[i][2],ans[i][3])
+    # 读取A,B,C
+    a, b, c = map(int, input().split())
 
-=======
-Suggestion 7
+    # 通过穷举法找出最大值
+    max = 0
+    for i in range(1, 10):
+        for j in range(1, 10):
+            for k in range(1, 10):
+                # 通过这种方法将三个数字排列成一个三位数
+                num = i * 100 + j * 10 + k
 
-def printList(l):
-    for i in l:
-        print(i)
+                # 如果num小于等于C，则直接跳过
+                if num <= c:
+                    continue
+
+                # 如果num小于等于B，则直接跳过
+                if num <= b:
+                    continue
+
+                # 如果num小于等于A，则直接跳过
+                if num <= a:
+                    continue
+
+                # 如果num大于max，则将num赋值给max
+                if num > max:
+                    max = num
+
+    # 打印结果
+    print(max)

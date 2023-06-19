@@ -3,252 +3,197 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    x, a, d, n = map(int, input().split())
-    cnt = 0
-    while x != a:
-        if x > a:
-            x -= 1
-        else:
-            x += 1
-        cnt += 1
-    print(cnt)
+def get_input():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    return n, q, a, x
 
 =======
 Suggestion 2
 
-def main():
-    x,a,d,n = map(int,input().split())
-    if d == 0:
-        if x == a:
-            print(0)
+def solve(n, q, a, x):
+    a.sort()
+    x.sort()
+    sum_a = sum(a)
+    sum_x = sum(x)
+    res = sum_x
+    for i in range(q):
+        res += n * x[i]
+        sum_a += x[i]
+        if res > sum_a:
+            res = sum_a
         else:
-            print(1)
-    else:
-        if n == 1:
-            print(abs(x-a))
-        else:
-            if x < a:
-                if d > 0:
-                    print(min(abs(x-a),abs(x-a-d*(n-1))))
-                else:
-                    print(abs(x-a))
-            else:
-                if d > 0:
-                    print(abs(x-a))
-                else:
-                    print(min(abs(x-a),abs(x-a-d*(n-1))))
-main()
+            break
+    return res
 
 =======
 Suggestion 3
 
 def main():
-    x,a,d,n = map(int, input().split())
-    if d == 0:
-        if x == a:
-            print(0)
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    ans = 0
+    for i in range(n - 1):
+        ans += abs(a[i] - a[i + 1])
+    for i in range(q):
+        if i == 0:
+            ans += abs(a[0] - x[i])
+            ans += abs(a[-1] - x[i])
         else:
-            print(1)
-    else:
-        ans = 0
-        if x < a:
-            while x != a:
-                x += 1
-                ans += 1
-        else:
-            while x != a:
-                x -= 1
-                ans += 1
+            ans -= abs(a[i] - a[i - 1])
+            ans -= abs(a[i] - a[i + 1])
+            ans += abs(a[i - 1] - x[i])
+            ans += abs(a[i + 1] - x[i])
         print(ans)
+        a[i] = x[i]
+    return
 
 =======
 Suggestion 4
 
 def main():
-    x, a, d, n = map(int, input().split())
-    cnt = 0
-    if d == 0:
-        if x != a:
-            cnt = 2
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for _ in range(q)]
+    num = [0] * n
+    for i in range(1,n):
+        num[i] = a[i] - a[i-1]
+    ans = 0
+    for i in range(1,n):
+        ans += abs(num[i])
+    for i in range(q):
+        if x[i] == 0:
+            print(ans)
         else:
-            cnt = 0
-    elif n == 1:
-        if x != a:
-            cnt = 2
-        else:
-            cnt = 0
-    else:
-        if (x - a) % d == 0:
-            cnt = 0
-        else:
-            cnt = 2
-    print(cnt)
+            if x[i] == a[0]:
+                ans += abs(num[1])
+                num[1] += num[0]
+                num[0] = 0
+            elif x[i] == a[-1]:
+                ans += abs(num[-1])
+                num[-2] += num[-1]
+                num[-1] = 0
+            else:
+                for j in range(1,n):
+                    if a[j-1] < x[i] <= a[j]:
+                        ans -= abs(num[j])
+                        num[j] += 1
+                        ans += abs(num[j])
+                    elif a[j] < x[i] <= a[j+1]:
+                        ans -= abs(num[j])
+                        num[j] -= 1
+                        ans += abs(num[j])
+            a = [x[i]] * n
+            print(ans)
 
 =======
 Suggestion 5
 
-def main():
-    X,A,D,N = map(int,input().split())
-    if D == 0:
-        if X == A:
-            print(0)
+def problem255_d():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for i in range(q)]
+    sum = 0
+    for i in range(1,n):
+        sum += abs(a[i]-a[i-1])
+    for i in range(q):
+        if x[i] == 0:
+            print(sum)
         else:
-            print("inf")
-        return
-    if N == 1:
-        if X == A:
-            print(0)
-        else:
-            print("inf")
-        return
-    if D > 0:
-        if X < A or (X-A) % D != 0:
-            print("inf")
-            return
-    else:
-        if X > A or (X-A) % D != 0:
-            print("inf")
-            return
-    if D > 0:
-        if (X-A) // D >= 0:
-            print((X-A) // D)
-        else:
-            print("inf")
-    else:
-        if (X-A) // D <= 0:
-            print((X-A) // D)
-        else:
-            print("inf")
+            if x[i] == a[0]:
+                sum += abs(a[1]-a[0])
+                sum -= abs(a[1]-a[0]-1)
+            elif x[i] == a[n-1]:
+                sum += abs(a[n-1]-a[n-2])
+                sum -= abs(a[n-1]-a[n-2]-1)
+            else:
+                sum += abs(a[1]-a[0])
+                sum += abs(a[n-1]-a[n-2])
+                sum -= abs(a[1]-a[0]-1)
+                sum -= abs(a[n-1]-a[n-2]-1)
+            a[0] = x[i]
+            a[n-1] = x[i]
+            print(sum)
 
 =======
 Suggestion 6
 
 def main():
-    x, a, d, n = map(int, input().split())
-    if d == 0:
-        if x == a:
-            print(0)
-        else:
-            print(1)
-    else:
-        ans = 0
-        while True:
-            if x == a:
-                print(ans)
-                return
-            if x < a:
-                if (a - x) % d == 0:
-                    print(ans + (a - x) // d)
-                else:
-                    print(ans + (a - x) // d + 1)
-                return
-            if n == 0:
-                print(ans + x - a)
-                return
-            if x - a > d:
-                ans += 1
-                x -= 1
-            else:
-                ans += 1
-                x += 1
-            n -= 1
+    print("hello world!")
 
 =======
 Suggestion 7
 
 def main():
-    x, a, d, n = map(int, input().split())
-    if d == 0:
-        if x == a:
-            print(0)
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    min_a = min(a)
+    min_a_idx = a.index(min_a)
+    min_x = min(x)
+    min_x_idx = x.index(min_x)
+    min_ans = min_a + min_x
+    print(min_ans)
+    for i in range(q):
+        if i == min_x_idx:
+            continue
         else:
-            print(1)
-    else:
-        if n == 1:
-            if x == a:
-                print(0)
-            else:
-                print(1)
-        else:
-            if x < a:
-                if (a - x) % d == 0:
-                    print((a - x) // d)
-                else:
-                    print(1 + (a - x) // d)
-            else:
-                if (x - a) % d == 0:
-                    print((x - a) // d)
-                else:
-                    print(1 + (x - a) // d)
+            ans = 0
+            for j in range(n):
+                ans += abs(a[j] - x[i])
+            print(ans)
+    return
 
 =======
 Suggestion 8
 
-def main():
-    x,a,d,n = map(int,input().split())
-    if d == 0:
-        if x == a:
-            print(0)
-        else:
-            print(-1)
-    else:
-        if d > 0:
-            if x < a:
-                print(-1)
-            else:
-                if (x-a)%d == 0:
-                    print((x-a)//d)
-                else:
-                    print(-1)
-        else:
-            if x > a:
-                print(-1)
-            else:
-                if (a-x)%(-d) == 0:
-                    print((a-x)//(-d))
-                else:
-                    print(-1)
+def problems255_d():
+    pass
 
 =======
 Suggestion 9
 
 def main():
-    x,a,d,n = map(int, input().split())
-    if d == 0:
-        if x == a:
-            print(0)
-        else:
-            print(1)
-    else:
-        if (x-a)%d == 0 and (x-a)//d >= 0:
-            print((x-a)//d)
-        else:
-            print(-1)
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = []
+    for i in range(q):
+        x.append(int(input()))
+    #print(n,q,a,x)
+    print(solve(n,q,a,x))
 
 =======
 Suggestion 10
 
-def solve(X,A,D,N):
-    if D == 0:
-        if X == A:
-            return 0
-        else:
-            return -1
-    if N == 1:
-        if X == A:
-            return 0
-        else:
-            return -1
-    if N == 2:
-        if X == A or X == A + D:
-            return 0
-        else:
-            return -1
-    if (X - A) % D != 0:
-        return -1
-    else:
-        return (X - A) // D
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for _ in range(q)]
 
-X,A,D,N = map(int,input().split())
-print(solve(X,A,D,N))
+    # 1回の操作で、全ての要素を同じ数にできるか？
+    def check(k):
+        # k回の操作で、全ての要素を同じ数にできるか？
+        # できるなら、その数を返す。
+        # できないなら、-1を返す。
+        # 1回の操作で、全ての要素を同じ数にできるか？
+        # できるなら、その数を返す。
+        # できないなら、-1を返す。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        # 全ての要素の平均値が、k以下なら、できる。
+        # できないなら、できない。
+        if sum

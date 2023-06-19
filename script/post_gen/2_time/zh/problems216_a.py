@@ -1,129 +1,109 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-n,m=map(int,input().split())
-a=list(map(int,input().split()))
-ans=[]
-ans.append(1)
-for i in range(2,m+1):
-    flag=0
-    for j in range(n):
-        if gcd(a[j],i)!=1:
-            flag=1
-            break
-    if flag==0:
-        ans.append(i)
-print(len(ans))
-for i in ans:
-    print(i)
+def main():
+    x,y = input().split('.')
+    y = int(y)
+    if y <= 2:
+        print(x + '-')
+    elif y <= 6:
+        print(x)
+    elif y <= 9:
+        print(x + '+')
 
 =======
 Suggestion 2
 
-def gcd(x, y):
-    if x < y:
-        x, y = y, x
-    while y != 0:
-        r = x % y
-        x = y
-        y = r
-    return x
-
-N, M = map(int, input().split())
-A = list(map(int, input().split()))
-
-max_A = max(A)
-max_M = max(M, max_A)
+def main():
+    x,y=map(float,input().split("."))
+    if 0<=y<=2:
+        print(int(x),end="-")
+    elif 3<=y<=6:
+        print(int(x),end="")
+    else:
+        print(int(x),end="+")
 
 =======
 Suggestion 3
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    return gcd(b, a % b)
+def get_input():
+    x, y = map(int, input().split('.'))
+    return x, y
 
 =======
 Suggestion 4
 
-def gcd(a,b):
-    if a < b:
-        a,b = b,a
-    while b != 0:
-        a,b = b,a%b
-    return a
+def get_input():
+    return input("请输入X.Y，其中Y是一个数字：")
 
 =======
 Suggestion 5
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-N, M = map(int, input().split())
-A = list(map(int, input().split()))
-
-A.sort()
-A = list(set(A))
-
-ans = 0
-for i in range(1, M + 1):
-    flag = True
-    for j in range(len(A)):
-        if gcd(A[j], i) != 1:
-            flag = False
-            break
-    if flag:
-        ans += 1
-        print(i)
-
-print(ans)
+def print_x_y(x, y):
+    if 0 <= y <= 2:
+        print(str(x) + '-')
+    elif 3 <= y <= 6:
+        print(str(x))
+    elif 7 <= y <= 9:
+        print(str(x) + '+')
 
 =======
 Suggestion 6
 
-def gcd(a,b):
-    if a<b:
-        a,b=b,a
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
+def printXplusminus(X,Y):
+    if 0 <= Y <= 2:
+        print(str(X) + "-")
+    elif 3 <= Y <= 6:
+        print(str(X))
+    elif 7 <= Y <= 9:
+        print(str(X) + "+")
 
 =======
 Suggestion 7
 
-def gcd(a,b):
-    if b == 0:
-        return a
+def main():
+    x, y = input().split(".")
+    y = int(y)
+    x = int(x)
+    if 0 <= y <= 2:
+        print(str(x) + "-")
+    elif 3 <= y <= 6:
+        print(str(x))
     else:
-        return gcd(b,a%b)
+        print(str(x) + "+")
 
 =======
 Suggestion 8
 
-def gcd(x,y):
-    if x % y == 0:
-        return y
+def main():
+    x,y = map(float, input().split('.'))
+    if y <= 2:
+        print('%d-'%x)
+    elif y <= 6:
+        print('%d'%x)
     else:
-        return gcd(y,x%y)
+        print('%d+'%x)
 
 =======
 Suggestion 9
 
-def gcd(m,n):
-    if m<n:
-        m,n=n,m
-    if n==0:
-        return m
-    else:
-        return gcd(n,m%n)
+def printX(Y):
+    if Y >= 0 and Y <= 2:
+        print('X-')
+    elif Y >= 3 and Y <= 6:
+        print('X')
+    elif Y >= 7 and Y <= 9:
+        print('X+')
+
+=======
+Suggestion 10
+
+def print_plus_minus(x, y):
+    if 0 <= y <= 2:
+        print(x + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    elif 7 <= y <= 9:
+        print(x + '+')

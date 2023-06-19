@@ -1,86 +1,152 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def reverse(s, l, r):
-    return s[:l-1] + s[l-1:r][::-1] + s[r:]
+def main():
+    n,x = map(int,input().split())
+    a = [list(map(int,input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(a[i][0]):
+            if x % a[i][j + 1] == 0:
+                for k in range(n):
+                    if a[k][0] > 1 and a[k][1] * a[i][j + 1] == x:
+                        ans += a[k][0] - 1
+                    elif a[k][0] == 1 and a[k][1] == x // a[i][j + 1]:
+                        ans += 1
+    print(ans)
 
 =======
 Suggestion 2
 
-def reverse_str(s, l, r):
-    s = list(s)
-    for i in range((r-l+1)//2):
-        s[l-1+i], s[r-1-i] = s[r-1-i], s[l-1+i]
-    return ''.join(s)
+def get_divisor(num):
+    divisors = []
+    for i in range(1, int(num**0.5)+1):
+        if num % i == 0:
+            divisors.append(i)
+            if i != num // i:
+                divisors.append(num // i)
+    return divisors
+
+n, x = map(int, input().split())
+bags = []
+for i in range(n):
+    bags.append(list(map(int, input().split())))
+
+divisors = get_divisor(x)
+ans = 0
+for divisor in divisors:
+    for bag in bags:
+        for ball in bag[1:]:
+            if ball == divisor:
+                ans += 1
+                break
+print(ans)
 
 =======
 Suggestion 3
 
-def reverse(s, L, R):
-    s = list(s)
-    if L == 1:
-        return ''.join(list(reversed(s[L-1:R]))) + ''.join(s[R:])
-    else:
-        return ''.join(s[:L-1]) + ''.join(list(reversed(s[L-1:R]))) + ''.join(s[R:])
+def main():
+    n, x = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(1, 1 << n):
+        tmp = 1
+        for j in range(n):
+            if i >> j & 1:
+                for k in range(a[j][0]):
+                    tmp *= a[j][k + 1]
+        if tmp == x:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 4
 
 def main():
-    L,R = map(int,input().split())
-    S = input()
-    S = S[:L-1] + S[L-1:R][::-1] + S[R:]
-    print(S)
+    pass
 
 =======
 Suggestion 5
 
-def reverse_string(string, start, end):
-    """Reverse string from start to end."""
-    string = list(string)
-    while start < end:
-        string[start], string[end] = string[end], string[start]
-        start += 1
-        end -= 1
-    return ''.join(string)
+def main():
+    N,X = map(int, input().split())
+    L = []
+    a = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+        a.append(L[i][1:])
+    print(L)
+    print(a)
 
 =======
 Suggestion 6
 
-def main():
-    L,R = map(int, input().split())
-    S = input()
-    print(S[:L-1] + S[L-1:R][::-1] + S[R:])
+def get_list():
+    n_x = input()
+    n_x = n_x.split(' ')
+    n = int(n_x[0])
+    x = int(n_x[1])
+    bag = []
+    for i in range(n):
+        bag.append(input())
+    return n,x,bag
 
 =======
 Suggestion 7
 
-def reverse(s, l, r):
-    return s[:l] + s[l:r+1][::-1] + s[r+1:]
-
-l, r = map(int, input().split())
-s = input()
-print(reverse(s, l-1, r-1))
+def get_divisors(n):
+    divisors = []
+    i = 1
+    while i*i <= n:
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+        i += 1
+    divisors.sort()
+    return divisors
 
 =======
 Suggestion 8
 
-def reverse_string(s, l, r):
-    return s[:l-1] + s[l-1:r][::-1] + s[r:]
+def main():
+    N,X = map(int,input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int,input().split())))
 
-=======
-Suggestion 9
+    #print(N,X)
+    #print(L)
+    #print(L[0][0])
+    #print(L[0][1])
+    #print(L[0][2])
+    #print(L[1][0])
+    #print(L[1][1])
+    #print(L[1][2])
 
-def reverseString(s, l, r):
-    s = s[:l-1] + s[l-1:r][::-1] + s[r:]
-    return s
+    #print(L[0][0]*L[1][0])
+    #print(L[0][0]*L[1][1])
+    #print(L[0][0]*L[1][2])
+    #print(L[0][1]*L[1][0])
+    #print(L[0][1]*L[1][1])
+    #print(L[0][1]*L[1][2])
+    #print(L[0][2]*L[1][0])
+    #print(L[0][2]*L[1][1])
+    #print(L[0][2]*L[1][2])
 
-=======
-Suggestion 10
+    #print(L[0][0]*L[1][0]*L[2][0])
+    #print(L[0][0]*L[1][0]*L[2][1])
+    #print(L[0][0]*L[1][0]*L[2][2])
+    #print(L[0][0]*L[1][1]*L[2][0])
+    #print(L[0][0]*L[1][1]*L[2][1])
+    #print(L[0][0]*L[1][1]*L[2][2])
+    #print(L[0][0]*L[1][2]*L[2][0])
+    #print(L[0][0]*L[1][2]*L[2][1])
+    #print(L[0][0]*L[1][2]*L[2][2])
 
-def reverse(s, l, r):
-    s = list(s)
-    s[l-1:r] = reversed(s[l-1:r])
-    return "".join(s)
+    #print(L[0][1]*L[1][0]*L[2][0])
+    #print(L[0][1]*L[1][0]*L[2][1])
+    #print(L[0][1]*L[1][0]*L[2][2])
+    #print(L[0][1]*L[1][1

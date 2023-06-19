@@ -3,147 +3,212 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(H)]
-    for i1 in range(H):
-        for i2 in range(i1 + 1, H):
-            for j1 in range(W):
-                for j2 in range(j1 + 1, W):
-                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
-                        print('No')
-                        return
-    print('Yes')
+def get_area(a, b, c):
+    return abs((a[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (a[1] - c[1])) / 2
+
+N = int(input())
+points = []
+for i in range(N):
+    points.append(list(map(int, input().split())))
+
+result = 0
+for i in range(N):
+    for j in range(i + 1, N):
+        for k in range(j + 1, N):
+            area = get_area(points[i], points[j], points[k])
+            if area > 0:
+                result += 1
+print(result)
 
 =======
 Suggestion 2
 
 def main():
-    h,w = map(int, input().split())
-    a = []
-    for i in range(h):
-        a.append(list(map(int, input().split())))
-    for i1 in range(h):
-        for i2 in range(i1+1, h):
-            for j1 in range(w):
-                for j2 in range(j1+1, w):
-                    if a[i1][j1] + a[i2][j2] > a[i2][j1] + a[i1][j2]:
-                        print('No')
-                        return
-    print('Yes')
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            for k in range(N):
+                if i == k or j == k:
+                    continue
+                x1 = x[i] - x[k]
+                y1 = y[i] - y[k]
+                x2 = x[j] - x[k]
+                y2 = y[j] - y[k]
+                if x1 * y2 - x2 * y1 != 0:
+                    ans += 1
+    print(ans // 6)
 
 =======
 Suggestion 3
 
-def main():
-    h, w = map(int, input().split())
-    a = [list(map(int, input().split())) for _ in range(h)]
-    ans = 'Yes'
-    for i1 in range(h):
-        for i2 in range(i1+1, h):
-            for j1 in range(w):
-                for j2 in range(j1+1, w):
-                    if a[i1][j1]+a[i2][j2] > a[i2][j1]+a[i1][j2]:
-                        ans = 'No'
-    print(ans)
+def getArea(a,b,c):
+    return abs((a[0]-c[0])*(b[1]-c[1])-(b[0]-c[0])*(a[1]-c[1]))
 
 =======
 Suggestion 4
 
-def main():
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(H)]
-    print('Yes' if all(A[i1][j1] + A[i2][j2] <= A[i2][j1] + A[i1][j2] for i1 in range(H) for i2 in range(i1 + 1, H) for j1 in range(W) for j2 in range(j1 + 1, W)) else 'No')
+def area(x1, y1, x2, y2, x3, y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+
+n = int(input())
+points = []
+for i in range(n):
+    points.append(list(map(int, input().split())))
+
+ans = 0
+for i in range(n):
+    for j in range(i+1, n):
+        for k in range(j+1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            x3, y3 = points[k]
+            if area(x1, y1, x2, y2, x3, y3) != 0:
+                ans += 1
+print(ans)
 
 =======
 Suggestion 5
 
-def main():
-    # 读入数据
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(H)]
-    # 判断
-    for i1 in range(H):
-        for i2 in range(i1+1, H):
-            for j1 in range(W):
-                for j2 in range(j1+1, W):
-                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
-                        print('No')
-                        return
-    print('Yes')
-    return
+def solve():
+    # 读取输入
+    N = int(input())
+    points = []
+    for i in range(N):
+        points.append(list(map(int, input().split())))
+
+    # 计算所有的点对之间的斜率
+    # 用字典存储，key为斜率，value为斜率相同的点对的个数
+    slopes = {}
+    for i in range(N):
+        for j in range(i + 1, N):
+            slope = (points[j][1] - points[i][1]) / (points[j][0] - points[i][0])
+            if slope not in slopes:
+                slopes[slope] = 1
+            else:
+                slopes[slope] += 1
+
+    # 计算答案
+    # 三个点可以组成三角形的条件是，这三个点两两之间的斜率不相同
+    # 所以答案就是：(N-1) + (N-2) + ... + (N-k)，其中k是满足条件的斜率的个数
+    ans = 0
+    for slope in slopes:
+        ans += slopes[slope] * (N - slopes[slope])
+
+    # 输出答案
+    print(ans // 2)
 
 =======
 Suggestion 6
 
-def main():
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(H)]
-    print('Yes')
-    return
+def getArea(a,b,c):
+    return abs((a[0]-c[0])*(b[1]-c[1])-(b[0]-c[0])*(a[1]-c[1]))/2
+
+n = int(input())
+points = []
+for i in range(n):
+    points.append(list(map(int,input().split())))
+
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            area = getArea(points[i],points[j],points[k])
+            if area != 0:
+                ans += 1
+print(ans)
 
 =======
 Suggestion 7
 
-def main():
-    h,w = map(int,input().split())
-    a = []
-    for i in range(h):
-        a.append(list(map(int,input().split())))
-    for i in range(h):
-        for j in range(w):
-            for k in range(i+1,h):
-                for l in range(j+1,w):
-                    if a[i][j]+a[k][l]>a[i][l]+a[k][j]:
-                        print("No")
-                        exit()
-    print("Yes")
+def get_area(x1,y1,x2,y2,x3,y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))
+
+n = int(input())
+x = []
+y = []
+for i in range(n):
+    a,b = map(int,input().split())
+    x.append(a)
+    y.append(b)
+
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            area = get_area(x[i],y[i],x[j],y[j],x[k],y[k])
+            if area != 0:
+                ans += 1
+
+print(ans)
 
 =======
 Suggestion 8
 
 def main():
-    h,w = map(int,input().split())
-    a = []
-    for i in range(h):
-        a.append(list(map(int,input().split())))
-    for i1 in range(h-1):
-        for i2 in range(i1+1,h):
-            for j1 in range(w-1):
-                for j2 in range(j1+1,w):
-                    if a[i1][j1]+a[i2][j2]>a[i2][j1]+a[i1][j2]:
-                        print('No')
-                        return
-    print('Yes')
+    #读取数据
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    #计算所有可能的三角形的面积，正负不一
+    areas = []
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                area = (X[j]-X[i])*(Y[k]-Y[i]) - (Y[j]-Y[i])*(X[k]-X[i])
+                areas.append(area)
+
+    #计算正面积的三角形的个数
+    cnt = 0
+    for area in areas:
+        if area > 0:
+            cnt += 1
+
+    #打印结果
+    print(cnt)
 
 =======
 Suggestion 9
 
-def main():
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for i in range(H)]
-    for i in range(H):
-        for j in range(W):
-            for k in range(i + 1, H):
-                for l in range(j + 1, W):
-                    if A[i][j] + A[k][l] > A[i][l] + A[k][j]:
-                        print('No')
-                        return
-    print('Yes')
+def get_area(x1,y1,x2,y2,x3,y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+
+n = int(input())
+points = []
+for i in range(n):
+    points.append(list(map(int,input().split())))
+points.sort()
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            temp = get_area(points[i][0],points[i][1],points[j][0],points[j][1],points[k][0],points[k][1])
+            if temp > ans:
+                ans = temp
+print(ans)
 
 =======
 Suggestion 10
 
-def main():
-    H, W = map(int, input().split())
-    A = []
-    for i in range(H):
-        A.append(list(map(int, input().split())))
-    for i1 in range(H):
-        for i2 in range(i1+1, H):
-            for j1 in range(W):
-                for j2 in range(j1+1, W):
-                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
-                        print('No')
-                        return
-    print('Yes')
+def calc_area(a,b,c):
+    a_x = a[0]
+    a_y = a[1]
+    b_x = b[0]
+    b_y = b[1]
+    c_x = c[0]
+    c_y = c[1]
+    area = (a_x*b_y+b_x*c_y+c_x*a_y-a_x*c_y-b_x*a_y-c_x*b_y)/2
+    return area

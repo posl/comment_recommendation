@@ -3,73 +3,78 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    n, m = map(int, input().split())
-    print((n * (n - 1) // 2) + (m * (m - 1) // 2))
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+n = len(s)
 
 =======
 Suggestion 2
 
 def main():
-    N, M = map(int, input().split())
-    print((N * (N - 1) + M * (M - 1)) // 2)
+    s = input()
+    n = len(s)
+    if s == s[::-1]:
+        if s[0:(n-1)//2] == s[0:(n-1)//2][::-1]:
+            if s[(n+3)//2-1:n] == s[(n+3)//2-1:n][::-1]:
+                print("Yes")
+                return
+    print("No")
 
 =======
 Suggestion 3
 
-def main():
-    n, m = map(int, input().split())
-    print((n * (n - 1) + m * (m - 1)) // 2)
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+n = len(s)
+a = (n-1)//2
+b = (n+3)//2
+print('Yes' if is_palindrome(s) and is_palindrome(s[:a]) and is_palindrome(s[b-1:]) else 'No')
 
 =======
 Suggestion 4
 
-def main():
-    N,M = map(int,input().split())
-    print(N*(N-1)//2+M*(M-1)//2)
+def is_palindrome(s):
+    return s == s[::-1]
+
+S = input()
+N = len(S)
 
 =======
 Suggestion 5
 
-def main():
-    # 读取输入
-    n, m = map(int, input().split())
-    # 计算答案
-    ans = n * (n - 1) // 2 + m * (m - 1) // 2
-    # 打印答案
-    print(ans)
+def check_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 6
 
-def main():
-    # 读取输入
-    # 读取输入
-    N, M = map(int, input().split())
-    # 处理
-    # 1. 偶数加偶数是偶数
-    # 2. 奇数加奇数是偶数
-    # 3. 偶数加奇数是奇数
-    # 4. 奇数加偶数是奇数
-    # 5. 偶数个数的球和奇数个数的球，两个球和为偶数的情况：偶数个数的球中选两个，奇数个数的球中选两个
-    # 6. 偶数个数的球和奇数个数的球，两个球和为奇数的情况：偶数个数的球中选一个，奇数个数的球中选一个
-    # 7. 偶数个数的球和奇数个数的球，两个球和为奇数的情况：偶数个数的球中选一个，奇数个数的球中选一个
-    # 8. 偶数个数的球和奇数个数的球，两个球和为偶数的情况：偶数个数的球中选两个，奇数个数的球中选两个
-    # 9. 两个球和为偶数的情况：偶数个数的球中选两个，奇数个数的球中选两个
-    # 10. 两个球和为奇数的情况：偶数个数的球中选一个，奇数个数的球中选一个
-    # 11. 两个球和为奇数的情况：偶数个数的球中选一个，奇数个数的球中选一个
-    # 12. 两个球和为偶数的情况：偶数个数的球中选两个，奇数个数的
+def is_palindrome(word):
+    return word == word[::-1]
 
 =======
 Suggestion 7
 
-def solve():
-    N,M = map(int,input().split())
-    print(N*(N-1)//2 + M*(M-1)//2)
+def is_palindrome(string):
+    if string == string[::-1]:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 8
 
-def main():
-    n, m = map(int, input().split())
-    print(n*(n-1)//2 + m*(m-1)//2)
+def check_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 9
+
+def isPalindromic(s):
+    return s == s[::-1]

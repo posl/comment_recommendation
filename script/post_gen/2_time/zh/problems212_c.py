@@ -4,155 +4,187 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    pin = input()
-    if pin[0] == pin[1] == pin[2] == pin[3]:
-        print("Weak")
-        return
-    if (int(pin[1])+1)%10 == int(pin[0]) and (int(pin[2])+1)%10 == int(pin[1]) and (int(pin[3])+1)%10 == int(pin[2]):
-        print("Weak")
-        return
-    print("Strong")
-    return
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    i, j = 0, 0
+    ans = 1000000000000000000
+    while i < N and j < M:
+        ans = min(ans, abs(A[i] - B[j]))
+        if A[i] < B[j]:
+            i += 1
+        else:
+            j += 1
+    print(ans)
 
 =======
 Suggestion 2
 
-def main():
-    pin = input()
-    if pin[0] == pin[1] == pin[2] == pin[3]:
-        print("Weak")
-    elif (int(pin[0])+1)%10 == int(pin[1]) and (int(pin[1])+1)%10 == int(pin[2]) and (int(pin[2])+1)%10 == int(pin[3]):
-        print("Weak")
-    else:
-        print("Strong")
+def min_dif(a, b):
+    a.sort()
+    b.sort()
+    i = 0
+    j = 0
+    ans = abs(a[i] - b[j])
+    while i < len(a) and j < len(b):
+        if abs(a[i] - b[j]) < ans:
+            ans = abs(a[i] - b[j])
+        if a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+    return ans
 
 =======
 Suggestion 3
 
-def main():
-    pin = input()
-    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print("Weak")
-    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
-        print("Weak")
-    else:
-        print("Strong")
+def min_diff(a, b):
+    a.sort()
+    b.sort()
+    i = 0
+    j = 0
+    min_diff = abs(a[0] - b[0])
+    while i < len(a) and j < len(b):
+        if a[i] == b[j]:
+            return 0
+        elif a[i] < b[j]:
+            min_diff = min(min_diff, b[j] - a[i])
+            i += 1
+        else:
+            min_diff = min(min_diff, a[i] - b[j])
+            j += 1
+    return min_diff
 
 =======
 Suggestion 4
 
-def main():
-    pin = input()
-    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print("Weak")
-    else:
-        if (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
-            print("Weak")
+def min_diff(arr1, arr2):
+    arr1.sort()
+    arr2.sort()
+    i, j = 0, 0
+    min_diff = abs(arr1[i] - arr2[j])
+    while i < len(arr1) and j < len(arr2):
+        min_diff = min(min_diff, abs(arr1[i] - arr2[j]))
+        if arr1[i] < arr2[j]:
+            i += 1
         else:
-            print("Strong")
+            j += 1
+    return min_diff
 
 =======
 Suggestion 5
 
-def main():
-    pin = input()
-    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print('Weak')
-    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
-        print('Weak')
-    else:
-        print('Strong')
+def getMinDiff(A,B):
+    A.sort()
+    B.sort()
+    minDiff = abs(A[0]-B[0])
+    i = 0
+    j = 0
+    while i < len(A) and j < len(B):
+        minDiff = min(minDiff,abs(A[i]-B[j]))
+        if A[i] < B[j]:
+            i += 1
+        else:
+            j += 1
+    return minDiff
 
 =======
 Suggestion 6
 
-def main():
-    # 读入数据
-    pin = input()
-    # 处理数据
-    # 判断是否满足第一个条件
-    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print("Weak")
-        return
-    # 判断是否满足第二个条件
-    for i in range(3):
-        if pin[i] == '9':
-            if pin[i + 1] != '0':
-                print("Strong")
-                return
-        elif pin[i + 1] != chr(ord(pin[i]) + 1):
-            print("Strong")
-            return
-    # 输出结果
-    print("Weak")
+def read_ints():
+    return [int(x) for x in input().split()]
+
+n,m = read_ints()
+a = read_ints()
+b = read_ints()
+a.sort()
+b.sort()
+ans = 10**9
+j = 0
+for i in range(n):
+    while j < m and b[j] <= a[i]:
+        ans = min(ans, a[i] - b[j])
+        j += 1
+    if j < m:
+        ans = min(ans, b[j] - a[i])
+print(ans)
 
 =======
 Suggestion 7
 
-def main():
-    # 输入
-    pin = input()
-    # 计算
-    # 1. 四个数字都是一样的
-    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print("Weak")
-        return
-    # 2. 对于每个整数i，如1≦i≦3，X_{i+1}跟随X_i。这里，对于每一个0≦ j≦ 8的j+1跟随j，而0跟随9。
-    # 2.1 第一位数字跟随第四位数字
-    if pin[0] == str((int(pin[3]) + 1) % 10):
-        print("Weak")
-        return
-    # 2.2 第二位数字跟随第一位数字
-    if pin[1] == str((int(pin[0]) + 1) % 10):
-        print("Weak")
-        return
-    # 2.3 第三位数字跟随第二位数字
-    if pin[2] == str((int(pin[1]) + 1) % 10):
-        print("Weak")
-        return
-    # 2.4 第四位数字跟随第三位数字
-    if pin[3] == str((int(pin[2]) + 1) % 10):
-        print("Weak")
-        return
-    # 输出
-    print("Strong")
+def min_diff(A, B):
+    A.sort()
+    B.sort()
+    i, j = 0, 0
+    min_diff = abs(A[0] - B[0])
+    while i < len(A) and j < len(B):
+        min_diff = min(min_diff, abs(A[i] - B[j]))
+        if A[i] < B[j]:
+            i += 1
+        else:
+            j += 1
+    return min_diff
 
 =======
 Suggestion 8
 
-def main():
-    pin = input()
-    if pin == '0000' or pin == '1111' or pin == '2222' or pin == '3333' or pin == '4444' or pin == '5555' or pin == '6666' or pin == '7777' or pin == '8888' or pin == '9999':
-        print('Weak')
-    elif pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print('Weak')
-    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
-        print('Weak')
-    else:
-        print('Strong')
+def findMinDiff(A, B, n, m):
+    A.sort()
+    B.sort()
+    a = 0
+    b = 0
+    result = 999999999999
+    while(a<n and b<m):
+        if(abs(A[a]-B[b])<result):
+            result = abs(A[a]-B[b])
+        if(A[a]>B[b]):
+            b+=1
+        else:
+            a+=1
+    return result
 
 =======
 Suggestion 9
 
 def main():
-    s = input()
-    if s[0] == s[1] == s[2] == s[3]:
-        print('Weak')
-        return
-    for i in range(3):
-        if (int(s[i]) + 1) % 10 != int(s[i+1]):
-            print('Strong')
-            return
-    print('Weak')
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+    ans = 10**9
+    i = 0
+    j = 0
+    while i < n and j < m:
+        ans = min(ans, abs(a[i] - b[j]))
+        if a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+
+    print(ans)
 
 =======
 Suggestion 10
 
 def main():
-    pin = input()
-    if pin[0] == pin[1] == pin[2] == pin[3]:
-        print('Weak')
-    elif pin[0] == str((int(pin[1]) + 1) % 10) and pin[1] == str((int(pin[2]) + 1) % 10) and pin[2] == str((int(pin[3]) + 1) % 10):
-        print('Weak')
-    else:
-        print('Strong')
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    a.sort()
+    b.sort()
+    ans = 10**9
+    i = 0
+    for x in a:
+        while i < m and b[i] <= x:
+            i += 1
+        if i != 0:
+            ans = min(ans, x - b[i-1])
+        if i != m:
+            ans = min(ans, b[i] - x)
+    print(ans)
+
+main()

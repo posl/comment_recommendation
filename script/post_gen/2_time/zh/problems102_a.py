@@ -5,91 +5,84 @@ Suggestion 1
 
 def main():
     n = int(input())
-    print(2*n)
+    print(n*2)
 
 =======
 Suggestion 2
 
-def gcd(a,b):
-    if b == 0:
-        return a
+def gcd(x,y):
+    if y == 0:
+        return x
     else:
-        return gcd(b,a % b)
-
-N = int(input())
-print(int(N/gcd(2,N)))
+        return gcd(y,x%y)
 
 =======
 Suggestion 3
 
-def main():
-    N = int(input())
-    print(N*2)
+def solve(n):
+    return n * 2
 
 =======
 Suggestion 4
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-n = int(input())
-print((2 * n) // gcd(2, n))
+def problem102_a(n):
+    i = 1
+    while True:
+        if i % 2 == 0 and i % n == 0:
+            break
+        i += 1
+    return i
 
 =======
 Suggestion 5
 
-def problems102_a(n):
-    i = 1
-    while True:
-        if i % n == 0 and i % 2 == 0:
-            return i
-        else:
-            i += 1
+def lcm(x, y):
+    if x > y:
+        greater = x
+    else:
+        greater = y
+    while(True):
+        if((greater % x == 0) and (greater % y == 0)):
+            lcm = greater
+            break
+        greater += 1
+    return lcm
 
 =======
 Suggestion 6
 
-def gcd(a,b):
+def gcd(a, b):
     if b == 0:
         return a
-    else:
-        return gcd(b, a%b)
-
-N = int(input())
-print(int(2*N/gcd(2,N)))
+    return gcd(b, a % b)
 
 =======
 Suggestion 7
 
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
-
-n = int(input())
-print(2 * n // gcd(2, n))
+def main():
+    N = int(input())
+    print(2*N)
 
 =======
 Suggestion 8
 
-def func(n):
-    for i in range(1, n):
-        if i % 2 == 0 and i % n == 0:
-            return i
-    return n * 2
-
-print(func(999999999))
+def gcd(x,y):
+    if x < y:
+        x,y = y,x
+    while y > 0:
+        r = x%y
+        x = y
+        y = r
+    return x
 
 =======
 Suggestion 9
 
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
 
 n = int(input())
-print(n * 2 // gcd(n, 2))
+print(n * 2 // gcd(2, n))

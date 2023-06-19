@@ -1,160 +1,226 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    N,P = map(int,input().split())
-    A = list(map(int,input().split()))
-    print(sum([1 if P > a else 0 for a in A]))
+    n, m = map(int, input().split())
+    a = [list(input()) for _ in range(2*n)]
+    rank = [[i, 0] for i in range(2*n)]
+    for i in range(m):
+        for j in range(n):
+            p1 = rank[2*j][0]
+            p2 = rank[2*j+1][0]
+            if a[p1][i] == a[p2][i]:
+                continue
+            elif a[p1][i] == 'G' and a[p2][i] == 'C':
+                rank[2*j][1] -= 1
+            elif a[p1][i] == 'C' and a[p2][i] == 'P':
+                rank[2*j][1] -= 1
+            elif a[p1][i] == 'P' and a[p2][i] == 'G':
+                rank[2*j][1] -= 1
+            else:
+                rank[2*j][1] += 1
+    rank.sort(key=lambda x: (x[1], x[0]), reverse=True)
+    for i in range(2*n):
+        print(rank[i][0]+1)
+main()
 
 =======
 Suggestion 2
 
-def main():
-    #输入
-    N,P = map(int,input().split())
-    A = list(map(int,input().split()))
-    #判断
-    count = 0
-    for i in range(N):
-        if A[i] < P:
-            count += 1
-    print(count)
+def rsp(a,b):
+    if a == b:
+        return a
+    elif a == "G" and b == "C":
+        return a
+    elif a == "C" and b == "P":
+        return a
+    elif a == "P" and b == "G":
+        return a
+    else:
+        return b
 
 =======
 Suggestion 3
 
-def main():
-    n, p = map(int, input().split())
-    a = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if a[i] < p:
-            count += 1
-    print(count)
+def f(a,b):
+    if a == "G" and b == "C":
+        return 1
+    elif a == "C" and b == "P":
+        return 1
+    elif a == "P" and b == "G":
+        return 1
+    elif a == b:
+        return 0
+    else:
+        return -1
 
-main()
+n,m = map(int,input().split())
+a = []
+for i in range(2*n):
+    a.append(input())
+rank = [[i+1,0] for i in range(2*n)]
+for i in range(m):
+    for j in range(n):
+        if f(a[rank[2*j][0]-1][i],a[rank[2*j+1][0]-1][i]) == 1:
+            rank[2*j][1] += 1
+        elif f(a[rank[2*j][0]-1][i],a[rank[2*j+1][0]-1][i]) == -1:
+            rank[2*j+1][1] += 1
+rank.sort(key=lambda x:x[1],reverse=True)
+for i in range(2*n):
+    print(rank[i][0])
 
 =======
 Suggestion 4
 
-def main():
-    n, p = map(int, input().split())
-    a = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if a[i] < p:
-            count += 1
-    print(count)
+def judge(a, b):
+    if a == b:
+        return 0
+    elif a == "G" and b == "C":
+        return 1
+    elif a == "G" and b == "P":
+        return -1
+    elif a == "C" and b == "P":
+        return 1
+    elif a == "C" and b == "G":
+        return -1
+    elif a == "P" and b == "G":
+        return 1
+    elif a == "P" and b == "C":
+        return -1
+
+n, m = map(int, input().split())
+a = []
+for i in range(2*n):
+    a.append(input())
+
+rank = [[0]*2 for i in range(n*2)]
+for i in range(n*2):
+    rank[i][0] = 0
+    rank[i][1] = i + 1
+
+for i in range(m):
+    for j in range(n):
+        p1 = rank[2*j][1] - 1
+        p2 = rank[2*j+1][1] - 1
+        result = judge(a[p1][i], a[p2][i])
+        if result == 1:
+            rank[2*j][0] -= 1
+        elif result == -1:
+            rank[2*j+1][0] -= 1
+    rank.sort()
+
+for i in range(n*2):
+    print(rank[i][1])
 
 =======
 Suggestion 5
 
-def main():
-    N,P = map(int,input().split())
-    a = list(map(int,input().split()))
-    count = 0
-    for i in a:
-        if i < P:
-            count += 1
-    print(count)
+def solve():
+    n,m=map(int,input().split())
+    a=[input() for _ in range(2*n)]
+    r=[[i+1,0] for i in range(2*n)]
+    for i in range(m):
+        for j in range(0,2*n,2):
+            if a[r[j][0]-1][i]==a[r[j+1][0]-1][i]:
+                continue
+            elif a[r[j][0]-1][i]=='G' and a[r[j+1][0]-1][i]=='C':
+                r[j][1]-=1
+            elif a[r[j][0]-1][i]=='C' and a[r[j+1][0]-1][i]=='P':
+                r[j][1]-=1
+            elif a[r[j][0]-1][i]=='P' and a[r[j+1][0]-1][i]=='G':
+                r[j][1]-=1
+            else:
+                r[j+1][1]-=1
+        r.sort(key=lambda x:(x[1],-x[0]))
+    for i in range(2*n):
+        print(r[i][0])
 
 =======
 Suggestion 6
 
 def main():
-    n, p = map(int, input().split())
-    a = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        if a[i] < p:
-            ans += 1
-    print(ans)
+    pass
 
 =======
 Suggestion 7
 
-def main():
-    # N:学生人数
-    # P:通过考试的分数
-    N, P = map(int, input().split())
-    # 学生成绩
-    scores = list(map(int, input().split()))
-    # 通过考试的学生人数
-    pass_num = 0
-    for score in scores:
-        if score >= P:
-            pass_num += 1
-    # 不通过考试的学生人数
-    fail_num = N - pass_num
-    print(fail_num)
+def check_win(p1,p2):
+    if p1 == p2:
+        return 0
+    elif p1 == 'G' and p2 == 'C':
+        return 1
+    elif p1 == 'C' and p2 == 'P':
+        return 1
+    elif p1 == 'P' and p2 == 'G':
+        return 1
+    else:
+        return -1
 
 =======
 Suggestion 8
 
 def main():
-    # N, P = input().split()
-    # grades = input().split()
-    # print(grades)
-    # print(grades[0])
-    # print(grades[1])
-    # print(grades[2])
-    # print(grades[3])
-    # print(N)
-    # print(P)
-    # print(grades)
-    # print(grades[0])
-    # print(grades[1])
-    # print(grades[2])
-    # print(grades[3])
-    # print(grades[4])
-    # print(grades[5])
-    # print(grades[6])
-    # print(grades[7])
-    # print(grades[8])
-    # print(grades[9])
-    # print(grades[10])
-    # print(grades[11])
-    # print(grades[12])
-    # print(grades[13])
-    # print(grades[14])
-    # print(grades[15])
-    # print(grades[16])
-    # print(grades[17])
-    # print(grades[18])
-    # print(grades[19])
-    # print(grades[20])
-    # print(grades[21])
-    # print(grades[22])
-    # print(grades[23])
-    # print(grades[24])
-    # print(grades[25])
-    # print(grades[26])
-    # print(grades[27])
-    # print(grades[28])
-    # print(grades[29])
-    # print(grades[30])
-    # print(grades[31])
-    # print(grades[32])
-    # print(grades[33])
-    # print(grades[34])
-    # print(grades[35])
-    # print(grades[36])
-    # print(grades[37])
-    # print(grades[38])
-    # print(grades[39])
-    # print(grades[40])
-    # print(grades[41])
-    # print(grades[42])
-    # print(grades[43])
-    # print(grades[44])
-    # print(grades[45])
-    # print(grades[46])
-    # print(grades[47])
-    # print(grades[48])
-    # print(grades[49])
-    # print(grades[50])
-    # print(grades[51])
-    # print(grades[52])
-    #
+    n, m = map(int, input().split())
+    a = [input() for _ in range(2*n)]
+    rank = [[i+1, 0] for i in range(2*n)]
+    for i in range(m):
+        for j in range(n):
+            p1 = rank[2*j][0]-1
+            p2 = rank[2*j+1][0]-1
+            if a[p1][i] == 'G':
+                if a[p2][i] == 'C':
+                    rank[2*j][1] += 1
+                elif a[p2][i] == 'P':
+                    rank[2*j+1][1] += 1
+            elif a[p1][i] == 'C':
+                if a[p2][i] == 'P':
+                    rank[2*j][1] += 1
+                elif a[p2][i] == 'G':
+                    rank[2*j+1][1] += 1
+            elif a[p1][i] == 'P':
+                if a[p2][i] == 'G':
+                    rank[2*j][1] += 1
+                elif a[p2][i] == 'C':
+                    rank[2*j+1][1] += 1
+        rank.sort(key=lambda x: (-x[1], x[0]))
+    for i in range(2*n):
+        print(rank[i][0])
+
+=======
+Suggestion 9
+
+def f(x,y):
+    if x==y:
+        return 0
+    if x=='G':
+        if y=='C':
+            return 1
+        else:
+            return -1
+    if x=='C':
+        if y=='P':
+            return 1
+        else:
+            return -1
+    if x=='P':
+        if y=='G':
+            return 1
+        else:
+            return -1
+    return 0
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    A = []
+    for i in range(2*n):
+        A.append(input())
+    rank = [i for i in range(2*n)]
+    for i in range(m):
+        rank = sorted(rank,key=lambda x:(A[x][i],x))
+    for i in rank[::-1]:
+        print(i+1)

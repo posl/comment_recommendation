@@ -4,140 +4,138 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n,k = map(int, input().split())
-    p = list(map(int, input().split()))
-    sum = 0
-    for i in range(k):
-        sum += p[i]
-    max = sum
-    for i in range(k, n):
-        sum = sum - p[i-k] + p[i]
-        if sum > max:
-            max = sum
-    print((max + k)/2)
+    A, B, C = map(int, input().split())
+    if A == B and A != C:
+        print("Yes")
+    elif A == C and A != B:
+        print("Yes")
+    elif B == C and B != A:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 2
 
 def main():
-    n, k = map(int, input().split())
-    p = list(map(int, input().split()))
-    p = [0] + p
-    for i in range(1, n + 1):
-        p[i] += p[i - 1]
-    ans = 0
-    for i in range(k, n + 1):
-        ans = max(ans, p[i] - p[i - k])
-    print((ans + k) / 2)
+    a, b, c = map(int, input().split())
+    if a == b and b != c or a == c and b != c or b == c and a != c:
+        print("是")
+    else:
+        print("否")
 
 =======
 Suggestion 3
 
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    #print(n,k,p)
-    psum = [0] * (n+1)
-    for i in range(n):
-        psum[i+1] = psum[i] + p[i]
-    #print(psum)
-    ans = 0
-    for i in range(n-k+1):
-        ans = max(ans,(psum[i+k]-psum[i]+k)/2)
-    print(ans)
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 逻辑处理
+    if a == b and a != c:
+        print("是")
+    elif a == c and a != b:
+        print("是")
+    elif b == c and b != a:
+        print("是")
+    else:
+        print("否")
 
 =======
 Suggestion 4
 
 def main():
-    N,K = map(int,input().split())
-    p = list(map(int,input().split()))
-    sum_p = [0]*(N+1)
-    for i in range(N):
-        sum_p[i+1] = sum_p[i] + p[i]
-    ans = 0
-    for i in range(N-K+1):
-        ans = max(ans, (sum_p[i+K]-sum_p[i])/2 + sum_p[i])
-    print(ans)
+    a,b,c = map(int,input().split())
+    if a == b and b != c:
+        print("Yes")
+    elif a == c and c != b:
+        print("Yes")
+    elif b == c and c != a:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 5
 
 def main():
-    n,k = map(int, input().split())
-    p = list(map(int, input().split()))
-    sum_p = sum(p[:k])
-    max_sum_p = sum_p
-    for i in range(k,n):
-        sum_p = sum_p - p[i-k] + p[i]
-        if sum_p > max_sum_p:
-            max_sum_p = sum_p
-    print((max_sum_p+k)/2)
+    a = input().split()
+    a = list(map(int, a))
+    a.sort()
+    if a[0] == a[1] and a[1] != a[2]:
+        print("Yes")
+    elif a[0] != a[1] and a[1] == a[2]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 6
 
 def main():
-    pass
+    # 读取输入
+    A, B, C = map(int, input().split())
+    # 逻辑处理
+    if A == B and B == C:
+        print("No")
+    elif A == B or B == C or A == C:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 7
 
-def main():
-    # 读入数据
-    n, k = map(int, input().split())
-    p = list(map(int, input().split()))
+def is_diff(a, b, c):
+    if a == b and b != c:
+        return True
+    elif a == c and c != b:
+        return True
+    elif b == c and c != a:
+        return True
+    else:
+        return False
 
-    # 计算答案
-    s = sum(p[:k])
-    ans = s
-    for i in range(k, n):
-        s += p[i] - p[i-k]
-        ans = max(ans, s)
-
-    # 打印答案
-    print((ans + k) / 2)
+a, b, c = map(int, input().split())
 
 =======
 Suggestion 8
 
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    max_sum = 0
-    for i in range(n-k+1):
-        sum = 0
-        for j in range(i,i+k):
-            sum += p[j]
-        if max_sum < sum:
-            max_sum = sum
-    print((max_sum+k)/2)
+    a,b,c = map(int,input().split())
+    if a == b and b != c:
+        print("是")
+    elif b == c and c != a:
+        print("是")
+    elif c == a and a != b:
+        print("是")
+    else:
+        print("否")
 
 =======
 Suggestion 9
 
-def solve():
-    N, K = map(int, input().split())
-    p = list(map(int, input().split()))
-    ans = 0
-    for i in range(K):
-        ans += (p[i] + 1) / 2
-    cur = ans
-    for i in range(K, N):
-        cur += (p[i] + 1) / 2
-        cur -= (p[i - K] + 1) / 2
-        ans = max(ans, cur)
-    print(ans)
+def main():
+    # 读取输入
+    nums = input().split(' ')
+    # 判断三个数是否相等
+    if nums[0] == nums[1] == nums[2]:
+        print('否')
+    # 判断两个数是否相等
+    elif nums[0] == nums[1] or nums[1] == nums[2] or nums[0] == nums[2]:
+        print('是')
+    else:
+        print('否')
 
 =======
 Suggestion 10
 
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    s = sum(p[:k])
-    ans = s
-    for i in range(n-k):
-        s = s - p[i] + p[i+k]
-        ans = max(ans,s)
-    print((ans+k)/2)
+    a,b,c = map(int,input().split())
+    if a == b and a != c:
+        print("Yes")
+    elif a == c and a != b:
+        print("Yes")
+    elif b == c and b != a:
+        print("Yes")
+    else:
+        print("No")

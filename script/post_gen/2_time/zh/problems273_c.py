@@ -3,166 +3,189 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def round_up(x, y):
-    if x % y == 0:
-        return x
-    else:
-        return x + y - x % y
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    A = sorted(A)
+    K = [0] * (n + 1)
+
+    for i in range(n):
+        K[i + 1] = K[i] + (A[i] != A[i - 1]) # K[i]是A中小于A[i]的不同的整数的个数
+    for i in range(1, n + 1):
+        print(K[i])
 
 =======
 Suggestion 2
 
 def main():
-    x,k = map(int,input().split())
-    if k == 0:
-        print(x)
-        return
-    if x == 0:
-        print(0)
-        return
-    if x < 10:
-        print(10)
-        return
-    if x < 100:
-        print(int(x/10)*10)
-        return
-    if x < 1000:
-        print(int(x/100)*100)
-        return
-    if x < 10000:
-        print(int(x/1000)*1000)
-        return
-    if x < 100000:
-        print(int(x/10000)*10000)
-        return
-    if x < 1000000:
-        print(int(x/100000)*100000)
-        return
-    if x < 10000000:
-        print(int(x/1000000)*1000000)
-        return
-    if x < 100000000:
-        print(int(x/10000000)*10000000)
-        return
-    if x < 1000000000:
-        print(int(x/100000000)*100000000)
-        return
-    if x < 10000000000:
-        print(int(x/1000000000)*1000000000)
-        return
-    if x < 100000000000:
-        print(int(x/10000000000)*10000000000)
-        return
-    if x < 1000000000000:
-        print(int(x/100000000000)*100000000000)
-        return
-    if x < 10000000000000:
-        print(int(x/1000000000000)*1000000000000)
-        return
-    if x < 100000000000000:
-        print(int(x/10000000000000)*10000000000000)
-        return
-    if x < 1000000000000000:
-        print(int(x/100000000000000)*100000000000000)
-        return
-    if x < 10000000000000000:
-        print(int(x/1000000000000000)*1000000000000000)
-        return
-    if x < 100000000000000000:
-        print(int(x/10000000000000000)*10000000000000000)
-        return
-    if x < 1000000000000000000:
-        print
+    #n = int(input())
+    #a = list(map(int, input().split()))
+    n = 10
+    a = [979861204, 57882493, 979861204, 447672230, 644706927, 710511029, 763027379, 710511029, 447672230, 136397527]
+    #n = 6
+    #a = [2, 7, 1, 8, 2, 8]
+    #n = 1
+    #a = [1]
+    #n = 3
+    #a = [1, 2, 3]
+    #n = 3
+    #a = [1, 1, 1]
+    #n = 3
+    #a = [1, 2, 1]
+    #n = 3
+    #a = [1, 2, 2]
+    #n = 3
+    #a = [2, 1, 1]
+    #n = 3
+    #a = [2, 1, 2]
+    #n = 3
+    #a = [2, 2, 1]
+    #n = 3
+    #a = [2, 2, 2]
+    #n = 3
+    #a = [1, 2, 3]
+    #n = 3
+    #a = [3, 2, 1]
+    #n = 3
+    #a = [1, 2, 1]
+    #n = 3
+    #a = [1, 2, 2]
+    #n = 3
+    #a = [2, 1, 1]
+    #n = 3
+    #a = [2, 1, 2]
+    #n = 3
+    #a = [2, 2, 1]
+    #n = 3
+    #a = [2, 2, 2]
+    #n = 3
+    #a = [1, 1, 1]
+    #n = 3
+    #a = [1, 1, 2]
+    #n = 3
+    #a = [1, 2,
 
 =======
 Suggestion 3
 
-def round_up(x, k):
-    if k == 0:
-        return x
-    else:
-        a = round_up(x, k - 1)
-        b = 10 ** k
-        return (a + b - 1) // b * b
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    a.sort()
+    count = 0
+    for i in range(n):
+        if i == 0 or a[i] != a[i-1]:
+            count = 1
+        else:
+            count += 1
+        print(n - count)
 
 =======
 Suggestion 4
 
-def problems273_b():
-    X,K = input().split()
-    K = int(K)
-    num = int(X)
-    for i in range(K):
-        num = round(num, -i-1)
-    print(num)
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A.sort()
+    count = 0
+    for i in range(N):
+        if i == 0:
+            print(0)
+            continue
+        elif A[i] == A[i-1]:
+            print(count)
+            continue
+        else:
+            count += 1
+            print(count)
+            continue
 
 =======
 Suggestion 5
 
-def round_up(x, i):
-    if x % (10 ** i) >= 5 * 10 ** (i - 1):
-        return x - x % (10 ** i) + 10 ** i
-    else:
-        return x - x % (10 ** i)
+def count(K, A):
+    A.sort()
+    count = 0
+    for i in range(len(A)):
+        if A[i] > A[K]:
+            count += 1
+    return count
+
+N = int(input())
+A = [int(i) for i in input().split()]
+for i in range(N):
+    print(count(i, A))
 
 =======
 Suggestion 6
 
 def main():
-    X,K = map(int, input().split())
-    for i in range(1,K+1):
-        if X%(10**i) < 5*(10**(i-1)):
-            print((X//(10**i))*(10**i))
-            break
-        else:
-            print((X//(10**i)+1)*(10**i))
-            break
+    n = int(input())
+    A = list(map(int, input().split()))
+    A_set = set(A)
+    A.sort()
+    A_dict = {}
+    for i in range(n):
+        A_dict[A[i]] = i
+    for i in range(n):
+        cnt = 0
+        for j in range(A_dict[A[i]]):
+            if A[j] > A[i]:
+                cnt += 1
+        print(cnt)
 
 =======
 Suggestion 7
 
-def main():
-    x, k = map(int,input().split())
-    result = x
-    for i in range(k):
-        result = round(result, -i - 1)
-    print(result)
+def solve():
+    pass
 
 =======
 Suggestion 8
 
 def main():
-    x, k = map(int, input().split())
-    for i in range(k):
-        x = (x + 5) // 10 * 10
-    print(x)
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    ans = [0] * n
+    ans[0] = 1
+    cnt = 1
+    for i in range(1, n):
+        if a[i] != a[i-1]:
+            cnt += 1
+        ans[i] = cnt
+    for i in range(n):
+        print(ans[i])
 
 =======
 Suggestion 9
 
-def round_up(x, n):
-    if n == 1:
-        return x
-    else:
-        return (x // (10 ** n) + 1) * (10 ** n)
-
-X, K = map(int, input().split())
-
-for _ in range(K):
-    X = round_up(X, K)
-
-print(X)
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = min(i, n - i - 1)
+    for i in range(1, n):
+        if a[i] == a[i - 1]:
+            ans[i] = ans[i - 1]
+    for i in range(n - 2, -1, -1):
+        if a[i] == a[i + 1]:
+            ans[i] = ans[i + 1]
+    for i in range(n):
+        print(ans[i])
 
 =======
 Suggestion 10
 
-def main():
-    x,k = map(int, input().split())
-    #print(x,k)
-    for i in range(k):
-        if x % (10**(i+1)) < 5 * 10**i:
-            print(x - x % (10**(i+1)))
-            break
-        else:
-            print(x + (10**(i+1) - x % (10**(i+1))))
-            break
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        for j in range(i, N):
+            if A[i] < A[j]:
+                ans[i] += 1
+    for i in range(N):
+        print(ans[i])

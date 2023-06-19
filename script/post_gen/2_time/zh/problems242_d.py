@@ -4,209 +4,290 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N = int(input())
-    dp = [[0 for i in range(10)] for j in range(N + 1)]
-    for i in range(1, 10):
-        dp[1][i] = 1
-    for i in range(2, N + 1):
-        for j in range(10):
-            if j == 0:
-                dp[i][j] = dp[i - 1][j + 1]
-            elif j == 9:
-                dp[i][j] = dp[i - 1][j - 1]
-            else:
-                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1]
-            dp[i][j] %= 998244353
-    ans = 0
-    for i in range(10):
-        ans += dp[N][i]
-        ans %= 998244353
-    print(ans)
-main()
+    s = input()
+    q = int(input())
+    for _ in range(q):
+        t, k = map(int, input().split())
+        t = t % 3
+        k -= 1
+        for i in range(t):
+            k = (k + 1) % len(s)
+            if s[k] == "a":
+                s = s[:k] + "bc" + s[k + 1:]
+            elif s[k] == "b":
+                s = s[:k] + "ca" + s[k + 1:]
+            elif s[k] == "c":
+                s = s[:k] + "ab" + s[k + 1:]
+        print(s[k])
 
 =======
 Suggestion 2
 
-def main():
-    from sys import stdin
-    import numpy as np
-    from numba import njit
-    @njit
-    def solve(N):
-        dp = np.zeros((N+1, 9), dtype=np.int64)
-        dp[1] = 1
-        for i in range(2, N+1):
-            for j in range(9):
-                if j == 0:
-                    dp[i][j] = dp[i-1][j] + dp[i-1][j+1]
-                elif j == 8:
-                    dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
-                else:
-                    dp[i][j] = dp[i-1][j-1] + dp[i-1][j] + dp[i-1][j+1]
-        return sum(dp[N]) % 998244353
-    N = int(stdin.readline().rstrip())
-    print(solve(N))
+def solve():
+    s = input()
+    q = int(input())
+    for _ in range(q):
+        t, k = map(int, input().split())
+        t %= 3
+        k -= 1
+        print(s[k] if t == 0 else s[(k + t) % len(s)])
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    # 1. 位数
-    # 2. 数字
-    # 3. 差值
-    # 4. 递增或递减
-    # 5. 递增或递减的长度
-    # 6. 递增或递减的起始位置
-    # 7. 递增或递减的结束位置
-    # 8. 递增或递减的最大值
-    # 9. 递增或递减的最小值
-    # 10. 递增或递减的和
-    # 11. 递增或递减的和的平均值
-    # 12. 递增或递减的和的平均值的整数部分
-    # 13. 递增或递减的和的平均值的小数部分
-    # 14. 递增或递减的和的平均值的小数部分的分子
-    # 15. 递增或递减的和的平均值的小数部分的分母
-    # 16. 递增或递减的和的平均值的小数部分的分子的最小素因数
-    # 17. 递增或递减的和的平均值的小数部分的分母的最小素因数
-    # 18. 递增或递减的和的平均值的小数部分的分子的最大素因数
-    # 19. 递增或递减的和的平均值的小数部分的分母的最大素因数
-    # 20. 递增或递减的和的平均值的小数部分的分子的最小素因数的个数
-    # 21. 递增或递减的和的平均
+    S = input()
+    Q = int(input())
+    t = []
+    k = []
+    for i in range(Q):
+        t_i, k_i = map(int, input().split())
+        t.append(t_i)
+        k.append(k_i)
+    #print(S)
+    #print(Q)
+    #print(t)
+    #print(k)
+    for i in range(Q):
+        S_i = S
+        for j in range(t[i]):
+            S_i = S_i.replace('a', 'bc')
+            S_i = S_i.replace('b', 'ca')
+            S_i = S_i.replace('c', 'ab')
+        print(S_i[k[i]-1])
 
 =======
 Suggestion 4
 
-def f(n):
-    dp = [[0] * 10 for _ in range(n + 1)]
-    for i in range(1, 10):
-        dp[1][i] = 1
-    for i in range(2, n + 1):
-        for j in range(0, 10):
-            if j == 0:
-                dp[i][j] = dp[i - 1][j + 1]
-            elif j == 9:
-                dp[i][j] = dp[i - 1][j - 1]
-            else:
-                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1]
-    return sum(dp[n]) % 998244353
-
-n = int(input())
-print(f(n))
+def main():
+    S=input()
+    Q=int(input())
+    for i in range(Q):
+        t,k=map(int,input().split())
+        t=t%(3*10**18)
+        for j in range(t):
+            S=S.replace('a','bc')
+            S=S.replace('b','ca')
+            S=S.replace('c','ab')
+        print(S[k-1])
 
 =======
 Suggestion 5
 
 def main():
-    N = int(input())
-    mod = 998244353
-    dp = [[0 for i in range(10)] for j in range(N+1)]
-    dp[1][0] = 0
-    for i in range(1,10):
-        dp[1][i] = 1
-    for i in range(2,N+1):
-        dp[i][0] = (dp[i-1][1] + dp[i-1][0])%mod
-        for j in range(1,9):
-            dp[i][j] = (dp[i-1][j-1] + dp[i-1][j+1] + dp[i-1][j])%mod
-        dp[i][9] = (dp[i-1][8] + dp[i-1][9])%mod
-    res = 0
-    for i in range(0,10):
-        res = (res + dp[N][i])%mod
-    print(res)
+    s = input()
+    q = int(input())
+    t_k = []
+    for i in range(q):
+        t_k.append(list(map(int, input().split())))
+    for i in range(q):
+        t = t_k[i][0]
+        k = t_k[i][1]
+        if t == 0:
+            print(s[k - 1])
+        else:
+            s = s.replace('a', 'bc')
+            s = s.replace('b', 'ca')
+            s = s.replace('c', 'ab')
+            print(s[k - 1])
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    mod = 998244353
-    dp = [[0 for _ in range(10)] for _ in range(n+1)]
-    for i in range(1,10):
-        dp[1][i] = 1
-    for i in range(2,n+1):
-        for j in range(10):
-            if j == 0:
-                dp[i][j] = dp[i-1][j+1]
-            elif j == 9:
-                dp[i][j] = dp[i-1][j-1]
-            else:
-                dp[i][j] = (dp[i-1][j-1] + dp[i-1][j+1])%mod
-    ans = 0
-    for i in range(10):
-        ans = (ans + dp[n][i])%mod
-    print(ans)
+    s = input()
+    q = int(input())
+
+    for i in range(q):
+        t, k = map(int, input().split())
+        t = t % 3
+        k = k - 1
+        if t == 0:
+            print(s[k])
+        elif t == 1:
+            print(s[(k+1)%len(s)])
+        else:
+            print(s[(k+2)%len(s)])
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    dp = [[0 for _ in range(10)] for _ in range(n + 1)]
-    for i in range(1, 10):
-        dp[1][i] = 1
-    for i in range(2, n + 1):
-        for j in range(10):
-            if j == 0:
-                dp[i][j] = dp[i - 1][j + 1]
-            elif j == 9:
-                dp[i][j] = dp[i - 1][j - 1]
-            else:
-                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1]
-    ans = 0
-    for i in range(1, 10):
-        ans += dp[n][i]
-    print(ans % 998244353)
+def replace(s):
+    s = list(s)
+    for i in range(len(s)):
+        if s[i] == 'a':
+            s[i] = 'b'
+        elif s[i] == 'b':
+            s[i] = 'c'
+        else:
+            s[i] = 'a'
+    return ''.join(s)
 
 =======
 Suggestion 8
 
-def solve(n):
-    dp = [[0 for _ in range(10)] for _ in range(n+1)]
-    for i in range(1,10):
-        dp[1][i] = 1
-    for i in range(2,n+1):
-        for j in range(10):
-            for k in range(10):
-                if abs(j-k)<=1:
-                    dp[i][j] += dp[i-1][k]
-                    dp[i][j] %= 998244353
-    return sum(dp[n])%998244353
+def main():
+    s = input()
+    q = int(input())
+
+    # 0 1 2 3 4 5 6 7 8 9
+    # 0 1 2 3 4 5 6 7 8 9
+    # 0 1 2 3 4 0 1 2 3 4
+    # 0 1 2 3 0 1 2 3 0 1
+    # 0 1 2 0 1 2 0 1 2 0
+    # 0 1 0 1 0 1 0 1 0 1
+    # 0 0 1 0 0 1 0 0 1 0
+    # 0 1 2 3 4 5 6 7 8 9
+    # 0 1 2 3 4 5 6 7 8 9
+    # 0 1 2 3 4 0 1 2 3 4
+    # 0 1 2 3 0 1 2 3 0 1
+    # 0 1 2 0 1 2 0 1 2 0
+    # 0 1 0 1 0 1 0 1 0 1
+    # 0 0 1 0 0 1 0 0 1 0
+    # 0 1 2 3 4 5 6 7 8 9
+    # 0 1 2 3 4 5 6 7 8 9
+    # 0 1 2 3 4 0 1 2 3 4
+    # 0 1 2 3 0 1 2 3 0 1
+    # 0 1 2 0 1 2 0 1 2 0
+    # 0 1 0 1 0 1 0 1 0 1
+    # 0 0 1 0 0 1 0 0 1 0
+    # 0
 
 =======
 Suggestion 9
 
 def main():
-    N = int(input())
-    dp = [[0] * 10 for _ in range(N + 1)]
-    for i in range(1, 10):
-        dp[1][i] = 1
-    for i in range(2, N + 1):
-        for j in range(10):
-            for k in range(10):
-                if abs(j - k) <= 1:
-                    dp[i][j] += dp[i - 1][k]
-                    dp[i][j] %= 998244353
-    print(sum(dp[N]) % 998244353)
+    s = input()
+    q = int(input())
+    tks = []
+    for i in range(q):
+        tks.append(tuple(map(int, input().split())))
+
+    for t, k in tks:
+        t = t % 3
+        if t == 0:
+            print(s[k-1])
+        elif t == 1:
+            print(s[k-1].translate(str.maketrans('abc', 'bca')))
+        else:
+            print(s[k-1].translate(str.maketrans('abc', 'cab')))
 
 =======
 Suggestion 10
 
 def main():
-    N = int(input())
-    mod = 998244353
-    dp = [[0 for _ in range(10)] for _ in range(N+1)]
-    for i in range(1,10):
-        dp[1][i] = 1
-    for i in range(2,N+1):
-        for j in range(0,10):
-            if j == 0:
-                dp[i][0] = (dp[i-1][0] + dp[i-1][1]) % mod
-            elif j == 9:
-                dp[i][9] = (dp[i-1][8] + dp[i-1][9]) % mod
-            else:
-                dp[i][j] = (dp[i-1][j-1] + dp[i-1][j] + dp[i-1][j+1]) % mod
-    ans = 0
-    for i in range(10):
-        ans += dp[N][i]
-        ans %= mod
-    print(ans)
+    s = input()
+    q = int(input())
+    t = []
+    k = []
+    for i in range(q):
+        t_i, k_i = map(int, input().split())
+        t.append(t_i)
+        k.append(k_i)
+
+    # print(s, q, t, k)
+
+    # print(len(s))
+    # print(len(t))
+    # print(len(k))
+
+    # print(s[0:3])
+
+    # print(s[0])
+
+    # print(s[1])
+    # print(s[2])
+
+    # print(s[3])
+
+    # print(s[4])
+    # print(s[5])
+
+    # print(s[6])
+
+    # print(s[7])
+    # print(s[8])
+
+    # print(s[9])
+
+    # print(s[10])
+    # print(s[11])
+
+    # print(s[12])
+
+    # print(s[13])
+    # print(s[14])
+
+    # print(s[15])
+
+    # print(s[16])
+    # print(s[17])
+
+    # print(s[18])
+
+    # print(s[19])
+    # print(s[20])
+
+    # print(s[21])
+
+    # print(s[22])
+    # print(s[23])
+
+    # print(s[24])
+
+    # print(s[25])
+    # print(s[26])
+
+    # print(s[27])
+
+    # print(s[28])
+    # print(s[29])
+
+    # print(s[30])
+
+    # print(s[31])
+    # print(s[32])
+
+    # print(s[33])
+
+    # print(s[34])
+    # print(s[35])
+
+    # print(s[36])
+
+    # print(s[37])
+    # print(s[38])
+
+    # print(s[39])
+
+    # print(s[40])
+    # print(s[41])
+
+    # print(s[42])
+
+    # print(s[43])
+    # print(s[44])
+
+    # print(s[45])
+
+    # print(s[46])
+    # print(s[47])
+
+    # print(s[48])
+
+    # print(s[49])
+    # print(s[50])
+
+    # print(s[51])
+
+    # print(s[52])
+    # print(s[53])
+
+    # print(s[54])
+
+    # print(s[55])
+    # print(s[56])
+
+    # print(s[57])
+
+    #

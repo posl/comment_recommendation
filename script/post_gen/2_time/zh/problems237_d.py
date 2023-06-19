@@ -1,134 +1,102 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def is_palindrom(s):
-    return s == s[::-1]
-
-s = input()
-l = len(s)
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            A.insert(i, i+1)
+        else:
+            A.insert(i+1, i+1)
+    print(' '.join(map(str, A)))
 
 =======
 Suggestion 2
 
 def main():
-    S = input()
-    l = len(S)
-    for i in range(l//2):
-        if S[i] != S[l-1-i]:
-            print("No")
-            return
-    print("Yes")
-main()
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0, i+1)
+        else:
+            a.append(i+1)
+    print(' '.join(map(str, a)))
 
 =======
 Suggestion 3
 
-def is_palindrome(s):
-    return s == s[::-1]
+def main():
+    N = int(input())
+    S = input()
 
-S = input()
-for i in range(len(S) + 1):
-    if is_palindrome("a" * i + S):
-        print("Yes")
-        exit()
-print("No")
+    A = [0]
+    for i in range(N):
+        if S[i] == "L":
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+
+    print(" ".join(map(str, A)))
 
 =======
 Suggestion 4
 
-def solve():
+def main():
+    n = int(input())
     s = input()
-    n = len(s)
+
+    # 0のリストを作成
+    a = [0]
     for i in range(n):
-        if s[i] != s[n-i-1]:
-            print('Yes')
-            return
-    print('No')
+        if s[i] == 'L':
+            a.insert(0, i + 1)
+        else:
+            a.append(i + 1)
+
+    # 結果を出力
+    print(*a)
 
 =======
 Suggestion 5
 
-def is_palindrome(s):
-    if s == s[::-1]:
-        return True
-    else:
-        return False
-
-s = input()
-for i in range(len(s)+1):
-    s1 = s[:i] + 'a' + s[i:]
-    if is_palindrome(s1):
-        print('Yes')
-        exit()
-print('No')
+def problems237_d():
+    pass
 
 =======
 Suggestion 6
 
-def is_palindrome(s):
-    if s == s[::-1]:
-        return True
-    else:
-        return False
-
-s = input()
-count = 0
-for i in range(len(s)):
-    if is_palindrome(s[i:]):
-        print("Yes")
-        exit()
-print("No")
+def solve():
+    N=int(input())
+    S=input()
+    ans=[]
+    left=0
+    right=0
+    for i in range(N):
+        if S[i]=='L':
+            ans.insert(left+1,i+1)
+            left+=1
+        else:
+            ans.append(i+1)
+            right+=1
+    for i in ans:
+        print(i,end=' ')
 
 =======
 Suggestion 7
 
 def main():
-    s = input()
-    if s == s[::-1]:
-        print('Yes')
-    else:
-        print('No')
-
-=======
-Suggestion 8
-
-def is_palindrome(s):
-    return s == s[::-1]
-
-=======
-Suggestion 9
-
-def is_palindrome(s):
-    if s == s[::-1]:
-        return True
-    else:
-        return False
-
-S = input()
-for i in range(len(S)+1):
-    s = 'a' * i + S
-    if is_palindrome(s):
-        print('Yes')
-        exit()
-print('No')
-
-=======
-Suggestion 10
-
-def main():
-    s = input()
-    count = 0
-    for i in range(len(s)//2):
-        if s[i] != s[len(s)-1-i]:
-            count += 1
-    if count == 0:
-        if len(s) % 2 == 0:
-            print("YES")
+    N = int(input())
+    S = input()
+    ans = [0]
+    for i in range(1,N):
+        if S[i-1] == 'L':
+            ans.insert(0,i)
         else:
-            print("NO")
-    elif count == 1:
-        print("YES")
-    else:
-        print("NO")
+            ans.append(i)
+    print(*ans)

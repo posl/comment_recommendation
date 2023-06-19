@@ -3,163 +3,77 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def count(s):
-    c = [0]*3
-    for i in range(len(s)):
-        if s[i] == 'R':
-            c[0] += 1
-        elif s[i] == 'G':
-            c[1] += 1
-        else:
-            c[2] += 1
-    return c[0]*c[1]*c[2]
+def main():
+    # Read from stdin
+    R = int(input())
+    # Write result to stdout
+    print(2 * R * 3.14159265358979323846)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    s = input()
-    r = s.count('R')
-    g = s.count('G')
-    b = s.count('B')
-    ans = r * g * b
-    for i in range(n):
-        for j in range(i+1, n):
-            k = j * 2 - i
-            if k < n and s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
-                ans -= 1
-    print(ans)
+def circumference_of_circle(r):
+    return 2*3.141592653589793238462643383279502884197169399375105820974944592307816406286*r
+
+print(circumference_of_circle(1))
+print(circumference_of_circle(73))
 
 =======
 Suggestion 3
 
 def main():
-    N = int(input())
-    S = input()
-    r = S.count('R')
-    g = S.count('G')
-    b = S.count('B')
-    ans = r * g * b
-    for i in range(N):
-        for j in range(i+1, N):
-            k = 2 * j - i
-            if k >= N:
-                continue
-            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
-                ans -= 1
-    print(ans)
+    r = int(input())
+    print(2 * 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899 * r)
 
 =======
 Suggestion 4
 
 def main():
-    N = int(input())
-    S = input()
-    ans = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            k = 2*j - i
-            if k < N:
-                if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
-                    ans += 1
-    print(ans)
+    r = int(input())
+    print(2*r*3.14159265358979323846264338327950288)
+    
+main()
 
 =======
 Suggestion 5
 
 def main():
-    N = int(input())
-    S = input()
-    count = 0
-    for i in range(N-2):
-        for j in range(i+1,N-1):
-            for k in range(j+1,N):
-                if S[i] != S[j] and S[i] != S[k] and S[j] != S[k] and j-i != k-j:
-                    count += 1
-    print(count)
+    r = int(input())
+    print(2 * r * 3.14159265358979323846)
 
 =======
 Suggestion 6
 
-def calc(s):
-    n = len(s)
-    cnt = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if s[i] == s[j]:
-                continue
-            k = 2*j - i
-            if k >= n:
-                continue
-            if s[i] == s[k] or s[j] == s[k]:
-                continue
-            cnt += 1
-    return cnt
+def main():
+    r = int(input())
+    print(2 * r * 3.141592653589)
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    s = input()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            k = 2*j - i
-            if k >= n:
-                continue
-            if s[i] != s[j] and s[i] != s[k] and s[j] != s[k]:
-                ans += 1
-    print(ans)
+    r = int(input())
+    print(2*r*3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170678)
 
 =======
 Suggestion 8
 
-def solve():
-    n = int(input())
-    s = input()
-    r = s.count('R')
-    g = s.count('G')
-    b = s.count('B')
-    ans = r * g * b
-    for i in range(n):
-        for j in range(i+1, n):
-            k = 2 * j - i
-            if k >= n:
-                continue
-            if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
-                ans -= 1
-    print(ans)
-solve()
+def main():
+    r = int(input())
+    print(2*r*3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825)
 
 =======
 Suggestion 9
 
-def countRGB(s):
-    count = 0
-    for i in range(len(s)):
-        for j in range(i+1, len(s)):
-            for k in range(j+1, len(s)):
-                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k] and j - i != k - j:
-                    count += 1
-    return count
+def main():
+    import math
+    r = int(input())
+    print("{0:.20f}".format(2 * r * math.pi))
 
 =======
 Suggestion 10
 
 def main():
-    n = int(input())
-    s = input()
-    r = s.count('R')
-    g = s.count('G')
-    b = s.count('B')
-    ans = r*g*b
-    for i in range(n):
-        for j in range(i+1,n):
-            k = 2*j-i
-            if k >= n:
-                continue
-            if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
-                ans -= 1
-    print(ans)
+    print("请输入圆的半径R")
+    R = int(input())
+    print(2*R*3.14159265358979)

@@ -1,82 +1,123 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    l, r = map(int, input().split())
-    print("atcoder"[l - 1 : r])
+    R, C = map(int, input().split())
+    if (R + C) % 2 == 0:
+        print("黑色")
+    else:
+        print("白色")
 
 =======
 Suggestion 2
 
 def main():
-    str = "atcoder"
-    l, r = map(int, input().split())
-    print(str[l-1:r])
+    # 读取输入
+    r, c = map(int, input().split())
+    # 逻辑处理
+    if r % 2 == 0:
+        if c % 2 == 0:
+            print('白色')
+        else:
+            print('黑色')
+    else:
+        if c % 2 == 0:
+            print('黑色')
+        else:
+            print('白色')
 
 =======
 Suggestion 3
 
 def main():
-    L, R = map(int, input().split())
-    atcoder = 'atcoder'
-    print(atcoder[L-1:R])
+    r, c = map(int, input().split())
+    if (r + c) % 2 == 0:
+        print("黑色")
+    else:
+        print("白色")
 
 =======
 Suggestion 4
 
-def problem264_a():
-    l,r = map(int,input().split())
-    s = 'atcoder'
-    print(s[l-1:r])
+def main():
+    row, col = map(int, input().split())
+    if row % 2 == 0:
+        if col % 2 == 0:
+            print("black")
+        else:
+            print("white")
+    else:
+        if col % 2 == 0:
+            print("white")
+        else:
+            print("black")
 
 =======
 Suggestion 5
 
 def main():
-    l, r = map(int, input().split())
-    s = "atcoder"
-    print(s[l-1:r])
+    #读取输入
+    r, c = map(int, input().split())
+
+    #处理
+    #判断是不是偶数行偶数列
+    if r % 2 == 0 and c % 2 == 0:
+        print('黑色')
+    elif r % 2 != 0 and c % 2 != 0:
+        print('黑色')
+    else:
+        print('白色')
 
 =======
 Suggestion 6
 
 def main():
-    s = input()
-    l = int(s.split(' ')[0])
-    r = int(s.split(' ')[1])
-    print('atcoder'[l-1:r])
+    r,c = map(int,input().split())
+    if (r+c)%2 == 0:
+        print('黑色')
+    else:
+        print('白色')
 
 =======
 Suggestion 7
 
 def main():
-    string = "atcoder"
-    l, r = map(int, input().split())
-    print(string[l-1:r])
+    # 读入数据
+    r, c = input().split()
+    r = int(r)
+    c = int(c)
+    # 计算结果
+    if r % 2 == 0:
+        if c % 2 == 0:
+            print("black")
+        else:
+            print("white")
+    else:
+        if c % 2 == 0:
+            print("white")
+        else:
+            print("black")
+
+main()
 
 =======
 Suggestion 8
 
 def main():
-    l, r = map(int, input().split())
-    s = 'atcoder'
-    print(s[l-1:r])
-
-=======
-Suggestion 9
-
-def print_atcoder(L,R):
-    atcoder = 'atcoder'
-    print(atcoder[L-1:R])
-
-=======
-Suggestion 10
-
-def print_str():
-    str = "atcoder"
-    l, r = input().split()
-    l = int(l)
-    r = int(r)
-    print(str[l-1:r])
+    R,C = map(int,input().split())
+    for i in range(R):
+        if i%2 == 0:
+            for j in range(C):
+                if j%2 == 0:
+                    print('#',end='')
+                else:
+                    print('.',end='')
+        else:
+            for j in range(C):
+                if j%2 == 0:
+                    print('.',end='')
+                else:
+                    print('#',end='')
+        print()

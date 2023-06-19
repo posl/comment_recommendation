@@ -1,174 +1,100 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    N,X = map(int,input().split())
-    V = []
-    P = []
-    for i in range(N):
-        v,p = map(int,input().split())
-        V.append(v)
-        P.append(p)
-    sum = 0
-    for i in range(N):
-        sum += V[i]*P[i]
-        if sum > X*100:
-            print(i+1)
-            break
-    else:
-        print(-1)
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for l in range(n):
+        x = a[l]
+        for r in range(l, n):
+            x = min(x, a[r])
+            ans = max(ans, x*(r-l+1))
+    print(ans)
 
 =======
 Suggestion 2
 
-def main():
-    n,x = map(int,input().split())
-    v = []
-    p = []
-    for _ in range(n):
-        v_i,p_i = map(int,input().split())
-        v.append(v_i)
-        p.append(p_i)
-    sum = 0
-    for i in range(n):
-        sum += v[i]*p[i]
-        if sum > x*100:
-            print(i+1)
-            exit()
-    print(-1)
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for l in range(N):
+        x = A[l]
+        for r in range(l, N):
+            x = min(x, A[r])
+            ans = max(ans, x * (r - l + 1))
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    n,x = map(int,input().split())
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
     for i in range(n):
-        v,p = map(int,input().split())
-        x -= v * p / 100
-        if x < 0:
-            print(i+1)
-            return
-    print(-1)
+        l = i
+        r = i
+        x = a[i]
+        while l > 0 and a[l-1] >= x:
+            l -= 1
+        while r < n-1 and a[r+1] >= x:
+            r += 1
+        ans = max(ans, x*(r-l+1))
+    print(ans)
 
 =======
 Suggestion 4
 
-def get_input():
-    n, x = map(int, input().split())
-    v_p = []
-    for i in range(n):
-        v_p.append(list(map(int, input().split())))
-    return n, x, v_p
+def main():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 计算答案
+    ans = 0
+    for l in range(N):
+        x = A[l]
+        for r in range(l, N):
+            x = min(x, A[r])
+            ans = max(ans, x * (r - l + 1))
+
+    # 输出结果
+    print(ans)
 
 =======
 Suggestion 5
 
 def main():
-    N, X = map(int, input().split())
-    V = []
-    P = []
-    for i in range(N):
-        v, p = map(int, input().split())
-        V.append(v)
-        P.append(p)
-    sum = 0
-    for i in range(N):
-        sum += V[i]*P[i]
-        if sum > X*100:
-            print(i+1)
-            return
-    print(-1)
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for l in range(N):
+        x = A[l]
+        for r in range(l, N):
+            x = min(x, A[r])
+            ans = max(ans, x * (r - l + 1))
+    print(ans)
 
 =======
 Suggestion 6
 
 def main():
-    n, x = map(int, input().split())
-    x *= 100
-    for i in range(n):
-        v, p = map(int, input().split())
-        x -= v * p
-        if x < 0:
-            print(i + 1)
-            return
-    print(-1)
-
-=======
-Suggestion 7
-
-def main():
-    N, X = map(int, input().split())
-    V = [0] * N
-    P = [0] * N
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    max = 0
     for i in range(N):
-        V[i], P[i] = map(int, input().split())
-    alc = 0
-    for i in range(N):
-        alc += V[i] * P[i] / 100
-        if alc > X:
-            print(i + 1)
-            exit()
-    print(-1)
-
-=======
-Suggestion 8
-
-def main():
-    n, x = map(int, input().split())
-    v = []
-    p = []
-    for i in range(n):
-        v_i, p_i = map(int, input().split())
-        v.append(v_i)
-        p.append(p_i)
-    sum = 0
-    for i in range(n):
-        sum += v[i] * p[i] / 100
-        if sum > x:
-            print(i + 1)
-            return
-    print(-1)
-
-=======
-Suggestion 9
-
-def main():
-    n,x = map(int, input().split())
-    v = []
-    p = []
-    for i in range(n):
-        V, P = map(int, input().split())
-        v.append(V)
-        p.append(P)
-    alcohol = 0
-    for i in range(n):
-        alcohol += v[i] * p[i] / 100
-        if alcohol > x:
-            print(i + 1)
-            return
-    print(-1)
-    return
-
-=======
-Suggestion 10
-
-def main():
-    n, x = map(int, input().split())
-    v = []
-    p = []
-    for i in range(n):
-        v_temp, p_temp = map(int, input().split())
-        v.append(v_temp)
-        p.append(p_temp)
-    sum = 0
-    for i in range(n):
-        sum += v[i] * p[i]
-        if sum > x * 100:
-            print(i + 1)
-            return
-    print(-1)
-    return
-
-main()
+        for j in range(i,N):
+            for k in range(A[i],A[j]+1):
+                sum = 0
+                for l in range(i,j+1):
+                    if A[l] >= k:
+                        sum += k
+                    else:
+                        sum += A[l]
+                if sum > max:
+                    max = sum
+    print(max)

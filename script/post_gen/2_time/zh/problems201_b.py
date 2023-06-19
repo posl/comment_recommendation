@@ -3,127 +3,119 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def problem201_a():
-    a = list(map(int, input().split()))
-    a.sort()
-    if a[2] - a[1] == a[1] - a[0]:
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
 
 =======
 Suggestion 2
 
-def main():
-    a,b,c=map(int,input().split())
-    if b-a==c-b:
-        print("Yes")
-    else:
-        print("No")
+def getSecondMaxMountainName():
+    mountains = []
+    N = int(input())
+    for i in range(N):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+
+getSecondMaxMountainName()
 
 =======
 Suggestion 3
 
-def main():
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[1] - A[0] == A[2] - A[1]:
-        print('Yes')
-    else:
-        print('No')
+def read_input():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        s, t = input().split()
+        mountains.append((s, int(t)))
+    return mountains
 
 =======
 Suggestion 4
 
-def main():
-    a = list(map(int, input().split()))
-    a.sort()
-    if a[2]-a[1] == a[1]-a[0]:
-        print("Yes")
-    else:
-        print("No")
+def get_second_height_mountain_number(n, height_list):
+    height_list.sort(reverse=True)
+    return height_list[1][0]
 
 =======
 Suggestion 5
 
-def main():
-    #读取输入
-    line = input()
-    #将输入的字符串分割成3个数字
-    A = line.split()
-    #将字符串转换成数字
-    #map(function, iterable, ...)
-    #map() 会根据提供的函数对指定序列做映射。
-    #第一个参数 function 以参数序列中的每一个元素调用 function 函数，
-    #返回包含每次 function 函数返回值的新列表。
-    #map() 函数语法：
-    #map(function, iterable, ...)
-    #参数
-    #function -- 函数
-    #iterable -- 一个或多个序列
-    #返回值
-    #Python 2.x 返回列表。
-    #Python 3.x 返回迭代器。
-    A = list(map(int, A))
-    #判断A的元素能否重新排列成算术序列
-    if A[2] - A[1] == A[1] - A[0]:
-        print("Yes")
-    else:
-        print("No")
+def second_highest_mountain():
+    N = int(input())
+    mountains = []
+    for _ in range(N):
+        name, height = input().split()
+        height = int(height)
+        mountains.append((name, height))
+    mountains = sorted(mountains, key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])
 
 =======
 Suggestion 6
 
 def main():
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[2]-A[1] == A[1]-A[0]:
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
 
 =======
 Suggestion 7
 
 def main():
-    a = input()
-    a = a.split()
-    a = [int(i) for i in a]
-    a.sort()
-    if (a[1]-a[0])==(a[2]-a[1]):
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    mountain = []
+    for i in range(N):
+        mountain.append(input().split())
+    mountain.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountain[1][0])
 
 =======
 Suggestion 8
 
 def main():
-    a = input().split()
-    a = [int(i) for i in a]
-    a.sort()
-    if a[1] - a[0] == a[2] - a[1]:
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountain = input().split()
+        mountain[1] = int(mountain[1])
+        mountains.append(mountain)
+    mountains.sort(key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])
 
 =======
 Suggestion 9
 
 def main():
-    a1,a2,a3 = map(int,input().split())
-    if a3-a2 == a2-a1:
-        print("Yes")
-    else:
-        print("No")
+    # 读入数据
+    N = int(input())
+    ST = []
+    for i in range(N):
+        ST.append(input().split())
+    # 由于ST中的第二个元素是字符串，所以需要转换成数字才能进行排序
+    for i in range(N):
+        ST[i][1] = int(ST[i][1])
+    # 按照山的高度排序
+    ST.sort(key=lambda x: x[1], reverse=True)
+    # 打印第二高的山的名字
+    print(ST[1][0])
 
 =======
 Suggestion 10
 
 def main():
-    A = input().split()
-    A.sort()
-    if int(A[2])-int(A[1])==int(A[1])-int(A[0]):
-        print("Yes")
-    else:
-        print("No")
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        name, height = input().split()
+        mountains.append([name, int(height)])
+    mountains.sort(key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])

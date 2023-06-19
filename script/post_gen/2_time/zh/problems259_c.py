@@ -1,110 +1,162 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def rotate_point(x,y,d):
-    import math
-    rad = math.radians(d)
-    new_x = x*math.cos(rad) - y*math.sin(rad)
-    new_y = x*math.sin(rad) + y*math.cos(rad)
-    return new_x,new_y
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 2
 
-def rotate(x, y, d):
-    import math
-    x1 = x * math.cos(math.radians(d)) - y * math.sin(math.radians(d))
-    y1 = x * math.sin(math.radians(d)) + y * math.cos(math.radians(d))
-    return (x1, y1)
+def solve():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        return
+    if len(s) == len(t):
+        print('No')
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            if s[:i] + s[i + 1:] == t[:i] + t[i + 1:]:
+                print('Yes')
+                return
+            else:
+                print('No')
+                return
+    print('No')
 
 =======
 Suggestion 3
 
-def rotate(x, y, d):
-    import math
-    rad = math.radians(d)
-    sin = math.sin(rad)
-    cos = math.cos(rad)
-    return x * cos - y * sin, x * sin + y * cos
+def main():
+    # 读取输入
+    s = input()
+    t = input()
+
+    # 从s中删除t中不存在的字符
+    for i in range(len(t)):
+        if t[i] not in s:
+            print('No')
+            return
+        else:
+            s = s[s.index(t[i])+1:]
+
+    print('Yes')
+    return
 
 =======
 Suggestion 4
 
-def rotate(a, b, d):
-    import math
-    rad = (d/180.0)*math.pi
-    x = a*math.cos(rad) - b*math.sin(rad)
-    y = a*math.sin(rad) + b*math.cos(rad)
-    return (x,y)
+def main():
+    s = input()
+    t = input()
+    if len(s) + 1 != len(t):
+        print("No")
+        return
+    i = 0
+    j = 0
+    while j < len(t):
+        if i < len(s) and s[i] == t[j]:
+            i += 1
+        else:
+            if i == j:
+                j += 1
+            else:
+                print("No")
+                return
+    print("Yes")
+    return
 
 =======
 Suggestion 5
 
-def rotate(x,y,d):
-    import math
-    rad=math.radians(d)
-    x1=x*math.cos(rad)-y*math.sin(rad)
-    y1=x*math.sin(rad)+y*math.cos(rad)
-    return x1,y1
+def main():
+    s = input()
+    t = input()
+    if len(s) < 2 or len(s) > 2 * 10 ** 5 or len(t) < 2 or len(t) > 2 * 10 ** 5:
+        return
+    if s == t:
+        print("Yes")
+        return
+    if s[0] != t[0]:
+        print("No")
+        return
+    if s[-1] != t[-1]:
+        print("No")
+        return
+    if s[1] == t[1]:
+        print("Yes")
+        return
+    if s[-2] == t[-2]:
+        print("Yes")
+        return
+    print("No")
 
 =======
 Suggestion 6
 
-def rotate(x, y, d):
-    import math
-    d = math.radians(d)
-    x1 = x * math.cos(d) - y * math.sin(d)
-    y1 = x * math.sin(d) + y * math.cos(d)
-    return x1, y1
+def main():
+    s = input()
+    t = input()
 
-x, y, d = map(int, input().split())
-x1, y1 = rotate(x, y, d)
-print(x1, y1)
+    if len(s) + 1 == len(t):
+        if s == t[:-1]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
 
 =======
 Suggestion 7
 
-def rotate(a,b,d):
-    import math
-    d = math.radians(d)
-    a_ = a * math.cos(d) - b * math.sin(d)
-    b_ = a * math.sin(d) + b * math.cos(d)
-    return a_,b_
-
-a,b,d = map(float,input().split())
-a_,b_ = rotate(a,b,d)
-print(a_,b_)
+def solve():
+    s = input()
+    t = input()
+    if len(s) + 1 != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
 
 =======
 Suggestion 8
 
-def rotate(a,b,d):
-    import math
-    x = a*math.cos(math.radians(d)) - b*math.sin(math.radians(d))
-    y = a*math.sin(math.radians(d)) + b*math.cos(math.radians(d))
-    return x,y
-
-a,b,d = map(int,input().split())
-print(rotate(a,b,d))
+def main():
+    s = input()
+    t = input()
+    if len(s) + 1 == len(t):
+        if s + s[0] == t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
 
 =======
 Suggestion 9
 
-def rotate(a, b, d):
-    import math
-    d = math.radians(d)
-    x = a * math.cos(d) - b * math.sin(d)
-    y = a * math.sin(d) + b * math.cos(d)
-    return x, y
-
-=======
-Suggestion 10
-
-def rotate(x,y,d):
-    import math
-    d = math.radians(d)
-    x_ = x*math.cos(d) - y*math.sin(d)
-    y_ = x*math.sin(d) + y*math.cos(d)
-    return x_,y_
+def solve(s,t):
+    if len(s) > len(t):
+        return False
+    elif len(s) == len(t):
+        return s == t
+    else:
+        i = 0
+        j = 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1
+            j += 1
+        return i == len(s)

@@ -1,222 +1,312 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    # print(N, A)
-
-    # print(N, A)
-    # print(A)
-    # print(N, A)
-
-    # N = 6
-    # A = [2, 7, 1, 8, 2, 8]
-
-    # N = 10
-    # A = [979861204, 57882493, 979861204, 447672230, 644706927, 710511029, 763027379, 710511029, 447672230, 136397527]
-
-    # N = 1
-    # A = [1]
-
-    # N = 2
-    # A = [1, 1]
-
-    # N = 3
-    # A = [1, 1, 1]
-
-    # N = 4
-    # A = [1, 1, 1, 1]
-
-    # N = 5
-    # A = [1, 1, 1, 1, 1]
-
-    # N = 6
-    # A = [1, 1, 1, 1, 1, 1]
-
-    # N = 7
-    # A = [1, 1, 1, 1, 1, 1, 1]
-
-    # N = 8
-    # A = [1, 1, 1, 1, 1, 1, 1, 1]
-
-    # N = 9
-    # A = [1, 1, 1, 1, 1, 1, 1, 1, 1]
-
-    # N = 10
-    # A = [1, 1, 1, 1, 1, 1, 1, 1, 1,
+    pass
 
 =======
 Suggestion 2
 
 def main():
+    h, w, r, c = map(int, input().split())
     n = int(input())
-    a = list(map(int, input().split()))
-    a = sorted(a)
-    ans = [0] * n
-    for i in range(n):
-        if i == 0:
-            ans[0] = 0
-        elif a[i] == a[i-1]:
-            ans[i] = ans[i-1]
-        else:
-            ans[i] = ans[i-1] + 1
-    for i in range(n):
-        print(ans[i])
+    a = []
+    for _ in range(n):
+        a.append(list(map(int, input().split())))
+    q = int(input())
+    b = []
+    for _ in range(q):
+        b.append(list(input().split())))
+    print(h, w, r, c)
+    print(n)
+    print(a)
+    print(q)
+    print(b)
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [0] + a
-    a.sort()
-    print(a)
-    ans = [0] * (n + 1)
-    ans[0] = 0
-    for i in range(1, n + 1):
-        if a[i] != a[i - 1]:
-            ans[i] = ans[i - 1] + 1
-        else:
-            ans[i] = ans[i - 1]
-    print(ans)
-    for i in range(1, n + 1):
-        print(ans[i])
+def solve(H, W, r_s, c_s, N, r, c, Q, d, l):
+    # x, y = r_s, c_s
+    # for i in range(Q):
+    #     if d[i] == "L":
+    #         for j in range(l[i]):
+    #             y -= 1
+    #             if (x, y) in zip(r, c):
+    #                 y += 1
+    #     elif d[i] == "R":
+    #         for j in range(l[i]):
+    #             y += 1
+    #             if (x, y) in zip(r, c):
+    #                 y -= 1
+    #     elif d[i] == "U":
+    #         for j in range(l[i]):
+    #             x -= 1
+    #             if (x, y) in zip(r, c):
+    #                 x += 1
+    #     else:
+    #         for j in range(l[i]):
+    #             x += 1
+    #             if (x, y) in zip(r, c):
+    #                 x -= 1
+    #     print(x, y)
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    # 0:上, 1:下, 2:左, 3:右
+    d_idx = ["U", "D", "L", "R"]
+    # 0:左, 1:右, 2:上, 3:下
+    d_idx_rev = ["L", "R", "U", "D"]
+    r = [x - 1 for x in r]
+    c = [x - 1 for x in c]
+    # 与当前方块相邻的方块
+    adj = [[] for _ in range(N)]
+    for i in range(N):
+        for j in range(4):
+            if 0 <= r[i] + dx[j] < H and 0 <= c[i] + dy[j] < W:
+                adj[i].append((r[i] + dx[j], c[i] + dy[j]))
+    # print(adj)
+    # 当前方块的左右上下是否有墙
+    wall =
 
 =======
 Suggestion 4
 
 def main():
+    h,w,r,c = map(int,input().split())
     n = int(input())
-    a = list(map(int, input().split()))
-    d = {}
+    wall = [[0 for i in range(w+1)] for j in range(h+1)]
     for i in range(n):
-        if a[i] in d:
-            d[a[i]] += 1
-        else:
-            d[a[i]] = 1
-    d = sorted(d.items(), key=lambda x: x[0])
-    #print(d)
-    ans = 0
-    for i in range(len(d)):
-        ans += d[i][1]
-        d[i] = (d[i][0], ans)
-    #print(d)
-    for i in range(n):
-        for j in range(len(d)):
-            if a[i] == d[j][0]:
-                print(d[j][1] - 1)
-                break
+        x,y = map(int,input().split())
+        wall[x][y] = 1
+    q = int(input())
+    move = []
+    for i in range(q):
+        d,l = input().split()
+        move.append((d,int(l)))
+
+    #print(wall)
+    #print(move)
+    #print(q)
+    #print(h,w,r,c)
+    #print(n)
+    #print(wall)
+    #print(move)
+    #print(q)
+
+    direction = {'L':(0,-1),'R':(0,1),'U':(-1,0),'D':(1,0)}
+    result = []
+    for i in range(q):
+        x,y = direction[move[i][0]]
+        for j in range(move[i][1]):
+            r += x
+            c += y
+            if wall[r][c] == 1:
+                r -= x
+                c -= y
+        result.append((r,c))
+    for i in result:
+        print(i[0],i[1])
 
 =======
 Suggestion 5
 
-def problems273_c():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    A.append(10**9+1)
-    ans = [0] * N
-    cnt = 0
-    for i in range(N):
-        if A[i] != A[i+1]:
-            for j in range(cnt, i+1):
-                ans[j] = i - cnt + 1
-            cnt = i + 1
-    print('\n'.join(map(str, ans)))
-    return 0
+def main():
+    h,w,r,c = map(int,input().split())
+    n = int(input())
+    wall = set()
+    for i in range(n):
+        r_i,c_i = map(int,input().split())
+        wall.add((r_i,c_i))
+    q = int(input())
+    move = []
+    for i in range(q):
+        d_i,l_i = input().split()
+        move.append((d_i,int(l_i)))
+    ans = []
+    #print(move)
+    for i in range(q):
+        d_i,l_i = move[i]
+        #print(d_i,l_i)
+        if d_i == 'L':
+            for j in range(l_i):
+                if (r,c-1) not in wall:
+                    c -= 1
+                else:
+                    break
+        elif d_i == 'R':
+            for j in range(l_i):
+                if (r,c+1) not in wall:
+                    c += 1
+                else:
+                    break
+        elif d_i == 'U':
+            for j in range(l_i):
+                if (r-1,c) not in wall:
+                    r -= 1
+                else:
+                    break
+        elif d_i == 'D':
+            for j in range(l_i):
+                if (r+1,c) not in wall:
+                    r += 1
+                else:
+                    break
+        ans.append((r,c))
+    #print(ans)
+    for i in range(q):
+        print(ans[i][0],ans[i][1])
 
 =======
 Suggestion 6
 
 def main():
+    h,w,r,c = map(int,input().split())
     n = int(input())
-    a = list(map(int, input().split()))
-    a = sorted(a)
-    a.append(0)
-    k = 0
+    wall = []
     for i in range(n):
-        if a[i] != a[i+1]:
-            print(k)
-            k = 0
-        else:
-            k += 1
+        wall.append(list(map(int,input().split())))
+    q = int(input())
+    direction = []
+    for i in range(q):
+        direction.append(list(input().split()))
+    for i in range(q):
+        if direction[i][0] == "L":
+            c = c - int(direction[i][1])
+            if c < 1:
+                c = 1
+        elif direction[i][0] == "R":
+            c = c + int(direction[i][1])
+            if c > w:
+                c = w
+        elif direction[i][0] == "U":
+            r = r - int(direction[i][1])
+            if r < 1:
+                r = 1
+        elif direction[i][0] == "D":
+            r = r + int(direction[i][1])
+            if r > h:
+                r = h
+        if [r,c] in wall:
+            if direction[i][0] == "L":
+                c = c + int(direction[i][1])
+                if c > w:
+                    c = w
+            elif direction[i][0] == "R":
+                c = c - int(direction[i][1])
+                if c < 1:
+                    c = 1
+            elif direction[i][0] == "U":
+                r = r + int(direction[i][1])
+                if r > h:
+                    r = h
+            elif direction[i][0] == "D":
+                r = r - int(direction[i][1])
+                if r < 1:
+                    r = 1
+        print(r,c)
+main()
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    ans = [0] * n
-    for i in range(n):
-        if i == 0:
-            ans[i] = 1
-        elif a[i] == a[i-1]:
-            ans[i] = ans[i-1]
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    r = [0] * N
+    c = [0] * N
+    for i in range(N):
+        r[i], c[i] = map(int, input().split())
+    Q = int(input())
+    d = [0] * Q
+    l = [0] * Q
+    for i in range(Q):
+        d[i], l[i] = map(str, input().split())
+        l[i] = int(l[i])
+    r_s -= 1
+    c_s -= 1
+    for i in range(N):
+        r[i] -= 1
+        c[i] -= 1
+    for i in range(Q):
+        if d[i] == 'L':
+            for j in range(N):
+                if r[j] == r_s and c[j] == c_s - l[i]:
+                    break
+            else:
+                c_s -= l[i]
+        elif d[i] == 'R':
+            for j in range(N):
+                if r[j] == r_s and c[j] == c_s + l[i]:
+                    break
+            else:
+                c_s += l[i]
+        elif d[i] == 'U':
+            for j in range(N):
+                if r[j] == r_s - l[i] and c[j] == c_s:
+                    break
+            else:
+                r_s -= l[i]
         else:
-            ans[i] = ans[i-1] + 1
-    for i in range(n):
-        print(ans[i])
+            for j in range(N):
+                if r[j] == r_s + l[i] and c[j] == c_s:
+                    break
+            else:
+                r_s += l[i]
+        print(r_s + 1, c_s + 1)
 
 =======
 Suggestion 8
 
-def solve():
-    # 读入数据
-    N = int(input())
-    A = list(map(int, input().split()))
-
-    # 用于存储答案
-    ans = [0] * N
-
-    # 用于存储之前的出现过的数字
-    used = set()
-
-    # 用于存储之前的出现过的数字的个数
-    used_count = 0
-
-    # 从后往前遍历
-    for i in range(N - 1, -1, -1):
-
-        # 如果A[i]之前没有出现过
-        if A[i] not in used:
-            # 之前出现过的数字的个数+1
-            used_count += 1
-            # 将A[i]加入到已经出现过的数字中
-            used.add(A[i])
-
-        # 之前出现过的数字的个数就是答案
-        ans[i] = used_count
-
-    # 输出答案
-    for i in range(N):
-        print(ans[i])
-
-=======
-Suggestion 9
-
 def main():
+    h, w, r_s, c_s = map(int, input().split())
     n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    k = 0
+    r = []
+    c = []
     for i in range(n):
-        if i != 0 and a[i] != a[i-1]:
-            k += 1
-        print(k)
+        tmp_r, tmp_c = map(int, input().split())
+        r.append(tmp_r)
+        c.append(tmp_c)
+    q = int(input())
+    d = []
+    l = []
+    for i in range(q):
+        tmp_d, tmp_l = input().split()
+        d.append(tmp_d)
+        l.append(int(tmp_l))
 
-=======
-Suggestion 10
+    r_min = min(r)
+    r_max = max(r)
+    c_min = min(c)
+    c_max = max(c)
 
-def get_count(a):
-    count = 0
-    for i in range(len(a)):
-        for j in range(i+1,len(a)):
-            if a[i] < a[j]:
-                count += 1
-    return count
+    r_s_new = r_s
+    c_s_new = c_s
+    if r_s_new < r_min:
+        r_s_new = r_min
+    if r_s_new > r_max:
+        r_s_new = r_max
+    if c_s_new < c_min:
+        c_s_new = c_min
+    if c_s_new > c_max:
+        c_s_new = c_max
+
+    for i in range(q):
+        if d[i] == 'L':
+            c_s_new = c_s_new - l[i]
+            if c_s_new < c_min:
+                c_s_new = c_min
+        elif d[i] == 'R':
+            c_s_new = c_s_new + l[i]
+            if c_s_new > c_max:
+                c_s_new = c_max
+        elif d[i] == 'U':
+            r_s_new = r_s_new - l[i]
+            if r_s_new < r_min:
+                r_s_new = r_min
+        else:
+            r_s_new = r_s_new + l[i]
+            if r_s_new > r_max:
+                r_s_new = r_max
+        print(r_s_new, c_s_new)

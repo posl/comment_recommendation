@@ -3,95 +3,86 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def problems228_c():
+def main():
     pass
 
 =======
 Suggestion 2
 
 def main():
-    n,k = map(int,input().split())
-    a = [list(map(int,input().split())) for _ in range(n)]
-    a.sort(key=sum)
-    a.reverse()
-    b = [sum(a[i][:3]) for i in range(n)]
-    b.sort()
-    b.reverse()
-    for i in range(n):
-        if a[i][0] == b[k-1]:
-            print('Yes')
+    N = 2**20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
         else:
-            print('No')
+            print(A[x % N])
 
 =======
 Suggestion 3
 
 def main():
-    n, k = map(int, input().split())
-    s = []
-    for i in range(n):
-        s.append(sum(map(int, input().split())))
-    s.sort(reverse=True)
-    print("Yes" if s[k-1] != s[k] else "No")
+    # 读入输入
+    q = int(input())
+    query = []
+    for i in range(q):
+        query.append(list(map(int, input().split())))
+
+    # 用于存储结果
+    result = []
+
+    # 用于存储序列A
+    A = [-1 for i in range(2 ** 20)]
+
+    # 处理查询
+    for i in range(q):
+        if query[i][0] == 1:
+            h = query[i][1]
+            while A[h % (2 ** 20)] != -1:
+                h += 1
+            A[h % (2 ** 20)] = query[i][1]
+        else:
+            result.append(A[query[i][1] % (2 ** 20)])
+
+    # 输出结果
+    for i in range(len(result)):
+        print(result[i])
 
 =======
 Suggestion 4
 
 def main():
-    n,k = map(int, input().split())
-    students = []
-    for i in range(n):
-        students.append(sum(map(int, input().split())))
-    students.sort(reverse=True)
-    print('Yes' if students[k-1] == students[k] else 'No')
+    n = 2 ** 20
+    a = [-1] * n
+    q = int(input())
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while a[h % n] != -1:
+                h += 1
+            a[h % n] = x
+        else:
+            print(a[x % n])
 
 =======
 Suggestion 5
 
 def main():
-    n, k = map(int, input().split())
-    p = [list(map(int, input().split())) for _ in range(n)]
-    print(p)
-    print(n, k)
-    print(p[0][0])
-
-=======
-Suggestion 6
-
-def solve():
-    n, k = map(int, input().split())
-    scores = []
-    for i in range(n):
-        scores.append(list(map(int, input().split())))
-    scores.sort(key=lambda x: sum(x), reverse=True)
-    for i in range(n):
-        if i < k:
-            print('Yes')
-        else:
-            print('No')
-
-=======
-Suggestion 7
-
-def main():
-    n, k = map(int, input().split())
-    p = []
-    for i in range(n):
-        p.append([int(i) for i in input().split()])
-    for i in range(n):
-        p[i].sort(reverse=True)
-        if sum(p[i][:k]) >= 300:
-            print("Yes")
-        else:
-            print("No")
-
-=======
-Suggestion 8
-
-def main():
-    N, K = map(int, input().split())
-    scores = []
-    for _ in range(N):
-        scores.append(sum(map(int, input().split())))
-    scores.sort(reverse=True)
-    print('Yes' if scores[K-1] > scores[K] else 'No')
+    N = 2 ** 20
+    A = [-1 for i in range(N)]
+    Q = int(input())
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        elif t == 2:
+            print(A[x % N])

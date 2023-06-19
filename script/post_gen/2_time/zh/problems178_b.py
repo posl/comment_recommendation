@@ -4,59 +4,41 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    x = input()
-    if x == '0':
-        print('1')
-    else:
-        print('0')
+    a,b,c,d = map(int,input().split())
+    print(max(a*c,a*d,b*c,b*d))
 
 =======
 Suggestion 2
 
-def main():
-    x = int(input())
-    if x == 0:
-        print(1)
+def f(a,b,c,d):
+    if a*c > a*d:
+        if a*c > b*c:
+            if a*c > b*d:
+                return a*c
+            else:
+                return b*d
+        else:
+            if b*c > b*d:
+                return b*c
+            else:
+                return b*d
     else:
-        print(0)
+        if a*d > b*c:
+            if a*d > b*d:
+                return a*d
+            else:
+                return b*d
+        else:
+            if b*c > b*d:
+                return b*c
+            else:
+                return b*d
 
 =======
 Suggestion 3
 
-def main():
-    x = input()
-    if x == 0:
-        print 1
+def maxProduct(a,b,c,d):
+    if b < c or d < a:
+        return -1
     else:
-        print 0
-
-=======
-Suggestion 4
-
-def f(x):
-    if x == 0:
-        return 1
-    elif x == 1:
-        return 0
-
-=======
-Suggestion 5
-
-def main():
-    x = float(input())
-    if x == 0:
-        print(1)
-    else:
-        print(0)
-
-=======
-Suggestion 6
-
-def problems178_a():
-    x = int(input())
-    if x == 0:
-        print(1)
-    else:
-        print(0)
-
-problems178_a()
+        return max(a*c, a*d, b*c, b*d)

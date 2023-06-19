@@ -4,187 +4,266 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def solve():
-    n,m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-
-    a.sort()
-    b.sort()
-
-    if m > n:
-        print("No")
-        return
-
-    for i in range(m):
-        if a[i] < b[i]:
-            print("No")
-            return
-
-    print("Yes")
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '#':
+                S[i] = S[i][:j] + '1' + S[i][j+1:]
+            else:
+                S[i] = S[i][:j] + '0' + S[i][j+1:]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '0':
+                S[i] = S[i][:j] + '1' + S[i][j+1:]
+                if check(S):
+                    print('Yes')
+                    return
+                S[i] = S[i][:j] + '0' + S[i][j+1:]
+    print('No')
 
 =======
 Suggestion 2
 
-def solve():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
-    a.sort()
-    b.sort()
-    if n < m:
-        print("No")
-        return
-    for i in range(m):
-        if b[i] < a[i]:
-            print("No")
-            return
-    print("Yes")
+def check(grid, x, y):
+    if x < 0 or y < 0 or x >= len(grid) or y >= len(grid[0]):
+        return False
+    if grid[x][y] == '#':
+        return True
+    return False
 
 =======
 Suggestion 3
 
-def solve():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
 
-    a.sort()
-    b.sort()
+    for i in range(N):
+        S[i] = S[i].replace(".", "0")
+        S[i] = S[i].replace("#", "1")
+        S[i] = list(map(int, S[i]))
 
-    if n < m:
-        print("No")
-        return
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
 
-    for i in range(m):
-        if a[i] > b[i]:
-            print("No")
-            return
-    print("Yes")
+    for i in range(N):
+        S[i] = S[i][::-1]
 
-solve()
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+
+    for i in range(N):
+        S[i] = S[i][::-1]
+
+    for
 
 =======
 Suggestion 4
 
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-
-    if n < m:
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                s[i] = s[i][:j] + '1' + s[i][j+1:]
+    for i in range(n):
+        for j in range(n):
+            if s[j][i] == '#':
+                s[j] = s[j][:i] + '1' + s[j][i+1:]
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '1':
+                s[i] = s[i][:j] + '0' + s[i][j+1:]
+    for i in range(n):
+        for j in range(n):
+            if s[j][i] == '1':
+                s[j] = s[j][:i] + '0' + s[j][i+1:]
+    count = 0
+    for i in range(n):
+        count += s[i].count('0')
+    if count >= 6:
+        print('Yes')
+    else:
         print('No')
-        return
-
-    a.sort()
-    b.sort()
-
-    for i in range(m):
-        if a[i] >= b[i]:
-            print('No')
-            return
-
-    print('Yes')
 
 =======
 Suggestion 5
 
 def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '#':
+                S[i][j] = 1
+            else:
+                S[i][j] = 0
 
-    a.sort()
-    b.sort()
-
-    if n < m:
-        print("No")
-        return
-
-    for i in range(m):
-        if a[i] > b[i]:
-            print("No")
-            return
-
-    print("Yes")
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                for k in range(2, N):
+                    if i + k < N and j + k < N and S[i + k][j] == 1 and S[i][j + k] == 1 and S[i + k][j + k] == 1:
+                        print('Yes')
+                        return
+    print('No')
 
 =======
 Suggestion 6
 
-def main():
-    n,m = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    A.sort()
-    B.sort()
-    if n < m:
-        print('No')
+def check(i, j):
+    global s
+    if i < 0 or i >= n or j < 0 or j >= n:
+        return False
+    if s[i][j] == '#':
+        return True
     else:
-        for i in range(n):
-            if A[i] < B[i]:
-                print('No')
-                return
-        print('Yes')
+        return False
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+
+for i in range(n):
+    for j in range(n):
+        if check(i, j) and check(i + 1, j) and check(i + 2, j) and check(i + 3, j) and check(i + 4, j) and check(i + 5, j):
+            print("Yes")
+            exit()
+
+        if check(i, j) and check(i, j + 1) and check(i, j + 2) and check(i, j + 3) and check(i, j + 4) and check(i, j + 5):
+            print("Yes")
+            exit()
+
+        if check(i, j) and check(i + 1, j + 1) and check(i + 2, j + 2) and check(i + 3, j + 3) and check(i + 4, j + 4) and check(i + 5, j + 5):
+            print("Yes")
+            exit()
+
+        if check(i, j) and check(i + 1, j - 1) and check(i + 2, j - 2) and check(i + 3, j - 3) and check(i + 4, j - 4) and check(i + 5, j - 5):
+            print("Yes")
+            exit()
+
+print("No")
 
 =======
 Suggestion 7
 
 def main():
-    n,m = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    if n < m:
-        print("No")
-        return
-    A.sort()
-    B.sort()
-    for i in range(m):
-        if A[i] >= B[i]:
-            print("No")
-            return
-    print("Yes")
+    #输入数据
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #判断是否有6x6的黑色正方形
+    for i in range(n-5):
+        for j in range(n-5):
+            if s[i][j] == '#' and s[i+5][j] == '#' and s[i][j+5] == '#' and s[i+5][j+5] == '#' and s[i+1][j+1] == '#' and s[i+2][j+2] == '#' and s[i+3][j+3] == '#' and s[i+4][j+4] == '#' and s[i+1][j+4] == '#' and s[i+2][j+3] == '#' and s[i+3][j+2] == '#' and s[i+4][j+1] == '#':
+                print("Yes")
+                return
+    print("No")
     return
 
 =======
 Suggestion 8
 
-def solve(N,M,A,B):
-    if M>N:
-        return False
-    A.sort()
-    B.sort()
-    for i in range(M):
-        if B[i]<A[N-M+i]:
-            return False
-    return True
+def check(s):
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if s[i][j] == '#':
+                return True
+    return False
 
 =======
 Suggestion 9
 
-def solve(n, m, a, b):
-    if m > n:
+def is_black(i,j):
+    if i < 0 or i >= n or j < 0 or j >= n:
         return False
-    a.sort()
-    b.sort()
-    for i in range(m):
-        if a[-1-i] < b[-1-i]:
-            return False
-    return True
+    if S[i][j] == '#':
+        return True
+    else:
+        return False
 
 =======
 Suggestion 10
 
-def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
-    a.sort()
-    b.sort()
-    if n < m:
-        print("No")
-    else:
-        for i in range(m):
-            if a[i] >= b[i]:
-                print("No")
-                break
-            elif i == m-1:
-                print("Yes")
+def check_6x6(grid):
+    # check horizontal
+    for i in range(0, len(grid)):
+        for j in range(0, len(grid) - 5):
+            if grid[i][j] == '#' and grid[i][j + 1] == '#' and grid[i][j + 2] == '#' and grid[i][j + 3] == '#' and \
+                    grid[i][j + 4] == '#' and grid[i][j + 5] == '#':
+                return True
+    # check vertical
+    for i in range(0, len(grid) - 5):
+        for j in range(0, len(grid)):
+            if grid[i][j] == '#' and grid[i + 1][j] == '#' and grid[i + 2][j] == '#' and grid[i + 3][j] == '#' and \
+                    grid[i + 4][j] == '#' and grid[i + 5][j] == '#':
+                return True
+    # check diagonal
+    for i in range(0, len(grid) - 5):
+        for j in range(0, len(grid) - 5):
+            if grid[i][j] == '#' and grid[i + 1][j + 1] == '#' and grid[i + 2][j + 2] == '#' and grid[i + 3][
+                j + 3] == '#' and grid[i + 4][j + 4] == '#' and grid[i + 5][j + 5] == '#':
+                return True
+    return False

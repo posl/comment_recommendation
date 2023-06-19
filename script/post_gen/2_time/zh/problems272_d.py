@@ -1,172 +1,129 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    n = int(input())
-    a = list(map(int,input().split()))
-    a.sort()
-    if a[0] == 0:
-        print(-1)
-        exit()
-    if n == 1:
-        print(-1)
-        exit()
-    for i in range(n-1):
-        if a[i] == a[i+1]:
-            print(a[i] * 2)
-            exit()
-    print(-1)
+    pass
 
 =======
 Suggestion 2
 
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[0] == 0:
-        print(-1)
-    else:
-        print(A[-1] + A[-2])
+def main():
+    N, M = map(int, input().split())
+    for i in range(N):
+        for j in range(N):
+            print(min(abs(i - k) + abs(j - l) for k in range(N) for l in range(N) if (k - i) * (k - i) + (l - j) * (l - j) == M), end=" ")
+        print()
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    max_even = -1
+    n,m = map(int,input().split())
+    ans = [[-1 for i in range(n)] for j in range(n)]
     for i in range(n):
-        for j in range(i+1, n):
-            if (a[i]+a[j])%2 == 0:
-                if max_even < a[i]+a[j]:
-                    max_even = a[i]+a[j]
-    print(max_even)
+        for j in range(n):
+            if i == 0 and j == 0:
+                ans[i][j] = 0
+            elif i == 0:
+                ans[i][j] = ans[i][j-1]+1
+            elif j == 0:
+                ans[i][j] = ans[i-1][j]+1
+            else:
+                ans[i][j] = min(ans[i-1][j],ans[i][j-1])+1
+    for i in range(n):
+        for j in range(n):
+            if ans[i][j] == -1:
+                print(ans[i][j],end=" ")
+            else:
+                print(ans[i][j]*2,end=" ")
+        print()
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.reverse()
+    n,m = map(int,input().split())
     for i in range(n):
-        for j in range(i+1, n):
-            if (a[i] + a[j])%2 == 0:
-                print(a[i]+a[j])
-                return
-    print(-1)
-    return
+        for j in range(n):
+            if i==j:
+                print(0,end=' ')
+            else:
+                print(1,end=' ')
+        print()
 
 =======
 Suggestion 5
 
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[N-1] % 2 == 0:
-        print(A[N-1])
-        return
-    else:
-        for i in range(N-1):
-            if A[i] % 2 == 0:
-                print(A[N-1] + A[i])
-                return
-    print(-1)
-    return
+def bfs(sx, sy):
+    dist = [[-1] * N for _ in range(N)]
+    dist[sx][sy] = 0
+    que = []
+    que.append((sx, sy))
+    while que:
+        x, y = que.pop(0)
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0<=nx<N and 0<=ny<N and dist[nx][ny]==-1:
+                dist[nx][ny] = dist[x][y] + 1
+                que.append((nx, ny))
+    return dist
 
-main()
+N, M = map(int, input().split())
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+dist = bfs(0, 0)
+for i in range(N):
+    for j in range(N):
+        if dist[i][j] == -1 or dist[i][j] > M:
+            print(-1, end=' ')
+        else:
+            print(dist[i][j], end=' ')
+    print()
 
 =======
 Suggestion 6
 
-def evenSum(n, a):
-    a.sort()
-    if a[0] == 0 and a[1] == 0:
-        return 0
-    elif a[0] == 0 and a[1] == 1:
-        return -1
-    elif a[0] == 0 and a[1] > 1:
-        return a[1] - 1
-    elif a[0] == 1:
-        return -1
-    else:
-        return a[0] + a[1]
+def main():
+    N, M = map(int, input().split())
+    for i in range(N):
+        for j in range(N):
+            if i == 0 and j == 0:
+                print(0, end=' ')
+            elif i == 0:
+                print(1, end=' ')
+            elif j == 0:
+                print(1, end=' ')
+            else:
+                print(2, end=' ')
+        print()
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    if a[-1] % 2 == 0:
-        print(a[-1])
-    else:
-        for i in range(n-1, -1, -1):
-            for j in range(i-1, -1, -1):
-                if (a[i] + a[j]) % 2 == 0:
-                    print(a[i] + a[j])
-                    break
-                if j == 0:
-                    print(-1)
-                    break
-            if a[i] % 2 == 0:
-                break
+def get_nearest_square_number(n):
+    for i in range(1, n+1):
+        if i**2 > n:
+            return i-1
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    if a[0] % 2 == 0:
-        print(a[0])
-    elif a[1] % 2 == 0:
-        print(a[1])
-    elif a[0] + a[1] % 2 == 0:
-        print(a[0] + a[1])
-    else:
-        print(-1)
-
-=======
-Suggestion 9
-
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.reverse()
+    n,m = map(int,input().split())
+    m = m**0.5
+    m = int(m)
+    #print(m)
     for i in range(n):
-        for j in range(i+1,n):
-            if (a[i]+a[j])%2 == 0:
-                print(a[i]+a[j])
-                return
-    print(-1)
-main()
-
-=======
-Suggestion 10
-
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[-1] % 2 == 0:
-        print(A[-1])
-        return
-    for i in range(N-1):
-        if A[i] % 2 == 0:
-            print(A[i])
-            return
-        for j in range(i+1, N):
-            if (A[i] + A[j]) % 2 == 0:
-                print(A[i]+A[j])
-                return
-    print(-1)
-    return
+        for j in range(n):
+            if i==0 and j==0:
+                print(0,end=' ')
+            elif i==0:
+                print(j,end=' ')
+            elif j==0:
+                print(i,end=' ')
+            else:
+                print(m,end=' ')
+        print()

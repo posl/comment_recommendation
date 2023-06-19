@@ -1,159 +1,135 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    N = int(input())
-    S = input()
-    if N == 1:
-        print(1)
-        return
-    slime = []
-    for i in range(N):
-        if i == 0:
-            slime.append(S[i])
-        elif slime[-1] != S[i]:
-            slime.append(S[i])
-    print(len(slime))
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    ans += 1
+    print(ans)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    s = input()
-    ans = 1
-    for i in range(1,n):
-        if s[i] != s[i-1]:
-            ans += 1
-    print(ans)
+def triangle(n, l):
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                a = l[i]
+                b = l[j]
+                c = l[k]
+                if a < b + c and b < c + a and c < a + b:
+                    count += 1
+    return count
 
 =======
 Suggestion 3
 
-def solve():
-    n = int(input())
-    s = input()
-    count = 1
-    for i in range(1, n):
-        if s[i] != s[i-1]:
-            count += 1
-    print(count)
+def isTriangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    return False
 
 =======
 Suggestion 4
 
 def main():
-    # 读取输入
-    N = int(input())
-    S = input()
-    # print('N=', N)
-    # print('S=', S)
-    # 统计粘液数量
-    slime_count = 1
-    for i in range(1, N):
-        if S[i] != S[i-1]:
-            slime_count += 1
-    # 输出结果
-    print(slime_count)
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    cnt += 1
+    print(cnt)
 
 =======
 Suggestion 5
 
-def main():
-    N = int(input())
-    S = input()
-    cnt = 1
-    for i in range(1, N):
-        if S[i] != S[i-1]:
-            cnt += 1
-    print(cnt)
+def triangle_count(n, l):
+    l.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if l[i] + l[j] > l[k]:
+                    count += 1
+                else:
+                    break
+    return count
 
 =======
 Suggestion 6
 
-def main():
-    N = int(input())
-    S = input()
-    if N == 1:
-        print(1)
-        return
-    slime = []
-    for i in range(N):
-        slime.append(S[i])
-    i = 0
-    while i < len(slime)-1:
-        if slime[i] == slime[i+1]:
-            del slime[i+1]
-        else:
-            i += 1
-    print(len(slime))
-main()
+def triangle_num(num_list):
+    num_list.sort()
+    num_list.reverse()
+    #print(num_list)
+    count = 0
+    for i in range(len(num_list)):
+        for j in range(i+1, len(num_list)):
+            for k in range(j+1, len(num_list)):
+                if num_list[i] < num_list[j] + num_list[k]:
+                    count += 1
+                else:
+                    break
+    return count
 
 =======
 Suggestion 7
 
-def mergeSlime(slime):
-    #merge
-    i = 0
-    while i < len(slime) - 1:
-        if slime[i] == slime[i + 1]:
-            slime[i] = slime[i] + slime[i + 1]
-            slime.pop(i + 1)
-        else:
-            i += 1
-    #print(slime)
-    #merge again
-    i = 0
-    while i < len(slime) - 1:
-        if slime[i][-1] == slime[i + 1][0]:
-            slime[i] = slime[i] + slime[i + 1]
-            slime.pop(i + 1)
-        else:
-            i += 1
-    #print(slime)
-    return slime
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    ans = 0
+    for i in range(n - 2):
+        for j in range(i + 1, n - 1):
+            for k in range(j + 1, n):
+                if l[i] + l[j] > l[k]:
+                    ans += 1
+                else:
+                    break
+    print(ans)
 
 =======
 Suggestion 8
 
-def slime(s):
-    if len(s) == 1:
-        return 1
-    else:
-        i = 0
-        while i < len(s):
-            if i == len(s) - 1:
-                break
-            if s[i] == s[i + 1]:
-                s = s[:i] + s[i + 2:]
-                i = 0
-            else:
-                i += 1
-        return len(s)
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k] and L[j] + L[k] > L[i] and L[k] + L[i] > L[j]:
+                    ans += 1
+    print(ans)
 
 =======
 Suggestion 9
 
 def main():
-    N = int(input())
-    S = input()
-    count = 1
-    for i in range(N-1):
-        if S[i] != S[i+1]:
-            count += 1
-    print(count)
+    n = int(input())
+    l = list(map(int, input().split()))
 
-=======
-Suggestion 10
-
-def solution():
-    N = int(input())
-    S = input()
-    cnt = 1
-    for i in range(1, N):
-        if S[i-1] != S[i]:
-            cnt += 1
-    print(cnt)
-solution()
+    l.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k] and l[j] + l[k] > l[i] and l[k] + l[i] > l[j]:
+                    ans += 1
+    print(ans)

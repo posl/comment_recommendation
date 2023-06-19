@@ -1,115 +1,104 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort()
-    print(sum(H[:N - K]))
+def solve(H):
+    if H == 1:
+        return 1
+    else:
+        return 2 * solve(H // 2) + 1
 
 =======
 Suggestion 2
 
-def main():
-    n,k = map(int,input().split())
-    h = list(map(int,input().split()))
-    h.sort(reverse=True)
-    ans = 0
-    if k >= n:
-        print(ans)
+def func(h):
+    if h == 1:
+        return 1
     else:
-        for i in range(k,n):
-            ans += h[i]
-        print(ans)
+        return 2*func(h//2) + 1
+h = int(input())
+print(func(h))
 
 =======
 Suggestion 3
 
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort()
-    if K >= N:
-        print(0)
+def attack(num):
+    if num == 1:
+        return 1
+    elif num % 2 == 0:
+        return 2 * attack(num / 2) + 1
     else:
-        print(sum(H[:N-K]))
+        return 2 * attack((num - 1) / 2) + 1
+
+H = int(input())
+print(attack(H))
 
 =======
 Suggestion 4
 
-def attack_num(h, k):
-    h.sort(reverse=True)
-    return sum(h[k:])
+def solve(h):
+    if h == 1:
+        return 1
+    else:
+        return 2 * solve(h // 2) + 1
+
+print(solve(int(input())))
 
 =======
 Suggestion 5
 
-def main():
-    n, k = map(int, input().split())
-    h = list(map(int, input().split()))
-    h.sort()
-    total = sum(h)
-    if k >= n:
-        print(0)
+def cal_attack_times(hp):
+    if hp == 1:
+        return 1
     else:
-        print(total - sum(h[-k-1:]))
+        return 2 * cal_attack_times(hp // 2) + 1
 
 =======
 Suggestion 6
 
 def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort(reverse=True)
-    print(sum(H[K:]))
+    H = int(input())
+    count = 0
+    while H > 0:
+        count += 1
+        H //= 2
+    print(2**count - 1)
 
 =======
 Suggestion 7
 
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
+def func(h):
+    if h == 1:
+        return 1
+    elif h == 2:
+        return 3
+    else:
+        return 2 * func(h // 2) + 1
 
-    H.sort(reverse=True)
-    H = H[K:]
-    print(sum(H))
+h = int(input())
+print(func(h))
 
 =======
 Suggestion 8
 
-def main():
-    n, k = map(int, input().split())
-    h = list(map(int, input().split()))
-    h.sort()
-    print(sum(h[:n-k]))
+def get_min_attack_times(h):
+    if h == 1:
+        return 1
+    elif h == 2:
+        return 3
+    else:
+        i = 0
+        while h > 0:
+            i += 1
+            h = h // 2
+        return 2 ** i - 1
 
 =======
 Suggestion 9
 
-def main():
-    N,K=map(int,input().split())
-    H=list(map(int,input().split()))
-
-    H.sort(reverse=True)
-    #print(H)
-
-    if K>=N:
-        print(0)
+def solve(h):
+    if h == 1:
+        return 1
     else:
-        print(sum(H[K:]))
-
-main()
-
-=======
-Suggestion 10
-
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort(reverse=True)
-    ans = 0
-    for i in range(K, N):
-        ans += H[i]
-    print(ans)
+        return 1 + 2 * solve(h // 2)

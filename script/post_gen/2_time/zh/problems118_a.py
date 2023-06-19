@@ -1,152 +1,89 @@
-Synthesizing 9/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    f = [0] * 41
-    for i in range(41):
-        for j in range(n):
-            if a[j] & (1 << i):
-                f[i] += 1
-    ans = 0
-    for i in range(40, -1, -1):
-        if ans + (1 << i) <= k:
-            ans += (1 << i) * max(f[i], n - f[i])
-        else:
-            ans += (1 << i) * f[i]
-    print(ans)
+    a,b = map(int,input().split())
+    if b%a == 0:
+        print(a+b)
+    else:
+        print(b-a)
 
 =======
 Suggestion 2
 
 def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort(reverse=True)
-    K = bin(K)[2:]
-    K = '0' * (len(A) - len(K)) + K
-    ans = 0
-    for i in range(len(A)):
-        if K[i] == '1':
-            ans += A[i]
-        else:
-            ans += A[i] // 2
-    print(ans)
-main()
+    A,B = map(int,input().split())
+    if B%A==0:
+        print(A+B)
+    else:
+        print(B-A)
 
 =======
 Suggestion 3
 
-def xor_sum(a, b):
-    if a == b:
-        return a
-    if b - a == 1:
-        return a ^ b
-    if a % 2 == 0 and b % 2 == 0:
-        return xor_sum(a // 2, b // 2) * 2
-    if a % 2 == 0 and b % 2 == 1:
-        return xor_sum(a // 2, b // 2) * 2 + 1
-    if a % 2 == 1 and b % 2 == 0:
-        return xor_sum((a + 1) // 2, b // 2) * 2
-    if a % 2 == 1 and b % 2 == 1:
-        return xor_sum((a + 1) // 2, b // 2) * 2 + 1
-
-n, k = map(int, input().split())
-a = list(map(int, input().split()))
-
-ans = 0
-for i in range(41, -1, -1):
-    count = 0
-    for j in range(n):
-        if a[j] >> i & 1:
-            count += 1
-    if count <= n // 2:
-        continue
-    if ans + (1 << i) <= k:
-        ans += 1 << i
-
-s = 0
-for i in range(n):
-    s += ans ^ a[i]
-print(s)
+def problem118_a():
+    a,b = map(int, input().split())
+    if b%a == 0:
+        print(a+b)
+    else:
+        print(b-a)
 
 =======
 Suggestion 4
 
-def solve():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    bit = 0
-    for i in range(40, -1, -1):
-        cnt = 0
-        for a in A:
-            if a >> i & 1:
-                cnt += 1
-        if cnt <= N - cnt and bit + (1 << i) <= K:
-            bit += 1 << i
-    ans = 0
-    for a in A:
-        ans += bit ^ a
-    print(ans)
+def main():
+    # 读取输入
+    # 读取一行
+    line = input()
+    # 读取一行，分割成两个变量
+    a, b = map(int, input().split())
+    # 读取一行，分割成两个变量，转换成整数
+    c, d = map(int, input().split())
+
+    # 打印输出
+    print(a + b)
+    print(c + d)
 
 =======
 Suggestion 5
 
-def f(x, a):
-    return sum([x ^ i for i in a])
+def main():
+    # 读取输入
+    a,b = map(int,input().split())
+    # 处理
+    if b % a == 0:
+        print(a+b)
+    else:
+        print(b-a)
 
 =======
 Suggestion 6
 
-def f(x, a_list):
-    res = 0
-    for a in a_list:
-        res += x ^ a
-    return res
+def main():
+    A,B = map(int,input().split())
+    if A % B == 0:
+        print(A+B)
+    else:
+        print(B-A)
 
 =======
 Suggestion 7
 
-def f(x, a):
-    return sum([x ^ ai for ai in a])
+def fun():
+    A,B = map(int,input().split())
+    if B % A == 0:
+        print(A+B)
+    else:
+        print(B-A)
 
 =======
 Suggestion 8
 
-def f(x, arr):
-    sum = 0
-    for i in range(len(arr)):
-        sum += x ^ arr[i]
-    return sum
-
-=======
-Suggestion 9
-
-def xor(a,b):
-    a1 = bin(a)[2:]
-    b1 = bin(b)[2:]
-    if len(a1) > len(b1):
-        b1 = '0'*(len(a1)-len(b1))+b1
+def problems118_a():
+    a,b = map(int,input().split())
+    if b%a==0:
+        print(a+b)
     else:
-        a1 = '0'*(len(b1)-len(a1))+a1
-    result = ''
-    for i in range(len(a1)):
-        if a1[i] == b1[i]:
-            result += '0'
-        else:
-            result += '1'
-    return int(result,2)
-
-N,K = map(int,input().strip().split())
-A = list(map(int,input().strip().split()))
-result = 0
-for i in range(K+1):
-    temp = 0
-    for j in range(N):
-        temp += xor(i,A[j])
-    if temp > result:
-        result = temp
-print(result)
+        print(b-a)

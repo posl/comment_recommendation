@@ -4,153 +4,234 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N = int(input())
-    H = list(map(int, input().split()))
-    for i in range(N-1):
-        if H[i] > H[i+1]:
-            H[i] -= 1
-    for i in range(N-1):
-        if H[i] > H[i+1]:
-            print("No")
-            break
-    else:
-        print("Yes")
+    s = input()
+    n = len(s)
+    ans = [0] * n
+    for i in range(n):
+        if s[i] == 'L':
+            ans[i - 1] += (n - i + 1) // 2
+            ans[i] += (n - i) // 2
+        else:
+            ans[i + 1] += (i + 2) // 2
+            ans[i] += (i + 1) // 2
+    print(' '.join(map(str, ans)))
 
 =======
 Suggestion 2
 
-def check(heights):
-    heights.sort()
-    for i in range(len(heights)-1):
-        if heights[i+1] - heights[i] > 1:
-            return False
-    return True
+def main():
+    s = input()
+    s = s.replace('RL','R L')
+    s = s.split(' ')
+    ans = []
+    for i in range(len(s)):
+        ans.append(0)
+    for i in range(len(s)):
+        if s[i] == 'R':
+            ans[i+1] += 1
+        else:
+            ans[i-1] += 1
+    print(' '.join(map(str,ans)))
 
 =======
 Suggestion 3
 
 def main():
-    #n = 5
-    #h = [1, 2, 1, 1, 3]
-    #n = 4
-    #h = [1, 3, 2, 1]
-    #n = 5
-    #h = [1, 2, 3, 4, 5]
-    #n = 1
-    #h = [1000000000]
-    n = int(input())
-    h = list(map(int, input().split()))
-    h.reverse()
-    for i in range(n - 1):
-        if h[i] < h[i + 1]:
-            h[i + 1] = h[i + 1] - 1
-        if h[i] < h[i + 1]:
-            print("No")
-            return
-    print("Yes")
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    for i in range(N-1):
+        if S[i] == 'R':
+            if S[i+1] == 'R':
+                ans[i+1] += ans[i] + 1
+                ans[i] = 0
+        else:
+            ans[i+1] += ans[i]
+    for i in range(N-1, 0, -1):
+        if S[i] == 'L':
+            if S[i-1] == 'L':
+                ans[i-1] += ans[i] + 1
+                ans[i] = 0
+        else:
+            ans[i-1] += ans[i]
+    print(' '.join(map(str, ans)))
+
+main()
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    for i in range(n-1):
-        if h[i] > h[i+1]:
-            h[i] -= 1
-    for i in range(n-1):
-        if h[i] > h[i+1]:
-            print("No")
-            return
-    print("Yes")
-main()
+    input_str = input()
+    input_len = len(input_str)
+    output_list = [0] * input_len
+    
+    #print(input_str)
+    #print(input_len)
+    #print(output_list)
+    
+    #print(input_str[0])
+    #print(input_str[1])
+    #print(input_str[2])
+    
+    #print(input_str[input_len-3])
+    #print(input_str[input_len-2])
+    #print(input_str[input_len-1])
+    
+    for i in range(input_len):
+        #print(i)
+        if input_str[i] == 'R':
+            for j in range(i+1,input_len):
+                if input_str[j] == 'L':
+                    output_list[j-1] += 1
+                    break
+        elif input_str[i] == 'L':
+            for j in range(i,0,-1):
+                if input_str[j-1] == 'R':
+                    output_list[j] += 1
+                    break
+        else:
+            print('error')
+    
+    #print(output_list)
+    
+    for i in range(input_len):
+        print(output_list[i],end=' ')
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    for i in range(n-1):
-        if a[i] < a[i+1]:
-            a[i+1] -= 1
-        elif a[i] > a[i+1]:
-            print('No')
-            return
-    print('Yes')
+    s = input()
+    n = len(s)
+    ans = [0] * n
+    l = 0
+    r = 0
+    for i in range(n):
+        if s[i] == 'L':
+            l = i
+        else:
+            r = i
+        if s[i] == 'R':
+            ans[r] += 1
+        else:
+            ans[l] += 1
+    print(' '.join(map(str, ans)))
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    heights = [int(i) for i in input().split()]
-    for i in range(n-1):
-        if heights[i] > heights[i+1]:
-            heights[i] -= 1
-    for i in range(n-1):
-        if heights[i] > heights[i+1]:
-            print("No")
-            return
-    print("Yes")
-    return
+def solve():
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    for i in range(N):
+        if S[i] == 'R':
+            for j in range(i + 1, N):
+                if S[j] == 'L':
+                    if (j - i) % 2 == 0:
+                        ans[j] += 1
+                    else:
+                        ans[j - 1] += 1
+                    break
+        else:
+            for j in range(i - 1, -1, -1):
+                if S[j] == 'R':
+                    if (i - j) % 2 == 0:
+                        ans[j] += 1
+                    else:
+                        ans[j + 1] += 1
+                    break
+    print(' '.join(map(str, ans)))
 
 =======
 Suggestion 7
 
-def solve(n, h):
-    for i in range(n-1):
-        if h[i+1] > h[i]:
-            h[i+1] -= 1
-        elif h[i+1] < h[i]:
-            return False
-    return True
-
-n = int(input())
-h = list(map(int, input().split()))
-print('Yes' if solve(n, h) else 'No')
+def main():
+    s = input()
+    n = len(s)
+    ans = [0]*n
+    cnt = 0
+    for i in range(n):
+        if s[i] == 'R':
+            cnt += 1
+        else:
+            ans[i] += cnt // 2 + (cnt + 1) // 2
+            ans[i - 1] += cnt // 2
+            cnt = 0
+    cnt = 0
+    for i in range(n - 1, -1, -1):
+        if s[i] == 'L':
+            cnt += 1
+        else:
+            ans[i] += cnt // 2 + (cnt + 1) // 2
+            ans[i + 1] += cnt // 2
+            cnt = 0
+    print(' '.join(map(str, ans)))
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    heights = input().split()
-    heights = [int(height) for height in heights]
-    for i in range(1,n):
-        if heights[i] - heights[i-1] > 1:
-            print("No")
-            exit()
-        elif heights[i] - heights[i-1] == 1:
-            heights[i] -= 1
-    print("Yes")
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    for i in range(N-1):
+        if S[i] == 'R' and S[i+1] == 'L':
+            ans[i] += 1
+            ans[i+1] += 1
+    for i in range(N):
+        if S[i] == 'R':
+            if ans[i] % 2 == 0:
+                ans[i+1] += ans[i] // 2
+                ans[i] = 0
+            else:
+                ans[i+1] += ans[i] // 2
+                ans[i] = 1
+        else:
+            if ans[i] % 2 == 0:
+                ans[i-1] += ans[i] // 2
+                ans[i] = 0
+            else:
+                ans[i-1] += ans[i] // 2
+                ans[i] = 1
+    print(" ".join(map(str, ans)))
 
 =======
 Suggestion 9
 
 def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    for i in range(1, n):
-        if h[i] - h[i - 1] >= 2:
-            print("No")
-            return
-    print("Yes")
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    for i in range(N):
+        if S[i] == 'R':
+            if S[i+1] == 'L':
+                if (i+1) % 2 == 0:
+                    ans[i] += 1
+                else:
+                    ans[i+1] += 1
+            else:
+                if (i+1) % 2 == 0:
+                    ans[i] += 1
+                else:
+                    ans[i+1] += 1
+    print(*ans)
 
 =======
 Suggestion 10
 
 def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-
-    for i in range(n - 1):
-        if h[i] > h[i + 1]:
-            h[i] -= 1
-        elif h[i] == h[i + 1]:
-            pass
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    for i in range(N):
+        if S[i] == 'R':
+            # Rの左側にいる人数
+            ans[i+1] += ans[i]
+            ans[i] = 0
         else:
-            print('No')
-            break
-    else:
-        print('Yes')
+            # Lの右側にいる人数
+            ans[i-1] += ans[i]
+            ans[i] = 0
+    print(' '.join([str(x) for x in ans]))

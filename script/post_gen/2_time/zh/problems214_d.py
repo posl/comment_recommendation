@@ -3,189 +3,149 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    return
+def solve():
+    pass
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    t = list(map(int, input().split()))
-    s_t = list(zip(s, t))
-    s_t.sort(key=lambda x: x[1])
-    s_t.sort(key=lambda x: x[0])
-    # print(s_t)
-    for i in range(n):
-        if i == 0:
-            print(s_t[i][1])
-        else:
-            if s_t[i][0] == s_t[i - 1][0]:
-                print(s_t[i - 1][1])
-            else:
-                print(s_t[i][1])
+    pass
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    t = list(map(int, input().split()))
-
-    # print(n)
-    # print(s)
-    # print(t)
-
-    # print(len(s))
-    # print(len(t))
-    # print(len(s) == len(t))
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0], t[0])
-    # print(s[1], t[1])
-    # print(s[2], t[2])
-
-    # for i in range(n):
-    #     print(s[i], t[i])
-
-    # print(s[0],
+    N = int(input())
+    u = [0] * (N - 1)
+    v = [0] * (N - 1)
+    w = [0] * (N - 1)
+    for i in range(N - 1):
+        u[i], v[i], w[i] = map(int, input().split())
+    print(solve(N, u, v, w))
 
 =======
 Suggestion 4
 
 def main():
-    pass
+    N = int(input())
+    data = [list(map(int, input().split())) for _ in range(N - 1)]
+    data.sort(key=lambda x: x[2])
+    # print(data)
+    # print(N)
+    # print(data)
+    # print(data[0][1])
+    # print(data[0][2])
+    # print(data[0][0])
+    # print(data[1][1])
+    # print(data[1][2])
+    # print(data[1][0])
+    # print(data[2][1])
+    # print(data[2][2])
+    # print(data[2][0])
+    # print(data[3][1])
+    # print(data[3][2])
+    # print(data[3][0])
+    # print(data[4][1])
+    # print(data[4][2])
+    # print(data[4][0])
+    # print(data[5][1])
+    # print(data[5][2])
+    # print(data[5][0])
+    # print(data[6][1])
+    # print(data[6][2])
+    # print(data[6][0])
+    # print(data[7][1])
+    # print(data[7][2])
+    # print(data[7][0])
+    # print(data[8][1])
+    # print(data[8][2])
+    # print(data[8][0])
+    # print(data[9][1])
+    # print(data[9][2])
+    # print(data[9][0])
+    # print(data[10][1])
+    # print(data[10][2])
+    # print(data[10][0])
+    # print(data[11][1])
+    # print(data[11][2])
+    # print(data[11][0])
+    # print(data[12][1])
+    # print(data[12][2])
+    # print(data[12][0])
+    # print(data[13][1])
+    # print(data[13][2])
+    # print(data[13][0])
+    # print(data[14][1])
+    # print(data[14][2])
+    # print(data[14][0])
+    # print(data[15][1])
+    # print(data[15][2])
+    # print(data[15][0])
+    # print(data[16][1])
+    # print(data
 
 =======
 Suggestion 5
 
 def main():
-    N = int(input())
-    S = list(map(int, input().split()))
-    T = list(map(int, input().split()))
-    ans = [0] * N
-    for i in range(N):
-        if i == 0:
-            ans[i] = T[i]
-        else:
-            ans[i] = min(ans[i - 1] + S[i - 1], T[i])
-    for i in range(N):
-        print(ans[i])
+    n = int(input())
+    edges = []
+    for _ in range(n-1):
+        u,v,w = map(int,input().split())
+        edges.append((w,u,v))
+    edges.sort()
+    uf = UnionFind(n)
+    ans = 0
+    for w,u,v in edges:
+        ans += w * uf.size(u) * uf.size(v)
+        uf.union(u,v)
+    print(ans)
 
 =======
 Suggestion 6
 
-def main():
+def solve():
     n = int(input())
-    s = list(map(int, input().split()))
-    t = list(map(int, input().split()))
-    ans = [0] * n
-    for i in range(n):
-        ans[i] = t[i]
-    for i in range(n):
-        if i == 0:
-            if t[i] + s[i] < t[n-1]:
-                ans[i] = t[i] + s[i]
+    edges = []
+    for i in range(n-1):
+        u, v, w = map(int, input().split())
+        edges.append((u, v, w))
+
+    edges.sort(key=lambda x: x[2], reverse=True)
+
+    parents = [i for i in range(n+1)]
+    ranks = [0 for i in range(n+1)]
+
+    def find(x):
+        if parents[x] == x:
+            return x
         else:
-            if t[i] + s[i] < t[i-1]:
-                ans[i] = t[i] + s[i]
-    for i in range(n):
-        print(ans[i])
-main()
+            return find(parents[x])
 
-=======
-Suggestion 7
+    def union(x, y):
+        x_root = find(x)
+        y_root = find(y)
 
-def main():
-    print("hello world!")
+        if x_root == y_root:
+            return False
 
-=======
-Suggestion 8
-
-def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    t = list(map(int, input().split()))
-    ans = [0] * n
-    for i in range(n):
-        if i == 0:
-            ans[i] = t[i]
+        if ranks[x_root] > ranks[y_root]:
+            parents[y_root] = x_root
+        elif ranks[y_root] > ranks[x_root]:
+            parents[x_root] = y_root
         else:
-            ans[i] = min(ans[i-1] + s[i-1], t[i])
-    for i in range(n):
-        print(ans[i])
+            parents[y_root] = x_root
+            ranks[x_root] += 1
+        return True
 
-=======
-Suggestion 9
+    def same(x, y):
+        return find(x) == find(y)
 
-def solve(n, s, t):
-    # t[i] = i-th person will give a gem at time t[i]
-    # s[i] = i-th person will give a gem to i+1-th person after s[i] time
-    # s[n] = s[0]
-    # t[n] = t[0]
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[0] = min(t[0], t[n-1] + s[n-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
-    # t[i] = min(t[i], t[i-1] + s[i-1])
+    num = [1 for i in range(n+1)]
+    res = 0
+    for u, v, w in edges:
+        res += w * num[find(u)] * num[find(v)]
+        union(u, v)
+        num[find(u)] += num[find(v)]
+    print(res)

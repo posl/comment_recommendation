@@ -4,170 +4,245 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n,m,c = map(int,input().split())
-    b = list(map(int,input().split()))
-    a = [list(map(int,input().split())) for _ in range(n)]
-    count = 0
+    n,m = map(int,input().split())
+    l = []
     for i in range(n):
-        sum = 0
-        for j in range(m):
-            sum += a[i][j] * b[j]
-        if sum + c > 0:
-            count += 1
-    print(count)
+        l.append(list(map(int,input().split())))
+    l.sort()
+    sum = 0
+    for i in range(n):
+        if m >= l[i][1]:
+            sum += l[i][0] * l[i][1]
+            m -= l[i][1]
+        else:
+            sum += l[i][0] * m
+            break
+    print(sum)
 
 =======
 Suggestion 2
 
-def solve():
-    N, M, C = map(int, input().split())
-    B = list(map(int, input().split()))
-    A = [list(map(int, input().split())) for _ in range(N)]
-
-    cnt = 0
-    for i in range(N):
-        sum = C
-        for j in range(M):
-            sum += A[i][j] * B[j]
-        if sum > 0:
-            cnt += 1
-    print(cnt)
+def main():
+    n,m = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort()
+    ans = 0
+    for a,b in ab:
+        ans += a*b
+        m -= b
+        if m <= 0:
+            ans -= m*a
+            break
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    N, M, C = map(int, input().split())
-    B = list(map(int, input().split()))
-    A = []
+    N,M=map(int,input().split())
+    AB=[list(map(int,input().split())) for _ in range(N)]
+    AB.sort()
+    ans=0
     for i in range(N):
-        A.append(list(map(int, input().split())))
-    ans = 0
-    for i in range(N):
-        tmp = 0
-        for j in range(M):
-            tmp += A[i][j] * B[j]
-        if tmp + C > 0:
-            ans += 1
+        if M>AB[i][1]:
+            ans+=AB[i][0]*AB[i][1]
+            M-=AB[i][1]
+        else:
+            ans+=AB[i][0]*M
+            break
     print(ans)
+main()
 
 =======
 Suggestion 4
 
-def main():
-    N,M,C = map(int,input().split())
-    B = list(map(int,input().split()))
-    A = []
-    for i in range(N):
-        A.append(list(map(int,input().split())))
-    count = 0
-    for i in range(N):
-        sum = 0
-        for j in range(M):
-            sum += A[i][j]*B[j]
-        if sum + C > 0:
-            count += 1
-    print(count)
+def readinput():
+    n,m = map(int,input().split())
+    ab=[]
+    for _ in range(n):
+        a,b = map(int,input().split())
+        ab.append([a,b])
+    return n,m,ab
 
 =======
 Suggestion 5
 
-def solve():
-    N, M, C = list(map(int, input().split()))
-    B = list(map(int, input().split()))
+def main():
+    n, m = map(int, input().split())
+    arr = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        arr.append((a, b))
+    arr.sort(key=lambda x: x[0])
 
-    A = []
-    for i in range(N):
-        A.append(list(map(int, input().split())))
-
-    count = 0
-    for a in A:
-        sum = C
-        for i in range(M):
-            sum += a[i] * B[i]
-        if sum > 0:
-            count += 1
-
-    print(count)
-
-solve()
+    ans = 0
+    for i in range(n):
+        if m <= 0:
+            break
+        a, b = arr[i]
+        if m >= b:
+            ans += a * b
+            m -= b
+        else:
+            ans += a * m
+            m = 0
+    print(ans)
 
 =======
 Suggestion 6
 
 def main():
-    n, m, c = map(int, input().split())
-    b = list(map(int, input().split()))
-    a = [list(map(int, input().split())) for _ in range(n)]
-
-    ans = 0
+    n, m = map(int, input().split())
+    shops = []
     for i in range(n):
-        tmp = 0
-        for j in range(m):
-            tmp += a[i][j] * b[j]
-        if tmp + c > 0:
-            ans += 1
-    print(ans)
+        a, b = map(int, input().split())
+        shops.append((a, b))
+    shops.sort(key=lambda x: x[0])
+    count = 0
+    money = 0
+    for i in range(n):
+        if count + shops[i][1] < m:
+            money += shops[i][0] * shops[i][1]
+            count += shops[i][1]
+        else:
+            money += shops[i][0] * (m - count)
+            count = m
+            break
+    print(money)
 
 =======
 Suggestion 7
 
-def solve():
-    N, M, C = map(int, input().split())
-    B = list(map(int, input().split()))
-    A = [list(map(int, input().split())) for _ in range(N)]
-
-    ans = 0
+def main():
+    N, M = map(int, input().split())
+    # print(N, M)
+    A = []
+    B = []
     for i in range(N):
-        tmp = 0
-        for j in range(M):
-            tmp += A[i][j] * B[j]
-        if tmp + C > 0:
-            ans += 1
-    print(ans)
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # print(A, B)
+    # print('------')
+    # print(sorted(B))
+    # print('------')
+    # print(sorted(B, reverse=True))
+    # print('------')
+    # print(sorted(zip(B, A)))
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True))
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0][0])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0][1])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0][0] * sorted(zip(B, A), reverse=True)[:M][0][1])
+    # print('------')
+    # print(sum([sorted(zip(B, A), reverse=True)[:M][i][0] * sorted(zip(B, A), reverse=True)[:M][i][1] for i in range(M)]))
+    # print('------')
+    print(sum([sorted(zip(B, A), reverse=True)[:M][i][0] * sorted(zip(B, A), reverse=True)[:M][i][1] for i in range(M)]))
 
 =======
 Suggestion 8
 
 def main():
-    N,M,C = map(int,input().split())
-    B = list(map(int,input().split()))
-    A = [list(map(int,input().split())) for i in range(N)]
-    count = 0
-    for i in range(N):
-        sum = 0
-        for j in range(M):
-            sum += A[i][j]*B[j]
-        if sum + C > 0:
-            count += 1
-    print(count)
+    n,m = [int(x) for x in input().split()]
+    a = []
+    b = []
+    for i in range(n):
+        a1,b1 = [int(x) for x in input().split()]
+        a.append(a1)
+        b.append(b1)
+    # print(a)
+    # print(b)
+    # print(n,m)
+    c = list(zip(a,b))
+    # print(c)
+    c.sort(key=lambda x:x[0])
+    # print(c)
+    sum = 0
+    i = 0
+    while m > 0:
+        if m >= c[i][1]:
+            sum += c[i][0] * c[i][1]
+            m -= c[i][1]
+        else:
+            sum += c[i][0] * m
+            m -= m
+        i += 1
+    print(sum)
 
 =======
 Suggestion 9
 
-def main():
-    n, m, c = map(int, input().split())
-    b = list(map(int, input().split()))
-    a = [list(map(int, input().split())) for _ in range(n)]
-    cnt = 0
+def get_input():
+    n,m = map(int, input().split())
+    ab = []
     for i in range(n):
-        if sum([a[i][j] * b[j] for j in range(m)]) + c > 0:
-            cnt += 1
-    print(cnt)
+        ab.append(list(map(int, input().split())))
+    return n,m,ab
 
 =======
 Suggestion 10
 
-def solve():
-    N,M,C = map(int,input().split())
-    B = list(map(int,input().split()))
-    A = [list(map(int,input().split())) for _ in range(N)]
-    cnt = 0
-    for i in range(N):
-        tmp = 0
-        for j in range(M):
-            tmp += A[i][j] * B[j]
-        tmp += C
-        if tmp > 0:
-            cnt += 1
-    print(cnt)
+def main():
+    n, m = map(int, input().split())
+    #print(n, m)
+    #print(type(n))
+    #print(type(m))
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    #print(a)
+    #print(b)
+    #print(type(a))
+    #print(type(b))
+    #print(sum(b))
+    if sum(b) <= m:
+        print(sum([a[i] * b[i] for i in range(n)]))
+    else:
+        b_a = list(zip(a, b))
+        b_a.sort()
+        #print(b_a)
+        #print(type(b_a))
+        #print(b_a[0][0])
+        #print(b_a[0][1])
+        #print(b_a[1][0])
+        #print(b_a[1][1])
+        #print(b_a[2][0])
+        #print(b_a[2][1])
+        #print(b_a[3][0])
+        #print(b_a[3][1])
+        #print(b_a[4][0])
+        #print(b_a[4][1])
+        #print(b_a[5][0])
+        #print(b_a[5][1])
+        #print(b_a[6][0])
+        #print(b_a[6][1])
+        #print(b_a[7][0])
+        #print(b_a[7][1])
+        #print(b_a[8][0])
+        #print(b_a[8][1])
+        #print(b_a[9][0])
+        #print(b_a[9][1])
+        #print(b_a[10][0])
+        #print(b_a[10][1])
+        #print(b_a[11][0])
+        #print(b_a[11][1])
+        #print(b_a[12][0])
+        #print(b_a[12][1])
+        #print(b_a[13][0])
+        #print(b_a[13][1])
+        #print(b_a[14][0])
+        #print(b_a[14][1])
+        #print(b_a[15][0])
+        #print(b_a[15][1])
+        #print(b_a[16][0])
+        #print(b_a[16][1])

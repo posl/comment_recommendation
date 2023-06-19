@@ -6,34 +6,26 @@ Suggestion 1
 def main():
     n = int(input())
     a = list(map(int, input().split()))
-    d = {}
-    for i in a:
-        if i in d:
-            d[i] += 1
-        else:
-            d[i] = 1
+    a.sort()
     ans = 0
-    for k in d:
-        ans += d[k] * (d[k] - 1) // 2
-    print(n * (n - 1) // 2 - ans)
+    for i in range(n):
+        if i + 1 > a[i]:
+            ans += a[i]
+        else:
+            ans += a[i] - (i + 1)
+    print(ans)
 
 =======
 Suggestion 2
 
-def main():
+def solve():
     n = int(input())
-    if n < 2 or n > 3 * 10 ** 5:
-        return
     a = list(map(int, input().split()))
-    if len(a) != n:
-        return
-    # print(a)
-    count = 0
-    for i in range(n - 1):
-        for j in range(i + 1, n):
-            if a[i] != a[j]:
-                count += 1
-    print(count)
+    ans = 0
+    for i in range(n // 2):
+        if a[i] != a[n - 1 - i]:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 3
@@ -41,13 +33,23 @@ Suggestion 3
 def main():
     N = int(input())
     A = list(map(int, input().split()))
-    ans = 0
-    # print(A)
-    for i in range(N):
-        for j in range(i+1, N):
-            if A[i] != A[j]:
-                ans += 1
-    print(ans)
+    A.sort()
+    count = 0
+    i = 0
+    while i < N:
+        j = i + 1
+        while j < N:
+            if A[i] == A[j]:
+                count += 1
+                i = j + 1
+                break
+            else:
+                j += 1
+        i += 1
+    if count % 2 == 0:
+        print(count)
+    else:
+        print(count - 1)
 
 =======
 Suggestion 4
@@ -55,92 +57,106 @@ Suggestion 4
 def solve():
     N = int(input())
     A = list(map(int, input().split()))
-    A.sort()
+    A = [0] + A + [0]
+    c = {}
+    for i in range(N + 2):
+        if A[i] not in c:
+            c[A[i]] = 1
+        else:
+            c[A[i]] += 1
     ans = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            if A[i] != A[j]:
-                ans += 1
+    for i in c:
+        ans += c[i] // 2
     print(ans)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    count = [0] * (10**9 + 1)
-    for i in a:
-        count[i] += 1
-    ans = 0
-    for i in range(10**9 + 1):
-        ans += count[i] * (count[i] - 1) // 2
-    print(ans)
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N // 2):
+        if A[i] != A[N - 1 - i]:
+            cnt += 1
+    print(cnt)
 
 =======
 Suggestion 6
-
-def solve(n, a):
-    ans = 0
-    cnt = [0] * (10 ** 6 + 1)
-    for i in range(n):
-        ans += i - cnt[a[i]]
-        cnt[a[i]] += 1
-    return ans
-
-=======
-Suggestion 7
-
-def problem206_c():
-    n = int(input())
-    a = list(map(int, input().split()))
-    d = {}
-    for i in a:
-        if i in d:
-            d[i] += 1
-        else:
-            d[i] = 1
-    ans = 0
-    for i in d:
-        ans += d[i] * (d[i] - 1) // 2
-    print(n * (n - 1) // 2 - ans)
-
-=======
-Suggestion 8
-
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    c = [0 for _ in range(10 ** 9 + 1)]
-    for i in range(n):
-        c[a[i]] += 1
-    ans = 0
-    for i in range(10 ** 9 + 1):
-        ans += c[i] * (c[i] - 1) // 2
-    print(ans)
-
-=======
-Suggestion 9
 
 def main():
     n = int(input())
     a = list(map(int, input().split()))
     a.sort()
-    print(a)
+    a.append(0)
     ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if a[i] != a[j]:
-                ans += 1
+    i = 0
+    while i < n:
+        if a[i] == a[i + 1]:
+            ans += 1
+            i += 2
+        else:
+            i += 1
     print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    i = 0
+    while i < n:
+        if i == n - 1:
+            ans += 1
+            i += 1
+        elif a[i] == a[i + 1]:
+            i += 2
+        else:
+            ans += 1
+            i += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_ = set(A)
+    ans = 0
+    for a in A_:
+        if A.count(a) % 2 == 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    cnt = 0
+    for i in range(N//2):
+        if A[i] != A[N-1-i]:
+            cnt += 1
+    print(cnt)
 
 =======
 Suggestion 10
 
-def count_pairs(N, A):
-    from collections import Counter
-    counter = Counter(A)
-    total = 0
-    for v in counter.values():
-        total += v * (v - 1) // 2
-    return total
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+    ans = 0
+    for k in d:
+        ans += d[k] - 1
+    print(ans)

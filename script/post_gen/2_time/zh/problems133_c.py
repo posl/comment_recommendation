@@ -1,107 +1,117 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def get_distance(d, x1, x2):
-    distance = 0
-    for i in range(d):
-        distance += (x1[i] - x2[i]) ** 2
-    return int(distance ** 0.5)
+def main():
+    l, r = map(int, input().split())
+
+    min = 2020
+    for i in range(l, r):
+        for j in range(i+1, r+1):
+            if min > (i*j)%2019:
+                min = (i*j)%2019
+    print(min)
 
 =======
 Suggestion 2
 
-def distance(x, y):
-    return sum((a-b)**2 for a, b in zip(x, y))**0.5
+def main():
+    L,R = map(int,input().split())
+    if R-L >= 2019:
+        print(0)
+    else:
+        ans = 2019
+        for i in range(L,R):
+            for j in range(i+1,R+1):
+                ans = min(ans,(i*j)%2019)
+        print(ans)
 
 =======
 Suggestion 3
 
-def get_distance(x, y):
-    distance = 0
-    for i in range(len(x)):
-        distance += (x[i] - y[i]) ** 2
-    return distance
-
-N, D = map(int, input().split())
-X = [list(map(int, input().split())) for _ in range(N)]
-count = 0
-for i in range(N - 1):
-    for j in range(i + 1, N):
-        distance = get_distance(X[i], X[j])
-        if (distance ** 0.5).is_integer():
-            count += 1
-print(count)
+def main():
+    L,R = map(int, input().split())
+    ans = 2019
+    for i in range(L, R):
+        for j in range(i+1, R+1):
+            ans = min(ans, (i*j)%2019)
+    print(ans)
 
 =======
 Suggestion 4
 
-def get_distance(x, y):
-    result = 0
-    for i in range(len(x)):
-        result += (x[i]-y[i])**2
-    return result**0.5
+def main():
+    L, R = map(int, input().split())
+    min = 2018
+    for i in range(L, R):
+        for j in range(i+1, R+1):
+            if min > i*j%2019:
+                min = i*j%2019
+                if min == 0:
+                    print(min)
+                    return
+    print(min)
 
 =======
 Suggestion 5
 
-def calcDist(x, y):
-    dist = 0
-    for i in range(len(x)):
-        dist += (x[i] - y[i])**2
-    return dist**0.5
+def problem133_c(l,r):
+    min = 2019
+    for i in range(l,r):
+        for j in range(i+1,r+1):
+            if (i*j)%2019 < min:
+                min = (i*j)%2019
+    return min
 
 =======
 Suggestion 6
 
-def distance(x, y):
-    d = 0
-    for i in range(len(x)):
-        d += (x[i] - y[i]) ** 2
-    return d ** 0.5
+def main():
+    L,R = map(int,input().split())
+    min = 2019
+    for i in range(L,R):
+        for j in range(i+1,R+1):
+            if (i*j)%2019 < min:
+                min = (i*j)%2019
+    print(min)
 
 =======
 Suggestion 7
 
-def getDistance(p1, p2):
-    D = len(p1)
-    sum = 0
-    for i in range(D):
-        sum += (p1[i] - p2[i]) ** 2
-    return sum ** 0.5
-
-N, D = map(int, input().split())
-
-points = []
-for i in range(N):
-    points.append(list(map(int, input().split())))
-
-count = 0
-for i in range(N):
-    for j in range(i+1, N):
-        if getDistance(points[i], points[j]).is_integer():
-            count += 1
-
-print(count)
+def solve():
+    L, R = list(map(int, input().split()))
+    if R - L >= 2019:
+        print(0)
+    else:
+        ans = 2019
+        for i in range(L, R):
+            for j in range(i+1, R+1):
+                ans = min(ans, (i*j)%2019)
+        print(ans)
+solve()
 
 =======
 Suggestion 8
 
-def get_distance(x, y):
-    return sum([(x[i]-y[i])**2 for i in range(len(x))])**0.5
+def main():
+    L,R = map(int, input().split())
+    min = 2019
+    for i in range(L,R):
+        for j in range(i+1,R+1):
+            tmp = (i*j)%2019
+            if tmp < min:
+                min = tmp
+    print(min)
 
 =======
 Suggestion 9
 
 def main():
-    pass
-
-=======
-Suggestion 10
-
-def get_distance(x, y):
-    d = 0
-    for i in range(len(x)):
-        d += (x[i] - y[i]) ** 2
-    return d ** 0.5
+    l,r = map(int,input().split())
+    min = 2019
+    for i in range(l,r):
+        for j in range(i+1,r+1):
+            if min > (i*j)%2019:
+                min = (i*j)%2019
+    print(min)

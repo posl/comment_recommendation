@@ -3,274 +3,213 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    S = list(input())
-    T = list(input())
-    if len(S) != len(T):
-        print("No")
-        return
-    if S == T:
-        print("Yes")
-        return
-    for i in range(len(S)):
-        if S[i] != T[i]:
-            for j in range(i+1, len(S)):
-                if S[j] == T[i]:
-                    S[i], S[j] = S[j], S[i]
-                    break
-            else:
-                print("No")
-                return
-    if S == T:
-        print("Yes")
-    else:
-        print("No")
+def prime_factorization(n):
+    """分解质因数"""
+    i = 2
+    table = []
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+            table.append(i)
+        i += 1
+    if n > 1:
+        table.append(n)
+    return table
 
 =======
 Suggestion 2
 
-def main():
-    S = input()
-    T = input()
-    if sorted(S) == sorted(T):
-        print("Yes")
-    else:
-        print("No")
+def solve(n,m):
+    ans = 1
+    for i in range(2,int(m**0.5)+1):
+        cnt = 0
+        while m%i == 0:
+            cnt += 1
+            m //= i
+        ans *= comb(n+cnt-1,cnt)
+        ans %= mod
+    if m > 1:
+        ans *= n
+        ans %= mod
+    return ans
+
+mod = 10**9+7
+n,m = map(int,input().split())
+print(solve(n,m))
 
 =======
 Suggestion 3
 
-def main():
-    s = input()
-    t = input()
-    if len(s) != len(t):
-        print("No")
-        return
-    if s == t:
-        print("Yes")
-        return
-    # 用一个字典记录S中每个字母出现的位置
-    s_dict = {}
-    for i in range(len(s)):
-        if s[i] not in s_dict:
-            s_dict[s[i]] = [i]
-        else:
-            s_dict[s[i]].append(i)
-    # 用一个字典记录T中每个字母出现的位置
-    t_dict = {}
-    for i in range(len(t)):
-        if t[i] not in t_dict:
-            t_dict[t[i]] = [i]
-        else:
-            t_dict[t[i]].append(i)
-    # 如果s和t中有不同的字母，返回No
-    if len(s_dict) != len(t_dict):
-        print("No")
-        return
-    # 如果s和t中有相同的字母，但是出现的次数不同，返回No
-    for key in s_dict:
-        if key not in t_dict:
-            print("No")
-            return
-        if len(s_dict[key]) != len(t_dict[key]):
-            print("No")
-            return
-    # 如果s和t中有相同的字母，出现的次数也相同，但是出现的位置不同，返回No
-    for key in s_dict:
-        for i in range(len(s_dict[key])):
-            if s_dict[key][i] != t_dict[key][i]:
-                print("No")
-                return
-    print("Yes")
-    return
+def cal(n, m):
+    if n == 1:
+        return 1
+    else:
+        a = 0
+        for i in range(1, m + 1):
+            if m % i == 0:
+                a += cal(n - 1, i)
+        return a % (10 ** 9 + 7)
+
+N, M = map(int, input().split())
+print(cal(N, M))
 
 =======
 Suggestion 4
 
-def main():
-    s = input()
-    t = input()
-    if len(s) != len(t):
-        print("No")
-        return
-    s_dic = {}
-    t_dic = {}
-    for i in range(len(s)):
-        if s[i] not in s_dic:
-            s_dic[s[i]] = t[i]
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
         else:
-            if s_dic[s[i]] != t[i]:
-                print("No")
-                return
-        if t[i] not in t_dic:
-            t_dic[t[i]] = s[i]
-        else:
-            if t_dic[t[i]] != s[i]:
-                print("No")
-                return
-    print("Yes")
-    return
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
 
 =======
 Suggestion 5
 
-def solve():
-    S = input()
-    T = input()
-    if len(S) != len(T):
-        print("No")
-        return
-    for i in range(len(S)):
-        if S[i] == T[i]:
-            continue
-        else:
-            for j in range(i+1, len(S)):
-                if S[j] == S[i]:
-                    if T[j] == T[i]:
-                        S = S[:i] + T[j] + S[i+1:]
-                        T = T[:i] + S[j] + T[i+1:]
-                        break
-                    else:
-                        print("No")
-                        return
-                elif T[j] == T[i]:
-                    if S[j] == S[i]:
-                        S = S[:i] + T[j] + S[i+1:]
-                        T = T[:i] + S[j] + T[i+1:]
-                        break
-                    else:
-                        print("No")
-                        return
-            if S[i] != T[i]:
-                print("No")
-                return
-    print("Yes")
+def getPrimeList(n):
+    primeList = []
+    isPrime = [True] * (n + 1)
+    isPrime[0] = False
+    isPrime[1] = False
+    for i in range(2, n + 1):
+        if isPrime[i]:
+            primeList.append(i)
+            for j in range(i * 2, n + 1, i):
+                isPrime[j] = False
+    return primeList
 
 =======
 Suggestion 6
 
-def main():
-    S = input()
-    T = input()
-    if len(S) != len(T):
-        print("No")
-        return
-    if S == T:
-        print("Yes")
-        return
-    S = list(S)
-    T = list(T)
-    for i in range(len(S)):
-        for j in range(i+1, len(S)):
-            S[i], S[j] = S[j], S[i]
-            if S == T:
-                print("Yes")
-                return
-            S[i], S[j] = S[j], S[i]
-    print("No")
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+N, M = map(int, input().split())
+mod = 10**9 + 7
+ans = 1
+for i in range(1, M + 1):
+    ans *= i
+    ans %= mod
+pf = prime_factorize(ans)
+pf = list(set(pf))
+ans = 1
+for i in pf:
+    ans *= (pf.count(i) + 1)
+    ans %= mod
+print(ans)
 
 =======
 Suggestion 7
 
 def main():
-    s = input()
-    t = input()
-    s_list = list(s)
-    t_list = list(t)
-    s_set = set(s_list)
-    t_set = set(t_list)
-    if len(s_set) != len(t_set):
-        print("No")
-        return
-    else:
-        s_dict = {}
-        t_dict = {}
-        for i in range(len(s_set)):
-            s_dict[s_set.pop()] = 0
-            t_dict[t_set.pop()] = 0
-        for i in range(len(s)):
-            s_dict[s_list[i]] += 1
-            t_dict[t_list[i]] += 1
-        if s_dict == t_dict:
-            print("Yes")
-        else:
-            print("No")
-        return
+    N, M = map(int, input().split())
+    ans = 1
+    i = 2
+    while i * i <= M:
+        cnt = 0
+        while M % i == 0:
+            cnt += 1
+            M //= i
+        ans *= (N + cnt - 1) # 重复组合
+        ans %= 1000000007
+        i += 1
+    if M != 1:
+        ans *= 2
+        ans %= 1000000007
+    print(ans)
 
 =======
 Suggestion 8
 
-def main():
-    S = input()
-    T = input()
-    if len(S) == len(T):
-        for i in range(len(S)):
-            if S[i] != T[i]:
-                if S[i] in S[:i] or T[i] in T[:i]:
-                    print('No')
-                    break
-                else:
-                    S = S.replace(S[i], T[i])
-                    T = T.replace(T[i], S[i])
-        else:
-            if S == T:
-                print('Yes')
-            else:
-                print('No')
-    else:
-        print('No')
+def prime_factorization(n):
+    factor = []
+    for i in range(2, int(n ** 0.5) + 1):
+        while n % i == 0:
+            factor.append(i)
+            n //= i
+    if n > 1:
+        factor.append(n)
+    return factor
 
 =======
 Suggestion 9
 
-def main():
-    S = input()
-    T = input()
-    if len(set(S)) != len(set(T)):
-        print("No")
-        exit()
-    if len(S) != len(T):
-        print("No")
-        exit()
-    dic = {}
-    for i in range(len(S)):
-        if S[i] in dic:
-            if dic[S[i]] != T[i]:
-                print("No")
-                exit()
-        else:
-            dic[S[i]] = T[i]
-    print("Yes")
+def factorization(n):
+    n_origin = n
+    arr = []
+    tmp = 2
+
+    while tmp * tmp <= n_origin:
+        if n % tmp == 0:
+            cnt = 0
+            while n % tmp == 0:
+                cnt += 1
+                n //= tmp
+            arr.append((tmp, cnt))
+        tmp += 1
+
+    if n != 1:
+        arr.append((n, 1))
+
+    if not arr:
+        arr.append((n_origin, 1))
+
+    return arr
 
 =======
 Suggestion 10
 
-def main():
-    S = input()
-    T = input()
-    if len(S) != len(T):
-        print("No")
-        return
-    # Sの各文字の出現回数を数える
-    S_count = {}
-    for c in S:
-        if c in S_count:
-            S_count[c] += 1
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
         else:
-            S_count[c] = 1
-    # Tの各文字の出現回数を数える
-    T_count = {}
-    for c in T:
-        if c in T_count:
-            T_count[c] += 1
-        else:
-            T_count[c] = 1
-    # Sの各文字の出現回数とTの各文字の出現回数が一致するかどうかを調べる
-    for c in S_count.keys():
-        if c not in T_count.keys():
-            print("No")
-            return
-        if S_count[c] != T_count[c]:
-            print("No")
-            return
-    print("Yes")
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+n,m = map(int,input().split())
+mod = 10**9+7
+pf = prime_factorize(m)
+pf.sort()
+pf.append(0)
+ans = 1
+cnt = 0
+for i in range(len(pf)-1):
+    cnt += 1
+    if pf[i] != pf[i+1]:
+        ans *= cnt
+        ans %= mod
+        cnt = 0
+ans *= pow(2,n-1,mod)
+ans %= mod
+print(ans)

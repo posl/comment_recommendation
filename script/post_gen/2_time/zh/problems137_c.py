@@ -3,131 +3,162 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_input():
-    # 读取输入
-    k, x = map(int, input().split())
-    return k, x
+def get_num(string):
+    return sum([ord(i) for i in string])
 
 =======
 Suggestion 2
 
-def main():
-    # 读入数据
-    k, x = map(int, input().split())
+def count(s):
+    #print(s)
+    s = list(s)
+    s.sort()
+    #print(s)
+    count = 0
+    c = 0
+    for i in range(len(s)-1):
+        if s[i] == s[i+1]:
+            c += 1
+        else:
+            count += c*(c+1)/2
+            c = 0
+    count += c*(c+1)/2
+    return count
 
-    # 生成升序列表
-    # 1. 生成升序列表
-    # 2. 从中间截断
-    # 3. 生成右半部分
-    # 4. 生成左半部分
-    # 5. 合并两个列表
-    # 6. 输出列表
-    # 7. 退出程序
-    # 8. 测试程序
-    # 9. 优化程序
-    # 10. 优化测试
-    # 11. 优化输出
-    # 12. 优化输入
-    # 13. 优化程序
-    # 14. 优化测试
-    # 15. 优化输出
-    # 16. 优化输入
-    # 17. 优化程序
-    # 18. 优化测试
-    # 19. 优化输出
-    # 20. 优化输入
-    # 21. 优化程序
-    # 22. 优化测试
-    # 23. 优化输出
-    # 24. 优化输入
-    # 25. 优化程序
-    # 26. 优化测试
-    # 27. 优化输出
-    # 28. 优化输入
-    # 29. 优化程序
-    # 30. 优化测试
-    # 31. 优化输出
-    # 32. 优化输入
-    # 33. 优化程序
-    # 34. 优化测试
-    # 35. 优化输出
-    # 36. 优化输入
-    # 37. 优化程序
-    # 38. 优化测试
-    # 39. 优化输出
-    # 40. 优化输入
-    # 41. 优化程序
-    # 42. 优化测试
-    # 43. 优化输出
-    # 44. 优化输入
-    # 45. 优化程序
-    # 46. 优化测试
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+s.sort()
+#print(s)
+count = 0
+c = 0
+for i in range(n-1):
+    if s[i] == s[i+1]:
+        c += 1
+    else:
+        count += c*(c+1)/2
+        c = 0
+count += c*(c+1)/2
+print(int(count))
 
 =======
 Suggestion 3
 
 def main():
-    K, X = map(int, input().split())
-    for i in range(X-K+1, X+K):
-        print(i, end=" ")
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s.sort()
+    s.append("")
+
+    count = 0
+    ans = 0
+    for i in range(N):
+        if s[i] == s[i + 1]:
+            count += 1
+        else:
+            ans += count * (count + 1) // 2
+            count = 0
+    print(ans)
 
 =======
 Suggestion 4
 
 def main():
-    k, x = map(int, input().split())
-    for i in range(x-k+1, x+k):
-        print(i, end=' ')
-    print()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    count = 0
+    i = 0
+    while i < n-1:
+        j = i + 1
+        while j < n and s[i] == s[j]:
+            count += 1
+            j += 1
+        i = j
+    print(count)
 
 =======
 Suggestion 5
 
-def main():
-    K, X = map(int,input().split())
-    start = X - K + 1
-    end = X + K
-    for i in range(start,end):
-        print(i,end=' ')
+def count_anagram(s):
+    count = {}
+    for c in s:
+        count[c] = count.get(c, 0) + 1
+    return count
 
 =======
 Suggestion 6
 
-def main():
-    K, X = [int(x) for x in input().split()]
-    print(' '.join([str(x) for x in range(X-K+1, X+K)]))
+def problems137_c():
+    pass
 
 =======
 Suggestion 7
 
-def main():
-    k, x = map(int, input().split())
-    for i in range(x-k+1, x+k):
-        print(i, end=' ')
+def get_key(s):
+    s_list = list(s)
+    s_list.sort()
+    return ''.join(s_list)
+
+N = int(input())
+s_list = []
+for i in range(N):
+    s_list.append(input())
+s_list.sort()
+s_list.append('')
+
+count = 0
+key = ''
+for i in range(N):
+    if key == s_list[i]:
+        count += 1
+    else:
+        key = get_key(s_list[i])
+print(count)
 
 =======
 Suggestion 8
 
-def main():
-    K, X = map(int, input().split())
-    print(*[X - K + 1 + i for i in range(2 * K - 1)])
+def count(s):
+    # s is a string
+    # return a dictionary
+    d = {}
+    for c in s:
+        if c in d:
+            d[c] += 1
+        else:
+            d[c] = 1
+
+    return d
 
 =======
 Suggestion 9
 
-def main():
-    k, x = map(int, input().split())
-    list = []
-    for i in range(x-k+1,x+k):
-        list.append(i)
-    print(*list)
+def solve():
+    n = int(input())
+    s = [input() for i in range(n)]
+    s.sort()
+    ans = 0
+    cnt = 0
+    for i in range(1,n):
+        if s[i] == s[i-1]:
+            cnt += 1
+        else:
+            ans += cnt*(cnt+1)//2
+            cnt = 0
+    ans += cnt*(cnt+1)//2
+    print(ans)
 
 =======
 Suggestion 10
 
-def main():
-    k, x = map(int, input().split())
-    start = x - k + 1
-    end = x + k
-    for i in range(start, end):
-        print(i, end=" ")
+def getStrHash(str):
+    hash = 0
+    for i in range(len(str)):
+        hash += ord(str[i]) * pow(2, i)
+    return hash

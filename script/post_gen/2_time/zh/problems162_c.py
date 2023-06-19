@@ -1,154 +1,115 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    print(sum([i for i in range(1, n + 1) if i % 3 != 0 and i % 5 != 0 or i % 15 == 0]))
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    sum = 0
-    for i in range(1,n+1):
-        if i % 15 == 0:
-            continue
-        elif i % 3 == 0:
-            continue
-        elif i % 5 == 0:
-            continue
-        else:
-            sum += i
-    print(sum)
+def gcd(x,y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y,x%y)
 
 =======
 Suggestion 3
 
-def fizzbuzz(n):
-    sum = 0
-    for i in range(1, n + 1):
-        if i % 3 == 0 and i % 5 == 0:
-            sum += 0
-        elif i % 3 == 0:
-            sum += 0
-        elif i % 5 == 0:
-            sum += 0
-        else:
-            sum += i
-    return sum
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    result = 0
-    for i in range(1, n+1):
-        if i % 3 == 0 or i % 5 == 0:
-            continue
-        result += i
-    print(result)
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+K = int(raw_input())
+ans = 0
+for a in range(1,K+1):
+    for b in range(1,K+1):
+        for c in range(1,K+1):
+            ans += gcd(a,gcd(b,c))
+
+print ans
 
 =======
 Suggestion 5
 
-def FizzBuzz(n):
-    s = 0
-    for i in range(1,n+1):
-        if i % 15 == 0:
-            s += i
-        elif i % 3 == 0:
-            s += i
-        elif i % 5 == 0:
-            s += i
-    return s
+def gcd(a,b):
+    return gcd(b,a%b) if b else a
+
+K = int(input())
+ans = 0
+for a in range(1,K+1):
+    for b in range(1,K+1):
+        for c in range(1,K+1):
+            ans += gcd(a,gcd(b,c))
+print(ans)
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    sum = 0
-    for i in range(1, n+1):
-        if i % 3 == 0 and i % 5 == 0:
-            continue
-        elif i % 3 == 0:
-            continue
-        elif i % 5 == 0:
-            continue
-        else:
-            sum += i
-    print(sum)
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+K = int(input())
+ans = 0
+for i in range(1,K+1):
+    for j in range(1,K+1):
+        for k in range(1,K+1):
+            ans += gcd(i,gcd(j,k))
+print(ans)
 
 =======
 Suggestion 7
 
-def FizzBuzz(n):
-    sum=0
-    for i in range(1,n+1):
-        if i%3==0 and i%5==0:
-            sum=sum
-        elif i%3==0:
-            sum=sum
-        elif i%5==0:
-            sum=sum
-        else:
-            sum=sum+i
-    return sum
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+k=int(input())
+ans=0
+for a in range(1,k+1):
+    for b in range(1,k+1):
+        for c in range(1,k+1):
+            ans+=gcd(a,gcd(b,c))
+print(ans)
 
 =======
 Suggestion 8
 
-def FizzBuzz(n):
-    sum = 0
-    for i in range(1, n+1):
-        if (i % 3 == 0) and (i % 5 == 0):
-            sum += 0
-        elif i % 3 == 0:
-            sum += 0
-        elif i % 5 == 0:
-            sum += 0
-        else:
-            sum += i
-    return sum
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
 
-n = int(input())
-print(FizzBuzz(n))
-
-=======
-Suggestion 9
-
-def f(n):
-    if n%15 == 0:
-        return 0
-    elif n%5 == 0:
-        return 1
-    elif n%3 == 0:
-        return 2
-    else:
-        return 3
-
-N = int(input())
-ans = 0
-for i in range(1,N+1):
-    ans += f(i)*i
+K=int(input())
+ans=0
+for i in range(1,K+1):
+    for j in range(1,K+1):
+        for k in range(1,K+1):
+            ans+=gcd(i,gcd(j,k))
 print(ans)
-
-=======
-Suggestion 10
-
-def func(n):
-    sum = 0
-    for i in range(1,n+1):
-        if i % 15 == 0:
-            sum += 0
-        elif i % 3 == 0:
-            sum += i
-        elif i % 5 == 0:
-            sum += i
-        else:
-            sum += i
-    return sum

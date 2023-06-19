@@ -3,166 +3,157 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_input():
-    #input()函数返回的是str类型，所以要转换成int类型
+def main():
     N = int(input())
-    S = input().split()
-    #map()函数接收两个参数，一个是函数，一个是Iterable，
-    #map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。
-    S = list(map(int,S))
-    return N,S
+    count = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            for c in range(b, N+1):
+                if a*b*c <= N:
+                    if a == b and b == c:
+                        count += 1
+                    elif a == b or b == c or a == c:
+                        count += 3
+                    else:
+                        count += 6
+                else:
+                    break
+    print(count)
 
 =======
 Suggestion 2
 
-def get_area(a, b):
-    return 4*a*b + 3*a + 3*b
-
-N = int(input())
-S = list(map(int, input().split()))
-
-count = 0
-for i in range(N):
-    for j in range(i+1, N):
-        if S[i] == S[j]:
-            continue
-        for a in range(1, 1000):
-            for b in range(1, 1000):
-                if S[i] == get_area(a, b) and S[j] == get_area(a, b):
+def main():
+    n = int(input())
+    count = 0
+    for i in range(1, n + 1):
+        for j in range(1, i + 1):
+            for k in range(1, j + 1):
+                if i * j * k <= n:
                     count += 1
-print(count)
+    print(count)
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    ans = 0
-    for i in range(0, n):
-        a = 1
-        while a * a <= s[i]:
-            if s[i] % a == 0:
-                b = s[i] // a
-                if 4 * a * b + 3 * a + 3 * b == s[i]:
+    N = int(input())
+    cnt = 0
+    for i in range(1, N+1):
+        for j in range(i, N+1):
+            for k in range(j, N+1):
+                if i*j*k <= N:
+                    if i == j and j == k:
+                        cnt += 1
+                    elif i == j or j == k or i == k:
+                        cnt += 3
+                    else:
+                        cnt += 6
+                else:
                     break
-            a += 1
-        if a * a > s[i]:
-            ans += 1
-    print(ans)
+    print(cnt)
+main()
 
 =======
 Suggestion 4
 
-def main():
-    #输入
-    N = int(input())
-    S = list(map(int,input().split()))
-
-    #计算
-    count = 0
-    for i in range(N):
-        # 4ab+3a+3b = S_i
-        # 4ab+3a+3b-S_i = 0
-        # (4b+3)a+(4a+3)b-S_i = 0
-        # (4b+3)a = (S_i-(4a+3)b)
-        # a = (S_i-(4a+3)b)/(4b+3)
-        # b = (S_i-(4b+3)a)/(4a+3)
-        # a = (S_i-(4a+3)((S_i-(4b+3)a)/(4a+3)))/(4((S_i-(4b+3)a)/(4a+3))+3)
-        # a = (S_i-(4a+3)((S_i-(4b+3)a)/(4a+3)))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
-        # a = (S_i-(4a+3)(S_i-(4b+3)a)/(4a+3))/(S_i-(4b+3)a+3)
+def solve(n):
+    ans = 0
+    for a in range(1, n + 1):
+        for b in range(a, n + 1):
+            for c in range(b, n + 1):
+                if a * b * c <= n:
+                    ans += 1
+    return ans
 
 =======
 Suggestion 5
 
-def get_input():
+def main():
     N = int(input())
-    S = [int(i) for i in input().split()]
-    return N, S
+    count = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            for c in range(b, N+1):
+                if a*b*c <= N:
+                    if a == b == c:
+                        count += 1
+                    elif a == b or b == c or a == c:
+                        count += 3
+                    else:
+                        count += 6
+                else:
+                    break
+    print(count)
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if s[i] == s[j]:
-                ans += 1
-    print(ans)
+def countABC(N):
+    count = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            for c in range(b, N+1):
+                if a*b*c <= N:
+                    count += 1
+    return count
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    s = list(map(int,input().split()))
-    result = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            if s[i] == s[j]:
-                result += 1
-    print(result)
+    N = int(input())
+    cnt = 0
+    for i in range(1, N + 1):
+        if i ** 3 <= N:
+            cnt += 1
+        else:
+            break
+    print(cnt)
 
 =======
 Suggestion 8
 
 def main():
     n = int(input())
-    s = list(map(int, input().split()))
     ans = 0
-    for i in range(n):
-        if s[i] % 2 == 0:
-            ans += 1
-        elif s[i] % 3 == 0:
-            ans += 1
-        elif s[i] % 5 == 0:
-            ans += 1
+    for a in range(1, int(n ** (1 / 3)) + 1):
+        for b in range(a, int((n - a ** 3) ** (1 / 2)) + 1):
+            c = int((n - a ** 3 - b ** 2) ** (1 / 2))
+            if a ** 3 + b ** 2 + c ** 2 + a * b + b * c + c * a == n:
+                if a == b == c:
+                    ans += 1
+                elif a == b or b == c or c == a:
+                    ans += 3
+                else:
+                    ans += 6
     print(ans)
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    s = list(map(int, input().split()))
+def solve(n):
     count = 0
-    for i in range(n):
-        a = 1
-        while a * a <= s[i]:
-            if s[i] % a == 0:
-                b = s[i] // a
-                if 4 * a * b + 3 * a + 3 * b == s[i]:
-                    break
-            a += 1
-        if a * a > s[i]:
-            count += 1
-    print(count)
+    for a in range(1, n+1):
+        for b in range(a, n+1):
+            for c in range(b, n+1):
+                if a * b * c <= n:
+                    count += 1
+    return count
 
 =======
 Suggestion 10
 
-def problems227_b(N):
-    S = []
-    for i in range(N):
-        S.append(int(input()))
+def main():
+    n = int(input())
     count = 0
-    for i in range(N):
-        a = 1
-        while a * a <= S[i]:
-            if S[i] % a == 0:
-                b = S[i] // a
-                if 4 * a * b + 3 * a + 3 * b == S[i]:
+    for a in range(1, n+1):
+        for b in range(a, n+1):
+            if a * b > n:
+                break
+            for c in range(b, n+1):
+                if a * b * c > n:
                     break
-            a += 1
-        if a * a > S[i]:
-            count += 1
+                else:
+                    count += 1
     print(count)

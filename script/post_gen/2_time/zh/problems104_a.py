@@ -15,39 +15,33 @@ def main():
 =======
 Suggestion 2
 
-def main():
-    R = int(input())
-    if R < 1200:
-        print('ABC')
-    elif R < 2800:
-        print('ARC')
+def get_next_game_name(score):
+    if score < 1200:
+        return "ABC"
+    elif score < 2800:
+        return "ARC"
     else:
-        print('AGC')
+        return "AGC"
 
 =======
 Suggestion 3
 
-def main():
-    # input
-    R = int(input())
-    # compute
+def get_ABC_ARC_AGC(R):
     if R < 1200:
-        ans = "ABC"
+        return "ABC"
     elif R < 2800:
-        ans = "ARC"
+        return "ARC"
     else:
-        ans = "AGC"
-    # output
-    print(ans)
+        return "AGC"
 
 =======
 Suggestion 4
 
 def main():
-    r = int(input())
-    if r < 1200:
+    R = int(input())
+    if R < 1200:
         print('ABC')
-    elif r < 2800:
+    elif R < 2800:
         print('ARC')
     else:
         print('AGC')
@@ -55,21 +49,24 @@ def main():
 =======
 Suggestion 5
 
-def next_contest(r):
-  if r < 1200:
-    return "ABC"
-  elif r < 2800:
-    return "ARC"
-  else:
-    return "AGC"
+def main():
+    R = int(input())
+    if R < 1200:
+        print("ABC")
+    elif R < 2800:
+        print("ARC")
+    else:
+        print("AGC")
 
 =======
 Suggestion 6
 
-def next_contest(R):
-    if R < 1200:
-        return "ABC"
-    elif R < 2800:
-        return "ARC"
+def main():
+    r = int(input())
+    if r < 1200:
+        print("ABC")
+    elif r < 2800:
+        print("ARC")
     else:
-        return "AGC"
+        print("AGC")
+main()

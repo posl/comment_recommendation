@@ -1,115 +1,84 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    S = input()
-    print(S.count('wv'))
+def isSubString(s,t):
+    if len(s) < len(t):
+        return False
+    if s == t:
+        return True
+    if t in s:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 2
 
-def main():
-    s = input()
-    print(s.count('vw') + s.count('wv'))
+def check_string(s, t):
+    if len(t) > len(s):
+        return False
+    if t in s:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 3
 
-def count_bottoms(s):
-    if s == 'v':
-        return 1
-    elif s == 'w':
-        return 2
+def main():
+    s = input()
+    t = input()
+    if t in s:
+        print('Yes')
     else:
-        return 0
-
-s = input()
-bottoms = 0
-for i in range(len(s)):
-    bottoms += count_bottoms(s[i])
-print(bottoms)
+        print('No')
 
 =======
 Suggestion 4
 
 def main():
-    S = input()
-    print(S.count("wv"))
+    s = input()
+    t = input()
+    if t in s:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 5
 
-def count_bottoms(s):
-    count = 0
-    for i in range(len(s)):
-        if s[i] == 'w':
-            count += s[i+1:].count('v')
-    return count
+def solve():
+    S = input()
+    T = input()
+    if T in S:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 6
 
-def print_count_of_bottoms(s):
-    # 记录连续的v的个数
-    count_of_v = 0
-    # 记录底的个数
-    count_of_bottoms = 0
-    for c in s:
-        if c == 'v':
-            count_of_v += 1
-        else:
-            count_of_bottoms += count_of_v
-    print(count_of_bottoms)
+def main():
+    s = input()
+    t = input()
+    if len(s) < len(t):
+        print("No")
+        return
+    for i in range(len(s) - len(t) + 1):
+        if s[i:i + len(t)] == t:
+            print("Yes")
+            return
+    print("No")
 
 =======
 Suggestion 7
 
 def main():
-    s = input()
-    count = 0
-    for i in range(len(s)):
-        if s[i] == "w":
-            count += 1
-            for j in range(i+1,len(s)):
-                if s[j] == "v":
-                    count += 1
-                else:
-                    break
-    print(count)
-
-=======
-Suggestion 8
-
-def main():
-    s = input()
-    count = 0
-    for i in range(len(s)):
-        if s[i] == 'v':
-            for j in range(i+1, len(s)):
-                if s[j] == 'v':
-                    count += 1
-    print(count)
-main()
-
-=======
-Suggestion 9
-
-def main():
-    s = input().strip()
-    print(s.count('vv') + s.count('wv') * 2 + s.count('vw') * 2 + s.count('ww') * 3)
-
-=======
-Suggestion 10
-
-def count_bottoms(s):
-    """
-    计算字符串s中的底的数量
-    :param s: 一个由v和w组成的字符串
-    :return: 底的数量
-    """
-    if len(s) == 1:
-        return 1 if s == 'v' else 0
+    S = input()
+    T = input()
+    if T in S:
+        print("Yes")
     else:
-        return count_bottoms(s[0]) + count_bottoms(s[1:])
+        print("No")

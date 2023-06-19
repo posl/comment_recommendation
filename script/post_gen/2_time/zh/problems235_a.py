@@ -1,101 +1,90 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def solve(n,k,p):
-    ans=[]
-    for i in range(k,n+1):
-        ans.append(max(p[i-k:i]))
-    print(*ans,sep='\n')
+def main():
+    abc = input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    print(a*111+b*111+c*111)
 
 =======
 Suggestion 2
 
 def main():
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    for i in range(n-k+1):
-        print(max(a[i:i+k]))
+    abc = raw_input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    print a*111 + b*11 + c*1 + b*100 + c*10 + a*1 + c*100 + a*10 + b*1
 
 =======
 Suggestion 3
 
-def max_k(n, k, arr):
-    from collections import deque
-    d = deque()
-    for i in range(n):
-        while d and arr[d[-1]] <= arr[i]:
-            d.pop()
-        d.append(i)
-        if d[0] == i - k:
-            d.popleft()
-        if i >= k - 1:
-            print(arr[d[0]])
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    print(a+b+c)
 
 =======
 Suggestion 4
 
-def main():
-    N, K = map(int, input().split())
-    P = list(map(int, input().split()))
-    for i in range(K-1, N):
-        print(sorted(P[:i+1], reverse=True)[K-1])
+def problem235_a():
+    abc = input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    result = a*100+b*10+c + b*100+c*10+a + c*100+a*10+b
+    print(result)
 
 =======
 Suggestion 5
 
-def func():
-    n, k = map(int, input().split())
-    p = list(map(int, input().split()))
-    for i in range(k-1, n):
-        print(sorted(p[:i+1], reverse=True)[k-1])
+def main():
+    num = input()
+    if len(num) == 3:
+        num = int(num)
+        x = num // 100
+        y = (num // 10) % 10
+        z = num % 10
+        print(x + y + z + (x * 10 + y) + (y * 10 + z) + (z * 10 + x))
+    else:
+        print("输入不合法")
 
 =======
 Suggestion 6
 
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    for i in range(k-1,n):
-        print(sorted(p[:i+1])[-k+1])
+    num = input()
+    a = int(num[0])
+    b = int(num[1])
+    c = int(num[2])
+    print(a*111+b*11+c*1+a*100+b*10+c*1+a*100+b*10+c*1)
 
 =======
 Suggestion 7
 
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    for i in range(k,n+1):
-        print(sorted(p[:i])[-k])
+    abc = int(input())
+    a = abc // 100
+    b = abc // 10 % 10
+    c = abc % 10
+    print(a * 111 + b * 111 + c * 111)
 
 =======
 Suggestion 8
 
-def solve(n, k, p):
-    #print(n, k, p)
-    #print(p[0:k-1])
-    #print(p[k-1:n])
-    for i in range(k-1, n):
-        print(sorted(p[0:i+1])[k-1])
-    return 0
+def solution():
+    abc = int(input())
+    bca = abc % 100 * 10 + abc // 100
+    cab = abc % 10 * 100 + abc // 10
+    print(abc + bca + cab)
 
 =======
 Suggestion 9
 
-def main():
-    N, K = map(int, input().split())
-    P = list(map(int, input().split()))
-    for i in range(K-1, N):
-        print(sorted(P[:i+1])[-1])
-    return
-
-=======
-Suggestion 10
-
-def solve(n,k,nums):
-    # k-1个最大数
-    res = []
-    for i in range(k-1,n):
-        res.append(max(nums[i-k+1:i+1]))
-    return res
+def f(x):
+    return int(x[0])*100+int(x[1])*10+int(x[2])

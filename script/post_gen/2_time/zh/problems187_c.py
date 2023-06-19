@@ -4,203 +4,191 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def solve():
-    # 读入数据
-    N = int(input())
-    points = []
-    for i in range(N):
-        x, y = map(int, input().split())
-        points.append((x, y))
-
-    # 斜率的范围是[-1, 1]，即-1 <= (y2 - y1) / (x2 - x1) <= 1
-    # 两边同时乘以(x2 - x1)，则-1 * (x2 - x1) <= y2 - y1 <= 1 * (x2 - x1)
-    # 移项得-1 * (x2 - x1) - y2 + y1 <= 0 <= 1 * (x2 - x1) - y2 + y1
-    # 所以对于每个点，只要找到与其连线的斜率在[-1, 1]的点的数目即可
-    count = 0
-    for i in range(N):
-        for j in range(i + 1, N):
-            x1, y1 = points[i]
-            x2, y2 = points[j]
-            if -1 * (x2 - x1) - y2 + y1 <= 0 <= 1 * (x2 - x1) - y2 + y1:
-                count += 1
-    print(count)
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(s)
+    s.sort()
+    #print(s)
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print("存在不满足的字符串")
+            print(s[i])
+            return
+    print("可满足")
+    return
 
 =======
 Suggestion 2
 
-def is_slope_in_1_to_minus1(x1,y1,x2,y2):
-    return abs((y2-y1)/(x2-x1))<=1
+def solve():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = set(S)
+    for s in S:
+        if s[0] == '!':
+            if s[1:] in S:
+                print(s[1:])
+                return
+        else:
+            if '!' + s in S:
+                print(s)
+                return
+    print('satisfiable')
+
+solve()
 
 =======
 Suggestion 3
 
-def get_slope(x1, y1, x2, y2):
-    if x1 == x2:
-        return float('inf')
+def solve():
+    #n = int(input())
+    #s = [input() for _ in range(n)]
+    n = 6
+    s = ['a', '!a', 'b', '!c', 'd', '!d']
+    #n = 10
+    #s = ['red', 'red', 'red', '!orange', 'yellow', '!blue', 'cyan', '!green', 'brown', '!gray']
+    a = set()
+    for i in range(n):
+        if s[i][0] == '!':
+            a.add(s[i][1:])
+        else:
+            a.add('!' + s[i])
+    for i in range(n):
+        if s[i] in a:
+            print(s[i])
+            break
     else:
-        return (y2 - y1) / (x2 - x1)
+        print('satisfiable')
 
 =======
 Suggestion 4
 
-def get_slope(p1, p2):
-    x1, y1 = p1
-    x2, y2 = p2
-    if x2 - x1 == 0:
-        return 0
-    return (y2 - y1) / (x2 - x1)
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    S1 = set()
+    S2 = set()
+    for s in S:
+        if s[0] == '!':
+            S1.add(s[1:])
+        else:
+            S2.add(s)
+
+    for s in S1:
+        if s in S2:
+            return s
+
+    return 'satisfiable'
+
+print(solve())
 
 =======
 Suggestion 5
 
-def count_slope(a, b):
-    if a[0] - b[0] == 0:
-        return 0
-    else:
-        return (a[1] - b[1]) / (a[0] - b[0])
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    S = set(S)
+    for s in S:
+        if s[0] == '!':
+            if s[1:] in S:
+                return print(s[1:])
+        else:
+            if '!'+s in S:
+                return print(s)
+    print('satisfiable')
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(n):
-        x.append(0)
-        y.append(0)
-    for i in range(n):
-        a, b = map(int, input().split())
-        x[i] = a
-        y[i] = b
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if -1 <= (y[i]-y[j]) / (x[i]-x[j]) <= 1:
-                ans += 1
-    print(ans)
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = set(S)
+    for s in S:
+        if "!" + s in S:
+            print(s)
+            return
+    print("satisfiable")
 
 =======
 Suggestion 7
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-n = int(input())
-points = []
-for i in range(n):
-    x, y = map(int, input().split())
-    points.append((x, y))
-
-ans = 0
-for i in range(n):
-    for j in range(i + 1, n):
-        x1, y1 = points[i]
-        x2, y2 = points[j]
-        dx, dy = x2 - x1, y2 - y1
-        if dx == 0:
-            ans += 1
-            continue
-        if dy == 0:
-            ans += 1
-            continue
-        g = gcd(abs(dx), abs(dy))
-        dx //= g
-        dy //= g
-        if dx < 0:
-            dx *= -1
-            dy *= -1
-        if dx > 0 and dy > 0:
-            ans += 1
-print(ans)
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s = set(s)
+    for i in s:
+        if '!' + i in s:
+            print(i)
+            exit()
+    print('satisfiable')
 
 =======
 Suggestion 8
 
-def gcd(a, b):
-    if a % b == 0:
-        return b
-    else:
-        return gcd(b, a % b)
-n = int(input())
-xy = []
-for _ in range(n):
-    xy.append(list(map(int, input().split())))
-ans = 0
-for i in range(n):
-    for j in range(i + 1, n):
-        x = xy[i][0] - xy[j][0]
-        y = xy[i][1] - xy[j][1]
-        if x == 0:
-            ans += 1
-        else:
-            if x < 0:
-                x *= -1
-                y *= -1
-            g = gcd(x, y)
-            x //= g
-            y //= g
-            if -1 <= y <= 1:
-                ans += 1
-print(ans)
+def main():
+    N = int(input())
+    S = []
+    for _ in range(N):
+        S.append(input())
+    S = set(S)
+    for s in S:
+        if '!' + s in S:
+            print(s)
+            return
+    print('satisfiable')
 
 =======
 Suggestion 9
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-N = int(input())
-points = []
-for i in range(N):
-    points.append(list(map(int, input().split())))
-
-cnt = 0
-for i in range(N):
-    for j in range(i + 1, N):
-        if abs(points[i][0] - points[j][0]) <= abs(points[i][1] - points[j][1]):
-            cnt += 1
-print(cnt)
+def main():
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s2 = []
+    for i in range(N):
+        if s[i][0] == '!':
+            s2.append(s[i][1:])
+        else:
+            s2.append('!' + s[i])
+    s2.sort()
+    for i in range(N-1):
+        if s2[i] == s2[i+1]:
+            print(s2[i][1:])
+            exit()
+    print('satisfiable')
 
 =======
 Suggestion 10
 
-def gcd(a,b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a%b)
-
-n = int(input())
-x = []
-y = []
-for i in range(n):
-    a, b = map(int, input().split())
-    x.append(a)
-    y.append(b)
-
-ans = 0
-for i in range(n):
-    for j in range(i+1, n):
-        dy = y[i] - y[j]
-        dx = x[i] - x[j]
-        if dy == 0:
-            ans += 1
-        elif dx == 0:
-            continue
+def problem187_c():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(s)
+    for i in range(n):
+        if s[i][0] == "!":
+            if s[i][1:] in s:
+                print(s[i][1:])
+                break
         else:
-            if dx < 0:
-                dx = -dx
-                dy = -dy
-            g = gcd(dx, dy)
-            dx = dx//g
-            dy = dy//g
-            if dx <= dy:
-                ans += 1
-
-print(ans)
+            if "!" + s[i] in s:
+                print(s[i])
+                break
+    else:
+        print("satisfiable")

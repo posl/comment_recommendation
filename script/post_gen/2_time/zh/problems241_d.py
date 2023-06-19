@@ -4,254 +4,247 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    f
+    pass
 
 =======
 Suggestion 2
 
-def get_black_num(grid):
-    num = 0
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
-            if grid[i][j] == '#':
-                num += 1
-    return num
+def solve(arr):
+    return arr
 
 =======
 Suggestion 3
 
-def check_black(s):
-    if s == '#':
-        return True
-    else:
-        return False
+def main():
+    n = int(input())
+    A = []
+    for i in range(n):
+        query = input().split()
+        if query[0] == "1":
+            A.append(int(query[1]))
+        elif query[0] == "2":
+            x = int(query[1])
+            k = int(query[2])
+            count = 0
+            for a in A:
+                if x >= a:
+                    count += 1
+            if count >= k:
+                print(sorted(A, reverse=True)[k-1])
+            else:
+                print("-1")
+        elif query[0] == "3":
+            x = int(query[1])
+            k = int(query[2])
+            count = 0
+            for a in A:
+                if x <= a:
+                    count += 1
+            if count >= k:
+                print(sorted(A)[k-1])
+            else:
+                print("-1")
 
 =======
 Suggestion 4
 
-def check(x,y):
-    if x<0 or y<0 or x>=N or y>=N:
-        return False
-    return True
+def main():
+    # 读取输入
+    q = int(input())
+    queries = []
+    for i in range(q):
+        queries.append(input().split())
+    #print(queries)
+    # 处理输入
+    a = []
+    for query in queries:
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i <= x]
+            b.sort(reverse=True)
+            if len(b) >= k:
+                print(b[k-1])
+            else:
+                print(-1)
+        else:
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i >= x]
+            b.sort()
+            if len(b) >= k:
+                print(b[k-1])
+            else:
+                print(-1)
+    return
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    for i in range(n):
-        s[i] = s[i].replace('.', '0')
-        s[i] = s[i].replace('#', '1')
-        s[i] = s[i].replace('0', '.')
-        s[i] = s[i].replace('1', '#')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].replace(s[i][j], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[j][i] == '#':
-                s[j] = s[j].replace(s[j][i], '1')
-            else:
-                s[j] = s[j].replace(s[j][i], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].replace(s[i][j], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[j][i] == '#':
-                s[j] = s[j].replace(s[j][i], '1')
-            else:
-                s[j] = s[j].replace(s[j][i], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].replace(s[i][j], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[j][i] == '#':
-                s[j] = s[j].replace(s[j][i], '1')
-            else:
-                s[j] = s[j].replace(s[j][i], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].
+    # 问题陈述
+    # 我们有一个空序列A。
+    # 给出Q个查询，按顺序处理它们。
+    # 每个查询都是以下三种类型中的一种。
+    # 1 x : 向A插入x。
+    # 2 x k : 在A中小于或等于x的元素中，打印第k个最大值。  (k不超过5)
+    # 如果A中小于等于或等于x的元素少于k，则打印-1。
+    # 3 x k : 在A中大于或等于x的元素中，打印第k个最小的值。  (k不超过5)
+    # 如果A中小于k的元素大于或等于x，则打印-1。
+    #
+    #
+    # 限制条件
+    # 1≦ Q ≦ 2× 10^5
+    # 1≦ x≦ 10^{18}
+    # 1≦ k≦ 5
+    # 输入的所有数值都是整数。
+    #
+    # 输入
+    # 输入是由标准输入提供的，格式如下：
+    # Q
+    # query_1
+    # query_2
+    # .
+    # .
+    # .
+    # query_Q
+    # 在第i个查询query_i中，首先给出查询的类型c_i（是1，2，还是3）。
+    # 如果c_i=1，则另外给出x；如果c_i=2，3，则另外给出x和k。
+    # 换句话说，每个查询都是以以下三种格式之一给出的：
+    # 1 x
+    # 2 x k
+    # 3 x k
+    #
+    # 输出
+    # 打印q行，其中q是指c_i=2,3的查询的数量。
+    # 第j行（1≦ j≦ q）应该包含第j个这样的查询的答案。
+    #
+    # 输入样本 1
 
 =======
 Suggestion 6
 
-def check(n, s):
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                if i + 5 < n and s[i + 1][j] == '#' and s[i + 2][j] == '#' and s[i + 3][j] == '#' and s[i + 4][j] == '#' and s[i + 5][j] == '#':
-                    return True
-                if j + 5 < n and s[i][j + 1] == '#' and s[i][j + 2] == '#' and s[i][j + 3] == '#' and s[i][j + 4] == '#' and s[i][j + 5] == '#':
-                    return True
-                if i + 5 < n and j + 5 < n and s[i + 1][j + 1] == '#' and s[i + 2][j + 2] == '#' and s[i + 3][j + 3] == '#' and s[i + 4][j + 4] == '#' and s[i + 5][j + 5] == '#':
-                    return True
-                if i + 5 < n and j - 5 >= 0 and s[i + 1][j - 1] == '#' and s[i + 2][j - 2] == '#' and s[i + 3][j - 3] == '#' and s[i + 4][j - 4] == '#' and s[i + 5][j - 5] == '#':
-                    return True
-    return False
+def main():
+    from bisect import bisect_left, bisect_right
+    from collections import defaultdict
+    from sys import stdin
+    input = stdin.readline
+
+    q = int(input())
+    a = []
+    d = defaultdict(list)
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a.append(query[1])
+            d[query[1]].append(len(a) - 1)
+        elif query[0] == 2:
+            if len(a) == 0:
+                print(-1)
+            else:
+                i = bisect_right(a, query[1])
+                if i == 0:
+                    print(-1)
+                else:
+                    print(a[d[a[i - 1]][query[2] - 1]])
+        else:
+            if len(a) == 0:
+                print(-1)
+            else:
+                i = bisect_left(a, query[1])
+                if i == len(a):
+                    print(-1)
+                else:
+                    print(a[d[a[i]][query[2] - 1]])
 
 =======
 Suggestion 7
 
-def solve():
+def main():
     n = int(input())
-    grid = []
+    a = []
     for i in range(n):
-        grid.append(input())
-    for i in range(n-5):
-        for j in range(n):
-            if grid[i][j] == '#' and grid[i+1][j] == '#' and grid[i+2][j] == '#' and grid[i+3][j] == '#' and grid[i+4][j] == '#' and grid[i+5][j] == '#':
-                print('Yes')
-                return
-    for i in range(n):
-        for j in range(n-5):
-            if grid[i][j] == '#' and grid[i][j+1] == '#' and grid[i][j+2] == '#' and grid[i][j+3] == '#' and grid[i][j+4] == '#' and grid[i][j+5] == '#':
-                print('Yes')
-                return
-    for i in range(n-5):
-        for j in range(n-5):
-            if grid[i][j] == '#' and grid[i+1][j+1] == '#' and grid[i+2][j+2] == '#' and grid[i+3][j+3] == '#' and grid[i+4][j+4] == '#' and grid[i+5][j+5] == '#':
-                print('Yes')
-                return
-    for i in range(5, n):
-        for j in range(n-5):
-            if grid[i][j] == '#' and grid[i-1][j+1] == '#' and grid[i-2][j+2] == '#' and grid[i-3][j+3] == '#' and grid[i-4][j+4] == '#' and grid[i-5][j+5] == '#':
-                print('Yes')
-                return
-    print('No')
-    return
+        s = input().split()
+        if s[0] == "1":
+            a.append(int(s[1]))
+        elif s[0] == "2":
+            a.sort()
+            if len(a) < int(s[2]):
+                print(-1)
+            else:
+                print(a[-int(s[2])])
+        elif s[0] == "3":
+            a.sort()
+            if len(a) < int(s[2]):
+                print(-1)
+            else:
+                print(a[int(s[2])-1])
 
 =======
 Suggestion 8
 
 def main():
-    N = int(input())
-    S = [input() for i in range(N)]
-    # print(N)
-    # print(S)
+    n = int(input())
+    for i in range(n):
+        a = list(map(int, input().split()))
+        if a[0] == 1:
+            A.append(a[1])
+        elif a[0] == 2:
+            print(max(sorted(A)[:a[2]]))
+        else:
+            print(min(sorted(A)[::-1][:a[2]]))
 
-    # 1. 6连续黑色方格是否存在
-    # 2. 6连续黑色方格是否存在
-    # 3. 6连续黑色方格是否存在
-    # 4. 6连续黑色方格是否存在
-    # 5. 6连续黑色方格是否存在
-    # 6. 6连续黑色方格是否存在
-
-    # 1. 6连续黑色方格是否存在
-    for i in range(N):
-        for j in range(N-5):
-            if S[i][j] == S[i][j+1] == S[i][j+2] == S[i][j+3] == S[i][j+4] == S[i][j+5] == '#':
-                print('Yes')
-                exit()
-
-    # 2. 6连续黑色方格是否存在
-    for i in range(N-5):
-        for j in range(N):
-            if S[i][j] == S[i+1][j] == S[i+2][j] == S[i+3][j] == S[i+4][j] == S[i+5][j] == '#':
-                print('Yes')
-                exit()
-
-    # 3. 6连续黑色方格是否存在
-    for i in range(N-5):
-        for j in range(N-5):
-            if S[i][j] == S[i+1][j+1] == S[i+2][j+2] == S[i+3][j+3] == S[i+4][j+4] == S[i+5][j+5] == '#':
-                print('Yes')
-                exit()
-
-    # 4. 6连续黑色方格是否存在
-    for i in range(N-5):
-        for j in range(5, N):
-            if S[i][j] == S[i+1][j-1] == S[i+2][j-2] == S[i+3][j-3] == S[i+4][j-4]
+A = []
+main()
 
 =======
 Suggestion 9
 
 def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-
-    for i in range(N):
-        for j in range(N):
-            if S[i][j] == '#':
-                continue
-            S[i] = S[i][:j] + '#' + S[i][j+1:]
-            if check(S):
-                print('Yes')
-                return
-            S[i] = S[i][:j] + '.' + S[i][j+1:]
-    print('No')
+    n = int(input())
+    A = []
+    for i in range(n):
+        query = input().split()
+        if query[0] == '1':
+            A.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            B = []
+            for a in A:
+                if a <= x:
+                    B.append(a)
+            B.sort(reverse=True)
+            if len(B) < k:
+                print(-1)
+            else:
+                print(B[k-1])
+        elif query[0] == '3':
+            x = int(query[1])
+            k = int(query[2])
+            B = []
+            for a in A:
+                if a >= x:
+                    B.append(a)
+            B.sort()
+            if len(B) < k:
+                print(-1)
+            else:
+                print(B[k-1])
 
 =======
 Suggestion 10
 
-def main():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    for i in range(n):
-        s[i] = list(s[i])
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i][j] = 1
-            else:
-                s[i][j] = 0
-
-    for i in range(n):
-        for j in range(n):
-            if i >= 1:
-                s[i][j] += s[i - 1][j]
-            if j >= 1:
-                s[i][j] += s[i][j - 1]
-            if i >= 1 and j >= 1:
-                s[i][j] -= s[i - 1][j - 1]
-
-    def calc(x1, y1, x2, y2):
-        res = s[x2][y2]
-        if x1 >= 1:
-            res -= s[x1 - 1][y2]
-        if y1 >= 1:
-            res -= s[x2][y1 - 1]
-        if x1 >= 1 and y1 >= 1:
-            res += s[x1 - 1][y1 - 1]
-        return res
-
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == 0:
-                if calc(i, j, i + 1, j + 1) == 0:
-                    print('Yes')
-                    exit()
-                if i + 2 <= n and j + 2 <= n and calc(i, j, i + 2, j + 2) == 2:
-                    print('Yes')
-                    exit()
-                if i + 3 <= n and j + 3 <= n and calc(i, j, i + 3, j + 3) == 3:
-                    print('Yes')
-                    exit()
-                if i + 4 <= n and j + 4 <= n and calc(i, j, i + 4, j + 4) == 4:
-                    print('Yes')
-                    exit()
-                if i + 5 <= n and j + 5 <= n and calc(i, j, i + 5, j + 5) == 5:
-                    print('Yes')
-                    exit()
-                if
+def insert(x):
+    global n
+    n += 1
+    a[n] = x
+    i = n
+    while i > 1:
+        if a[i] < a[i // 2]:
+            a[i], a[i // 2] = a[i // 2], a[i]
+            i //= 2
+        else:
+            break

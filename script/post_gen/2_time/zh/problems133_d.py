@@ -3,151 +3,129 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def problem133_c():
-    L,R = map(int,input().split())
-    if R-L>=2019:
-        print(0)
-    else:
-        ans = 2019
-        for i in range(L,R):
-            for j in range(i+1,R+1):
-                ans = min(ans,(i*j)%2019)
-        print(ans)
+def solve():
+    n = int(input())
+    nums = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            ans[0] += nums[i]
+            ans[1] += nums[i]
+        else:
+            ans[0] -= nums[i]
+            ans[1] -= nums[i]
+    for i in range(1, n - 1):
+        ans[i] = 2 * nums[i - 1] - ans[i - 1]
+    print(' '.join(map(str, ans)))
+
+
+solve()
 
 =======
 Suggestion 2
 
-def main():
-    L,R = map(int,input().split())
-    if R-L>=2019:
-        print(0)
-    else:
-        ans = 2018
-        for i in range(L,R+1):
-            for j in range(i+1,R+1):
-                ans = min(ans,(i*j)%2019)
-        print(ans)
+def solve(n, a):
+    #n = int(input())
+    #a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            b[0] += a[i]
+        else:
+            b[0] -= a[i]
+    for i in range(1, n):
+        b[i] = 2 * a[i-1] - b[i-1]
+    print(*b)
+
+n = int(input())
+a = list(map(int, input().split()))
+solve(n, a)
 
 =======
 Suggestion 3
 
 def main():
-    l,r = map(int,input().split())
-    if l == r:
-        print(l%2019)
-        return
-    elif r - l >= 2019:
-        print(0)
-        return
-    else:
-        ans = 2018
-        for i in range(l,r):
-            for j in range(i+1,r+1):
-                ans = min(ans,(i*j)%2019)
-        print(ans)
-        return
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    for i in range(n):
+        print(s - 2 * a[i], end=' ')
 
 =======
 Suggestion 4
 
-def main():
-    L,R = map(int,input().split())
-    min = 2019
-    for i in range(L,R-1):
-        for j in range(i+1,R):
-            if (i*j)%2019 < min:
-                min = (i*j)%2019
-    print(min)
+def solve(n, a):
+    b = [0] * n
+    for i in xrange(n):
+        if i % 2 == 0:
+            b[0] += a[i]
+            b[1] -= a[i]
+        else:
+            b[0] -= a[i]
+            b[1] += a[i]
+    for i in xrange(1, n - 1):
+        b[i + 1] = 2 * a[i] - b[i]
+    return b
+
+n = int(raw_input())
+a = map(int, raw_input().split())
+print " ".join(map(str, solve(n, a)))
 
 =======
 Suggestion 5
 
-def main():
-    L, R = map(int, input().split())
-    if R - L >= 2019:
-        print(0)
-        return
-    else:
-        ans = 2019
-        for i in range(L, R):
-            for j in range(i+1, R+1):
-                ans = min(ans, (i*j)%2019)
-        print(ans)
-        return
+def problem133_d():
+    pass
 
 =======
 Suggestion 6
 
-def main():
-    l,r = map(int,input().split())
-    if r - l >= 2019:
-        print(0)
-    else:
-        min_num = 2019
-        for i in range(l,r):
-            for j in range(i+1,r+1):
-                min_num = min(min_num,(i*j)%2019)
-        print(min_num)
+def solve(N, A):
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = A[i] - (A[i-1] + A[(i+1)%N]) // 2
+    return ans
 
 =======
 Suggestion 7
 
 def main():
-    l, r = map(int, input().split())
-    if r - l >= 2019:
-        print(0)
-    else:
-        ans = 2018
-        for i in range(l, r):
-            for j in range(i + 1, r + 1):
-                ans = min(ans, i * j % 2019)
-        print(ans)
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = a[i] * 2 - ans[i-1]
+    print(*ans)
 
 =======
 Suggestion 8
 
 def main():
-    L, R = map(int, input().split())
-    if R - L >= 2019:
-        print(0)
-    else:
-        ans = 2018
-        for i in range(L, R):
-            for j in range(i+1, R+1):
-                ans = min(ans, i*j%2019)
-        print(ans)
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    b[0] = sum(a) - 2 * sum(a[1::2])
+    for i in range(1, n):
+        b[i] = 2 * a[i - 1] - b[i - 1]
+    print(*b)
 
 =======
 Suggestion 9
 
 def main():
-    L, R = map(int, input().split())
-    if R - L >= 2019:
-        print(0)
-        return
-    else:
-        ans = 2018
-        for i in range(L, R):
-            for j in range(i + 1, R + 1):
-                ans = min(ans, (i * j) % 2019)
-        print(ans)
+    pass
 
 =======
 Suggestion 10
 
 def main():
-    L,R = map(int, input().split())
-    if R-L >= 2019:
-        print(0)
-        return
-    else:
-        min = 2019
-        for i in range(L,R):
-            for j in range(i+1,R+1):
-                if (i*j)%2019 < min:
-                    min = (i*j)%2019
-                    if min == 0:
-                        print(0)
-                        return
-        print(min)
-        return
+    N = int(input())
+    A = list(map(int, input().split()))
+    R = [0] * N
+    for i in range(N):
+        R[i] = A[i] * 2
+
+    for i in range(N):
+        R[i] -= R[i - 1]
+
+    print(' '.join(map(str, R)))

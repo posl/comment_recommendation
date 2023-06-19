@@ -1,111 +1,116 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
+def get_input():
     n = int(input())
-    d = list(map(int,input().split()))
-    ans = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            ans += d[i]*d[j]
-    print(ans)
+    s = input()
+    return n,s
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    d = list(map(int,input().split()))
-    sum = 0
-    for i in range(n-1):
-        for j in range(i+1,n):
-            sum += d[i]*d[j]
-    print(sum)
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(N - 1):
+        if S[i] != S[i + 1]:
+            count += 1
+    print(count)
 
 =======
 Suggestion 3
 
 def main():
-    # 读取输入
     n = int(input())
-    d = list(map(int, input().split()))
-
-    # 求和
-    sum = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            sum += d[i] * d[j]
-
-    # 输出
-    print(sum)
+    s = input()
+    count = 1
+    for i in range(n-1):
+        if s[i] != s[i+1]:
+            count += 1
+    print(count)
 
 =======
 Suggestion 4
 
-def solve():
+def main():
     N = int(input())
-    d = list(map(int, input().split()))
-    ans = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            ans += d[i] * d[j]
+    S = input()
+    ans = 1
+    for i in range(1, N):
+        if S[i-1] != S[i]:
+            ans += 1
     print(ans)
 
 =======
 Suggestion 5
 
 def main():
-    N = int(input())
-    d = list(map(int, input().split()))
-    sum = 0
-    for i in range(N):
-        for j in range(i + 1, N):
-            sum += d[i] * d[j]
-    print(sum)
+    n = int(input())
+    s = input()
+    ans = 1
+    for i in range(1, n):
+        if s[i] != s[i-1]:
+            ans += 1
+    print(ans)
+    return 0
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    d = list(map(int, input().split()))
-    sum = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            sum += d[i] * d[j]
-    print(sum)
+def solve():
+    N = int(input())
+    S = input()
+    ans = 1
+    for i in range(1,N):
+        if S[i-1] != S[i]:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    d = list(map(int, input().split()))
-
-    total = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            total += d[i] * d[j]
-
-    print(total)
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            count += 1
+    print(count)
 
 =======
 Suggestion 8
 
-def getSumOfHealthPoints(N, d):
-    sum = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            sum += d[i] * d[j]
-
-    print(sum)
+def merge_slime(slime):
+    if len(slime) == 1:
+        return 1
+    else:
+        return merge_slime(slime[1:]) + 1
 
 =======
 Suggestion 9
 
-def get_input():
+def main():
     n = int(input())
-    d = list(map(int, input().split()))
-    return n, d
+    s = input()
+    count = 1
+    for i in range(1, n):
+        if s[i] != s[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+main()

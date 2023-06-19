@@ -1,90 +1,106 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
+def solution():
     n = int(input())
     a = list(map(int, input().split()))
-    print(max(a)-min(a))
+    print(max(a) - min(a))
 
 =======
 Suggestion 2
 
-def max_difference(x):
-    max = x[1]-x[0]
-    for i in range(0,len(x)):
-        for j in range(i+1,len(x)):
-            if x[j]-x[i]>max:
-                max = x[j]-x[i]
-    return max
+def max_diff():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(max(A) - min(A))
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    print(a[-1]-a[0])
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    print(max(A)-min(A))
 
 =======
 Suggestion 4
 
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    max_a = max(A)
-    min_a = min(A)
-    print(max_a - min_a)
+    #读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    #初始化最大绝对差
+    max_diff = 0
+    #遍历所有可能的组合
+    for i in range(n):
+        for j in range(n):
+            #如果是两个不同的元素
+            if i != j:
+                #计算绝对差
+                diff = abs(a[i] - a[j])
+                #如果绝对差大于最大绝对差
+                if diff > max_diff:
+                    #更新最大绝对差
+                    max_diff = diff
+    #打印最大绝对差
+    print(max_diff)
 
 =======
 Suggestion 5
 
-def main():
-    # input
-    N = int(input())
-    A = list(map(int, input().split()))
-    # compute
-    max_abs = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            if abs(A[i]-A[j]) > max_abs:
-                max_abs = abs(A[i]-A[j])
-    # output
-    print(max_abs)
-    return
+def max_diff(a):
+    a.sort()
+    return a[-1] - a[0]
 
 =======
 Suggestion 6
 
-def max_abs_diff():
-    N = int(input())
-    A = list(map(int, input().split()))
-    max_A = max(A)
-    min_A = min(A)
-    print(max_A - min_A)
+def abs_max(x):
+    x.sort()
+    return x[-1]-x[0]
+
+n = int(input())
+a = list(map(int,input().split()))
+print(abs_max(a))
 
 =======
 Suggestion 7
 
 def main():
-    #输入
-    n = int(input())
-    a = list(map(int, input().split()))
-    #处理
-    a_max = max(a)
-    a_min = min(a)
-    max = a_max - a_min
-    #输出
-    print(max)
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    max_num = max(A)
+    min_num = min(A)
+
+    print(max_num - min_num)
 
 =======
 Suggestion 8
 
-def main():
+def max_abs_diff(a):
+    a.sort()
+    return a[-1] - a[0]
+
+=======
+Suggestion 9
+
+def problems102_b():
     n = int(input())
     a = list(map(int, input().split()))
-    max_a = max(a)
-    min_a = min(a)
-    print(max_a - min_a)
+    print(max(a)-min(a))
+
+problems102_b()
+
+=======
+Suggestion 10
+
+def max_diff(arr):
+    max = 0
+    for i in range(len(arr)):
+        for j in range(i+1,len(arr)):
+            if abs(arr[i]-arr[j])>max:
+                max = abs(arr[i]-arr[j])
+    return max

@@ -1,120 +1,181 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def f(n):
-    return n
+def main():
+    t = int(input())
+    for i in range(t):
+        a, s = map(int, input().split())
+        if (s - a) % 2 == 0 and s >= a:
+            print("Yes")
+        else:
+            print("No")
 
 =======
 Suggestion 2
 
-def f(x):
-    return x
-
-N = int(input())
-mod = 998244353
-ans = 0
-for i in range(1, N+1):
-    ans += f(i)
-    ans %= mod
-print(ans)
+def main():
+    n = int(input())
+    for i in range(n):
+        a, s = map(int, input().split())
+        if (a ^ s) & (a & s) == 0:
+            print("Yes")
+        else:
+            print("No")
 
 =======
 Suggestion 3
 
-def problem238_c():
-    pass
+def get_bit_and(a, b):
+    c = 0
+    while a > 0 and b > 0:
+        if a % 2 == 1 and b % 2 == 1:
+            c += 1
+        a /= 2
+        b /= 2
+    return c
 
 =======
 Suggestion 4
 
-def f(x):
-    if x < 10:
-        return x
+def check(x, y, a, s):
+    if x & y == a and x + y == s:
+        return True
     else:
-        return 1 + f(x // 10)
+        return False
 
 =======
 Suggestion 5
 
 def main():
     n = int(input())
-    mod = 998244353
-    ans = 0
-    # 1から10の18乗までの全ての数を考慮する
-    for i in range(1, 19):
-        # 1桁の数
-        if i == 1:
-            # 1から9までの9個
-            ans += 9
-        # 2桁以上の数
+    for i in range(n):
+        a, s = map(int, input().split())
+        if (s - a) % 2 == 0 and a <= s:
+            print('Yes')
         else:
-            # 10**(i-1)から10**i-1までの数を考慮する
-            # 10**(i-1)から10**i-1までの数の桁数はi桁
-            # 10**(i-1)から10**i-1までの数のうち、i桁目がjである数の個数は10**(i-1) // 10 * j
-            # 例えばi=2のとき、10以上99以下の数のうち、10の位が1である数の個数は10 // 10 * 1 = 1
-            # 10以上99以下の数のうち、10の位が2である数の個数は10 // 10 * 2 = 2
-            # 10以上99以下の数のうち、10の位が3である数の個数は10 // 10 * 3 = 3
-            # 10以上99以下の数のうち、10の位が4である数の個数は10 // 10 * 4 = 4
-            # 10以上99以下の数のうち、10の位が5である数の個数は10 // 10 * 5 = 5
-            # 10以上99以下の数のうち、10の位が6である数の個数は10 // 10 * 6 = 6
-            # 10以上99以下の数のうち、10の位が7である数の個数は10 // 10 * 7 = 7
-            # 10以上99以下の数のうち、10の
+            print('No')
 
 =======
 Suggestion 6
 
-def solve(n):
-    ans = 0
-    m = 1
-    while n > 0:
-        ans += (n % 10) * m
-        m = m * 10 + 1
-        n //= 10
-    return ans
-
-n = int(input())
-ans = 0
-m = 1
-while n > 0:
-    ans += solve(min(n, 10**18)) * m
-    m = m * 100 + 11
-    n //= 100
-print(ans % 998244353)
+def test(a,s):
+    if a>s:
+        return False
+    else:
+        if (s-a)%2==0:
+            return True
+        else:
+            return False
 
 =======
 Suggestion 7
 
-def f(x):
-    return len(str(x))
+def bitSum(x, y):
+    result = 0
+    while x>0 or y>0:
+        result += (x%2)*(y%2)
+        x //= 2
+        y //= 2
+    return result
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    MOD = 998244353
-    ans = 0
-    for i in range(1, 10):
-        x = i
-        while x <= N:
-            y = min(N, x * 10 - 1)
-            ans += (y - x + 1) * i
-            x *= 10
-    print(ans % MOD)
+def get_bit_sum(a, s):
+    if a > s:
+        return 'No'
+    elif a == s:
+        return 'Yes'
+    else:
+        bit_sum = 0
+        while s > 0:
+            bit_sum += s % 2
+            s = s // 2
+        if bit_sum % 2 == 0:
+            return 'No'
+        else:
+            return 'Yes'
 
 =======
 Suggestion 9
 
-def main():
-    N = int(input())
-    mod = 998244353
-    answer = 0
-    for i in range(1, 10):
-        tmp = 1
-        for j in range(1, N + 1):
-            tmp = (tmp * i) % mod
-            answer = (answer + tmp) % mod
-    print(answer)
-    return
+def bit_and(a, s):
+    if a > s:
+        return False
+    if a == s:
+        return True
+    if a == 0:
+        return bit_and(a, s-1)
+    if a == 1:
+        return bit_and(a, s-1)
+    if (a & 1) == 1 and (s & 1) == 1:
+        return bit_and(a>>1, s>>1)
+    else:
+        return False
+
+=======
+Suggestion 10
+
+def solve(a,s):
+    if a > s:
+        return "No"
+    if (a + s) % 2 == 1:
+        return "No"
+    if a == 0:
+        return "Yes"
+    if a == s:
+        return "Yes"
+    if a == 1 and s == 2:
+        return "Yes"
+    if a == 2 and s == 1:
+        return "Yes"
+    if a == 1 and s == 4:
+        return "Yes"
+    if a == 4 and s == 1:
+        return "Yes"
+    if a == 2 and s == 4:
+        return "Yes"
+    if a == 4 and s == 2:
+        return "Yes"
+    if a == 1 and s == 8:
+        return "Yes"
+    if a == 8 and s == 1:
+        return "Yes"
+    if a == 2 and s == 8:
+        return "Yes"
+    if a == 8 and s == 2:
+        return "Yes"
+    if a == 4 and s == 8:
+        return "Yes"
+    if a == 8 and s == 4:
+        return "Yes"
+    if a == 1 and s == 16:
+        return "Yes"
+    if a == 16 and s == 1:
+        return "Yes"
+    if a == 2 and s == 16:
+        return "Yes"
+    if a == 16 and s == 2:
+        return "Yes"
+    if a == 4 and s == 16:
+        return "Yes"
+    if a == 16 and s == 4:
+        return "Yes"
+    if a == 8 and s == 16:
+        return "Yes"
+    if a == 16 and s == 8:
+        return "Yes"
+    if a == 1 and s == 32:
+        return "Yes"
+    if a == 32 and s == 1:
+        return "Yes"
+    if a == 2 and s == 32:
+        return "Yes"
+    if a == 32 and s == 2:
+        return "Yes"
+    if a == 4 and s == 32:
+        return "Yes"
+    if a == 32 and s == 4:
+        return "Yes"

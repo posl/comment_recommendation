@@ -1,216 +1,137 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    N = int(input())
+    s = input()
+    if s[0] == s[1] == s[2]:
+        print(0)
+    elif s[0] == s[1] or s[1] == s[2]:
+        print(1)
+    else:
+        print(2)
 
 =======
 Suggestion 2
 
 def main():
-    N = int(input())
-    c = input()
-    r = c.count('R')
-    w = c.count('W')
-    if r == 0 or w == 0:
-        print(0)
-        return
-    if r >= w:
-        print(w)
-    else:
-        print(r)
+    s = input()
+    cnt = 0
+    max_cnt = 0
+    for i in s:
+        if i == 'R':
+            cnt += 1
+        else:
+            cnt = 0
+        if cnt > max_cnt:
+            max_cnt = cnt
+    print(max_cnt)
+
+main()
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    c = input()
-    r = c.count('R')
-    w = c.count('W')
-    if r == 0 or w == 0:
-        print(0)
-        return
-    if r == w:
-        print(1)
-        return
-    if r > w:
-        print(w)
-    else:
-        print(r)
+def solve():
+    s = input()
+    count = 0
+    max = 0
+    for i in range(3):
+        if s[i] == 'R':
+            count += 1
+        else:
+            count = 0
+        if max < count:
+            max = count
+    print(max)
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    c = input()
-    r = c.count('R')
-    w = n - r
-    if r == 0 or w == 0:
-        print(0)
-    else:
-        print(c[:r].count('W'))
+    s = input()
+    count = 0
+    maxcount = 0
+    for i in range(3):
+        if s[i] == 'R':
+            count += 1
+            if count >= maxcount:
+                maxcount = count
+        else:
+            count = 0
+    print(maxcount)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    stones = input()
-    red = stones.count('R')
-    ans = 0
-    for i in range(red):
-        if stones[i] == 'W':
-            ans += 1
-    print(ans)
+    s = input()
+    print(s.count('R'))
 
 =======
 Suggestion 6
 
-def solve(n, c):
-    r = 0
-    w = 0
-    for i in range(n):
-        if c[i] == 'R':
-            r += 1
-    for i in range(r):
-        if c[i] == 'W':
-            w += 1
-    return w
+def main():
+    S = input()
+    print(S.count("R"))
 
 =======
 Suggestion 7
 
-def main():
-    N = int(input())
-    c = input()
-    #print(c)
-    w = c.count('W')
-    #print(w)
-    r = c.count('R')
-    #print(r)
-    if w == 0 or r == 0:
-        print(0)
-        return
-    i = 0
-    j = N - 1
-    cnt = 0
-    while i < j:
-        if c[i] == 'W' and c[j] == 'R':
-            cnt += 1
-            i += 1
-            j -= 1
-        elif c[i] == 'R' and c[j] == 'W':
-            i += 1
-            j -= 1
-        elif c[i] == 'W':
-            j -= 1
-        elif c[j] == 'R':
-            i += 1
-        else:
-            i += 1
-            j -= 1
-    print(cnt)
-    return
+def max_rainy_days(s):
+    if s == 'RRR':
+        return 3
+    elif s == 'RRS' or s == 'SRR':
+        return 2
+    elif s == 'SSS':
+        return 0
+    else:
+        return 1
 
 =======
 Suggestion 8
 
-def problems174_d():
-    pass
+def main():
+    # 读取输入
+    S = input()
+    # 计数器
+    count = 0
+    # 最大值
+    max_count = 0
+    # 遍历字符串
+    for i in range(len(S)):
+        # 如果是R
+        if S[i] == "R":
+            # 计数器加1
+            count += 1
+            # 如果计数器大于最大值
+            if count > max_count:
+                # 重新赋值最大值
+                max_count = count
+        # 如果不是R
+        else:
+            # 重置计数器
+            count = 0
+    # 输出最大值
+    print(max_count)
 
 =======
 Suggestion 9
 
-def main():
-    n = int(input())
-    c = input()
-    r = 0
-    w = 0
-    for i in range(n):
-        if c[i] == "R":
-            r += 1
-    for i in range(r):
-        if c[i] == "W":
-            w += 1
-    print(w)
+def get_max_rainy_days(str):
+    max_rainy_days = 0
+    rainy_days = 0
+    for s in str:
+        if s == 'R':
+            rainy_days += 1
+        else:
+            if rainy_days > max_rainy_days:
+                max_rainy_days = rainy_days
+            rainy_days = 0
+    if rainy_days > max_rainy_days:
+        max_rainy_days = rainy_days
+    return max_rainy_days
 
-=======
-Suggestion 10
-
-def main():
-    N = int(input())
-    c = input()
-    #print(N)
-    #print(c)
-    #print(c[0])
-    #print(c[1])
-    #print(c[2])
-    #print(c[3])
-    #print(c[4])
-    #print(c[5])
-    #print(c[6])
-    #print(c[7])
-    #print(c[8])
-    #print(c[9])
-    #print(c[10])
-    #print(c[11])
-    #print(c[12])
-    #print(c[13])
-    #print(c[14])
-    #print(c[15])
-    #print(c[16])
-    #print(c[17])
-    #print(c[18])
-    #print(c[19])
-    #print(c[20])
-    #print(c[21])
-    #print(c[22])
-    #print(c[23])
-    #print(c[24])
-    #print(c[25])
-    #print(c[26])
-    #print(c[27])
-    #print(c[28])
-    #print(c[29])
-    #print(c[30])
-    #print(c[31])
-    #print(c[32])
-    #print(c[33])
-    #print(c[34])
-    #print(c[35])
-    #print(c[36])
-    #print(c[37])
-    #print(c[38])
-    #print(c[39])
-    #print(c[40])
-    #print(c[41])
-    #print(c[42])
-    #print(c[43])
-    #print(c[44])
-    #print(c[45])
-    #print(c[46])
-    #print(c[47])
-    #print(c[48])
-    #print(c[49])
-    #print(c[50])
-    #print(c[51])
-    #print(c[52])
-    #print(c[53])
-    #print(c[54])
-    #print(c[55])
-    #print(c[56])
-    #print(c[57])
-    #print(c[58])
-    #print(c[59])
-    #print(c[60])
-    #print(c[61])
-    #print(c[62])
-    #print(c[63])
-    #print(c[64])
-    #print(c[65])
-    #print(c[66])
-    #print(c[67])
+str = input()
+print(get_max_rainy_days(str))

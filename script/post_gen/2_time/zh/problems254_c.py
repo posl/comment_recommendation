@@ -3,158 +3,178 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def pascal_triangle(n):
-    """打印帕斯卡三角形"""
-    row = [1]
-    yh = []
-    for i in range(n):
-        yh.append(row)
-        row = [1] + [row[j] + row[j+1] for j in range(len(row)-1)] + [1]
-    return yh
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    b = [0] * (n + 1)
+    for i in range(1, n + 1):
+        b[i] = b[i - 1] + a[i]
+    for i in range(1, n + 1):
+        if i + k <= n:
+            if a[i] > a[i + k]:
+                return "No"
+            if a[i] == a[i + k]:
+                if b[i + k - 1] - b[i] > 0:
+                    return "No"
+    return "Yes"
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    a = [[0 for i in range(n)] for i in range(n)]
-    a[0][0] = 1
-    for i in range(1,n):
-        for j in range(i+1):
-            if j == 0 or j == i:
-                a[i][j] = 1
-            else:
-                a[i][j] = a[i-1][j-1] + a[i-1][j]
-    for i in range(n):
-        for j in range(i+1):
-            print(a[i][j],end=' ')
-        print()
+def sort_check(a, k):
+    for i in range(len(a) - k):
+        if a[i] > a[i + k]:
+            return False
+    return True
 
 =======
 Suggestion 3
 
-def pascal_triangle(n):
-    if n == 1:
-        return [[1]]
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    if sorted(A) == A:
+        print("Yes")
     else:
-        new_row = [1]
-        result = pascal_triangle(n-1)
-        last_row = result[-1]
-        for i in range(len(last_row)-1):
-            new_row.append(last_row[i]+last_row[i+1])
-        new_row += [1]
-        result.append(new_row)
-        return result
+        for i in range(N-K):
+            if A[i] > A[i+K]:
+                A[i],A[i+K] = A[i+K],A[i]
+        if sorted(A) == A:
+            print("Yes")
+        else:
+            print("No")
 
 =======
 Suggestion 4
 
-def solve(n):
-    a = [[0 for i in range(n)] for i in range(n)]
-    for i in range(n):
-        a[i][0] = 1
-        a[i][i] = 1
-    for i in range(2, n):
-        for j in range(1, i):
-            a[i][j] = a[i - 1][j - 1] + a[i - 1][j]
-    return a
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 並び替えても、並び替えなくても、K個おきに並び替えている
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+    # 並び替えても並び替えなくても、K個おきに並び替えているので、
+
+    for i in range(n - k):
+        if a[i] < a[i + k]:
+            print('Yes')
+            exit()
+    print('No')
 
 =======
 Suggestion 5
 
-def func254_b(n):
-    a = []
-    for i in range(n):
-        if i == 0:
-            a.append([1])
-        elif i == 1:
-            a.append([1, 1])
+def solve(N, K, A):
+    # Kを大きい順にソートする
+    K.sort(reverse=True)
+    # Kの最大値がAの長さの半分以上の場合、必ずNo
+    if K[0] >= N // 2:
+        return 'No'
+    # Kの最大値がAの最大値以下の場合、必ずYes
+    if K[0] >= max(A):
+        return 'Yes'
+    # Kの最大値がAの最大値より大きい場合、可能性があるか調べる
+    for i in range(len(K)):
+        # Kの値がAの最大値以下であれば、可能性がある
+        if K[i] <= max(A):
+            return 'Yes'
+        # Kの値がAの最大値より大きければ、Kの値を減らして再チャレンジ
         else:
-            b = [1]
-            for j in range(1, i):
-                b.append(a[i-1][j-1] + a[i-1][j])
-            b.append(1)
-            a.append(b)
-    return a
+            K[i] -= 1
+    # 結局、可能性がない場合はNo
+    return 'No'
 
 =======
 Suggestion 6
 
-def pascal_triangle(n):
-    if n == 0:
-        return []
-    elif n == 1:
-        return [[1]]
-    else:
-        new_row = [1]
-        result = pascal_triangle(n-1)
-        last_row = result[-1]
-        for i in range(len(last_row)-1):
-            new_row.append(last_row[i] + last_row[i+1])
-        new_row += [1]
-        result.append(new_row)
-    return result
+def is_sorted(a):
+    for i in range(len(a)-1):
+        if a[i+1] < a[i]:
+            return False
+    return True
 
 =======
 Suggestion 7
 
-def pascal_triangle(n):
-    l = []
-    for i in range(n):
-        l.append([])
-        for j in range(i+1):
-            if j == 0 or j == i:
-                l[i].append(1)
-            else:
-                l[i].append(l[i-1][j-1] + l[i-1][j])
-    return l
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    if K == 1:
+        print('Yes')
+        return
+    for i in range(N-K):
+        if a[i] > a[i+K]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+main()
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    list = []
-    for i in range(n):
-        list.append([])
-        for j in range(i + 1):
-            if j == 0 or j == i:
-                list[i].append(1)
-            else:
-                list[i].append(list[i - 1][j - 1] + list[i - 1][j])
-    for i in range(n):
-        for j in range(i + 1):
-            print(list[i][j], end=" ")
-        print()
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(N-K):
+        if a[i]>a[i+K]:
+            print("Yes")
+            exit()
+    print("No")
 
 =======
 Suggestion 9
 
-def problems254_b():
-    n = int(input())
-    a = []
-    for i in range(n):
-        for j in range(i+1):
-            if j == 0 or j == i:
-                a.append(1)
-            else:
-                a.append(a[-i]+a[-i-1])
-        print(' '.join([str(a[i]) for i in range(len(a))]))
-        a = []
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = sorted(a)
+    if k == 1:
+        for i in range(n):
+            if a[i] != b[i]:
+                print('No')
+                return
+        print('Yes')
+        return
+    for i in range(n - k):
+        if a[i] == b[i]:
+            continue
+        if a[i] == b[i + k] and a[i + k] == b[i]:
+            a[i], a[i + k] = a[i + k], a[i]
+            continue
+        print('No')
+        return
+    for i in range(n - k, n):
+        if a[i] != b[i]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+solve()
 
 =======
 Suggestion 10
 
-def main():
-    n = int(input())
-    a = [[0 for i in range(n)] for j in range(n)]
-    a[0][0] = 1
-    for i in range(1, n):
-        a[i][0] = 1
-        a[i][i] = 1
-        for j in range(1, i):
-            a[i][j] = a[i-1][j-1] + a[i-1][j]
-    for i in range(n):
-        for j in range(i+1):
-            print(a[i][j], end=' ')
-        print()
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    if K == 1:
+        print("Yes")
+        return
+    for i in range(N - 1):
+        if A[i] > A[i + 1]:
+            print("No")
+            return
+    print("Yes")
+
+solve()

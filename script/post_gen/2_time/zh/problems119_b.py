@@ -1,152 +1,137 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def chenggong():
-    print("平成")
+def main():
+    #输入
+    N = int(input())
+    x = []
+    u = []
+    for i in range(N):
+        x_u = input().split()
+        x.append(float(x_u[0]))
+        u.append(x_u[1])
+    #处理
+    sum = 0
+    for i in range(N):
+        if u[i] == 'BTC':
+            sum += x[i] * 380000
+        elif u[i] == 'JPY':
+            sum += x[i]
+    #输出
+    print(sum)
 
 =======
 Suggestion 2
 
-def problem119_a():
-    S = input()
-    S = S.split("/")
-    if int(S[0]) < 2019:
-        print("Heisei")
-    elif int(S[0]) == 2019:
-        if int(S[1]) < 4:
-            print("Heisei")
-        elif int(S[1]) == 4:
-            if int(S[2]) <= 30:
-                print("Heisei")
-            else:
-                print("TBD")
-        else:
-            print("TBD")
-    else:
-        print("TBD")
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == 'BTC':
+            x = float(x) * 380000
+        sum += float(x)
+    print(sum)
 
 =======
 Suggestion 3
 
 def main():
-    S = input()
-    year, month, day = S.split('/')
-    year = int(year)
-    month = int(month)
-    day = int(day)
-    if year < 2019:
-        print('Heisei')
-    elif year == 2019 and month <= 4:
-        print('Heisei')
-    else:
-        print('TBD')
+    N = int(input())
+    total = 0
+    for i in range(N):
+        x, u = input().split()
+        if u == "BTC":
+            total += float(x)*380000.0
+        else:
+            total += int(x)
+    print(total)
 
 =======
 Suggestion 4
 
 def main():
-    #input
-    date = input()
-    year = int(date[0:4])
-    month = int(date[5:7])
-    day = int(date[8:10])
-    #compute
-    if year < 2019:
-        print("Heisei")
-    elif year == 2019:
-        if month < 4:
-            print("Heisei")
-        elif month == 4:
-            if day <= 30:
-                print("Heisei")
-            else:
-                print("TBD")
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == "JPY":
+            sum += int(x)
         else:
-            print("TBD")
-    else:
-        print("TBD")
-main()
+            sum += float(x)*380000
+    print(sum)
 
 =======
 Suggestion 5
 
-def main():
-    S = input()
-    y = int(S[0:4])
-    m = int(S[5:7])
-    d = int(S[8:10])
-    if y < 2019:
-        print("Heisei")
-    elif y == 2019 and m <= 4:
-        print("Heisei")
-    else:
-        print("TBD")
+def solve():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == "JPY":
+            ans += int(x)
+        else:
+            ans += float(x) * 380000
+    print(ans)
+solve()
 
 =======
 Suggestion 6
 
 def main():
-    # 日期输入
-    date = input()
-    # 年月日分离
-    year, month, day = date.split('/')
-    # 判断
-    if int(year) < 2019:
-        print('Heisei')
-    elif int(year) == 2019 and int(month) < 4:
-        print('Heisei')
-    elif int(year) == 2019 and int(month) == 4 and int(day) <= 30:
-        print('Heisei')
-    else:
-        print('TBD')
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x,u = input().split()
+        if u == 'JPY':
+            sum += int(x)
+        else:
+            sum += float(x)*380000.0
+    print(sum)
+
+main()
 
 =======
 Suggestion 7
 
 def main():
-    str = input()
-    str_list = str.split('/')
-    if int(str_list[0]) < 2019:
-        print('Heisei')
-    elif int(str_list[1]) < 4:
-        print('Heisei')
-    elif int(str_list[2]) <= 30:
-        print('Heisei')
-    else:
-        print('TBD')
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == 'BTC':
+            sum += 380000.0 * float(x)
+        else:
+            sum += float(x)
+    print(sum)
 
 =======
 Suggestion 8
 
 def main():
-    S = input()
-    if S <= "2019/04/30":
-        print("平成")
-    else:
-        print("TBD")
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == "BTC":
+            sum += float(x) * 380000
+        else:
+            sum += int(x)
+    print(sum)
 
 =======
 Suggestion 9
 
 def main():
-    S = input()
-    year, month, day = S.split('/')
-    year = int(year)
-    month = int(month)
-    day = int(day)
-    if year < 2019:
-        print('Heisei')
-    elif year == 2019 and month < 4:
-        print('Heisei')
-    elif year == 2019 and month == 4 and day <= 30:
-        print('Heisei')
-    else:
-        print('TBD')
-
-=======
-Suggestion 10
-
-def get_input():
-    return input()
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == 'JPY':
+            sum += int(x)
+        else:
+            sum += float(x) * 380000.0
+    print(sum)

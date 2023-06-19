@@ -1,126 +1,103 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def solve(h, a):
-    if h <= 0:
-        return True
-    if len(a) == 0:
-        return False
-    t = a.pop()
-    return solve(h, a) or solve(h-t, a)
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort(reverse=True)
+    ans = sum(h)
+    for i in range(k):
+        ans -= h[i]
+    print(ans)
 
 =======
 Suggestion 2
 
 def main():
-    h,n = map(int, input().split())
-    a = list(map(int, input().split()))
-    if sum(a) >= h:
-        print("Yes")
-    else:
-        print("No")
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+
+    H.sort(reverse=True)
+    ans = sum(H[K:])
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    H,N = map(int,input().split())
-    A = list(map(int,input().split()))
-    if H <= sum(A):
-        print("Yes")
-    else:
-        print("No")
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    H.reverse()
+    print(sum(H[K:]))
 
 =======
 Suggestion 4
 
 def main():
-    # 读取输入
-    h, n = map(int, input().split())
-    a = list(map(int, input().split()))
-    # 求和
-    sum_a = sum(a)
-    # 判断
-    if h <= sum_a:
-        print("Yes")
-    else:
-        print("No")
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    H = H[K:]
+    print(sum(H))
 
 =======
 Suggestion 5
 
 def main():
-    h,n = map(int,input().split())
-    a = list(map(int,input().split()))
-    if h <= sum(a):
-        print('Yes')
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    #print(H)
+    if K >= N:
+        print(0)
     else:
-        print('No')
+        print(sum(H[K:]))
+
+main()
 
 =======
 Suggestion 6
 
-def solve():
-    # 读入输入
-    H, N = map(int, input().split())
-    A = list(map(int, input().split()))
-
-    # 用于动态规划的数组，dp[i]表示减少i点生命值所需的最小消耗
-    dp = [float("inf")] * (H + 1)
-    dp[0] = 0
-
-    for i in range(H + 1):
-        for j in range(N):
-            # 注意判断是否越界
-            if i + A[j] <= H:
-                dp[i + A[j]] = min(dp[i + A[j]], dp[i] + 1)
-            else:
-                dp[H] = min(dp[H], dp[i] + 1)
-
-    if dp[H] <= 1:
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort()
+    if k >= n:
+        print(0)
+        return
+    print(sum(h[:-k - 1]))
 
 =======
 Suggestion 7
 
-def solve():
-    H, N = map(int, input().split())
-    A = list(map(int, input().split()))
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort(reverse=True)
+    print(sum(h[k:]))
 
-    if sum(A) >= H:
-        print('Yes')
-    else:
-        print('No')
+main()
 
 =======
 Suggestion 8
 
-def solve():
-    h,n = map(int,input().split())
-    a = list(map(int,input().split()))
-    if h <= sum(a):
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort()
+    if n <= k:
+        print(0)
+        return
+    print(sum(h[:n-k]))
 
 =======
 Suggestion 9
 
 def main():
-    pass
-
-=======
-Suggestion 10
-
-def main():
-    h,n = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    if h <= sum(a):
-        print("Yes")
-    else:
-        print("No")
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort()
+    print(sum(h[:n-k]))

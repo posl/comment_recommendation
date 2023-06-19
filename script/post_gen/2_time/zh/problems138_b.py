@@ -1,111 +1,79 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += 1/a[i]
+    print(1/sum)
 
 =======
 Suggestion 2
 
 def main():
-    # 你的代码
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
+    n = int(input())
+    a = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        result += 1 / a[i]
+    print(1 / result)
 
 =======
 Suggestion 3
 
 def main():
-    a = int(input())
-    s = input()
-    if a < 3200:
-        print("red")
-    else:
-        print(s)
+    N = int(input())
+    A = input().split()
+    A = [int(i) for i in A]
+    result = 0
+    for i in range(N):
+        result += 1/A[i]
+    print(1/result)
 
 =======
 Suggestion 4
 
-def get_input():
-    a = int(input())
-    s = input()
-    return a, s
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1/sum([1/x for x in a]))
 
 =======
 Suggestion 5
 
-def problems138_a():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(1 / sum([1 / a for a in A]))
 
 =======
 Suggestion 6
 
-def problem138_a():
-    a = int(input())
-    s = str(input())
-    if a < 3200:
-        print("red")
-    else:
-        print(s)
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1 / sum(1 / i for i in a))
 
 =======
 Suggestion 7
 
-def problems138_a(a,s):
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
-
-problems138_a(3200,"pink")
-problems138_a(3199,"pink")
-problems138_a(4049,"red")
+def main():
+    N = input()
+    A = input()
+    print(1/sum([1/int(i) for i in A.split()]))
+main()
 
 =======
 Suggestion 8
 
 def main():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print('red')
-
-=======
-Suggestion 9
-
-def problem138_a():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
-
-=======
-Suggestion 10
-
-def problem138_a():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print('red')
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += 1 / a[i]
+    print(1 / ans)

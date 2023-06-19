@@ -3,68 +3,90 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def get_input():
-    return map(int, input().split())
+def main():
+    pass
 
 =======
 Suggestion 2
 
 def main():
-    H,A=map(int,input().split())
-    ans=H//A
-    if H%A!=0:
-        ans+=1
-    print(ans)
+    H,N = map(int,input().split())
+    A = list(map(int,input().split()))
+    if H > sum(A):
+        print("No")
+    else:
+        print("Yes")
 
 =======
 Suggestion 3
 
 def main():
-    H,A = map(int,input().split())
-    count = 0
-    while H > 0:
-        H -= A
-        count += 1
-    print(count)
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if H <= sum(A):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
 
-def main():
-    H, A = map(int, input().split())
-    if H % A == 0:
-        print(H // A)
-    else:
-        print(H // A + 1)
+def judge(h,n,a):
+    if h<=0:
+        return True
+    if n==0:
+        return False
+    if judge(h-a[0],n-1,a[1:]):
+        return True
+    if judge(h,n-1,a[1:]):
+        return True
+    return False
 
 =======
 Suggestion 5
 
-def main():
-    h, a = map(int, input().split())
-    print((h+a-1)//a)
+def judge(H, N, A):
+    #print(H, N, A)
+    if H == 0:
+        return True
+    if H < 0:
+        return False
+    if N == 0:
+        return False
+    if judge(H-A[0], N-1, A[1:]) or judge(H, N-1, A[1:]):
+        return True
+    else:
+        return False
 
 =======
 Suggestion 6
 
 def main():
-    H, A = map(int, input().split())
-    print((H + A - 1) // A)
+    h,n = map(int,input().split())
+    a = list(map(int,input().split()))
+    if h <= sum(a):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 7
 
 def main():
-    h,a = map(int,input().split())
-    i = 0
-    while h > 0:
-        h -= a
-        i += 1
-    print(i)
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if H <= sum(A):
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 8
 
 def main():
-    H, A = map(int, input().split())
-    print(H // A + (1 if H % A else 0))
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) >= H:
+        print("Yes")
+    else:
+        print("No")

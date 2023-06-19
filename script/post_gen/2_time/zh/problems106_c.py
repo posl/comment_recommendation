@@ -6,177 +6,126 @@ Suggestion 1
 def main():
     S = input()
     K = int(input())
-    n = len(S)
-    i = 0
-    while i < n and int(S[i]) == 1:
-        i += 1
-    if i == n:
-        print(1)
-    elif K <= i:
+    cnt = 0
+    for i in range(len(S)):
+        if S[i] == '1':
+            cnt += 1
+        else:
+            break
+
+    if K <= cnt:
         print(1)
     else:
-        print(S[i])
-main()
+        print(S[cnt-1])
 
 =======
 Suggestion 2
 
-def main():
-    S = input()
-    K = int(input())
-    #print(S)
-    #print(K)
-    if K == 1:
-        print(S[0])
-        return
-    if K == 2:
-        print(S[0])
-        return
-    if K == 3:
-        if S[0] == '1':
-            print(1)
+def solve():
+    s = input()
+    k = int(input())
+    #print(s, k)
+    for i in range(k):
+        if s[i] != '1':
+            print(s[i])
             return
-        else:
-            print(S[0])
-            return
-    if K == 4:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    if K == 5:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    if K == 6:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    if K == 7:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    if K == 8:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    if K == 9:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    if K == 10:
-        if S[0] == '1':
-            print(2)
-            return
-        else:
-            print(S[0])
-            return
-    #print(S)
-    #print(K)
-    if S[0] == '1':
-        print(2)
-        return
-    else:
-        print(S[0])
-        return
+    print(1)
 
 =======
 Suggestion 3
 
 def main():
-    s = input()
-    k = int(input())
-    print(solve(s,k))
+    S = input()
+    K = int(input())
+    num = 0
+    for i in range(len(S)):
+        if S[i] == '1':
+            num += 1
+        else:
+            break
+    if K <= num:
+        print(1)
+    else:
+        print(S[num - 1])
 
 =======
 Suggestion 4
 
-def main():
-    s = input()
-    k = int(input())
-    i = 0
-    while i < k:
-        if s[i] == '1':
-            i += 1
+def problem106_c():
+    #S = input()
+    #K = int(input())
+    S = '299792458'
+    K = 9460730472580800
+    #print(S)
+    #print(K)
+    if S[0] == '1':
+        print('1')
+    elif S[0] == '2':
+        if K % 2 == 1:
+            print('2')
         else:
-            break
-    print(s[i])
+            print('3')
+    else:
+        print(S[0])
 
 =======
 Suggestion 5
 
-def replace_num(num):
-    num = str(num)
-    num = num.replace('2','22')
-    num = num.replace('3','333')
-    num = num.replace('4','4444')
-    num = num.replace('5','55555')
-    num = num.replace('6','666666')
-    num = num.replace('7','7777777')
-    num = num.replace('8','88888888')
-    num = num.replace('9','999999999')
-    return num
+def main():
+    S = input()
+    K = int(input())
+    for i in range(K):
+        if S[i] != '1':
+            print(S[i])
+            break
+    else:
+        print('1')
 
 =======
 Suggestion 6
 
-def get_next(s):
-    next_s = ''
-    for i in s:
-        next_s += i*i
-    return next_s
+def main():
+    s = input()
+    k = int(input())
+    for i in range(k):
+        if s[i] != '1':
+            print(s[i])
+            return
+    print('1')
 
 =======
 Suggestion 7
 
-def main():
-    s = input()
-    k = int(input())
-    #print(s)
-    #print(k)
-    #print(len(s))
-    if len(s) >= k:
-        print(s[k-1])
-    else:
-        #print("here")
-        #print(len(s))
-        #print(k)
-        #print(k % len(s))
-        print(s[k % len(s) - 1])
-    return 0
+def f(s):
+    s = s.replace('2','22')
+    s = s.replace('3','333')
+    s = s.replace('4','4444')
+    s = s.replace('5','55555')
+    s = s.replace('6','666666')
+    s = s.replace('7','7777777')
+    s = s.replace('8','88888888')
+    s = s.replace('9','999999999')
+    return s
+
+s = input()
+k = int(input())
 
 =======
 Suggestion 8
 
 def main():
-    str = input()
-    k = int(input())
-    i = 0
-    while i < k:
-        if str[i] == '1':
-            i += 1
+    S = input()
+    K = int(input())
+    count = 0
+    for i in range(len(S)):
+        if S[i] == '1':
+            count += 1
         else:
-            str = str.replace(str[i], str[i] * int(str[i]), 1)
-            i += int(str[i])
-    print(str[k - 1])
-main()
+            break
+    if K <= count:
+        print(1)
+    else:
+        print(S[count])
 
 =======
 Suggestion 9
@@ -184,16 +133,30 @@ Suggestion 9
 def main():
     s = input()
     k = int(input())
-    s = list(s)
-    for i in range(k):
-        if s[i] == '1':
-            continue
-        else:
-            print(s[i])
-            break
+    n = len(s)
+    while k > n:
+        k -= n
+        s = s.replace("1", "")
+        s = s.replace("2", "22")
+        s = s.replace("3", "333")
+        s = s.replace("4", "4444")
+        s = s.replace("5", "55555")
+        s = s.replace("6", "666666")
+        s = s.replace("7", "7777777")
+        s = s.replace("8", "88888888")
+        s = s.replace("9", "999999999")
+        n = len(s)
+    print(s[k-1])
 
 =======
 Suggestion 10
 
-def count_num(s):
-    return s.count('1') + s.count('2') * 2 + s.count('3') * 3 + s.count('4') * 4 + s.count('5') * 5 + s.count('6') * 6 + s.count('7') * 7 + s.count('8') * 8 + s.count('9') * 9
+def main():
+    S = input()
+    K = int(input())
+    for i in range(K):
+        if S[i] != '1':
+            print(S[i])
+            break
+        if i == K-1:
+            print('1')

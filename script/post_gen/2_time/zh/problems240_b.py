@@ -1,163 +1,68 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
 def main():
-    a,b = map(int, input().split())
-    if a < b:
-        print("Yes")
-    else:
-        print("No")
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(len(set(a)))
 
 =======
 Suggestion 2
 
 def main():
-    a, b = map(int, input().split())
-    if a + 1 == b:
-        print("Yes")
-    else:
-        print("No")
+    # 读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 用集合存储不同的整数
+    s = set()
+    for x in a:
+        s.add(x)
+    # 打印答案
+    print(len(s))
 
 =======
 Suggestion 3
 
 def main():
-    a,b = map(int,input().split())
-    if b-a == 1:
-        print("Yes")
-    else:
-        print("No")
+    # 读取输入
+    input()
+    num_list = input().split(" ")
+    # 用集合去重
+    num_set = set(num_list)
+    # 输出集合元素个数
+    print(len(num_set))
 
 =======
 Suggestion 4
 
-def judge(a,b):
-    if (a==1 and b==3) or (a==2 and b==4) or (a==3 and b==5) or (a==4 and b==6) or (a==5 and b==7) or (a==6 and b==8) or (a==7 and b==9) or (a==8 and b==10):
-        return True
-    else:
-        return False
-
-a,b = map(int,input().split())
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = set(a)
+    print(len(b))
 
 =======
 Suggestion 5
 
 def main():
-    a,b = map(int,input().split())
-    if b - a == 1 or b - a == 9:
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    a = list(map(int, input().split()))
+    print(len(set(a)))
 
 =======
 Suggestion 6
 
 def main():
-    a,b = map(int,input().split())
-    if a == 1 and b == 3:
-        print("Yes")
-    elif a == 1 and b == 2:
-        print("No")
-    elif a == 1 and b == 4:
-        print("No")
-    elif a == 1 and b == 5:
-        print("No")
-    elif a == 1 and b == 6:
-        print("Yes")
-    elif a == 1 and b == 7:
-        print("Yes")
-    elif a == 1 and b == 8:
-        print("Yes")
-    elif a == 1 and b == 9:
-        print("Yes")
-    elif a == 1 and b == 10:
-        print("Yes")
-    elif a == 2 and b == 3:
-        print("Yes")
-    elif a == 2 and b == 4:
-        print("No")
-    elif a == 2 and b == 5:
-        print("No")
-    elif a == 2 and b == 6:
-        print("Yes")
-    elif a == 2 and b == 7:
-        print("Yes")
-    elif a == 2 and b == 8:
-        print("Yes")
-    elif a == 2 and b == 9:
-        print("Yes")
-    elif a == 2 and b == 10:
-        print("Yes")
-    elif a == 3 and b == 4:
-        print("Yes")
-    elif a == 3 and b == 5:
-        print("No")
-    elif a == 3 and b == 6:
-        print("Yes")
-    elif a == 3 and b == 7:
-        print("Yes")
-    elif a == 3 and b == 8:
-        print("Yes")
-    elif a == 3 and b == 9:
-        print("Yes")
-    elif a == 3 and b == 10:
-        print("Yes")
-    elif a == 4 and b == 5:
-        print("Yes")
-    elif a == 4 and b == 6:
-        print("Yes")
-    elif a == 4 and b == 7:
-        print("Yes")
-    elif a == 4 and b == 8:
-        print("Yes")
-    elif a == 4 and b == 9:
-
-=======
-Suggestion 7
-
-def main():
-    a,b = map(int,input().split())
-    if b-a == 1 or b-a == 9:
-        print("Yes")
-    else:
-        print("No")
-
-=======
-Suggestion 8
-
-def main():
-    a,b = map(int,input().split())
-    if (a == 1 and b == 3) or (a == 1 and b == 2) or (a == 3 and b == 4) or (a == 2 and b == 4) or (a == 2 and b == 5) or (a == 4 and b == 5) or (a == 5 and b == 6) or (a == 5 and b == 7) or (a == 6 and b == 8) or (a == 7 and b == 8) or (a == 7 and b == 9) or (a == 8 and b == 10) or (a == 9 and b == 10):
-        print("Yes")
-    else:
-        print("No")
-main()
-
-=======
-Suggestion 9
-
-def is_connect(a, b):
-    if (a == 1 and b == 2) or (a == 2 and b == 3) or (a == 3 and b == 4) or (a == 4 and b == 5) or (a == 5 and b == 6) or (a == 6 and b == 7) or (a == 7 and b == 8) or (a == 8 and b == 9) or (a == 9 and b == 10):
-        return True
-    else:
-        return False
-
-=======
-Suggestion 10
-
-def main():
-    a, b = map(int, input().split())
-    if a == 1 and b == 10:
-        print('Yes')
-    elif a == 2 and b == 9:
-        print('Yes')
-    elif a == 3 and b == 8:
-        print('Yes')
-    elif a == 4 and b == 7:
-        print('Yes')
-    elif a == 5 and b == 6:
-        print('Yes')
-    else:
-        print('No')
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    count = 0
+    i = 0
+    while i < n:
+        count += 1
+        while i + 1 < n and a[i] == a[i + 1]:
+            i += 1
+        i += 1
+    print(count)

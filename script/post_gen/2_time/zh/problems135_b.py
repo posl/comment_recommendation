@@ -1,108 +1,106 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def solve(a, b):
-    if (a+b)%2==0:
-        return (a+b)//2
-    else:
-        return "IMPOSSIBLE"
-
-a, b = map(int, input().split())
-print(solve(a, b))
+def is_sorted(arr):
+    for i in range(len(arr)-1):
+        if arr[i] > arr[i+1]:
+            return False
+    return True
 
 =======
 Suggestion 2
 
 def main():
-    a,b = map(int,input().split())
-    if (a+b)%2 == 0:
-        print((a+b)//2)
+    N = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if p[i] != i + 1:
+            count += 1
+
+    if count <= 2:
+        print("YES")
     else:
-        print("IMPOSSIBLE")
+        print("NO")
 
 =======
 Suggestion 3
 
 def main():
-    a, b = map(int, input().split())
-    if (a + b) % 2 == 0:
-        print((a + b) // 2)
+    n = int(input())
+    p = list(map(int, input().split()))
+    p_sorted = sorted(p)
+    count = 0
+    for i in range(len(p)):
+        if p[i] != p_sorted[i]:
+            count += 1
+    if count <= 2:
+        print("YES")
     else:
-        print("IMPOSIBLE")
+        print("NO")
 
 =======
 Suggestion 4
 
 def main():
-    A, B = map(int, input().split())
-    if (A + B) % 2 == 0:
-        print((A + B) // 2)
+    N = int(input())
+    p = list(map(int, input().split()))
+    #print(N, p)
+    count = 0
+    for i in range(N):
+        if p[i] != i+1:
+            count += 1
+    if count == 2 or count == 0:
+        print("YES")
     else:
-        print("IMPOSSIBLE")
+        print("NO")
 
 =======
 Suggestion 5
 
-def main():
-    # 读取输入
-    a, b = map(int, input().split())
-    # 判断输出
-    if (a+b)%2 != 0:
-        print("IMPOSSIBLE")
-    else:
-        print((a+b)//2)
+def check_sort(p):
+    for i in range(len(p)-1):
+        if p[i] > p[i+1]:
+            return False
+    return True
 
 =======
 Suggestion 6
 
 def main():
-    a,b = map(int,input().split())
-    if (a+b)%2 == 0:
-        print(int((a+b)/2))
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if p[i] != i + 1:
+            count += 1
+    if count <= 2:
+        print('YES')
     else:
-        print("IMPOSIBLE")
+        print('NO')
 
 =======
 Suggestion 7
 
 def main():
-    a, b = map(int, input().split())
-    if a < b:
-        print(a)
-    elif a > b:
-        print(b)
+    N = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if p[i] != i + 1:
+            cnt += 1
+    if cnt <= 2:
+        print('YES')
     else:
-        print("IMPOSSIBLE")
-main()
+        print('NO')
 
 =======
 Suggestion 8
 
-def main():
-    a,b = map(int, input().split())
-    if a == b:
-        print("IMPOSSIBLE")
-    else:
-        print((a+b)//2)
-
-=======
-Suggestion 9
-
-def main():
-    a,b = map(int,input().split())
-    if (a+b)%2==0:
-        print(int((a+b)/2))
-    else:
-        print("IMPOSSIBLE")
-
-=======
-Suggestion 10
-
-def solution():
-    a,b = map(int, input().split())
-    if (a+b)%2 != 0:
-        print("IMPOSSIBLE")
-    else:
-        print((a+b)//2)
+def checkSort(arr):
+    for i in range(len(arr)-1):
+        if arr[i] > arr[i+1]:
+            return False
+    return True

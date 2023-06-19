@@ -1,99 +1,226 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    a,b,c,d,e,f = map(int, input().split())
-    if a*b*c >= d*e*f:
-        print((a*b*c-d*e*f) % 998244353)
-    else:
-        print((d*e*f-a*b*c) % 998244353)
+def solve():
+    s = []
+    for i in range(9):
+        s.append(input())
+    ans = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == "#":
+                if i >= 2 and j >= 2 and s[i-1][j-1] == "#" and s[i-2][j-2] == "#":
+                    ans += 1
+                if i >= 2 and s[i-1][j] == "#" and s[i-2][j] == "#":
+                    ans += 1
+                if i >= 2 and j <= 6 and s[i-1][j+1] == "#" and s[i-2][j+2] == "#":
+                    ans += 1
+                if j >= 2 and s[i][j-1] == "#" and s[i][j-2] == "#":
+                    ans += 1
+                if j <= 6 and s[i][j+1] == "#" and s[i][j+2] == "#":
+                    ans += 1
+                if i <= 6 and j >= 2 and s[i+1][j-1] == "#" and s[i+2][j-2] == "#":
+                    ans += 1
+                if i <= 6 and s[i+1][j] == "#" and s[i+2][j] == "#":
+                    ans += 1
+                if i <= 6 and j <= 6 and s[i+1][j+1] == "#" and s[i+2][j+2] == "#":
+                    ans += 1
+    print(ans)
+
+
+solve()
 
 =======
 Suggestion 2
 
 def main():
     # 读取输入
-    line = input()
-    # 用空格分隔输入
-    A, B, C, D, E, F = map(int, line.split())
-    # 计算结果
-    result = A * B * C - D * E * F
-    # 打印结果
-    print(result % 998244353)
+    S = []
+    for i in range(9):
+        S.append(input())
+
+    # 统计
+    count = 0
+    for r in range(9):
+        for c in range(9):
+            if S[r][c] == "#":
+                count += 1
+
+    # 输出
+    print(count)
 
 =======
 Suggestion 3
 
 def main():
-    A, B, C, D, E, F = map(int, input().split())
-    print((A*B*C-D*E*F)%998244353)
+    # 读入数据
+    s = []
+    for i in range(9):
+        s.append(list(input()))
+    # print(s)
+
+    # 计算
+    count = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == '#':
+                if i == 0:
+                    if j == 0:
+                        if s[i+1][j] == '#' and s[i][j+1] == '#' and s[i+1][j+1] == '#':
+                            count += 1
+                    elif j == 8:
+                        if s[i][j-1] == '#' and s[i+1][j] == '#' and s[i+1][j-1] == '#':
+                            count += 1
+                    else:
+                        if s[i][j-1] == '#' and s[i+1][j] == '#' and s[i+1][j-1] == '#' and s[i][j+1] == '#' and s[i+1][j+1] == '#':
+                            count += 1
+                elif i == 8:
+                    if j == 0:
+                        if s[i-1][j] == '#' and s[i][j+1] == '#' and s[i-1][j+1] == '#':
+                            count += 1
+                    elif j == 8:
+                        if s[i][j-1] == '#' and s[i-1][j] == '#' and s[i-1][j-1] == '#':
+                            count += 1
+                    else:
+                        if s[i][j-1] == '#' and s[i-1][j] == '#' and s[i-1][j-1] == '#' and s[i][j+1] == '#' and s[i-1][j+1] == '#':
+                            count += 1
+                else:
+                    if j == 0:
+                        if s[i-1][j] == '#' and s[i+1][j] == '#' and s[i][j+1] == '#' and s[i-1][j+1] == '#' and s[i+1][j+1] == '#':
+                            count += 1
+                    elif j == 8:
+                        if s[i-1][j] == '#' and s[i+1][j]
 
 =======
 Suggestion 4
 
-def problems275_b():
-    #读取输入
-    line = input()
-    #分割输入
-    line = line.split()
-    #将输入的字符串转换为整数
-    line = list(map(int, line))
-    #将输入的整数赋值给变量
-    A = line[0]
-    B = line[1]
-    C = line[2]
-    D = line[3]
-    E = line[4]
-    F = line[5]
-    #计算（A×B×C）-（D×E×F）除以998244353时的余数
-    result = (A*B*C - D*E*F) % 998244353
-    #输出结果
-    print(result)
+def problem275_c():
+    return None
 
 =======
 Suggestion 5
 
-def problems275_b():
-    pass
+def main():
+    S = []
+    for i in range(9):
+        S.append(input())
+    result = 0
+    for i in range(9):
+        for j in range(9):
+            if S[i][j] == '#':
+                if i == 0 or i == 8:
+                    if j == 0 or j == 8:
+                        result += 1
+                    else:
+                        if S[i][j-1] == '.' or S[i][j+1] == '.':
+                            result += 1
+                elif j == 0 or j == 8:
+                    if S[i-1][j] == '.' or S[i+1][j] == '.':
+                        result += 1
+                else:
+                    if S[i-1][j] == '.' or S[i+1][j] == '.' or S[i][j-1] == '.' or S[i][j+1] == '.':
+                        result += 1
+    print(result)
 
 =======
 Suggestion 6
 
-def problem275_b():
-    a,b,c,d,e,f = map(int,input().split())
-    if a*b*c >= d*e*f:
-        print((a*b*c-d*e*f)%998244353)
-    else:
-        print(0)
+def main():
+    #读取输入
+    S = []
+    for i in range(9):
+        S.append(input())
+    #计算结果
+    result = 0
+    for r in range(9):
+        for c in range(9):
+            if S[r][c] == '#':
+                if r-1 < 0 or c-1 < 0:
+                    continue
+                if S[r-1][c-1] == '#' and S[r-1][c] == '#' and S[r][c-1] == '#':
+                    result += 1
+    #输出结果
+    print(result)
 
 =======
 Suggestion 7
 
 def main():
-    A, B, C, D, E, F = map(int, input().split())
-    #print(A, B, C, D, E, F)
-    #print(A*B*C, D*E*F)
-    if A*B*C >= D*E*F:
-        print((A*B*C - D*E*F) % 998244353)
-    else:
-        print(0)
+    board = []
+    for i in range(9):
+        board.append(input())
+
+    count = 0
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == '#':
+                if i-1 >= 0 and j-1 >= 0:
+                    if board[i-1][j-1] == '#':
+                        if i-1 >= 0 and j+1 < 9:
+                            if board[i-1][j+1] == '#':
+                                if i+1 < 9 and j+1 < 9:
+                                    if board[i+1][j+1] == '#':
+                                        if i+1 < 9 and j-1 >= 0:
+                                            if board[i+1][j-1] == '#':
+                                                count += 1
+    print(count)
 
 =======
 Suggestion 8
 
 def main():
-    # 输入
-    A, B, C, D, E, F = map(int, input().split())
+    S = []
+    for i in range(9):
+        S.append(input())
+    ans = 0
+    for i in range(9):
+        for j in range(9):
+            if S[i][j] == "#":
+                ans += 1
+    print(ans)
 
-    # 乘法的结果
-    ABC = A * B * C
-    DEF = D * E * F
+=======
+Suggestion 9
 
-    # 乘法的结果对998244353取模
-    ABC = ABC % 998244353
-    DEF = DEF % 998244353
+def getSquareCount():
+    # 读取输入
+    squares = []
+    for i in range(9):
+        squares.append(input())
+    # 找到所有可能的正方形
+    squarePoints = []
+    for r in range(8):
+        for c in range(8):
+            if squares[r][c] == '#':
+                squarePoints.append((r, c))
+    # 计算所有可能的正方形的顶点
+    squareVertexes = []
+    for point in squarePoints:
+        squareVertexes.append((point[0], point[1], point[0], point[1] + 1))
+        squareVertexes.append((point[0], point[1], point[0] + 1, point[1]))
+        squareVertexes.append((point[0], point[1] + 1, point[0] + 1, point[1] + 1))
+        squareVertexes.append((point[0] + 1, point[1], point[0] + 1, point[1] + 1))
+    # 计算所有可能的正方形的顶点是否都在棋盘上
+    count = 0
+    for vertex in squareVertexes:
+        if vertex[0] >= 0 and vertex[0] <= 8 and vertex[1] >= 0 and vertex[1] <= 8 and vertex[2] >= 0 and vertex[2] <= 8 and vertex[3] >= 0 and vertex[3] <= 8:
+            count += 1
+    # 返回结果
+    return count
 
-    # 输出
-    print((ABC - DEF) % 998244353)
+=======
+Suggestion 10
+
+def main():
+    s = []
+    for i in range(9):
+        s.append(input())
+    ans = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == '#':
+                if i + 1 < 9 and j + 1 < 9 and s[i + 1][j] == '#' and s[i][j + 1] == '#' and s[i + 1][j + 1] == '#':
+                    ans += 1
+    print(ans)

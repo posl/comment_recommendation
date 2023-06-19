@@ -4,101 +4,88 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    x = int(input())
-    for a in range(-1000,1001):
-        for b in range(-1000,1001):
-            if a**5 - b**5 == x:
-                print(a,b)
-                return
+    S = input()
+    T = input()
+    if S == T[:-1]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 2
 
 def main():
-    x = int(input())
-    for a in range(-1000,1000):
-        for b in range(-1000,1000):
-            if a**5 - b**5 == x:
-                print("{} {}".format(a,b))
-                return
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 3
 
-def getAB(x):
-    if x == 1:
-        return 0,-1
+def main():
+    S = input()
+    T = input()
+    if len(S) == len(T) - 1:
+        if S == T[:-1]:
+            print("Yes")
+        else:
+            print("No")
     else:
-        for a in range(1,1000):
-            for b in range(1,1000):
-                if a**5-b**5 == x:
-                    return a,b
+        print("No")
 
 =======
 Suggestion 4
 
-def solve(x):
-    for a in range(-118, 120):
-        for b in range(-119, 119):
-            if a**5 - b**5 == x:
-                return a, b
-
-x = int(input())
-a, b = solve(x)
-print(a, b)
+def main():
+    s = input()
+    t = input()
+    if len(s)+1 == len(t):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 5
 
 def main():
-    x = int(input())
-    for a in range(-120, 120):
-        for b in range(-120, 120):
-            if a ** 5 - b ** 5 == x:
-                print(a, b)
-                return
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 6
 
 def main():
-    x = int(input())
-    for a in range(-118, 120):
-        for b in range(-119, 119):
-            if a**5 - b**5 == x:
-                print(a, b)
-                return
+    S = input()
+    T = input()
+    if T == S + "z":
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 7
 
-def solve(x):
-    for a in range(-118,119):
-        for b in range(-119,118):
-            if a**5-b**5==x:
-                return a,b
-x=int(input())
-a,b=solve(x)
-print(a,b)
+def check(s, t):
+    if not len(s) + 1 == len(t):
+        return False
+    if not t.startswith(s):
+        return False
+    return True
+
+s = input()
+t = input()
 
 =======
 Suggestion 8
 
-def main():
-    X = int(input())
-    for A in range(-118, 120):
-        for B in range(-119, 119):
-            if A**5 - B**5 == X:
-                print(A, B)
-                return
-
-=======
-Suggestion 9
-
-def problem166():
-    x = int(input())
-    for a in range(1, 1001):
-        for b in range(-1000, 0):
-            if a**5 - b**5 == x:
-                print(a, b)
-                return
+def input():
+    s = raw_input()
+    t = raw_input()
+    return s, t

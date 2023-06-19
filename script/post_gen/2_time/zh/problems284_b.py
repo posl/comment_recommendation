@@ -5,107 +5,115 @@ Suggestion 1
 
 def main():
     n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    for i in range(n):
-        print(s[n-i-1])
+    a = list(map(int, input().split()))
+    count = 0
+    for i in a:
+        if i % 2 == 1:
+            count += 1
+    print(count)
 
 =======
 Suggestion 2
 
-def reverse_print():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    for i in range(N):
-        print(S[N-1-i])
+def main():
+    n = int(input())
+    for i in range(n):
+        a = int(input())
+        b = list(map(int, input().split()))
+        count = 0
+        for j in b:
+            if j % 2 == 1:
+                count += 1
+        print(count)
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    list = []
-    for i in range(n):
-        list.append(input())
-    for i in range(n):
-        print(list[n-i-1])
-
-main()
+def read_int():
+    return int(input())
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.reverse()
-    for i in range(n):
-        print(s[i])
+    t = int(input())
+    for i in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        count = 0
+        for j in range(n):
+            if a[j] % 2 != 0:
+                count += 1
+        print(count)
+
+main()
 
 =======
 Suggestion 5
 
-def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    for i in range(N):
-        print(S[N-1-i])
+def get_input():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        yield (N, A)
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    for i in range(n):
-        s = input()
-        print(s[::-1])
+def is_odd(x):
+    if x % 2 == 0:
+        return False
+    else:
+        return True
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    for i in range(n):
-        print(input())
+def count_odd(nums):
+    count = 0
+    for i in nums:
+        if i % 2 != 0:
+            count += 1
+    return count
 
 =======
 Suggestion 8
 
-def reverse_string(s):
-    return s[::-1]
+def main():
+    n = int(input())
+    for i in range(n):
+        a = int(input())
+        b = input().split()
+        b = list(map(int, b))
+        count = 0
+        for j in range(a):
+            if b[j] % 2 == 1:
+                count += 1
+        print(count)
 
 =======
 Suggestion 9
 
 def main():
-    # N = int(input())
-    # S = []
-    # for i in range(N):
-    #     S.append(input())
-    # for i in range(N):
-    #     print(S[N-i-1])
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.reverse()
-    for i in range(N):
-        print(S[i])
+    n = int(input())
+    for i in range(n):
+        a = int(input())
+        b = list(map(int, input().split()))
+        count = 0
+        for j in b:
+            if j % 2 == 1:
+                count += 1
+        print(count)
+
+main()
 
 =======
 Suggestion 10
 
-def main():
-    n = int(input())
-    s_list = []
-    for i in range(n):
-        s_list.append(input())
-    for i in range(n-1,-1,-1):
-        print(s_list[i])
+def count_odd_num(num_list):
+    count = 0
+    for i in num_list:
+        if i % 2 != 0:
+            count += 1
+    return count

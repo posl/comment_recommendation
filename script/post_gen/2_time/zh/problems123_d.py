@@ -4,158 +4,253 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N=int(input())
-    A=int(input())
-    B=int(input())
-    C=int(input())
-    D=int(input())
-    E=int(input())
-    ans=(N-1)//min(A,B,C,D,E)+5
-    print(ans)
-main()
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i] + b[j])
+    ab.sort(reverse=True)
+
+    abc = []
+    for i in range(min(k, len(ab))):
+        for j in range(z):
+            abc.append(ab[i] + c[j])
+    abc.sort(reverse=True)
+
+    for i in range(k):
+        print(abc[i])
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    print((n-1)//min(a,b,c,d,e)+5)
+    X,Y,Z,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    #print(A)
+    #print(B)
+    #print(C)
+    AB = []
+    for i in range(X):
+        for j in range(Y):
+            AB.append(A[i]+B[j])
+    #print(AB)
+    AB.sort(reverse=True)
+    #print(AB)
+    ABC = []
+    for i in range(min(K,X*Y)):
+        for j in range(Z):
+            ABC.append(AB[i]+C[j])
+    #print(ABC)
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    #print(n,a,b,c,d,e)
-    if n % a == 0:
-        ans = int(n/a) + 4
-    else:
-        ans = int(n/a) + 5
-    print(ans)
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ab = [i + j for i in a for j in b]
+    ab.sort(reverse=True)
+    ab = ab[:k]
+
+    abc = [i + j for i in ab for j in c]
+    abc.sort(reverse=True)
+    for i in abc[:k]:
+        print(i)
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-
-    print(5 + ((n - 1) // min(a, b, c, d, e)))
+    #输入
+    X,Y,Z,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    #解法
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a+b)
+    AB.sort(reverse=True)
+    ABC = []
+    for i in range(min(K,len(AB))):
+        for c in C:
+            ABC.append(AB[i]+c)
+    ABC.sort(reverse=True)
+    #输出
+    for i in range(K):
+        print(ABC[i])
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    min_num = min(a,b,c,d,e)
-    if min_num < n:
-        print(5 + (n-1)//min_num)
-    else:
-        print(5)
+    x,y,z,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+    ab=[]
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i]+b[j])
+    ab.sort(reverse=True)
+    abc=[]
+    for i in range(min(k,x*y)):
+        for j in range(z):
+            abc.append(ab[i]+c[j])
+    abc.sort(reverse=True)
+    for i in range(k):
+        print(abc[i])
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    min = n
-    if min > a:
-        min = a
-    if min > b:
-        min = b
-    if min > c:
-        min = c
-    if min > d:
-        min = d
-    if min > e:
-        min = e
-    if min == n:
-        print(5)
-    elif n % min == 0:
-        print(n // min + 4)
-    else:
-        print(n // min + 5)
+    # 读取输入
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    # 从大到小排序
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+
+    # 三重循环
+    ans = []
+    for a in A:
+        for b in B:
+            for c in C:
+                ans.append(a + b + c)
+
+    # 从大到小排序
+    ans.sort(reverse=True)
+
+    # 输出答案
+    for i in range(K):
+        print(ans[i])
+
+main()
 
 =======
 Suggestion 7
 
 def main():
-    N = int(input())
-    A = int(input())
-    B = int(input())
-    C = int(input())
-    D = int(input())
-    E = int(input())
-    print((N-1)//min(A,B,C,D,E)+5)
+    x,y,z,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i] + b[j])
+
+    ab.sort()
+    c.sort(reverse=True)
+
+    abc = []
+    for i in range(min(k, x * y)):
+        for j in range(z):
+            abc.append(ab[i] + c[j])
+
+    abc.sort(reverse=True)
+
+    for i in range(k):
+        print(abc[i])
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    m = min(a,b,c,d,e)
-    print(4 + (n + m - 1) // m)
+    x,y,z,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+
+    ab = []
+    for aa in a:
+        for bb in b:
+            ab.append(aa+bb)
+
+    ab.sort(reverse=True)
+
+    abc = []
+    for i in range(k):
+        for cc in c:
+            abc.append(ab[i]+cc)
+
+    abc.sort(reverse=True)
+    for i in range(k):
+        print(abc[i])
 
 =======
 Suggestion 9
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    print(int(4+((n-1)//min(a, b, c, d, e))))
+    X,Y,Z,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    ans = []
+    for a in A:
+        for b in B:
+            for c in C:
+                ans.append(a+b+c)
+    ans.sort(reverse=True)
+    for i in range(K):
+        print(ans[i])
 
 =======
 Suggestion 10
 
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    
-    # 从1到2的时间
-    t1 = (n + a - 1) // a
-    # 从2到3的时间
-    t2 = (t1 + b - 1) // b
-    # 从3到4的时间
-    t3 = (t2 + c - 1) // c
-    # 从4到5的时间
-    t4 = (t3 + d - 1) // d
-    # 从5到6的时间
-    t5 = (t4 + e - 1) // e
-    print(t5)
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a + b)
+    AB.sort(reverse=True)
+
+    ABC = []
+    for i in range(min(K, len(AB))):
+        for c in C:
+            ABC.append(AB[i] + c)
+    ABC.sort(reverse=True)
+
+    for i in range(K):
+        print(ABC[i])

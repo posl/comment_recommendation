@@ -3,162 +3,151 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    s = input()
-    if len(s) == 1:
-        print(s)
-        print(s)
-        return
-    min_s = s
-    max_s = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    print(min_s)
-    print(max_s)
+def solve(n, a, b):
+    total = 0
+    for i in range(n):
+        total += a[i] / b[i]
+    half = total / 2
+    sum = 0
+    for i in range(n):
+        sum += a[i] / b[i]
+        if sum > half:
+            return sum * b[i] - (sum - half) * b[i]
+    return 0
 
 =======
 Suggestion 2
 
-def min_max_string(s):
-    min_s = s
-    max_s = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    return min_s, max_s
+def time_to_meet(a,b):
+    return float(a)/(a+b)
 
 =======
 Suggestion 3
 
-def problem223_b():
-    s = input()
-    if len(s) == 1:
-        print(s)
-        print(s)
-        return
-    min_s = s
-    max_s = s
-    for i in range(0,len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    print(min_s)
-    print(max_s)
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i]/B[i]
+    ans = 0
+    for i in range(N):
+        ans += A[i]*sum/B[i]
+    print(ans/2)
+
+solve()
 
 =======
 Suggestion 4
 
-def main():
-    S = input()
-    Smin = S
-    Smax = S
-    for i in range(len(S)):
-        S = S[1:] + S[0]
-        if S < Smin:
-            Smin = S
-        if S > Smax:
-            Smax = S
-    print(Smin)
-    print(Smax)
+def solve(n, ab):
+    # 二分查找
+    # 1. 先求出最大的速度
+    max_speed = 0
+    for i in range(n):
+        max_speed = max(max_speed, ab[i][1])
+    # 2. 二分查找
+    left = 0
+    right = 1000000000
+    while right - left > 0.0000000001:
+        mid = (left + right) / 2
+        time = 0
+        for i in range(n):
+            time += ab[i][0] / (max_speed - mid * ab[i][1])
+        if time > mid:
+            left = mid
+        else:
+            right = mid
+    return left
 
 =======
 Suggestion 5
 
-def get_min_max(s):
-    min_str = s
-    max_str = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < min_str:
-            min_str = s
-        if s > max_str:
-            max_str = s
-    return min_str, max_str
+def main():
+    pass
 
 =======
 Suggestion 6
 
 def main():
-    print("请输入字符串：")
-    s = input()
-    s_min = s
-    s_max = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < s_min:
-            s_min = s
-        if s > s_max:
-            s_max = s
-    print(s_min)
-    print(s_max)
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    left = 0
+    right = 0
+    for i in range(N):
+        left += A[i] / B[i]
+    for i in range(N - 1, -1, -1):
+        right += A[i] / B[i]
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    ans -= left
+    ans -= right
+    print(ans)
 
 =======
 Suggestion 7
 
-def get_min_max_str(s):
-    l = len(s)
-    min_str = s
-    max_str = s
-    for i in range(l):
-        tmp_str = s[i:] + s[:i]
-        if tmp_str < min_str:
-            min_str = tmp_str
-        if tmp_str > max_str:
-            max_str = tmp_str
-    return min_str, max_str
+def get_distance(ropes):
+    total_length = 0
+    for rope in ropes:
+        total_length += rope[0]
+    total_time = total_length
+    for rope in ropes:
+        total_time += rope[0]/rope[1]
+    return total_length/2.0
 
 =======
 Suggestion 8
 
-def main():
-    s = input()
-    min_s = s
-    max_s = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    print(min_s)
-    print(max_s)
+def solve():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(N):
+        ans += AB[i][0] / AB[i][1]
+    ans /= 2
+    print(ans)
 
 =======
 Suggestion 9
 
-def get_min_max(s):
-    min = s
-    max = s
-    for i in range(0, len(s)):
-        s = s[1:] + s[0]
-        if s < min:
-            min = s
-        elif s > max:
-            max = s
-    return min, max
+def cal_distance(l):
+    total_length = 0
+    for a, b in l:
+        total_length += a
+    half_length = total_length / 2
+    half_length -= l[0][0]
+    half_length -= l[0][1]
+    half_length -= l[1][0]
+    half_length -= l[1][1]
+    return half_length
 
 =======
 Suggestion 10
 
-def main():
-    s = input()
-    s_len = len(s)
-    s_min = s
-    s_max = s
-    for i in range(s_len):
-        s = s[1:] + s[0]
-        if s < s_min:
-            s_min = s
-        if s > s_max:
-            s_max = s
-    print(s_min)
-    print(s_max)
+def cal(n, a, b):
+    total = 0
+    for i in range(n):
+        total += a[i] / b[i]
+
+    half = total / 2
+    total = 0
+    for i in range(n):
+        total += a[i] / b[i]
+        if total >= half:
+            return i + 1 - (total - half) * b[i] / a[i]
+
+    return -1

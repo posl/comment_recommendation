@@ -3,165 +3,189 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_max_value(n, values, costs):
-    max_value = 0
-    for i in range(2**n):
-        value = 0
-        cost = 0
-        for j in range(n):
-            if i & (1 << j):
-                value += values[j]
-                cost += costs[j]
-        if value - cost > max_value:
-            max_value = value - cost
-    return max_value
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
 =======
 Suggestion 2
 
-def solve(n,v,c):
-    dp = [[0]*(n+1) for _ in range(51)]
-    for i in range(1,n+1):
-        for j in range(51):
-            if j < c[i-1]:
-                dp[j][i] = dp[j][i-1]
-            else:
-                dp[j][i] = max(dp[j][i-1],dp[j-c[i-1]][i-1]+v[i-1])
-    return dp[50][n]
-
-n = int(input())
-v = list(map(int,input().split()))
-c = list(map(int,input().split()))
-print(solve(n,v,c))
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    v = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    ans = 0
-    for i in range(1<<n):
-        x = 0
-        y = 0
-        for j in range(n):
-            if (i>>j)&1:
-                x += v[j]
-                y += c[j]
-        ans = max(ans, x-y)
-    print(ans)
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+n = int(input())
+a = list(map(int,input().split()))
+g = a[0]
+for i in range(1,n):
+    g = gcd(g, a[i])
+print(g)
 
 =======
 Suggestion 4
 
-def get_list():
-    n = int(input())
-    v_list = list(map(int,input().split()))
-    c_list = list(map(int,input().split()))
-    return n,v_list,c_list
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+A = [int(i) for i in input().split()]
+A.sort()
+g = A[0]
+for i in range(N):
+    g = gcd(g, A[i])
+print(g)
 
 =======
 Suggestion 5
 
-def solve():
-    # 读入数据
-    N = int(input())
-    V = [int(item) for item in input().split()]
-    C = [int(item) for item in input().split()]
-    # 初始化dp
-    dp = [[0 for i in range(51)] for j in range(51)]
-    # 状态转移
-    for i in range(N):
-        for j in range(51):
-            if j < C[i]:
-                dp[i + 1][j] = dp[i][j]
-            else:
-                dp[i + 1][j] = max(dp[i][j], dp[i][j - C[i]] + V[i])
-    # 打印结果
-    print(dp[N][50])
-solve()
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+N = input()
+A = map(int,raw_input().split())
+A.sort()
+gcd_num = A[0]
+for i in range(1,N):
+    gcd_num = gcd(gcd_num,A[i])
+print gcd_num
 
 =======
 Suggestion 6
 
-def value_of_gems(N, V, C):
-    X = 0
-    Y = 0
-    for i in range(N):
-        if V[i] > C[i]:
-            X += V[i]
-            Y += C[i]
-    return X - Y
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
 
-N = int(input())
-V = list(map(int, input().split()))
-C = list(map(int, input().split()))
-print(value_of_gems(N, V, C))
+n=int(input())
+a=[int(i) for i in input().split()]
+l=[0 for i in range(n)]
+r=[0 for i in range(n)]
+l[0]=a[0]
+r[n-1]=a[n-1]
+for i in range(1,n):
+    l[i]=gcd(l[i-1],a[i])
+for i in range(n-2,-1,-1):
+    r[i]=gcd(r[i+1],a[i])
+ans=max(l[n-2],r[1])
+for i in range(1,n-1):
+    ans=max(ans,gcd(l[i-1],r[i+1]))
+print(ans)
 
 =======
 Suggestion 7
 
-def solve():
-    n = int(input())
-    v = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    ans = 0
-    for i in range(1<<n):
-        x = 0
-        y = 0
-        for j in range(n):
-            if i & (1<<j):
-                x += v[j]
-                y += c[j]
-        ans = max(ans, x-y)
-    print(ans)
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
 
-solve()
+N = int(input())
+A = list(map(int, input().split()))
+
+left = [0] * (N + 1)
+right = [0] * (N + 1)
+
+for i in range(N):
+    left[i + 1] = gcd(left[i], A[i])
+    right[N - i - 1] = gcd(right[N - i], A[N - i - 1])
+
+ans = 0
+for i in range(N):
+    ans = max(ans, gcd(left[i], right[i + 1]))
+
+print(ans)
 
 =======
 Suggestion 8
 
-def max_value(N, V, C):
-    max_diff = 0
-    for i in range(N):
-        for j in range(N):
-            if i == j:
-                continue
-            diff = V[i] - C[j]
-            if diff > max_diff:
-                max_diff = diff
-    return max_diff
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+n = int(input())
+a = [int(x) for x in input().split()]
+l = [0] * n
+r = [0] * n
+
+l[0] = a[0]
+r[n-1] = a[n-1]
+
+for i in range(1, n):
+    l[i] = gcd(l[i-1], a[i])
+for i in range(n-2, -1, -1):
+    r[i] = gcd(r[i+1], a[i])
+
+max_gcd = 0
+for i in range(0, n):
+    if i == 0:
+        max_gcd = max(max_gcd, r[i+1])
+    elif i == n-1:
+        max_gcd = max(max_gcd, l[i-1])
+    else:
+        max_gcd = max(max_gcd, gcd(l[i-1], r[i+1]))
+
+print(max_gcd)
 
 =======
 Suggestion 9
 
-def solve():
-    N = int(input())
-    V = list(map(int, input().split()))
-    C = list(map(int, input().split()))
-    ans = 0
-    for i in range(N):
-        if V[i] > C[i]:
-            ans += V[i] - C[i]
-    print(ans)
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
-solve()
+N = int(input())
+A = list(map(int, input().split()))
+
+L = [0] * N
+R = [0] * N
+
+L[0] = A[0]
+R[N - 1] = A[N - 1]
+
+for i in range(1, N):
+    L[i] = gcd(L[i - 1], A[i])
+
+for i in range(N - 2, -1, -1):
+    R[i] = gcd(R[i + 1], A[i])
+
+ans = max(L[N - 2], R[1])
+for i in range(1, N - 1):
+    ans = max(ans, gcd(L[i - 1], R[i + 1]))
+
+print(ans)
 
 =======
 Suggestion 10
 
-def f(n, v, c):
-    dp = [[0 for _ in range(1000)] for _ in range(1000)]
-    for i in range(n):
-        for j in range(1000):
-            if j < c[i]:
-                dp[i+1][j] = dp[i][j]
-            else:
-                dp[i+1][j] = max(dp[i][j], dp[i][j-c[i]] + v[i])
-    return dp[n][999]
-
-n = int(input())
-v = list(map(int, input().split()))
-c = list(map(int, input().split()))
-print(f(n, v, c))
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a

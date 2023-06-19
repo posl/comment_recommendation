@@ -3,136 +3,182 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    #input
-    A, B, K = map(int, input().split())
-    #calc
-    if A >= K:
-        A = A - K
-    elif A < K:
-        B = B - (K - A)
-        A = 0
-        if B < 0:
-            B = 0
-    #output
-    print(A, B)
+def is_prime(n):
+    if n == 2:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+    for p in range(3, int(n**0.5)+1, 2):
+        if n % p == 0:
+            return False
+    return True
+
+x = int(input())
+while not is_prime(x):
+    x += 1
+print(x)
 
 =======
 Suggestion 2
 
-def main():
-    a,b,k = map(int,input().split())
-    if a >= k:
-        a = a - k
-    elif a + b >= k:
-        b = b - (k - a)
-        a = 0
+def is_prime(x):
+    if x == 1:
+        return False
+    elif x == 2:
+        return True
     else:
-        a = 0
-        b = 0
-    print(a,b)
+        for i in range(2,x):
+            if x % i == 0:
+                return False
+        return True
 
 =======
 Suggestion 3
 
-def main():
-    A,B,K = map(int,input().split())
-    if K <= A:
-        print(A-K,B)
-    elif K > A and K <= A+B:
-        print(0,B-(K-A))
+def is_prime(n):
+    if n == 2:
+        return True
+    elif n % 2 == 0 or n == 1:
+        return False
     else:
-        print(0,0)
+        for i in range(3, int(n**0.5) + 1, 2):
+            if n % i == 0:
+                return False
+    return True
 
 =======
 Suggestion 4
 
-def main():
-    a,b,k = map(int, input().split())
-    if k > a:
-        b = b - (k - a)
-        a = 0
-        if b < 0:
-            b = 0
+def is_prime(n):
+    if n < 2:
+        return False
+    elif n == 2:
+        return True
     else:
-        a = a - k
-    print(a,b)
+        for i in range(2, int(n**0.5)+1):
+            if n%i == 0:
+                return False
+        return True
+
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    else:
+        x += 1
 
 =======
 Suggestion 5
 
-def solve():
-    a,b,k = map(int,input().split())
-    if k <= a:
-        print(a-k,b)
-    elif k <= a+b:
-        print(0,b-(k-a))
+def is_prime(n):
+    if n < 2:
+        return False
     else:
-        print(0,0)
+        for i in range(2, int(n**(1/2))+1):
+            if n % i == 0:
+                return False
+        return True
+
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    else:
+        x += 1
 
 =======
 Suggestion 6
 
-def main():
-    a, b, k = map(int, input().split())
-    if k <= a:
-        print(a - k, b)
-    elif k <= a + b:
-        print(0, b - (k - a))
+def isPrime(num):
+    if num == 2:
+        return True
+    elif num < 2 or num % 2 == 0:
+        return False
     else:
-        print(0, 0)
+        for i in range(3, int(num ** 0.5) + 1, 2):
+            if num % i == 0:
+                return False
+    return True
 
 =======
 Suggestion 7
 
-def main():
-    A,B,K = map(int,input().split())
-    if K <= A:
-        A -= K
-    else:
-        B -= K - A
-        A = 0
-        if B < 0:
-            B = 0
-    print(A,B)
+def is_prime(n):
+    if n == 2:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+
+    i = 3
+    while i <= n ** 0.5:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+x = int(input())
+
+while not is_prime(x):
+    x += 1
+
+print(x)
 
 =======
 Suggestion 8
 
-def main():
-    A, B, K = map(int, input().split())
-    if A >= K:
-        A -= K
-    else:
-        B -= K - A
-        A = 0
-        if B < 0:
-            B = 0
-    print(A, B)
+def isPrime(n):
+    if n < 2:
+        return False
+    i = 2
+    while i * i <= n:
+        if (n % i) == 0:
+            return False
+        i += 1
+    return True
+
+x = int(input())
+while True:
+    if isPrime(x):
+        print(x)
+        break
+    x += 1
 
 =======
 Suggestion 9
 
-def main():
-    a,b,k = map(int,input().split())
+def prime_number(n):
+    if n < 2:
+        return 0
+    for i in range(2, int(n**0.5)+1):
+        if n%i == 0:
+            return 0
+    return 1
 
-    if a >= k:
-        print(a-k,b)
-    elif a+b >= k:
-        print(0,b-(k-a))
-    else:
-        print(0,0)
+x = int(input())
+while prime_number(x) == 0:
+    x += 1
+print(x)
 
 =======
 Suggestion 10
 
-def solve():
-    A,B,K = map(int,input().split())
-    if A >= K:
-        A -= K
-    else:
-        B -= (K - A)
-        A = 0
-        if B < 0:
-            B = 0
-    print(A,B)
+def isPrime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+n = int(input())
+while True:
+    if isPrime(n):
+        print(n)
+        break
+    n += 1

@@ -3,173 +3,281 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def problems265_b():
+def main():
     pass
 
 =======
 Suggestion 2
 
-def solve():
-    N,M,T=map(int,input().split())
-    A=list(map(int,input().split()))
-    XY=[]
-    for i in range(M):
-        XY.append(list(map(int,input().split())))
-    XY.sort()
-    t=T
-    x=1
-    for i in range(M):
-        t-=XY[i][0]-x
-        if t<=0:
-            print("No")
-            return
-        t+=XY[i][1]
-        x=XY[i][0]
-    t-=N-x
-    if t<=0:
-        print("No")
-    else:
-        print("Yes")
-    return
+def main():
+    H, W = map(int,input().split())
+    grid = [input() for i in range(H)]
+    #print(grid)
+    #print(len(grid))
+    #print(len(grid[0]))
+    #print(grid[0])
+    #print(grid[0][0])
+    #print(grid[1][0])
+    #print(grid[0][1])
+    #print(grid[0][2])
+    #print(grid[1][2])
+    #print(grid[0][3])
+    #print(grid[1][3])
+    #print(grid[0][4])
+    #print(grid[1][4])
+    #print(grid[0][5])
+    #print(grid[1][5])
+    #print(grid[0][6])
+    #print(grid[1][6])
+    #print(grid[0][7])
+    #print(grid[1][7])
+    #print(grid[0][8])
+    #print(grid[1][8])
+    #print(grid[0][9])
+    #print(grid[1][9])
+    #print(grid[0][10])
+    #print(grid[1][10])
+    #print(grid[0][11])
+    #print(grid[1][11])
+    #print(grid[0][12])
+    #print(grid[1][12])
+    #print(grid[0][13])
+    #print(grid[1][13])
+    #print(grid[0][14])
+    #print(grid[1][14])
+    #print(grid[0][15])
+    #print(grid[1][15])
+    #print(grid[0][16])
+    #print(grid[1][16])
+    #print(grid[0][17])
+    #print(grid[1][17])
+    #print(grid[0][18])
+    #print(grid[1][18])
+    #print(grid[0][19])
+    #print(grid[1][19])
+    #print(grid[0][20])
+    #print(grid[1][20])
+    #print(grid[0][21])
+    #print(grid[1][21])
+    #print(grid[0][22])
+    #print(grid[1][22])
+    #print(grid[0][23])
+    #print(grid[1][23])
+    #print(grid[0][24])
+    #print(grid[1][24])
+    #print(grid[0][25
 
 =======
 Suggestion 3
 
-def solve():
-    N, M, T = map(int, input().split())
-    A = list(map(int, input().split()))
-    XY = [list(map(int, input().split())) for _ in range(M)]
-    #print(N, M, T, A, XY)
-    now = 0
-    for i in range(N-1):
-        now += A[i]
-        for j in range(M):
-            if i+1 == XY[j][0]:
-                now += XY[j][1]
-        if now >= T:
-            print('No')
+def main():
+    h, w = map(int, input().split())
+    g = [list(input()) for _ in range(h)]
+    i, j = 0, 0
+    while True:
+        if g[i][j] == 'U':
+            if i == 0:
+                print(i + 1, j + 1)
+                return
+            i -= 1
+        elif g[i][j] == 'D':
+            if i == h - 1:
+                print(i + 1, j + 1)
+                return
+            i += 1
+        elif g[i][j] == 'L':
+            if j == 0:
+                print(i + 1, j + 1)
+                return
+            j -= 1
+        elif g[i][j] == 'R':
+            if j == w - 1:
+                print(i + 1, j + 1)
+                return
+            j += 1
+        else:
+            print(i + 1, j + 1)
             return
-    print('Yes')
 
 =======
 Suggestion 4
 
-def main():
+def problem265_c():
     pass
 
 =======
 Suggestion 5
 
-def solve():
-    pass
+def main():
+    h, w = map(int, input().split())
+    grid = []
+    for i in range(h):
+        grid.append(list(input()))
+    for i in range(h):
+        for j in range(w):
+            if grid[i][j] == 'U' and i != 0:
+                i -= 1
+            elif grid[i][j] == 'D' and i != h - 1:
+                i += 1
+            elif grid[i][j] == 'L' and j != 0:
+                j -= 1
+            elif grid[i][j] == 'R' and j != w - 1:
+                j += 1
+    print(i + 1, j + 1)
 
 =======
 Suggestion 6
 
-def main():
-    n,m,t = map(int, input().split())
-    a = list(map(int, input().split()))
-    xy = []
-    for _ in range(m):
-        xy.append(list(map(int, input().split())))
-
-    for i in range(m):
-        a[xy[i][0]-2] += xy[i][1]
-
-    for i in range(n-1):
-        t -= a[i]
-        if t <= 0:
-            print("No")
-            return
-    print("Yes")
+def findway(h,w,grids):
+    i=0
+    j=0
+    while(True):
+        if grids[i][j]=="U":
+            if i==0:
+                return i,j
+            else:
+                i-=1
+        elif grids[i][j]=="D":
+            if i==h-1:
+                return i,j
+            else:
+                i+=1
+        elif grids[i][j]=="L":
+            if j==0:
+                return i,j
+            else:
+                j-=1
+        elif grids[i][j]=="R":
+            if j==w-1:
+                return i,j
+            else:
+                j+=1
+        else:
+            return -1
+        if i==0 and j==0:
+            return i,j
 
 =======
 Suggestion 7
 
-def solve():
-    N, M, T = map(int, input().split())
-    A = list(map(int, input().split()))
-    XY = [list(map(int, input().split())) for _ in range(M)]
-    
-    # 1. 预处理
-    # 1.1. 从1号房间移动到i号房间的时间
-    B = [0] * N
-    for i in range(N-1):
-        B[i+1] = B[i] + A[i]
-    # 1.2. 奖励房间
-    R = [0] * N
-    for x, y in XY:
-        R[x-1] = y
-    
-    # 2. 動的計画法
-    # dp[i] := i号房间的时限
-    dp = [0] * N
-    dp[0] = T
-    for i in range(N-1):
-        dp[i+1] = min(dp[i+1], dp[i] - A[i])
-        dp[i+1] = min(dp[i+1], T - B[i])
-        dp[i+1] += R[i]
-    return dp[N-1] >= 0
+def problems265_c():
+    pass
 
 =======
 Suggestion 8
 
-def solve(n,m,t,a,x,y):
-    for i in range(0,m):
-        if t<=x[i]:
-            return False
-        else:
-            t+=y[i]
-    return True
+def main():
+    h,w = map(int,input().split())
+    grid = [list(input()) for i in range(h)]
+    pos = [0,0]
+    visited = [[0]*w for i in range(h)]
+    while True:
+        visited[pos[0]][pos[1]] = 1
+        if grid[pos[0]][pos[1]] == 'U':
+            if pos[0] == 0:
+                print(-1)
+                break
+            elif visited[pos[0]-1][pos[1]] == 1:
+                print(-1)
+                break
+            else:
+                pos[0] -= 1
+        elif grid[pos[0]][pos[1]] == 'D':
+            if pos[0] == h-1:
+                print(-1)
+                break
+            elif visited[pos[0]+1][pos[1]] == 1:
+                print(-1)
+                break
+            else:
+                pos[0] += 1
+        elif grid[pos[0]][pos[1]] == 'L':
+            if pos[1] == 0:
+                print(-1)
+                break
+            elif visited[pos[0]][pos[1]-1] == 1:
+                print(-1)
+                break
+            else:
+                pos[1] -= 1
+        elif grid[pos[0]][pos[1]] == 'R':
+            if pos[1] == w-1:
+                print(-1)
+                break
+            elif visited[pos[0]][pos[1]+1] == 1:
+                print(-1)
+                break
+            else:
+                pos[1] += 1
+        if visited[pos[0]][pos[1]] == 1:
+            print(pos[0]+1,pos[1]+1)
+            break
+    return 0
 
 =======
 Suggestion 9
 
 def main():
-    # 读取输入
-    N, M, T = map(int, input().split())
-    A = list(map(int, input().split()))
-    XY = [list(map(int, input().split())) for _ in range(M)]
-    # 从1号房间开始，所以当前时间限制为T
-    now = T
-    # 遍历每个房间
-    for i in range(N-1):
-        # 消耗时间
-        now -= A[i]
-        # 如果时间到了，就返回No
-        if now <= 0:
-            print("No")
+    H, W = map(int, input().split())
+    G = [input() for i in range(H)]
+    i, j = 0, 0
+    while True:
+        if G[i][j] == "U":
+            if i == 0:
+                print(i + 1, j + 1)
+                return
+            i -= 1
+        elif G[i][j] == "D":
+            if i == H - 1:
+                print(i + 1, j + 1)
+                return
+            i += 1
+        elif G[i][j] == "L":
+            if j == 0:
+                print(i + 1, j + 1)
+                return
+            j -= 1
+        elif G[i][j] == "R":
+            if j == W - 1:
+                print(i + 1, j + 1)
+                return
+            j += 1
+        else:
+            print(i + 1, j + 1)
             return
-        # 遍历奖励房间
-        for j in range(M):
-            # 如果当前房间是奖励房间，就增加时间
-            if XY[j][0] == i + 1:
-                now += XY[j][1]
-    # 遍历完了，如果时间还有，就返回Yes
-    if now > 0:
-        print("Yes")
-    else:
-        print("No")
+        if G[i][j] == ".":
+            print(i + 1, j + 1)
+            return
+        G[i] = G[i][:j] + "." + G[i][j + 1:]
+
+    print(-1)
 
 =======
 Suggestion 10
 
 def main():
-    n,m,t = map(int,input().split())
-    a = list(map(int,input().split()))
-    x = []
-    y = []
-    for i in range(m):
-        x_i,y_i = map(int,input().split())
-        x.append(x_i)
-        y.append(y_i)
-    for i in range(n-1):
-        t = t - a[i]
-        if (i+1) in x:
-            t = t + y[x.index(i+1)]
-        if t <= 0:
-            print("No")
-            break
-        if i == n-2:
-            print("Yes")
+    H, W = map(int, input().split())
+    G = [list(input()) for i in range(H)]
+    x, y = 0, 0
+    while True:
+        if G[x][y] == 'U':
+            if x == 0:
+                print(x + 1, y + 1)
+                exit()
+            x -= 1
+        elif G[x][y] == 'D':
+            if x == H - 1:
+                print(x + 1, y + 1)
+                exit()
+            x += 1
+        elif G[x][y] == 'L':
+            if y == 0:
+                print(x + 1, y + 1)
+                exit()
+            y -= 1
+        else:
+            if y == W - 1:
+                print(x + 1, y + 1)
+                exit()
+            y += 1
 main()

@@ -4,184 +4,280 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n = int(input())
-    n_str = str(n)
-    n_len = len(n_str)
-    n_list = list(n_str)
-    n_list.sort(reverse=True)
-    n_str = ''.join(n_list)
-    n_list = list(n_str)
-    n_list.sort()
-    n_str2 = ''.join(n_list)
-    n_str2 = n_str2.lstrip('0')
-    if n_str2 == '':
-        n_str2 = '0'
-    n_str = n_str.lstrip('0')
-    if n_str == '':
-        n_str = '0'
-    print(int(n_str)*int(n_str2))
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    #print(max(A
 
 =======
 Suggestion 2
 
-def solve():
+def main():
     N = int(input())
-    digits = []
-    while N > 0:
-        digits.append(N % 10)
-        N //= 10
-    digits.sort(reverse=True)
-    a = []
-    b = []
-    for i in range(len(digits)):
-        if i % 2 == 0:
-            a.append(digits[i])
-        else:
-            b.append(digits[i])
-    a = int("".join(map(str, a)))
-    b = int("".join(map(str, b)))
-    print(a * b)
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
 
-solve()
+    dict = {}
+    for i in range(N):
+        for j in range(A[i], A[i] + B[i]):
+            if j in dict:
+                dict[j] += 1
+            else:
+                dict[j] = 1
+
+    ans = [0] * N
+    for i in dict.values():
+        ans[i - 1] += 1
+
+    print(' '.join(map(str, ans)))
 
 =======
 Suggestion 3
 
-def f(N):
-    if N < 10:
-        return 0
-    elif N < 20:
-        return N - 10
-    else:
-        return (N - 10) * (N - 10)
-
-N = int(input())
-ans = 0
-
-for i in range(1, N):
-    ans = max(ans, f(i) * f(N - i))
-
-print(ans)
+def main():
+    n=int(input())
+    a,b=[],[]
+    for i in range(n):
+        ai,bi=map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort()
+    b.sort()
+    ans=[0]*n
+    for i in range(n):
+        ans[0]+=1
+        if i!=n-1:
+            ans[i+1]-=1
+    for i in range(n-1):
+        ans[i+1]+=ans[i]
+    for i in range(n):
+        print(ans[i],end=' ')
+    print()
+main()
 
 =======
 Suggestion 4
 
-def get_max_product(n):
-    if n <= 10:
-        return n
-    else:
-        s = str(n)
-        length = len(s)
-        if length % 2 == 0:
-            half = length // 2
-            return int(s[:half]) * int(s[half:])
-        else:
-            half = length // 2
-            return max(int(s[:half]) * int(s[half:]), int(s[:half+1]) * int(s[half+1:]))
+def problems221_d():
+    n = int(input())
+    a = [0]*n
+    b = [0]*n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    c = [0]*(10**9+1)
+    for i in range(n):
+        c[a[i]] += 1
+        c[a[i]+b[i]] -= 1
+    for i in range(1, 10**9+1):
+        c[i] += c[i-1]
+    d = [0]*(n+1)
+    for i in range(1, 10**9+1):
+        if c[i] > 0:
+            d[c[i]] += 1
+    for i in range(1, n+1):
+        print(d[i], end=' ')
 
 =======
 Suggestion 5
 
-def func(n):
-    s = str(n)
-    if len(s) == 2:
-        return n
-    else:
-        a = int(s[0])
-        b = int(s[1:])
-        return a*b
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    # print(a)
+    # print(b)
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i]) + " " + str(b[i]))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    # for i in range(n):
+    #     print(str(a[i] + b[i] - 1) + " " + str(a[i] - 1))
+
+    # print("")
+
+    l = []
+    for i in range(n):
+        l.append([a[i] + b[i] - 1, a[i] - 1])
+
+    # print(l)
+    # print("")
+
+    l.sort()
+
+    # print(l)
+    # print("")
+
+    # for i in range(n):
+    #     print(str(l[i][0]) + " " + str(l[i
 
 =======
 Suggestion 6
 
-def f(n):
-    if n < 10:
-        return n
-    else:
-        n = str(n)
-        if n[0] == '1':
-            return 9 * f(int(n[1:])) + int(n[1:])
-        else:
-            return (int(n[0])-1) * f(int(n[1:])) + int(n[1:])
-
-n = int(input())
-print(f(n))
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    B = []
+    for i in range(N):
+        B.append(A[i][0])
+        B.append(A[i][0] + A[i][1])
+    B.sort()
+    C = []
+    for i in range(2 * N - 1):
+        C.append(B[i + 1] - B[i])
+    D = [0] * N
+    for i in range(2 * N - 1):
+        if C[i] != 0:
+            D[C[i] - 1] += 1
+    for i in range(N):
+        print(D[i], end = ' ')
 
 =======
 Suggestion 7
 
-def solve():
-    N = input()
-    if len(N) == 2:
-        print(int(N[0]) * int(N[1]))
-        return
-    if len(N) == 3:
-        print(int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 4:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 5:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 6:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 7:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 8:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 9:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
-    if len(N) == 10:
-        print(9 * int(N[0]) * int(N[1:]))
-        return
+def main():
+    import sys
+    from operator import itemgetter
+    from itertools import accumulate
+    from bisect import bisect_left
+
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+
+    # 始点と終点をそれぞれ切り出す
+    a, b = map(list, zip(*ab))
+
+    # 終点を昇順にソート
+    b.sort()
+
+    # 終点を累積和に変換
+    # 例えば [1, 2, 3] なら [1, 3, 6]
+    b = list(accumulate(b))
+
+    # 各始点について、終点の累積和から始点より小さい最大の終点のインデックスを求める
+    # 例えば [1, 2, 3] なら [0, 0, 1]
+    # 例えば [1, 3, 6] なら [0, 0, 1]
+    c = [bisect_left(b, x) for x in a]
+
+    # 0 ～ N-1 のインデックスについて、終点の累積和からそのインデックスより小さい最大の終点のインデックスを引く
+    # 例えば [0, 0, 1] なら [1, 1, 0]
+    # 例えば [0, 0, 1] なら [1, 1, 0]
+    d = [b[x] - x for x in c]
+
+    # 0 ～ N-1 のインデックスについて、終点の累積和からそのインデックスより小さい最大の終点のインデックスを引く
+    # 例えば [1, 1, 0] なら [1, 1, 0]
+    # 例えば [1, 1, 0] なら [1, 1, 0]
 
 =======
 Suggestion 8
 
-def get_max_product(num):
-    if num < 10:
-        return 0
-    if num < 100:
-        return num
-    if num < 1000:
-        return int(str(num)[0]) * int(str(num)[1:])
-    if num < 10000:
-        return int(str(num)[0:2]) * int(str(num)[2:])
-    if num < 100000:
-        return int(str(num)[0:2]) * int(str(num)[2:])
-    if num < 1000000:
-        return int(str(num)[0:3]) * int(str(num)[3:])
-    if num < 10000000:
-        return int(str(num)[0:3]) * int(str(num)[3:])
-    if num < 100000000:
-        return int(str(num)[0:4]) * int(str(num)[4:])
-    if num < 1000000000:
-        return int(str(num)[0:4]) * int(str(num)[4:])
+def solve():
+    N = int(input())
+    A, B = [], []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = A[i] + B[i] - 1
+    ans.sort()
+    for i in range(N):
+        print(ans[i], end=' ')
+    print()
 
 =======
 Suggestion 9
 
-def split(n):
-    #将数字n分成两个正整数
-    #返回两个正整数的列表
-    #先将数字n转换成字符串
-    #然后将字符串转换成列表
-    #最后将列表转换成整数
-    #返回两个正整数的列表
-    #先将数字n转换成字符串
-    #然后将字符串转换成列表
-    #最后将列表转换成整数
-    #返回两个正整数的列表
-    #先将数字n转换成字符串
-    #然后将字符串转换成列表
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        l.append([a,b])
+    l.sort()
+    print(l)
+    l2 = []
+    for i in range(n):
+        l2.append(l[i][0])
+        l2.append(l[i][0]+l[i][1])
+    print(l2)
+    l3 = [0]*(max(l2)+1)
+    print(l3)
+    for i in l2:
+        l3[i] += 1
+    print(l3)
+    l4 = [0]*(n+1)
+    for i in l3:
+        l4[i] += 1
+    print(l4)
+    for i in range(1,n+1):
+        print(l4[i],end=" ")
+    print()
 
 =======
 Suggestion 10
 
-def main():
-    pass
+def get_input():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    return N, A, B

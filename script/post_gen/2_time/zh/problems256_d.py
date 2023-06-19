@@ -4,173 +4,225 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    h1,h2,h3,w1,w2,w3 = map(int, input().split())
-    print(h1,h2,h3,w1,w2,w3)
-    print(h1+h2+h3,w1+w2+w3)
-    print(h1*h2*h3,w1*w2*w3)
-    print(h1*h2*h3*w1*w2*w3)
-    print(h1+h2+h3+w1+w2+w3)
-    print(h1+h2+h3+w1+w2+w3+h1*h2*h3+w1*w2*w3)
-    print(h1+h2+h3+w1+w2+w3+h1*h2*h3*w1*w2*w3)
-    print(h1+h2+h3+w1+w2+w3+h1*h2*h3*w1*w2*w3+h1*h2*h3*w1*w2*w3)
-    print(h1+h2+h3+w1+w2+w3+h1*h2*h3*w1*w2*w3+h1*h2*h3*w1*w2*w3+h1*h2*h3*w1*w2*w3)
-    print(h1+h2+h3+w1+w2+w3+h1*h2*h3*w1*w2*w3+h1*h2*h3*w1*w2*w3+h1*h2*h3*w1*w2
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l.sort()
+    l = [l[0]] + [l[i] for i in range(1, n) if l[i][0] > l[i-1][1]]
+    for i in range(len(l)):
+        print(l[i][0], l[i][1])
 
 =======
 Suggestion 2
 
-def cal(x,y,z):
-    if x+y+z==h1+h2+h3 and x+y+z==w1+w2+w3:
-        return 1
-    else:
-        return 0
+def main():
+    n = int(input())
+    L = []
+    R = []
+    for i in range(n):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    for i in range(n):
+        if i == 0 or L[i] > R[i - 1]:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    h_1, h_2, h_3, w_1, w_2, w_3 = map(int, input().split())
-    print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
-    # print(h_1, h_2, h_3, w_1, w_2, w_3)
+    N = int(input())
+    #S = []
+    #for i in range(N):
+    #    S.append(input().split())
+    #print(S)
+    #S.sort(key=lambda x:x[0])
+    #print(S)
+    #k = 0
+    #while k < len(S) - 1:
+    #    if S[k][1] >= S[k+1][0]:
+    #        S[k][1] = max(S[k][1],S[k+1][1])
+    #        del S[k+1]
+    #    else:
+    #        k += 1
+    #for i in range(len(S)):
+    #    print(S[i][0],S[i][1])
+    #S = []
+    #for i in range(N):
+    #    S.append(input().split())
+    #print(S)
+    #S.sort(key=lambda x:x[0])
+    #print(S)
+    #k = 0
+    #while k < len(S) - 1:
+    #    if S[k][1] >= S[k+1][0]:
+    #        S[k][1] = max(S[k][1],S[k+1][1])
+    #        del S[k+1]
+    #    else:
+    #        k += 1
+    #for i in range(len(S)):
+    #    print(S[i][0],S[i][1])
+    S = []
+    for i in range(N):
+        S.append(input().split())
+    S.sort(key=lambda x:x[0])
+    k = 0
+    while k < len(S) - 1:
+        if S[k][1] >= S[k+1][0]:
+            S[k][1] = max(S[k][1],S[k+1][1])
+            del S[k+1]
+        else:
+            k += 1
+    for i in range(len(S)):
+        print(S[i][0],S[i][1])
 
 =======
 Suggestion 4
 
-def solve(h1,h2,h3,w1,w2,w3):
-    result = 0
-    for a1 in range(1,31):
-        for a2 in range(1,31):
-            for a3 in range(1,31):
-                for a4 in range(1,31):
-                    for a5 in range(1,31):
-                        for a6 in range(1,31):
-                            if a1+a2+a3 == h1 and a4+a5+a6 == h2 and a1+a4 == w1 and a2+a5 == w2 and a3+a6 == w3:
-                                result += 1
-    return result
+def main():
+    n = int(input())
+    lr = []
+    for i in range(n):
+        lr.append(list(map(int, input().split())))
+    lr.sort()
 
-h1,h2,h3,w1,w2,w3 = map(int,input().split())
-print(solve(h1,h2,h3,w1,w2,w3))
+    minL = lr[0][0]
+    maxR = lr[0][1]
+    for i in range(1, n):
+        if lr[i][0] <= maxR:
+            maxR = max(maxR, lr[i][1])
+        else:
+            print(minL, maxR)
+            minL = lr[i][0]
+            maxR = lr[i][1]
+    print(minL, maxR)
 
 =======
 Suggestion 5
 
-def solve(h,w):
-    h1 = h[0]
-    h2 = h[1]
-    h3 = h[2]
-    w1 = w[0]
-    w2 = w[1]
-    w3 = w[2]
-    if (h1+h2+h3 != w1+w2+w3):
-        return 0
-    if (h1+h2+h3 != sum([w1,w2,w3])):
-        return 0
-    if (h1+h2+h3 != sum([h1,h2,h3])):
-        return 0
-    if (h1+h2+h3 != sum([w1+w2+w3])):
-        return 0
-    if (h1+h2+h3 != sum([w1+w2+w3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    if (h1+h2+h3 != sum([h1+h2+h3])):
-        return 0
-    return 1
+def main():
+    n = int(input())
+    L = []
+    R = []
+    for i in range(n):
+        l,r = map(int,input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    print(L[0],R[-1])
+    return 0
 
 =======
 Suggestion 6
 
-def get_sum(num_list):
-    sum_num = 0
-    for i in num_list:
-        sum_num += i
-    return sum_num
+def main():
+    n = int(input())
+    l = []
+    r = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        l.append(a)
+        r.append(b)
+
+    l.sort()
+    r.sort()
+
+    print(l[0], r[-1])
 
 =======
 Suggestion 7
 
-def solve(h1, h2, h3, w1, w2, w3):
-    from itertools import permutations
-    count = 0
-    for p in permutations(range(1, 10)):
-        if p[0] + p[1] + p[2] == h1 and p[3] + p[4] + p[5] == h2 and p[6] + p[7] + p[8] == h3:
-            if p[0] + p[3] + p[6] == w1 and p[1] + p[4] + p[7] == w2 and p[2] + p[5] + p[8] == w3:
-                count += 1
-    return count
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
 
-h1, h2, h3, w1, w2, w3 = map(int, input().split())
-print(solve(h1, h2, h3, w1, w2, w3))
+    l.sort(key=lambda x: x[0])
+    result = []
+    result.append(l[0])
+    for i in range(1, n):
+        if result[-1][1] < l[i][0]:
+            result.append(l[i])
+        else:
+            result[-1][1] = max(result[-1][1], l[i][1])
+
+    for i in range(len(result)):
+        print(result[i][0], result[i][1])
 
 =======
 Suggestion 8
 
-def get_input():
-    h1, h2, h3, w1, w2, w3 = map(int, input().split())
-    return h1, h2, h3, w1, w2, w3
+def merge_intervals(intervals):
+    intervals.sort()
+    merged = []
+    for interval in intervals:
+        if not merged or merged[-1][1] < interval[0]:
+            merged.append(interval)
+        else:
+            merged[-1][1] = max(merged[-1][1], interval[1])
+    return merged
+
+n = int(input())
+intervals = []
+for i in range(n):
+    intervals.append(list(map(int, input().split())))
+
+merged = merge_intervals(intervals)
+
+for interval in merged:
+    print(interval[0], interval[1])
 
 =======
 Suggestion 9
 
 def main():
-    h = list(map(int, input().split()))
-    w = list(map(int, input().split()))
-    print(h, w)
-    print(h[0], w[0])
-    print(h[1], w[1])
-    print(h[2], w[2])
-    print(h[0] + h[1] + h[2], w[0] + w[1] + w[2])
+    n = int(input())
+    lr = []
+    for i in range(n):
+        l, r = map(int, input().split())
+        lr.append([l, r])
+    lr.sort()
+    ans = []
+    l = lr[0][0]
+    r = lr[0][1]
+    for i in range(1, n):
+        if lr[i][0] <= r:
+            r = max(r, lr[i][1])
+        else:
+            ans.append([l, r])
+            l = lr[i][0]
+            r = lr[i][1]
+    ans.append([l, r])
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1])
 
-    #h1 = h[0]
-    #h2 = h[1]
-    #h3 = h[2]
-    #w1 = w[0]
-    #w2 = w[1]
-    #w3 = w[2]
-    #print(h1, h2, h3, w1, w2, w3)
-
-    #h1 = h[0]
-    #h2 = h[1]
-    #h3 = h[2]
-
-    #w1 = w[0]
-    #w2 = w[1]
-    #w3 = w[2]
-
-    #print(h1, h2, h3, w1, w2, w3)
-    #print(h1 + h2 + h3, w1 + w2 + w3)
+main()
 
 =======
 Suggestion 10
 
-def dfs(i,j,grid,h,w):
-    if i == 3:
-        for k in range(3):
-            if grid[0][k] + grid[1][k] + grid[2][k] != w[k]:
-                return False
-        return True
-    if j == 3:
-        if grid[i][0] + grid[i][1] + grid[i][2] != h[i]:
-            return False
-        return dfs(i+1,0,grid,h,w)
-    for k in range(1,10):
-        grid[i][j] = k
-        if dfs(i,j+1,grid,h,w):
-            return True
-    return False
+def main():
+    n = int(input())
+    l = []
+    r = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        l.append(a)
+        r.append(b)
+
+    l.sort()
+    r.sort()
+
+    ans = 0
+    for i in range(n):
+        if i == 0 or l[i] > r[i-1]:
+            ans += 1
+    
+    print(ans)

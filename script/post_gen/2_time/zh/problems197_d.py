@@ -1,141 +1,57 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def get_min_xor(n, a):
-    min_xor = 2**30
-    for i in range(n-1):
-        for j in range(i+1, n):
-            xor = a[i]^a[j]
-            if xor < min_xor:
-                min_xor = xor
-    return min_xor
+def solve():
+    pass
 
 =======
 Suggestion 2
 
-def get_min_xor_sum(nums):
-    min_xor_sum = nums[0]
-    for i in range(1, len(nums)):
-        min_xor_sum ^= nums[i]
-    return min_xor_sum
+def problems197_d():
+    pass
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = list(map(int,input().split()))
-    ans = 0
-    for i in range(n):
-        ans ^= a[i]
-    print(ans)
-main()
+def problem197_d():
+    pass
 
 =======
 Suggestion 4
 
-def get_min_xor(a, n):
-    min_xor = 2**30
-    for i in range(0, n-1):
-        for j in range(i+1, n):
-            xor = a[i] ^ a[j]
-            if xor < min_xor:
-                min_xor = xor
-    return min_xor
+def problems197_d():
+    return None
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = 2**30
-    for i in range(n):
-        x = 0
-        for j in range(i, n):
-            x |= a[j]
-            y = 0
-            for k in range(j+1, n):
-                y ^= a[k]
-            ans = min(ans, x+y)
-    print(ans)
+    N = input()
+    x0, y0 = map(int, input().split())
+    xN, yN = map(int, input().split())
+    x1 = (x0 + xN + (yN - y0) * 3 ** 0.5) / 2
+    y1 = (y0 + yN + (x0 - xN) * 3 ** 0.5) / 2
+    print(x1, y1)
 
 =======
 Suggestion 6
 
 def main():
     N = int(input())
-    A = list(map(int, input().split()))
-    ans = 1 << 30
-    for i in range(N):
-        x = 0
-        for j in range(i, N):
-            x |= A[j]
-            y = 0
-            for k in range(j + 1, N):
-                y ^= A[k]
-                ans = min(ans, x | y)
-    print(ans)
-main()
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+
+    x3 = (x1 + x2 + ((y2 - y1) * ((-1) ** (N / 2))) * (2 ** 0.5)) / 2
+    y3 = (y1 + y2 + ((x1 - x2) * ((-1) ** (N / 2))) * (2 ** 0.5)) / 2
+
+    print(x3, y3)
 
 =======
 Suggestion 7
 
-def solve(N,A):
-    ans = 2**31
-    for i in range(N):
-        for j in range(i,N):
-            x = 0
-            for k in range(i,j+1):
-                x = x | A[k]
-            ans = min(ans,x)
-    print(ans)
-
-=======
-Suggestion 8
-
-def bit_or(*args):
-    res = 0
-    for i in args:
-        res |= i
-    return res
-
-=======
-Suggestion 9
-
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    ans = 2 ** 30
-    for i in range(N):
-        x = 0
-        for j in range(i, N):
-            x = x | A[j]
-            y = 0
-            for k in range(j + 1, N):
-                y = y ^ A[k]
-            ans = min(ans, x + y)
-    print(ans)
-main()
-
-=======
-Suggestion 10
-
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    ans = 1<<31
-    for i in range(1<<N-1):
-        x = 0
-        y = 0
-        for j in range(N):
-            y |= A[j]
-            if i>>j & 1:
-                x ^= y
-                y = 0
-        x ^= y
-        ans = min(ans, x)
-    print(ans)
-solve()
+def solve(N, x0, y0, xN2, yN2):
+    x1 = (x0 + xN2) / 2
+    y1 = (y0 + yN2) / 2
+    return x1, y1

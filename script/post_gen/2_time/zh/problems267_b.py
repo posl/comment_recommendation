@@ -3,108 +3,231 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def get_weekday(weekday):
-    weekdays = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
-    return weekdays.index(weekday)
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+    else:
+        for i in range(1, 10):
+            if s[i] == '0':
+                print('Yes')
+                return
+        print('No')
 
 =======
 Suggestion 2
 
 def main():
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    day = input()
-    index = days.index(day)
-    if index < 5:
-        print(5 - index)
-    else:
-        print(7 - index + 5)
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    count = 0
+    for i in range(1, 10):
+        if s[i] == '1':
+            count += 1
+    if count == 0:
+        print('No')
+        return
+    if count == 1:
+        print('Yes')
+        return
+    for i in range(1, 10):
+        if s[i] == '1' and s[i+1] == '0':
+            print('Yes')
+            return
+    print('No')
 
 =======
 Suggestion 3
 
 def main():
-    day = input()
-    week = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-    count = 0
-    for i in range(7):
-        if day == week[i]:
-            count = i
-            break
-    if count < 5:
-        print(5-count)
-    else:
-        print(7-count+5)
+    S = input()
+    if S[0] == '0':
+        print("No")
+        return
+
+    if S[1] == '0':
+        print("No")
+        return
+
+    if S[2] == '0':
+        print("No")
+        return
+
+    if S[3] == '0':
+        print("No")
+        return
+
+    if S[4] == '0':
+        print("No")
+        return
+
+    if S[5] == '0':
+        print("No")
+        return
+
+    if S[6] == '0':
+        print("No")
+        return
+
+    if S[7] == '0':
+        print("No")
+        return
+
+    if S[8] == '0':
+        print("No")
+        return
+
+    if S[9] == '0':
+        print("No")
+        return
+
+    print("Yes")
+
+main()
 
 =======
 Suggestion 4
 
-def problem267_a():
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    s = input()
-    print(6 - week.index(s))
+def main():
+    S = input()
+    if S[0] == '0':
+        print('No')
+        return
+    if S[4] == '0':
+        print('No')
+        return
+    if S[5] == '0':
+        print('No')
+        return
+    if S[6] == '0':
+        print('No')
+        return
+    if S[7] == '0':
+        print('No')
+        return
+    print('Yes')
+    return
 
 =======
 Suggestion 5
 
-def main():
-    weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-    day = input()
-    print(5 - weekdays.index(day) if weekdays.index(day) < 5 else 7 - weekdays.index(day))
+def is_split(pins):
+    # 检查引脚1是否被击倒
+    if pins[0] != "0":
+        return False
+    # 检查是否有两列，每一列都有一个或多个站立的棋子
+    # 以及在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1号针脚被击倒了，所以只需要检查2-4号针脚是否被击倒
+    # 如果2-4号针脚都被击倒了，那么就是一个分裂
+    if pins[1] == "0" and pins[2] == "0" and pins[3] == "0":
+        return True
+    # 如果2-4号针脚没有被击倒，那么就检查5-7号针脚是否被击倒
+    # 如果5-7号针脚都被击倒了，那么就是一个分裂
+    if pins[4] == "0" and pins[5] == "0" and pins[6] == "0":
+        return True
+    # 如果5-7号针脚没有被击倒，那么就检查8-10号针脚是否被击倒
+    # 如果8-10号针脚都被击倒了，那么就是一个分裂
+    if pins[7] == "0" and pins[8] == "0" and pins[9] == "0":
+        return True
+    # 如果8-10号针脚没有被击倒，那么就不是一个分裂
+    return False
 
 =======
 Suggestion 6
 
-def main():
-    week = input()
-    if week == "星期一":
-        print(5)
-    elif week == "星期二":
-        print(4)
-    elif week == "星期三":
-        print(3)
-    elif week == "星期四":
-        print(2)
-    elif week == "星期五":
-        print(1)
+def solve():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    if s[1] == '0':
+        print('No')
+        return
+    if s[2] == '0':
+        print('No')
+        return
+    if s[3] == '0':
+        print('No')
+        return
+    if s[4] == '0':
+        print('No')
+        return
+    if s[5] == '0':
+        print('No')
+        return
+    if s[6] == '0':
+        print('No')
+        return
+    if s[7] == '0':
+        print('No')
+        return
+    if s[8] == '0':
+        print('No')
+        return
+    if s[9] == '0':
+        print('No')
+        return
+    if s[0] == '1':
+        if s[5] == '1':
+            print('Yes')
+            return
+        else:
+            print('No')
+            return
+    else:
+        print('No')
+        return
 
 =======
 Suggestion 7
 
-def main():
-    week = ['SUN','MON','TUE','WED','THU','FRI','SAT']
-    s = input()
-    print(6 - week.index(s))
+def split_pin(s):
+    if s[0] == '0':
+        return 'No'
+    for i in range(1, 10):
+        if s[i] == '0':
+            if s[i - 1] == '1':
+                return 'No'
+    return 'Yes'
 
 =======
 Suggestion 8
 
-def dayToSat(s):
-    if s == '星期一':
-        return 5
-    elif s == '星期二':
-        return 4
-    elif s == '星期三':
-        return 3
-    elif s == '星期四':
-        return 2
-    elif s == '星期五':
-        return 1
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
     else:
-        return 0
+        if s[1] == '1':
+            print('Yes')
+        else:
+            if s[2] == '1':
+                print('Yes')
+            else:
+                print('No')
 
 =======
 Suggestion 9
 
-def solve():
-    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    s = input()
-    print(7 - days.index(s))
+def problem267_b():
+    pass
 
 =======
 Suggestion 10
 
-def main():
-    weeks = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-    week = input()
-    week_index = weeks.index(week)
-    print(6 - week_index)
+def is_split(S):
+    if S[0] == "0":
+        return False
+    if S[1] == "0" and S[2] == "0":
+        return False
+    if S[3] == "0" and S[4] == "0" and S[5] == "0" and S[6] == "0":
+        return False
+    if S[7] == "0" and S[8] == "0":
+        return False
+    if S[9] == "0" and S[8] == "0" and S[7] == "0":
+        return False
+    return True
+
+S = input()

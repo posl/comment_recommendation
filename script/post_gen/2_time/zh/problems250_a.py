@@ -1,178 +1,146 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    return gcd(b, a % b)
-
-n = int(input())
-a = list(map(int, input().split()))
-
-cnt = [0] * (max(a) + 1)
-for i in a:
-    cnt[i] += 1
-
-ans = 0
-for i in range(1, max(a) + 1):
-    for j in range(i, max(a) + 1, i):
-        if cnt[j] == 0:
-            continue
-        if i == j:
-            ans += cnt[i] * (cnt[i] - 1) * (cnt[i] - 2) // 6
-        elif i < j:
-            k = gcd(i, j)
-            if k == i:
-                ans += cnt[i] * cnt[j] * (cnt[j] - 1) // 2
-            elif k == j:
-                ans += cnt[i] * cnt[j] * (cnt[i] - 1) // 2
-            else:
-                ans += cnt[i] * cnt[j] * cnt[k]
-print(ans)
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print( (H-R+1)*(W-C+1) )
 
 =======
 Suggestion 2
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    while b:
-        a, b = b, a%b
-    return a
+def problems250_a():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print((H-R+1)*(W-C+1))
+    return
 
-n = int(input())
-a = list(map(int, input().split()))
-cnt = 0
-for i in range(n):
-    for j in range(i+1, n):
-        for k in range(j+1, n):
-            if gcd(a[i], a[j]) == a[k] or gcd(a[j], a[k]) == a[i] or gcd(a[k], a[i]) == a[j]:
-                cnt += 1
-print(cnt)
+problems250_a()
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.insert(0, 0)
-    cnt = 0
-    for i in range(1, n+1):
-        for j in range(1, n+1):
-            if a[j] == 0:
-                continue
-            if a[i] % a[j] != 0:
-                continue
-            if a[i] // a[j] > n:
-                continue
-            if a[a[i]//a[j]] == 0:
-                continue
-            cnt += 1
-    print(cnt)
+def get_count(h,w,r,c):
+    count = 0
+    if r == 1:
+        if c == 1:
+            count = 0
+        elif c == w:
+            count = 0
+        else:
+            count = 1
+    elif r == h:
+        if c == 1:
+            count = 0
+        elif c == w:
+            count = 0
+        else:
+            count = 1
+    else:
+        if c == 1:
+            count = 1
+        elif c == w:
+            count = 1
+        else:
+            count = 2
+    return count
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [0] + a
-    b = [0] * (n+1)
-    c = [0] * (n+1)
-    for i in range(1, n+1):
-        b[a[i]] += 1
-    for i in range(1, n+1):
-        for j in range(1, n+1):
-            c[i * a[j]] += b[i]
-    ans = 0
-    for i in range(1, n+1):
-        ans += c[i]
-    print(ans)
+def getcount(h,w,r,c):
+    count = 0
+    if r == 1:
+        if c == 1:
+            count = 2
+        elif c == w:
+            count = 2
+        else:
+            count = 3
+    elif r == h:
+        if c == 1:
+            count = 2
+        elif c == w:
+            count = 2
+        else:
+            count = 3
+    else:
+        if c == 1:
+            count = 3
+        elif c == w:
+            count = 3
+        else:
+            count = 4
+    return count
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if a[i] % a[j] == 0:
-                for k in range(j+1, n):
-                    if a[j] % a[k] == 0:
-                        count += 1
-    print(count)
+    h,w = map(int,input().split())
+    r,c = map(int,input().split())
+    ans = 0
+    for i in range(1,h+1):
+        for j in range(1,w+1):
+            if abs(i-r)+abs(j-c)==1:
+                ans+=1
+    print(ans)
 
 =======
 Suggestion 6
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    c = [0] * (max(a)+1)
-    for i in range(n):
-        c[a[i]] += 1
-    s = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if a[i] * a[j] <= max(a):
-                s += c[a[i]*a[j]]
-    print(s)
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    if r == 1 and c == 1:
+        print(0)
+        return
+
+    if r == 1 and c == w:
+        print(0)
+        return
+
+    if r == h and c == 1:
+        print(0)
+        return
+
+    if r == h and c == w:
+        print(0)
+        return
+
+    if r == 1 or r == h:
+        print(1)
+        return
+
+    if c == 1 or c == w:
+        print(1)
+        return
+
+    print(2)
 
 =======
 Suggestion 7
 
-def gcd(a, b):
-    if a % b == 0:
-        return b
+def get_num_of_same_edge_squares(h,w,r,c):
+    num = 0
+    if r == 1 and c == 1:
+        num = 0
+    elif r == 1 and c == w:
+        num = 0
+    elif r == h and c == 1:
+        num = 0
+    elif r == h and c == w:
+        num = 0
+    elif r == 1:
+        num = 1
+    elif r == h:
+        num = 1
+    elif c == 1:
+        num = 1
+    elif c == w:
+        num = 1
     else:
-        return gcd(b, a % b)
-
-N = int(input())
-A = list(map(int, input().split()))
-
-=======
-Suggestion 8
-
-def get_input():
-    n = int(input())
-    a = list(map(int, input().split()))
-    return n, a
-
-=======
-Suggestion 9
-
-def count_pairs(A):
-    N = len(A)
-    counter = {}
-    for i in range(N):
-        if A[i] in counter:
-            counter[A[i]] += 1
-        else:
-            counter[A[i]] = 1
-    return counter
-
-=======
-Suggestion 10
-
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    cnt = 0
-    dic = {}
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                continue
-            if a[i] % a[j] == 0:
-                if a[i] // a[j] in dic:
-                    cnt += dic[a[i] // a[j]]
-        if a[i] in dic:
-            dic[a[i]] += 1
-        else:
-            dic[a[i]] = 1
-    print(cnt)
+        num = 2
+    return num

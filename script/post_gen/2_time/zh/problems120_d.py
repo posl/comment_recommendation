@@ -1,189 +1,191 @@
-Synthesizing 10/10 solutions
+Synthesizing 9/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    s = input()
-    r = s.count('0')
-    b = len(s) - r
-    print(min(r, b) * 2)
+def find_parent(x, parents):
+    if parents[x] == x:
+        return x
+    else:
+        parents[x] = find_parent(parents[x], parents)
+        return parents[x]
 
 =======
 Suggestion 2
 
-def main():
-    # 读入数据
-    str = input()
-    # 计算数据
-    count0 = 0
-    count1 = 0
-    for i in range(len(str)):
-        if str[i] == '0':
-            count0 += 1
-        else:
-            count1 += 1
-    # 输出结果
-    print(min(count0, count1) * 2)
+def solve():
+    N, M = map(int, input().split())
+    AB = []
+    for i in range(M):
+        AB.append(list(map(int, input().split())))
+    #print(AB)
+    #print(N, M)
+    #print(AB)
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[5][0])
+    #print(AB[5][1])
+    #print(AB[6][0])
+    #print(AB[6][1])
+    #print(AB[7][0])
+    #print(AB[7][1])
+    #print(AB[8][0])
+    #print(AB[8][1])
+    #print(AB[9][0])
+    #print(AB[9][1])
+    #print(AB[10][0])
+    #print(AB[10][1])
+    #print(AB[11][0])
+    #print(AB[11][1])
+    #print(AB[12][0])
+    #print(AB[12][1])
+    #print(AB[13][0])
+    #print(AB[13][1])
+    #print(AB[14][0])
+    #print(AB[14][1])
+    #print(AB[15][0])
+    #print(AB[15][1])
+    #print(AB[16][0])
+    #print(AB[16][1])
+    #print(AB[17][0])
+    #print(AB[17][1])
+    #print(AB[18][0])
+    #print(AB[18][1])
+    #print(AB[19][0])
+    #print(AB[19][1])
+    #print(AB[20][0])
+    #print(AB[20][1])
+    #print(AB[21][0])
+    #print(AB[21][1])
+    #print(AB
 
 =======
 Suggestion 3
 
 def main():
-    S = input()
-    #print(S)
-    #print(type(S))
-    #print(len(S))
-    #print(S[0])
-
-    #从左到右依次遍历，如果是0则入栈，如果是1则出栈，如果出栈的时候栈为空则将结果+1
-    stack = []
-    result = 0
-    for i in range(len(S)):
-        if S[i] == '0':
-            stack.append(S[i])
-        else:
-            if len(stack) == 0:
-                result += 1
-            else:
-                stack.pop()
-
-    #从右到左依次遍历，如果是1则入栈，如果是0则出栈，如果出栈的时候栈为空则将结果+1
-    stack = []
-    for i in range(len(S)-1, -1, -1):
-        if S[i] == '1':
-            stack.append(S[i])
-        else:
-            if len(stack) == 0:
-                result += 1
-            else:
-                stack.pop()
-
-    print(result)
+    N, M = map(int, input().split())
+    print(N, M)
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+    print("hello world")
 
 =======
 Suggestion 4
 
 def main():
-    s = input()
-    s = list(s)
-    s.reverse()
-    count = 0
-    for i in range(0,len(s)-1):
-        if s[i] == '0':
-            count += 1
-        elif s[i] == '1' and s[i+1] == '0':
-            count += 1
-    print(count)
+    n,m = map(int,input().split())
+    a=[]
+    b=[]
+    for i in range(m):
+        a1,b1 = map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    print(a,b)
 
 =======
 Suggestion 5
 
-def main():
-    S = input()
-    N = len(S)
-    count = 0
-    for i in range(N):
-        if S[i] == '1':
-            count += 1
-    print(min(count, N - count) * 2)
+def solve():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    bridge = [0] * N
+    bridge[0] = 1
+    for i in range(M-1, -1, -1):
+        a = A[i] - 1
+        b = B[i] - 1
+        if bridge[a] == 1 and bridge[b] == 0:
+            bridge[b] = 1
+    bridge = bridge[::-1]
+    # print(bridge)
+    for i in range(1, N):
+        bridge[i] += bridge[i-1]
+    # print(bridge)
+    for i in range(M):
+        a = A[i] - 1
+        b = B[i] - 1
+        if bridge[b] - bridge[a] == 0:
+            print(bridge[-1] * (bridge[-1]-1) // 2)
+        else:
+            print(bridge[-1] * (bridge[-1]-1) // 2 - (bridge[b] - bridge[a]) * (bridge[b] - bridge[a] - 1) // 2)
+
+
+solve()
 
 =======
 Suggestion 6
 
 def main():
-    S = input()
-    #print(S)
-    #print(len(S))
-    #print(type(S))
-    #print(S[0])
-    #print(type(S[0]))
-    #print(S[0] == '0')
-    #print(S[0] == '1')
-    #print(S[0] == 0)
-    #print(S[0] == 1)
-    #print(S[0] == 2)
-    #print(S[0] == 3)
-    #print(S[0] == 4)
-    #print(S[0] == 5)
-    #print(S[0] == 6)
-    #print(S[0] == 7)
-    #print(S[0] == 8)
-    #print(S[0] == 9)
-    #print(S[0] == 10)
-    #print(S[0] == 11)
-    #print(S[0] == 12)
-    #print(S[0] == 13)
-    #print(S[0] == 14)
-    #print(S[0] == 15)
-    #print(S[0] == 16)
-    #print(S[0] == 17)
-    #print(S[0] == 18)
-    #print(S[0] == 19)
-    #print(S[0] == 20)
-    #print(S[0] == 21)
-    #print(S[0] == 22)
-    #print(S[0] == 23)
-    #print(S[0] == 24)
-    #print(S[0] == 25)
-    #print(S[0] == 26)
-    #print(S[0] == 27)
-    #print(S[0] == 28)
-    #print(S[0] == 29)
-    #print(S[0] == 30)
-    #print(S[0] == 31)
-    #print(S[0] == 32)
-    #print(S[0] == 33)
-    #print(S[0] == 34)
-    #print(S[0] == 35)
-    #print(S[0] == 36)
-    #print(S[0] == 37)
-    #print(S[0] == 38)
-    #print(S[0] == 39
+    n, m = map(int, input().split())
+    bridge = []
+    for i in range(m):
+        bridge.append(list(map(int, input().split())))
+
+    bridge.sort(key=lambda x: x[1])
+
+    # print(bridge)
+
+    ans = [0 for i in range(m)]
+    uf = UnionFind(n)
+    for i in range(m):
+        ans[i] = uf.size(bridge[i][0] - 1) * uf.size(bridge[i][1] - 1)
+        uf.union(bridge[i][0] - 1, bridge[i][1] - 1)
+
+    for i in range(m - 1, 0, -1):
+        ans[i - 1] -= ans[i]
+
+    for i in range(m):
+        print(ans[i])
 
 =======
 Suggestion 7
 
-def main():
-    s = input()
-    r = s.count("0")
-    b = s.count("1")
-    print(min(r, b) * 2)
+def findRoot(roots, i):
+    if roots[i] == i:
+        return i
+    else:
+        roots[i] = findRoot(roots, roots[i])
+        return roots[i]
 
 =======
 Suggestion 8
 
 def main():
-    s = input()
-    n = len(s)
-    cnt = 0
-    for i in range(n):
-        if s[i] == "1":
-            cnt += 1
-    print(min(cnt, n - cnt) * 2)
+    N,M = map(int,input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i],B[i] = map(int,input().split())
+    print(N)
+    print(M)
+    print(A)
+    print(B)
 
 =======
 Suggestion 9
 
-def solve():
-    S = input()
-    N = len(S)
-    ans = 0
-    for i in range(N):
-        if S[i] == "1":
-            ans += 1
-    ans = min(ans, N-ans)
-    print(ans)
-solve()
-
-=======
-Suggestion 10
-
-def main():
-    S = input()
-    N = len(S)
-    num = 0
-    for i in range(N):
-        if S[i] == '1':
-            num += 1
-    print(min(num, N-num)*2)
+def findRoot(x):
+    global root
+    if root[x] == x:
+        return x
+    else:
+        root[x] = findRoot(root[x])
+        return root[x]

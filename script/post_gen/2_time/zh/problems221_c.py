@@ -3,156 +3,153 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    S = input()
-    T = input()
-
-    if len(S) != len(T):
-        print("No")
+def solve():
+    n = int(input())
+    ans = 0
+    l = len(str(n))
+    if l == 2:
+        print(1)
         return
-
-    for i in range(len(S)):
-        for j in range(i + 1, len(S)):
-            if S[i] == T[j] and S[j] == T[i]:
-                print("Yes")
-                return
-
-    print("No")
+    for i in range(1, l):
+        a = int(str(n)[:i])
+        b = int(str(n)[i:])
+        ans = max(ans, a * b)
+    print(ans)
 
 =======
 Suggestion 2
 
-def swap(s):
-    return s[1]+s[0]
+def findMaxProduct(N):
+    N_str = str(N)
+    N_len = len(N_str)
+    max_product = 0
 
-s = input()
-t = input()
+    for i in range(1, N_len):
+        N1 = int(N_str[0:i])
+        N2 = int(N_str[i:N_len])
+        product = N1 * N2
+        if product > max_product:
+            max_product = product
+
+    return max_product
 
 =======
 Suggestion 3
 
-def main():
-    s = input()
-    t = input()
-    if len(s) == len(t):
-        s_list = list(s)
-        t_list = list(t)
-        if s_list == t_list:
-            print('Yes')
-        else:
-            for i in range(len(s_list)):
-                for j in range(len(s_list)):
-                    if i == j:
-                        continue
-                    else:
-                        s_list[i],s_list[j] = s_list[j],s_list[i]
-                        if s_list == t_list:
-                            print('Yes')
-                            break
-                        else:
-                            s_list[i],s_list[j] = s_list[j],s_list[i]
-                else:
-                    continue
-                break
-            else:
-                print('No')
-    else:
-        print('No')
+def calc_max_product(n):
+    n = str(n)
+    max_product = 0
+    for i in range(1, len(n)):
+        left = int(n[:i])
+        right = int(n[i:])
+        max_product = max(max_product, left * right)
+    return max_product
 
 =======
 Suggestion 4
 
-def main():
-    S = input()
-    T = input()
-    if S == T:
-        print('Yes')
-        return
-    for i in range(len(S)-1):
-        if S[i] == T[i+1] and S[i+1] == T[i]:
-            print('Yes')
-            return
-    print('No')
+def func(N):
+    N = str(N)
+    n = len(N)
+    if n == 2:
+        return int(N[0])*int(N[1])
+    elif n == 3:
+        return max(int(N[0])*int(N[1])*int(N[2]), int(N[0])*int(N[1]+N[2]), int(N[0]+N[1])*int(N[2]))
+    elif n == 4:
+        return max(int(N[0])*int(N[1])*int(N[2])*int(N[3]), int(N[0])*int(N[1])*int(N[2]+N[3]), int(N[0])*int(N[1]+N[2])*int(N[3]), int(N[0]+N[1])*int(N[2])*int(N[3]), int(N[0])*int(N[1]+N[2]+N[3]), int(N[0]+N[1])*int(N[2]+N[3]), int(N[0]+N[1]+N[2])*int(N[3]))
+    elif n == 5:
+        return max(int(N[0])*int(N[1])*int(N[2])*int(N[3])*int(N[4]), int(N[0])*int(N[1])*int(N[2])*int(N[3]+N[4]), int(N[0])*int(N[1])*int(N[2]+N[3])*int(N[4]), int(N[0])*int(N[1]+N[2])*int(N[3])*int(N[4]), int(N[0]+N[1])*int(N[2])*int(N[3])*int(N[4]), int(N[0])*int(N[1])*int(N[2]+N[3]+N[4]), int(N[0])*int(N[1]+N[2]+N[3])*int(N[4]), int(N[0]+N[1])*int(N[2])*int(N[3]+N[4]), int(N[0])*int(N[1]+N[2]+N[3]+N[4]), int(N[0]+N[1])*int(N[2]+N[3])*int(N[4]), int(N[0]+N[1]+N[2])*int(N[3])*int(N[4]), int(N[0
 
 =======
 Suggestion 5
 
-def func(s,t):
-    if s==t:
-        return True
+def get_max_product(n):
+    n_str = str(n)
+    n_len = len(n_str)
+    if n_len == 2:
+        return n
+    elif n_len == 3:
+        return int(n_str[0]) * int(n_str[1:])
     else:
-        for i in range(len(s)-1):
-            if s[i+1]+s[i]==t[i+1]+t[i]:
-                return True
-    return False
+        max_product = 0
+        for i in range(1, n_len - 1):
+            product = int(n_str[0:i]) * int(n_str[i:])
+            if product > max_product:
+                max_product = product
+        return max_product
 
 =======
 Suggestion 6
 
-def swap(s, i, j):
-    s[i], s[j] = s[j], s[i]
-    return s
+def main():
+    n = input()
+    n1 = list(n)
+    n2 = list(n)
+    n1.sort(reverse=True)
+    n2.sort()
+    if n2[0] == '0':
+        n2.pop(0)
+        n2.append('0')
+    n1 = ''.join(n1)
+    n2 = ''.join(n2)
+    print(int(n1) * int(n2))
 
 =======
 Suggestion 7
 
-def main():
-    s = input()
-    t = input()
-    if s == t:
-        print("Yes")
-        return
-    for i in range(len(s)-1):
-        if s[i+1] == t[i] and s[i] == t[i+1]:
-            print("Yes")
-            return
-    print("No")
+def solve(n):
+    s = str(n)
+    l = len(s)
+    ans = 0
+    for i in range(1, l):
+        a = int(s[:i])
+        b = int(s[i:])
+        ans = max(ans, a * b)
+    return ans
 
 =======
 Suggestion 8
 
-def swap(S, T):
-    for i in range(len(S)-1):
-        if S[i] != T[i]:
-            if S[i+1] != T[i+1]:
-                return False
-    return True
-
-S = input()
-T = input()
+def get_max_product(num):
+    num = str(num)
+    length = len(num)
+    if length == 2:
+        return int(num[0]) * int(num[1])
+    elif length == 3:
+        return int(num[0]) * int(num[1:]) if int(num[0]) > int(num[1]) else int(num[0]) * int(num[2])
+    else:
+        return int(num[0]) * int(num[1:]) if int(num[0]) > int(num[1]) else int(num[0]) * int(num[2:])
 
 =======
 Suggestion 9
 
 def main():
-    s = input()
-    t = input()
-    if s == t:
-        print("Yes")
-        return
-    for i in range(len(s)-1):
-        s = s[:i] + s[i+1] + s[i] + s[i+2:]
-        if s == t:
-            print("Yes")
-            return
-        s = s[:i] + s[i+1] + s[i] + s[i+2:]
-    print("No")
-    return
+    N = int(input())
+    A = [int(i) for i in str(N)]
+    L = len(A)
+    max = 0
+    for i in range(2**L):
+        s = []
+        for j in range(L):
+            if ((i >> j) & 1):
+                s.append(A[j])
+        if len(s) == 0 or len(s) == L:
+            continue
+        a = int(''.join(map(str, s)))
+        b = int(''.join(map(str, list(set(A) - set(s)))))
+        if a * b > max:
+            max = a * b
+    print(max)
 
 =======
 Suggestion 10
 
-def main():
-    S = input()
-    T = input()
-    if S == T:
-        print("Yes")
-        return
-    for i in range(len(S)):
-        for j in range(i + 1, len(S)):
-            tmp = list(S)
-            tmp[i], tmp[j] = tmp[j], tmp[i]
-            if "".join(tmp) == T:
-                print("Yes")
-                return
-    print("No")
+def get_max_product(n):
+    max_product = 0
+    n_str = str(n)
+    n_len = len(n_str)
+    for i in range(1, n_len):
+        n1 = int(n_str[:i])
+        n2 = int(n_str[i:])
+        max_product = max(max_product, n1 * n2)
+    return max_product

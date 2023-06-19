@@ -1,172 +1,136 @@
-Synthesizing 9/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def solve(n,s,w):
-    w.sort()
-    ans = 0
-    for i in range(n):
-        if s[i]=='0':
-            ans+=1
-    minw = 10**9+1
-    for i in range(n):
-        if s[i]=='0':
-            if w[i]<minw:
-                minw = w[i]
-    if minw==10**9+1:
-        minw = 0
-    maxw = -1
-    for i in range(n):
-        if s[i]=='1':
-            if w[i]>maxw:
-                maxw = w[i]
-    if maxw==-1:
-        maxw = 0
-    if ans==0:
-        return 0
-    return min(ans,2*n-ans)
+def calc(x1,y1,x2,y2):
+    return abs(x1-x2)+abs(y1-y2)
 
 =======
 Suggestion 2
 
-def isChild(W, S, X):
-    if W < X and S == '0':
-        return True
-    elif W >= X and S == '1':
-        return True
-    else:
-        return False
+def solve(num, x, y, p):
+    ans = 0
+    for i in range(num):
+        for j in range(num):
+            if i == j:
+                continue
+            if p[i] * ans >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                ans += 1
+                break
+    return ans
 
 =======
 Suggestion 3
 
 def main():
     N = int(input())
-    S = input()
-    W = list(map(int, input().split()))
-    ans = 0
-    for x in range(0, 200):
-        #print(x)
-        cnt = 0
-        for i in range(N):
-            if S[i] == '0' and W[i] <= x:
-                cnt += 1
-            if S[i] == '1' and W[i] > x:
-                cnt += 1
-        ans = max(ans, cnt)
-    print(ans)
+    # x = []
+    # y = []
+    # p = []
+    # for i in range(N):
+    #     x_i, y_i, p_i = map(int, input().split())
+    #     x.append(x_i)
+    #     y.append(y_i)
+    #     p.append(p_i)
+    # print(x)
+    # print(y)
+    # print(p)
+    # for i in range(N):
+    #     for j in range(N):
+    #         if i == j:
+    #             continue
+    #         else:
+    #             if p[i] * S >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+    #                 continue
+    #             else:
+    #                 S += 1
+    # print(S)
+    # print(x)
+    # print(y)
+    # print(p)
+    # print(S)
+    x = []
+    y = []
+    p = []
+    for i in range(N):
+        x_i, y_i, p_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        p.append(p_i)
+    S = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            else:
+                if p[i] * S >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                    continue
+                else:
+                    S += 1
+    print(S)
 
 =======
 Suggestion 4
 
-def f(x, s, w):
-    n = len(s)
-    count = 0
-    for i in range(n):
-        if s[i] == '1':
-            if w[i] >= x:
-                count += 1
-        else:
-            if w[i] < x:
-                count += 1
-    return count
+def get_distance(x1, y1, x2, y2):
+    return abs(x2-x1) + abs(y2-y1)
 
 =======
 Suggestion 5
 
-def get_max_f(x, n, s, w):
-    f = 0
+def readinput():
+    n=int(input())
+    xyplist=[]
     for i in range(n):
-        if s[i] == '0' and w[i] < x:
-            f += 1
-        elif s[i] == '1' and w[i] >= x:
-            f += 1
-    return f
+        xyplist.append(list(map(int,input().split())))
+    return n,xyplist
 
 =======
 Suggestion 6
 
-def f(x, s, w):
-    count = 0
-    for i in range(len(s)):
-        if s[i] == '0' and w[i] < x:
-            count += 1
-        elif s[i] == '1' and w[i] >= x:
-            count += 1
-    return count
-
-n = int(input())
-s = input()
-w = [int(i) for i in input().split()]
-max_w = max(w)
-min_w = min(w)
-max_x = max_w
-min_x = min_w
-max_f = f(max_x, s, w)
-min_f = f(min_x, s, w)
-
-while min_x < max_x:
-    mid_x = (min_x + max_x) // 2
-    mid_f = f(mid_x, s, w)
-    if mid_f == max_f:
-        min_x = mid_x
-    elif mid_f == min_f:
-        max_x = mid_x
-    else:
-        min_x = mid_x
-        max_x = mid_x
-
-print(max_f)
+def solve():
+    N = int(input())
+    A = []
+    for i in range(N):
+        x, y, p = map(int, input().split())
+        A.append((x, y, p))
+    A.sort(key=lambda x: x[0] + x[1])
+    dp = [float("inf")] * (N + 1)
+    dp[0] = -float("inf")
+    for i in range(N):
+        dp[i + 1] = min(dp[i + 1], A[i][1] - A[i][0])
+        for j in range(i):
+            dp[i + 1] = min(dp[i + 1], dp[j] + A[i][1] + A[i][0] - A[j][1] - A[j][0])
+    return dp[N]
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    s = input()
-    w = list(map(int, input().split()))
-    if s.count('0') == 0 or s.count('1') == 0:
-        print(n)
-        return
-    if s.count('0') == n or s.count('1') == n:
-        print(0)
-        return
-    w.sort()
-    for i in range(n):
-        if s[i] == '1':
-            w[i] = -1
-    for i in range(n-1):
-        if w[i] == -1:
-            continue
-        if w[i] < w[i+1]:
-            w[i] = -1
-    print(w.count(-1))
+def solve():
+    pass
 
 =======
 Suggestion 8
 
-def f(x, n, s, w):
-    c = 0
+def main():
+    n = int(input())
+    arr = []
     for i in range(n):
-        if s[i] == '0':
-            if x > w[i]:
-                c += 1
-        else:
-            if x <= w[i]:
-                c += 1
-    return c
+        arr.append(list(map(int, input().split())))
+    print(arr)
 
 =======
 Suggestion 9
 
-def f(x, N, S, W):
-    count = 0
+def get_input():
+    N = int(input())
+    x = []
+    y = []
+    P = []
     for i in range(N):
-        if S[i] == '0':
-            if W[i] < x:
-                count += 1
-        else:
-            if W[i] >= x:
-                count += 1
-    return count
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    return N, x, y, P

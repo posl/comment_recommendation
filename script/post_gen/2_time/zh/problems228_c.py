@@ -1,134 +1,102 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    a[x-1] = 0
-    count = 1
-    for i in range(n):
-        if a[i] != 0:
-            count += 1
-    print(count)
+def isPass(score, k, n):
+    if score[0] + score[1] + score[2] >= k:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 2
 
 def main():
-    n,x = map(int, input().split())
-    a = list(map(int, input().split()))
-    a = [i-1 for i in a]
-    b = [0]*n
-    b[x-1] = 1
+    n, k = map(int, input().split())
+    s = []
     for i in range(n):
-        if b[i] == 1:
-            b[a[i]] = 1
-    print(sum(b))
+        s.append(sum(map(int, input().split())))
+    s.sort(reverse=True)
+    print("Yes" if s[k-1] > s[k] else "No")
 
 =======
 Suggestion 3
 
 def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-
-    a[x-1] = 0
-    ans = 1
-    for i in range(n):
-        if a[i] != 0:
-            ans += 1
-    print(ans)
-
-main()
+    pass
 
 =======
 Suggestion 4
 
-def main():
-    n, x = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = [False] * n
-    b[x - 1] = True
-    for i in range(n):
-        if b[i]:
-            a[i] -= 1
-            b[a[i]] = True
-    print(b.count(True))
+def read_ints():
+    return map(int, raw_input().split())
 
 =======
 Suggestion 5
 
 def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    a[x-1] = 0
-    b = [0]*n
+    n,k = map(int,input().split())
+    p = [list(map(int,input().split())) for _ in range(n)]
+    print(p)
     for i in range(n):
-        if a[i] != 0:
-            b[a[i]-1] += 1
-    print(b.count(max(b)))
+        if p[i][0]+p[i][1]+p[i][2] >= k:
+            print('Yes')
+        else:
+            print('No')
 
 =======
 Suggestion 6
 
-def get_input():
-    n_x = input().split()
-    n = int(n_x[0])
-    x = int(n_x[1])
-    a = input().split()
-    a = [int(i) for i in a]
-    return n, x, a
+def is_pass(a, b, c, d):
+    if a + b + c + d >= 1200:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 7
 
 def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.insert(0,0)
-    b = [0 for i in range(n+1)]
-    b[x] = 1
-    cnt = 1
-    for i in range(1,n+1):
-        if b[a[i]] == 0:
-            b[a[i]] = 1
-            cnt += 1
-    print(cnt)
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+    p.sort(key=lambda x: sum(x))
+    p = list(map(sum, p))
+    p.sort(reverse=True)
+    for i in range(n):
+        if p[i] > p[k - 1]:
+            print("No")
+        else:
+            print("Yes")
 
 =======
 Suggestion 8
 
-def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    a[x-1] = 0
-    for i in range(n):
-        if a[i] != 0:
-            a[a[i]-1] = 0
-    print(n - a.count(0))
+def get_input():
+    N, K = map(int, input().split())
+    P = []
+    for i in range(N):
+        P.append(list(map(int, input().split())))
+    return N, K, P
 
 =======
 Suggestion 9
 
-def check_friend(friends, friend_id, secret_owner):
-    if friend_id == secret_owner:
-        return True
-    elif friends[friend_id] == secret_owner:
-        return True
-    else:
-        return check_friend(friends, friends[friend_id], secret_owner)
-
-=======
-Suggestion 10
-
-def f(n,x,l):
-    d = {}
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
     for i in range(n):
-        d[i+1] = 0
-    d[x] = 1
+        p[i].sort(reverse=True)
+        p[i].append(sum(p[i]))
+        p[i].append(i)
+    p.sort(reverse=True)
+    p.append([0, 0, 0, 0, 0])
+    rank = 1
     for i in range(n):
-        if d[l[i]] == 1:
-            d[i+1] = 1
-    return sum(d.values())
+        if p[i][3:] != p[i + 1][3:]:
+            rank = i + 1
+        if rank <= k:
+            print("Yes")
+        else:
+            print("No")
+main()

@@ -1,179 +1,105 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def solve():
-    print('No')
+def isArithmeticSequence(A):
+    A.sort()
+    if A[2]-A[1]==A[1]-A[0]:
+        return True
+    else:
+        return False
 
 =======
 Suggestion 2
 
-def solve():
-    print 'Yes'
-    print '1 1'
-    print '1 2'
-    return 0
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[2] - a[1] == a[1] - a[0]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 3
 
-def find_subset(N, A):
-    for i in range(N):
-        for j in range(i+1, N):
-            if (A[i] + A[j]) % 200 == 0:
-                return True
-    return False
+def main():
+    A = input()
+    A = A.split()
+    A = list(map(int, A))
+    A.sort()
+    if A[2] - A[1] == A[1] - A[0]:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
+def f():
     a = list(map(int, input().split()))
-    a = [0] + a
-    a = [i % 200 for i in a]
-    d = {}
-    for i in range(1, n + 1):
-        for j in range(i + 1, n + 1):
-            if a[i] == a[j]:
-                print('Yes')
-                print(1, i)
-                print(1, j)
-                return
-            if a[i] in d:
-                d[a[i]].append(i)
-            else:
-                d[a[i]] = [i]
-    for k, v in d.items():
-        if len(v) >= 2:
-            print('Yes')
-            print(len(v), v[0], v[1])
-            print(len(v), v[2], v[3])
-            return
-    print('No')
+    a.sort()
+    if a[2] - a[1] == a[1] - a[0]:
+        print("Yes")
+    else:
+        print("No")
+
+f()
 
 =======
 Suggestion 5
 
-def find_sum_200(A, x, y):
-    sum_x = sum([A[i] for i in x])
-    sum_y = sum([A[i] for i in y])
-    if sum_x % 200 == sum_y % 200 == 0:
-        return 0
+def is_arithmetic_sequence(a1, a2, a3):
+    if a3 - a2 == a2 - a1:
+        return True
     else:
-        return 1
+        return False
 
 =======
 Suggestion 6
 
-def main():
-    print("Hello World")
-    return 0
+def is_arithmetic_sequence(a1, a2, a3):
+    if a1 == a2 == a3:
+        return True
+    elif a1 == a2 or a2 == a3:
+        return False
+    else:
+        return (a3 - a2) == (a2 - a1)
 
 =======
 Suggestion 7
 
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [0] + a
-    a = [sum(a[:i]) % 200 for i in range(1, n + 1)]
-
-    d = {}
-    for i in range(n):
-        if a[i] in d:
-            d[a[i]].append(i)
-        else:
-            d[a[i]] = [i]
-
-    for k, v in d.items():
-        if len(v) >= 2:
-            print('Yes')
-            print(1, v[0] + 1)
-            print(1, v[1] + 1)
-            return
-    for k, v in d.items():
-        if len(v) >= 3:
-            print('Yes')
-            print(1, v[0] + 1)
-            print(2, v[1] + 1, v[2] + 1)
-            return
-    print('No')
+def problems201_a():
+    A = input("请输入三个数字，以空格分隔：")
+    A = A.split(' ')
+    A = [int(i) for i in A]
+    A.sort()
+    if (A[2] - A[1]) == (A[1] - A[0]):
+        print("Yes")
+    else:
+        print("No")
+    return None
 
 =======
 Suggestion 8
 
 def main():
-    pass
+    # 读取输入
+    A = input().split()
+    # 是否可以重新排列A的元素成为算术序列
+    if int(A[2]) - int(A[1]) == int(A[1]) - int(A[0]):
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 9
 
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [a[i] % 200 for i in range(n)]
-    dp = [[-1 for _ in range(200)] for _ in range(n+1)]
-    dp[0][0] = 0
-    for i in range(n):
-        for j in range(200):
-            if dp[i][j] == -1:
-                continue
-            dp[i+1][j] = dp[i][j]
-            dp[i+1][(j+a[i])%200] = i
-    if dp[n][0] == 0:
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[2]-A[1] == A[1]-A[0]:
+        print("Yes")
+    else:
         print("No")
-        return
-    print("Yes")
-    ans = []
-    i = n
-    j = 0
-    while i > 0:
-        if dp[i][j] != dp[i-1][j]:
-            ans.append(i)
-            j = (j-a[i-1])%200
-        i -= 1
-    print(len(ans), *ans)
-    ans = []
-    i = n
-    j = 0
-    while i > 0:
-        if dp[i][j] != dp[i-1][j]:
-            ans.append(i)
-            j = (j-a[i-1])%200
-        i -= 1
-    print(len(ans), *ans)
-
-solve()
-
-=======
-Suggestion 10
-
-def solve():
-    n = int(input().strip())
-    a = list(map(int, input().strip().split()))
-    # a = [180, 186, 189, 191, 218]
-    # n = 5
-    d = {}
-    for i in range(n):
-        for j in range(i+1, n):
-            if (a[i]+a[j])%200 not in d:
-                d[(a[i]+a[j])%200] = [[i, j]]
-            else:
-                d[(a[i]+a[j])%200].append([i, j])
-    for k, v in d.items():
-        if len(v) >= 2:
-            print('Yes')
-            print(len(v[0]), end=' ')
-            for i in v[0]:
-                print(i+1, end=' ')
-            print()
-            print(len(v[1]), end=' ')
-            for i in v[1]:
-                print(i+1, end=' ')
-            print()
-            return
-    print('No')
-
-solve()

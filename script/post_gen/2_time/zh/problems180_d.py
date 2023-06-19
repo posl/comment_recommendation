@@ -1,142 +1,147 @@
-Synthesizing 9/10 solutions
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    i = 1
-    while i * i <= n:
-        if n % i == 0:
-            print(i)
-            if i != n // i:
-                print(n // i)
-        i += 1
+def solution():
+    x,y,a,b = map(int,input().split())
+    if a == 1:
+        if y - x > b:
+            print(y - x - 1)
+        else:
+            print(0)
+    else:
+        ans = 0
+        while x < y:
+            if x * a < x + b:
+                x *= a
+            else:
+                x += b
+            ans += 1
+        print(ans - 1)
 
 =======
 Suggestion 2
 
-def get_divisors(n):
-    # 約数のリストを返す
-    # O(√n)
-    divisors = []
-    for i in range(1, int(n**0.5) + 1):
-        if n % i == 0:
-            divisors.append(i)
-            if i != n // i:
-                divisors.append(n // i)
-    divisors.sort()
-    return divisors
-
-n = int(input())
-divisors = get_divisors(n)
-for d in divisors:
-    print(d)
+def main():
+    x,y,a,b = map(int,input().split())
+    exp = 0
+    while x*a <= x+b and x*a < y:
+        x *= a
+        exp += 1
+    print(exp + (y-x-1)//b)
 
 =======
 Suggestion 3
 
-def main():
-    N = int(input())
-    ans = []
-    i = 1
-    while i * i <= N:
-        if N % i == 0:
-            ans.append(i)
-            if i != N // i:
-                ans.append(N // i)
-        i += 1
-    ans.sort()
-    for i in ans:
-        print(i)
+def solve(x,y,a,b):
+    if x>=y:
+        return 0
+    if b>=a:
+        return (y-x-1)//a
+    else:
+        if (x*b)%a==0:
+            return max((y-x-1)//a,(y-x-1)//a*(x*b)//a)
+        else:
+            return max((y-x-1)//a,(y-x-1)//a*(x*b)//a,(y-x-1)//a*(x*b)//a+1)
 
 =======
 Suggestion 4
 
-def main():
-    import sys
-    from math import sqrt
-    N = int(sys.stdin.readline())
-    ans = []
-    for i in range(1, int(sqrt(N))+1):
-        if N % i == 0:
-            ans.append(i)
-            if i != N // i:
-                ans.append(N // i)
-    ans.sort()
-    for i in ans:
-        print(i)
+def train(x, y, a, b):
+    exp = 0
+    while True:
+        if x * a < x + b:
+            if x * a >= y:
+                return exp
+            else:
+                x *= a
+                exp += 1
+        else:
+            if x + b >= y:
+                return exp
+            else:
+                x += b
+                exp += 1
 
 =======
 Suggestion 5
 
-def get_divisors(n):
-    divisors = []
-    for i in range(1, int(n**0.5)+1):
-        if n % i == 0:
-            divisors.append(i)
-            if i != n // i:
-                divisors.append(n//i)
-
-    divisors.sort()
-    return divisors
-
-N = int(input())
-divisors = get_divisors(N)
-for d in divisors:
-    print(d)
+def solve(x,y,a,b):
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+            exp += 1
+        else:
+            x += b
+            exp += 1
+    return exp
 
 =======
 Suggestion 6
 
-def find_divisor(n):
-    divisors = []
-    for i in range(1, int(n**0.5)+1):
-        if n % i == 0:
-            divisors.append(i)
-            if n // i != i:
-                divisors.append(n//i)
-    divisors.sort()
-    return divisors
+def solve(X,Y,A,B):
+    exp=0
+    while X*A<X+B and X*A<Y:
+        X*=A
+        exp+=1
+    exp+=(Y-X-1)//B
+    return exp
 
 =======
 Suggestion 7
 
-def main():
-    n = int(input())
-    for i in range(1, int(n**0.5)+1):
-        if n%i == 0:
-            print(i)
-            if i != n//i:
-                print(n//i)
-    return
+def solve(x, y, a, b):
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+        else:
+            x += b
+        exp += 1
+    return exp
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    i = 1
-    while i * i <= N:
-        if N % i == 0:
-            print(i)
-            if i != N // i:
-                print(N // i)
-        i += 1
+def problems180_d():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while True:
+        if x * a <= x + b and x * a < y:
+            x *= a
+            exp += 1
+        else:
+            if x + b < y:
+                x += b
+                exp += 1
+            else:
+                break
+    print(exp)
 
 =======
 Suggestion 9
 
-def divisors(n):
-    i = 1
-    table = []
-    while i * i <= n:
-        if n % i == 0:
-            table.append(i)
-            if i != n // i:
-                table.append(n // i)
-        i += 1
-    return table
+def main():
+    x,y,a,b=map(int,input().split())
+    exp=0
+    while x<a*x and x<a*x+b and x<a*x+b<y:
+        x*=a
+        exp+=1
+    exp+=(y-x-1)//b
+    print(exp)
 
-n = int(input())
-print(*sorted(divisors(n)), sep='\n')
+=======
+Suggestion 10
+
+def solve(x, y, a, b):
+    exp = 0
+    while x * a <= x + b and x * a < y:
+        x *= a
+        exp += 1
+    exp += (y - 1 - x) // b
+    return exp
+
+x, y, a, b = map(int, input().split())
+print(solve(x, y, a, b))

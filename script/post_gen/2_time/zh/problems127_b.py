@@ -4,93 +4,79 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    a,b = map(int,input().split())
-    if a >= 13:
-        print(b)
-    elif a >= 6 and a <= 12:
-        print(int(b/2))
-    else:
-        print(0)
+    r, D, x = map(int, input().split())
+    for i in range(10):
+        x = r * x - D
+        print(x)
 
 =======
 Suggestion 2
 
-def main():
-    A, B = map(int, input().split())
-    if A >= 13:
-        print(B)
-    elif A >= 6:
-        print(B // 2)
-    else:
-        print(0)
+def f(r, D, x):
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+r, D, x = map(int, input().split())
+f(r, D, x)
 
 =======
 Suggestion 3
 
-def problems127_a():
-    a,b = map(int,input().split())
-    if a >= 13:
-        print(b)
-    elif a >= 6 and a <= 12:
-        print(int(b/2))
-    else:
-        print(0)
+def alg(r, d, x):
+    for i in range(10):
+        x = r * x - d
+        print(x)
 
 =======
 Suggestion 4
 
-def solve():
-    a,b = map(int,input().split())
-    if a >= 13:
-        print(b)
-    elif a >= 6:
-        print(b//2)
-    else:
-        print(0)
-solve()
+def get_result(r, D, x_2000):
+    x_2001 = r * x_2000 - D
+    print(x_2001)
+    for i in range(2, 11):
+        x_2001 = r * x_2001 - D
+        print(x_2001)
 
 =======
 Suggestion 5
 
-def get_fee(age):
-    if age >= 13:
-        return 100
-    elif age >= 6:
-        return 50
-    else:
-        return 0
+def main():
+    r,D,x_2000 = map(int,input().split())
+    x_2001 = r*x_2000-D
+    print(x_2001)
+    x_2002 = r*x_2001-D
+    print(x_2002)
+    x_2003 = r*x_2002-D
+    print(x_2003)
+    x_2004 = r*x_2003-D
+    print(x_2004)
+    x_2005 = r*x_2004-D
+    print(x_2005)
+    x_2006 = r*x_2005-D
+    print(x_2006)
+    x_2007 = r*x_2006-D
+    print(x_2007)
+    x_2008 = r*x_2007-D
+    print(x_2008)
+    x_2009 = r*x_2008-D
+    print(x_2009)
+    x_2010 = r*x_2009-D
+    print(x_2010)
 
 =======
 Suggestion 6
 
-def problem127_a():
-    age, price = map(int, input().split())
-    if age >= 13:
-        print(price)
-    elif age >= 6 and age <= 12:
-        print(price // 2)
-    else:
-        print(0)
+def fun(r, D, x):
+    for i in range(10):
+        x = r * x - D
+        print(x)
 
 =======
 Suggestion 7
 
-def calcPrice(age, price):
-    if age >= 13:
-        return price
-    elif age >= 6 and age <= 12:
-        return price / 2
-    else:
-        return 0
-
-=======
-Suggestion 8
-
 def main():
-    A, B = map(int, input().split())
-    if A >= 13:
-        print(B)
-    elif 6 <= A <= 12:
-        print(B // 2)
-    else:
-        print(0)
+    r, D, x_2000 = map(int, input().split())
+    for i in range(10):
+        x_2000 = r * x_2000 - D
+        print(x_2000)

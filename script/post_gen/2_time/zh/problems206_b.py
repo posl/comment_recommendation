@@ -1,143 +1,101 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    # 读入数据
-    n = int(input())
-
-    # 处理数据
-    price = int(1.08 * n)
-
-    # 输出结果
-    if price < 206:
-        print('Yay!')
-    elif price == 206:
-        print('so-so')
-    else:
-        print(':(')
+def solve():
+    N = int(input())
+    # x(x+1)/2 >= N
+    # x^2 + x - 2N >= 0
+    # x = (-1 + sqrt(1+8N))/2
+    # x = (-1 - sqrt(1+8N))/2
+    # x >= 0
+    # -1 + sqrt(1+8N) >= 0
+    # sqrt(1+8N) >= 1
+    # 1+8N >= 1
 
 =======
 Suggestion 2
 
 def main():
-    N = int(input())
-    if N < 206:
-        print("Yay!")
-    elif N == 206:
-        print("so-so")
-    else:
-        print(":(")
+    n = int(input())
+    sum = 0
+    for i in range(1, n+1):
+        sum += i
+        if sum >= n:
+            print(i)
+            break
 
 =======
 Suggestion 3
 
 def main():
-    #input
-    N = int(input())
-    #calculation
-    #output
-    if N * 1.08 < 206:
-        print("Yay!")
-    elif N * 1.08 > 206:
-        print(":(")
-    else:
-        print("so-so")
+    n = int(input())
+    i = 1
+    sum = 0
+    while sum < n:
+        sum += i
+        i += 1
+    print(i-1)
 
 =======
 Suggestion 4
 
-def printAnswer(N):
-    price = int(N * 1.08)
-    if price < 206:
-        print("Yay!")
-    elif price == 206:
-        print("so-so")
-    else:
-        print(":(")
+def problem206_b():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        ans += i
+        if ans >= n:
+            print(i)
+            break
 
 =======
 Suggestion 5
 
 def main():
-    import sys
-    import math
-
-    N = int(input())
-    if N < 1 or N > 300:
-        sys.exit()
-    else:
-        result = math.floor(1.08 * N)
-        if result < 206:
-            print("Yay!")
-        elif result == 206:
-            print("so-so")
-        else:
-            print(":(")
+    n = int(input())
+    s = 0
+    for i in range(1, n+1):
+        s += i
+        if s >= n:
+            print(i)
+            break
 
 =======
 Suggestion 6
 
 def main():
-    # input
     N = int(input())
-    # process
-    price = int(1.08 * N)
-    # output
-    if price < 206:
-        print("Yay!")
-    elif price == 206:
-        print("so-so")
-    else:
-        print(":(")
+    sum = 0
+    for i in range(1, N+1):
+        sum += i
+        if sum >= N:
+            print(i)
+            break
 
 =======
 Suggestion 7
 
 def main():
     n = int(input())
-    price = int(1.08 * n)
-    if price < 206:
-        print("Yay!")
-    elif price == 206:
-        print("so-so")
-    else:
-        print(":(")
+    x = 0
+    for i in range(1, n + 1):
+        x += i
+        if x >= n:
+            print(i)
+            break
 
 =======
 Suggestion 8
 
-def problem206_a():
-    n = int(input())
-    if n * 1.08 < 206:
-        print("Yay!")
-    elif n * 1.08 > 206:
-        print(":(")
-    else:
-        print("so-so")
-
-=======
-Suggestion 9
-
 def main():
-    n = int(input())
-    if n * 1.08 < 206:
-        print('Yay!')
-    elif n * 1.08 == 206:
-        print('so-so')
-    else:
-        print(':(')
+    N = int(input())
+    x = 0
+    while True:
+        x += 1
+        if x * (x + 1) / 2 >= N:
+            break
+    print(x)
 
-=======
-Suggestion 10
-
-def main():
-    n = int(input())
-    price = int(n * 1.08)
-    if price < 206:
-        print("Yay!")
-    elif price > 206:
-        print(":(")
-    else:
-        print("so-so")
+main()

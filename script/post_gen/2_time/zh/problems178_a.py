@@ -1,101 +1,82 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def find(x):
-    if x == parent[x]:
-        return x
-    else:
-        return find(parent[x])
+def main():
+    x = float(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
 
 =======
 Suggestion 2
 
 def main():
-    N, M = map(int, input().split())
-    friend = [[] for _ in range(N)]
-    for _ in range(M):
-        a, b = map(int, input().split())
-        friend[a-1].append(b-1)
-        friend[b-1].append(a-1)
-
-    group = [0] * N
-    group_id = 1
-    for i in range(N):
-        if group[i] == 0:
-            dfs(friend, group, i, group_id)
-            group_id += 1
-    print(max(group))
+    x = input()
+    if x == 0:
+        print 1
+    else:
+        print 0
 
 =======
 Suggestion 3
 
-def find(x):
-  if x == parents[x]:
-    return x
-  else:
-    parents[x] = find(parents[x])
-    return parents[x]
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
 
 =======
 Suggestion 4
 
-def find(x):
-    if x == par[x]:
-        return x
+def problems178_a():
+    x = input()
+    if x == '1':
+        print(0)
     else:
-        par[x] = find(par[x])
-        return par[x]
+        print(1)
+
+problems178_a()
 
 =======
 Suggestion 5
 
-def find(x):
-    if x == p[x]:
-        return x
+def problem178_a():
+    x = int(input())
+    if x == 0:
+        print(1)
     else:
-        p[x] = find(p[x])
-        return p[x]
+        print(0)
+
+problem178_a()
 
 =======
 Suggestion 6
 
-def init(n):
-    global parent
-    parent = [i for i in range(n + 1)]
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    else:
+        print(0)
 
 =======
 Suggestion 7
 
-def findRoots(n, m, edges):
-    roots = [i for i in range(n)]
-    for edge in edges:
-        roots[edge[1]] = roots[edge[0]]
-    return roots
+def main():
+    x = int(input())
+    print(1-x)
 
 =======
 Suggestion 8
 
-def find(x):
-    if x != p[x]:
-        p[x] = find(p[x])
-    return p[x]
-
-=======
-Suggestion 9
-
-def find(x):
-    if x != parent[x]:
-        parent[x] = find(parent[x])
-    return parent[x]
-
-=======
-Suggestion 10
-
-def find(x):
-    if par[x] == x:
-        return x
+def solve():
+    x = float(input())
+    if x == 0:
+        print(1)
     else:
-        par[x] = find(par[x])
-        return par[x]
+        print(0)

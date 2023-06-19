@@ -4,155 +4,229 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n, x = map(int, input().split())
-    s = input()
-    ans = x
-    for i in range(n):
-        if s[i] == 'o':
-            ans += 1
-        else:
-            ans = max(ans - 1, 0)
-    print(ans)
+    # 读取输入
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    # 计算
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) == 3:
+                if r1 + i + c1 + j == r2 + c2 or r1 + i - c1 - j == r2 - c2 or abs(r1 + i - r2) + abs(c1 + j - c2) <= 3:
+                    print(2)
+                    return
+    print(3)
+    return
 
 =======
 Suggestion 2
 
-def calc_score(n,x,s):
-    score = x
-    for i in range(n):
-        if s[i] == 'o':
-            score += 1
-        elif s[i] == 'x' and score > 0:
-            score -= 1
-    return score
-
-n,x = map(int, input().split())
-s = input()
-print(calc_score(n,x,s))
+def main():
+    r1,c1 = map(int,input().split())
+    r2,c2 = map(int,input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1+c1 == r2+c2 or r1-c1 == r2-c2 or abs(r1-r2)+abs(c1-c2) <= 3:
+        print(1)
+        return
+    if (r1+c1)%2 == (r2+c2)%2 or abs(r1-r2)+abs(c1-c2) <= 6 or abs(r1+c1-r2-c2) <= 3 or abs(r1-c1-r2+c2) <= 3:
+        print(2)
+        return
+    print(3)
 
 =======
 Suggestion 3
 
-def problem184_b():
-    n,x = map(int,input().split())
-    s = input()
-    result = x
-    for i in range(n):
-        if s[i] == 'o':
-            result += 1
-        elif s[i] == 'x':
-            if result > 0:
-                result -= 1
-    print(result)
+def main():
+    r_1, c_1 = map(int, input().split())
+    r_2, c_2 = map(int, input().split())
+    if r_1 == r_2 and c_1 == c_2:
+        print(0)
+        return
+    if abs(r_1 - r_2) + abs(c_1 - c_2) <= 3:
+        print(1)
+        return
+    if r_1 + c_1 == r_2 + c_2:
+        print(1)
+        return
+    if r_1 - c_1 == r_2 - c_2:
+        print(1)
+        return
+    if (r_1 + c_1) % 2 == (r_2 + c_2) % 2:
+        print(2)
+        return
+    if abs(r_1 - r_2) + abs(c_1 - c_2) <= 6:
+        print(2)
+        return
+    if abs((r_1 + c_1) - (r_2 + c_2)) <= 3:
+        print(2)
+        return
+    if abs((r_1 - c_1) - (r_2 - c_2)) <= 3:
+        print(2)
+        return
+    print(3)
 
 =======
 Suggestion 4
 
 def main():
-    N, X = map(int, input().split())
-    S = list(input())
-    ans = X
-    for i in range(N):
-        if S[i] == 'o':
-            ans += 1
-        elif S[i] == 'x':
-            if ans > 0:
-                ans -= 1
-    print(ans)
+    pass
 
 =======
 Suggestion 5
 
 def main():
-    n, x = map(int, input().split())
-    s = input()
-    score = x
-
-    for i in range(n):
-        if s[i] == 'o':
-            score += 1
-        else:
-            if score > 0:
-                score -= 1
-
-    print(score)
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) <= 3:
+                if (r1 + i + c1 + j) % 2 == (r2 + c2) % 2:
+                    print(2)
+                    return
+    print(3)
 
 =======
 Suggestion 6
 
 def main():
-    N, X = map(int, input().split())
-    S = input()
-    for s in S:
-        if s == 'o':
-            X += 1
-        else:
-            if X > 0:
-                X -= 1
-    print(X)
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if (r1, c1) == (r2, c2):
+        print(0)
+        return
+    if (r1 + c1) == (r2 + c2) or (r1 - c1) == (r2 - c2) or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) != 3:
+                continue
+            x = r1 + i
+            y = c1 + j
+            if (x + y) == (r2 + c2) or (x - y) == (r2 - c2):
+                print(2)
+                return
+    print(3)
+    return
 
 =======
 Suggestion 7
 
 def main():
-    n,x=map(int,input().split())
-    s=input()
-    sum=x
-    for i in range(n):
-        if s[i]=="o":
-            sum+=1
-        else:
-            if sum>0:
-                sum-=1
-    print(sum)
-main()
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+
+    if (r1, c1) == (r2, c2):
+        print(0)
+        return
+
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+
+    for dr in range(-3, 4):
+        for dc in range(-3, 4):
+            if abs(dr) + abs(dc) != 3:
+                continue
+            nr, nc = r1 + dr, c1 + dc
+            if abs(nr - r2) + abs(nc - c2) <= 3:
+                print(2)
+                return
+
+    print(3)
 
 =======
 Suggestion 8
 
-def main():
-    # 读入数据
-    N, X = map(int, input().split())
-    S = input()
-    # 初始化
-    score = X
-    # 计算
-    for i in range(N):
-        if S[i] == 'o':
-            score += 1
-        else:
-            score = max(0, score - 1)
-    # 输出结果
-    print(score)
+def bfs(r1, c1, r2, c2):
+    if r1 == r2 and c1 == c2:
+        return 0
+    visited = set()
+    visited.add((r1, c1))
+    queue = [(r1, c1)]
+    step = 0
+    while queue:
+        step += 1
+        for _ in range(len(queue)):
+            r, c = queue.pop(0)
+            for i in range(-3, 4):
+                for j in range(-3, 4):
+                    if (r + i, c + j) not in visited:
+                        if r + i == r2 and c + j == c2:
+                            return step
+                        if r + i + c + j == r2 + c2 or r + i - c - j == r2 - c2 or abs(r + i - r2) + abs(c + j - c2) <= 3:
+                            visited.add((r + i, c + j))
+                            queue.append((r + i, c + j))
+    return -1
 
 =======
 Suggestion 9
 
-def func():
-    #N, X = map(int, input().split())
-    #S = input()
-    N, X = 3, 0
-    S = 'xox'
-
-    score = X
-    for s in S:
-        if s == 'o':
-            score += 1
-        else:
-            if score > 0:
-                score -= 1
-
-    print(score)
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if i == 0 or j == 0:
+                continue
+            if abs(i) + abs(j) <= 3:
+                if r1 + i + c1 + j == r2 + c2 or r1 + i - c1 - j == r2 - c2 or abs(r1 + i - r2) + abs(c1 + j - c2) <= 6:
+                    print(2)
+                    return
+    print(3)
+    return
 
 =======
 Suggestion 10
 
-def answer(n, x, s):
-    score = x
-    for i in range(n):
-        if s[i] == 'o':
-            score += 1
-        else:
-            if score > 0:
-                score -= 1
-    return score
+def main():
+    input_list = []
+    for i in range(2):
+        input_list.append(list(map(int, input().split())))
+    r1, c1 = input_list[0][0], input_list[0][1]
+    r2, c2 = input_list[1][0], input_list[1][1]
+    if r1 == r2 and c1 == c2:
+        print(0)
+        exit()
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        exit()
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        exit()
+    print(2)

@@ -4,83 +4,109 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    N = int(input())
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S + 1):
+        for b in range(S + 1):
+            for c in range(S + 1):
+                if a + b + c <= S and a * b * c <= T:
+                    ans += 1
+    print(ans)
 
-    if N <= 125:
-        print(4)
-    elif N <= 211:
-        print(6)
-    else:
-        print(8)
+main()
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    if n <= 125:
-        print(4)
-    elif n <= 211:
-        print(6)
-    else:
-        print(8)
+def solve():
+    s, t = map(int, input().split())
+    count = 0
+    for a in range(s + 1):
+        for b in range(s + 1):
+            for c in range(s + 1):
+                if a + b + c <= s and a * b * c <= t:
+                    count += 1
+    print(count)
+
+
+solve()
 
 =======
 Suggestion 3
 
 def main():
-    # 读入一个整数
-    n = int(input())
-    # 判断
-    if n <= 125:
-        print(4)
-    elif n <= 211:
-        print(6)
-    else:
-        print(8)
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if a + b + c <= S and a * b * c <= T:
+                    ans += 1
+    print(ans)
 
 =======
 Suggestion 4
 
-def main():
-    N = int(input())
-    if N < 126:
-        print(4)
-    elif N < 212:
-        print(6)
-    else:
-        print(8)
+def solve(s, t):
+    count = 0
+    for a in range(s + 1):
+        for b in range(s + 1):
+            for c in range(s + 1):
+                if a + b + c <= s and a * b * c <= t:
+                    count += 1
+    return count
 
 =======
 Suggestion 5
 
-def problems214_a(n):
-    if n <= 125:
-        return 4
-    elif n <= 211:
-        return 6
-    else:
-        return 8
+def main():
+    s,t = map(int,input().split())
+    count = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    count += 1
+    print(count)
 
 =======
 Suggestion 6
 
-def problem214_a():
-    n = int(input())
-    if n < 126:
-        print(4)
-    elif n < 212:
-        print(6)
-    else:
-        print(8)
+def main():
+    S, T = map(int, input().split())
+    count = 0
+    for a in range(S + 1):
+        for b in range(S + 1):
+            for c in range(S + 1):
+                if a + b + c <= S and a * b * c <= T:
+                    count += 1
+    print(count)
 
 =======
 Suggestion 7
 
-def get_problem_num(n):
-    if n <= 125:
-        return 4
-    elif n <= 211:
-        return 6
-    else:
-        return 8
+def main():
+    s,t = map(int,input().split())
+    ans = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    s, t = map(int, input().split())
+    ans = 0
+    for a in range(s + 1):
+        for b in range(s + 1):
+            for c in range(s + 1):
+                if a + b + c <= s and a * b * c <= t:
+                    ans += 1
+    print(ans)
+
+
+main()

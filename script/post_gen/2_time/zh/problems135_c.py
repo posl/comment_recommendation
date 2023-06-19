@@ -4,172 +4,204 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    N = int(input())
-    p = list(map(int, input().split()))
-    count = 0
-    for i in range(N):
-        if p[i] != i+1:
-            count += 1
-    if count > 2:
-        print('NO')
-    else:
-        print('YES')
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i + 1], b[i])
+        a[i + 1] -= min(a[i + 1], b[i])
+    print(ans)
 
 =======
 Suggestion 2
 
 def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if p[i] == i + 1:
-            count += 1
-    if count == n:
-        print("YES")
-    elif count == n - 2:
-        print("YES")
-    else:
-        print("NO")
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)
 
 =======
 Suggestion 3
 
-def main():
+def solve():
     n = int(input())
-    p = list(map(int, input().split()))
-    ans = 'YES'
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
     for i in range(n):
-        if p[i] != i+1:
-            ans = 'NO'
+        ans += min(a[i], b[i])
+        a[i] -= min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i+1], b[i])
+        a[i+1] -= min(a[i+1], b[i])
     print(ans)
+
+solve()
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    p = [int(x) for x in input().split()]
-    cnt = 0
-    for i in range(n):
-        if p[i] != i + 1:
-            cnt += 1
-    if cnt <= 2:
-        print("YES")
-    else:
-        print("NO")
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        else:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        if A[i+1] <= B[i]:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+        else:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+    print(ans)
 
 =======
 Suggestion 5
 
 def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    cnt = 0
-    for i in range(n):
-        if p[i] != i + 1:
-            cnt += 1
-    if cnt <= 2:
-        print('YES')
-    else:
-        print('NO')
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)
 
 =======
 Suggestion 6
 
 def main():
-    N = int(input())
-    p = list(map(int, input().split()))
-    #print(N, p)
-    #print(p.index(1))
-    #print(p.index(N))
-    if p.index(1) < p.index(N):
-        print("YES")
-    else:
-        print("NO")
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i + 1], b[i])
+        a[i + 1] -= min(a[i + 1], b[i])
+    print(ans)
 
 =======
 Suggestion 7
 
 def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    q = sorted(p)
-    if p == q:
-        print("YES")
-    else:
-        for i in range(n):
-            for j in range(i + 1, n):
-                if p[i] > p[j]:
-                    p[i], p[j] = p[j], p[i]
-                    if p == q:
-                        print("YES")
-                        return
-                    else:
-                        p[i], p[j] = p[j], p[i]
-        print("NO")
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    B = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                B[i] -= A[i+1]
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    p = list(map(int,input().split()))
-    #print(N)
-    #print(p)
+def max_monster(N, A, B):
     count = 0
     for i in range(N):
-        if p[i] != i + 1:
-            count += 1
-    if count <= 2:
-        print("YES")
-    else:
-        print("NO")
+        if A[i] >= B[i]:
+            count += B[i]
+        else:
+            count += A[i]
+            B[i] -= A[i]
+            if A[i + 1] >= B[i]:
+                count += B[i]
+                A[i + 1] -= B[i]
+            else:
+                count += A[i + 1]
+                A[i + 1] = 0
+    return count
 
 =======
 Suggestion 9
 
 def main():
-    n = int(input())
-    p = list(map(int,input().split()))
-    count = 0
-    for i in range(n-1):
-        if p[i] != i+1:
-            count += 1
-    if count <= 2:
-        print("YES")
-    else:
-        print("NO")
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                B[i] -= A[i+1]
+            else:
+                ans += B[i]
+        else:
+            ans += B[i]
+    print(ans)
+    return
 
 =======
 Suggestion 10
 
-def is_sortable(p):
-    # p = [5,2,3,4,1]
-    # p = [2,4,3,5,1]
-    # p = [1,2,3,4,5,6,7]
-    # p = [5,4,3,2,1]
-    # p = [1,2,3,4,5,7,6]
-    # p = [5,2,3,4,1]
-    # p = [1,2,3,4,6,5,7]
-    # p = [1,2,3,4,6,5,7]
-    # p = [1,2,3,4,5,7,6]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [5,2,3,4,1]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [1,2,3,4,5,6,7]
-    # p = [5,2,3,4,1]
-    # p = [1,2,3,4,5,6,7]
-    # p = [5,2,3,4,1]
-    # p = [1,2,3,4,5,6,7]
-    # p = [5,2,3,4,1]
-    # p = [1,2,3,4,5,6,7]
-    # p = [5,2,3,4,1
+def main():
+    # N = 2
+    # A = [3, 5, 2]
+    # B = [4, 5]
+    # N = 3
+    # A = [5, 6, 3, 8]
+    # B = [5, 100, 8]
+    # N = 2
+    # A = [100, 1, 1]
+    # B = [1, 100]
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        B[i] = max(0, B[i] - A[i])
+        ans += min(A[i + 1], B[i])
+        A[i + 1] = max(0, A[i + 1] - B[i])
+    print(ans)

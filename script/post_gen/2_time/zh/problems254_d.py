@@ -3,162 +3,109 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    for i in range(n-k):
-        if a[i] > a[i+k]:
-            print("No")
-            return
-    print("Yes")
+def solve(n):
+    count=0
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            if i*j==int(i**0.5)**2*j:
+                count+=1
+    print(count)
 
 =======
 Suggestion 2
 
-def solve(N, K, A):
-    # 一旦K的值大于N的一半，则不可能对A进行升序排序。
-    if K > N // 2:
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    # 一旦A中有重复的值，则不可能对A进行升序排序。
-    if len(A) != len(set(A)):
-        return False
-
-    return True
+def main():
+    N = int(input())
+    sq = int(N**0.5)
+    cnt = 0
+    for i in range(1,sq+1):
+        for j in range(1,sq+1):
+            if i*j <= N:
+                cnt += 1
+    print(cnt)
 
 =======
 Suggestion 3
 
-def solve(N, K, A):
-    A = sorted(A)
-    for i in range(N-K):
-        if A[i] >= A[i+K]:
-            return "No"
-    return "Yes"
+def is_square(n):
+    return n**0.5 == int(n**0.5)
 
 =======
 Suggestion 4
 
 def solve():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    for i in range(N-K):
-        if A[i] > A[i+K]:
-            print('Yes')
-            exit()
-    print('No')
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        for j in range(i, n + 1):
+            if i * j % 2 == 1:
+                ans += 1
+    print(ans)
 
 =======
 Suggestion 5
 
-def solve():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    for i in range(n - k):
-        if a[i] > a[i + k]:
-            print("Yes")
-            return
-    print("No")
+def isSquare(n):
+    if n < 0:
+        return False
+    if n == 1:
+        return True
+    low = 0
+    high = n
+    while low < high:
+        mid = (low + high) // 2
+        if mid * mid == n:
+            return True
+        if mid * mid < n:
+            low = mid + 1
+        else:
+            high = mid
+    return False
 
 =======
 Suggestion 6
 
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    for i in range(n-k):
-        if a[i] > a[i+k]:
-            print("Yes")
-            return
-    print("No")
+def is_square(n):
+    return n == int(n**.5)**2
+
+N = int(input())
+
+ans = 0
+for i in range(1, N + 1):
+    for j in range(i, N + 1):
+        if is_square(i * j):
+            if i == j:
+                ans += 1
+            else:
+                ans += 2
+
+print(ans)
 
 =======
 Suggestion 7
 
-def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-
-    # 从左到右，从小到大排序
-    left = 0
-    while left < N - 1:
-        if A[left] > A[left + 1]:
-            break
-        left += 1
-
-    # 从右到左，从小到大排序
-    right = N - 1
-    while right > 0:
-        if A[right - 1] > A[right]:
-            break
-        right -= 1
-
-    # 如果整个序列已经排序，我们可以完成
-    if left >= right:
-        print("Yes")
-        exit()
-
-    # 如果K是偶数，我们可以完成
-    if K % 2 == 0:
-        print("Yes")
-        exit()
-
-    # 如果K是奇数，我们不能完成
-    print("No")
+def isSquare(n):
+    if n < 0:
+        return False
+    x = int(n ** 0.5)
+    return x * x == n
 
 =======
 Suggestion 8
 
-def solve():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    if K * 2 >= N:
-        print('Yes')
-        return
-    for i in range(K, N):
-        if A[i - K] >= A[i]:
-            print('Yes')
-            return
-    print('No')
-
-solve()
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            if i*j <= n*n:
+                ans += 1
+    print(ans)
 
 =======
 Suggestion 9
 
-def sort_check(N, K, A):
-    for i in range(N - K):
-        if A[i] > A[i + K]:
-            return False
-    return True
-
-N, K = map(int, input().split())
-A = list(map(int, input().split()))
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)

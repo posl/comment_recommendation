@@ -1,62 +1,150 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    x = float(input())
-    if x < 0 or x >= 100:
-        return
-    y = x * 10
-    if y % 10 >= 5:
-        print(int(x) + 1)
-    else:
-        print(int(x))
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        l = list(map(int, input().split()))
+        l.pop(0)
+        a[i] = tuple(l)
+    print(len(set(a)))
+    return
 
 =======
 Suggestion 2
 
 def main():
-    x = float(input())
-    print(round(x))
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    a.sort(key=lambda x: x[1:])
+    ans = 1
+    for i in range(1, n):
+        if a[i] != a[i - 1]:
+            ans += 1
+    print(ans)
 
 =======
 Suggestion 3
 
 def main():
-    # 读取输入
-    x = float(input())
-    # 四舍五入
-    # round()函数返回浮点数x的四舍五入值。
-    # round(x,n)函数返回浮点数x的四舍五入值，n表示要保留的小数位数。
-    # round()函数的返回值是一个浮点数，而不是一个整数。
-    # round()函数的返回值是一个浮点数，而不是一个整数。
-    # round()函数的返回值是一个浮点数，而不是一个整数。
-    # 请记住这一点，以避免误解。
-    print(round(x))
+    n = int(input())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    d = {}
+    for i in range(n):
+        a[i].pop(0)
+        d.setdefault(tuple(a[i]), 0)
+        d[tuple(a[i])] += 1
+    print(len(d))
 
 =======
 Suggestion 4
 
 def main():
-    x = float(input())
-    y = int(x*10)%10
-    if y < 5:
-        print(int(x))
-    else:
-        print(int(x)+1)
+    n = int(input())
+    seq = []
+    for i in range(n):
+        seq.append([int(x) for x in input().split()])
+    print(len(set(tuple(x) for x in seq)))
 
 =======
 Suggestion 5
 
-def get_input():
-    num = float(input())
-    return num
+def main():
+    N = int(input())
+    d = {}
+    for i in range(N):
+        L = int(input().split()[0])
+        s = input().split()
+        if L == 1:
+            if s[0] in d.keys():
+                d[s[0]] += 1
+            else:
+                d[s[0]] = 1
+        else:
+            if s[0] in d.keys():
+                d[s[0]] += 1
+            else:
+                d[s[0]] = 1
+            if s[-1] in d.keys():
+                d[s[-1]] += 1
+            else:
+                d[s[-1]] = 1
+    print(len(d.keys()))
 
 =======
 Suggestion 6
 
+def solve():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    L.sort()
+    ans = 1
+    for i in range(N-1):
+        if L[i] != L[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def readinput():
+    n = int(input())
+    L = []
+    for i in range(n):
+        l = list(map(int, input().split()))
+        L.append(l)
+    return n, L
+
+=======
+Suggestion 8
+
 def main():
-    x = float(input())
-    x = x + 0.001
-    print(int(x))
+    n = int(input())
+    dic = {}
+    for _ in range(n):
+        line = input().split()
+        line = [int(i) for i in line]
+        if line[0] not in dic:
+            dic[line[0]] = set()
+        dic[line[0]].add(tuple(line[1:]))
+    print(len(dic))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        a = list(map(int, input().split()))
+        L.append(a)
+    result = 1
+    for i in range(N):
+        for j in range(i + 1, N):
+            if L[i] == L[j]:
+                break
+            if j == N - 1:
+                result += 1
+    print(result)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split()))[1:])
+    a.sort()
+    ans = 1
+    for i in range(n-1):
+        if a[i] != a[i+1]:
+            ans += 1
+    print(ans)

@@ -1,174 +1,173 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def gcd(a,b):
-    if a%b==0:
-        return b
+def solve(n, a):
+    ans = 0
+    minus = 0
+    min_abs = 10**9
+    for i in range(n):
+        if a[i] < 0:
+            minus += 1
+        ans += abs(a[i])
+        min_abs = min(min_abs, abs(a[i]))
+    if minus % 2 == 0:
+        return ans
     else:
-        return gcd(b,a%b)
-n=int(input())
-a=list(map(int,input().split()))
-b=[0]*n
-b[0]=a[0]
-for i in range(1,n):
-    b[i]=gcd(b[i-1],a[i])
-print(b[n-1])
+        return ans - 2 * min_abs
 
 =======
 Suggestion 2
 
-def gcd(a,b):
-    if b == 0:
-        return a
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    for a in A:
+        if a < 0:
+            cnt += 1
+            a = -a
+        ans += a
+    if cnt % 2 == 0:
+        print(ans)
     else:
-        return gcd(b,a%b)
+        print(ans - min(A) * 2)
 
 =======
 Suggestion 3
 
-def gcd(a,b):
-    if b == 0:
-        return a
+def max_sum(a):
+    sum = 0
+    minus_count = 0
+    min_abs = 10**9+1
+    for i in range(len(a)):
+        if a[i] < 0:
+            minus_count += 1
+        sum += abs(a[i])
+        min_abs = min(min_abs, abs(a[i]))
+    if minus_count % 2 == 0:
+        return sum
     else:
-        return gcd(b,a%b)
-
-n = int(input())
-a = [int(i) for i in input().split()]
-l = [0]*(n+1)
-r = [0]*(n+1)
-l[0] = a[0]
-r[n-1] = a[n-1]
-for i in range(1,n):
-    l[i] = gcd(l[i-1],a[i])
-    r[n-i-1] = gcd(r[n-i],a[n-i-1])
-ans = max(l[n-2],r[1])
-for i in range(1,n-1):
-    ans = max(ans,gcd(l[i-1],r[i+1]))
-print(ans)
+        return sum - min_abs*2
 
 =======
 Suggestion 4
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    while b != 0:
-        a, b = b, a%b
-    return a
+def get_max_sum(n, a):
+    max_sum = 0
+    count = 0
+    for i in range(n):
+        if a[i] < 0:
+            count += 1
+            a[i] = -a[i]
+        max_sum += a[i]
+    if count % 2 == 0:
+        return max_sum
+    else:
+        return max_sum - 2 * min(a)
 
 =======
 Suggestion 5
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if a % b == 0:
-        return b
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if a[i] < 0:
+            cnt += 1
+            a[i] = -a[i]
+    if cnt % 2 == 0:
+        print(sum(a))
     else:
-        return gcd(b, a % b)
+        print(sum(a) - 2 * min(a))
 
 =======
 Suggestion 6
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    r = a % b
-    while r != 0:
-        a = b
-        b = r
-        r = a % b
-    return b
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    if N == 2:
+        if A[0] < 0 and A[1] < 0:
+            print(-A[0]-A[1])
+        elif A[0] < 0 and A[1] > 0:
+            print(A[1]-A[0])
+        else:
+            print(A[0]+A[1])
+        return
+    elif N == 1:
+        print(A[0])
+        return
+    else:
+        count = 0
+        for i in range(N):
+            if A[i] < 0:
+                count += 1
+        if count % 2 == 0:
+            print(sum([abs(i) for i in A]))
+        else:
+            print(sum([abs(i) for i in A]) - 2*min([abs(i) for i in A]))
 
 =======
 Suggestion 7
 
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if b == 0:
-        return a
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if N % 2 == 0:
+        print(sum(A))
     else:
-        return gcd(b, a%b)
-
-n = int(input())
-a = list(map(int, input().split()))
-l = [0] * n
-r = [0] * n
-l[0] = a[0]
-r[n-1] = a[n-1]
-for i in range(1, n):
-    l[i] = gcd(l[i-1], a[i])
-for i in range(n-2, -1, -1):
-    r[i] = gcd(r[i+1], a[i])
-ans = 0
-for i in range(n):
-    if i == 0:
-        ans = max(ans, r[i+1])
-    elif i == n-1:
-        ans = max(ans, l[i-1])
-    else:
-        ans = max(ans, gcd(l[i-1], r[i+1]))
-print(ans)
+        print(sum(A) - 2 * A[0])
 
 =======
 Suggestion 8
 
-def gcd(a,b):
-    if b == 0:
-        return a
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(map(abs, a))
+    cnt = 0
+    for i in a:
+        if i < 0:
+            cnt += 1
+    if cnt % 2 == 0:
+        print(s)
     else:
-        return gcd(b,a%b)
+        print(s - 2 * min(map(abs, a)))
 
-n = int(input())
-a = list(map(int,input().split()))
-left = [0]*n
-right = [0]*n
-left[0] = a[0]
-right[-1] = a[-1]
-for i in range(1,n):
-    left[i] = gcd(left[i-1],a[i])
-for i in range(n-2,-1,-1):
-    right[i] = gcd(right[i+1],a[i])
-ans = 0
-for i in range(n):
-    if i == 0:
-        ans = max(ans,right[1])
-    elif i == n-1:
-        ans = max(ans,left[n-2])
-    else:
-        ans = max(ans,gcd(left[i-1],right[i+1]))
-print(ans)
+solve()
 
 =======
 Suggestion 9
 
-def gcd(a,b):
-    if a<b:
-        a,b=b,a
-    if b==0:
-        return a
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if a[i] < 0:
+            cnt += 1
+    a = list(map(abs, a))
+    if cnt % 2 == 0:
+        print(sum(a))
     else:
-        return gcd(b,a%b)
+        print(sum(a) - min(a) * 2)
 
-n=int(input())
-a=list(map(int,input().split()))
-l=[0]*n
-r=[0]*n
-l[0]=a[0]
-r[n-1]=a[n-1]
-for i in range(1,n):
-    l[i]=gcd(l[i-1],a[i])
-for i in range(n-2,-1,-1):
-    r[i]=gcd(r[i+1],a[i])
-ans=0
-for i in range(n):
-    if i==0:
-        ans=max(ans,r[1])
-    elif i==n-1:
-        ans=max(ans,l[n-2])
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for a in A:
+        if a < 0:
+            cnt += 1
+    if cnt % 2 == 0:
+        print(sum(map(abs, A)))
     else:
-        ans=max(ans,gcd(l[i-1],r[i+1]))
-print(ans)
+        print(sum(map(abs, A)) - min(map(abs, A)) * 2)

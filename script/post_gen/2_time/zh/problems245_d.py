@@ -1,134 +1,121 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def solve():
-    n,k = [int(i) for i in input().split()]
-    a = [int(i) for i in input().split()]
-    b = [int(i) for i in input().split()]
-    for i in range(n):
-        if abs(a[i]-b[i])>k:
-            print("No")
-            return
-    print("Yes")
-    return
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0]*(M+1)
+    B[0] = C[0]//A[0]
+    for i in range(1, M+1):
+        B[i] = (C[i] - sum([B[j]*A[i-j] for j in range(i)]))//A[0]
+    print(' '.join(map(str, B)))
 
 =======
 Suggestion 2
 
-def main():
+def solve():
     pass
 
 =======
 Suggestion 3
 
-def solve():
-    N, K = map(int, input().split())
+def getB():
     A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    A_max = max(A)
-    B_max = max(B)
-    if abs(A_max - B_max) > K:
-        print('No')
-        return
-    if A_max > B_max:
-        A, B = B, A
-    A.sort()
-    B.sort(reverse=True)
-    for i in range(N):
-        if A[i] + B[i] > K:
-            print('No')
-            return
-    print('Yes')
+    C = list(map(int, input().split()))
+    N = len(A) - 1
+    M = len(C) - 1
+    B = [0 for _ in range(M+1)]
+    for i in range(M, N-1, -1):
+        B[i-N] = C[i] // A[N]
+        for j in range(N, -1, -1):
+            C[i-N+j] -= A[j] * B[i-N]
+    for i in range(M, N-1, -1):
+        if C[i] != 0:
+            return False
+    return B
 
 =======
 Suggestion 4
 
-def solve():
-    N, K = map(int, input().split())
+def main():
+    N, M = map(int, input().split())
     A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-
-    A_min = min(A)
-    A_max = max(A)
-    B_min = min(B)
-    B_max = max(B)
-
-    if abs(A_max - B_max) > K or abs(A_min - B_min) > K:
-        print("No")
-        return
-
-    for i in range(N - 1):
-        if abs(A[i] - A[i + 1]) > K and abs(B[i] - B[i + 1]) > K:
-            print("No")
-            return
-
-    print("Yes")
+    C = list(map(int, input().split()))
+    B = [0] * (M+1)
+    B[0] = C[0] // A[0]
+    for i in range(1, M+1):
+        B[i] = (C[i] - sum([A[j] * B[i-j] for j in range(i)])) // A[0]
+    print(' '.join(map(str, B)))
 
 =======
 Suggestion 5
 
-def solve(n, k, a, b):
-    res = True
-    for i in range(n):
-        if abs(a[i] - b[i]) > k:
-            res = False
-            break
-    return "Yes" if res else "No"
-
-n, k = map(int, input().split())
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
-print(solve(n, k, a, b))
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(M + 1):
+        B[i] = C[i] // A[N]
+    print(*B)
 
 =======
 Suggestion 6
 
-def check(a,b,k):
-    for i in range(len(a)):
-        if abs(a[i]-b[i])>k:
-            return False
-    return True
+def main():
+    pass
 
 =======
 Suggestion 7
 
-def solve():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-
-    # 0: A, 1: B
-    dp = [[False for _ in range(2)] for _ in range(N)]
-    dp[0][0] = dp[0][1] = True
-    for i in range(1, N):
-        for j in range(2):
-            for k in range(2):
-                if abs(A[i] - B[i]) <= K:
-                    dp[i][j] = True
-                    break
-    if dp[N-1][0] or dp[N-1][1]:
-        print("Yes")
-    else:
-        print("No")
+def getB(A,C):
+    N = len(A) - 1
+    M = len(C) - 1
+    B = [0]*(M+1)
+    for i in range(N+1):
+        for j in range(M+1):
+            B[j] += A[i]*C[j-i]
+    return B
 
 =======
 Suggestion 8
 
-def solve(n, k, a, b):
-    for i in range(n):
-        if abs(a[i] - b[i]) > k:
-            return 'No'
-    return 'Yes'
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0 for i in range(m+1)]
+    b[0] = c[0]//a[0]
+    for i in range(1,m+1):
+        b[i] = c[i] - sum([b[j]*a[i-j] for j in range(i)])
+    print(' '.join(map(str,b)))
 
 =======
 Suggestion 9
 
-def get_max_diff(A, B):
-    max_diff = 0
-    for i in range(len(A)):
-        diff = abs(A[i] - B[i])
-        if diff > max_diff:
-            max_diff = diff
-    return max_diff
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(N + 1):
+        B[0] += A[i] * C[i]
+    for i in range(1, M + 1):
+        B[i] = (C[N + i] - B[0]) // C[i]
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0]*(m+1)
+    for i in range(n+1):
+        for j in range(m+1):
+            b[j] += c[i]*a[n-i]
+    print(" ".join(map(str,b)))

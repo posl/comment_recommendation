@@ -3,114 +3,164 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def swap(l, i, j):
-    temp = l[i]
-    l[i] = l[j]
-    l[j] = temp
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i :
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
 
 =======
 Suggestion 2
 
-def main():
-    n, q = map(int, input().split())
-    x = [int(input()) for _ in range(q)]
-    a = [i for i in range(1, n+1)]
-    for i in range(q):
-        a[i], a[i+1] = a[i+1], a[i]
-        if a[i] == x[i]:
-            a[i], a[i+1] = a[i+1], a[i]
-    print(*a)
+def prime_list(n):
+    #n以下の素数のリストを返す
+    #エラトステネスの篩
+    #素数のリスト
+    primes = []
+    #0,1は素数ではない
+    is_prime = [False, False] + [True] * (n - 1)
+    for i in range(2, n + 1):
+        if is_prime[i]:
+            primes.append(i)
+            for j in range(2 * i, n + 1, i):
+                is_prime[j] = False
+    return primes
 
 =======
 Suggestion 3
 
-def main():
-    n, q = map(int, input().split())
-    x = [int(input()) for _ in range(q)]
-    num = [i for i in range(1, n+1)]
-    for i in range(q):
-        #print(num)
-        #print(x[i])
-        #print(num.index(x[i]))
-        num[num.index(x[i])], num[num.index(x[i])+1] = num[num.index(x[i])+1], num[num.index(x[i])]
-    print(*num)
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2,int(n**0.5)+1):
+        if n%i == 0:
+            return False
+    return True
 
 =======
 Suggestion 4
 
-def swap(arr, i):
-    tmp = arr[i]
-    arr[i] = arr[i+1]
-    arr[i+1] = tmp
+def prime_factorization(n):
+    result = []
+    for i in range(2, int(n ** 0.5) + 1):
+        while n % i == 0:
+            result.append(i)
+            n //= i
+    if n > 1:
+        result.append(n)
+    return result
 
 =======
 Suggestion 5
 
-def swap(a, i, j):
-    a[i], a[j] = a[j], a[i]
+def prime_factorization(n):
+    i = 2
+    table = {}
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+            if i in table:
+                table[i] += 1
+            else:
+                table[i] = 1
+        i += 1
+    if n > 1:
+        table[n] = 1
+    return table
 
 =======
 Suggestion 6
 
-def main():
-    n,q = map(int,input().split())
-    x = [int(input()) for _ in range(q)]
-    a = [i+1 for i in range(n)]
-    for i in range(q):
-        a[x[i]-1],a[x[i]] = a[x[i]],a[x[i]-1]
-    print(' '.join(map(str,a)))
+def isPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n%i == 0:
+            return False
+    return True
+
+N = int(input())
+ans = 0
+
+for i in range(1, int(N**0.25)+1):
+    if N%i == 0:
+        if isPrime(i):
+            for j in range(1, int(N**0.25)+1):
+                if i**3*j <= N:
+                    if isPrime(j):
+                        ans += 1
+print(ans)
 
 =======
 Suggestion 7
 
-def swap(a, b):
-    return b, a
+def get_prime(n):
+    prime = []
+    is_prime = [True] * (n + 1)
+    is_prime[0] = False
+    is_prime[1] = False
+    for i in range(2, n + 1):
+        if is_prime[i]:
+            prime.append(i)
+            for j in range(2 * i, n + 1, i):
+                is_prime[j] = False
+    return prime
 
 =======
 Suggestion 8
 
-def main():
-    n, q = map(int, input().split())
-    x = []
-    for i in range(q):
-        x.append(int(input()))
-    a = list(range(1, n+1))
-    for i in range(q-1, -1, -1):
-        a[i], a[i+1] = a[i+1], a[i]
-        if a[i] == x[i]:
-            a[i], a[i+1] = a[i+1], a[i]
-    print(*a)
+def isPrime(n):
+    if n <= 1:
+        return False
+    i = 2
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
 
 =======
 Suggestion 9
 
-def main():
-    n,q = map(int,input().split())
-    x = []
-    for i in range(q):
-        x.append(int(input()))
-    #print(x)
-    #print(n,q)
-    l = [i+1 for i in range(n)]
-    #print(l)
-    for i in range(q):
-        #print('i',i)
-        #print('x[i]-1',x[i]-1)
-        if x[i] != 1:
-            l[x[i]-2],l[x[i]-1] = l[x[i]-1],l[x[i]-2]
-            #print(l)
-        else:
-            l[0],l[1] = l[1],l[0]
-            #print(l)
-    for i in range(n):
-        print(l[i],end=' ')
-    print('')
+def isPrime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    for i in range(3, int(n**0.5)+1, 2):
+        if n%i == 0:
+            return False
+    return True
+
+n = int(input())
+ans = 0
+for i in range(1, int(n**0.25)+1):
+    if isPrime(i):
+        for j in range(int(n**(1/3))+1, int(n**0.5)+1):
+            if i*j**3 <= n:
+                ans += 1
+            else:
+                break
+print(ans)
 
 =======
 Suggestion 10
 
-def swap(x, y):
-    tmp = x
-    x = y
-    y = tmp
-    return x, y
+def isPrime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0 or n == 1:
+        return False
+    for i in range(3,int(n**0.5)+1,2):
+        if n % i == 0:
+            return False
+    return True

@@ -3,52 +3,57 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def find_j(n,i):
-    return n-i+1
-
-=======
-Suggestion 2
-
-def problem107_a(n, i):
-    j = n - i + 1
-    print(j)
-
-=======
-Suggestion 3
-
-def main():
-    n,i = map(int,input().split())
-    print(n+1-i)
-
-=======
-Suggestion 4
-
 def main():
     n, i = map(int, input().split())
     print(n - i + 1)
 
 =======
+Suggestion 2
+
+def main():
+    N, i = map(int, input().split())
+    print(N-i+1)
+
+=======
+Suggestion 3
+
+def main():
+    N, i = map(int, input().split())
+    print(N+1-i)
+
+=======
+Suggestion 4
+
+def solution(n, i):
+    return n - i + 1
+
+=======
 Suggestion 5
 
 def main():
-    N,i = map(int,input().split())
-    print(N-i+1)
+    N = 0
+    i = 0
+    j = 0
+    print("请输入N i：")
+    N = int(input())
+    i = int(input())
+    j = N - i + 1
+    print(j)
+    return 0
 
 =======
 Suggestion 6
 
 def main():
-    # 读取输入
-    n, i = input().split()
-    n = int(n)
-    i = int(i)
-    # 计算j
-    j = n - i + 1
-    # 输出结果
-    print(j)
+    N = input("请输入火车节车厢数：")
+    i = input("请输入前面的第几节车厢：")
+    j = N - i + 1
+    print j
 
 =======
 Suggestion 7
 
-def solve(n, i):
-    return n - i + 1
+def problem107_a():
+    n,i = map(int, input().split())
+    print(n+1-i)
+    return

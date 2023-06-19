@@ -3,121 +3,256 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def cross_product(a,b):
-	return a[0]*b[1]-a[1]*b[0]
+def main():
+    pass
 
 =======
 Suggestion 2
 
-def is_convex_polygon(A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y):
-    if (A_x * B_y + B_x * C_y + C_x * D_y + D_x * A_y - A_y * B_x - B_y * C_x - C_y * D_x - D_y * A_x) > 0:
-        return 'Yes'
-    else:
-        return 'No'
+def main():
+    n = int(input())
+    txa = []
+    for i in range(n):
+        txa.append(list(map(int, input().split())))
+    # print(txa)
+    # print(txa[0])
+    # print(txa[0][0])
+    # print(txa[0][1])
+    # print(txa[0][2])
+    # print(txa[1])
+    # print(txa[1][0])
+    # print(txa[1][1])
+    # print(txa[1][2])
+    # print(txa[2])
+    # print(txa[2][0])
+    # print(txa[2][1])
+    # print(txa[2][2])
+    # print(txa[3])
+    # print(txa[3][0])
+    # print(txa[3][1])
+    # print(txa[3][2])
+    # print(txa[4])
+    # print(txa[4][0])
+    # print(txa[4][1])
+    # print(txa[4][2])
+
+    # print(txa[0][1])
+    # print(txa[0][2])
+    # print(txa[0][2] + txa[1][1])
+    # print(txa[0][2] + txa[1][2])
+    # print(txa[0][2] + txa[1][2] + txa[2][1])
+    # print(txa[0][2] + txa[1][2] + txa[2][2])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][1])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][2])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][2] + txa[4][1])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][2] + txa[4][2])
+
+    # print(txa[0][0])
+    #
 
 =======
 Suggestion 3
 
 def main():
-    x = []
-    y = []
-    for i in range(4):
-        a, b = map(int, input().split())
-        x.append(a)
-        y.append(b)
-
-    if (x[1]-x[0])*(y[2]-y[1]) - (y[1]-y[0])*(x[2]-x[1]) > 0:
-        print("Yes")
-    else:
-        print("No")
+    N = int(input())
+    S = []
+    for i in range(N):
+        t, x, a = map(int, input().split())
+        S.append([t, x, a])
+    S.sort()
+    #print(S)
+    #print(S[0][0])
+    #print(S[1][0])
+    #print(S[2][0])
+    #print(S[3][0])
+    #print(S[4][0])
+    #print(S[5][0])
+    #print(S[6][0])
+    #print(S[7][0])
+    #print(S[8][0])
+    #print(S[9][0])
+    #print(S[0][1])
+    #print(S[1][1])
+    #print(S[2][1])
+    #print(S[3][1])
+    #print(S[4][1])
+    #print(S[5][1])
+    #print(S[6][1])
+    #print(S[7][1])
+    #print(S[8][1])
+    #print(S[9][1])
+    #print(S[0][2])
+    #print(S[1][2])
+    #print(S[2][2])
+    #print(S[3][2])
+    #print(S[4][2])
+    #print(S[5][2])
+    #print(S[6][2])
+    #print(S[7][2])
+    #print(S[8][2])
+    #print(S[9][2])
+    #print(S[0][0])
+    #print(S[1][0])
+    #print(S[2][0])
+    #print(S[3][0])
+    #print(S[4][0])
+    #print(S[5][0])
+    #print(S[6][0])
+    #print(S[7][0])
+    #print(S[8][0])
+    #print(S[9][0])
+    #print(S[0][1])
+    #print(S[1][1])
+    #print(S[2][1])
+    #print(S[3][1])
+    #print(S[4][1])
+    #print(S[5][1])
+    #print(S[6][1])
+    #print(S[7][1])
+    #print(S[8][1])
+    #print(S[9][
 
 =======
 Suggestion 4
 
-def is_convex_polygon(A_x,A_y,B_x,B_y,C_x,C_y,D_x,D_y):
-    angle_A = (B_x-A_x)*(D_y-A_y)-(B_y-A_y)*(D_x-A_x)
-    angle_B = (C_x-B_x)*(A_y-B_y)-(C_y-B_y)*(A_x-B_x)
-    angle_C = (D_x-C_x)*(B_y-C_y)-(D_y-C_y)*(B_x-C_x)
-    angle_D = (A_x-D_x)*(C_y-D_y)-(A_y-D_y)*(C_x-D_x)
-    if angle_A>0 and angle_B>0 and angle_C>0 and angle_D>0:
-        return 'Yes'
-    elif angle_A<0 and angle_B<0 and angle_C<0 and angle_D<0:
-        return 'Yes'
-    else:
-        return 'No'
+def solve():
+    n = int(input())
+    snuke = []
+    for i in range(n):
+        snuke.append(list(map(int, input().split())))
+
+    for i in range(n):
+        snuke[i][2] += snuke[i][0]
+
+    snuke.sort(key=lambda x:x[2])
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            if snuke[i][1] == 0:
+                ans += snuke[i][2]
+        else:
+            if snuke[i][1] == snuke[i-1][1]:
+                if snuke[i][2] > snuke[i-1][2]:
+                    ans += snuke[i][2] - snuke[i-1][2]
+            else:
+                if snuke[i][1] - snuke[i-1][1] == 1:
+                    ans += snuke[i][2] - snuke[i-1][2]
+                elif snuke[i][1] - snuke[i-1][1] == 2:
+                    if snuke[i][2] > snuke[i-1][2]:
+                        ans += snuke[i][2] - snuke[i-1][2]
+                elif snuke[i][1] - snuke[i-1][1] == 3:
+                    if snuke[i][2] > snuke[i-1][2]:
+                        ans += snuke[i][2] - snuke[i-1][2]
+                elif snuke[i][1] - snuke[i-1][1] == 4:
+                    if snuke[i][2] > snuke[i-1][2]:
+                        ans += snuke[i][2] - snuke[i-1][2]
+                else:
+                    pass
+    print(ans)
+
+solve()
 
 =======
 Suggestion 5
 
-def cross_product(x1, y1, x2, y2):
-    return x1 * y2 - x2 * y1
+def get_max_snuke_sum(N, T, X, A):
+    max_snuke_sum = 0
+    for i in range(N):
+        if i == 0:
+            max_snuke_sum += A[i]
+            continue
+        elif T[i] - T[i-1] >= abs(X[i] - X[i-1]):
+            max_snuke_sum += A[i]
+    return max_snuke_sum
 
 =======
 Suggestion 6
 
-def is_convex(a, b, c, d):
-    return (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]) > 0 and \
-           (c[0] - b[0]) * (d[1] - c[1]) - (c[1] - b[1]) * (d[0] - c[0]) > 0 and \
-           (d[0] - c[0]) * (a[1] - d[1]) - (d[1] - c[1]) * (a[0] - d[0]) > 0 and \
-           (a[0] - d[0]) * (b[1] - a[1]) - (a[1] - d[1]) * (b[0] - a[0]) > 0 or \
-           (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]) < 0 and \
-           (c[0] - b[0]) * (d[1] - c[1]) - (c[1] - b[1]) * (d[0] - c[0]) < 0 and \
-           (d[0] - c[0]) * (a[1] - d[1]) - (d[1] - c[1]) * (a[0] - d[0]) < 0 and \
-           (a[0] - d[0]) * (b[1] - a[1]) - (a[1] - d[1]) * (b[0] - a[0]) < 0
+def main():
+    snuke = []
+    N = int(input())
+    for i in range(N):
+        t, x, a = map(int, input().split())
+        snuke.append((t, x, a))
+    snuke.sort(key=lambda x: x[0])
+    # print(snuke)
+    # dp[i][j]表示在第i个snuke的时候，高桥在第j个坑的最大收益
+    dp = [[0] * 5 for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(5):
+            # 如果高桥在第i个snuke出现的时候，不在第j个坑，那么就把dp[i][j]设置为dp[i-1][j]
+            if snuke[i][1] != j:
+                dp[i + 1][j] = dp[i][j]
+            # 如果高桥在第i个snuke出现的时候，就在第j个坑，那么就把dp[i][j]设置为dp[i-1][j-1]和dp[i-1][j+1]中的最大值
+            else:
+                dp[i + 1][j] = max(dp[i][j], dp[i][j - 1] + snuke[i][2], dp[i][j + 1] + snuke[i][2])
+    # print(dp)
+    print(dp[N][0])
 
 =======
 Suggestion 7
 
-def main():
-    Ax,Ay = map(int,input().split())
-    Bx,By = map(int,input().split())
-    Cx,Cy = map(int,input().split())
-    Dx,Dy = map(int,input().split())
-    if ((Bx-Ax)*(Cy-By)-(By-Ay)*(Cx-Bx))*((Cx-Bx)*(Dy-Cy)-(Cy-By)*(Dx-Cx))<0:
-        print("Yes")
-    else:
-        print("No")
+def getMaxSize(n, txa):
+    max_size = 0
+    x = 0
+    for i in range(n):
+        if txa[i][0] < txa[i][1] - x:
+            x = txa[i][1]
+            max_size += txa[i][2]
+    return max_size
+
+n = int(input())
+txa = []
+for i in range(n):
+    txa.append(list(map(int, input().split())))
+
+print(getMaxSize(n, txa))
 
 =======
 Suggestion 8
 
-def cross_product(ax, ay, bx, by):
-    return ax*by - ay*bx
+def main():
+    n = int(input())
+    txa = []
+    for i in range(n):
+        txa.append(list(map(int, input().split())))
+    res = 0
+    for i in range(n):
+        if i == 0:
+            res += txa[i][2]
+            continue
+        res += txa[i][2]
+        if txa[i][1] == txa[i-1][1]:
+            continue
+        elif txa[i][1] > txa[i-1][1]:
+            res -= txa[i][0]-txa[i-1][0]
+        else:
+            res -= txa[i][0]-txa[i-1][0]
+    print(res)
 
 =======
 Suggestion 9
 
-def is_convex(A, B, C, D):
-    # 通过向量叉积判断两个向量的方向
-    # A->B, B->C, C->D, D->A
-    AB = [B[0] - A[0], B[1] - A[1]]
-    BC = [C[0] - B[0], C[1] - B[1]]
-    CD = [D[0] - C[0], D[1] - C[1]]
-    DA = [A[0] - D[0], A[1] - D[1]]
-    # 判断AB与BC的叉积方向是否相同
-    if AB[0] * BC[1] - AB[1] * BC[0] < 0:
-        return False
-    # 判断BC与CD的叉积方向是否相同
-    if BC[0] * CD[1] - BC[1] * CD[0] < 0:
-        return False
-    # 判断CD与DA的叉积方向是否相同
-    if CD[0] * DA[1] - CD[1] * DA[0] < 0:
-        return False
-    # 判断DA与AB的叉积方向是否相同
-    if DA[0] * AB[1] - DA[1] * AB[0] < 0:
-        return False
-    return True
+def main():
+    n = int(input())
+    snuke = []
+    for i in range(n):
+        t,x,a = map(int,input().split())
+        snuke.append((t,x,a))
+    snuke.sort()
+    dp = [0] * 5
+    for t,x,a in snuke:
+        dp[x] = max(dp[x],dp[x-1]+a)
+    print(max(dp))
 
 =======
 Suggestion 10
 
-def is_convex_polygon(A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y):
-    # write your code here
-    angle_A = get_angle(A_x, A_y, B_x, B_y, C_x, C_y)
-    angle_B = get_angle(B_x, B_y, C_x, C_y, D_x, D_y)
-    angle_C = get_angle(C_x, C_y, D_x, D_y, A_x, A_y)
-    angle_D = get_angle(D_x, D_y, A_x, A_y, B_x, B_y)
-    if angle_A + angle_B + angle_C + angle_D == 360:
-        return 'Yes'
-    else:
-        return 'No'
+def main():
+    n = int(input())
+    snuke = [0 for i in range(5)]
+    for i in range(n):
+        t, x, a = map(int, input().split())
+        snuke[x] = max(snuke[x], a)
+    print(sum(snuke[1:]))
+main()

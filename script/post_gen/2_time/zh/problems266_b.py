@@ -4,58 +4,62 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    s = input()
-    print(s[int((len(s)+1)/2)-1])
+    n = int(input())
+    print((998244353 - n % 998244353) % 998244353)
 
 =======
 Suggestion 2
 
 def main():
-    S = input()
-    print(S[int((len(S)+1)/2)-1])
+    N = int(input())
+    print(N%998244353)
 
 =======
 Suggestion 3
 
-def get_middle_char(s):
-    return s[int((len(s)+1)/2)-1]
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
 =======
 Suggestion 4
 
-def main():
-    a = input()
-    b = int((len(a)+1)/2)
-    print(a[b-1])
+def b(N):
+    return (998244353-(N%998244353))%998244353
 
 =======
 Suggestion 5
 
-def findCenterChar(s):
-    return s[(len(s) + 1) // 2 - 1]
+def solve(n):
+    return (998244353 - (n % 998244353)) % 998244353
 
 =======
 Suggestion 6
 
 def main():
-    s = input()
-    l = len(s)
-    print(s[int(l/2)])
+    n = int(input())
+    print((-n)%998244353)
 
 =======
 Suggestion 7
 
 def main():
-    # 读入数据
-    s = input()
-    # 计算中心字符的位置
-    pos = (len(s) + 1) // 2
-    # 打印中心字符
-    print(s[pos - 1])
+    n = int(input())
+
+    if n < 0:
+        n = -n
+        n = n % 998244353
+        n = 998244353 - n
+    else:
+        n = n % 998244353
+
+    print(n)
 
 =======
 Suggestion 8
 
 def main():
-    s = input()
-    print(s[int((len(s)+1)/2-1)])
+    N = int(input())
+    print((998244353 - N % 998244353) % 998244353)

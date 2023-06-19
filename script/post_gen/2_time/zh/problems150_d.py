@@ -1,94 +1,121 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def get_min_permutation(n):
-    return [i for i in range(1, n+1)]
+def gcd(a, b):
+    if b==0:
+        return a
+    else:
+        return gcd(b, a%b)
 
 =======
 Suggestion 2
 
-def find_min_permutation(n):
-    return 1
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    q = list(map(int, input().split()))
-    print(abs(p.index(1) - q.index(1)))
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
 
 =======
 Suggestion 4
 
-def factorial(n):
-    if n == 1:
-        return 1
+def gcd(x, y):
+    if y == 0:
+        return x
     else:
-        return n * factorial(n-1)
+        return gcd(y, x%y)
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    q = list(map(int, input().split()))
-
-    def permutation(n, p):
-        ans = 0
-        for i in range(n):
-            ans *= n - i
-            for j in range(i + 1, n):
-                if p[i] > p[j]:
-                    ans += 1
-        return ans
-
-    print(abs(permutation(n, p) - permutation(n, q)))
+def gcd(a, b):
+    if b == 0: return a
+    return gcd(b, a % b)
 
 =======
 Suggestion 6
 
-def get_min_permutation(n):
-    return range(1,n+1)
+def gcd(x, y):
+    if x < y:
+        x, y = y, x
+    if x % y == 0:
+        return y
+    else:
+        return gcd(y, x % y)
 
 =======
 Suggestion 7
 
-def main():
-    #输入
-    n = int(input())
-    p = [int(x) for x in input().split()]
-    q = [int(x) for x in input().split()]
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
-    #处理
-    def permutation_to_number(p):
-        n = len(p)
-        r = 0
-        for i in range(n):
-            c = 0
-            for j in range(i + 1, n):
-                if p[i] > p[j]:
-                    c += 1
-            r += c * math.factorial(n - i - 1)
-        return r
-
-    #输出
-    print(abs(permutation_to_number(p) - permutation_to_number(q)))
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+a.sort()
+lcm = a[0]
+for i in range(1, n):
+    lcm = lcm * a[i] // gcd(lcm, a[i])
+count = 0
+for i in range(n):
+    count += (lcm // a[i]) // 2
+print(count % (10 ** 9 + 7))
 
 =======
 Suggestion 8
 
-def get_permutation_index(perm):
-    """Return the index of the permutation in the lexicographic order."""
-    perm = list(perm)
-    perm = [x - 1 for x in perm]  # adjust the index to start from 0
-    index = 0
-    factorial = 1
-    for i in range(len(perm)):
-        index += perm[-i - 1] * factorial
-        factorial *= len(perm) - i - 1
-    return index
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+lcm = a[0]
+for i in range(1, n):
+    lcm = lcm * a[i] // gcd(lcm, a[i])
+
+for i in range(n):
+    if lcm // a[i] % 2 == 0:
+        print(0)
+        exit()
+
+m //= lcm
+ans = (m + 1) // 2
+print(ans)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if a%b == 0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 10
+
+def gcd(m,n):
+    if n == 0:
+        return m
+    else:
+        return gcd(n, m%n)

@@ -4,238 +4,227 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n, k, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    l = list(map(int, input().split()))
-    #初始化棋子位置
-    x = [0] * n
-    for i in range(k):
-        x[a[i] - 1] = 1
-    #执行棋子操作
-    for i in range(q):
-        for j in range(n - 1):
-            if l[i] == j + 1 and x[j] == 1 and x[j + 1] == 0:
-                x[j] = 0
-                x[j + 1] = 1
-    #输出棋子位置
-    for i in range(n):
-        if x[i] == 1:
-            print(i + 1, end=" ")
-    print()
+    pass
 
 =======
 Suggestion 2
 
-def main():
-    N, K, Q = map(int, input().split())
-    A = list(map(int, input().split()))
-    L = list(map(int, input().split()))
-    # print(N, K, Q)
-    # print(A)
-    # print(L)
-    # print(len(L))
-    # print(len(A))
-
-    # 棋子的位置
-    chess = [0 for i in range(N)]
-    for i in range(K):
-        chess[A[i]-1] = 1
-    # print(chess)
-
-    # 棋子移动
-    for i in range(Q):
-        # print(L[i])
-        # print(chess)
-        # print(chess[L[i]-1])
-        if chess[L[i]-1] == 1:
-            continue
+def solve():
+    n = int(input())
+    s = input()
+    w = list(map(int, input().split()))
+    l = 0
+    r = 10 ** 9 + 1
+    while r - l > 1:
+        mid = (l + r) // 2
+        cnt = 0
+        for i in range(n):
+            if s[i] == '0' and w[i] >= mid:
+                cnt += 1
+            if s[i] == '1' and w[i] < mid:
+                cnt += 1
+        if cnt == n:
+            l = mid
         else:
-            # print(chess)
-            # print(L[i])
-            # print(L[i]-1)
-            # print(chess[L[i]-1])
-            # print(chess[L[i]])
-            if chess[L[i]] == 0:
-                chess[L[i]-1] = 0
-                chess[L[i]] = 1
-            else:
-                continue
-            # print(chess)
-
-    # print(chess)
-
-    # 输出棋子位置
-    for i in range(N):
-        if chess[i] == 1:
-            print(i+1, end=' ')
-    print('')
+            r = mid
+    print(l)
 
 =======
 Suggestion 3
 
 def main():
-    n,k,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    l = list(map(int,input().split()))
-    ans = [0] * (n+1)
-    for i in range(k):
-        ans[a[i]] += 1
-    for i in range(n):
-        ans[i+1] += ans[i]
-    for i in range(q):
-        print(ans[l[i]] - ans[l[i]-1])
+    return
 
 =======
 Suggestion 4
 
 def main():
-    n, k, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    l = list(map(int, input().split()))
-    for i in range(q):
-        if a[l[i]-1] == n:
-            continue
-        elif a[l[i]-1] < n:
-            if a[l[i]-1] + 1 in a:
-                continue
-            else:
-                a[l[i]-1] += 1
-    for i in range(k):
-        print(a[i], end=' ')
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if S[i] == '1':
+            ans += W[i]
+    # print(ans)
+    c = 0
+    for i in range(N):
+        if S[i] == '1':
+            c += W[i]
+    # print(c)
+    ans = max(ans, c)
+    c = 0
+    for i in range(N):
+        if S[i] == '0':
+            c += W[i]
+    # print(c)
+    ans = max(ans, c)
+    print(ans)
 
 =======
 Suggestion 5
 
-def main():
-    N, K, Q = map(int, input().split())
-    A = list(map(int, input().split()))
-    L = list(map(int, input().split()))
-    #print(N, K, Q)
-    #print(A)
-    #print(L)
-    #print()
-    
-    #棋子初始位置
-    chess_list = [0]*N
-    for i in range(K):
-        chess_list[A[i]-1] = 1
-    #print(chess_list)
-    
-    #棋子移动
-    for i in range(Q):
-        for j in range(L[i]-1, N-1):
-            if chess_list[j] == 1 and chess_list[j+1] == 0:
-                chess_list[j], chess_list[j+1] = 0, 1
-    #print(chess_list)
-    
-    #打印棋子位置
-    for i in range(K):
-        for j in range(N):
-            if chess_list[j] == 1:
-                print(j+1, end=' ')
-    print()
+def cal_f(x):
+    f = 0
+    for i in range(N):
+        if S[i] == '0' and W[i] < x:
+            f += 1
+        elif S[i] == '1' and W[i] >= x:
+            f += 1
+    return f
 
 =======
 Suggestion 6
 
 def main():
-    n,k,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    l = list(map(int,input().split()))
-
-    #棋子的位置
-    pos = [0] * n
-    for i in range(k):
-        pos[a[i]-1] += 1
-    for i in range(n-1,0,-1):
-        pos[i-1] += pos[i]
-    for i in range(q):
-        print(pos[l[i]-1])
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    #print(N, S, W)
+    #print(S[0], W[0])
+    #print(S[1], W[1])
+    #print(S[2], W[2])
+    #print(S[3], W[3])
+    #print(S[4], W[4])
+    #print(S[5], W[5])
+    #print(S[6], W[6])
+    #print(S[7], W[7])
+    #print(S[8], W[8])
+    #print(S[9], W[9])
+    #print(S[10], W[10])
+    #print(S[11], W[11])
+    #print(S[12], W[12])
+    #print(S[13], W[13])
+    #print(S[14], W[14])
+    #print(S[15], W[15])
+    #print(S[16], W[16])
+    #print(S[17], W[17])
+    #print(S[18], W[18])
+    #print(S[19], W[19])
+    #print(S[20], W[20])
+    #print(S[21], W[21])
+    #print(S[22], W[22])
+    #print(S[23], W[23])
+    #print(S[24], W[24])
+    #print(S[25], W[25])
+    #print(S[26], W[26])
+    #print(S[27], W[27])
+    #print(S[28], W[28])
+    #print(S[29], W[29])
+    #print(S[30], W[30])
+    #print(S[31], W[31])
+    #print(S[32], W[32])
+    #print(S[33], W[33])
+    #print(S[34], W[34])
+    #print(S[35], W[35])
+    #print(S[36], W[36])
+    #print(S[37], W[37])
+    #print(S[38], W[38])
+    #print(S[39], W[39])
+    #print(S[40], W[40])
+    #print(S[41], W[41])
+    #print(S[
 
 =======
 Suggestion 7
 
-def main():
-    n,k,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    l = list(map(int,input().split()))
+def solve(n, s, w):
+    s = list(s)
+    w = list(w)
+    l = 0
+    r = 10**9 + 1
+    while r - l > 1:
+        mid = (l + r) // 2
+        cnt = 0
+        for i in range(n):
+            if s[i] == '0':
+                if w[i] <= mid:
+                    cnt += 1
+            else:
+                if w[i] > mid:
+                    cnt += 1
+        if cnt == n:
+            l = mid
+        else:
+            r = mid
+    return l
 
-    #初始化
-    #l中的值对应a中的索引
-    #r中的值对应a中的值
-    r = [0]*n
-    for i in range(k):
-        r[a[i]-1] = 1
-
-    #计算每个位置的值
-    for i in range(n):
-        if r[i] == 0:
-            r[i] = r[i-1]
-
-    #计算每个位置的值
-    for i in range(q):
-        print(r[l[i]-1])
+n = int(input())
+s = input()
+w = input().split()
+print(solve(n, s, w))
 
 =======
 Suggestion 8
 
-def main():
-    N, K, Q = map(int, input().split())
-    A = list(map(int, input().split()))
-    L = list(map(int, input().split()))
-    result = [0] * K
-    for i in range(K):
-        result[i] = A[L[i] - 1]
-    for i in range(Q):
-        if result.count(result[i]) > 1:
-            continue
+def f(x):
+    #print("x:",x)
+    count = 0
+    for i in range(n):
+        if s[i] == "0":
+            if x > w[i]:
+                count += 1
         else:
-            for j in range(i + 1, Q):
-                if result[i] == result[j]:
-                    result[j] = result[i]
-    result.sort()
-    print(*result)
+            if x <= w[i]:
+                count += 1
+    return count
 
 =======
 Suggestion 9
 
 def main():
-    n, k, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    l = list(map(int, input().split()))
-
-    # 移动棋子
-    for i in range(q):
-        for j in range(k):
-            if l[j] < k and a[l[j]] < a[l[j] + 1]:
-                a[l[j]] += 1
-
-    # 打印结果
-    for i in range(k):
-        print(a[i], end=' ')
+    n = int(input())
+    s = input()
+    w = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n):
+        if s[i] == '1' and s[i-1] == '0':
+            ans += 1
+    if s[-1] == '0':
+        ans += 1
+    print(ans)
 
 =======
 Suggestion 10
 
-def main():
-    n,k,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    l = list(map(int,input().split()))
-    #print(n,k,q)
-    #print(a)
-    #print(l)
-    #print(l[0])
-    #print(a[l[0]-1])
-    #print(a[l[0]-1]+1)
-    #print(a[l[0]-1]+1<=n)
-    #print(a[l[0]-1]+1 not in a)
-    #print(a[l[0]-1]+1 not in a)
-    #print('----')
-    #print(a)
-    #print(l)
-    #print('----')
-    for i in range(q):
-        if a[l[i]-1]+1<=n and a[l[i]-1]+1 not in a:
-            a[l[i]-1] += 1
-    for i in range(k):
-        print(a[i],end=' ')
+def solve(n,s,w):
+    #print(n,s,w)
+    if n==1:
+        if s[0]=="0":
+            return 1
+        else:
+            return 0
+    if n==2:
+        if s[0]=="0" and s[1]=="0":
+            return 2
+        else:
+            return 1
+    if n==3:
+        if s[0]=="0" and s[1]=="0" and s[2]=="0":
+            return 3
+        elif s[0]=="0" and s[1]=="0" and s[2]=="1":
+            return 2
+        elif s[0]=="0" and s[1]=="1" and s[2]=="0":
+            return 2
+        elif s[0]=="1" and s[1]=="0" and s[2]=="0":
+            return 2
+        else:
+            return 1
+    if n==4:
+        if s[0]=="0" and s[1]=="0" and s[2]=="0" and s[3]=="0":
+            return 4
+        elif s[0]=="0" and s[1]=="0" and s[2]=="0" and s[3]=="1":
+            return 3
+        elif s[0]=="0" and s[1]=="0" and s[2]=="1" and s[3]=="0":
+            return 3
+        elif s[0]=="0" and s[1]=="1" and s[2]=="0" and s[3]=="0":
+            return 3
+        elif s[0]=="1" and s[1]=="0" and s[2]=="0" and s[3]=="0":
+            return 3
+        elif s[0]=="0" and s[1]=="0" and s[2]=="1" and s[3]=="1":
+            return 2
+        elif s[0]=="0" and s[1]=="1" and s[2]=="0" and s[3]=="1":
+            return 2
+        elif s[0]=="0" and s[1]=="1" and s[2]=="1" and s[3]=="0":
+            return 2
+        elif s[0]=="1" and s[1]=="0" and s[2]=="0" and s[3]=="

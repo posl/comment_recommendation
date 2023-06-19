@@ -1,68 +1,132 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    r = input()
-    print(2*3.141592653589793*r)
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) <= n:
+        print(n - sum(a))
+    else:
+        print(-1)
 
 =======
 Suggestion 2
 
-def main():
-    r = input()
-    print 2 * 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280 * r
-    return 0
+def solve(n,m,a):
+    if n < sum(a):
+        return -1
+    else:
+        return n - sum(a)
 
 =======
 Suggestion 3
 
-def main():
-    r = int(input())
-    print(2*r*3.141592653589793238462643383279502884197169399375105820974944592307816406286)
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) > N:
+        return -1
+    else:
+        return N - sum(A)
+
+print(solve())
 
 =======
 Suggestion 4
 
 def main():
-    r = int(input())
-    print(r*2*3.14159265358979323846264338327950288)
+    # 读取输入
+    line = input()
+    line = line.split()
+    n = int(line[0])
+    m = int(line[1])
+    line = input()
+    line = line.split()
+    a = []
+    for i in range(m):
+        a.append(int(line[i]))
+    # 处理
+    a.sort()
+    sum = 0
+    for i in range(m):
+        sum += a[i]
+    if sum > n:
+        print(-1)
+    else:
+        print(n - sum)
 
 =======
 Suggestion 5
 
-def main():
-    import math
-    r = int(input())
-    print(2*math.pi*r)
+def solve():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    if sum(A) <= N:
+        print(N-sum(A))
+    else:
+        print(-1)
 
 =======
 Suggestion 6
 
-def perimeter(r):
-    return 2 * 3.141592653589793238462643383279502884197169399375105820974944592307816406286 * r
-
-r = int(input())
-print(perimeter(r))
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) > N:
+        print(-1)
+        return
+    print(N - sum(A))
 
 =======
 Suggestion 7
 
 def main():
-    r = int(input())
-    print(2*r*3.14159265358979323846264338327950288419716939937510582097494459230781640628620899)
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(M):
+        sum += A[i]
+    if sum > N:
+        print(-1)
+    else:
+        print(N - sum)
+
+main()
 
 =======
 Suggestion 8
 
-def main():
-    r = int(input())
-    print("{:.20f}".format(2 * r * 3.14159265358979323846264338327950288419716939937510))
+def solve(n, m, a):
+    if n < sum(a):
+        return -1
+    return n - sum(a)
 
 =======
 Suggestion 9
 
 def main():
-    r = int(input())
-    print(2 * r * 3.141592653589793)
+    n,m = input().split()
+    n = int(n)
+    m = int(m)
+    a = input().split()
+    a = [int(i) for i in a]
+    sum = 0
+    for i in range(m):
+        sum += a[i]
+    if sum <= n:
+        print(n-sum)
+    else:
+        print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) > n:
+        print(-1)
+    else:
+        print(n - sum(a))

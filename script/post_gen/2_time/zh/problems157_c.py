@@ -3,286 +3,362 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def bingo():
-    a = []
-    for i in range(3):
-        a.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-
-    for i in range(3):
-        for j in range(3):
-            if a[i][j] in b:
-                a[i][j] = 0
-
-    if a[0][0] == 0 and a[1][1] == 0 and a[2][2] == 0:
-        return True
-    if a[0][2] == 0 and a[1][1] == 0 and a[2][0] == 0:
-        return True
-    for i in range(3):
-        if a[i][0] == 0 and a[i][1] == 0 and a[i][2] == 0:
-            return True
-        if a[0][i] == 0 and a[1][i] == 0 and a[2][i] == 0:
-            return True
-    return False
-
-print('Yes' if bingo() else 'No')
+def main():
+    N, M = map(int, input().split())
+    s = []
+    c = []
+    for i in range(M):
+        s_i, c_i = map(int, input().split())
+        s.append(s_i)
+        c.append(c_i)
+    #print(N, M, s, c)
+    num = []
+    for i in range(N):
+        num.append(-1)
+    for i in range(M):
+        num[s[i]-1] = c[i]
+    #print(num)
+    if num[0] == 0 and N != 1:
+        print(-1)
+    else:
+        for i in range(N):
+            if num[i] == -1:
+                num[i] = 0
+        #print(num)
+        ans = 0
+        for i in range(N):
+            ans += num[i] * (10**(N-i-1))
+        print(ans)
 
 =======
 Suggestion 2
 
 def main():
-    bingo = []
-    for i in range(3):
-        bingo.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-    for i in range(3):
-        for j in range(3):
-            for k in range(n):
-                if bingo[i][j] == b[k]:
-                    bingo[i][j] = 0
-    for i in range(3):
-        if bingo[i][0] == bingo[i][1] == bingo[i][2] == 0:
-            print("Yes")
-            return
-    for i in range(3):
-        if bingo[0][i] == bingo[1][i] == bingo[2][i] == 0:
-            print("Yes")
-            return
-    if bingo[0][0] == bingo[1][1] == bingo[2][2] == 0:
-        print("Yes")
-        return
-    if bingo[0][2] == bingo[1][1] == bingo[2][0] == 0:
-        print("Yes")
-        return
-    print("No")
-    return
+    N, M = map(int, input().split())
+    s = []
+    c = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        s.append(a)
+        c.append(b)
+    if N == 1 and M == 0:
+        print(0)
+    elif N == 1 and M == 1:
+        print(c[0])
+    elif N == 1 and M > 1:
+        print(-1)
+    elif N == 2 and M == 0:
+        print(10)
+    elif N == 2 and M == 1:
+        print(-1)
+    elif N == 2 and M == 2:
+        if s[0] == 1 and s[1] == 2:
+            print(c[0]*10+c[1])
+        elif s[0] == 2 and s[1] == 1:
+            print(c[1]*10+c[0])
+        else:
+            print(-1)
+    elif N == 2 and M > 2:
+        print(-1)
+    elif N == 3 and M == 0:
+        print(100)
+    elif N == 3 and M == 1:
+        print(-1)
+    elif N == 3 and M == 2:
+        if s[0] == 1 and s[1] == 2:
+            print(c[0]*100+c[1]*10)
+        elif s[0] == 1 and s[1] == 3:
+            print(c[0]*100+c[1])
+        elif s[0] == 2 and s[1] == 1:
+            print(c[1]*100+c[0]*10)
+        elif s[0] == 2 and s[1] == 3:
+            print(c[1]*100+c[0])
+        elif s[0] == 3 and s[1] == 1:
+            print(c[1]*100+c[0])
+        elif s[0] == 3 and s[1] == 2:
+            print(c[1]*100+c[0]*10)
+        else:
+            print(-1)
+    elif N == 3 and M == 3:
+        if s[0] == 1 and s[1] == 2 and s[2]
 
 =======
 Suggestion 3
 
-def bingo():
-    # 读取输入
-    a = []
-    for i in range(3):
-        a.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-    # 判断是否有BINGO
-    for i in range(3):
-        if a[i][0] in b and a[i][1] in b and a[i][2] in b:
-            return "Yes"
-    for i in range(3):
-        if a[0][i] in b and a[1][i] in b and a[2][i] in b:
-            return "Yes"
-    if a[0][0] in b and a[1][1] in b and a[2][2] in b:
-        return "Yes"
-    if a[0][2] in b and a[1][1] in b and a[2][0] in b:
-        return "Yes"
-    return "No"
+def solve(N, M, s, c):
+    #N: 位数
+    #M: 条件数
+    #s: 条件位置
+    #c: 条件值
+    #print(N, M, s, c)
+    if N == 1:
+        if M == 0:
+            return 0
+        elif M == 1:
+            return c[0]
+        else:
+            return -1
+    elif N == 2:
+        if M == 0:
+            return 0
+        elif M == 1:
+            if s[0] == 1:
+                return c[0] * 10
+            else:
+                return c[0] + 10
+        elif M == 2:
+            if s[0] == 1:
+                return c[0] * 10 + c[1]
+            elif s[0] == 2:
+                return c[1] * 10 + c[0]
+            else:
+                return -1
+        else:
+            return -1
+    else:
+        if M == 0:
+            return 0
+        elif M == 1:
+            if s[0] == 1:
+                return c[0] * 100
+            elif s[0] == 2:
+                return c[0] * 10
+            else:
+                return c[0]
+        elif M == 2:
+            if s[0] == 1 and s[1] == 2:
+                return c[0] * 100 + c[1] * 10
+            elif s[0] == 1 and s[1] == 3:
+                return c[0] * 100 + c[1]
+            elif s[0] == 2 and s[1] == 1:
+                return c[1] * 100 + c[0] * 10
+            elif s[0] == 2 and s[1] == 3:
+                return c[1] * 10 + c[0]
+            elif s[0] == 3 and s[1] == 1:
+                return c[1] * 100 + c[0]
+            elif s[0] == 3 and s[1] == 2:
+                return c[1] * 10 + c
 
 =======
 Suggestion 4
 
-def bingo():
-    bingo = False
-    for i in range(3):
-        if a[i][0] in b and a[i][1] in b and a[i][2] in b:
-            bingo = True
+def main():
+    while True:
+        try:
+            N, M = map(int, input().split())
+            if N < 1 or N > 3 or M < 0 or M > 5:
+                print(-1)
+                continue
+            num = [0] * N
+            for i in range(M):
+                s, c = map(int, input().split())
+                if s < 1 or s > N or c < 0 or c > 9:
+                    print(-1)
+                    break
+                num[s - 1] = c
+            else:
+                if N == 1:
+                    if num[0] == 0:
+                        print(0)
+                    else:
+                        print(num[0])
+                elif N == 2:
+                    if num[0] == 0:
+                        print(-1)
+                    else:
+                        print(num[0] * 10 + num[1])
+                elif N == 3:
+                    if num[0] == 0 and num[1] == 0:
+                        print(-1)
+                    elif num[0] == 0 and num[1] != 0:
+                        print(num[1] * 10 + num[2])
+                    elif num[0] != 0 and num[1] == 0:
+                        print(num[0] * 100 + num[2])
+                    else:
+                        print(num[0] * 100 + num[1] * 10 + num[2])
+        except:
             break
-    for i in range(3):
-        if a[0][i] in b and a[1][i] in b and a[2][i] in b:
-            bingo = True
-            break
-    if a[0][0] in b and a[1][1] in b and a[2][2] in b:
-        bingo = True
-    if a[0][2] in b and a[1][1] in b and a[2][0] in b:
-        bingo = True
-    if bingo:
-        print("Yes")
-    else:
-        print("No")
-
-a = []
-for i in range(3):
-    a.append(list(map(int, input().split())))
-n = int(input())
-b = []
-for i in range(n):
-    b.append(int(input()))
-bingo()
 
 =======
 Suggestion 5
 
-def bingo(x):
-    for i in range(3):
-        if x[i][0] == x[i][1] == x[i][2] == 1:
-            return True
-    for i in range(3):
-        if x[0][i] == x[1][i] == x[2][i] == 1:
-            return True
-    if x[0][0] == x[1][1] == x[2][2] == 1:
-        return True
-    if x[0][2] == x[1][1] == x[2][0] == 1:
-        return True
-    return False
+def main():
+    N,M = map(int,input().split())
+    s = []
+    c = []
+    for i in range(0,M):
+        s1,c1 = map(int,input().split())
+        s.append(s1)
+        c.append(c1)
+    s_c = list(zip(s,c))
+    s_c.sort()
+    s,c = zip(*s_c)
+    if N == 1:
+        if M == 0:
+            print(0)
+        elif M == 1:
+            print(c[0])
+        else:
+            print(-1)
+    elif N == 2:
+        if M == 0:
+            print(0)
+        elif M == 1:
+            if s[0] == 1:
+                print(c[0])
+            elif s[0] == 2:
+                print(c[0]*10)
+            else:
+                print(-1)
+        elif M == 2:
+            if s[0] == 1 and s[1] == 2:
+                print(c[0]*10+c[1])
+            elif s[0] == 2 and s[1] == 1:
+                print(c[1]*10+c[0])
+            else:
+                print(-1)
+        else:
+            print(-1)
+    elif N == 3:
+        if M == 0:
+            print(0)
+        elif M == 1:
+            if s[0] == 1:
+                print(c[0])
+            elif s[0] == 2:
+                print(c[0]*10)
+            elif s[0] == 3:
+                print(c[0]*100)
+            else:
+                print(-1)
+        elif M == 2:
+            if s[0] == 1 and s[1] == 2:
+                print(c[0]*10+c[1])
+            elif s[0] == 2 and s[1] == 3:
+                print(c[0]*10+c[1])
+            elif s[0] == 3 and s[1] == 1:
+                print(c[1]*100+c[0])
+            elif s[0] == 1 and s[1] == 3:
+                print(c[0]*100+c[1])
+            elif s[0] == 2 and s[1] == 1:
+                print(c[1]*10+c
 
 =======
 Suggestion 6
 
 def solve():
-    bingo = [[False for i in range(3)] for j in range(3)]
-    for i in range(3):
-        bingo[i][0], bingo[i][1], bingo[i][2] = map(int, input().split())
-    N = int(input())
-    for i in range(N):
-        b = int(input())
-        for j in range(3):
-            for k in range(3):
-                if bingo[j][k] == b:
-                    bingo[j][k] = True
-    flag = False
-    for i in range(3):
-        if bingo[i][0] and bingo[i][1] and bingo[i][2]:
-            flag = True
-    for i in range(3):
-        if bingo[0][i] and bingo[1][i] and bingo[2][i]:
-            flag = True
-    if bingo[0][0] and bingo[1][1] and bingo[2][2]:
+    N,M = map(int,input().split())
+    s = [0]*M
+    c = [0]*M
+    for i in range(M):
+        s[i],c[i] = map(int,input().split())
+    #print(s,c)
+    ans = -1
+    for i in range(10**N):
+        num = str(i).zfill(N)
         flag = True
-    if bingo[0][2] and bingo[1][1] and bingo[2][0]:
-        flag = True
-    if flag:
-        print("Yes")
-    else:
-        print("No")
-
-solve()
+        for j in range(M):
+            if num[s[j]-1] != str(c[j]):
+                flag = False
+                break
+        if flag:
+            ans = i
+            break
+    print(ans)
+    return 0
 
 =======
 Suggestion 7
 
-def main():
-    # 读取输入
-    a = []
-    for i in range(3):
-        a.append([int(x) for x in input().split()])
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-
-    # 计算结果
-    result = 'No'
-    for i in range(3):
-        for j in range(3):
-            if a[i][j] in b:
-                result = 'Yes'
-                break
-        if result == 'Yes':
-            break
-
-    # 输出结果
-    print(result)
+def get_input():
+    # N M
+    # s_1 c_1
+    # .
+    # .
+    # .
+    # s_M c_M
+    N, M = map(int, input().split())
+    s_c = []
+    for i in range(M):
+        s_c.append(list(map(int, input().split())))
+    return N, M, s_c
 
 =======
 Suggestion 8
 
 def main():
-    # 读入数据
-    data = []
-    for i in range(3):
-        data.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
+    # 输入
+    N, M = map(int, input().split())
+    s_c = [list(map(int, input().split())) for _ in range(M)]
 
-    # 生成标记数组
-    mark = [[False for i in range(3)] for j in range(3)]
-    for i in range(3):
-        for j in range(3):
-            if data[i][j] in b:
-                mark[i][j] = True
-
-    # 判断是否有宾果
-    flag = False
-    for i in range(3):
-        if mark[i][0] and mark[i][1] and mark[i][2]:
-            flag = True
-            break
-        if mark[0][i] and mark[1][i] and mark[2][i]:
-            flag = True
-            break
-    if mark[0][0] and mark[1][1] and mark[2][2]:
-        flag = True
-    if mark[0][2] and mark[1][1] and mark[2][0]:
-        flag = True
-
-    # 输出结果
-    if flag:
-        print("Yes")
-    else:
-        print("No")
+    # 处理
+    # 1. 生成一个列表，用于存储最终结果
+    result = [0 for _ in range(N)]
+    # 2. 遍历输入的数据
+    for s, c in s_c:
+        # 2.1 如果输入的位置是第一位，且输入的数字是0，那么直接返回-1
+        if s == 1 and c == 0:
+            print(-1)
+            return
+        # 2.2 如果输入的位置不是第一位，且输入的数字是0，那么直接将该位置的数字设置为0
+        if s != 1 and c == 0:
+            result[s-1] = 0
+        # 2.3 如果输入的位置是第一位，且输入的数字不是0，那么直接将该位置的数字设置为输入的数字
+        if s == 1 and c != 0:
+            result[s-1] = c
+        # 2.4 如果输入的位置不是第一位，且输入的数字不是0，那么直接将该位置的数字设置为输入的数字
+        if s != 1 and c != 0:
+            result[s-1] = c
+    # 3. 如果第一位是0，那么直接返回-1
+    if result[0] == 0:
+        print(-1)
+        return
+    # 4. 将列表转换成字符串，然后转换成整数
+    result = int("".join(map(str, result)))
+    # 5. 打印结果
+    print(result)
 
 =======
 Suggestion 9
 
-def bingo():
-    # 读取输入
-    a = []
-    for i in range(3):
-        a.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-
-    # 检查是否有bingo
-    bingo = False
-    for i in range(3):
-        for j in range(3):
-            if a[i][j] in b:
-                bingo = True
+def main():
+    N,M = map(int,input().split())
+    s = []
+    c = []
+    for i in range(M):
+        s1,c1 = map(int,input().split())
+        s.append(s1)
+        c.append(c1)
+    for i in range(10**(N-1),10**N):
+        s_i = str(i)
+        flag = True
+        for j in range(M):
+            if int(s_i[s[j]-1]) != c[j]:
+                flag = False
                 break
-        if bingo:
+        if flag:
+            print(i)
             break
-
-    # 输出结果
-    if bingo:
-        print("Yes")
     else:
-        print("No")
+        print(-1)
 
 =======
 Suggestion 10
 
-def bingo():
-    bingo = False
-    for i in range(3):
-        if A[i][0] in b and A[i][1] in b and A[i][2] in b:
-            bingo = True
-        if A[0][i] in b and A[1][i] in b and A[2][i] in b:
-            bingo = True
-    if A[0][0] in b and A[1][1] in b and A[2][2] in b:
-        bingo = True
-    if A[0][2] in b and A[1][1] in b and A[2][0] in b:
-        bingo = True
-    return bingo
-
-A = [[0]*3 for i in range(3)]
-for i in range(3):
-    A[i] = list(map(int, input().split()))
-N = int(input())
-b = []
-for i in range(N):
-    b.append(int(input()))
-bingo = bingo()
+def main():
+    n, m = map(int, input().split())
+    s = []
+    c = []
+    for i in range(m):
+        s_i, c_i = map(int, input().split())
+        s.append(s_i)
+        c.append(c_i)
+    for i in range(10**(n-1), 10**n):
+        for j in range(m):
+            if int(str(i)[s[j]-1]) != c[j]:
+                break
+        else:
+            print(i)
+            break
+    else:
+        print(-1)

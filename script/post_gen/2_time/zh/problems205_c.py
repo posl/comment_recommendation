@@ -1,124 +1,142 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def is_permutation(array):
-    # 从小到大排序
-    array.sort()
-    # 检查是否为1到N的连续数列
-    for i in range(len(array)):
-        if array[i] != i + 1:
-            return False
-    return True
-
-n = int(input())
-a = list(map(int, input().split()))
+def solve():
+    A, B, C = map(int, input().split())
+    if A == B:
+        print('=')
+    elif C % 2 == 0:
+        if abs(A) == abs(B):
+            print('=')
+        elif abs(A) > abs(B):
+            print('>')
+        else:
+            print('<')
+    else:
+        if A > B:
+            print('>')
+        else:
+            print('<')
 
 =======
 Suggestion 2
 
-def is_permutation(n, a):
-    a.sort()
-    for i in range(n):
-        if a[i] != i+1:
-            return False
-    return True
+def main():
+    a,b,c = map(int,input().split())
+    if pow(a,c) < pow(b,c):
+        print("<")
+    elif pow(a,c) > pow(b,c):
+        print(">")
+    else:
+        print("=")
 
 =======
 Suggestion 3
 
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    if len(set(a)) == n:
-        print('Yes')
-    else:
-        print('No')
+    a, b, c = map(int, input().split())
+    if a == b:
+        print("=")
+    elif c % 2 == 0:
+        if abs(a) == abs(b):
+            print("=")
+        elif abs(a) > abs(b):
+            print(">")
+        else:
+            print("<")
+    elif c % 2 == 1:
+        if a > b:
+            print(">")
+        else:
+            print("<")
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    if a == [i for i in range(1, n+1)]:
-        print("Yes")
+def pow(a, b):
+    if b == 0:
+        return 1
     else:
-        print("No")
+        return a * pow(a, b - 1)
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    for i in range(n):
-        if a[i] != i + 1:
-            print('No')
-            return
-    print('Yes')
+def pow(a,b):
+    return a**b
 
 =======
 Suggestion 6
 
-def is_permutation(n, a):
-    if len(a) != n:
-        return False
-    a.sort()
-    for i in range(n):
-        if a[i] != i + 1:
-            return False
-    return True
+def main():
+    a,b,c = map(int,input().split())
+    if a == b:
+        print('=')
+        return
+    if c % 2 == 0:
+        if abs(a) == abs(b):
+            print('=')
+            return
+        else:
+            if abs(a) > abs(b):
+                print('>')
+            else:
+                print('<')
+            return
+    else:
+        if a > b:
+            print('>')
+        else:
+            print('<')
+        return
 
 =======
 Suggestion 7
 
 def main():
-    N = int(input())
-    A = [int(i) for i in input().split()]
-    A.sort()
-    if(A == list(range(1,N+1))):
-        print("Yes")
+    # 读取输入
+    line = input()
+    # 将输入按空格分割成列表
+    line = line.split()
+    # 将输入的每个元素转换为整数
+    line = [int(x) for x in line]
+    # 将输入的每个元素分别赋值给A、B、C
+    A, B, C = line[0], line[1], line[2]
+    # 计算pow(A,C)和pow(B,C)，并比较大小
+    if pow(A, C) > pow(B, C):
+        print('>')
+    elif pow(A, C) < pow(B, C):
+        print('<')
     else:
-        print("No")
+        print('=')
 
 =======
 Suggestion 8
 
-def check_permutation(N, A):
-    if N != len(A):
-        return False
+def pow(a,b):
+    if a > 0:
+        return a**b
+    elif a < 0:
+        if b%2 == 0:
+            return abs(a**b)
+        else:
+            return -abs(a**b)
     else:
-        for i in range(N):
-            if i+1 not in A:
-                return False
-        return True
+        return 0
 
 =======
 Suggestion 9
 
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    if set(A) == set(range(1, N+1)):
-        print('Yes')
+def comparePow(a, b, c):
+    if pow(a, c) > pow(b, c):
+        return ">"
+    elif pow(a, c) < pow(b, c):
+        return "<"
     else:
-        print('No')
+        return "="
 
-=======
-Suggestion 10
-
-def main():
-    # 读取输入
-    N = int(input())
-    A = list(map(int, input().split()))
-
-    # 逻辑处理
-    A.sort()
-    if A == list(range(1, N + 1)):
-        print('Yes')
-    else:
-        print('No')
+print(comparePow(3, 2, 4))
+print(comparePow(-7, 7, 2))
+print(comparePow(-8, 6, 3))

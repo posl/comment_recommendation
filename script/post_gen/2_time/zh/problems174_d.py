@@ -3,156 +3,164 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
-    k = int(input())
-    if k % 2 == 0:
-        print(-1)
-        return
-    else:
-        x = 7
-        for i in range(1, k + 1):
-            if x % k == 0:
-                print(i)
-                return
-            else:
-                x = 10 * x + 7
-        print(-1)
-        return
+def solve():
+    n = int(input())
+    c = input()
+    ans = 0
+    w = 0
+    for i in range(n):
+        if c[i] == 'W':
+            w += 1
+    for i in range(n):
+        if i < w and c[i] == 'R':
+            ans += 1
+    print(ans)
+solve()
 
 =======
 Suggestion 2
 
-def f(k):
-    if k % 2 == 0 or k % 5 == 0:
-        return -1
-    a = 7
-    for i in range(1, k + 1):
-        if a % k == 0:
-            return i
-        a = a * 10 + 7
-    return -1
+def solve():
+    N = int(input())
+    S = input()
+    cnt = 0
+    w_cnt = 0
+    for i in range(N):
+        if S[i] == 'W':
+            w_cnt += 1
+        else:
+            cnt += w_cnt
+    print(cnt)
+
+solve()
 
 =======
 Suggestion 3
 
-def main():
-    # 读入数据
-    k = int(input())
-    # 初始值
-    s = 0
-    # 循环
-    for i in range(1, k+1):
-        s = s * 10 + 7
-        s %= k
-        # 如果余数为0
-        if s == 0:
-            print(i)
-            exit()
-    # 如果没有余数为0的情况
-    print(-1)
+def solve(n, c):
+    w = c.count('W')
+    r = c.count('R')
+    if w == 0 or r == 0:
+        return 0
+    if w == r:
+        return 1
+    if w > r:
+        return r
+    if w < r:
+        return w
 
 =======
 Suggestion 4
 
-def problem174_c():
-    k = int(input())
-    if k % 2 == 0:
-        print(-1)
-    else:
-        num = 7
-        count = 1
-        while True:
-            if num % k == 0:
-                print(count)
-                break
-            else:
-                num = num * 10 + 7
-                count += 1
+def solve(n, c):
+    if n == 1:
+        return 1 if c == 'W' else 0
+    if n == 2:
+        return 1 if c == 'R' else 0
+    cnt = 0
+    if c == 'W':
+        cnt += 1
+    for i in range(1, n):
+        if c == 'R':
+            if i % 2 == 0:
+                cnt += 1
+        else:
+            if i % 2 == 1:
+                cnt += 1
+    return cnt
 
 =======
 Suggestion 5
 
-def find_multiple_of_K(K):
-    if K % 5 == 0:
-        return -1
-    
-    x = 7 % K
-    for i in range(1, K):
-        if x == 0:
-            return i
-        x = (x * 10 + 7) % K
-    return -1
+def solve(n,c):
+    r = 0
+    w = 0
+    for i in range(n):
+        if c[i] == 'R':
+            r += 1
+    for i in range(r):
+        if c[i] == 'W':
+            w += 1
+    return w
 
 =======
 Suggestion 6
 
 def main():
-    k = int(input())
-    if k % 2 == 0 or k % 5 == 0:
-        print(-1)
-        return
-    num = 7
-    for i in range(1, k + 1):
-        if num % k == 0:
-            print(i)
-            return
-        num = num * 10 + 7
-        num %= k
-    print(-1)
+    n = int(input())
+    s = input()
+    r = 0
+    w = 0
+    for i in range(n):
+        if s[i] == 'R':
+            r += 1
+    for i in range(r):
+        if s[i] == 'W':
+            w += 1
+    print(w)
 
 =======
 Suggestion 7
 
 def main():
-    K = int(input())
-    n = 0
-    for i in range(1, K+1):
-        n = n*10 + 7
-        if n%K == 0:
-            print(i)
-            exit()
-    print(-1)
+    N = int(input())
+    c = input()
+    left = 0
+    right = N - 1
+    count = 0
+    while left < right:
+        if c[left] == 'W' and c[right] == 'R':
+            count += 1
+            left += 1
+            right -= 1
+        elif c[left] == 'R':
+            left += 1
+        elif c[right] == 'W':
+            right -= 1
+    print(count)
 
 =======
 Suggestion 8
 
 def main():
-    k = int(input())
-    n = 7
-    for i in range(1, k+1):
-        if n % k == 0:
-            print(i)
-            return
-        n = n * 10 + 7
-    print(-1)
+    N = int(input())
+    c = input()
+    count = 0
+    # 先把W移到最左边
+    for i in range(N):
+        if c[i] == 'W':
+            count += 1
+    print(count)
 
 =======
 Suggestion 9
 
 def main():
-    k = int(input())
-    cnt = 0
-    for i in range(1, k + 1):
-        cnt = cnt * 10 + 7
-        cnt %= k
-        if cnt == 0:
-            print(i)
-            return
-    print(-1)
+    n = int(input())
+    c = input()
+    r, w = 0, 0
+    for i in range(n):
+        if c[i] == "R":
+            r += 1
+    for i in range(r):
+        if c[i] == "W":
+            w += 1
+    print(w)
 
 =======
 Suggestion 10
 
-def f(k):
-    if k%2==0 or k%5==0:
-        return -1
+def solve():
+    n = int(input())
+    s = input()
+    r = s.count("R")
+    w = s.count("W")
+    if r == 0 or w == 0:
+        return 0
+    if r == w:
+        return 0
+    if r > w:
+        return w
     else:
-        a=7
-        for i in range(1,k+1):
-            if a%k==0:
-                return i
-            else:
-                a=a*10+7
-
-k=int(input())
-print(f(k))
+        return r
+print(solve())

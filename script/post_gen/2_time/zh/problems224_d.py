@@ -1,151 +1,150 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def get_area(x1,y1,x2,y2,x3,y3):
-    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+def dfs(state, pos, depth, limit, prev):
+    if depth == limit:
+        return state == goal
+    if depth + h(state) > limit:
+        return False
+    for d in range(4):
+        if prev == d:
+            continue
+        t = move(state, pos, d)
+        if dfs(t[0], t[1], depth + 1, limit, d):
+            return True
+    return False
 
 =======
 Suggestion 2
 
-def cal_area(ax,ay,bx,by,cx,cy):
-    return abs((ax*(by-cy)+bx*(cy-ay)+cx*(ay-by))/2.0)
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    a = []
-    for i in range(n):
-        x, y = map(int, input().split())
-        a.append((x, y))
-    ans = 0
-    for i in range(n):
-        for j in range(i + 1, n):
-            for k in range(j + 1, n):
-                x1, y1 = a[i]
-                x2, y2 = a[j]
-                x3, y3 = a[k]
-                x1 -= x3
-                x2 -= x3
-                y1 -= y3
-                y2 -= y3
-                s = abs(x1 * y2 - x2 * y1)
-                if s > 0 and s % 2 == 0:
-                    ans += 1
-    print(ans)
-
-main()
+def dfs(used, pos, cnt):
+    if cnt > 16:
+        return -1
+    if used == 0b11111111:
+        return cnt
+    res = -1
+    for i in range(8):
+        if pos == i:
+            continue
+        if not (used & (1 << i)):
+            res = max(res, dfs(used | (1 << i), i, cnt+1))
+    return res
 
 =======
 Suggestion 4
 
-def calc_area(x1, y1, x2, y2, x3, y3):
-    return abs(x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2))/2
-
-n = int(input())
-points = []
-for i in range(n):
-    x, y = map(int, input().split())
-    points.append((x, y))
-
-ans = 0
-for i in range(n):
-    for j in range(i+1, n):
-        for k in range(j+1, n):
-            x1, y1 = points[i]
-            x2, y2 = points[j]
-            x3, y3 = points[k]
-            area = calc_area(x1, y1, x2, y2, x3, y3)
-            if area != 0:
-                ans += 1
-print(ans)
+def solve(M, u, v, p):
+    if M == 0:
+        return 0
+    if M == 1:
+        return 1
+    if M == 2:
+        return 2
+    if M == 3:
+        return 3
+    if M == 4:
+        return 4
+    if M == 5:
+        return 5
+    if M == 6:
+        return 7
+    if M == 7:
+        return 9
+    if M == 8:
+        return 11
+    if M == 9:
+        return 13
+    if M == 10:
+        return 15
+    if M == 11:
+        return 17
+    if M == 12:
+        return 19
+    if M == 13:
+        return 21
+    if M == 14:
+        return 23
+    if M == 15:
+        return 25
+    if M == 16:
+        return 27
+    if M == 17:
+        return 29
+    if M == 18:
+        return 31
+    if M == 19:
+        return 33
+    if M == 20:
+        return 35
+    if M == 21:
+        return 37
+    if M == 22:
+        return 39
+    if M == 23:
+        return 41
+    if M == 24:
+        return 43
+    if M == 25:
+        return 45
+    if M == 26:
+        return 47
+    if M == 27:
+        return 49
+    if M == 28:
+        return 51
+    if M == 29:
+        return 53
+    if M == 30:
+        return 55
+    if M == 31:
+        return 57
+    if M == 32:
+        return 59
+    if M == 33:
+        return 61
+    if M == 34:
+        return 63
+    if M == 35:
+        return 65
+    if M == 36:
+        return 67
 
 =======
 Suggestion 5
 
-def area2(p1,p2,p3):
-    return (p2[0]-p1[0])*(p3[1]-p1[1])-(p3[0]-p1[0])*(p2[1]-p1[1])
-
-n = int(input())
-points = []
-for i in range(n):
-    points.append(tuple(map(int,input().split())))
-
-ans = 0
-for i in range(n):
-    for j in range(i+1,n):
-        for k in range(j+1,n):
-            if area2(points[i],points[j],points[k]) != 0:
-                ans += 1
-print(ans)
+def main():
+    pass
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(n):
-        x_, y_ = map(int, input().split())
-        x.append(x_)
-        y.append(y_)
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if (x[i]-x[k])*(y[j]-y[k]) != (x[j]-x[k])*(y[i]-y[k]):
-                    ans += 1
-    print(ans)
+def solve():
+    return 0
 
 =======
 Suggestion 7
 
-def main():
-    N = int(input())
-    points = []
-    for i in range(N):
-        points.append(list(map(int, input().split())))
-    # print(points)
-    count = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            for k in range(j+1, N):
-                x1 = points[i][0]
-                y1 = points[i][1]
-                x2 = points[j][0]
-                y2 = points[j][1]
-                x3 = points[k][0]
-                y3 = points[k][1]
-                if (x1-x2)*(y1-y3) != (x1-x3)*(y1-y2):
-                    count += 1
-    print(count)
+def dfs(v, p, d):
+    if d == 9:
+        return 1
+    if v == p[d]:
+        return dfs(v, p, d+1)
+    return dfs(p[d], p, d+1) + 1
 
 =======
 Suggestion 8
 
-def get_area(x1,y1,x2,y2,x3,y3):
-    return abs(0.5*((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3)))
-
-=======
-Suggestion 9
-
-def get_area(x1, y1, x2, y2, x3, y3):
-    return abs((x1 * y2 + x2 * y3 + x3 * y1) - (y1 * x2 + y2 * x3 + y3 * x1)) / 2
-
-=======
-Suggestion 10
-
-def get_triangle_number(points):
-    if len(points) < 3:
-        return 0
-    count = 0
-    for i in range(len(points)):
-        for j in range(i+1, len(points)):
-            for k in range(j+1, len(points)):
-                if get_area(points[i], points[j], points[k]) > 0:
-                    count += 1
-    return count
+def solve():
+    pass

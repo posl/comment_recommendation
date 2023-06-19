@@ -1,213 +1,223 @@
-Synthesizing 8/10 solutions
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def getMinNumOfWithdraws(amount):
-    # 递归调用
-    def getMinNumOfWithdrawsRec(amount, withdraws):
-        if amount == 0:
-            return 0
-        if amount < 0:
-            return float('inf')
-        minNumOfWithdraws = float('inf')
-        for withdraw in withdraws:
-            minNumOfWithdraws = min(minNumOfWithdraws, getMinNumOfWithdrawsRec(amount - withdraw, withdraws))
-        return minNumOfWithdraws + 1
-
-    withdraws = [1]
-    power = 6
-    while power <= amount:
-        withdraws.append(power)
-        power *= 6
-    power = 9
-    while power <= amount:
-        withdraws.append(power)
-        power *= 9
-    return getMinNumOfWithdrawsRec(amount, withdraws)
+def main():
+    n = int(input())
 
 =======
 Suggestion 2
 
 def main():
     n = int(input())
-    ans = [0] * (n + 1)
-    for i in range(1, n + 1):
-        ans[i] = i
-        j = 6
+    dp = [float('inf')]*(n+1)
+    dp[0] = 0
+    for i in range(1,n+1):
+        j = 1
         while j <= i:
-            ans[i] = min(ans[i], ans[i - j] + 1)
+            dp[i] = min(dp[i],dp[i-j]+1)
             j *= 6
-        j = 9
+        j = 1
         while j <= i:
-            ans[i] = min(ans[i], ans[i - j] + 1)
+            dp[i] = min(dp[i],dp[i-j]+1)
             j *= 9
-    print(ans[n])
+    print(dp[n])
 
 =======
 Suggestion 3
 
-def getMinCount(n):
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    if n == 6:
-        return 1
-    if n == 9:
-        return 1
-    if n == 36:
-        return 1
-    if n == 81:
-        return 1
-    if n == 216:
-        return 1
-    if n == 729:
-        return 1
-    if n == 1296:
-        return 1
-    if n == 6561:
-        return 1
-    if n == 7776:
-        return 1
-    if n == 46656:
-        return 1
-    if n == 59049:
-        return 1
-    if n == 279936:
-        return 1
-    if n == 531441:
-        return 1
-    if n == 1679616:
-        return 1
-    if n == 4782969:
-        return 1
-    if n == 14348907:
-        return 1
-    if n == 43046721:
-        return 1
-    if n == 129140163:
-        return 1
-    if n == 387420489:
-        return 1
-    if n == 1162261467:
-        return 1
-    if n == 3486784401:
-        return 1
-    if n == 10460353203:
-        return 1
-    if n == 31381059609:
-        return 1
-    if n == 94143178827:
-        return 1
-    if n == 282429536481:
-        return 1
-    if n == 847288609443:
-        return 1
-    if n == 2541865828329:
-        return 1
-    if n == 7625597484987:
-        return 1
-    if n == 22876792454961:
-        return 1
-    if n == 68630377364883:
-        return 1
-    if n == 205891132094649:
-        return 1
-    if n == 617673396283947:
-        return 1
-    if n == 1853020188851841:
-        return 1
-    if n == 555
+def getMinTimes(N):
+    # 1, 6, 9
+    # 6^2, 9^2
+    # 6^3, 9^3
+    # 6^4, 9^4
+    # 6^5, 9^5
+    # 6^6, 9^6
+    # 6^7, 9^7
+    # 6^8, 9^8
+    # 6^9, 9^9
+    # 6^10, 9^10
+    # 6^11, 9^11
+    # 6^12, 9^12
+    # 6^13, 9^13
+    # 6^14, 9^14
+    # 6^15, 9^15
+    # 6^16, 9^16
+    # 6^17, 9^17
+    # 6^18, 9^18
+    # 6^19, 9^19
+    # 6^20, 9^20
+    # 6^21, 9^21
+    # 6^22, 9^22
+    # 6^23, 9^23
+    # 6^24, 9^24
+    # 6^25, 9^25
+    # 6^26, 9^26
+    # 6^27, 9^27
+    # 6^28, 9^28
+    # 6^29, 9^29
+    # 6^30, 9^30
+    # 6^31, 9^31
+    # 6^32, 9^32
+    # 6^33, 9^33
+    # 6^34, 9^34
+    # 6^35, 9^35
+    # 6^36, 9^36
+    # 6^37, 9^37
+    # 6^38, 9^38
+    # 6^39, 9^39
+    # 6^40, 9^40
+    # 6^41, 9^41
+    # 6
 
 =======
 Suggestion 4
 
-def find_min_count(n):
-    count = 0
-    while n > 0:
-        if n >= 729:
-            n -= 729
-        elif n >= 216:
-            n -= 216
-        elif n >= 81:
-            n -= 81
-        elif n >= 36:
-            n -= 36
-        elif n >= 9:
-            n -= 9
-        elif n >= 6:
-            n -= 6
-        else:
-            n -= 1
-        count += 1
-    return count
+def solve(n):
+    # 1. 1円玉を使う
+    # 2. 6^n円玉を使う
+    # 3. 9^n円玉を使う
+    # いずれの場合も、最大値はn枚
+    # 1円玉を使う場合を考える
+    # 1円玉を使う場合、残りの金額はn-1となる
+    # 6^n円玉を使う場合、残りの金額はn-6^nとなる
+    # 9^n円玉を使う場合、残りの金額はn-9^nとなる
+    # これを繰り返す
+    # 1円玉を使う場合、残りの金額はn-1となる
+    # 6^n円玉を使う場合、残りの金額はn-6^nとなる
+    # 9^n円玉を使う場合、残りの金額はn-9^nとなる
+    # これを繰り返す
+    # 1円玉を使う場合、残りの金額はn-1となる
+    # 6^n円玉を使う場合、残りの金額はn-6^nとなる
+    # 9^n円玉を使う場合、残りの金額はn-9^nとなる
+    # これを繰り返す
+    # ...
+    # これを繰り返す
+    # n円玉を使う場合、残りの金額はn-n^nとなる
+    # これを繰り返す
+    # これを繰り返す
+    # これを繰り返す
+    # ...
+    # これを繰り返す
+    # これを繰り返す
 
 =======
 Suggestion 5
 
-def get_min_count(N):
-    count = 0
-    while N > 0:
-        if N >= 729:
-            N -= 729
-        elif N >= 216:
-            N -= 216
-        elif N >= 81:
-            N -= 81
-        elif N >= 36:
-            N -= 36
-        elif N >= 9:
-            N -= 9
-        elif N >= 6:
-            N -= 6
-        elif N >= 1:
-            N -= 1
-        count += 1
-    return count
+def problem099_c():
+    N = int(input())
+    dp = [0 for i in range(N+1)]
+    for i in range(1, N+1):
+        dp[i] = float('inf')
+        k = 1
+        while i >= k:
+            dp[i] = min(dp[i], dp[i-k]+1)
+            k *= 6
+        k = 1
+        while i >= k:
+            dp[i] = min(dp[i], dp[i-k]+1)
+            k *= 9
+    print(dp[N])
 
 =======
 Suggestion 6
 
-def solve():
-    n = int(input())
-    dp = [0]*(n+1)
-    for i in range(1,n+1):
-        dp[i] = i
-        j = 1
-        while j*j <= i:
-            dp[i] = min(dp[i],dp[i-j*j]+1)
-            j += 1
-    print(dp[n])
-
-solve()
+def getLeastTimes(n):
+    if n <= 6:
+        return n
+    elif n <= 9:
+        return 2
+    else:
+        return 1 + min(getLeastTimes(n-1), getLeastTimes(n-6), getLeastTimes(n-9))
 
 =======
 Suggestion 7
 
-def withdrawl(n):
-    count = 0
-    while n > 0:
-        if n % 9 == 0:
-            n = n - 9
-            count = count + 1
-        elif n % 6 == 0:
-            n = n - 6
-            count = count + 1
-        elif n % 1 == 0:
-            n = n - 1
-            count = count + 1
-    return count
+def min_count(n):
+    dp = [100000] * (n + 1)
+    dp[0] = 0
+    for i in range(1, n + 1):
+        j = 1
+        while i - j >= 0:
+            dp[i] = min(dp[i], dp[i - j] + 1)
+            j *= 6
+        j = 1
+        while i - j >= 0:
+            dp[i] = min(dp[i], dp[i - j] + 1)
+            j *= 9
+    return dp[n]
+
+n = int(input())
+print(min_count(n))
 
 =======
 Suggestion 8
 
-def get_min_operation(n):
-    min_operation = n
-    for i in range(0,n+1):
-        for j in range(0,n+1):
-            if 6**i + 9**j > n:
-                break
-            if 6**i + 9**j == n:
-                min_operation = min(min_operation,i+j)
-    return min_operation
+def solution(n):
+    if n == 0:
+        return 0
+    elif n < 6:
+        return n
+    else:
+        min_num = n
+        for i in range(1, 6):
+            if n >= 6 ** i:
+                min_num = min(min_num, solution(n - 6 ** i) + 1)
+            if n >= 9 ** i:
+                min_num = min(min_num, solution(n - 9 ** i) + 1)
+        return min_num
+
+=======
+Suggestion 9
+
+def solution(n):
+    # 1. 从1开始计算，直到大于n
+    # 2. 从n开始计算，直到小于1
+    # 3. 从n开始计算，直到小于1
+    # 4. 从n开始计算，直到小于1
+    # 5. 从n开始计算，直到小于1
+    # 6. 从n开始计算，直到小于1
+    # 7. 从n开始计算，直到小于1
+    # 8. 从n开始计算，直到小于1
+    # 9. 从n开始计算，直到小于1
+    # 10. 从n开始计算，直到小于1
+    # 11. 从n开始计算，直到小于1
+    # 12. 从n开始计算，直到小于1
+    # 13. 从n开始计算，直到小于1
+    # 14. 从n开始计算，直到小于1
+    # 15. 从n开始计算，直到小于1
+    # 16. 从n开始计算，直到小于1
+    # 17. 从n开始计算，直到小于1
+    # 18. 从n开始计算，直到小于1
+    # 19. 从n开始计算，直到小于1
+    # 20. 从n开始计算，直到小于1
+    # 21. 从n开始计算，直到小于1
+    # 22. 从n开始计算，直到小于1
+    # 23. 从n开始计算，直到小于1
+    # 24. 从n开始计算，直到小于1
+    # 25. 从n开始计算，直到小于1
+    # 26. 从n开始计算，直到小于1
+    # 27. 从n开始计算，直到小于1
+    # 28. 从n开始计算
+
+=======
+Suggestion 10
+
+def get_change(n):
+    # 1, 6, 9
+    # 1, 6, 36, 216
+    # 1, 9, 81, 729
+    # 1, 9, 81, 729, 6561
+    # 1, 6, 36, 216, 1296, 7776
+    # 1, 9, 81, 729, 6561, 59049
+    # 1, 9, 81, 729, 6561, 59049, 531441
+    # 1, 6, 36, 216, 1296, 7776, 46656, 279936
+    # 1, 9, 81, 729, 6561, 59049, 531441, 4782969
+    # 1, 9, 81, 729, 6561, 59049, 531441, 4782969, 43046721
+    # 1, 6, 36, 216, 1296, 7776, 46656, 279936, 1679616, 10077696
+    # 1, 9, 81, 729, 6561, 59049, 531441, 4782969, 43046721, 387420489
+    # 1, 9, 81, 729, 6561, 59049, 531441, 4782969, 43046721, 387420489, 3486784401
+    # 1, 6, 36, 216, 1296, 7776, 46656, 279936, 1679616, 10077696, 60466176, 362797056
+    # 1, 9, 81, 729, 6561, 59049, 531441, 4782969, 43046721, 387420489, 3486784401, 31381059609
+    # 1, 9, 81, 729, 6561, 59049, 531441, 4782969, 43046721, 387420489,
