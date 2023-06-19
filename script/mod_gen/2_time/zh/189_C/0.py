@@ -1,19 +1,13 @@
 def main():
-    N,X = map(int,input().split())
-    V = []
-    P = []
-    for i in range(N):
-        v,p = map(int,input().split())
-        V.append(v)
-        P.append(p)
-    sum = 0
-    for i in range(N):
-        sum += V[i]*P[i]
-        if sum > X*100:
-            print(i+1)
-            break
-    else:
-        print(-1)
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for l in range(n):
+        x = a[l]
+        for r in range(l, n):
+            x = min(x, a[r])
+            ans = max(ans, x*(r-l+1))
+    print(ans)
 
 if __name__ == '__main__':
     main()

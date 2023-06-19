@@ -1,11 +1,9 @@
-def main():
-    n = int(input())
-    v = list(map(int, input().split()))
-    v.sort()
-    ans = v[0]
-    for i in range(1, n):
-        ans = (ans + v[i]) / 2
-    print(ans)
+def tree_add(tree, v, x):
+    tree[v] += x
+    for i in range(1, len(tree)):
+        if tree[i] == v:
+            tree_add(tree, i, x)
+    return tree
 
 if __name__ == '__main__':
-    main()
+    tree_add()

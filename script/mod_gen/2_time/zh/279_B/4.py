@@ -1,9 +1,10 @@
-def count_bottoms(s):
-    count = 0
-    for i in range(len(s)):
-        if s[i] == 'w':
-            count += s[i+1:].count('v')
-    return count
+def solve():
+    S = input()
+    T = input()
+    if T in S:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    count_bottoms()
+    solve()

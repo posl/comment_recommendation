@@ -1,7 +1,9 @@
-def get_input():
-    N = int(input())
-    A = list(map(int, input().split()))
-    return N, A
+def solve(n, s):
+    ans = 1
+    for i in range(n):
+        if s[i] == 'OR':
+            ans += 2**(i+1)
+    return ans
 
 if __name__ == '__main__':
-    get_input()
+    solve()

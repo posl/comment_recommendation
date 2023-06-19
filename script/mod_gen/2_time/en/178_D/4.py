@@ -7,6 +7,3 @@ def main():
             dp[j] += dp[j - i]
     print(dp[S] % 1000000007)
 main()
-
-if __name__ == '__main__':
-    main()

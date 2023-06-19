@@ -1,10 +1,15 @@
 def main():
     n = int(input())
-    x = list(map(int, input().split()))
-    x_abs = list(map(abs, x))
-    print(sum(x_abs))
-    print(sum(map(lambda x: x * x, x_abs)) ** 0.5)
-    print(max(x_abs))
+    #n = 1000000007
+    #n = 720
+    num = 1
+    #num_list = []
+    while num <= n:
+        if n % num == 0:
+            #num_list.append(num)
+            print(num)
+        num += 1
+    #print(num_list)
 
 if __name__ == '__main__':
     main()

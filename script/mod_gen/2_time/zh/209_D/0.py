@@ -1,13 +1,9 @@
-def main():
-    N = int(input())
-    C = list(map(int, input().split()))
-    C.sort()
-    mod = 10**9+7
-    ans = 1
-    for i in range(N):
-        ans *= max(C[i]-i, 0)
-        ans %= mod
-    print(ans)
+def find(x):
+    if x == parents[x]:
+        return x
+    else:
+        parents[x] = find(parents[x])
+        return parents[x]
 
 if __name__ == '__main__':
-    main()
+    find()

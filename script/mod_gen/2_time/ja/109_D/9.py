@@ -15,6 +15,3 @@ def  main ():
     print ( len (ans))
      for  i  in  ans:
         print ( ' ' .join(map( str , i)))
-
-if __name__ == '__main__':
-    ()

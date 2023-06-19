@@ -1,19 +1,11 @@
-def main():
-    n = int(input())
+def base_minus2(n):
     if n == 0:
-        print(0)
-        return 0
-    else:
-        s = ''
-        while n != 0:
-            if n % -2 == 0:
-                s = '0' + s
-                n = n // -2
-            else:
-                s = '1' + s
-                n = (n - 1) // -2
-        print(s)
-        return 0
+        return '0'
+    res = ''
+    while n != 0:
+        res = str(n % (-2)) + res
+        n = n // (-2)
+    return res
 
 if __name__ == '__main__':
-    main()
+    base_minus2()

@@ -1,15 +1,26 @@
-def problem202c():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    d = [0] * (n + 1)
-    for i in range(n):
-        d[b[c[i] - 1]] += 1
-    ans = 0
-    for i in range(n):
-        ans += d[a[i]]
+def solve():
+    A, B, K = map(int, input().split())
+    import math
+    def comb(a, b):
+        return math.factorial(a + b) // (math.factorial(a) * math.factorial(b))
+    ans = ''
+    while A + B > 0:
+        if A == 0:
+            ans += 'b'
+            B -= 1
+            continue
+        if B == 0:
+            ans += 'a'
+            A -= 1
+            continue
+        if K <= comb(A - 1, B):
+            ans += 'a'
+            A -= 1
+        else:
+            ans += 'b'
+            K -= comb(A - 1, B)
+            B -= 1
     print(ans)
 
 if __name__ == '__main__':
-    problem202c()
+    solve()

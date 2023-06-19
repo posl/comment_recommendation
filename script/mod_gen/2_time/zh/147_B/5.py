@@ -1,9 +1,10 @@
 def main():
-    A_1,A_2,A_3 = map(int,input().split())
-    if A_1 + A_2 + A_3 >= 22:
-        print("bust")
-    else:
-        print("win")
+    s = input()
+    res = 0
+    for i in range(len(s)//2):
+        if s[i] != s[-i-1]:
+            res += 1
+    print(res)
 
 if __name__ == '__main__':
     main()

@@ -1,8 +1,5 @@
-def f(x, n):
-    if x == 0:
-        return 0
-    else:
-        return f(x//n, n) + x%n
+def cal_discount_rate(a, b):
+    return (a - b) / a * 100
 
 if __name__ == '__main__':
-    f()
+    cal_discount_rate()

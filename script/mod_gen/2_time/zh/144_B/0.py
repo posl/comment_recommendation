@@ -1,9 +1,11 @@
 def main():
-    a,b = map(int,input().split())
-    if a >= 1 and a <= 20 and b >= 1 and b <= 20:
-        print(a*b)
-    else:
-        print(-1)
+    N = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if i * j == N:
+                print("Yes")
+                return
+    print("No")
 
 if __name__ == '__main__':
     main()

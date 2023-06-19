@@ -1,8 +1,6 @@
-def max(a,b):
-    if a > b:
-        return a
-    else:
-        return b
-a,b = map(int,input().split())
-print(max(a+b,a-b))
-print(max(a+b,a*b))
+def main():
+    k,x = map(int,input().split())
+    print(" ".join([str(i) for i in range(x-k+1,x+k)]))
+
+if __name__ == '__main__':
+    main()

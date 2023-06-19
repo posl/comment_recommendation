@@ -1,27 +1,22 @@
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    min = n
-    if min > a:
-        min = a
-    if min > b:
-        min = b
-    if min > c:
-        min = c
-    if min > d:
-        min = d
-    if min > e:
-        min = e
-    if min == n:
-        print(5)
-    elif n % min == 0:
-        print(n // min + 4)
-    else:
-        print(n // min + 5)
-
-if __name__ == '__main__':
-    main()
+    # 读取输入
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    # 从大到小排序
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    # 三重循环
+    ans = []
+    for a in A:
+        for b in B:
+            for c in C:
+                ans.append(a + b + c)
+    # 从大到小排序
+    ans.sort(reverse=True)
+    # 输出答案
+    for i in range(K):
+        print(ans[i])
+main()

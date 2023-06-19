@@ -5,6 +5,3 @@ def median():
     else:
         print("No")
 median()
-
-if __name__ == '__main__':
-    median()

@@ -1,15 +1,13 @@
 def main():
     n = int(input())
-    flag = False
-    for i in range(1, 10):
-        for j in range(1, 10):
-            if n == i * j:
-                flag = True
-                break
-    if flag:
-        print("Yes")
-    else:
-        print("No")
+    ans = 0
+    while n > 1:
+        if n % 2 == 0:
+            n //= 2
+        else:
+            n -= 1
+        ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

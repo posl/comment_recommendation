@@ -25,6 +25,3 @@ def main():
     ans=1+t*2+u*2+v*2+t*u*2+t*v*2+u*v*2
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

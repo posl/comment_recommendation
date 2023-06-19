@@ -1,16 +1,38 @@
-def get_ans(n, k, s):
-    ans = 0
-    for i in range(1<<n):
-        if bin(i).count('1') != k:
-            continue
-        tmp = set()
-        for j in range(n):
-            if i & (1<<j):
-                for c in s[j]:
-                    tmp.add(c)
-        if len(tmp) == k:
-            ans = max(ans, bin(i).count('1'))
-    return ans
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    #print(A)
+    # 1. A[i] / A[j] = A[k]
+    # 2. A[i] / A[k] = A[j]
+    # 3. A[j] / A[i] = A[k]
+    # 4. A[j] / A[k] = A[i]
+    # 5. A[k] / A[i] = A[j]
+    # 6. A[k] / A[j] = A[i]
+    # 1. A[i] = A[k] * A[j]
+    # 2. A[i] = A[j] / A[k]
+    # 3. A[j] = A[i] * A[k]
+    # 4. A[j] = A[k] / A[i]
+    # 5. A[k] = A[i] * A[j]
+    # 6. A[k] = A[j] / A[i]
+    # 1. A[i] * A[j] = A[k]
+    # 2. A[i] / A[j] = A[k]
+    # 3. A[j] * A[k] = A[i]
+    # 4. A[j] / A[k] = A[i]
+    # 5. A[k] * A[i] = A[j]
+    # 6. A[k] / A[i] = A[j]
+    # 1. A[i] = A[k] - A[j]
+    # 2. A[i] = A[j] / A[k]
+    # 3. A[j] = A[i] * A[k]
+    # 4. A[j] = A[k] / A[i]
+    # 5. A[k] = A[i] + A[j]
+    # 6. A[k] = A[j] - A[i]
+    # 1. A[i] = A[k] * A[j]
+    # 2. A[i] = A[j] / A[k]
+    # 3. A[j] = A[i] * A[k]
+    # 4. A[j] = A[k] / A[i]
+    # 5. A[k] = A[i] + A[j]
+    #
 
 if __name__ == '__main__':
-    get_ans()
+    main()

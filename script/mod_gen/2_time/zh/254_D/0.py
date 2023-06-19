@@ -1,11 +1,10 @@
-def main():
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    for i in range(n-k):
-        if a[i] > a[i+k]:
-            print("No")
-            return
-    print("Yes")
+def solve(n):
+    count=0
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            if i*j==int(i**0.5)**2*j:
+                count+=1
+    print(count)
 
 if __name__ == '__main__':
-    main()
+    solve()

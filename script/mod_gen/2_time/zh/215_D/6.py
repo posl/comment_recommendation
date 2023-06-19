@@ -1,7 +1,7 @@
-def getPermutation(s, k):
-    s = list(s)
-    s.sort()
-    return dfs(s, k, 0, len(s))
+def gcd(x,y):
+    while x:
+        x,y = y%x,x
+    return y
 
 if __name__ == '__main__':
-    getPermutation()
+    gcd()

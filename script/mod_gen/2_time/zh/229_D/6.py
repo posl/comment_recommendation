@@ -1,16 +1,38 @@
 def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    dp = [0] * (W + 1)
-    for i in range(N):
-        for j in range(W, B[i] - 1, -1):
-            dp[j] = max(dp[j], dp[j - B[i]] + A[i])
-    print(dp[W])
+    S = input()
+    K = int(input())
+    N = len(S)
+    if K == 0:
+        ans = 0
+        count = 0
+        for s in S:
+            if s == "X":
+                count += 1
+            else:
+                ans = max(ans, count)
+                count = 0
+        ans = max(ans, count)
+        print(ans)
+        return
+    ans = 0
+    count = 0
+    for s in S:
+        if s == "X":
+            count += 1
+        else:
+            ans = max(ans, count)
+            count = 0
+    ans = max(ans, count)
+    if K >= 2:
+        count = 0
+        for s in S:
+            if s == "X":
+                count += 1
+            else:
+                ans = max(ans, count + 1)
+                count = 0
+        ans = max(ans, count + 1)
+    print(ans)
 
 if __name__ == '__main__':
     main()

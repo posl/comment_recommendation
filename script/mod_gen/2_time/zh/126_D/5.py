@@ -1,15 +1,57 @@
-def solve(n,k):
-    ans = 0
-    for i in range(1,n+1):
-        if i >= k:
-            ans += 1/n
-        else:
-            cnt = 0
-            while i < k:
-                i *= 2
-                cnt += 1
-            ans += (1/n) * (0.5 ** cnt)
-    return ans
+def main():
+    N = int(input())
+    edges = []
+    for i in range(N-1):
+        edge = list(map(int, input().split()))
+        edges.append(edge)
+    #print(edges)
+    #edges = [[1, 2, 2], [2, 3, 1]]
+    #edges = [[2, 5, 2], [2, 3, 10], [1, 3, 8], [3, 4, 2]]
+    #print(edges)
+    #edges.sort(key=lambda x:x[2])
+    #print(edges)
+    #print(edges)
+    #print(edges[0][0])
+    #print(edges[0][1])
+    #print(edges[0][2])
+    #print(edges[1][0])
+    #print(edges[1][1])
+    #print(edges[1][2])
+    #print(edges[2][0])
+    #print(edges[2][1])
+    #print(edges[2][2])
+    #print(edges[3][0])
+    #print(edges[3][1])
+    #print(edges[3][2])
+    #print(edges[4][0])
+    #print(edges[4][1])
+    #print(edges[4][2])
+    #print(edges[5][0])
+    #print(edges[5][1])
+    #print(edges[5][2])
+    #print(edges[6][0])
+    #print(edges[6][1])
+    #print(edges[6][2])
+    #print(edges[7][0])
+    #print(edges[7][1])
+    #print(edges[7][2])
+    #print(edges[8][0])
+    #print(edges[8][1])
+    #print(edges[8][2])
+    #print(edges[9][0])
+    #print(edges[9][1])
+    #print(edges[9][2])
+    #print(edges[10][0])
+    #print(edges[10][1])
+    #print(edges[10][2])
+    #print(edges[11][0])
+    #print(edges[11][1])
+    #print(edges[11][2])
+    #print(edges[12][0])
+    #print(edges[12][1])
+    #print(edges[12][2])
+    #print(edges[13][0])
+    #print(edges[13][1])
 
 if __name__ == '__main__':
-    solve()
+    main()

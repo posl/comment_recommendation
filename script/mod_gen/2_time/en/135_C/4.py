@@ -10,6 +10,3 @@ def solve():
         A[i+1] -= min(B[i], A[i+1])
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

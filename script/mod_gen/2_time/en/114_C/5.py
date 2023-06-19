@@ -12,6 +12,3 @@ def main():
             S[i] += S[i // 7]
     print(S[N])
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,10 +1,10 @@
-def problem247_a():
-    s = input()
-    result = ""
-    for i in range(len(s)):
-        if i == len(s) - 1:
-            result += "0"
-        else:
-            result += s[i + 1]
-    print(result)
-problem247_a()
+def solution(n, names):
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if names[i][0] == names[j][0] or names[i][1] == names[j][1]:
+                    return 'Yes'
+    return 'No'
+
+if __name__ == '__main__':
+    solution()

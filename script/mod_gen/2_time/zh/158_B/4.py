@@ -1,12 +1,7 @@
-def main():
-    s = input()
-    if s.count('A') == 1 and s.count('B') == 2:
-        print('Yes')
-    elif s.count('A') == 2 and s.count('B') == 1:
-        print('Yes')
+def solve(n, a, b):
+    if n<=a:
+        return n
     else:
-        print('No')
-    return 0
-
-if __name__ == '__main__':
-    main()
+        return a + (n-a)%b
+n, a, b = map(int, input().split())
+print(solve(n, a, b))

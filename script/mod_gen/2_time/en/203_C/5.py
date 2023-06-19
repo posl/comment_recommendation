@@ -8,6 +8,3 @@ def solve():
         K += B
     print(K)
 solve()
-
-if __name__ == '__main__':
-    solve()

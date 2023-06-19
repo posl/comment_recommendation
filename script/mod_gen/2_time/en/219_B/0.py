@@ -11,6 +11,3 @@ def main():
         elif i == '3':
             print(s3, end='')
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,10 +1,12 @@
-def get_height(n, m, x, t, d):
-    height = t
-    for i in range(1, n):
-        if i == x:
-            continue
-        height += d
-    return height
+def rotate(a,b,d):
+    import math
+    d=math.radians(d)
+    a_=a*math.cos(d)-b*math.sin(d)
+    b_=a*math.sin(d)+b*math.cos(d)
+    return a_,b_
+a,b,d=map(float,input().split())
+a_,b_=rotate(a,b,d)
+print(a_,b_)
 
 if __name__ == '__main__':
-    get_height()
+    rotate()

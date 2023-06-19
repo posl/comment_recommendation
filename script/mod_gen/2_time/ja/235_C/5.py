@@ -22,6 +22,3 @@ def main():
         else:
             print(X_index[x][k-1]+1)
 main()
-
-if __name__ == '__main__':
-    main()

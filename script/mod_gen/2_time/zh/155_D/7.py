@@ -1,28 +1,30 @@
-def main():
-    N = int(input())
-    S = [input() for i in range(N)]
-    S.sort()
-    max_count = 0
-    count = 0
-    for i in range(1, N):
-        if S[i] == S[i - 1]:
-            count += 1
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    l = -10**18-1
+    r = 10**18+1
+    while l+1 < r:
+        m = (l+r)//2
+        cnt = 0
+        for i in range(n):
+            if a[i] > 0:
+                cnt += n - i - 1
+                continue
+            l2 = i + 1
+            r2 = n
+            while l2+1 < r2:
+                m2 = (l2+r2)//2
+                if a[i]*a[m2] <= m:
+                    r2 = m2
+                else:
+                    l2 = m2
+            cnt += n - r2
+        if cnt < k:
+            l = m
         else:
-            if count > max_count:
-                max_count = count
-            count = 0
-    if count > max_count:
-        max_count = count
-    count = 0
-    for i in range(1, N):
-        if S[i] == S[i - 1]:
-            count += 1
-        else:
-            if count == max_count:
-                print(S[i - 1])
-            count = 0
-    if count == max_count:
-        print(S[i - 1])
+            r = m
+    print(r)
 
 if __name__ == '__main__':
-    main()
+    solve()

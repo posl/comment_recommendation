@@ -1,13 +1,10 @@
-def solve():
-    n,m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort(reverse=True)
-    #print(a)
-    for i in range(m):
-        a[0] = a[0] // 2
-        a.sort(reverse=True)
-        #print(a)
-    print(sum(a))
+def main():
+    num = int(input())
+    odd = 0
+    for i in range(1, num+1):
+        if i % 2 == 1:
+            odd += 1
+    print(odd/num)
 
 if __name__ == '__main__':
-    solve()
+    main()

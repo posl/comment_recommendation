@@ -1,22 +1,18 @@
-def solve():
-    v,a,b,c = map(int,input().split())
-    while v >= 0:
-        if v >= a:
-            v -= a
-        else:
-            print("F")
-            break
-        if v >= b:
-            v -= b
-        else:
-            print("M")
-            break
-        if v >= c:
-            v -= c
-        else:
-            print("T")
-            break
-    return 0
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                count2 += 1
+    print(count1)
+    print(count2)
 
 if __name__ == '__main__':
-    solve()
+    main()

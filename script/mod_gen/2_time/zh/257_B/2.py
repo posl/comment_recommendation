@@ -1,6 +1,8 @@
-def problems257_a():
-    n, x = map(int, input().split())
-    print(chr(ord('A') + (x - 1) % 26))
+def get_input():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    return N, K, Q, A, L
 
 if __name__ == '__main__':
-    problems257_a()
+    get_input()

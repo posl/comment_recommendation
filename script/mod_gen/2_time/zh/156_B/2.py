@@ -1,9 +1,10 @@
 def main():
-    n,r = map(int,input().split())
-    if n >= 10:
-        print(r)
-    else:
-        print(r+100*(10-n))
+    n,k = map(int,input().split())
+    i = 0
+    while n >= k:
+        n = n // k
+        i += 1
+    print(i+1)
 
 if __name__ == '__main__':
     main()

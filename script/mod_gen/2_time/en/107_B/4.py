@@ -7,6 +7,3 @@ def main():
     for a in A:
         print(''.join(a))
 main()
-
-if __name__ == '__main__':
-    main()

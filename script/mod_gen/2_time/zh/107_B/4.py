@@ -1,19 +1,21 @@
-def problems107_b():
+def main():
     H, W = map(int, input().split())
-    a = [input() for i in range(H)]
-    b = []
+    grid = []
     for i in range(H):
-        if '#' in a[i]:
-            b.append(a[i])
-    c = []
-    for i in range(len(b[0])):
-        t = []
-        for j in range(len(b)):
-            t.append(b[j][i])
-        if '#' in t:
-            c.append(t)
-    for i in range(len(c)):
-        print(''.join(c[i]))
+        grid.append(input())
+    row = [0] * H
+    col = [0] * W
+    for i in range(H):
+        for j in range(W):
+            if grid[i][j] == '#':
+                row[i] = 1
+                col[j] = 1
+    for i in range(H):
+        if row[i] == 1:
+            for j in range(W):
+                if col[j] == 1:
+                    print(grid[i][j], end = '')
+            print()
 
 if __name__ == '__main__':
-    problems107_b()
+    main()

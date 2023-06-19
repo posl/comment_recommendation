@@ -1,13 +1,7 @@
-def main():
-    n,m=map(int,input().split())
-    a=list(map(int,input().split()))
-    c=list(map(int,input().split()))
-    b=[0]*(m+1)
-    b[0]=c[0]/a[0]
-    for i in range(1,m+1):
-        b[i]=(c[i]-sum([b[j]*a[i-j] for j in range(1,i+1)]))/a[0]
-    for i in range(m+1):
-        print(int(b[i]),end=' ')
+def get_vertex(x1, y1, x2, y2, x3, y3):
+    x4 = x3 + x1 - x2
+    y4 = y3 + y1 - y2
+    return x4, y4
 
 if __name__ == '__main__':
-    main()
+    get_vertex()

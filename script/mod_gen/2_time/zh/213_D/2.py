@@ -1,23 +1,13 @@
-def main():
-    h,w,n = map(int,input().split())
-    a = []
-    b = []
-    for i in range(n):
-        a_,b_ = map(int,input().split())
-        a.append(a_)
-        b.append(b_)
-    a = list(set(a))
-    b = list(set(b))
-    a.sort()
-    b.sort()
-    a_index = {}
-    b_index = {}
-    for i in range(len(a)):
-        a_index[a[i]] = i+1
-    for i in range(len(b)):
-        b_index[b[i]] = i+1
-    for i in range(n):
-        print(a_index[a[i]],b_index[b[i]])
-
-if __name__ == '__main__':
-    main()
+def solve():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    AB.sort()
+    ans = [1]
+    for i in range(N-1):
+        a, b = AB[i]
+        if a == ans[-1]:
+            ans.append(b)
+        elif b == ans[-1]:
+            ans.append(a)
+    print(*ans)
+solve()

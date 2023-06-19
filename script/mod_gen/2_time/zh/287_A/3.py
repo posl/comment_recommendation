@@ -1,13 +1,14 @@
-def main():
-    n, x = map(int, input().split())
-    sum = 0
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    count = 0
     for i in range(n):
-        a, b = map(int, input().split())
-        sum += a * b
-    if sum <= x:
+        if s[i] == "For":
+            count += 1
+    if count > n/2:
         print("Yes")
     else:
         print("No")
 
 if __name__ == '__main__':
-    main()
+    solve()

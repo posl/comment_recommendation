@@ -1,10 +1,8 @@
-def main():
-    while True:
-        try:
-            a,b = map(int,input().split())
-            print(7-a+7-b)
-        except:
-            break
+def solve(x, y, z):
+    if x > y and y > z:
+        return x - z
+    else:
+        return -1
 
 if __name__ == '__main__':
-    main()
+    solve()

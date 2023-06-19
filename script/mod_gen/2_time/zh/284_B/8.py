@@ -1,17 +1,11 @@
 def main():
-    # N = int(input())
-    # S = []
-    # for i in range(N):
-    #     S.append(input())
-    # for i in range(N):
-    #     print(S[N-i-1])
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.reverse()
-    for i in range(N):
-        print(S[i])
-
-if __name__ == '__main__':
-    main()
+    n = int(input())
+    for i in range(n):
+        a = int(input())
+        b = list(map(int, input().split()))
+        count = 0
+        for j in b:
+            if j % 2 == 1:
+                count += 1
+        print(count)
+main()

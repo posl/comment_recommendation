@@ -1,14 +1,17 @@
 def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    A.sort()
-    B.sort()
-    for i in range(K):
-        if A[-1] == B[i]:
-            print("No")
-            exit()
-    print("Yes")
+    # 获取输入内容
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    # 求解
+    ans = 0
+    for i in range(10):
+        for j in range(n):
+            if s[j][i] == str(i):
+                ans += 1
+                break
+    print(ans)
 
 if __name__ == '__main__':
     main()

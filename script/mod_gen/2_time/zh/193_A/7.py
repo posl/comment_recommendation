@@ -1,9 +1,10 @@
-def get_max_num(str):
-    max_num = 0
-    for s in str:
-        if int(s) > max_num:
-            max_num = int(s)
-    return max_num
+def main():
+    # 读取数据
+    a, b = map(int, input().split())
+    # 计算折扣率
+    discount = (a - b) / a * 100
+    # 打印结果
+    print(discount)
 
 if __name__ == '__main__':
-    get_max_num()
+    main()

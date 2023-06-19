@@ -1,5 +1,12 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    print(1 / sum(map(lambda x: 1 / x, a)))
-main()
+    v = list(map(int, input().split()))
+    v.sort()
+    print(v[0])
+    for i in range(1, n):
+        print(v[i])
+        v[i] = (v[i] + v[i - 1]) / 2
+    print(v[n - 1])
+
+if __name__ == '__main__':
+    main()

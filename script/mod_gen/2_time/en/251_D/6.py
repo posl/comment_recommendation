@@ -7,6 +7,3 @@ def solve(w):
         print(" ".join([str(i) for i in range(1, w//2+2)]))
 w = int(input())
 solve(w)
-
-if __name__ == '__main__':
-    solve()

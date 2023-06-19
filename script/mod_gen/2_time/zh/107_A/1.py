@@ -1,6 +1,6 @@
-def problem107_a(n, i):
-    j = n - i + 1
-    print(j)
+def main():
+    N, i = map(int, input().split())
+    print(N-i+1)
 
 if __name__ == '__main__':
-    problem107_a()
+    main()

@@ -28,6 +28,3 @@ def   main ():
                             score  +=  d_i
                     ans  =   max ( ans ,  score )
     print ( ans )
-
-if __name__ == '__main__':
-    ()

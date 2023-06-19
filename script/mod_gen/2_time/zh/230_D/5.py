@@ -1,13 +1,26 @@
-def main():
-    n, a, b = map(int, input().split())
-    p, q, r, s = map(int, input().split())
-    for i in range(p, q+1):
-        for j in range(r, s+1):
-            if (max(1-a, 1-b) <= i-j <= min(n-a, n-b)) or (max(1-a, b-n) <= i+j <= min(n-a, b-1)):
-                print('#', end='')
-            else:
-                print('.', end='')
-        print()
+def solve(N, D, L, R):
+    # print(N, D, L, R)
+    # print("L", L)
+    # print("R", R)
+    # print("L", L)
+    # print("R", R)
+    # print("L", L)
+    # print("R", R)
+    L.sort()
+    R.sort()
+    # print("L", L)
+    # print("R", R)
+    ans = 0
+    i = 0
+    j = 0
+    while i < N and j < N:
+        if L[i] <= R[j]:
+            ans += 1
+            i += 1
+        else:
+            ans -= 1
+            j += 1
+    return ans
 
 if __name__ == '__main__':
-    main()
+    solve()

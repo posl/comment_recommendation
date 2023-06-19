@@ -14,6 +14,3 @@ def main():
             dp[h + 1][w] %= mod
     print(dp[H][K - 1])
 main()
-
-if __name__ == '__main__':
-    main()

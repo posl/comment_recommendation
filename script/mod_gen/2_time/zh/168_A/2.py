@@ -1,25 +1,11 @@
 def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    visited = [False] * N
-    visited[0] = True
-    i = 0
-    for k in range(K):
-        i = A[i] - 1
-        if visited[i]:
-            break
-        visited[i] = True
-    if k == K - 1:
-        print(i + 1)
+    n = int(input())
+    if n%10 == 2 or n%10 == 4 or n%10 == 5 or n%10 == 7 or n%10 == 9:
+        print("hon")
+    elif n%10 == 0 or n%10 == 1 or n%10 == 6 or n%10 == 8:
+        print("pon")
     else:
-        K -= k
-        K %= k
-        for i in range(N):
-            if visited[i]:
-                K -= 1
-                if K == 0:
-                    print(i + 1)
-                    break
+        print("bon")
 
 if __name__ == '__main__':
     main()

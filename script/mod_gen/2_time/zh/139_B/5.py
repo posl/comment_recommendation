@@ -1,14 +1,7 @@
 def main():
-    # 天气预报
-    S = input()
-    # 实际天气
-    T = input()
-    # 预测正确的天数
-    correct_days = 0
-    for i in range(3):
-        if S[i] == T[i]:
-            correct_days += 1
-    print(correct_days)
-
-if __name__ == '__main__':
-    main()
+    a,b = map(int,input().split())
+    if b % a == 0:
+        print(b // a)
+    else:
+        print(b // a + 1)
+main()

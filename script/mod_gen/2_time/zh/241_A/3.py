@@ -1,20 +1,9 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = [0] * n
-    count = {}
-    for i in range(n):
-        x = a[i]
-        if x in count:
-            count[x] += 1
-        else:
-            count[x] = 1
-        if count[x] == x:
-            ans[i] = 1
-        else:
-            ans[i] = 0
-    for i in range(n):
-        print(ans[i])
+    a = [int(x) for x in input().split()]
+    b = 0
+    for i in range(3):
+        b = a[b]
+    print(b)
 
 if __name__ == '__main__':
     main()

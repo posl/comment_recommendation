@@ -1,11 +1,10 @@
-def main():
-    n, d = map(int, input().split())
-    count = 0
-    for i in range(n):
-        x, y = map(int, input().split())
-        if (x ** 2 + y ** 2) ** 0.5 <= d:
-            count += 1
-    print(count)
-
-if __name__ == '__main__':
-    main()
+def check(k):
+    num = 0
+    for i in range(1000000):
+        num = num * 10 + 7
+        num %= k
+        if num == 0:
+            return i + 1
+    return -1
+k = int(input())
+print(check(k))

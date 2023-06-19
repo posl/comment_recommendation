@@ -1,15 +1,26 @@
-def solve(n):
-    if n < 2:
-        return 0
-    ans = n
-    for i in range(2, int(n ** 0.5) + 1):
-        if i ** 2 > n:
-            break
-        j = 2
-        while i ** j <= n:
-            ans -= 1
-            j += 1
-    return ans
+def main():
+    k = int(input())
+    s = input()
+    t = input()
+    s = s[:4]
+    t = t[:4]
+    s = s.replace('#','')
+    t = t.replace('#','')
+    s = list(s)
+    t = list(t)
+    s.sort()
+    t.sort()
+    s.reverse()
+    t.reverse()
+    s = ''.join(s)
+    t = ''.join(t)
+    s = int(s)
+    t = int(t)
+    s = s / 10 ** k
+    t = t / 10 ** k
+    print(s)
+    print(t)
+    prin
 
 if __name__ == '__main__':
-    solve()
+    main()

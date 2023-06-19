@@ -7,6 +7,3 @@ def calcYear(x):
     return y
 x = int(input())
 print(calcYear(x))
-
-if __name__ == '__main__':
-    calcYear()

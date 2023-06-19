@@ -1,9 +1,4 @@
-def f(x):
-    s = 0
-    for i in range(1,x+1):
-        if x%i == 0:
-            s += 1
-    return s
-
-if __name__ == '__main__':
-    f()
+def main():
+    n = int(input())
+    print(1000 - n % 1000)
+main()

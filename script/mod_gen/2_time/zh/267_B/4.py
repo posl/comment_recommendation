@@ -1,7 +1,23 @@
-def main():
-    weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-    day = input()
-    print(5 - weekdays.index(day) if weekdays.index(day) < 5 else 7 - weekdays.index(day))
+def is_split(pins):
+    # 检查引脚1是否被击倒
+    if pins[0] != "0":
+        return False
+    # 检查是否有两列，每一列都有一个或多个站立的棋子
+    # 以及在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1号针脚被击倒了，所以只需要检查2-4号针脚是否被击倒
+    # 如果2-4号针脚都被击倒了，那么就是一个分裂
+    if pins[1] == "0" and pins[2] == "0" and pins[3] == "0":
+        return True
+    # 如果2-4号针脚没有被击倒，那么就检查5-7号针脚是否被击倒
+    # 如果5-7号针脚都被击倒了，那么就是一个分裂
+    if pins[4] == "0" and pins[5] == "0" and pins[6] == "0":
+        return True
+    # 如果5-7号针脚没有被击倒，那么就检查8-10号针脚是否被击倒
+    # 如果8-10号针脚都被击倒了，那么就是一个分裂
+    if pins[7] == "0" and pins[8] == "0" and pins[9] == "0":
+        return True
+    # 如果8-10号针脚没有被击倒，那么就不是一个分裂
+    return False
 
 if __name__ == '__main__':
-    main()
+    is_split()

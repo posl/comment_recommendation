@@ -1,13 +1,16 @@
 def main():
-    N, A, B = map(int, input().split())
-    P, Q, R, S = map(int, input().split())
-    for i in range(P, Q+1):
-        for j in range(R, S+1):
-            if (i+j)%2 == (A+B)%2:
-                print('#', end='')
-            else:
-                print('.', end='')
-        print()
+    n, d = map(int, input().split())
+    lr = [list(map(int, input().split())) for _ in range(n)]
+    lr.sort(key=lambda x: x[1])
+    r = 0
+    ans = 0
+    for l, r in lr:
+        if r - l + 1 <= d:
+            continue
+        ans += (r - l + 1 - d) // d
+        if (r - l + 1 - d) % d != 0:
+            ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

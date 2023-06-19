@@ -1,14 +1,10 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    score = 0
-    for i in range(n):
-        score += b[a[i]-1]
-        if i < n-1 and a[i+1] == a[i] + 1:
-            score += c[a[i]-1]
-    print(score)
+def maxsum(n, b):
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    for i in range(1, n-1):
+        a[i] = max(b[i], b[i-1])
+    a[-1] = b[-1]
+    return sum(a)
 
 if __name__ == '__main__':
-    main()
+    maxsum()

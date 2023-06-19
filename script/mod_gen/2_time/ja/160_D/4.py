@@ -8,6 +8,3 @@ def   main ():
              ans [ d ] +=  1 
      for   i   in   range ( 1 ,  N ):
          print ( ans [ i ])
-
-if __name__ == '__main__':
-    ()

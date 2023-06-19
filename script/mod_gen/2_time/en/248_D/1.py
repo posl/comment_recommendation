@@ -6,6 +6,3 @@ def main():
         L, R, X = map(int, input().split())
         print(A[L-1:R].count(X))
 main()
-
-if __name__ == '__main__':
-    main()

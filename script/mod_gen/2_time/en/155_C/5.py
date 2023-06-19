@@ -12,6 +12,3 @@ def main():
         if v == max_value:
             print(k)
 main()
-
-if __name__ == '__main__':
-    main()

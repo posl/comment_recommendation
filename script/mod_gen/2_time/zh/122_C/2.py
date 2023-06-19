@@ -1,13 +1,9 @@
-def solution():
-    s = input()
-    n = len(s)
-    max = 0
-    for i in range(n):
-        for j in range(i, n):
-            if check(s[i:j + 1]):
-                if max < j - i + 1:
-                    max = j - i + 1
-    print(max)
+def solve(s, l, r):
+    count = 0
+    for i in range(l-1, r):
+        if s[i:i+2] == 'AC':
+            count += 1
+    return count
 
 if __name__ == '__main__':
-    solution()
+    solve()

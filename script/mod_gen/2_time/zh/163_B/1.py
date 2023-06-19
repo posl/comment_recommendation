@@ -1,7 +1,8 @@
-def main():
-    r = input()
-    print 2 * 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280 * r
-    return 0
+def solve(n,m,a):
+    if n < sum(a):
+        return -1
+    else:
+        return n - sum(a)
 
 if __name__ == '__main__':
-    main()
+    solve()

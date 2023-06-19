@@ -1,6 +1,9 @@
-def main():
-    a, b, c = map(int, input().split())
-    print(c - (a - b) if a - b < c else 0)
+def solve(n):
+    count = 0
+    for i in range(1,n+1):
+        if i % 2 == 1:
+            count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    solve()

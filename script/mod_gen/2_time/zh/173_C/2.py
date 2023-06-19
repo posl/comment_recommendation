@@ -1,23 +1,9 @@
-def main():
-    N = int(input())
-    ac = 0
-    wa = 0
-    tle = 0
-    re = 0
-    for i in range(N):
-        S = input()
-        if S == "AC":
-            ac += 1
-        elif S == "WA":
-            wa += 1
-        elif S == "TLE":
-            tle += 1
-        else:
-            re += 1
-    print("AC x " + str(ac))
-    print("WA x " + str(wa))
-    print("TLE x " + str(tle))
-    print("RE x " + str(re))
-
-if __name__ == '__main__':
-    main()
+def f(h, w, k):
+    if k == 0:
+        return 1
+    if h == 0 or w == 0:
+        return 0
+    return f(h - 1, w, k) + f(h, w - 1, k) + f(h - 1, w - 1, k - 1) * (h * w - k)
+h, w, k = map(int, input().split())
+c = [list(input()) for _ in range(h)]
+print(f(h, w, k))

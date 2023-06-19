@@ -1,9 +1,11 @@
-def main():
-    s, w = map(int, input().split())
-    if w >= s:
-        print("unsafe")
-    else:
-        print("safe")
+def judge(a,b,c,d):
+    while True:
+        c = c - b
+        if c <= 0:
+            return "Yes"
+        a = a - d
+        if a <= 0:
+            return "No"
 
 if __name__ == '__main__':
-    main()
+    judge()

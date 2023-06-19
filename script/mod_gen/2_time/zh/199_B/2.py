@@ -1,13 +1,8 @@
 def main():
-    while True:
-        try:
-            a, b, c = map(int, input().split())
-            if a**2 + b**2 < c**2:
-                print('Yes')
-            else:
-                print('No')
-        except:
-            break
-
-if __name__ == '__main__':
-    main()
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    max_a = max(a)
+    min_b = min(b)
+    print(min_b - max_a + 1 if min_b - max_a >= 0 else 0)
+main()

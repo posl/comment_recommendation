@@ -1,13 +1,14 @@
-def solve(n):
-    ans = 0
-    for i in range(1, n+1):
-        for j in range(i, n+1):
-            if i*j > n:
-                break
-            for k in range(j, n+1):
-                if i*j*k > n:
-                    break
-                ans += 1
-    return ans
-n = int(input())
-print(solve(n))
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    print(a)
+    print(a[n-k])
+    print(a[n-1])
+    if a[n-k] == a[n-1]:
+        print(n)
+    else:
+        print(n-k)
+
+if __name__ == '__main__':
+    main()

@@ -1,12 +1,13 @@
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    min = w // b
-    max = w // a
-    if min * a > w or max * b < w:
-        print("UNSATISFIABLE")
+def num_of_comma(n):
+    n_str = str(n)
+    len_n = len(n_str)
+    if len_n <= 3:
+        return 0
     else:
-        print(min,max)
+        num = 0
+        for i in range(len_n//3):
+            num += 1
+        return num-1
 
 if __name__ == '__main__':
-    main()
+    num_of_comma()

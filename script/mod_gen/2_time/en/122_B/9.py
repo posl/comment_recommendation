@@ -8,6 +8,3 @@ def main():
                 max_len = max(max_len, j - i + 1)
     print(max_len)
 main()
-
-if __name__ == '__main__':
-    main()

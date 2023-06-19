@@ -1,8 +1,14 @@
-def get_last_person(n,k,a):
-    if a + k <= n:
-        return a + k - 1
-    else:
-        return a + k - n - 1
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    count = 0
+    for i in s:
+        if i % 2 == 0:
+            if i % 4 != 0:
+                count += 1
+        else:
+            count += 1
+    print(count)
 
 if __name__ == '__main__':
-    get_last_person()
+    main()

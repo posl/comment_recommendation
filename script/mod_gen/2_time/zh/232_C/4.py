@@ -1,23 +1,25 @@
 def main():
-    S = input()
-    T = input()
-    if len(S) != len(T):
-        print("No")
-        return
-    for i in range(len(S)):
-        if S[i] == T[i]:
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(M):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    for i in range(M):
+        if A[i] == C[i] and B[i] == D[i]:
             continue
         else:
-            diff = ord(T[i]) - ord(S[i])
-            if diff < 0:
-                diff = diff + 26
-            if diff == 1:
-                continue
-            else:
-                print("No")
-                return
+            print("No")
+            exit()
     print("Yes")
-    return
+    exit()
 
 if __name__ == '__main__':
     main()

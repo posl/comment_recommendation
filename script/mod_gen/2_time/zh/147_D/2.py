@@ -1,33 +1,15 @@
 def main():
-    n = int(input())
-    a = []
-    x = []
-    y = []
-    for i in range(n):
-        a.append(int(input()))
-        t_x = []
-        t_y = []
-        for j in range(a[i]):
-            tmp = input().split()
-            t_x.append(int(tmp[0]))
-            t_y.append(int(tmp[1]))
-        x.append(t_x)
-        y.append(t_y)
+    N = int(input())
+    A = list(map(int, input().split()))
     ans = 0
-    for i in range(1<<n):
-        flag = True
+    mod = 10**9 + 7
+    for i in range(60):
         cnt = 0
-        for j in range(n):
-            if i>>j & 1:
+        for j in range(N):
+            if A[j] >> i & 1:
                 cnt += 1
-                for k in range(a[j]):
-                    if y[j][k] == 1 and not (i>>(x[j][k]-1) & 1):
-                        flag = False
-                    if y[j][k] == 0 and (i>>(x[j][k]-1) & 1):
-                        flag = False
-        if flag:
-            ans = max(ans, cnt)
-    print(ans)
+        ans += (cnt * (N - cnt) * (1 << i)) % mod
+    print(ans % mod)
 
 if __name__ == '__main__':
     main()

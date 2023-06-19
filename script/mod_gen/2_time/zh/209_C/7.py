@@ -1,15 +1,11 @@
-def problems209_b():
-    n, x = map(int, input().split())
-    a = list(map(int, input().split()))
+def solve():
+    n = int(input())
+    c = list(map(int, input().split()))
+    m = 10 ** 9 + 7
+    c.sort()
+    ans = 1
     for i in range(n):
-        if i % 2 == 0:
-            x -= a[i]
-        else:
-            x -= a[i] - 1
-    if x >= 0:
-        print('Yes')
-    else:
-        print('No')
-
-if __name__ == '__main__':
-    problems209_b()
+        ans *= c[i] - i
+        ans %= m
+    print(ans)
+solve()

@@ -1,10 +1,6 @@
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a%b)
+def solve():
+    N = int(input())
+    print(N//2 + N%2)
 
 if __name__ == '__main__':
-    gcd()
+    solve()

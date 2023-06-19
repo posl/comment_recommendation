@@ -1,15 +1,13 @@
 def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    count = 0
-    for i in range(N):
-        sum = 0
-        for j in range(i,N):
-            sum += A[j]
-            if sum >= K:
-                count += 1
-                break
-    print(count)
+    S = input()
+    if S[0] == S[1] and S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[1] == S[2]:
+        print("Bad")
+    else:
+        print("Good")
 
 if __name__ == '__main__':
     main()

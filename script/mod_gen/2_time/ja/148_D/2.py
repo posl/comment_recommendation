@@ -20,6 +20,3 @@ def resolve():
             ans += 1
     print(n - 1 - ans)
 resolve()
-
-if __name__ == '__main__':
-    resolve()

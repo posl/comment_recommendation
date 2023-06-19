@@ -1,16 +1,18 @@
-def main():
-    a,b,w = map(int, input().split())
-    min = 0
-    max = 0
-    for i in range(1,1000):
-        if a*i <= w*1000 <= b*i:
-            if min == 0:
-                min = i
-            max = i
-    if min == 0:
-        print("UNSATISFIABLE")
+def solve(N):
+    N_str = str(N)
+    N_len = len(N_str)
+    if N_len <= 3:
+        return 0
+    elif N_len <= 6:
+        return N_len - 3
+    elif N_len <= 9:
+        return N_len - 3 + (N_len - 3) // 3
+    elif N_len <= 12:
+        return N_len - 3 + (N_len - 3) // 3 + (N_len - 6) // 3
+    elif N_len <= 15:
+        return N_len - 3 + (N_len - 3) // 3 + (N_len - 6) // 3 + (N_len - 9) // 3
     else:
-        print(min,max)
+        return N_len - 3 + (N_len - 3) // 3 + (N_len - 6) // 3 + (N_len - 9) // 3 + (N_len - 12) // 3
 
 if __name__ == '__main__':
-    main()
+    solve()

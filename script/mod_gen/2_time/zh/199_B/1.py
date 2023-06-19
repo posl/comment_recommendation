@@ -1,9 +1,8 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a**2+b**2 < c**2:
-        print("Yes")
-    else:
-        print("No")
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    print(max(0, min(B) - max(A) + 1))
 
 if __name__ == '__main__':
     main()

@@ -4,6 +4,3 @@ def to26(n):
     else:
         return to26((n-1)//26) + chr((n-1)%26+ord('a'))
 print(to26(int(input())))
-
-if __name__ == '__main__':
-    to26()

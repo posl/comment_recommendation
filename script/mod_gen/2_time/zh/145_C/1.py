@@ -1,13 +1,5 @@
-def main():
-    n = int(input())
-    s = input()
-    if n % 2 == 1:
-        print("No")
-    else:
-        if s[:n//2] == s[n//2:]:
-            print("Yes")
-        else:
-            print("No")
+def get_distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**(1/2)
 
 if __name__ == '__main__':
-    main()
+    get_distance()

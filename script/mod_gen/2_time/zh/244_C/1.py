@@ -1,17 +1,15 @@
-def problem244_b():
+def main():
     n = int(input())
-    t = input()
-    x = 0
-    y = 0
-    for i in range(n):
-        if t[i] == 'S':
-            x += 1
+    a = 1
+    b = 2*n
+    while True:
+        print(a)
+        a = int(input())
+        if a == 0:
+            exit()
+        elif a > b:
+            print(a)
+            exit()
         else:
-            if x % 2 == 0:
-                y += 1
-            else:
-                y -= 1
-    print(x, y)
-
-if __name__ == '__main__':
-    problem244_b()
+            b = 2*a+1
+main()

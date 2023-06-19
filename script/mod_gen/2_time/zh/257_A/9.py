@@ -1,20 +1,6 @@
-def main():
-    n = int(input())
-    l = []
-    r = []
-    for i in range(n):
-        ll, rr = map(int, input().split())
-        l.append(ll)
-        r.append(rr)
-    l.sort()
-    r.sort()
-    l.append(0)
-    r.append(0)
-    ans = 0
-    for i in range(n):
-        if l[i+1] > r[i]:
-            ans += 1
-    print(ans)
+def problems257_a():
+    n, x = map(int, raw_input().split())
+    print chr(64 + (x-1)/n)
 
 if __name__ == '__main__':
-    main()
+    problems257_a()

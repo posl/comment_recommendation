@@ -1,11 +1,12 @@
-def solve():
-    n,d = map(int, input().split())
-    ans = 0
-    for i in range(n):
-        x,y = map(int, input().split())
-        if x*x+y*y <= d*d:
-            ans += 1
-    print(ans)
+def main():
+    k = int(input())
+    s = 7
+    for i in range(1, k+1):
+        if s % k == 0:
+            print(i)
+            return
+        s = (s * 10 + 7) % k
+    print(-1)
 
 if __name__ == '__main__':
-    solve()
+    main()

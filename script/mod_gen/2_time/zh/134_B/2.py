@@ -1,5 +1,6 @@
-def area_of_regular_dodecagon(r):
-    return 3*(r**2)
+def main():
+    N, D = map(int, input().split())
+    print((N + 2 * D) // (2 * D + 1))
 
 if __name__ == '__main__':
-    area_of_regular_dodecagon()
+    main()

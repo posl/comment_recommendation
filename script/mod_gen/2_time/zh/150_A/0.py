@@ -1,13 +1,9 @@
-def get_max_score(N, K, R, S, P, T):
-    score = 0
-    for i in range(N):
-        if T[i] == 'r':
-            score += R
-        elif T[i] == 's':
-            score += S
-        elif T[i] == 'p':
-            score += P
-    return score
+def main():
+    k, x = map(int, input().split())
+    if k * 500 >= x:
+        print('是')
+    else:
+        print('否')
 
 if __name__ == '__main__':
-    get_max_score()
+    main()

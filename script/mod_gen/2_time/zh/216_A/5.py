@@ -1,10 +1,10 @@
-def gcd(a,b):
-    if a<b:
-        a,b=b,a
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
+def printXplusminus(X,Y):
+    if 0 <= Y <= 2:
+        print(str(X) + "-")
+    elif 3 <= Y <= 6:
+        print(str(X))
+    elif 7 <= Y <= 9:
+        print(str(X) + "+")
 
 if __name__ == '__main__':
-    gcd()
+    printXplusminus()

@@ -1,13 +1,9 @@
 def main():
-    N, M = map(int, input().split())
-    A = []
-    B = []
-    for i in range(M):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    print(A)
-    print(B)
+    s = input()
+    if s.endswith("er"):
+        print("er")
+    elif s.endswith("ist"):
+        print("ist")
 
 if __name__ == '__main__':
     main()

@@ -1,35 +1,16 @@
-def dfs(v):
-    global path
-    global visited
-    global G
-    global N
-    global X
-    global Y
-    global flag
-    if flag == 1:
-        return
-    path.append(v)
-    visited[v] = True
-    if v == Y:
-        flag = 1
-        for i in path:
-            print(i,end=' ')
-        return
-    for next_v in G[v]:
-        if visited[next_v] == False:
-            dfs(next_v)
-            path.pop()
-N,X,Y = map(int,input().split())
-X -= 1
-Y -= 1
-G = [[] for i in range(N)]
-for i in range(N-1):
-    u,v = map(int,input().split())
-    u -= 1
-    v -= 1
-    G[u].append(v)
-    G[v].append(u)
-visited = [False]*N
-path = []
-flag = 0
-dfs(X)
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    a = [int(i) for i in input().split()]
+    # 计算答案
+    ans = 0
+    for i in range(k):
+        if i == k - 1:
+            ans += n - a[i] + 1
+        else:
+            ans += a[i + 1] - a[i]
+    # 输出答案
+    print(ans)
+
+if __name__ == '__main__':
+    main()

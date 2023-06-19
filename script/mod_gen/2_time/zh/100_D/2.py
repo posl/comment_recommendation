@@ -1,21 +1,25 @@
-def problems100_d():
-    n,m = map(int,input().split())
-    x,y,z = [],[],[]
+def get_max_value(n, m, cakes):
+    #美丽度
+    beauty = [x for x, y, z in cakes]
+    #美味度
+    flavor = [y for x, y, z in cakes]
+    #受欢迎度
+    popular = [z for x, y, z in cakes]
+    #总美丽度的绝对值
+    beauty_abs = [abs(x) for x in beauty]
+    #总美味度的绝对值
+    flavor_abs = [abs(y) for y in flavor]
+    #总受欢迎度的绝对值
+    popular_abs = [abs(z) for z in popular]
+    #总美丽度的绝对值+总美味度的绝对值+总受欢迎度的绝对值
+    max_value = 0
     for i in range(n):
-        a,b,c = map(int,input().split())
-        x.append(a)
-        y.append(b)
-        z.append(c)
-    ans = 0
-    for i in range(2**3):
-        for j in range(2**3):
-            for k in range(2**3):
-                if i+j+k == m:
-                    a,b,c = 0,0,0
-                    for l in range(n):
-                        a += x[l]*(-1 if (i>>0)&1 else 1)
-                        b += y[l]*(-1 if (j>>0)&1 else 1)
-                        c += z[l]*(-1 if (k>>0)&1 else 1)
-                    ans = max(ans,abs(a)+abs(b)+abs(c))
-    print(ans)
-problems100_d()
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                value = sum(beauty_abs[i:j+1]) + sum(flavor_abs[i:j+1]) + sum(popular_abs[i:j+1])
+                if value > max_value:
+                    max_value = value
+    return max_value
+
+if __name__ == '__main__':
+    get_max_value()

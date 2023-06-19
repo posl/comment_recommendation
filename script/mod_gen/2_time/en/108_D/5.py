@@ -22,6 +22,3 @@ def main():
     for x, y, z in ans:
         print(x, y, z)
 main()
-
-if __name__ == '__main__':
-    main()

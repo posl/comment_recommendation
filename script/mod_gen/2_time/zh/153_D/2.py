@@ -1,11 +1,9 @@
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort()
-    if K >= N:
-        print(0)
+def attack(num):
+    if num == 1:
+        return 1
+    elif num % 2 == 0:
+        return 2 * attack(num / 2) + 1
     else:
-        print(sum(H[:N-K]))
-
-if __name__ == '__main__':
-    main()
+        return 2 * attack((num - 1) / 2) + 1
+H = int(input())
+print(attack(H))

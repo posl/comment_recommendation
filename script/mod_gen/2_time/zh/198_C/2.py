@@ -1,10 +1,15 @@
-def is_palindrome(n):
-    n = str(n)
-    #print(n)
-    if n == n[::-1]:
-        return True
+def main():
+    r, x, y = map(int, input().split())
+    if r*r == x*x + y*y:
+        print(1)
+    elif r*r > x*x + y*y:
+        print(2)
     else:
-        return False
+        ans = 0
+        while r*r < x*x + y*y:
+            ans += 1
+            r += r
+        print(ans)
 
 if __name__ == '__main__':
-    is_palindrome()
+    main()

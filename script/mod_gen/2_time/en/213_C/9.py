@@ -17,6 +17,3 @@ def main():
     for c in cards:
         print(c[0], c[1])
 main()
-
-if __name__ == '__main__':
-    main()

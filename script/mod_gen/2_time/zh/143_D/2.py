@@ -1,11 +1,7 @@
-def solve():
-    n = int(input())
-    s = input()
-    count = 1
-    for i in range(1, n):
-        if s[i] != s[i-1]:
-            count += 1
-    print(count)
+def isTriangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    return False
 
 if __name__ == '__main__':
-    solve()
+    isTriangle()

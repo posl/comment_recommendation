@@ -1,11 +1,11 @@
 def main():
-    N = int(input())
-    if N < 206:
-        print("Yay!")
-    elif N == 206:
-        print("so-so")
-    else:
-        print(":(")
+    n = int(input())
+    sum = 0
+    for i in range(1, n+1):
+        sum += i
+        if sum >= n:
+            print(i)
+            break
 
 if __name__ == '__main__':
     main()

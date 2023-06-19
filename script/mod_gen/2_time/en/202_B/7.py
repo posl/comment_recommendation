@@ -8,6 +8,3 @@ def rotate_string(s):
     return s
 s = input()
 print(rotate_string(s))
-
-if __name__ == '__main__':
-    rotate_string()

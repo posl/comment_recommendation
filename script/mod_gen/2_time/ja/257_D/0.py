@@ -12,6 +12,3 @@ def main():
                 S = S + 1
     print(S)
 main()
-
-if __name__ == '__main__':
-    main()

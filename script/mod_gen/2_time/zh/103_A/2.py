@@ -1,7 +1,9 @@
 def main():
-    a1, a2, a3 = map(int, input().split())
-    print(min(abs(a2-a1)+abs(a3-a2), abs(a3-a1)+abs(a2-a3), abs(a1-a2)+abs(a3-a1)))
-    return
+    # 读取输入
+    a = list(map(int, input().split()))
+    # 计算最小成本
+    a.sort()
+    print(a[2] - a[0])
 
 if __name__ == '__main__':
     main()

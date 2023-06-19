@@ -1,11 +1,6 @@
-def solve():
-    N = int(input())
-    A = [int(i) for i in input().split()]
-    ans = 0
-    for i in range(N):
-        for j in range(i):
-            ans += (A[i] - A[j]) ** 2
-    print(ans)
+def main():
+    n = int(input())
+    print(n*(n-1)/2/(n-1)+1)
 
 if __name__ == '__main__':
-    solve()
+    main()

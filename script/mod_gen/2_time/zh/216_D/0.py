@@ -1,11 +1,12 @@
-def f(n):
-    if n == 1:
-        return "A"
-    elif n == 2:
-        return "B"
-    elif n % 2 == 0:
-        return f(n // 2) + "B"
-    else:
-        return f(n - 1) + "A"
-n = int(input())
-print(f(n))
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(N, M, k, a)
+    print("Yes" if N == 2 else "No")
+
+if __name__ == '__main__':
+    main()

@@ -1,9 +1,5 @@
-def solve():
-    s = input()
-    t = input()
-    for i in range(len(s)):
-        if s[i:] + s[:i] == t:
-            print("Yes")
-            return
-    print("No")
-solve()
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()

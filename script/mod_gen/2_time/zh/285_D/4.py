@@ -1,10 +1,22 @@
-def problem285_c():
-    s = input()
-    length = len(s)
-    sum = 0
-    for i in range(length):
-        sum += (ord(s[i])-ord('A')+1)*(26**(length-i-1))
-    print(sum)
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = map(str, input().split())
+        s.append(a)
+        t.append(b)
+    # print(s)
+    # print(t)
+    for i in range(n):
+        if s[i] == t[i]:
+            print('No')
+            exit()
+        for j in range(i+1, n):
+            if s[i] == t[j] and s[j] == t[i]:
+                print('Yes')
+                exit()
+    print('No')
 
 if __name__ == '__main__':
-    problem285_c()
+    main()

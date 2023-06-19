@@ -9,6 +9,3 @@ def main():
             print(S[i])
         T.add(S[i])
 main()
-
-if __name__ == '__main__':
-    main()

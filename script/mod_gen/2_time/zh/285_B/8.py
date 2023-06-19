@@ -1,9 +1,14 @@
 def main():
-    a,b = map(int,input().split())
-    if b-a == 1 or b-a == 4 or b-a == 3:
-        print("Yes")
-    else:
-        print("No")
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        while l+i < N:
+            if S[l] != S[l+i]:
+                l += 1
+            else:
+                break
+        print(l)
 
 if __name__ == '__main__':
     main()

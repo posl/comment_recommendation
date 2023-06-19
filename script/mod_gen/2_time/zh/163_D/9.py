@@ -1,16 +1,11 @@
 def main():
-    # 读入数据
-    N = int(input())
-    A = list(map(int, input().split()))
-    # print(N, A)
-    # 计算直属下级的数量
-    B = [0] * N
-    for i in range(1, N):
-        B[A[i] - 1] += 1
-    # print(B)
-    # 输出结果
-    for i in range(N):
-        print(B[i])
+    n, k = map(int, input().split())
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(k, n + 2):
+        ans += (n - i + 1) * i + 1
+        ans %= mod
+    print(ans)
 
 if __name__ == '__main__':
     main()

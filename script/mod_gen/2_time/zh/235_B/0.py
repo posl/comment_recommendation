@@ -1,8 +1,11 @@
-def main():
-    abc = int(input())
-    bca = abc % 100 * 10 + abc // 100
-    cab = abc % 10 * 100 + abc // 10
-    print(abc + bca + cab)
+def solution1():
+    N = int(input())
+    H = list(map(int, input().split()))
+    max = 0
+    for i in range(N):
+        if H[i] >= max:
+            max = H[i]
+    print(max)
 
 if __name__ == '__main__':
-    main()
+    solution1()

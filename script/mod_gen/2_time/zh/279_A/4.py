@@ -1,16 +1,11 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    q = int(input())
-    for i in range(q):
-        x = list(map(int, input().split()))
-        if x[0] == 1:
-            for j in range(n):
-                a[j] = x[1]
-        elif x[0] == 2:
-            a[x[1] - 1] += x[2]
-        else:
-            print(a[x[1] - 1])
+def count(s):
+    count = 0
+    for i in range(len(s)):
+        if s[i] == "w":
+            for j in range(i+1,len(s)):
+                if s[j] == "v":
+                    count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    count()

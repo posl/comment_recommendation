@@ -1,19 +1,11 @@
 def main():
-    H, W = map(int, input().split())
-    A = []
-    for _ in range(H):
-        A.append(list(map(int, input().split())))
-    B = []
-    for i in range(W):
-        B.append([])
-        for j in range(H):
-            B[i].append(A[j][i])
-    for i in range(W):
-        for j in range(H):
-            if j == H-1:
-                print(B[i][j])
-            else:
-                print(B[i][j], end=' ')
+    s = input()
+    l = len(s)
+    for i in range(l):
+        if s[i] != s[l-i-1]:
+            print('Yes')
+            return
+    print('No')
 
 if __name__ == '__main__':
     main()

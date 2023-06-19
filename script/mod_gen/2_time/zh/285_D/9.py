@@ -1,9 +1,18 @@
 def main():
-    s = input()
-    ans = 0
-    for i in range(len(s)):
-        ans = ans * 26 + ord(s[i]) - ord('A') + 1
-    print(ans)
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        x, y = input().split()
+        s.append(x)
+        t.append(y)
+    for i in range(n):
+        for j in range(n):
+            if s[i] == t[j]:
+                if t[i] == s[j]:
+                    print('Yes')
+                    return
+    print('No')
 
 if __name__ == '__main__':
     main()

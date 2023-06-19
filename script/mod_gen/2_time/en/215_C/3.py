@@ -10,6 +10,3 @@ def permutations(s):
 s, k = input().split()
 k = int(k)
 print(sorted(permutations(s))[k-1])
-
-if __name__ == '__main__':
-    permutations()

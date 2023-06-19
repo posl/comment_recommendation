@@ -1,18 +1,7 @@
-def main():
-    a,b = map(int,input().split())
-    if a >= b:
-        print(0)
-    else:
-        print((b-a)//10)
-main()
-#解答
-#在信封上贴的邮票总额为X，还需要贴的邮票总额为Y。
-#要使总额达到Y，还需要贴的邮票总额是Y-X。
-#因此，答案是（Y-X）/ 10。
-#如果（Y-X）/ 10不是整数，则需要再贴一张邮票，因此答案是（Y-X）/ 10 + 1。
-#这个问题的关键是，如何将答案的小数部分去除。
-#在Python中，可以使用//运算符。例如，如果a和b是整数，则a // b的值是a除以b的商的整数部分。
-#如果（Y-X）/ 10不是整数，则（Y-X）// 10 + 1的值是（Y-X）/ 10的整数部分+1。
-
-if __name__ == '__main__':
-    main()
+def reverse_string(string, start, end):
+    string_list = list(string)
+    string_list[start:end+1] = reversed(string_list[start:end+1])
+    return "".join(string_list)
+L, R = map(int, input().split())
+S = input()
+print(reverse_string(S, L-1, R-1))

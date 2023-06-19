@@ -1,15 +1,15 @@
-def solve():
-    N, K, X = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for i in range(N):
-        if K > 0:
-            ans += max(A[i]-X, 0)
-            K -= 1
-        else:
-            ans += A[i]
-    print(ans)
+def main():
+    n = int(input())
+    if n >= 0 and n <= 10 ** 18:
+        for i in range(n, n + 10):
+            for j in range(n, n + 10):
+                if i ** 3 + i ** 2 * j + i * j ** 2 + j ** 3 == n:
+                    print(i)
+                    return
+        print(n)
+        return
+    else:
+        return
 
 if __name__ == '__main__':
-    solve()
+    main()

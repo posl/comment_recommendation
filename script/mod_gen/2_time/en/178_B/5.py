@@ -5,6 +5,3 @@ def maxProduct(a, b, c, d):
         return max(a * c, a * d, b * c, b * d)
 a, b, c, d = map(int, input().split())
 print(maxProduct(a, b, c, d))
-
-if __name__ == '__main__':
-    maxProduct()

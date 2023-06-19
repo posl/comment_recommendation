@@ -7,6 +7,3 @@ def main():
             min_cost = c
     print(min_cost if min_cost < 1001 else "TLE")
 main()
-
-if __name__ == '__main__':
-    main()

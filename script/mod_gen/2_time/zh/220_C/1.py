@@ -1,10 +1,13 @@
-def convert_to_decimal(number, base):
-    multiplier, result = 1, 0
-    while number > 0:
-        result += number % 10 * multiplier
-        multiplier *= base
-        number //= 10
-    return result
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    sum = 0
+    for i in range(10 ** 100):
+        sum += a[i % n]
+        if sum > x:
+            print(i + 1)
+            break
 
 if __name__ == '__main__':
-    convert_to_decimal()
+    main()

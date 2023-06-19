@@ -1,5 +1,5 @@
-def problems256_d():
-    pass
+def getChar(n,x):
+    return chr(ord('A')+x//n)
 
 if __name__ == '__main__':
-    problems256_d()
+    getChar()

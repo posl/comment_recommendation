@@ -1,8 +1,5 @@
-def main():
-    n = int(input())
-    list = []
-    for i in range(n):
-        list.append(input())
-    for i in range(n):
-        print(list[n-i-1])
-main()
+def read_int():
+    return int(input())
+
+if __name__ == '__main__':
+    read_int()

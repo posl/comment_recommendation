@@ -1,12 +1,19 @@
 def main():
-    K = int(input())
-    n = 0
-    for i in range(1, K+1):
-        n = n*10 + 7
-        if n%K == 0:
-            print(i)
-            exit()
-    print(-1)
+    N = int(input())
+    c = input()
+    left = 0
+    right = N - 1
+    count = 0
+    while left < right:
+        if c[left] == 'W' and c[right] == 'R':
+            count += 1
+            left += 1
+            right -= 1
+        elif c[left] == 'R':
+            left += 1
+        elif c[right] == 'W':
+            right -= 1
+    print(count)
 
 if __name__ == '__main__':
     main()

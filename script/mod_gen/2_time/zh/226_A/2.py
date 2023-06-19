@@ -1,9 +1,7 @@
-def find(x):
-    if par[x] == x:
-        return x
-    else:
-        par[x] = find(par[x])
-        return par[x]
+def main():
+    x = float(input())
+    x = x + 0.0001
+    print(int(x))
 
 if __name__ == '__main__':
-    find()
+    main()

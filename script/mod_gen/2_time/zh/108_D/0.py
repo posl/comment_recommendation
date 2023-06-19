@@ -1,12 +1,25 @@
 def main():
-    n,k = map(int,input().split())
-    ans = 0
-    for i in range(1,n+1):
-        if i%k==0:
-            ans += 1
-        elif k%2==0 and i%k==k//2:
-            ans += 1
-    print(ans**3)
+    L = int(input())
+    N = 0
+    M = 0
+    # 1. 从L开始，逐渐减小，直到找到一个L，使得N*M<=60
+    while True:
+        N = L
+        while N >= 2:
+            M = L // N
+            if M * N == L:
+                break
+            N -= 1
+        if M * N == L:
+            break
+        L -= 1
+    print(N, M)
+    # 2. 构建图
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, M-1):
+        print(i, i+1, i)
+    print(1, M, L)
 
 if __name__ == '__main__':
     main()

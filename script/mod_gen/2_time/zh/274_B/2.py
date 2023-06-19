@@ -1,7 +1,13 @@
 def main():
-    a,b = map(int,input().split())
-    print("{:.3f}".format(b/a))
-    return 0
-
-if __name__ == '__main__':
-    main()
+    h, w = map(int, input().split())
+    c = []
+    for i in range(h):
+        c.append(input())
+    for i in range(w):
+        count = 0
+        for j in range(h):
+            if c[j][i] == '#':
+                count += 1
+        print(count, end=' ')
+    print()
+main()

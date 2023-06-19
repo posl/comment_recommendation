@@ -7,6 +7,3 @@ def solve():
         ans += a[-1-i]-1
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -1,14 +1,14 @@
-def solve():
-    #N = int(input())
-    #A = list(map(int, input().split()))
-    N = 3
-    A = [1,2,3]
-    ans = 0
-    for i in range(N):
-        for j in range(i+1,N):
-            ans += A[i]^A[j]
-    print(ans)
-    return 0
+def main():
+    a = int(input())
+    b = int(input())
+    if a == b:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 3 and b == 2:
+        print(1)
 
 if __name__ == '__main__':
-    solve()
+    main()

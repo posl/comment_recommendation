@@ -1,9 +1,14 @@
-def main():
-    a, b = map(int, input().split())
-    if a in [1, 3, 5, 7, 9, 11, 13, 15] and b in [2, 4, 6, 8, 10, 12, 14]:
-        print('Yes')
-    else:
-        print('No')
+def solve():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        while i+l < N:
+            if S[l] != S[i+l]:
+                l += 1
+            else:
+                break
+        print(l)
 
 if __name__ == '__main__':
-    main()
+    solve()

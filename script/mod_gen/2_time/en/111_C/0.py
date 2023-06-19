@@ -36,6 +36,3 @@ def   main ():
          print ( min ( n - v1_max - v2_max2 ,   n - v1_max2 - v2_max )) 
      else : 
          print ( n - v1_max - v2_max )
-
-if __name__ == '__main__':
-    ()

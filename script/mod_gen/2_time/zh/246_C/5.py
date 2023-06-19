@@ -1,6 +1,8 @@
 def main():
-    A,B = map(int,input().split())
-    print(A/(A**2+B**2)**0.5,B/(A**2+B**2)**0.5)
+    n,k,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    print(sum(a[:n-k])+x*(k-1))
 
 if __name__ == '__main__':
     main()

@@ -1,17 +1,16 @@
-def find_point(x1,y1,x2,y2,x3,y3):
-    if x1 == x2:
-        x4 = x3
-    elif x1 == x3:
-        x4 = x2
+def get_point(a, b):
+    x = 0
+    y = 0
+    if a == 0:
+        x = 0
+        y = b
+    elif b == 0:
+        x = a
+        y = 0
     else:
-        x4 = x1
-    if y1 == y2:
-        y4 = y3
-    elif y1 == y3:
-        y4 = y2
-    else:
-        y4 = y1
-    return x4,y4
+        x = a * b / (a ** 2 + b ** 2) ** 0.5
+        y = (a ** 2 - x ** 2) ** 0.5
+    return x, y
 
 if __name__ == '__main__':
-    find_point()
+    get_point()

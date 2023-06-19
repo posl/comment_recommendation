@@ -1,4 +1,10 @@
 def main():
-    N, D = map(int, input().split())
-    print((N + 2 * D) // (2 * D + 1))
-main()
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+    for i in range(N):
+        print(max(A[:i]+A[i+1:]))
+
+if __name__ == '__main__':
+    main()

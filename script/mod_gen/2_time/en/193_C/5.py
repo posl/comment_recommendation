@@ -13,6 +13,3 @@ def main():
         b = 2
     print(N-unrep)
 main()
-
-if __name__ == '__main__':
-    main()

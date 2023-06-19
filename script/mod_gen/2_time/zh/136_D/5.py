@@ -1,15 +1,25 @@
-def main():
-    n = int(input())
-    heights = [int(i) for i in input().split()]
-    for i in range(n-1):
-        if heights[i] > heights[i+1]:
-            heights[i] -= 1
-    for i in range(n-1):
-        if heights[i] > heights[i+1]:
-            print("No")
-            return
-    print("Yes")
-    return
+def solve():
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    for i in range(N):
+        if S[i] == 'R':
+            for j in range(i + 1, N):
+                if S[j] == 'L':
+                    if (j - i) % 2 == 0:
+                        ans[j] += 1
+                    else:
+                        ans[j - 1] += 1
+                    break
+        else:
+            for j in range(i - 1, -1, -1):
+                if S[j] == 'R':
+                    if (i - j) % 2 == 0:
+                        ans[j] += 1
+                    else:
+                        ans[j + 1] += 1
+                    break
+    print(' '.join(map(str, ans)))
 
 if __name__ == '__main__':
-    main()
+    solve()

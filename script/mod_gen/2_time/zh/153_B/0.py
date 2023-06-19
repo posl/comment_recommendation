@@ -1,5 +1,5 @@
-def get_input():
-    return map(int, input().split())
+def main():
+    pass
 
 if __name__ == '__main__':
-    get_input()
+    main()

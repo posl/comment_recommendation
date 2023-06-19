@@ -1,13 +1,24 @@
 def solve():
     N = int(input())
-    S = [input() for i in range(N)]
-    S = [s[1:] if s[0] == '!' else s for s in S]
-    S.sort()
-    for i in range(N - 1):
-        if S[i] == S[i + 1]:
-            print(S[i])
-            return
-    print('satisfiable')
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    i = 0
+    j = 0
+    cnt = 0
+    while i < N and j < N:
+        if A[i] > B[j]:
+            cnt += 1
+            i += 1
+        else:
+            i += 1
+            j += 1
+    print(cnt)
 
 if __name__ == '__main__':
     solve()

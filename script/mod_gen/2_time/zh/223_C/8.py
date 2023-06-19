@@ -1,13 +1,13 @@
-def get_min_max(s):
-    min = s
-    max = s
-    for i in range(0, len(s)):
-        s = s[1:] + s[0]
-        if s < min:
-            min = s
-        elif s > max:
-            max = s
-    return min, max
+def cal_distance(l):
+    total_length = 0
+    for a, b in l:
+        total_length += a
+    half_length = total_length / 2
+    half_length -= l[0][0]
+    half_length -= l[0][1]
+    half_length -= l[1][0]
+    half_length -= l[1][1]
+    return half_length
 
 if __name__ == '__main__':
-    get_min_max()
+    cal_distance()

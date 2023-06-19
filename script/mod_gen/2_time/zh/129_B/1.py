@@ -1,5 +1,7 @@
-def min_time(p,q,r):
-    return min(p+q, q+r, r+p)
+def input_data():
+    N = int(input())
+    W = list(map(int,input().split()))
+    return N,W
 
 if __name__ == '__main__':
-    min_time()
+    input_data()

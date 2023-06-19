@@ -5,6 +5,3 @@ def solve():
             print(i)
             break
 solve()
-
-if __name__ == '__main__':
-    solve()

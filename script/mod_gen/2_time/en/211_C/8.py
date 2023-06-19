@@ -20,6 +20,3 @@ def  main():
         elif s[i] == 'i':
             a[7] += a[6]
     print(a[7]%MOD)
-
-if __name__ == '__main__':
-    ()

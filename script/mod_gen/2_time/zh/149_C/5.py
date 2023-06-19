@@ -1,11 +1,13 @@
-def main():
-    a, b, k = map(int, input().split())
-    if k <= a:
-        print(a - k, b)
-    elif k <= a + b:
-        print(0, b - (k - a))
+def isPrime(num):
+    if num == 2:
+        return True
+    elif num < 2 or num % 2 == 0:
+        return False
     else:
-        print(0, 0)
+        for i in range(3, int(num ** 0.5) + 1, 2):
+            if num % i == 0:
+                return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    isPrime()

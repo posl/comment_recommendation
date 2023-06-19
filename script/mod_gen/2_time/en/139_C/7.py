@@ -11,6 +11,3 @@ def main():
         m = max(m, c)
     print(m)
 main()
-
-if __name__ == '__main__':
-    main()

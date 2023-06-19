@@ -1,11 +1,5 @@
-def main():
-    print("请输入三个大写的英文字母，以空格隔开：")
-    str = input()
-    strList = str.split(" ")
-    if strList[0] == strList[1] == strList[2]:
-        print("Won")
-    else:
-        print("Lost")
+def get_ints():
+    return [int(x) for x in input().split()]
 
 if __name__ == '__main__':
-    main()
+    get_ints()

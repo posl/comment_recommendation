@@ -1,11 +1,9 @@
 def main():
-    # 读取输入
-    A, B = map(int, input().split())
-    # 判断是否满足条件
-    if A <= 8 and B <= 8:
-        print("Yay!")
-    else:
+    A,B = map(int,input().split())
+    if A > 8 or B > 8:
         print(":(")
+    else:
+        print("Yay!")
 
 if __name__ == '__main__':
     main()

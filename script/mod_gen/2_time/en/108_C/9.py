@@ -5,6 +5,3 @@ def  main():
         if  i % k == 0:
             ans  +=  1
     print(ans**3)
-
-if __name__ == '__main__':
-    ()

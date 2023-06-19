@@ -6,6 +6,3 @@ def memoize(f):
         return cache[args]
     return _f
 @memoize
-
-if __name__ == '__main__':
-    memoize()

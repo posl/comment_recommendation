@@ -26,6 +26,3 @@ def main():
                         print(cx, cy, h)
                         return
 main()
-
-if __name__ == '__main__':
-    main()

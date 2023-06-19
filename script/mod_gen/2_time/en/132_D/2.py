@@ -11,6 +11,3 @@ def main():
     for i in range(1, K + 1):
         print((dp[i][N] - dp[i - 1][N]) % MOD)
 main()
-
-if __name__ == '__main__':
-    main()

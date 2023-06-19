@@ -1,14 +1,7 @@
-def main():
-    n,m = map(int,input().split())
-    k = []
-    s = []
-    p = []
-    for i in range(m):
-        k.append(list(map(int,input().split())))
-    for i in range(m):
-        p.append(list(map(int,input().split())))
-    print(k)
-    print(p)
+def input():
+    N,K = map(int,raw_input().split())
+    V = map(int,raw_input().split())
+    return N,K,V
 
 if __name__ == '__main__':
-    main()
+    input()

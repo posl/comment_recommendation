@@ -1,9 +1,19 @@
 def main():
-    v,a,b,c = map(int, input().split())
-    if (v % a == 0) or (v % b == 0) or (v % c == 0):
-        print("T")
-    else:
-        print("F")
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans1 = 0
+    ans2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            ans1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if a[i] == b[j]:
+                    ans2 += 1
+    print(ans1)
+    print(ans2)
 
 if __name__ == '__main__':
     main()

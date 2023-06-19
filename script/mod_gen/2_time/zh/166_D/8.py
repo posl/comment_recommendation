@@ -1,50 +1,8 @@
-def main():
-    N, M = map(int, input().split())
-    H = list(map(int, input().split()))
-    A = []
-    B = []
-    for i in range(M):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    #print(N, M, H, A, B)
-    #print(N, M, H, A, B)
-    #print('N = ', N)
-    #print('M = ', M)
-    #print('H = ', H)
-    #print('A = ', A)
-    #print('B = ', B)
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H) = ', len(H))
-    #print('len(A) = ', len(A))
-    #print('len(B) = ', len(B))
-    #print('len(H)
+def getAB(x):
+    for a in range(0, 1000):
+        for b in range(-1000, 1000):
+            if a**5 - b**5 == x:
+                return a, b
 
 if __name__ == '__main__':
-    main()
+    getAB()

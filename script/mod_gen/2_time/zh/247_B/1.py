@@ -1,6 +1,8 @@
-def main():
-    str = input()
-    print(str[1:] + str[0])
+def check(s,t):
+    if s == t:
+        return False
+    else:
+        return True
 
 if __name__ == '__main__':
-    main()
+    check()

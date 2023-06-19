@@ -1,9 +1,13 @@
 def main():
-    n = int(input())
-    k = 0
-    while 2 ** k <= n:
-        k += 1
-    print(k - 1)
+    s,k = input().split()
+    k = int(k)
+    s = list(s)
+    s.sort()
+    s = ''.join(s)
+    result = ''
+    for i in range(k):
+        result = next_permutation(s)
+    print(result)
 
 if __name__ == '__main__':
     main()

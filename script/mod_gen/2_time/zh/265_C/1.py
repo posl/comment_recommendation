@@ -1,25 +1,60 @@
-def solve():
-    N,M,T=map(int,input().split())
-    A=list(map(int,input().split()))
-    XY=[]
-    for i in range(M):
-        XY.append(list(map(int,input().split())))
-    XY.sort()
-    t=T
-    x=1
-    for i in range(M):
-        t-=XY[i][0]-x
-        if t<=0:
-            print("No")
-            return
-        t+=XY[i][1]
-        x=XY[i][0]
-    t-=N-x
-    if t<=0:
-        print("No")
-    else:
-        print("Yes")
-    return
+def main():
+    H, W = map(int,input().split())
+    grid = [input() for i in range(H)]
+    #print(grid)
+    #print(len(grid))
+    #print(len(grid[0]))
+    #print(grid[0])
+    #print(grid[0][0])
+    #print(grid[1][0])
+    #print(grid[0][1])
+    #print(grid[0][2])
+    #print(grid[1][2])
+    #print(grid[0][3])
+    #print(grid[1][3])
+    #print(grid[0][4])
+    #print(grid[1][4])
+    #print(grid[0][5])
+    #print(grid[1][5])
+    #print(grid[0][6])
+    #print(grid[1][6])
+    #print(grid[0][7])
+    #print(grid[1][7])
+    #print(grid[0][8])
+    #print(grid[1][8])
+    #print(grid[0][9])
+    #print(grid[1][9])
+    #print(grid[0][10])
+    #print(grid[1][10])
+    #print(grid[0][11])
+    #print(grid[1][11])
+    #print(grid[0][12])
+    #print(grid[1][12])
+    #print(grid[0][13])
+    #print(grid[1][13])
+    #print(grid[0][14])
+    #print(grid[1][14])
+    #print(grid[0][15])
+    #print(grid[1][15])
+    #print(grid[0][16])
+    #print(grid[1][16])
+    #print(grid[0][17])
+    #print(grid[1][17])
+    #print(grid[0][18])
+    #print(grid[1][18])
+    #print(grid[0][19])
+    #print(grid[1][19])
+    #print(grid[0][20])
+    #print(grid[1][20])
+    #print(grid[0][21])
+    #print(grid[1][21])
+    #print(grid[0][22])
+    #print(grid[1][22])
+    #print(grid[0][23])
+    #print(grid[1][23])
+    #print(grid[0][24])
+    #print(grid[1][24])
+    #print(grid[0][25
 
 if __name__ == '__main__':
-    solve()
+    main()

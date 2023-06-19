@@ -1,14 +1,16 @@
 def main():
-    print('start')
-    n, k = map(int, input().split())
-    print('n = ', n)
-    print('k = ', k)
-    sum = 0
-    for i in range(1, n+1):
-        for j in range(1, k+1):
-            sum += i*100 + j
-    print(sum)
-    print('end')
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    money = K
+    village = 0
+    for i in range(N):
+        if money >= AB[i][0] - village:
+            money += AB[i][1]
+            village = AB[i][0]
+        else:
+            break
+    print(village + money)
 
 if __name__ == '__main__':
     main()

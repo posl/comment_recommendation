@@ -1,11 +1,9 @@
-def get_max_l(s, i):
-    l = 0
-    while (i + l < len(s)):
-        if (s[l] != s[i + l]):
-            l = l + 1
-        else:
-            break
-    return l
+def main():
+    s = input()
+    ans = 0
+    for i in range(len(s)):
+        ans = ans * 26 + ord(s[i]) - ord('A') + 1
+    print(ans)
 
 if __name__ == '__main__':
-    get_max_l()
+    main()

@@ -1,12 +1,10 @@
-def problems280_a():
-    H, W = map(int, input().split())
-    S = [input() for i in range(H)]
-    count = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
-                count += 1
-    print(count)
-
-if __name__ == '__main__':
-    problems280_a()
+def solve():
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0] * N
+    for i in range(N-1):
+        A[i] = S[i] + A[i-1]
+    A[N-1] = S[N-1] + A[N-2]
+    print(' '.join(map(str, A)))
+    
+solve()

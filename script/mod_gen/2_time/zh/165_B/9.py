@@ -1,0 +1,11 @@
+def problem165_b():
+    x = int(input())
+    balance = 100
+    year = 0
+    while balance < x:
+        year += 1
+        balance = int(balance * 1.01)
+    print(year)
+
+if __name__ == '__main__':
+    problem165_b()

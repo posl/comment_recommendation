@@ -1,12 +1,17 @@
-def problem247_c(n):
-    if n == 1:
-        print(1)
-        return
-    s = [1]
-    for i in range(2,n+1):
-        s = s + [i] + s
-    print(" ".join(map(str,s)))
-    return
+def main():
+    Q = int(input())
+    queue = []
+    for i in range(Q):
+        query = input().split()
+        if query[0] == "1":
+            queue.append([int(query[1]), int(query[2])])
+        else:
+            c = int(query[1])
+            sum = 0
+            for j in range(c):
+                sum += queue[j][0]
+            print(sum)
+            queue = queue[c:]
 
 if __name__ == '__main__':
-    problem247_c()
+    main()

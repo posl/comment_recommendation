@@ -1,13 +1,14 @@
 def main():
-    k = int(input())
-    cnt = 0
-    for i in range(1, k + 1):
-        cnt = cnt * 10 + 7
-        cnt %= k
-        if cnt == 0:
-            print(i)
-            return
-    print(-1)
+    n = int(input())
+    c = input()
+    r, w = 0, 0
+    for i in range(n):
+        if c[i] == "R":
+            r += 1
+    for i in range(r):
+        if c[i] == "W":
+            w += 1
+    print(w)
 
 if __name__ == '__main__':
     main()

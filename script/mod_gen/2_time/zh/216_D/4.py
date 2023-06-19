@@ -1,11 +1,17 @@
-def solve(n):
-    if n == 0:
-        return ''
-    elif n == 1:
-        return 'A'
-    elif n % 2 == 0:
-        return solve(n // 2) + 'B'
-    else:
-        return solve(n - 1) + 'A'
-n = int(input())
-print(solve(n))
+def main():
+    n,m = map(int,input().split())
+    cnt = [0] * (n+1)
+    for i in range(m):
+        k = int(input())
+        a = list(map(int,input().split()))
+        for j in range(k):
+            cnt[a[j]] += 1
+    for i in range(1,n+1):
+        if cnt[i] % 2 != 0:
+            print("No")
+            return
+    print("Yes")
+    return
+
+if __name__ == '__main__':
+    main()

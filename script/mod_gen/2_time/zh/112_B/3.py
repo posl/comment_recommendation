@@ -1,11 +1,12 @@
-def main():
-    N = int(input())
-    if N == 1:
-        print("Hello World")
-    if N == 2:
-        A = int(input())
-        B = int(input())
-        print(A + B)
+def selectRoute(N, T, routes):
+    minCost = 1001
+    for i in range(N):
+        if routes[i][1] <= T and routes[i][0] < minCost:
+            minCost = routes[i][0]
+    if minCost == 1001:
+        return "TLE"
+    else:
+        return minCost
 
 if __name__ == '__main__':
-    main()
+    selectRoute()

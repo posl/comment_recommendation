@@ -1,11 +1,26 @@
-def get_min_count(s):
-    if s == s[::-1]: return 0
-    if len(s) == 1: return 1
-    count = 0
-    for i in range(len(s)//2):
-        if s[i] != s[len(s)-i-1]:
-            count += 1
-    return count
-
-if __name__ == '__main__':
-    get_min_count()
+def solve():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+    X = []
+    Y = []
+    for i in range(N):
+        X.append([])
+        Y.append([])
+        for j in range(A[i]):
+            x, y = map(int, input().split())
+            X[i].append(x - 1)
+            Y[i].append(y)
+    ans = 0
+    for i in range(1 << N):
+        ok = True
+        for j in range(N):
+            if (i >> j) & 1:
+                for k in range(A[j]):
+                    if ((i >> X[j][k]) & 1) ^ Y[j][k]:
+                        ok = False
+        if ok:
+            ans = max(ans, bin(i).count("1"))
+    print(ans)
+solve()

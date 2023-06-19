@@ -1,13 +1,14 @@
-def print_time(k):
-    hour = 21 + int(k / 60)
-    minute = k % 60
-    if hour > 23:
-        hour = hour - 24
-    if hour < 10:
-        hour = "0" + str(hour)
-    if minute < 10:
-        minute = "0" + str(minute)
-    print(str(hour) + ":" + str(minute))
+def main():
+    n = int(input())
+    grid = []
+    for i in range(n):
+        grid.append(list(map(int, input())))
+    # print(grid)
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            ans = max(ans, grid[i][j])
+    print(ans)
 
 if __name__ == '__main__':
-    print_time()
+    main()

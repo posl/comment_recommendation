@@ -1,13 +1,15 @@
-def f(a,b):
-    def g(x):
-        if x%4==0:
-            return x
-        elif x%4==1:
-            return 1
-        elif x%4==2:
-            return x+1
-        else:
-            return 0
-    return g(b)^g(a-1)
-a,b=map(int,input().split())
-print(f(a,b))
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+    else:
+        print('输入不合法')
+
+if __name__ == '__main__':
+    main()

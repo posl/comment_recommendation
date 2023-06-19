@@ -1,9 +1,13 @@
 def main():
-    S = input()
-    if S <= "2019/04/30":
-        print("平成")
-    else:
-        print("TBD")
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == "BTC":
+            sum += float(x) * 380000
+        else:
+            sum += int(x)
+    print(sum)
 
 if __name__ == '__main__':
     main()

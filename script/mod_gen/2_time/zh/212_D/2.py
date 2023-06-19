@@ -1,13 +1,16 @@
-def solve(n, m, a, b):
-    a.sort()
-    b.sort()
-    ans = 10 ** 9
-    j = 0
-    for i in range(n):
-        while j + 1 < m and b[j + 1] < a[i]:
-            j += 1
-        ans = min(ans, abs(a[i] - b[j]))
-    return ans
+def main():
+    Q = int(input())
+    ball = []
+    for i in range(Q):
+        query = input().split()
+        if query[0] == "1":
+            ball.append(int(query[1]))
+        elif query[0] == "2":
+            for j in range(len(ball)):
+                ball[j] += int(query[1])
+        elif query[0] == "3":
+            print(min(ball))
+            ball.remove(min(ball))
 
 if __name__ == '__main__':
-    solve()
+    main()

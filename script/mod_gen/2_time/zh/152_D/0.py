@@ -1,13 +1,15 @@
 def main():
-    N = int(input())
-    P = list(map(int, input().split()))
-    min_P = N+1
-    count = 0
-    for i in range(N):
-        if P[i] <= min_P:
-            min_P = P[i]
-            count += 1
-    print(count)
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        if i % 10 == 0:
+            continue
+        for j in range(1, n+1):
+            if j % 10 == 0:
+                continue
+            if str(i)[-1] == str(j)[0] and str(i)[0] == str(j)[-1]:
+                ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

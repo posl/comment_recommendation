@@ -1,16 +1,17 @@
-def is_prime(n):
-    if n == 2:
-        return True
-    if n<2 or n%2 == 0:
-        return False
-    for i in range(3, int(n**0.5)+1, 2):
-        if n%i == 0:
-            return False
-    return True
-x = int(input())
-while not is_prime(x):
-    x += 1
-print(x)
-
-if __name__ == '__main__':
-    is_prime()
+def solve():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    ans = 0
+    for i in range(N):
+        if T[i] == 'r':
+            if i < K or T[i - K] != 'r':
+                ans += P
+        elif T[i] == 's':
+            if i < K or T[i - K] != 's':
+                ans += R
+        elif T[i] == 'p':
+            if i < K or T[i - K] != 'p':
+                ans += S
+    print(ans)
+solve()

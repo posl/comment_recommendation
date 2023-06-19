@@ -9,6 +9,3 @@ def dfs(l):
             dfs(l + [i])
 n,m = map(int,input().split())
 dfs([])
-
-if __name__ == '__main__':
-    dfs()

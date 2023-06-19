@@ -12,6 +12,3 @@ def   main ():
              else :
                 right  =  mid 
          print ( left )
-
-if __name__ == '__main__':
-    ()

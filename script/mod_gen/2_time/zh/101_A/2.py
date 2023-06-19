@@ -1,12 +1,16 @@
 def main():
+    # 读取输入
     s = input()
-    sum = 0
-    for i in range(4):
-        if s[i] == '+':
-            sum += 1
+    # 初始化
+    result = 0
+    # 遍历字符串
+    for i in s:
+        if i == '+':
+            result += 1
         else:
-            sum -= 1
-    print(sum)
+            result -= 1
+    # 打印结果
+    print(result)
 
 if __name__ == '__main__':
     main()

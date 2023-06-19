@@ -1,12 +1,10 @@
 def main():
-    input_str = input()
-    input_list = list(input_str)
-    input_list = list(map(int, input_list))
-    input_list.sort()
-    for i in range(10):
-        if i not in input_list:
-            print(i)
-            break
+    a,b,k = map(int,input().split())
+    count = 0
+    while a < b:
+        a += a * k
+        count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

@@ -13,6 +13,3 @@ def problem274_d():
     print("No")
     return
 problem274_d()
-
-if __name__ == '__main__':
-    problem274_d()

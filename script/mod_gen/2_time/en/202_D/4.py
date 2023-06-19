@@ -19,6 +19,3 @@ def solve():
             b -= 1
     print(''.join(ans))
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -1,24 +1,16 @@
 def main():
-    N,X = map(int,input().split())
-    a = []
-    b = []
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = []
     for i in range(N):
-        a_i,b_i = map(int,input().split())
-        a.append(a_i)
-        b.append(b_i)
-    #print(a)
-    #print(b)
-    sum = 0
-    for i in range(N):
-        sum += a[i]
-        if sum > X:
-            print("No")
-            exit()
-        sum += (b[i] - a[i])
-    if sum > X:
-        print("No")
-    else:
-        print("Yes")
+        a[i] -= 1
+        ans.append(a[i])
+        if i > 0:
+            ans[i] += ans[i-1]
+            if a[i-1] == 1:
+                ans[i] -= 1
+                a[i] = 0
+    print(*ans, sep='\n')
 
 if __name__ == '__main__':
     main()

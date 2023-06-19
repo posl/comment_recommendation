@@ -1,11 +1,18 @@
-def getNums(s, t):
-    count = 0
-    for i in range(s+1):
-        for j in range(s+1):
-            for k in range(s+1):
-                if i+j+k <= s and i*j*k <= t:
-                    count += 1
-    return count
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    result = []
+    for i in range(n):
+        if i == 0:
+            result.append(t[0])
+        else:
+            if t[i] < result[i-1]:
+                result.append(t[i])
+            else:
+                result.append(t[i]+s[i])
+    for i in result:
+        print(i)
 
 if __name__ == '__main__':
-    getNums()
+    main()

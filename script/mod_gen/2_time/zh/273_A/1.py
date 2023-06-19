@@ -1,21 +1,7 @@
-def main():
-    N, M = map(int, input().split())
-    #print(N, M)
-    #print(type(N), type(M))
-    #print((N, M))
-    #print(type((N, M)))
-    #print((N, M)[0])
-    #print((N, M)[1])
-    #print(type((N, M)[0]), type((N, M)[1]))
-    #print((N, M)[0], (N, M)[1])
-    #print((N, M)[0] * (N, M)[1])
-    #print(type((N, M)[0] * (N, M)[1]))
-    #print((N, M)[0] * (N, M)[1] * (N, M)[1])
-    #print(type((N, M)[0] * (N, M)[1] * (N, M)[1]))
-    #print((N, M)[0] * (N, M)[1] * (N, M)[1] * (N, M)[1])
-    #print(type((N, M)[0] * (N, M)[1] * (N, M)[1] * (N, M)[1]))
-    #print((N, M)[0] * (N, M)[1] * (N, M)[1] * (N, M)[1] * (N, M)[1])
-    #print(type((N, M)[0]
-
-if __name__ == '__main__':
-    main()
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return x * f(x-1)
+N = int(input())
+print(f(N))

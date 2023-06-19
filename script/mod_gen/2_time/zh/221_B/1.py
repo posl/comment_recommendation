@@ -1,11 +1,14 @@
 def main():
-    A, B = input().split()
-    A = int(A)
-    B = int(B)
-    if A < 3 or A > 9 or B < 3 or B > 9:
-        print("输入错误")
+    S = input()
+    T = input()
+    S_list = list(S)
+    T_list = list(T)
+    if S_list[0] == T_list[0] and S_list[1] == T_list[1]:
+        print("Yes")
+    elif S_list[0] == T_list[1] and S_list[1] == T_list[0]:
+        print("Yes")
     else:
-        print(32 ** (A - B))
+        print("No")
 
 if __name__ == '__main__':
     main()

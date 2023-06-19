@@ -3,6 +3,3 @@ def main():
     a.sort(reverse=True)
     print(a[1]+a[2]+a[3])
 main()
-
-if __name__ == '__main__':
-    main()

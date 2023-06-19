@@ -1,17 +1,10 @@
-def main():
-    N,M,C = map(int,input().split())
-    B = list(map(int,input().split()))
-    A = []
-    for i in range(N):
-        A.append(list(map(int,input().split())))
-    count = 0
-    for i in range(N):
-        sum = 0
-        for j in range(M):
-            sum += A[i][j]*B[j]
-        if sum + C > 0:
-            count += 1
-    print(count)
+def readinput():
+    n,m = map(int,input().split())
+    ab=[]
+    for _ in range(n):
+        a,b = map(int,input().split())
+        ab.append([a,b])
+    return n,m,ab
 
 if __name__ == '__main__':
-    main()
+    readinput()

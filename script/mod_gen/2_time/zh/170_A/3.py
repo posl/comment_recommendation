@@ -1,17 +1,11 @@
-def prime_factors(n):
-    i = 2
-    factors = []
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            if i not in factors:
-                factors.append(i)
-    if n > 1:
-        if n not in factors:
-            factors.append(n)
-    return factors
+def main():
+    # 读入数据
+    x = list(map(int, input().split()))
+    # 计算结果
+    for i in range(5):
+        if x[i] == 0:
+            print(i + 1)
+            break
 
 if __name__ == '__main__':
-    prime_factors()
+    main()

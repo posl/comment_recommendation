@@ -1,8 +1,16 @@
-def problems201_b():
-    n = int(input())
-    data = [input().split() for _ in range(n)]
-    data = sorted(data, key=lambda x: int(x[1]), reverse=True)
-    print(data[1][0])
+def main():
+    S = input()
+    ans = 0
+    for i in range(10000):
+        flag = True
+        for j in range(10):
+            if S[j] == 'o' and str(i).find(str(j)) == -1:
+                flag = False
+            elif S[j] == 'x' and str(i).find(str(j)) != -1:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    problems201_b()
+    main()

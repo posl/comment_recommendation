@@ -1,8 +1,18 @@
-def cal(x,y,z):
-    if x+y+z==h1+h2+h3 and x+y+z==w1+w2+w3:
-        return 1
-    else:
-        return 0
+def main():
+    n = int(input())
+    L = []
+    R = []
+    for i in range(n):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    for i in range(n):
+        if i == 0 or L[i] > R[i - 1]:
+            ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    cal()
+    main()

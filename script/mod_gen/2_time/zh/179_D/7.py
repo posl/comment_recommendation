@@ -1,16 +1,23 @@
-def get_divisors(n):
-    divisors = []
-    for i in range(1, int(n**0.5)+1):
-        if n % i == 0:
-            divisors.append(i)
-            if n // i != i:
-                divisors.append(n//i)
-    return divisors
-N = int(input())
-ans = 0
-for i in range(1, N):
-    ans += len(get_divisors(N-i))-1
-print(ans)
-
-if __name__ == '__main__':
-    get_divisors()
+def solve():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    MOD = 998244353
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dpsum = [0] * (N + 1)
+    dpsum[1] = 1
+    for i in range(2, N + 1):
+        for j in range(K):
+            li = max(0, i - R[j])
+            ri = i - L[j]
+            if ri < 0:
+                continue
+            dp[i] += dpsum[ri] - dpsum[li - 1]
+            dp[i] %= MOD
+        dpsum[i] = dpsum[i - 1] + dp[i]
+        dpsum[i] %= MOD
+    print(dp[N])
+solve()

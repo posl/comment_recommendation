@@ -15,6 +15,3 @@ def getModulo(n, a, b):
     return (powModulo(2, n) - 1 - combModulo(n, a) - combModulo(n, b)) % MOD
 n, a, b = map(int, input().split())
 print(getModulo(n, a, b))
-
-if __name__ == '__main__':
-    getModulo()

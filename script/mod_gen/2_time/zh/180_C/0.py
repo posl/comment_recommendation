@@ -1,10 +1,11 @@
-def main():
-    n = int(input())
-    x = list(map(int,input().split()))
-    x = [abs(i) for i in x]
-    print(sum(x))
-    print(sum([i**2 for i in x])**0.5)
-    print(max(x))
+def solve(n):
+    from math import sqrt
+    ans = set()
+    for i in range(1, int(sqrt(n)) + 1):
+        if n % i == 0:
+            ans.add(i)
+            ans.add(n // i)
+    return sorted(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

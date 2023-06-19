@@ -5,6 +5,3 @@ def main():
         if i != A and i != B:
             print(i)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def main():
     elif S[-4:] == 'ist':
         print('ist')
 main()
-
-if __name__ == '__main__':
-    main()

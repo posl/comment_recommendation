@@ -1,9 +1,9 @@
-def is_prime(n):
-    if n % 2 == 0 and n != 2:
-        return False
-    for i in range(3, int(n**0.5)+1, 2):
-        if n % i == 0: return False
-    return True
+def get_divisor(n):
+    res = []
+    for i in range(1, n+1):
+        if n % i == 0:
+            res.append(i)
+    return res
 
 if __name__ == '__main__':
-    is_prime()
+    get_divisor()

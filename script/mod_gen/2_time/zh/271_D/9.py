@@ -1,102 +1,34 @@
-def main():
-    n = int(input())
-    a = [int(i) for i in input().split()]
-    a.sort()
-    if n == 1:
-        print(0)
-        return
-    if n == 2:
-        print(1)
-        return
-    if n == 3:
-        print(2)
-        return
-    if n == 4:
-        print(2)
-        return
-    if n == 5:
-        print(3)
-        return
-    if n == 6:
-        print(4)
-        return
-    if n == 7:
-        print(4)
-        return
-    if n == 8:
-        print(5)
-        return
-    if n == 9:
-        print(5)
-        return
-    if n == 10:
-        print(6)
-        return
-    if n == 11:
-        print(6)
-        return
-    if n == 12:
-        print(7)
-        return
-    if n == 13:
-        print(7)
-        return
-    if n == 14:
-        print(8)
-        return
-    if n == 15:
-        print(8)
-        return
-    if n == 16:
-        print(9)
-        return
-    if n == 17:
-        print(9)
-        return
-    if n == 18:
-        print(10)
-        return
-    if n == 19:
-        print(10)
-        return
-    if n == 20:
-        print(11)
-        return
-    if n == 21:
-        print(11)
-        return
-    if n == 22:
-        print(12)
-        return
-    if n == 23:
-        print(12)
-        return
-    if n == 24:
-        print(13)
-        return
-    if n == 25:
-        print(13)
-        return
-    if n == 26:
-        print(14)
-        return
-    if n == 27:
-        print(14)
-        return
-    if n == 28:
-        print(15)
-        return
-    if n == 29:
-        print(15)
-        return
-    if n == 30:
-        print(16)
-        return
-    if n == 31:
-        print(16)
-        return
-    if n == 32:
-        print
+def solve(card, S):
+    # 将第i张牌的正面可见，第j张牌的背面可见，第k张牌的背面可见
+    dp = [[[False for _ in range(S+1)] for _ in range(S+1)] for _ in range(len(card)+1)]
+    dp[0][0][0] = True
+    for i in range(len(card)):
+        for j in range(S+1):
+            for k in range(S+1):
+                if dp[i][j][k]:
+                    dp[i+1][j][k] = True
+                    if j+card[i][0] <= S:
+                        dp[i+1][j+card[i][0]][k] = True
+                    if k+card[i][1] <= S:
+                        dp[i+1][j][k+card[i][1]] = True
+    if not dp[len(card)][S][S]:
+        return False, []
+    else:
+        ans = []
+        i = len(card)
+        j = S
+        k = S
+        while i > 0:
+            if dp[i-1][j][k]:
+                ans.append('H')
+            elif j-card[i-1][0] >= 0 and dp[i-1][j-card[i-1][0]][k]:
+                ans.append('T')
+                j -= card[i-1][0]
+            else:
+                ans.append('F')
+                k -= card[i-1][1]
+            i -= 1
+        return True, ans[::-1]
 
 if __name__ == '__main__':
-    main()
+    solve()

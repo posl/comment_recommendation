@@ -1,7 +1,12 @@
-def solve(h):
-    if h == 1:
-        return 1
+def main():
+    S, T = input().split(' ')
+    A, B = map(int, input().split(' '))
+    U = input()
+    if S == U:
+        A -= 1
     else:
-        return 2 * solve(h // 2) + 1
-h = int(input())
-print(solve(h))
+        B -= 1
+    print(A, B)
+
+if __name__ == '__main__':
+    main()

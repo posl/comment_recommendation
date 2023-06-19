@@ -1,12 +1,10 @@
 def main():
-    n = input()
-    sum = 0
-    for i in range(len(n)):
-        sum += int(n[i])
-    if sum % 9 == 0:
-        print("Yes")
-    else:
-        print("No")
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += max(0, A[i] - A[i - 1])
+    print(ans)
 
 if __name__ == '__main__':
     main()

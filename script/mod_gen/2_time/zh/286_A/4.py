@@ -1,15 +1,10 @@
-def judge(n, s, t):
-    if n == 1:
-        return 'Yes'
-    else:
-        for i in range(n):
-            if s[i] == t[i]:
-                return 'No'
-        for i in range(n):
-            for j in range(i+1, n):
-                if s[i] == t[j] and s[j] == t[i]:
-                    return 'Yes'
-        return 'No'
+def swap(A, P, Q, R, S):
+    B = A.copy()
+    for i in range(P-1, Q):
+        B[i] = A[i+R-Q]
+    for i in range(R-1, S):
+        B[i] = A[i+P-R]
+    return B
 
 if __name__ == '__main__':
-    judge()
+    swap()

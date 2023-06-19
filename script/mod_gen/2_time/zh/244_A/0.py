@@ -1,5 +1,7 @@
-def problem243_d():
-    pass
+def problems244_a():
+    n = int(input())
+    s = input()
+    print(s[-1])
 
 if __name__ == '__main__':
-    problem243_d()
+    problems244_a()

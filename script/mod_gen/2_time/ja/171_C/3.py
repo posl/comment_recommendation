@@ -5,6 +5,3 @@ def get_alphabet(n):
         return get_alphabet((n-1) // 26) + get_alphabet((n-1) % 26 + 1)
 n = int(input())
 print(get_alphabet(n))
-
-if __name__ == '__main__':
-    get_alphabet()

@@ -9,6 +9,3 @@ def   main ():
              dp [ min ( i + r ,   N )]   +=   dp [ max ( i + l ,   0 )] 
              dp [ min ( i + r ,   N )]   %=   MOD 
      print ( dp [ - 1 ])
-
-if __name__ == '__main__':
-    ()

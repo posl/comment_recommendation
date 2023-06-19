@@ -1,9 +1,10 @@
-def get_input():
-    input_line = input().split()
-    n = int(input_line[0])
-    m = int(input_line[1])
-    s = [input() for i in range(n)]
-    return n, m, s
+def main():
+    n = int(input())
+    s = input()
+    s_list = list(s)
+    for i in range(0, n, 2):
+        s_list[i] = '.'
+    print(''.join(s_list))
 
 if __name__ == '__main__':
-    get_input()
+    main()

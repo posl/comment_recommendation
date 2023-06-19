@@ -1,10 +1,10 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    if set(A) == set(range(1, N+1)):
-        print('Yes')
+def comparePow(a, b, c):
+    if pow(a, c) > pow(b, c):
+        return ">"
+    elif pow(a, c) < pow(b, c):
+        return "<"
     else:
-        print('No')
-
-if __name__ == '__main__':
-    main()
+        return "="
+print(comparePow(3, 2, 4))
+print(comparePow(-7, 7, 2))
+print(comparePow(-8, 6, 3))

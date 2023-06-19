@@ -1,23 +1,17 @@
 def main():
-    N = int(input())
-    T = []
-    K = []
-    A = []
-    for i in range(N):
-        line = input().split()
-        T.append(int(line[0]))
-        K.append(int(line[1]))
-        A.append([])
-        for j in range(K[i]):
-            A[i].append(int(line[2+j]))
-    #print(T)
-    #print(K)
-    #print(A)
-    D = [0] * N
-    for i in range(N):
-        if K[i] == 0:
-            D[i] = T[i]
-        else:
-            D[i] = T[i] + max([D[j] for j in A[i]])
-    print(max(D))
-main()
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x1, y1 = map(int, input().split())
+        x.append(x1)
+        y.append(y1)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if x[i] == x[j] or y[i] == y[j]:
+                ans = max(ans, abs(x[i]-x[j])+abs(y[i]-y[j]))
+    print(ans)
+
+if __name__ == '__main__':
+    main()

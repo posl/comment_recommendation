@@ -1,51 +1,8 @@
-def main():
-    N = int(input())
-    A = []
-    B = []
-    for i in range(N):
-        a,b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    #print(A)
-    #print(B)
-    #print(2 in range(1,3))
-    #print(3 in range(1,3))
-    #print(4 in range(1,3))
-    #print(2 in range(1,4))
-    #print(3 in range(1,4))
-    #print(4 in range(1,4))
-    #print(2 in range(1,5))
-    #print(3 in range(1,5))
-    #print(4 in range(1,5))
-    #print(2 in range(1,6))
-    #print(3 in range(1,6))
-    #print(4 in range(1,6))
-    #print(2 in range(1,7))
-    #print(3 in range(1,7))
-    #print(4 in range(1,7))
-    #print(2 in range(1,8))
-    #print(3 in range(1,8))
-    #print(4 in range(1,8))
-    #print(2 in range(1,9))
-    #print(3 in range(1,9))
-    #print(4 in range(1,9))
-    #print(2 in range(1,10))
-    #print(3 in range(1,10))
-    #print(4 in range(1,10))
-    #print(2 in range(1,11))
-    #print(3 in range(1,11))
-    #print(4 in range(1,11))
-    #print(2 in range(1,12))
-    #print(3 in range(1,12))
-    #print(4 in range(1,12))
-    #print(2 in range(1,13))
-    #print(3 in range(1,13))
-    #print(4 in range(1,13))
-    #print(2 in range(1,14))
-    #print(3 in range(1,14))
-    #print(4 in range(1,14))
-    #print(2 in range(1,15))
-    #
+def addZero(n):
+    n = str(n)
+    while len(n) < 4:
+        n = '0' + n
+    return n
 
 if __name__ == '__main__':
-    main()
+    addZero()

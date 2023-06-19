@@ -1,15 +1,12 @@
-def main():
-    s = input()
-    count = 0
-    max_count = 0
-    for i in range(len(s)):
-        if s[i] == 'R':
-            count += 1
-            if max_count < count:
-                max_count = count
-        else:
-            count = 0
-    print(max_count)
-
-if __name__ == '__main__':
-    main()
+def triangle_count():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    res = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] != L[j] and L[j] != L[k] and L[i] + L[j] > L[k]:
+                    res += 1
+    print(res)
+triangle_count()

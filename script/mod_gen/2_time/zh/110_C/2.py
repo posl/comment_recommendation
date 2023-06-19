@@ -1,17 +1,27 @@
-def main():
-    n, m, x, y = map(int, input().split())
-    x = x + 1
-    y = y - 1
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    x_list.append(x)
-    y_list.append(y)
-    x_list.sort()
-    y_list.sort()
-    if x_list[-1] > y_list[0]:
-        print('War')
+def solve():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    if s == t:
+        print("Yes")
+        return
+    s_map = {}
+    t_map = {}
+    for i in range(len(s)):
+        if s[i] not in s_map:
+            s_map[s[i]] = 1
+        else:
+            s_map[s[i]] += 1
+        if t[i] not in t_map:
+            t_map[t[i]] = 1
+        else:
+            t_map[t[i]] += 1
+    if s_map == t_map:
+        print("Yes")
     else:
-        print('No War')
+        print("No")
 
 if __name__ == '__main__':
-    main()
+    solve()

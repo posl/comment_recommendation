@@ -1,13 +1,12 @@
 def main():
-    # 读取数据
-    W,H,x,y = map(int,input().split())
-    # 计算面积
-    area = W*H/2
-    # 判断是否在中间
-    if x*2 == W and y*2 == H:
-        print(area,1)
-    else:
-        print(area,0)
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        for j in range(i, N):
+            if sum(A[i:j+1]) >= K:
+                count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

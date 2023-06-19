@@ -1,9 +1,16 @@
 def main():
-    a = list(map(int, input().split()))
-    b = [0]
-    for i in range(100):
-        b.append(a[b[-1]])
-    print(b[3])
-
-if __name__ == '__main__':
-    main()
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    if m > n:
+        print("No")
+        return
+    for i in range(m):
+        if b[i] < a[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+main()

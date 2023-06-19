@@ -1,10 +1,11 @@
-def solve():
-    h,n = map(int,input().split())
-    a = list(map(int,input().split()))
-    if h <= sum(a):
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort()
+    if n <= k:
+        print(0)
+        return
+    print(sum(h[:n-k]))
 
 if __name__ == '__main__':
-    solve()
+    main()

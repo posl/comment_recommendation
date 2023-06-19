@@ -11,6 +11,3 @@ def   main ():
      # bottom-most X layers from the bottom of a level-N burger
      # by recursively calling the function.
      print ( bottom_most_x_layers ( n ,  x ))
-
-if __name__ == '__main__':
-    ()

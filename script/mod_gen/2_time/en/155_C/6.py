@@ -8,6 +8,3 @@ def main():
         if C[s] == max_count:
             print(s)
 main()
-
-if __name__ == '__main__':
-    main()

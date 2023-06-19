@@ -1,26 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = []
-    for i in range(n):
-        if a[i] == 1:
-            b.append(i+1)
-    m = len(b)
-    if m == 0:
-        print(0)
-        return
-    if m == 1:
-        print(1)
-        print(b[0])
-        return
-    if m == 2:
-        print(2)
-        print(b[0], b[1])
-        return
-    print(m)
-    for i in range(m):
-        print(b[i], end=' ')
-    print()
+def solve(a,b):
+    if (a+b)%2==0:
+        return (a+b)//2
+    else:
+        return "IMPOSSIBLE"
 
 if __name__ == '__main__':
-    main()
+    solve()

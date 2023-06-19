@@ -1,17 +1,13 @@
 def main():
-    n = int(input())
-    s = []
+    n,m = map(int,input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    count = 0
     for i in range(n):
-        s.append(input())
-    for i in range(n):
-        if s[i] == 'For':
-            s[i] = 1
-        else:
-            s[i] = 0
-    if sum(s) > n//2:
-        print('Yes')
-    else:
-        print('No')
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

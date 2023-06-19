@@ -24,6 +24,3 @@ def main():
     print(A,B)
     print(C,D)
 main()
-
-if __name__ == '__main__':
-    main()

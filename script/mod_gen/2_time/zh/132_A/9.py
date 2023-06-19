@@ -1,16 +1,16 @@
 def main():
-    N = int(input())
-    AB = []
-    for i in range(N):
-        AB.append(list(map(int, input().split())))
-    AB.sort(key=lambda x: x[1])
-    t = 0
-    for i in range(N):
-        t += AB[i][0]
-        if t > AB[i][1]:
-            print('No')
+    s = input()
+    if len(s) != 4:
+        print("No")
+        return
+    if len(set(s)) != 2:
+        print("No")
+        return
+    for c in set(s):
+        if s.count(c) != 2:
+            print("No")
             return
-    print('Yes')
+    print("Yes")
 
 if __name__ == '__main__':
     main()

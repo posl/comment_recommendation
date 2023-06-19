@@ -1,11 +1,10 @@
-def get_min_diff(s):
-    min_diff = 999
-    for i in range(len(s)-2):
-        num = int(s[i:i+3])
-        diff = abs(num - 753)
-        if diff < min_diff:
-            min_diff = diff
-    return min_diff
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        if '7' in str(i) and '5' in str(i) and '3' in str(i):
+            ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    get_min_diff()
+    main()

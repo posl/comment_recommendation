@@ -1,17 +1,12 @@
 def main():
-    # 读取数据
-    a, b, c, d = map(int, input().split())
-    # 循环
-    count = 0
-    while a > c * d:
-        a += b
-        c += d
-        count += 1
-    # 判断
-    if a <= c * d:
-        print(count)
-    else:
-        print(-1)
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if A[i][1] <= A[j][2] and A[j][1] <= A[i][2]:
+                ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

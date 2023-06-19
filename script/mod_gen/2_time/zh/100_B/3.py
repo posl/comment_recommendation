@@ -1,20 +1,12 @@
-def problems100_b():
-    d,n = map(int,input().split())
-    if d == 0:
-        if n == 100:
-            print(101)
-        else:
-            print(n)
-    elif d == 1:
-        if n == 100:
-            print(10100)
-        else:
-            print(n*100)
+def getNth(D,N):
+    if D == 0:
+        print(N)
+    elif D == 1:
+        print(100*N)
+    elif D == 2:
+        print(10000*N)
     else:
-        if n == 100:
-            print(1010000)
-        else:
-            print(n*10000)
+        print("D is not 0,1,2")
 
 if __name__ == '__main__':
-    problems100_b()
+    getNth()

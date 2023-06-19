@@ -1,13 +1,20 @@
 def main():
-    N = int(input())
-    P = list(map(int,input().split()))
-    count = 1
-    min = P[0]
-    for i in range(1,N):
-        if P[i] <= min:
-            count += 1
-            min = P[i]
-    print(count)
+    n = int(input())
+    cnt = 0
+    for i in range(1, n + 1):
+        s = str(i)
+        if s[-1] == s[0]:
+            cnt += 1
+    for i in range(1, n + 1):
+        s = str(i)
+        if s[-1] != s[0]:
+            continue
+        for j in range(1, n + 1):
+            s = str(j)
+            if s[-1] != s[0]:
+                continue
+            cnt += 1
+    print(cnt)
 
 if __name__ == '__main__':
     main()

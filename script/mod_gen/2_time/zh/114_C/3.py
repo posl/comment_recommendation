@@ -1,9 +1,8 @@
-def main():
-    s = input()
-    n = len(s)
-    ans = 1000
-    for i in range(n-2):
-        x = int(s[i:i+3])
-        ans = min(ans, abs(x-753))
-    print(ans)
-main()
+def check753(n):
+    if n%3 == 0:
+        return False
+    else:
+        return True
+
+if __name__ == '__main__':
+    check753()

@@ -1,6 +1,8 @@
 def main():
-    n,w = map(int, input().split())
-    print(n//w)
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(H)]
+    min_a = min([min(a) for a in A])
+    print(sum([sum(a) for a in A]) - min_a * H * W)
 
 if __name__ == '__main__':
     main()

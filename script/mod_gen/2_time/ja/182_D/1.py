@@ -8,6 +8,3 @@ def main():
             max = 0
     print(max)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,12 +1,12 @@
-def main():
-    N = int(input())
+def solve():
+    N, K = map(int, input().split())
     A = list(map(int, input().split()))
-    A.sort()
-    min = 0
+    B = list(map(int, input().split()))
+    m = 0
     for i in range(N):
-        if min == A[i]:
-            min += 1
-    print(min)
-
-if __name__ == '__main__':
-    main()
+        m = max(m, abs(A[i] - B[i]))
+    if m <= K:
+        print('Yes')
+    else:
+        print('No')
+solve()

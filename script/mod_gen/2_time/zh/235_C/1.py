@@ -1,11 +1,9 @@
 def main():
-    N = int(input())
-    H = list(map(int, input().split()))
-    maxH = 0
-    for i in range(N):
-        if H[i] >= maxH:
-            maxH = H[i]
-    print(maxH)
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for _ in range(Q):
+        x, k = map(int, input().split())
+        print(find_kth(A, x, k))
 
 if __name__ == '__main__':
     main()

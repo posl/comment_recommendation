@@ -1,11 +1,9 @@
-def solve():
-    n = int(input())
-    for i in range(0, n // 4 + 1):
-        for j in range(0, n // 7 + 1):
-            if i * 4 + j * 7 == n:
-                print("Yes")
-                return
-    print("No")
+def solve(N):
+    for i in range(N//4+1):
+        for j in range(N//7+1):
+            if N == 4*i+7*j:
+                return True
+    return False
 
 if __name__ == '__main__':
     solve()

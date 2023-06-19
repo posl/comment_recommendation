@@ -11,6 +11,3 @@ def main():
         ans += v * (v - 1) // 2
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

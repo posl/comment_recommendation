@@ -20,6 +20,3 @@ def main():
             total -= a[i]/b[i]
     print(distance)
 main()
-
-if __name__ == '__main__':
-    main()

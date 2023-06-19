@@ -1,16 +1,9 @@
-def problems180_d(x,y,a,b):
-    exp = 0
-    str = x
-    while True:
-        if str * a <= str + b:
-            exp += 1
-            str *= a
-        else:
-            break
-        if str >= y:
-            break
-    exp += (y - str - 1) // b
-    return exp
+def problem181_a():
+    N = int(input())
+    if N%2==0:
+        print('白色')
+    else:
+        print('黑色')
 
 if __name__ == '__main__':
-    problems180_d()
+    problem181_a()

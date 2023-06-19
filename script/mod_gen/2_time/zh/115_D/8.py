@@ -1,8 +1,17 @@
-def main():
-    n, k = map(int, input().split())
-    h = [int(input()) for _ in range(n)]
-    h.sort()
-    print(min(h[i+k-1]-h[i] for i in range(n-k+1)))
-
-if __name__ == '__main__':
-    main()
+def func(n,x):
+    if n == 0:
+        return 0
+    elif x == 1:
+        return 0
+    elif x <= 1 + func(n-1,2**(n+1)-3):
+        return func(n-1,x-1)
+    elif x == 2 + func(n-1,2**(n+1)-3):
+        return 1 + func(n-1,2**(n+1)-3)
+    elif x <= 2 + 2*func(n-1,2**(n+1)-3):
+        return 1 + func(n-1,x-2-func(n-1,2**(n+1)-3))
+    elif x == 3 + 2*func(n-1,2**(n+1)-3):
+        return 1 + 2*func(n-1,2**(n+1)-3)
+    else:
+        return 2 + func(n-1,x-3-2*func(n-1,2**(n+1)-3))
+n,x = map(int,input().split())
+print(func(n,x))

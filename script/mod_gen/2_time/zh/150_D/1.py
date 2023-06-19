@@ -1,5 +1,9 @@
-def find_min_permutation(n):
-    return 1
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
 
 if __name__ == '__main__':
-    find_min_permutation()
+    gcd()

@@ -1,15 +1,21 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    min1 = min2 = 10**9
-    for i in range(N):
-        if A[i] < min1:
-            min2 = min1
-            min1 = A[i]
-            min_index = i
-        elif A[i] < min2:
-            min2 = A[i]
-    print(min_index + 1)
+    h,w,n = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    a = sorted(set(a))
+    b = sorted(set(b))
+    a_dict = {}
+    b_dict = {}
+    for i in range(len(a)):
+        a_dict[a[i]] = i+1
+    for i in range(len(b)):
+        b_dict[b[i]] = i+1
+    for i in range(n):
+        print(a_dict[a[i]],b_dict[b[i]])
 
 if __name__ == '__main__':
     main()

@@ -1,16 +1,16 @@
 def main():
-    n,k = map(int,input().split())
-    a = [list(map(int,input().split())) for _ in range(n)]
-    a.sort(key=sum)
-    a.reverse()
-    b = [sum(a[i][:3]) for i in range(n)]
-    b.sort()
-    b.reverse()
-    for i in range(n):
-        if a[i][0] == b[k-1]:
-            print('Yes')
+    N = 2**20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
         else:
-            print('No')
+            print(A[x % N])
 
 if __name__ == '__main__':
     main()

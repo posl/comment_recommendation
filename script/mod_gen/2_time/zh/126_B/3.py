@@ -1,10 +1,16 @@
-def problems126_a():
-    N, K = map(int, input().split())
-    S = input()
-    S1 = S[K-1]
-    S2 = S1.lower()
-    S3 = S[:K-1] + S2 + S[K:]
-    print(S3)
-
-if __name__ == '__main__':
-    problems126_a()
+def problem126_b():
+    s = input()
+    if 1 <= int(s[0:2]) <= 12:
+        if 1 <= int(s[2:4]) <= 12:
+            print('AMBIGUOUS')
+            return
+        else:
+            print('MMYY')
+            return
+    elif 1 <= int(s[2:4]) <= 12:
+        print('YYMM')
+        return
+    else:
+        print('NA')
+        return
+problem126_b()

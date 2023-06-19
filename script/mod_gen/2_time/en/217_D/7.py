@@ -12,6 +12,3 @@ def problem217_d():
                     print(cuts[j+1]-cuts[j])
                     break
 problem217_d()
-
-if __name__ == '__main__':
-    problem217_d()

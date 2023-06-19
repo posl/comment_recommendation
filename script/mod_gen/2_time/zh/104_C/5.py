@@ -1,25 +1,32 @@
 def main():
-    D,G = map(int,input().split())
-    p_c = [list(map(int,input().split())) for _ in range(D)]
-    ans = float('inf')
+    D, G = map(int, input().split())
+    p = []
+    c = []
+    for _ in range(D):
+        p_i, c_i = map(int, input().split())
+        p.append(p_i)
+        c.append(c_i)
+    min_num = 1000000
     for i in range(2**D):
-        cnt = 0
         score = 0
-        rest_max = -1
+        num = 0
         for j in range(D):
-            if ((i>>j)&1):
-                score += 100*(j+1)*p_c[j][0]+p_c[j][1]
-                cnt += p_c[j][0]
-            else:
-                rest_max = j
-        if score < G:
-            s1 = 100*(rest_max+1)
-            need = (G-score+s1-1)//s1
-            if need >= p_c[rest_max][0]:
-                continue
-            cnt += need
-        ans = min(ans,cnt)
-    print(ans)
+            if (i >> j) & 1:
+                score += 100 * (j+1) * p[j] + c[j]
+                num += p[j]
+        if score >= G:
+            min_num = min(min_num, num)
+        else:
+            for j in range(D-1, -1, -1):
+                if (i >> j) & 1:
+                    continue
+                for k in range(p[j]):
+                    if score >= G:
+                        break
+                    score += 100 * (j + 1)
+                    num += 1
+            min_num = min(min_num, num)
+    print(min_num)
 
 if __name__ == '__main__':
     main()

@@ -11,6 +11,3 @@ def solve():
             dp[i+1][j] %= MOD
     print(dp[N][B[N-1]])
 solve()
-
-if __name__ == '__main__':
-    solve()

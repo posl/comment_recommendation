@@ -1,19 +1,8 @@
-def main():
-    h, w = map(int, input().split())
-    a = [list(input()) for i in range(h)]
-    row = [False] * h
-    col = [False] * w
-    for i in range(h):
-        for j in range(w):
-            if a[i][j] == '#':
-                row[i] = True
-                col[j] = True
-    for i in range(h):
-        if row[i]:
-            for j in range(w):
-                if col[j]:
-                    print(a[i][j], end = '')
-            print()
+def find_column(a, j):
+    for i in range(len(a)):
+        if a[i][j] == '#':
+            return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    find_column()

@@ -1,18 +1,11 @@
-def main():
-    s = input()
+def check(s):
     if s[0] != 'A':
-        print('WA')
-        return
+        return False
     if s[2:-1].count('C') != 1:
-        print('WA')
-        return
-    for i in s:
-        if i == 'A' or i == 'C':
-            continue
-        if i.isupper():
-            print('WA')
-            return
-    print('AC')
-
-if __name__ == '__main__':
-    main()
+        return False
+    for c in s[1:]:
+        if c != 'C' and c.isupper():
+            return False
+    return True
+s = input()
+print('AC' if check(s) else 'WA')

@@ -7,6 +7,3 @@ def solve():
                 count += 1
     return count
 print(solve())
-
-if __name__ == '__main__':
-    solve()

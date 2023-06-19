@@ -1,12 +1,12 @@
 def main():
-    k = int(input())
-    n = 7
-    for i in range(1, k+1):
-        if n % k == 0:
-            print(i)
-            return
-        n = n * 10 + 7
-    print(-1)
+    N = int(input())
+    c = input()
+    count = 0
+    # 先把W移到最左边
+    for i in range(N):
+        if c[i] == 'W':
+            count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

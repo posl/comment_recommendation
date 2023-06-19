@@ -1,15 +1,18 @@
 def main():
-    N, K, X = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for i in range(N):
-        if K > 0:
-            ans += max(A[i]-X, 0)
-            K -= 1
-        else:
-            ans += A[i]
-    print(ans)
+    N = int(input())
+    X = N
+    while True:
+        a = 0
+        b = X
+        while b > 0:
+            a += b % 10
+            b //= 10
+        if X == N:
+            a = 10
+        if X == a ** 3 + a ** 2 * a + a * a ** 2 + a ** 3:
+            print(X)
+            break
+        X += 1
 
 if __name__ == '__main__':
     main()

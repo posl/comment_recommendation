@@ -13,6 +13,3 @@ a = list(map(int, input().split()))
 a.sort(reverse=True)
 a = [2, 5, 5, 4, 5, 6, 3, 7, 6]
 print(solve(n, m, a))
-
-if __name__ == '__main__':
-    solve()

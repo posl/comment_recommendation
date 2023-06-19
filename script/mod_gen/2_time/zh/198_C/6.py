@@ -1,5 +1,5 @@
-def isPalindrome(s):
-    return s == s[::-1]
+def problems198_c():
+    pass
 
 if __name__ == '__main__':
-    isPalindrome()
+    problems198_c()

@@ -1,12 +1,16 @@
 def main():
-    str = input()
-    k = int(input())
-    i = 0
-    while i < k:
-        if str[i] == '1':
-            i += 1
+    S = input()
+    K = int(input())
+    count = 0
+    for i in range(len(S)):
+        if S[i] == '1':
+            count += 1
         else:
-            str = str.replace(str[i], str[i] * int(str[i]), 1)
-            i += int(str[i])
-    print(str[k - 1])
-main()
+            break
+    if K <= count:
+        print(1)
+    else:
+        print(S[count])
+
+if __name__ == '__main__':
+    main()

@@ -8,6 +8,3 @@ def main():
             E[i] += (p[i + j] + 1) / 2
     print(max(E))
 main()
-
-if __name__ == '__main__':
-    main()

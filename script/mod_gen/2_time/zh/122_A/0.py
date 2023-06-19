@@ -1,11 +1,14 @@
-def f(a, b):
-    if a == b:
-        return a
+def get_complementary_base(input_base):
+    if input_base == 'A':
+        return 'T'
+    elif input_base == 'C':
+        return 'G'
+    elif input_base == 'G':
+        return 'C'
+    elif input_base == 'T':
+        return 'A'
     else:
-        if a%2 == 1:
-            return a^f(a+1, b)
-        else:
-            return f(a+1, b)
+        return ''
 
 if __name__ == '__main__':
-    f()
+    get_complementary_base()

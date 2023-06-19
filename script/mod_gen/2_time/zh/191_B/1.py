@@ -1,7 +1,8 @@
-def play_ball():
-    v, t, s, d = map(int, input().split())
-    if d/v >= t and d/v <= s:
-        print('No')
-    else:
-        print('Yes')
-play_ball()
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i for i in a if i != x]
+    print(*a)
+
+if __name__ == '__main__':
+    main()

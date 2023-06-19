@@ -1,10 +1,11 @@
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if a % b:
-        return gcd(b, a % b)
-    else:
-        return b
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    f = 0
+    for i in range(1, N):
+        f += A[i] - A[i - 1]
+    print(f)
 
 if __name__ == '__main__':
-    gcd()
+    main()

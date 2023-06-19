@@ -1,12 +1,9 @@
-def solve(N,M,A,B):
-    if M>N:
-        return False
-    A.sort()
-    B.sort()
-    for i in range(M):
-        if B[i]<A[N-M+i]:
-            return False
-    return True
+def check(s):
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if s[i][j] == '#':
+                return True
+    return False
 
 if __name__ == '__main__':
-    solve()
+    check()

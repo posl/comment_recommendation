@@ -1,10 +1,16 @@
-def check_polygon(l):
-    max_l = max(l)
-    sum_l = sum(l) - max_l
-    if max_l < sum_l:
-        return True
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+    if n == 1:
+        print(x[m-1]-x[0])
+        return
     else:
-        return False
+        l = []
+        for i in range(m-1):
+            l.append(x[i+1]-x[i])
+        l.sort()
+        print(sum(l[:m-n]))
 
 if __name__ == '__main__':
-    check_polygon()
+    main()

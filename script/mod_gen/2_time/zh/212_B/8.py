@@ -1,11 +1,14 @@
-def main():
-    a, b = map(int, input().split())
-    if a == 0:
-        print('银')
-    elif b == 0:
-        print('黄金')
+def is_weak(PIN):
+    if PIN == PIN[0]*4:
+        return True
     else:
-        print('合金')
+        for i in range(3):
+            if PIN[i] == '9' and PIN[i+1] == '0':
+                return True
+            elif PIN[i+1] != str(int(PIN[i])+1):
+                return False
+        return True
+PIN = input()
 
 if __name__ == '__main__':
-    main()
+    is_weak()

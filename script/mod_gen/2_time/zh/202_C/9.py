@@ -1,13 +1,16 @@
-def problem202_b():
-    s = input()
-    s = s[::-1]
-    s = s.replace('6', 't')
-    s = s.replace('9', '6')
-    s = s.replace('t', '9')
-    s = s.replace('0', 't')
-    s = s.replace('1', '0')
-    s = s.replace('t', '1')
-    print(s)
+def main():
+    N = int(input())
+    A = input().split()
+    B = input().split()
+    C = input().split()
+    for i in range(N):
+        A[i] = int(A[i])
+        B[i] = int(B[i])
+        C[i] = int(C[i])
+    count = 0
+    for i in range(N):
+        count += B.count(A[C[i]-1])
+    print(count)
 
 if __name__ == '__main__':
-    problem202_b()
+    main()

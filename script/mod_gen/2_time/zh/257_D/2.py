@@ -1,18 +1,49 @@
 def main():
     N = int(input())
-    S = input()
-    W = list(map(int, input().split()))
-    ans = 0
-    for x in range(0, 200):
-        #print(x)
-        cnt = 0
-        for i in range(N):
-            if S[i] == '0' and W[i] <= x:
-                cnt += 1
-            if S[i] == '1' and W[i] > x:
-                cnt += 1
-        ans = max(ans, cnt)
-    print(ans)
+    # x = []
+    # y = []
+    # p = []
+    # for i in range(N):
+    #     x_i, y_i, p_i = map(int, input().split())
+    #     x.append(x_i)
+    #     y.append(y_i)
+    #     p.append(p_i)
+    # print(x)
+    # print(y)
+    # print(p)
+    # for i in range(N):
+    #     for j in range(N):
+    #         if i == j:
+    #             continue
+    #         else:
+    #             if p[i] * S >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+    #                 continue
+    #             else:
+    #                 S += 1
+    # print(S)
+    # print(x)
+    # print(y)
+    # print(p)
+    # print(S)
+    x = []
+    y = []
+    p = []
+    for i in range(N):
+        x_i, y_i, p_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        p.append(p_i)
+    S = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            else:
+                if p[i] * S >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                    continue
+                else:
+                    S += 1
+    print(S)
 
 if __name__ == '__main__':
     main()

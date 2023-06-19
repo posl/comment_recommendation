@@ -1,5 +1,5 @@
-def solve():
+def problem185_d():
     pass
 
 if __name__ == '__main__':
-    solve()
+    problem185_d()

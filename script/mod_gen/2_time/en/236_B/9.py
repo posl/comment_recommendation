@@ -7,6 +7,3 @@ def main():
         s += A[2 * i]
     print(s)
 main()
-
-if __name__ == '__main__':
-    main()

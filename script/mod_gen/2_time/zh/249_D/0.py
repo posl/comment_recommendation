@@ -1,18 +1,19 @@
-def main():
-    n, k = map(int, input().split())
-    S = [input() for _ in range(n)]
-    ans = 0
-    for i in range(1 << n):
-        if bin(i).count('1') != k:
-            continue
-        cnt = set()
-        for j in range(n):
-            if i >> j & 1:
-                for c in S[j]:
-                    cnt.add(c)
-        if len(cnt) == k:
-            ans = max(ans, bin(i).count('1'))
-    print(ans)
+def solve():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A.sort()
+    count = 0
+    for i in range(N):
+        for j in range(N):
+            if A[j] == 0:
+                continue
+            if A[i] % A[j] != 0:
+                continue
+            k = A[i] // A[j]
+            if A.count(k) == 0:
+                continue
+            count += 1
+    print(count)
 
 if __name__ == '__main__':
-    main()
+    solve()

@@ -1,18 +1,19 @@
-def main():
-    # 读入数据
-    with open('problems145_c.txt', 'r') as f:
-        n = int(f.readline())
-        xy_list = []
-        for i in range(n):
-            xy_list.append(f.readline().split())
-    # 计算距离
-    distance_list = []
-    for i in range(n):
-        for j in range(i+1, n):
-            distance = ((int(xy_list[i][0]) - int(xy_list[j][0])) ** 2 + (int(xy_list[i][1]) - int(xy_list[j][1])) ** 2) ** 0.5
-            distance_list.append(distance)
-    # 计算平均距离
-    print(sum(distance_list) / len(distance_list))
-
-if __name__ == '__main__':
-    main()
+def solve(x, y):
+    if x + y == 0:
+        return 1
+    elif x + y == 1:
+        return 0
+    else:
+        # 骑士可以从(i,j)到达(i+1,j+2)或(i+2,j+1)。
+        # 从(i+1,j+2)到达(X,Y)的方法数为solve(X-i-1,Y-j-2)。
+        # 从(i+2,j+1)到达(X,Y)的方法数为solve(X-i-2,Y-j-1)。
+        # 因此，从(i,j)到达(X,Y)的方法数为solve(X-i-1,Y-j-2)+solve(X-i-2,Y-j-1)。
+        # 为了避免重复计算，我们使用记忆化递归。
+        if (x, y) in memo:
+            return memo[(x, y)]
+        else:
+            memo[(x, y)] = (solve(x - 1, y - 2) + solve(x - 2, y - 1)) % 1000000007
+            return memo[(x, y)]
+memo = {}
+x, y = map(int, input().split())
+print(solve(x, y))

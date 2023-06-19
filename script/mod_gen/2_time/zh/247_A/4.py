@@ -1,8 +1,6 @@
-def f(n):
-    if n==0:
-        return 0
-    else:
-        return n**3+n**2+n+1
+def main():
+    s = input()
+    print(s[1:],s[0],sep='')
 
 if __name__ == '__main__':
-    f()
+    main()

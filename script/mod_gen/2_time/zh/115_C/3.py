@@ -1,17 +1,12 @@
 def main():
-    n = int(input())
-    p = []
-    for i in range(n):
-        p.append(int(input()))
-    p.sort()
-    p.reverse()
-    total = 0
-    for i in range(n):
-        if i == 0:
-            total += p[i] / 2
-        else:
-            total += p[i]
-    print(int(total))
+    N,K = map(int,input().split())
+    h = [int(input()) for i in range(N)]
+    h.sort()
+    ans = h[K-1]-h[0]
+    for i in range(1,N-K+1):
+        if ans > h[i+K-1]-h[i]:
+            ans = h[i+K-1]-h[i]
+    print(ans)
 
 if __name__ == '__main__':
     main()

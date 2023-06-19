@@ -1,9 +1,10 @@
 def main():
-    x = input().split(' ')
-    for i in range(5):
-        if x[i] == '0':
-            print(i+1)
-            break
+    x, y = map(int, input().split())
+    for i in range(x+1):
+        if 2*i + 4*(x-i) == y:
+            print("Yes")
+            return
+    print("No")
 
 if __name__ == '__main__':
     main()

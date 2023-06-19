@@ -12,6 +12,3 @@ def main():
             B[i + a] = 1
     print(N - B[::-1].index(1))
 main()
-
-if __name__ == '__main__':
-    main()

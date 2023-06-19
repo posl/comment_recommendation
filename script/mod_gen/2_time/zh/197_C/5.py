@@ -1,34 +1,12 @@
-def get_result():
-    H, W, X, Y = input().split()
-    H = int(H)
-    W = int(W)
-    X = int(X)
-    Y = int(Y)
-    S = []
-    for i in range(H):
-        S.append(input())
-    result = 1
-    for i in range(X-2, -1, -1):
-        if S[i][Y-1] == "#":
-            break
-        else:
-            result += 1
-    for i in range(X, H):
-        if S[i][Y-1] == "#":
-            break
-        else:
-            result += 1
-    for i in range(Y-2, -1, -1):
-        if S[X-1][i] == "#":
-            break
-        else:
-            result += 1
-    for i in range(Y, W):
-        if S[X-1][i] == "#":
-            break
-        else:
-            result += 1
-    return result
-
-if __name__ == '__main__':
-    get_result()
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=0
+    for i in range(n):
+        for j in range(i,n):
+            x=0
+            for k in range(i,j+1):
+                x|=a[k]
+            ans^=x
+    print(ans)
+main()

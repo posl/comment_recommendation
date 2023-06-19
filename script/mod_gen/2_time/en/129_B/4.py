@@ -16,6 +16,3 @@ def main():
             ans = min(ans,abs(S-2*i))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

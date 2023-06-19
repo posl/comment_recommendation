@@ -1,11 +1,7 @@
-def count_x(a, b):
-    x = 0
-    for i in range(len(a)):
-        if a[i] > x:
-            x = a[i]
-        if b[i] < x:
-            x = b[i]
-    return x
+def swap(s, a, b):
+    if a > b:
+        a, b = b, a
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
 
 if __name__ == '__main__':
-    count_x()
+    swap()

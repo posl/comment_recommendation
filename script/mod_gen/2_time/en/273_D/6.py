@@ -22,6 +22,3 @@ def main():
             r_s = min(H, r_s + l)
         print(r_s, c_s)
 main()
-
-if __name__ == '__main__':
-    main()

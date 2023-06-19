@@ -1,20 +1,11 @@
-def main():
+def solve():
     N = int(input())
-    A = []
-    B = []
+    A = list(map(int, input().split()))
+    ans = 0
     for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    t = 0
-    for i in range(N):
-        t += A[i]
-    ans = t
-    for i in range(N):
-        t = t - A[i] + B[i]
-        if t > ans:
-            ans = t
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
     print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

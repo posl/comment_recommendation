@@ -6,6 +6,3 @@ def snuke():
         snuke_numbers.append(snuke_numbers[i] * 10)
         snuke_numbers.append(snuke_numbers[i] * 10 + 1)
         snuke_numbers.sort()
-
-if __name__ == '__main__':
-    snuke()

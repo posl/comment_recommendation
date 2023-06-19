@@ -1,17 +1,18 @@
 def main():
-    S = input()
-    Q = int(input())
-    for i in range(Q):
-        t, k = map(int, input().split())
-        t %= 3
-        k -= 1
-        if t == 1:
-            t = 2
-        elif t == 2:
-            t = 1
-        if k >= len(S):
-            k %= len(S)
-        print(S[k])
+    v,a,b,c = map(int,input().split())
+    while v:
+        if v < a:
+            print("F")
+            break
+        v -= a
+        if v < b:
+            print("M")
+            break
+        v -= b
+        if v < c:
+            print("T")
+            break
+        v -= c
 
 if __name__ == '__main__':
     main()

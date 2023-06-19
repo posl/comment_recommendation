@@ -1,12 +1,13 @@
 def main():
-    # 读取输入
-    input_line = input()
-    a, b = map(int, input_line.split())
-    # 求解并输出
-    if a < b:
-        print(str(a) * b)
-    else:
-        print(str(b) * a)
+    n = int(input())
+    p = list(map(int, input().split()))
+    min_p = p[0]
+    count = 1
+    for i in range(1, n):
+        if min_p >= p[i]:
+            count += 1
+        min_p = min(min_p, p[i])
+    print(count)
 
 if __name__ == '__main__':
     main()

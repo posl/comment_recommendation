@@ -47,6 +47,3 @@ def main():
         print(sum(B_even) + sum(B_odd) - B[-1])
         return
 main()
-
-if __name__ == '__main__':
-    main()

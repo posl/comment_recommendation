@@ -1,9 +1,15 @@
-def get_input():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    return N, S
+def solve():
+    A, B, C = map(int, input().split())
+    if C == 0:
+        if A > B:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    else:
+        if A < B:
+            print("Aoki")
+        else:
+            print("Takahashi")
 
 if __name__ == '__main__':
-    get_input()
+    solve()

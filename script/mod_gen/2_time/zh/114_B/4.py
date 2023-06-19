@@ -1,9 +1,6 @@
 def main():
-    X = int(input())
-    if X == 3 or X == 5 or X == 7:
-        print("YES")
-    else:
-        print("NO")
+    S = input()
+    print(min(abs(int(S[i:i+3])-753) for i in range(len(S)-2)))
 
 if __name__ == '__main__':
     main()

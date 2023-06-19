@@ -1,21 +1,13 @@
-def solve():
-    N,X = map(int,input().split())
-    AB = []
-    for i in range(N):
-        AB.append(list(map(int,input().split())))
-    #print(AB)
-    #print(N,X)
-    min_time = 10**9*N
-    for i in range(N):
-        time = 0
-        for j in range(N):
-            if j <= i:
-                time += AB[j][0] + AB[j][1]
-            else:
-                time += AB[j][1]
-        #print(time)
-        min_time = min(min_time,time)
-    print(min_time+X)
+def main():
+    n, m, x, t, d = map(int, input().split())
+    for i in range(1, n+1):
+        if i == m:
+            print(t)
+            break
+        if i < x:
+            t += d
+        else:
+            t -= d
 
 if __name__ == '__main__':
-    solve()
+    main()

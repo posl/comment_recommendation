@@ -1,8 +1,6 @@
-def relu(x):
-    if x >= 0:
-        return x
-    else:
-        return 0
+def main():
+    sx,sy,gx,gy = map(int,input().split())
+    print((sx*gy+gx*sy)/(sy+gy))
 
 if __name__ == '__main__':
-    relu()
+    main()

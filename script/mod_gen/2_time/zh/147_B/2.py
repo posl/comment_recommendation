@@ -1,11 +1,8 @@
-def main():
-    a = input()
-    b = a.split()
-    c = int(b[0]) + int(b[1]) + int(b[2])
-    if c >= 22:
-        print('bust')
-    else:
-        print('win')
+def is_palindrome(s):
+    for i in range(int(len(s)/2)):
+        if s[i] != s[-(i+1)]:
+            return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    is_palindrome()

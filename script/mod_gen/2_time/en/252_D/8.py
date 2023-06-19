@@ -7,6 +7,3 @@ def  main():
     for i in range(1, N+1):
         ans += (i-1) * (N-i) * (A[i+1] - A[i-1])
     print(ans)
-
-if __name__ == '__main__':
-    ()

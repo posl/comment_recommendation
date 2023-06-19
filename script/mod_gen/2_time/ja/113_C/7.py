@@ -16,6 +16,3 @@ def problem113_c():
     for i in range(M):
         print(ans[i])
 problem113_c()
-
-if __name__ == '__main__':
-    problem113_c()

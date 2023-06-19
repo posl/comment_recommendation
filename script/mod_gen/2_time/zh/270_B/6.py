@@ -1,8 +1,7 @@
 def main():
-    # 读取输入
-    a, b = map(int, input().split())
-    # 处理
-    print(7 - a - b)
-
-if __name__ == '__main__':
-    main()
+    x,y,z = map(int,input().split())
+    if x < y < z:
+        print(z-y)
+    else:
+        print(-1)
+main()

@@ -1,7 +1,13 @@
-def main():
-    h, w = map(int, input().split())
-    h1, w1 = map(int, input().split())
-    print(h * w - (h1 * w + (h - h1) * (w - w1)))
-
-if __name__ == '__main__':
-    main()
+def solve():
+    n, m, c = map(int, input().split())
+    b_list = list(map(int, input().split()))
+    a_list = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for a in a_list:
+        sum = 0
+        for i in range(m):
+            sum += a[i] * b_list[i]
+        if sum + c > 0:
+            ans += 1
+    print(ans)
+solve()

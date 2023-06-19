@@ -35,6 +35,3 @@ def main():
                 return
     print(3 ** (N - M))
 main()
-
-if __name__ == '__main__':
-    main()

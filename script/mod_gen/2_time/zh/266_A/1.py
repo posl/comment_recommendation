@@ -1,5 +1,6 @@
-def problems265_d():
-    pass
+def main():
+    str = input()
+    print(str[int((len(str)+1)/2)-1])
 
 if __name__ == '__main__':
-    problems265_d()
+    main()

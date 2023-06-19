@@ -1,7 +1,13 @@
-def main():
-    week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
-    a = input()
-    print(7 - week.index(a))
+def move_str(s, n):
+    s = s.upper()
+    n = n % 26
+    res = ''
+    for i in s:
+        if ord(i) + n > ord('Z'):
+            res += chr(ord(i) + n - ord('Z') + ord('A') - 1)
+        else:
+            res += chr(ord(i) + n)
+    return res
 
 if __name__ == '__main__':
-    main()
+    move_str()

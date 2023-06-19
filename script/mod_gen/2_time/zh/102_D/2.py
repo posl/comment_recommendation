@@ -1,18 +1,17 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    sums = [0]
-    for i in range(n):
-        sums.append(sums[-1] + a[i])
-    def get_diff(i, j):
-        return abs(sums[j] - sums[i])
-    def get_max_diff(i, j):
-        return max(get_diff(i, j), get_diff(j, i))
-    ans = 10**9
-    for i in range(1, n - 2):
-        for j in range(i + 1, n - 1):
-            ans = min(ans, max(get_max_diff(0, i), max(get_max_diff(i, j), get_max_diff(j, n))))
-    print(ans)
+def get_min_max_diff(A):
+    N = len(A)
+    min_diff = 10 ** 9
+    for i in range(1, N - 2):
+        for j in range(i + 1, N - 1):
+            for k in range(j + 1, N):
+                P = sum(A[:i])
+                Q = sum(A[i:j])
+                R = sum(A[j:k])
+                S = sum(A[k:])
+                diff = max(P, Q, R, S) - min(P, Q, R, S)
+                if diff < min_diff:
+                    min_diff = diff
+    return min_diff
 
 if __name__ == '__main__':
-    main()
+    get_min_max_diff()

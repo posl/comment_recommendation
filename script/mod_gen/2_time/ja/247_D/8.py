@@ -9,6 +9,3 @@ def main():
             print(sum(balls[:q[1]]))
             balls = balls[q[1]:]
 main()
-
-if __name__ == '__main__':
-    main()

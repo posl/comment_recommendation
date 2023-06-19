@@ -1,12 +1,9 @@
-def main():
-    n = int(input())
-    s = input()
-    for i in range(n):
-        if s[i] == "," and i % 2 == 0:
-            print(".", end="")
-        else:
-            print(s[i], end="")
-    print()
+def find(x):
+    if x == parent[x]:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]
 
 if __name__ == '__main__':
-    main()
+    find()

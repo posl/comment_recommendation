@@ -1,20 +1,10 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.append(0)
-    ans = 0
-    cnt = 1
-    for i in range(n):
-        if a[i] != a[i+1]:
-            if cnt >= a[i]:
-                ans += cnt - a[i]
-            else:
-                ans += cnt
-            cnt = 1
-        else:
-            cnt += 1
-    print(ans)
+    a = raw_input().split(' ')
+    a = map(int, a)
+    b = a[0]
+    for i in range(1, 11):
+        b = a[b]
+    print b
 
 if __name__ == '__main__':
     main()

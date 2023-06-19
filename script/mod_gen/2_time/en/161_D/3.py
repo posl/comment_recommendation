@@ -11,6 +11,3 @@ def main():
             lunlun.append(n * 10 + last + 1)
     print(lunlun[K - 1])
 main()
-
-if __name__ == '__main__':
-    main()

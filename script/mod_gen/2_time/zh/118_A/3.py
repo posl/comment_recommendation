@@ -1,18 +1,14 @@
-def solve():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    bit = 0
-    for i in range(40, -1, -1):
-        cnt = 0
-        for a in A:
-            if a >> i & 1:
-                cnt += 1
-        if cnt <= N - cnt and bit + (1 << i) <= K:
-            bit += 1 << i
-    ans = 0
-    for a in A:
-        ans += bit ^ a
-    print(ans)
+def main():
+    # 读取输入
+    # 读取一行
+    line = input()
+    # 读取一行，分割成两个变量
+    a, b = map(int, input().split())
+    # 读取一行，分割成两个变量，转换成整数
+    c, d = map(int, input().split())
+    # 打印输出
+    print(a + b)
+    print(c + d)
 
 if __name__ == '__main__':
-    solve()
+    main()

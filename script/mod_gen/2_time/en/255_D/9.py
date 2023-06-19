@@ -21,6 +21,3 @@ for i in range(q):
     x[i] = int(input())
 for i in range(q):
     print(solve(n,q,a,x[i]))
-
-if __name__ == '__main__':
-    solve()

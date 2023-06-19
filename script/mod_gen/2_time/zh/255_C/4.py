@@ -1,10 +1,15 @@
 def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    xy = [list(map(int, input().split())) for _ in range(n)]
-    print(xy)
-    print(a)
-    print(n, k)
+    x, a, d, n = map(int, input().split())
+    if d == 0:
+        if x == a:
+            print(0)
+        else:
+            print(1)
+    else:
+        if (x - a) % d == 0 and (x - a) // d >= 0:
+            print((x - a) // d)
+        else:
+            print(-1)
 
 if __name__ == '__main__':
     main()

@@ -1,13 +1,9 @@
-def main():
-    a,b,c = map(int,input().split())
-    if a == b:
-        print(c)
-    elif a == c:
-        print(b)
-    elif b == c:
-        print(a)
-    else:
-        print(0)
+def f(n, k):
+    sum = 0
+    for i in range(1, n + 1):
+        for j in range(1, k + 1):
+            sum = sum + i * 100 + j
+    return sum
 
 if __name__ == '__main__':
-    main()
+    f()

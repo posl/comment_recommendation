@@ -1,9 +1,13 @@
 def main():
-    S = input()
-    if S[0]==S[1] or S[1]==S[2] or S[2]==S[3]:
-        print("Bad")
-    else:
-        print("Good")
+    n, l = map(int, input().split())
+    ans = 0
+    for i in range(1, n + 1):
+        ans += l + i - 1
+    if ans > 0:
+        ans -= l + n - 1
+    elif ans < 0:
+        ans -= l
+    print(ans)
 
 if __name__ == '__main__':
     main()

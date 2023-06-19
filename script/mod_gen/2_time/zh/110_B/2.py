@@ -1,6 +1,15 @@
 def main():
-    a, b, c = map(int, input().split())
-    print(max(a * 10 + b + c, a + b * 10 + c, a + b + c * 10))
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_max = max(x_list)
+    y_min = min(y_list)
+    if x_max < y_min:
+        print("No War")
+    else:
+        print("War")
 
 if __name__ == '__main__':
     main()

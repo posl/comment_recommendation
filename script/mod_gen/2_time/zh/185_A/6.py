@@ -1,42 +1,18 @@
-def solve(A,B,C):
-    # A,B,C = map(int, input().split())
-    # A,B,C = 99,99,99
-    # A,B,C = 98,99,99
-    # A,B,C = 0,0,1
-    # A,B,C = 31,41,59
-    # A,B,C = 0,1,99
-    # A,B,C = 0,0,0
-    # A,B,C = 1,0,0
-    # A,B,C = 0,1,0
-    # A,B,C = 1,1,0
-    # A,B,C = 1,1,1
-    # A,B,C = 33,33,33
-    # A,B,C = 33,33,34
-    # A,B,C = 33,34,34
-    # A,B,C = 34,34,34
-    # A,B,C = 34,34,35
-    # A,B,C = 34,35,35
-    # A,B,C = 35,35,35
-    # A,B,C = 35,35,36
-    # A,B,C = 35,36,36
-    # A,B,C = 36,36,36
-    # A,B,C = 36,36,37
-    # A,B,C = 36,37,37
-    # A,B,C = 37,37,37
-    # A,B,C = 37,37,38
-    # A,B,C = 37,38,38
-    # A,B,C = 38,38,38
-    # A,B,C = 38,38,39
-    # A,B,C = 38,39,39
-    # A,B,C = 39,39,39
-    # A,B,C = 39,39,40
-    # A,B,C = 39,40,40
-    # A,B,C = 40,40,40
-    # A,B,C = 40,40,41
-    # A,B,C = 40,41,41
-    # A,B,C = 41,41,41
-    # A,B,C = 41,41,42
-    # A,B,C = 41,42,42
+def main():
+    #读取输入
+    a1, a2, a3, a4 = map(int, input().split())
+    #计算结果
+    result = 0
+    #100分的问题最多可以举办 a1 次
+    result += a1
+    #200分的问题最多可以举办 min(a2, result) 次
+    result += min(a2, result)
+    #300分的问题最多可以举办 min(a3, result) 次
+    result += min(a3, result)
+    #400分的问题最多可以举办 min(a4, result) 次
+    result += min(a4, result)
+    #输出结果
+    print(result)
 
 if __name__ == '__main__':
-    solve()
+    main()

@@ -20,6 +20,3 @@ def main():
     print('
 '.join(map(lambda x: str(x % 2), D[1:])))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,26 +1,16 @@
-def main():
-    h, w, x, y = map(int, input().split())
-    s = [input() for _ in range(h)]
-    x -= 1
-    y -= 1
-    ans = 1
-    for i in range(x - 1, -1, -1):
-        if s[i][y] == '#':
-            break
-        ans += 1
-    for i in range(x + 1, h):
-        if s[i][y] == '#':
-            break
-        ans += 1
-    for j in range(y - 1, -1, -1):
-        if s[x][j] == '#':
-            break
-        ans += 1
-    for j in range(y + 1, w):
-        if s[x][j] == '#':
-            break
-        ans += 1
-    print(ans)
+def get_min_xor(nums):
+    if len(nums) == 1:
+        return nums[0]
+    if len(nums) == 2:
+        return nums[0] ^ nums[1]
+    min_xor = 0
+    for i in range(1, len(nums)):
+        xor = get_min_xor(nums[:i]) ^ get_min_xor(nums[i:])
+        if i == 1:
+            min_xor = xor
+        if xor < min_xor:
+            min_xor = xor
+    return min_xor
 
 if __name__ == '__main__':
-    main()
+    get_min_xor()

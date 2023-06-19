@@ -5,6 +5,3 @@ def AGC(N):
         return "AGC" + str(N+1).zfill(3)
 N = int(input())
 print(AGC(N))
-
-if __name__ == '__main__':
-    AGC()

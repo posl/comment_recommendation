@@ -1,12 +1,19 @@
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    if len(s) == len(set(s)):
-        print("Yes")
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 0:
+        a = A[N // 2 - 1] + A[N // 2]
+        b = B[N // 2 - 1] + B[N // 2]
+        print(b - a + 1)
     else:
-        print("No")
+        print(B[N // 2] - A[N // 2] + 1)
 
 if __name__ == '__main__':
     main()

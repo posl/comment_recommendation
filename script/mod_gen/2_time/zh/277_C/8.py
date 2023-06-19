@@ -1,29 +1,12 @@
 def main():
-    # N = int(input())
-    # S = [input() for _ in range(N)]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "D3", "SK"]
-    # S = ["3H", "AD", "3D", "KS"]
-    S = ["00", "AA", "XX", "YY", "ZZ"]
-    # S = ["H3", "DA", "D3", "SK"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA", "CK", "H3", "S7"]
-    # S = ["H3", "DA
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(min(B) - max(A) + 1 if min(B) - max(A) + 1 > 0 else 0)
 
 if __name__ == '__main__':
     main()

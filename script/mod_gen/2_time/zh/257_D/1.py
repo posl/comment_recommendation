@@ -1,10 +1,13 @@
-def isChild(W, S, X):
-    if W < X and S == '0':
-        return True
-    elif W >= X and S == '1':
-        return True
-    else:
-        return False
+def solve(num, x, y, p):
+    ans = 0
+    for i in range(num):
+        for j in range(num):
+            if i == j:
+                continue
+            if p[i] * ans >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                ans += 1
+                break
+    return ans
 
 if __name__ == '__main__':
-    isChild()
+    solve()

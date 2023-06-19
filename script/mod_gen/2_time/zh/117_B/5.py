@@ -1,8 +1,9 @@
-def main():
-    # 读取输入
-    T, X = map(int, input().split())
-    # 计算并输出
-    print(T/X)
+def is_polygon(L):
+    max_length = max(L)
+    if max_length < sum(L)-max_length:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    main()
+    is_polygon()

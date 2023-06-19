@@ -1,11 +1,11 @@
-def main():
-    X, Y = map(int, input().split())
-    if X < Y:
-        X, Y = Y, X
-    if X - Y < 3:
-        print("Yes")
+def is_zero_product(n, a, b):
+    sum = 0
+    for i in range(n):
+        sum += a[i] * b[i]
+    if sum == 0:
+        print('Yes')
     else:
-        print("No")
+        print('No')
 
 if __name__ == '__main__':
-    main()
+    is_zero_product()

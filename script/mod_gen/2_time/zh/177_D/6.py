@@ -1,9 +1,11 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    mod = 10**9 + 7
-    sum = 0
-    for i in range(n):
-        sum += a[i] * (sum(a) - a[i])
-    print(sum % mod)
-main()
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(G[v])):
+        if color[G[v][i]] == c:
+            return False
+        if color[G[v][i]] == 0 and not dfs(G[v][i], -c):
+            return False
+    return True
+
+if __name__ == '__main__':
+    dfs()

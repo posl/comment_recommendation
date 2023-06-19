@@ -1,12 +1,11 @@
-def main():
-    s = input()
-    if len(s) == 2:
-        if s[0] == 'o' or s[1] == 'o':
-            print('Yes')
-        else:
-            print('No')
-    else:
-        print('Yes')
-
-if __name__ == '__main__':
-    main()
+def solve():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (A+i)%2 == (B+j)%2:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+solve()

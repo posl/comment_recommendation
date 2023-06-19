@@ -8,6 +8,3 @@ def check_square(x, y, h, w):
 h, w = map(int, input().split())
 r, c = map(int, input().split())
 print(check_square(r, c, h, w))
-
-if __name__ == '__main__':
-    check_square()

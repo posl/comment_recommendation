@@ -24,6 +24,3 @@ def main():
             ans = max(ans, max(C) * (K // cnt) + max(C[:K % cnt + 1]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,13 +1,10 @@
-def main():
-    b = input()
-    if b == "A":
-        print("T")
-    elif b == "T":
-        print("A")
-    elif b == "C":
-        print("G")
-    elif b == "G":
-        print("C")
+def get_length(s):
+    length = 0
+    for i in range(len(s)):
+        for j in range(i+1, len(s)+1):
+            if is_acgt(s[i:j]):
+                length = max(length, j-i)
+    return length
 
 if __name__ == '__main__':
-    main()
+    get_length()

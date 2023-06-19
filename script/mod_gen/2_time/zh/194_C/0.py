@@ -1,14 +1,8 @@
-def min_time(n, a, b):
-    min_time = 10**10
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                time = a[i] + b[j]
-            else:
-                time = max(a[i], b[j])
-            if time < min_time:
-                min_time = time
-    return min_time
+def solve(n, a):
+    s = 0
+    for i in range(1, n):
+        s += (a[i] - a[i-1]) * (a[i] - a[i-1]) * (n - i) * i
+    return s
 
 if __name__ == '__main__':
-    min_time()
+    solve()

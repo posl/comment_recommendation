@@ -1,12 +1,9 @@
 def main():
-    H, W = map(int, input().split())
-    C = [input() for _ in range(H)]
-    ans = 0
-    for i in range(H):
-        for j in range(W):
-            if C[i][j] == ".":
-                ans += 1
-    print(ans)
+    x, y = map(int, input().split())
+    if x >= y:
+        print(0)
+    else:
+        print(1 + (y - x) // 10)
 
 if __name__ == '__main__':
     main()

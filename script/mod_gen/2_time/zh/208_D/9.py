@@ -1,18 +1,8 @@
-def main():
-    N, K = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.append(a[0] + K)
-    b = [0] * N
-    for i in range(N):
-        b[i] = a[i + 1] - a[i]
-    m = min(b)
-    min_index = b.index(m)
-    for i in range(N):
-        if i == min_index:
-            print(a[i] + K // N + 1)
-        else:
-            print(a[i] + K // N)
+def floyd_warshall(n, graph):
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
 
 if __name__ == '__main__':
-    main()
+    floyd_warshall()

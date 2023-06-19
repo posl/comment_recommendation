@@ -1,14 +1,15 @@
-def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    max = 0
-    for i in range(n):
-        if s.count(s[i]) > max:
-            max = s.count(s[i])
-            name = s[i]
-    print(name)
+def binary_search(A, x):
+    left = 0
+    right = len(A) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if A[mid] == x:
+            return mid
+        elif A[mid] < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return left
 
 if __name__ == '__main__':
-    main()
+    binary_search()

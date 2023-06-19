@@ -1,15 +1,16 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    m = 0
-    for i in range(0, N):
-        if A[i] > m:
-            print(m)
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    a.sort()
+    b.sort()
+    
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            print('No')
             exit()
-        elif A[i] == m:
-            m += 1
-    print(m)
+    print('Yes')
 
 if __name__ == '__main__':
     main()

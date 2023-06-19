@@ -1,8 +1,11 @@
 def main():
-    # 读入A和B
-    A, B = map(int, input().split())
-    # 打印A^B的值
-    print(A ** B)
-
-if __name__ == '__main__':
-    main()
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a[query[1] - 1] = query[2]
+        else:
+            print(a[query[1] - 1])
+main()

@@ -11,6 +11,3 @@ for i in range(n):
     p.append(2 * p[i] + 1)
     a.append(2 * a[i] + 3)
 print(burger(n, x))
-
-if __name__ == '__main__':
-    burger()

@@ -18,6 +18,3 @@ def next_confusing_time(h,m):
             m+=1
 h,m=map(int,input().split())
 print(*next_confusing_time(h,m))
-
-if __name__ == '__main__':
-    next_confusing_time()

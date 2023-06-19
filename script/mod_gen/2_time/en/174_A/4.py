@@ -5,6 +5,3 @@ def air_conditioner():
     else:
         print("No")
 air_conditioner()
-
-if __name__ == '__main__':
-    air_conditioner()

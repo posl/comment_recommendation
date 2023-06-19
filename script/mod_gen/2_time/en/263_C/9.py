@@ -9,6 +9,3 @@ def gen_inc_seq(n, m, seq):
             seq.pop()
 n, m = map(int, input().split())
 gen_inc_seq(n, m, [])
-
-if __name__ == '__main__':
-    gen_inc_seq()

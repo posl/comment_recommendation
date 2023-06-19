@@ -5,6 +5,3 @@ def check(s):
         return "No"
 s = [input() for i in range(4)]
 print(check(s))
-
-if __name__ == '__main__':
-    check()

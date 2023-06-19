@@ -1,17 +1,17 @@
 def main():
     n = int(input())
-    s = ""
     if n == 0:
         print(0)
         return
+    ans = ""
     while n != 0:
         if n % 2 == 0:
-            s = "0" + s
-            n = n // (-2)
+            ans = "0" + ans
         else:
-            s = "1" + s
-            n = (n - 1) // (-2)
-    print(s)
+            ans = "1" + ans
+            n -= 1
+        n //= -2
+    print(ans)
 
 if __name__ == '__main__':
     main()

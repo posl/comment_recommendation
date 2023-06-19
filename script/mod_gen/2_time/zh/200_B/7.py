@@ -1,9 +1,11 @@
 def main():
-    N = int(input())
-    if N % 100 == 0:
-        print(N // 100)
-    else:
-        print(N // 100 + 1)
+    n, k = map(int, input().split())
+    for i in range(k):
+        if n % 200 == 0:
+            n = n / 200
+        else:
+            n = int(str(n) + '200')
+    print(int(n))
 
 if __name__ == '__main__':
     main()

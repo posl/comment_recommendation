@@ -11,6 +11,3 @@ def main():
             wa[p] += 1
     print(sum(correct), sum(wa[i] for i in range(N) if correct[i]))
 main()
-
-if __name__ == '__main__':
-    main()

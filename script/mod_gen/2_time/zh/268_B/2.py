@@ -1,5 +1,10 @@
-def get_diff_num(a, b, c, d, e):
-    return len(set([a, b, c, d, e]))
+def main():
+    s = input()
+    t = input()
+    if s == t[0:len(s)]:
+        print('Yes')
+    else:
+        print('No')
 
 if __name__ == '__main__':
-    get_diff_num()
+    main()

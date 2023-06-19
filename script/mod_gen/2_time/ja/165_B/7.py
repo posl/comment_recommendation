@@ -8,6 +8,3 @@ def getYear(x):
             return y
 x = int(input())
 print(getYear(x))
-
-if __name__ == '__main__':
-    getYear()

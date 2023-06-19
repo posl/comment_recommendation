@@ -1,10 +1,14 @@
 def main():
-    N, X = map(int, input().split())
-    P = list(map(int, input().split()))
+    N = int(input())
+    S = []
     for i in range(N):
-        if P[i] == X:
-            print(i+1)
-            break
+        S.append(input())
+    result = 'Yes'
+    for i in range(N):
+        for j in range(i+1,N):
+            if S[i] == S[j]:
+                result = 'No'
+    print(result)
 
 if __name__ == '__main__':
     main()

@@ -1,18 +1,11 @@
 def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    i = 0
-    count = 0
-    while True:
-        i = A[i]-1
-        count += 1
-        if i == 0:
-            break
-    K = K % count
-    i = 0
-    for j in range(K):
-        i = A[i]-1
-    print(i+1)
+    n = input()
+    if n[-1] in "24579":
+        print("hon")
+    elif n[-1] in "0168":
+        print("pon")
+    else:
+        print("bon")
 
 if __name__ == '__main__':
     main()

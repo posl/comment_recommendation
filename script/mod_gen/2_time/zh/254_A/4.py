@@ -1,9 +1,6 @@
-def gcd(a, b):
-    while b != 0:
-        r = a % b
-        a = b
-        b = r
-    return a
+def main():
+    n = int(input())
+    print(n%100)
 
 if __name__ == '__main__':
-    gcd()
+    main()

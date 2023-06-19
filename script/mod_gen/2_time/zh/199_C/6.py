@@ -1,15 +1,29 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    ans = 0
-    for x in range(1, 1001):
-        for i in range(n):
-            if x < a[i] or b[i] < x:
-                break
+def solve():
+    N = int(input())
+    S = input()
+    Q = int(input())
+    T = []
+    A = []
+    B = []
+    for i in range(Q):
+        t, a, b = map(int, input().split())
+        T.append(t)
+        A.append(a)
+        B.append(b)
+    reverse = False
+    for i in range(Q):
+        if T[i] == 1:
+            if reverse:
+                A[i] += N
+                B[i] += N
+                if A[i] > 2 * N:
+                    A[i] -= 2 * N
+                if B[i] > 2 * N:
+                    B[i] -= 2 * N
+            S = S[:A[i]-1] + S[B[i]-1] + S[A[i]:B[i]-1] + S[A[i]-1] + S[B[i]:]
         else:
-            ans += 1
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+            reverse = not reverse
+    if reverse:
+        S = S[N:] + S[:N]
+    print(S)
+solve()

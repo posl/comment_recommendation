@@ -6,6 +6,3 @@ def main():
         ans = max(ans, len(set(C[i:i+K])))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def   main ():
          if   list ( j )   ==   q : 
              y   =   i 
      print ( abs ( x   -   y ))
-
-if __name__ == '__main__':
-    ()

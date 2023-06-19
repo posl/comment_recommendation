@@ -11,6 +11,3 @@ def main():
         dp[i] = dp[p[i-1]]+1
     print(max(dp))
 main()
-
-if __name__ == '__main__':
-    main()

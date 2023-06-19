@@ -1,11 +1,19 @@
 def main():
-    w, h, x, y = map(int, input().split())
-    area = w * h / 2
-    print(area, end=' ')
-    if 2 * x == w and 2 * y == h:
-        print(1)
-    else:
-        print(0)
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    total = 0
+    for left in range(n):
+        while right < n and total + a[right] < k:
+            total += a[right]
+            right += 1
+        ans += right - left
+        if left == right:
+            right += 1
+        else:
+            total -= a[left]
+    print(ans)
 
 if __name__ == '__main__':
     main()

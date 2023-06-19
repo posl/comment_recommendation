@@ -1,14 +1,9 @@
 def main():
-    n = int(input())
-    ans = 0
-    for i in range(1, int(n**0.5)+1):
-        for j in range(i, n//i+1):
-            if i*j <= n:
-                if i == j:
-                    ans += 1
-                else:
-                    ans += 2
-    print(ans)
+    r,c = map(int,raw_input().split())
+    A = []
+    for i in range(2):
+        A.append(map(int,raw_input().split()))
+    print A[r-1][c-1]
 
 if __name__ == '__main__':
     main()

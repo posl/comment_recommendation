@@ -1,10 +1,14 @@
-def calculate(A,B):
-    result = B/A
-    result = round(result,3)
-    result = str(result)
-    result = result+"000"
-    return result[0:5]
-A,B = input().split()
-A = int(A)
-B = int(B)
-print(calculate(A,B))
+def main():
+    h,w = map(int,input().split())
+    l = []
+    for i in range(h):
+        l.append(list(input()))
+    for i in range(w):
+        x = 0
+        for j in range(h):
+            if l[j][i] == "#":
+                x += 1
+        print(x,end=" ")
+
+if __name__ == '__main__':
+    main()

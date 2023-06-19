@@ -1,21 +1,12 @@
-def main():
-    N, M = map(int, input().split())
-    k = []
-    x = []
-    for i in range(M):
-        k.append(list(map(int, input().split())))
-        x.append(k[i][1:])
-    for i in range(N):
-        for j in range(i + 1, N):
-            flag = False
-            for l in range(M):
-                if i + 1 in x[l] and j + 1 in x[l]:
-                    flag = True
-            if not flag:
-                print("No")
-                return
-    print("Yes")
-    return
+def solve(n, a):
+    a.sort()
+    max_even = -1
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] + a[j]) % 2 == 0:
+                max_even = max(max_even, a[i] + a[j])
+                break
+    return max_even
 
 if __name__ == '__main__':
-    main()
+    solve()

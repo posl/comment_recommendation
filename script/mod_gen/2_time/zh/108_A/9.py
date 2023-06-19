@@ -1,14 +1,13 @@
-def main():
-    N = int(input())
-    a = list(map(int, input().split()))
-    b = []
-    for i in range(N):
-        b.append(a[i])
-        b.sort()
-        if len(b) % 2 == 0:
-            print(b[len(b) // 2 - 1])
-        else:
-            print(b[len(b) // 2])
+def count_even_odd_pairs(k):
+    # k is an integer
+    # return the number of ways to choose a pair of
+    # even number and odd number from 1, 2, ..., k
+    count = 0
+    for i in range(1, k+1):
+        for j in range(1, k+1):
+            if i % 2 == 0 and j % 2 != 0:
+                count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    count_even_odd_pairs()

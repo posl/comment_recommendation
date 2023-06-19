@@ -1,15 +1,15 @@
-def main():
-    n,k = map(int,input().split())
-    x = list(map(int,input().split()))
-    ans = 10**9
+def solve():
+    n,k=map(int,input().split())
+    x=list(map(int,input().split()))
+    ans=float('inf')
     for i in range(n-k+1):
-        l = x[i]
-        r = x[i+k-1]
-        if l*r<0:
-            ans = min(ans,min(abs(l),abs(r))+r-l)
+        left=x[i]
+        right=x[i+k-1]
+        if left*right<=0:
+            ans=min(ans,min(-2*left+right,right-2*left))
         else:
-            ans = min(ans,max(abs(l),abs(r)))
+            ans=min(ans,max(abs(left),abs(right)))
     print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

@@ -1,8 +1,8 @@
-def f(x):
-    if x == 0:
-        return 1
+def round_up(x, y):
+    if x % y == 0:
+        return x
     else:
-        return x * f(x - 1)
+        return x + y - x % y
 
 if __name__ == '__main__':
-    f()
+    round_up()

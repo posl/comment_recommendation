@@ -10,6 +10,3 @@ def rec(a):
             rec(a+[i])
 N,M=map(int,input().split())
 rec([])
-
-if __name__ == '__main__':
-    rec()

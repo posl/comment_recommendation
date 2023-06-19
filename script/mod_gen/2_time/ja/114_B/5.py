@@ -8,6 +8,3 @@ def main():
             min_diff = diff
     print(min_diff)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -18,6 +18,3 @@ def solve():
     print('
 '.join(map(str, ans)))
 solve()
-
-if __name__ == '__main__':
-    solve()

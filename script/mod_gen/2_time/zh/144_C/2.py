@@ -1,11 +1,13 @@
-def solution():
+def main():
     N = int(input())
-    for i in range(1, 10):
-        if N % i == 0 and N / i < 10:
-            print("Yes")
-            break
-    else:
-        print("No")
+    ans = 0
+    while N > 1:
+        if N % 2 == 1:
+            N -= 1
+        else:
+            N /= 2
+        ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    solution()
+    main()

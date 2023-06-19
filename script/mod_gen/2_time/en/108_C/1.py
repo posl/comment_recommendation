@@ -9,6 +9,3 @@ def   main ():
          else : 
              ans   +=   3   *   ( n   //   k   +   1 )   *   ( n   //   k   +   1 ) 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

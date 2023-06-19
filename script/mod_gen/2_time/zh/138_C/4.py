@@ -1,7 +1,11 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    print(1 / sum([1 / ai for ai in a]))
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = v[0]
+    for i in range(1, n):
+        ans = (ans + v[i]) / 2
+    print(ans)
 
 if __name__ == '__main__':
     main()

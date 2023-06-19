@@ -1,32 +1,25 @@
-def main():
-    #H, W = map(int, input().split())
-    #G = [input() for i in range(H)]
-    H, W = 9, 44
-    G = ['RRDDDDRRRDDDRRRRRRDDDRDDDDRDDRDDDDDDRRDRRRRR',
-         'RRRDLRDRDLLLLRDRRLLLDDRDLLLRDDDLLLDRRLLLLLDD',
-         'DRDLRLDRDLRDRLDRLRDDLDDLRDRLDRLDDRLRRLRRRDRR',
-         'DDLRRDLDDLDDRLDDLDRDDRDDDDRLRRLRDDRRRLDRDRDD',
-         'RDLRRDLRDLLLLRRDLRDRRDRRRDLRDDLLLLDDDLLLLRDR',
-         'RDLLLLLRDLRDRLDDLDDRDRRDRLDRRRLDDDLDDDRDDLDR',
-         'RDLRRDLDDLRDRLRDLDDDLDDRLDRDRDLDRDLDDLRRDLRR',
-         'RDLDRRLDRLLLLDRDRLLLRDDLLLLLRDRLLLRRRRLLLDDR',
-         'RRRRDRDDRRRDDRDDDRRRDRDRDRDRRRRRRDDDRDDDDRRR']
-    i, j = 0, 0
-    while True:
-        if G[i][j] == 'U' and i != 0:
-            i -= 1
-        elif G[i][j] == 'D' and i != H - 1:
-            i += 1
-        elif G[i][j] == 'L' and j != 0:
-            j -= 1
-        elif G[i][j] == 'R' and j != W - 1:
-            j += 1
-        else:
+def solve():
+    N, P, Q, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, P, Q, R)
+    #print(A)
+    ans = "No"
+    for i in range(N-3+1):
+        x = A[i]
+        for j in range(i+1, N-2+1):
+            y = A[j]
+            for k in range(j+1, N-1+1):
+                z = A[k]
+                for l in range(k+1, N+1):
+                    w = A[l]
+                    if (x+y+z+w) == (P+Q+R) and (x+y) == P and (y+z) == Q and (z+w) == R:
+                        ans = "Yes"
+                        break
+                if ans == "Yes":
+                    break
+            if ans == "Yes":
+                break
+        if ans == "Yes":
             break
-    if len(set(G[i][j])) == 1:
-        print(-1)
-    else:
-        print(i + 1, j + 1)
-
-if __name__ == '__main__':
-    main()
+    print(ans)
+solve()

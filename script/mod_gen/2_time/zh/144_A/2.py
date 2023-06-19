@@ -1,17 +1,11 @@
-def is_triangle(a, b, c):
-    if a < b + c and b < c + a and c < a + b:
-        return True
-    return False
-n = int(input())
-l = list(map(int, input().split()))
-l.sort()
-ans = 0
-for i in range(n):
-    for j in range(i+1, n):
-        for k in range(j+1, n):
-            if is_triangle(l[i], l[j], l[k]):
-                ans += 1
-print(ans)
-
-if __name__ == '__main__':
-    is_triangle()
+def main():
+    # 读取输入
+    # 用空格分割输入的字符串，然后转换成整数
+    a, b = map(int, input().split())
+    # 如果a和b都在1到9之间，那么打印a×b
+    if a >= 1 and a <= 9 and b >= 1 and b <= 9:
+        print(a * b)
+    # 否则，打印-1
+    else:
+        print(-1)
+main()

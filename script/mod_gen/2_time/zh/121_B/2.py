@@ -1,7 +1,18 @@
 def main():
-    h, w = map(int, input().split())
-    h1, w1 = map(int, input().split())
-    print(h*w-h1*w-w1*h+h1*w1)
+    n,m,c = map(int,input().split())
+    b = list(map(int,input().split()))
+    a = [list(map(int,input().split())) for _ in range(n)]
+    print(a)
+    print(b)
+    print(c)
+    ans = 0
+    for i in range(n):
+        tmp = 0
+        for j in range(m):
+            tmp += a[i][j]*b[j]
+        if tmp + c > 0:
+            ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

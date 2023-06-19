@@ -1,9 +1,8 @@
-def is_even_digit(n):
-    if n < 10:
-        return False
-    else:
-        s = str(n)
-        return len(s) % 2 == 0
+def get_input():
+    input_data = input()
+    input_data = input_data.split()
+    input_data = [int(x) for x in input_data]
+    return input_data
 
 if __name__ == '__main__':
-    is_even_digit()
+    get_input()

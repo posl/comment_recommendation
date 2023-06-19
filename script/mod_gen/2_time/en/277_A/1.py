@@ -3,6 +3,3 @@ def main():
     p = list(map(int, input().split()))
     print(p.index(x) + 1)
 main()
-
-if __name__ == '__main__':
-    main()

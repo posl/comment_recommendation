@@ -1,5 +1,5 @@
-def problems134_c():
+def main():
     pass
 
 if __name__ == '__main__':
-    problems134_c()
+    main()

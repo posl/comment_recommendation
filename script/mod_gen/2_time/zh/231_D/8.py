@@ -1,21 +1,17 @@
-def solve():
-    N, Q = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort()
-    for i in range(Q):
-        x = int(input())
-        low = 0
-        high = N - 1
-        while low < high:
-            mid = (low + high) // 2
-            if A[mid] >= x:
-                high = mid
-            else:
-                low = mid + 1
-        if A[low] >= x:
-            print(N - low)
-        else:
-            print(N - low - 1)
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for i in range(m):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    a.sort()
+    b.sort()
+    if a[0] < b[0] and b[0] < a[1] and a[1] < b[1]:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    solve()
+    main()

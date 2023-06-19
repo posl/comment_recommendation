@@ -9,6 +9,3 @@ cut_rectangle(2,3,1,2)
 cut_rectangle(2,2,1,1)
 cut_rectangle(1000000000,1000000000,0,0)
 cut_rectangle(1000000000,1000000000,1000000000,1000000000)
-
-if __name__ == '__main__':
-    cut_rectangle()

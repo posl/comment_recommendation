@@ -1,7 +1,9 @@
-def f(x):
-    if x == 0:
-        return 1
-    else:
-        return x * f(x-1)
-n = int(input())
-print(f(n))
+def round_up(x, y):
+    z = x
+    for i in range(y):
+        if z % 10 == 0:
+            break
+        z += 1
+    return z
+x, k = map(int, input().split())
+print(round_up(x, k))

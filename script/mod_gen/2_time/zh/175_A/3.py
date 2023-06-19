@@ -1,12 +1,15 @@
 def main():
-    n = int(input())
-    c = input()
-    r = c.count('R')
-    w = n - r
-    if r == 0 or w == 0:
-        print(0)
-    else:
-        print(c[:r].count('W'))
+    s = input()
+    count = 0
+    maxcount = 0
+    for i in range(3):
+        if s[i] == 'R':
+            count += 1
+            if count >= maxcount:
+                maxcount = count
+        else:
+            count = 0
+    print(maxcount)
 
 if __name__ == '__main__':
     main()

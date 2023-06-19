@@ -1,6 +1,15 @@
 def main():
-    x, y = map(int, input().split())
-    print(x + y // 2)
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    min = 100000000
+    index = 0
+    for i in range(N):
+        temperature = T - H[i] * 0.006
+        if abs(A - temperature) < min:
+            min = abs(A - temperature)
+            index = i + 1
+    print(index)
 
 if __name__ == '__main__':
     main()

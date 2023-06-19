@@ -1,17 +1,14 @@
 def solve():
-    N = int(input())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    ans = 10**10
-    for i in range(N):
-        for j in range(N):
-            if i == j:
-                ans = min(ans, A[i]+B[j])
-            else:
-                ans = min(ans, max(A[i], B[j]))
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    for i in range(n):
+        ans += a[i] ** 2 * (n - 1)
+        ans -= 2 * a[i] * (s[n] - s[i + 1])
     print(ans)
-solve()
+
+if __name__ == '__main__':
+    solve()

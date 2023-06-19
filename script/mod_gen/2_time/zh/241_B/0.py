@@ -1,11 +1,17 @@
 def main():
-    a = raw_input().split()
-    b = [0]*10
-    for i in range(10):
-        b[i] = int(a[i])
-    for j in range(3):
-        b[0] = b[b[0]]
-    print b[0]
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    if m > n:
+        print("No")
+        return
+    a.sort()
+    b.sort()
+    for i in range(m):
+        if b[i] <= a[i]:
+            print("No")
+            return
+    print("Yes")
 
 if __name__ == '__main__':
     main()

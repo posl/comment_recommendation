@@ -4,6 +4,3 @@ def f(n, k, a):
 n, k = map(int, input().split())
 a = [list(map(int, input().split())) for _ in range(n)]
 print(f(n, k, a))
-
-if __name__ == '__main__':
-    f()

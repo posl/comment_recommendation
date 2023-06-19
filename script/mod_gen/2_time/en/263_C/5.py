@@ -9,6 +9,3 @@ def dfs(n, m, depth, s):
             s.pop()
 n, m = map(int, input().split())
 dfs(n, m, 0, [])
-
-if __name__ == '__main__':
-    dfs()

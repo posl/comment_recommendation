@@ -6,6 +6,3 @@ def main():
         A[x-1],A[x] = A[x],A[x-1]
     print(" ".join(map(str,A)))
 main()
-
-if __name__ == '__main__':
-    main()

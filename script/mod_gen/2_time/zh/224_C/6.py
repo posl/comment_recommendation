@@ -1,16 +1,20 @@
-def main():
-    h,w = map(int,input().split())
-    a = []
-    for i in range(h):
-        a.append(list(map(int,input().split())))
-    for i in range(h):
-        for j in range(w):
-            for k in range(i+1,h):
-                for l in range(j+1,w):
-                    if a[i][j]+a[k][l]>a[i][l]+a[k][j]:
-                        print("No")
-                        exit()
-    print("Yes")
+def get_area(x1,y1,x2,y2,x3,y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))
+n = int(input())
+x = []
+y = []
+for i in range(n):
+    a,b = map(int,input().split())
+    x.append(a)
+    y.append(b)
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            area = get_area(x[i],y[i],x[j],y[j],x[k],y[k])
+            if area != 0:
+                ans += 1
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    get_area()

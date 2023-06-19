@@ -1,10 +1,9 @@
 def main():
-    s = input().split()
-    t = input().split()
-    if s == t:
-        print('Yes')
+    a, b, c, d = map(int, input().split())
+    if (a * 60 + b) < (c * 60 + d):
+        print("High")
     else:
-        print('No')
+        print("Low")
 
 if __name__ == '__main__':
     main()

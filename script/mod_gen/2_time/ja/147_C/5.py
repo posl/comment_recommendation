@@ -27,6 +27,3 @@ def   main ():
          if   flag : 
              ans   =   max ( ans ,   honest . count ( True )) 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

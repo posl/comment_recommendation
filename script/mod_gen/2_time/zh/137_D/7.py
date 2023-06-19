@@ -1,18 +1,30 @@
 def main():
-    N = int(input())
-    strs = []
-    for i in range(N):
-        strs.append(input())
-    strs.sort()
-    cnt = 0
-    ans = 0
-    for i in range(N):
-        if strs[i] == strs[i-1]:
-            cnt += 1
-        else:
-            cnt = 0
-        ans += cnt
-    print(ans)
+    # 读入数据
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    # 按照a_i的升序排序
+    ab.sort(key=lambda x: x[0])
+    # 用于记录已经完成的工作
+    done = []
+    # 用于记录已经完成的工作的奖励
+    done_b = []
+    # 用于记录已经完成的工作的奖励的累计
+    done_b_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值
+    done_b_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计
+    done_b_sum_max_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值
+    done_b_sum_max_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计
+    done_b_sum_max_sum_max_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计的最大值
+    done_b_sum_max_sum_max_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计的最大值的累计
+    done_b_sum_max_sum_max_sum_max_sum = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最大值的累计的最大值的累计的最大值
+    done_b_sum_max_sum_max_sum_max_sum_max = []
+    # 用于记录已经完成的工作的奖励的累计的最大值的累计的最
 
 if __name__ == '__main__':
     main()

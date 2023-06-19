@@ -1,11 +1,15 @@
-def solve():
-    N = int(input())
-    P = list(map(int, input().split()))
-    Q = [0]*N
-    for i in range(N):
-        Q[P[i]-1] = i+1
-    print(' '.join(map(str, Q)))
-    return 0
+def main():
+    L, Q = map(int, input().split())
+    mark = [0] * (Q + 1)
+    mark[0] = L
+    mark[Q] = 0
+    for i in range(1, Q + 1):
+        c, x = map(int, input().split())
+        if c == 1:
+            mark[i] = x
+        else:
+            mark[i] = mark[x]
+            print(mark[x] - mark[i - 1])
 
 if __name__ == '__main__':
-    solve()
+    main()

@@ -1,13 +1,11 @@
 def main():
-    a,b,c = input().split()
-    if a==b:
-        print(c)
-    elif a==c:
-        print(b)
-    elif b==c:
-        print(a)
-    else:
-        print(0)
+    N,K = map(int,input().split())
+    ans = 0
+    for i in range(N):
+        for j in range(K):
+            room = (i+1)*100 + (j+1)
+            ans += room
+    print(ans)
 
 if __name__ == '__main__':
     main()

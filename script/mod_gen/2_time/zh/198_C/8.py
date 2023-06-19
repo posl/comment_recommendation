@@ -1,4 +1,8 @@
-def is_palindrome(n):
-    n = str(n)
-    return n == n[::-1]
-print('Yes' if is_palindrome(input()) else 'No')
+def main():
+    R,X,Y = map(int,input().split())
+    dist = (X**2 + Y**2)**0.5
+    if dist%R == 0:
+        print(int(dist//R))
+    else:
+        print(int(dist//R)+1)
+main()

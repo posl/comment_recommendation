@@ -1,18 +1,7 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    sum = 0
-    for i in range(n):
-        sum += abs(a[i])
-    if a[0] < 0:
-        a[0] = -a[0]
-    for i in range(1, n):
-        if a[i] < 0:
-            a[i] = -a[i]
-        if a[i-1] < a[i]:
-            a[i-1], a[i] = a[i], a[i-1]
-    if n % 2 == 0:
-        print(sum)
-    else:
-        print(sum - 2*a[n-1])
-main()
+def problems126_a():
+    n, k = map(int, input().split())
+    s = input()
+    print(s[0:k-1] + s[k-1].lower() + s[k:])
+
+if __name__ == '__main__':
+    problems126_a()

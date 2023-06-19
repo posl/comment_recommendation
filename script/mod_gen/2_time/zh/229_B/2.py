@@ -1,10 +1,9 @@
-def solve():
-    s1 = input()
-    s2 = input()
-    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
-        print('Yes')
+def main():
+    a, b = map(int, input().split())
+    if (a + b) < 10 ** 9:
+        print("Easy")
     else:
-        print('No')
+        print("Hard")
 
 if __name__ == '__main__':
-    solve()
+    main()

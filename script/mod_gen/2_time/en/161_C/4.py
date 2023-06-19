@@ -4,6 +4,3 @@ def main():
     ans = min(ans, abs(ans-K))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def main():
     else:
         print((n+1)*(100**d))
 main()
-
-if __name__ == '__main__':
-    main()

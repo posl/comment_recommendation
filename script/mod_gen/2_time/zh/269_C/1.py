@@ -1,8 +1,5 @@
 def main():
-    for i in range(10):
-        print(input())
-    for i in range(10):
-        print(input())
+    pass
 
 if __name__ == '__main__':
     main()

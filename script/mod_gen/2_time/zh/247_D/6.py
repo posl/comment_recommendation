@@ -1,9 +1,13 @@
-def s(n):
-    if n == 1:
-        return [1]
-    else:
-        s_n_1 = s(n-1)
-        return s_n_1 + [n] + s_n_1
+def main():
+    q = int(input())
+    ans = 0
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            ans += query[1] * query[2]
+        elif query[0] == 2:
+            print(ans)
+            ans -= query[1]
 
 if __name__ == '__main__':
-    s()
+    main()

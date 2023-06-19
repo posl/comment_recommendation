@@ -1,9 +1,12 @@
-def count_roller_coaster(N, K, h):
-    count = 0
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    B = [0] * N
     for i in range(N):
-        if h[i] >= K:
-            count += 1
-    return count
+        B[A[i] - 1] = i + 1
+    print(*B)
 
 if __name__ == '__main__':
-    count_roller_coaster()
+    main()

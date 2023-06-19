@@ -1,60 +1,22 @@
-def main():
-    # T = int(input())
-    T = 4
-    # for i in range(T):
-    #     N = int(input())
-    #     A = list(map(int,input().split()))
-    #     # A = [1, 2, 3]
-    #     count = 0
-    #     for i in A:
-    #         if i % 2 != 0:
-    #             count += 1
-    #     print(count)
-    #     # print(A)
-    #     # print(N)
-    #     # print(A)
-    #     # print(A[0])
-    #     # print(A[1])
-    #     # print(A[2])
-    #     # print(A[3])
-    #     # print(A[4])
-    #     # print(A[5])
-    #     # print(A[6])
-    #     # print(A[7])
-    #     # print(A[8])
-    #     # print(A[9])
-    #     # print(A[10])
-    #     # print(A[11])
-    #     # print(A[12])
-    #     # print(A[13])
-    #     # print(A[14])
-    #     # print(A[15])
-    #     # print(A[16])
-    #     # print(A[17])
-    #     # print(A[18])
-    #     # print(A[19])
-    #     # print(A[20])
-    #     # print(A[21])
-    #     # print(A[22])
-    #     # print(A[23])
-    #     # print(A[24])
-    #     # print(A[25])
-    #     # print(A[26])
-    #     # print(A[27])
-    #     # print(A[28])
-    #     # print(A[29])
-    #     # print(A[30])
-    #     # print(A[31])
-    #     # print(A[32])
-    #     # print(A[33])
-    #     # print(A[34])
-    #     # print(A[35])
-    #     # print(A[36])
-    #     # print(A[37])
-    #     # print(A[38])
-    #     # print(A[39])
-    #     # print(A[40])
-    #     # print(A[41])
+def dfs(v):
+    seen[v] = True
+    for i in range(n):
+        if G[v][i] == 0 or seen[i]:
+            continue
+        dfs(i)
+n,m = map(int,input().split())
+G = [[0]*n for i in range(n)]
+for i in range(m):
+    a,b = map(int,input().split())
+    G[a-1][b-1] = G[b-1][a-1] = 1
+seen = [False]*n
+ans = 0
+for i in range(n):
+    if seen[i]:
+        continue
+    dfs(i)
+    ans += 1
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    dfs()

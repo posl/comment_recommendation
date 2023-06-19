@@ -1,11 +1,12 @@
 def main():
-    a = input().split()
-    a = [int(i) for i in a]
-    a.sort()
-    if a[1] - a[0] == a[2] - a[1]:
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountain = input().split()
+        mountain[1] = int(mountain[1])
+        mountains.append(mountain)
+    mountains.sort(key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])
 
 if __name__ == '__main__':
     main()

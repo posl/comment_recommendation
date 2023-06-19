@@ -1,5 +1,6 @@
-def problem231_d():
-    pass
+def main():
+    s = input()
+    print(int(s[0])*int(s[2]))
 
 if __name__ == '__main__':
-    problem231_d()
+    main()

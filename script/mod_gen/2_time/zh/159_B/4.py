@@ -1,10 +1,8 @@
-def main():
-    # 读取输入
-    n, m = map(int, input().split())
-    # 计算答案
-    ans = n * (n - 1) // 2 + m * (m - 1) // 2
-    # 打印答案
-    print(ans)
+def check_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    main()
+    check_palindrome()

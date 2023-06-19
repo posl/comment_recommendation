@@ -1,8 +1,10 @@
-def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    q = list(map(int, input().split()))
-    print(abs(p.index(1) - q.index(1)))
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
 
 if __name__ == '__main__':
-    main()
+    gcd()

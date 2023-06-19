@@ -1,5 +1,4 @@
-def printList(l):
-    print(' '.join(map(str, l)))
-
-if __name__ == '__main__':
-    printList()
+def solve():
+    a, b, c = map(int, input().split())
+    print(a + b + c + max(a, b, c) * 9)
+solve()

@@ -1,9 +1,8 @@
-def sum_of_absolute_differences(n, a):
-    a.sort()
+def s(n):
     sum = 0
-    for i in range(n):
-        sum += a[i] * (i - (n - i - 1))
+    for i in range(3):
+        sum += n % 10
+        n //= 10
     return sum
-
-if __name__ == '__main__':
-    sum_of_absolute_differences()
+a, b = map(int, input().split())
+print(s(a) if s(a) > s(b) else s(b))

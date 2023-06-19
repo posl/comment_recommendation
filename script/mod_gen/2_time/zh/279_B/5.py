@@ -1,14 +1,14 @@
-def print_count_of_bottoms(s):
-    # 记录连续的v的个数
-    count_of_v = 0
-    # 记录底的个数
-    count_of_bottoms = 0
-    for c in s:
-        if c == 'v':
-            count_of_v += 1
-        else:
-            count_of_bottoms += count_of_v
-    print(count_of_bottoms)
+def main():
+    s = input()
+    t = input()
+    if len(s) < len(t):
+        print("No")
+        return
+    for i in range(len(s) - len(t) + 1):
+        if s[i:i + len(t)] == t:
+            print("Yes")
+            return
+    print("No")
 
 if __name__ == '__main__':
-    print_count_of_bottoms()
+    main()

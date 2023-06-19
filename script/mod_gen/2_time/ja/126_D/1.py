@@ -33,6 +33,3 @@ def main():
     for c in color:
         print(c)
 main()
-
-if __name__ == '__main__':
-    main()

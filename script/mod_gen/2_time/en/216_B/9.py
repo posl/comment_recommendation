@@ -7,6 +7,3 @@ def   main ():
              print ( 'Yes' ) 
              return 
      print ( 'No' )
-
-if __name__ == '__main__':
-    ()

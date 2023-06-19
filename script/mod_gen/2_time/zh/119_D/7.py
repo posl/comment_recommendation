@@ -1,22 +1,37 @@
-def getMinMP(N,A,B,C,l):
-    #print("N,A,B,C,l:",N,A,B,C,l)
-    if N==0:
-        if A==0 and B==0 and C==0:
-            return 0
+def main():
+    a, b, q = map(int, input().split())
+    s = [int(input()) for _ in range(a)]
+    t = [int(input()) for _ in range(b)]
+    x = [int(input()) for _ in range(q)]
+    # print(s,t,x)
+    for i in range(q):
+        tmp = x[i]
+        tmp_s = 0
+        tmp_t = 0
+        for j in range(a):
+            if tmp >= s[j]:
+                tmp_s = tmp - s[j]
+            else:
+                tmp_s = s[j] - tmp
+            if j == 0:
+                min_s = tmp_s
+            else:
+                if tmp_s < min_s:
+                    min_s = tmp_s
+        for j in range(b):
+            if tmp >= t[j]:
+                tmp_t = tmp - t[j]
+            else:
+                tmp_t = t[j] - tmp
+            if j == 0:
+                min_t = tmp_t
+            else:
+                if tmp_t < min_t:
+                    min_t = tmp_t
+        if min_s < min_t:
+            print(min_t)
         else:
-            return 1000000
-    if A==0 and B==0 and C==0:
-        return 0
-    if A<0 or B<0 or C<0:
-        return 1000000
-    if A==0 and B==0 and C==0:
-        return 0
-    if l[0]==A or l[0]==B or l[0]==C:
-        return getMinMP(N-1,A-l[0],B,C,l[1:])
-    else:
-        return min(getMinMP(N-1,A,B,C,l[1:]),1+getMinMP(N-1,A-l[0],B,C,l[1:]),1+getMinMP(N-1,A,B-l[0],C,l[1:]),1+getMinMP(N-1,A,B,C-l[0],l[1:]))
-N,A,B,C=map(int,input().split())
-l=[]
-for i in range(N):
-    l.append(int(input()))
-print(getMinMP(N,A,B,C,l))
+            print(min_s)
+
+if __name__ == '__main__':
+    main()

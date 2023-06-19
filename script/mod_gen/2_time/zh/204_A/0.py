@@ -1,10 +1,7 @@
-def getMedian(arr):
-    arr.sort()
-    l = len(arr)
-    if l%2 == 0:
-        return arr[l/2-1]
+def f(x,y):
+    if x == y:
+        return x
     else:
-        return arr[(l+1)/2-1]
-
-if __name__ == '__main__':
-    getMedian()
+        return 3 - x - y
+x,y = map(int,input().split())
+print(f(x,y))

@@ -1,12 +1,23 @@
 def main():
-    n, k = map(int, input().split())
-    l = [0] * n
-    for i in range(k):
-        d = int(input())
-        a = list(map(int, input().split()))
-        for j in range(d):
-            l[a[j] - 1] += 1
-    print(l.count(0))
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    a = [0]*m
+    b = [0]*m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    for i in range(m):
+        if h[a[i]-1] > h[b[i]-1]:
+            h[b[i]-1] = 0
+        elif h[a[i]-1] < h[b[i]-1]:
+            h[a[i]-1] = 0
+        else:
+            h[a[i]-1] = 0
+            h[b[i]-1] = 0
+    count = 0
+    for i in range(n):
+        if h[i] != 0:
+            count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

@@ -1,29 +1,11 @@
 def main():
-    q = int(input())
-    a = []
-    for i in range(q):
-        query = input().split()
-        if query[0] == '1':
-            a.append(int(query[1]))
-        elif query[0] == '2':
-            x = int(query[1])
-            k = int(query[2])
-            b = [i for i in a if i <= x]
-            if len(b) < k:
-                print(-1)
-            else:
-                b.sort(reverse=True)
-                print(b[k-1])
-        elif query[0] == '3':
-            x = int(query[1])
-            k = int(query[2])
-            b = [i for i in a if i >= x]
-            if len(b) < k:
-                print(-1)
-            else:
-                b.sort()
-                print(b[k-1])
-    return 0
+    A,B,C,X = map(int,input().split())
+    if A>X:
+        print(0)
+    elif B>=X>=A:
+        print(1)
+    else:
+        print(C/(B-A))
 
 if __name__ == '__main__':
     main()

@@ -1,24 +1,17 @@
-def solve():
-    n = int(input())
-    s = []
-    for _ in range(n):
-        t, x, a = map(int, input().split())
-        s.append((t, x, a))
-    s.sort()
-    ans = 0
-    for i in range(n):
-        t, x, a = s[i]
-        if x == 0:
-            ans += a
-            continue
-        for j in range(i + 1, n):
-            t2, x2, a2 = s[j]
-            if x2 == x:
-                continue
-            if x2 == 0:
-                ans += a2
-            break
-    print(ans)
+def main():
+    week = input()
+    if week == "星期一":
+        print(5)
+    elif week == "星期二":
+        print(4)
+    elif week == "星期三":
+        print(3)
+    elif week == "星期四":
+        print(2)
+    elif week == "星期五":
+        print(1)
+    else:
+        print(0)
 
 if __name__ == '__main__':
-    solve()
+    main()

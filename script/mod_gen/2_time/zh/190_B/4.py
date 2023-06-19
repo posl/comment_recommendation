@@ -1,19 +1,11 @@
-def main():
-    a,b,c = map(int, input().split())
-    if c == 0:
-        if a > b:
-            print("Takahashi")
-        elif a < b:
-            print("Aoki")
-        else:
-            print("Aoki")
-    else:
-        if a > b:
-            print("Takahashi")
-        elif a < b:
-            print("Aoki")
-        else:
-            print("Takahashi")
+def solve():
+    N, S, D = map(int, input().split())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    for X, Y in XY:
+        if X < S and Y > D:
+            print('Yes')
+            return
+    print('No')
 
 if __name__ == '__main__':
-    main()
+    solve()

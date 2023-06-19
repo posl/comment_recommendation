@@ -1,9 +1,8 @@
-def main():
-    a,b = map(int, input().split())
-    if a == b:
-        print("IMPOSSIBLE")
-    else:
-        print((a+b)//2)
+def checkSort(arr):
+    for i in range(len(arr)-1):
+        if arr[i] > arr[i+1]:
+            return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    checkSort()

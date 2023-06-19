@@ -1,9 +1,12 @@
 def main():
-    n = int(input())
-    t, a = map(int, input().split())
-    h = list(map(int, input().split()))
-    temp = [t - x * 0.006 for x in h]
-    print(temp.index(min(temp))+1)
+    N,M = map(int,input().split())
+    P_Y = [list(map(int,input().split())) for i in range(M)]
+    P_Y.sort(key=lambda x:x[1])
+    city = {i:[] for i in range(1,N+1)}
+    for p,y in P_Y:
+        city[p].append(y)
+    for p,y in P_Y:
+        print("%06d%06d"%(p,city[p].index(y)+1))
 
 if __name__ == '__main__':
     main()

@@ -1,9 +1,9 @@
-def is_lucky(x):
-    s = str(x)
-    for i in range(len(s)-1):
-        if abs(int(s[i])-int(s[i+1]))>1:
-            return False
-    return True
+def main():
+    n = int(input())
+    if n % 10 == 7:
+        print("是")
+    else:
+        print("否")
 
 if __name__ == '__main__':
-    is_lucky()
+    main()

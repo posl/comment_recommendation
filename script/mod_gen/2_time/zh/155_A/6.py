@@ -1,15 +1,13 @@
-def main():
-    # 读入数据
-    n, k = map(int, input().split())
-    p = list(map(int, input().split()))
-    # 计算答案
-    s = sum(p[:k])
-    ans = s
-    for i in range(k, n):
-        s += p[i] - p[i-k]
-        ans = max(ans, s)
-    # 打印答案
-    print((ans + k) / 2)
+def is_diff(a, b, c):
+    if a == b and b != c:
+        return True
+    elif a == c and c != b:
+        return True
+    elif b == c and c != a:
+        return True
+    else:
+        return False
+a, b, c = map(int, input().split())
 
 if __name__ == '__main__':
-    main()
+    is_diff()

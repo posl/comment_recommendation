@@ -1,20 +1,10 @@
-def main():
-    n = int(input())
-    card = []
+def check(n, a, b, x):
     for i in range(n):
-        card.append(input())
-    if len(set(card)) != n:
-        print("No")
-        return
-    for i in range(n):
-        if card[i][0] not in "HDCS":
-            print("No")
-            return
-    for i in range(n):
-        if card[i][1] not in "A23456789TJQK":
-            print("No")
-            return
-    print("Yes")
+        if a[i] <= x <= b[i] or b[i] <= x <= a[i]:
+            continue
+        else:
+            return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    check()

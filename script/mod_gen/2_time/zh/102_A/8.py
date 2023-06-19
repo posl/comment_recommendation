@@ -1,6 +1,7 @@
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
 n = int(input())
-print(n * 2 // gcd(n, 2))
+print(n * 2 // gcd(2, n))

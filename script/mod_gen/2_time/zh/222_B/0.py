@@ -1,12 +1,11 @@
-def print_4digits(num):
-    if num < 10:
-        print('000' + str(num))
-    elif num < 100:
-        print('00' + str(num))
-    elif num < 1000:
-        print('0' + str(num))
-    else:
-        print(str(num))
+def main():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in a:
+        if i < P:
+            count += 1
+    print(count)
 
 if __name__ == '__main__':
-    print_4digits()
+    main()

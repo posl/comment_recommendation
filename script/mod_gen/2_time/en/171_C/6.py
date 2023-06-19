@@ -5,6 +5,3 @@ def getDogName(n):
         return getDogName((n-1)/26) + chr(ord('a') + (n-1)%26)
 n = int(raw_input())
 print getDogName(n)
-
-if __name__ == '__main__':
-    getDogName()

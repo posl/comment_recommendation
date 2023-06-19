@@ -1,8 +1,5 @@
-def swap_list(list_, start, end):
-    list_ = list(list_)
-    for i in range(start, (end+start)//2+1):
-        list_[i], list_[end+start-i] = list_[end+start-i], list_[i]
-    return list_
+def replace_na(s):
+    return s.replace('na','nya')
 
 if __name__ == '__main__':
-    swap_list()
+    replace_na()

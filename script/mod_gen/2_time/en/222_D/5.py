@@ -15,6 +15,3 @@ def main():
         dp = tmp
     print(dp[3000])
 main()
-
-if __name__ == '__main__':
-    main()

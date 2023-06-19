@@ -1,17 +1,12 @@
 def main():
-    N, M = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort()
-    A.reverse()
-    sum = 0
-    for i in range(M):
-        sum += A[i]
-    if sum == N:
-        print(0)
-    elif sum > N:
-        print(-1)
-    else:
-        print(N - sum)
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    b = [0] * (n + 1)
+    for i in range(1, n + 1):
+        b[a[i]] += 1
+    for i in range(1, n + 1):
+        print(b[i])
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,3 @@ def get_happiness(x):
     return happiness
 x = int(input())
 print(get_happiness(x))
-
-if __name__ == '__main__':
-    get_happiness()

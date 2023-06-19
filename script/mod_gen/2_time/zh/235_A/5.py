@@ -1,8 +1,9 @@
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    for i in range(k-1,n):
-        print(sorted(p[:i+1])[-k+1])
+    num = input()
+    a = int(num[0])
+    b = int(num[1])
+    c = int(num[2])
+    print(a*111+b*11+c*1+a*100+b*10+c*1+a*100+b*10+c*1)
 
 if __name__ == '__main__':
     main()

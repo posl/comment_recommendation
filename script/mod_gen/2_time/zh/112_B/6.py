@@ -1,13 +1,14 @@
 def main():
-    n = int(input())
-    if n == 1:
-        print("Hello World")
-    elif n == 2:
-        a = int(input())
-        b = int(input())
-        print(a + b)
+    n,t=map(int,input().split())
+    l=[]
+    for _ in range(n):
+        c,t=map(int,input().split())
+        if t<=t:
+            l.append((c,t))
+    if len(l)==0:
+        print("TLE")
     else:
-        pass
+        print(min(l)[0])
 
 if __name__ == '__main__':
     main()

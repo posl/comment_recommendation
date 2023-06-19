@@ -1,17 +1,17 @@
-def main():
+def solve():
     N, M = map(int, input().split())
     A = list(map(int, input().split()))
-    for i in range(N):
-        A[i] %= M
-    sum_A = [0] * (N + 1)
-    for i in range(N):
-        sum_A[i + 1] = (sum_A[i] + A[i]) % M
+    A = [0] + A
+    for i in range(1, N+1):
+        A[i] += A[i-1]
     from collections import Counter
-    c = Counter(sum_A)
+    cnt = Counter()
+    for a in A:
+        cnt[a % M] += 1
     ans = 0
-    for v in c.values():
-        ans += v * (v - 1) // 2
+    for c in cnt.values():
+        ans += c * (c-1) // 2
     print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

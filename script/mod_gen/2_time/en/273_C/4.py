@@ -19,6 +19,3 @@ def   main ():
          f [ i ]   =   e [ i ]   -   e [ c [ i ]]
      for   i   in   range ( n ):
          print ( f [ i ])
-
-if __name__ == '__main__':
-    ()

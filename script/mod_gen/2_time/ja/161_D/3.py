@@ -82,6 +82,3 @@ def f(n):
     if n == 40:
         return ['40']
     if n ==
-
-if __name__ == '__main__':
-    f()

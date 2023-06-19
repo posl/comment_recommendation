@@ -1,9 +1,12 @@
-def count_abc(s):
-    count = 0
-    for i in range(0,len(s)-2):
-        if s[i:i+3] == 'ABC':
-            count += 1
-    return count
+def permutation(n):
+    if n == 1:
+        return [[1]]
+    else:
+        result = []
+        for i in range(n):
+            for j in permutation(n-1):
+                result.append(j[:i]+[n]+j[i:])
+        return result
 
 if __name__ == '__main__':
-    count_abc()
+    permutation()

@@ -1,15 +1,41 @@
 def main():
-    N = int(input())
-    P = list(map(int, input().split()))
-    # 逆時針の転回回数を求める
-    cnt = 0
-    for i in range(N):
-        if P[i] == i:
-            cnt += 1
-    if cnt == N:
-        print(N)
-    else:
-        print(cnt + 2 * ((N - cnt) // 2))
+    n,m = map(int,input().split())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(input())
+    for i in range(m):
+        t.append(input())
+    for i in range(n):
+        for j in range(m):
+            if s[i] == t[j]:
+                print(-1)
+                exit()
+    for i in range(n):
+        for j in range(m):
+            if s[i] == t[j]:
+                print(-1)
+                exit()
+    for i in range(n):
+        for j in range(m):
+            if s[i] == t[j]:
+                print(-1)
+                exit()
+    for i in range(n):
+        for j in range(m):
+            if s[i] == t[j]:
+                print(-1)
+                exit()
+    print(s[0],end = '')
+    for i in range(1,n):
+        print('_',end = '')
+        print(s[i],end = '')
+    print()
+    print(t[0],end = '')
+    for i in range(1,m):
+        print('_',end = '')
+        print(t[i],end = '')
+    print()
 
 if __name__ == '__main__':
     main()

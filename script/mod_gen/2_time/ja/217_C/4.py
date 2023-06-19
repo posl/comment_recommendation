@@ -8,6 +8,3 @@ def solve():
         Q[P[i]-1] = i + 1
     print(Q)
 solve()
-
-if __name__ == '__main__':
-    solve()

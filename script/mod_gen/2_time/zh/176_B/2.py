@@ -1,6 +1,12 @@
 def main():
-    n, x, t = map(int, input().split())
-    print((n + x - 1) // x * t)
+    N = input()
+    sum = 0
+    for i in range(len(N)):
+        sum += int(N[i])
+    if sum % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
 
 if __name__ == '__main__':
     main()

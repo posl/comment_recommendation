@@ -1,12 +1,12 @@
 def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    a[x-1] = 0
-    b = [0]*n
+    n,k = map(int,input().split())
+    p = [list(map(int,input().split())) for _ in range(n)]
+    print(p)
     for i in range(n):
-        if a[i] != 0:
-            b[a[i]-1] += 1
-    print(b.count(max(b)))
+        if p[i][0]+p[i][1]+p[i][2] >= k:
+            print('Yes')
+        else:
+            print('No')
 
 if __name__ == '__main__':
     main()

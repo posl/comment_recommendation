@@ -1,10 +1,12 @@
-def main():
-    a,b,k = map(int,input().split())
-    array = []
-    for i in range(1,101):
-        if a % i == 0 and b % i == 0:
-            array.append(i)
-    print(array[-k])
+def max_cube(s):
+    if len(s) == 0:
+        return 0
+    red = s.count('0')
+    blue = s.count('1')
+    if red == 0 or blue == 0:
+        return 0
+    else:
+        return min(red, blue) * 2
 
 if __name__ == '__main__':
-    main()
+    max_cube()

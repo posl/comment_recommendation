@@ -1,11 +1,12 @@
 def main():
-    N = int(input())
-    d = list(map(int, input().split()))
-    sum = 0
-    for i in range(N):
-        for j in range(i + 1, N):
-            sum += d[i] * d[j]
-    print(sum)
+    n = int(input())
+    s = input()
+    ans = 1
+    for i in range(1, n):
+        if s[i] != s[i-1]:
+            ans += 1
+    print(ans)
+    return 0
 
 if __name__ == '__main__':
     main()

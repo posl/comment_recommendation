@@ -18,6 +18,3 @@ def main():
     for a in ans[1:]:
         print(a + 1)
 main()
-
-if __name__ == '__main__':
-    main()

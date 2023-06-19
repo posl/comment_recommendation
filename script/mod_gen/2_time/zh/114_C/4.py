@@ -1,11 +1,6 @@
-def main():
-    s = input()
-    min = 999
-    for i in range(len(s)-2):
-        a = int(s[i:i+3])
-        if abs(a-753) < min:
-            min = abs(a-753)
-    print(min)
+def is753(x):
+    s = str(x)
+    return s.count("7") > 0 and s.count("5") > 0 and s.count("3") > 0
 
 if __name__ == '__main__':
-    main()
+    is753()

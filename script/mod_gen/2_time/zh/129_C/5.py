@@ -1,14 +1,15 @@
-def problems129_b():
-    N = int(input())
-    W = [int(i) for i in input().split()]
-    min_diff = sum(W)
-    for i in range(N):
-        S1 = sum(W[0:i+1])
-        S2 = sum(W[i+1:N])
-        diff = abs(S1 - S2)
-        if diff < min_diff:
-            min_diff = diff
-    print(min_diff)
+def main():
+    n, m = map(int, input().split())
+    a = []
+    for i in range(m):
+        a.append(int(input()))
+    a.append(n)
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in range(1, n + 1):
+        if i not in a:
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007
+    print(dp[n])
 
 if __name__ == '__main__':
-    problems129_b()
+    main()

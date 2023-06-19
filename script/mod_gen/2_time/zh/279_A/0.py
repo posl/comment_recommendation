@@ -1,16 +1,11 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    Q = int(input())
-    for i in range(Q):
-        query = list(map(int, input().split()))
-        if query[0] == 1:
-            for j in range(N):
-                A[j] = query[1]
-        elif query[0] == 2:
-            A[query[1]-1] += query[2]
-        else:
-            print(A[query[1]-1])
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'w' and i != len(s) - 1:
+            if s[i + 1] == 'w':
+                count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

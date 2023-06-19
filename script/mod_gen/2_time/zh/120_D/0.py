@@ -1,8 +1,9 @@
-def main():
-    s = input()
-    r = s.count('0')
-    b = len(s) - r
-    print(min(r, b) * 2)
+def find_parent(x, parents):
+    if parents[x] == x:
+        return x
+    else:
+        parents[x] = find_parent(parents[x], parents)
+        return parents[x]
 
 if __name__ == '__main__':
-    main()
+    find_parent()

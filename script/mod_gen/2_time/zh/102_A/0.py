@@ -1,6 +1,6 @@
 def main():
     n = int(input())
-    print(2*n)
+    print(n*2)
 
 if __name__ == '__main__':
     main()

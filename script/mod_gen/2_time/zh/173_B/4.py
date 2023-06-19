@@ -1,6 +1,12 @@
 def main():
-    n = int(input())
-    print(1000 - n % 1000 if n % 1000 != 0 else 0)
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print("AC x", S.count("AC"))
+    print("WA x", S.count("WA"))
+    print("TLE x", S.count("TLE"))
+    print("RE x", S.count("RE"))
 
 if __name__ == '__main__':
     main()

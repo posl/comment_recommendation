@@ -1,17 +1,11 @@
-def main():
-    n = int(input())
-    shops = []
-    for i in range(n):
-        a, p, x = map(int, input().split())
-        shops.append((a, p, x))
-    min_price = -1
-    for shop in shops:
-        if shop[2] > 0:
-            if min_price == -1:
-                min_price = shop[1]
-            else:
-                min_price = min(min_price, shop[1])
-    print(min_price)
+def solve(n):
+    num = 0
+    for i in range(2, int(n**0.5)+1):
+        x = i
+        while x <= n:
+            x *= i
+            num += 1
+    return n - num
 
 if __name__ == '__main__':
-    main()
+    solve()

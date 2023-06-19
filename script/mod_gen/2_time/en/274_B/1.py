@@ -10,6 +10,3 @@ def solve():
                 count += 1
         print(count)
 solve()
-
-if __name__ == '__main__':
-    solve()

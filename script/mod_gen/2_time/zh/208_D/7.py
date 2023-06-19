@@ -1,13 +1,14 @@
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    a_sorted = sorted(a)
-    a_sorted.append(a_sorted[0]+k)
-    for i in range(n):
-        if a_sorted[i+1] == a_sorted[i]:
-            print(k//n)
-        else:
-            print(k//n+1)
+def floyd_warshall(N, M, A, B, C):
+    dist = [[float('inf') for i in range(N)] for j in range(N)]
+    for i in range(N):
+        dist[i][i] = 0
+    for i in range(M):
+        dist[A[i]-1][B[i]-1] = C[i]
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                dist[i][j] = min(dist[i][j], dist[i][k]+dist[k][j])
+    return dist
 
 if __name__ == '__main__':
-    main()
+    floyd_warshall()

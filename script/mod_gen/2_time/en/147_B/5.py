@@ -6,6 +6,3 @@ def main():
     else:
         print(sum(s[i] != s[l-1-i] for i in range(l//2)) + 1)
 main()
-
-if __name__ == '__main__':
-    main()

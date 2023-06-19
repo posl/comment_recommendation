@@ -25,6 +25,3 @@ def main():
             print(i + 1, N, 2 ** (i - 1))
     print(1, N, L)
 main()
-
-if __name__ == '__main__':
-    main()

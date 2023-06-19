@@ -1,5 +1,6 @@
-def isEven(n):
-    return len(n) % 2 == 0
+def main():
+    H, W, A, B = map(int, input().split())
+    print(solve(H, W, A, B))
 
 if __name__ == '__main__':
-    isEven()
+    main()

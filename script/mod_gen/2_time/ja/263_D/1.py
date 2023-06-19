@@ -16,6 +16,3 @@ def main():
                 ans += A[i] * min(N - i, L)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

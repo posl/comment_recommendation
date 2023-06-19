@@ -1,8 +1,10 @@
-def get_input():
-    n,m = map(int, input().split())
-    h = list(map(int, input().split()))
-    ab = [list(map(int, input().split())) for _ in range(m)]
-    return n,m,h,ab
+def main():
+    x = int(input())
+    for a in range(-118, 119):
+        for b in range(-119, 118):
+            if a ** 5 - b ** 5 == x:
+                print(a, b)
+                return
 
 if __name__ == '__main__':
-    get_input()
+    main()

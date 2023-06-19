@@ -1,5 +1,6 @@
-def is_palindromic(s):
-    return s == s[::-1]
+def main():
+    L = int(input())
+    print(L**3/27)
 
 if __name__ == '__main__':
-    is_palindromic()
+    main()

@@ -1,11 +1,17 @@
-def main():
-    pin = input()
-    if pin[0] == pin[1] == pin[2] == pin[3]:
-        print("Weak")
-    elif (int(pin[0])+1)%10 == int(pin[1]) and (int(pin[1])+1)%10 == int(pin[2]) and (int(pin[2])+1)%10 == int(pin[3]):
-        print("Weak")
-    else:
-        print("Strong")
+def min_dif(a, b):
+    a.sort()
+    b.sort()
+    i = 0
+    j = 0
+    ans = abs(a[i] - b[j])
+    while i < len(a) and j < len(b):
+        if abs(a[i] - b[j]) < ans:
+            ans = abs(a[i] - b[j])
+        if a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+    return ans
 
 if __name__ == '__main__':
-    main()
+    min_dif()

@@ -1,9 +1,14 @@
 def main():
-    S, W = map(int, input().split())
-    if S > W:
-        print("安全")
-    else:
-        print("不安全")
+    a,b,c,d = map(int,input().split())
+    while a > 0 and c > 0:
+        c -= b
+        if c <= 0:
+            print('Yes')
+            break
+        a -= d
+        if a <= 0:
+            print('No')
+            break
 
 if __name__ == '__main__':
     main()

@@ -1,11 +1,10 @@
 def main():
-    S = input()
-    S = list(S)
-    S = [int(i) for i in S]
-    for i in range(10):
-        if i not in S:
-            print(i)
-            break
+    a,b,k = map(int, input().split())
+    count = 0
+    while a < b:
+        a += k * a
+        count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

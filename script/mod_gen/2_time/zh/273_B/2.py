@@ -1,7 +1,9 @@
-def func(n):
-    if n==0:
-        return 1
-    else:
-        return n*func(n-1)
-n=int(input())
-print(func(n))
+def problem273_b(x, k):
+    y = x
+    for i in range(k):
+        y = round(y, -i)
+    print(int(y))
+problem273_b(2048, 2)
+problem273_b(1, 15)
+problem273_b(999, 3)
+problem273_b(314159265358979, 12)

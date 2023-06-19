@@ -8,6 +8,3 @@ def check():
             return "Yes"
     return "No"
 print(check())
-
-if __name__ == '__main__':
-    check()

@@ -1,13 +1,10 @@
-def main():
-    n = int(input())
-    x = list(map(int, input().split()))
-    ans = 10**9
-    for i in range(1, 101):
-        sum = 0
-        for j in range(n):
-            sum += (x[j] - i)**2
-        ans = min(ans, sum)
-    print(ans)
+def calc(n,a,b):
+    mod = 10**9+7
+    ans = pow(n,2,mod)
+    ans -= comb(n,a,mod)
+    ans -= comb(n,b,mod)
+    ans %= mod
+    return ans
 
 if __name__ == '__main__':
-    main()
+    calc()

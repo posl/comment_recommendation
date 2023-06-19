@@ -9,6 +9,3 @@ def main():
         idx = B.index(A[i])
         print(N - idx - (C[N] - C[idx + 1]) + A[i])
 main()
-
-if __name__ == '__main__':
-    main()

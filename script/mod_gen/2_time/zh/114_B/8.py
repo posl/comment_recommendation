@@ -1,9 +1,11 @@
 def main():
-    X = int(input())
-    if X in [3, 5, 7]:
-        print('YES')
-    else:
-        print('NO')
+    S = input()
+    min_diff = 1000
+    for i in range(0, len(S)-2):
+        diff = abs(int(S[i:i+3])-753)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
 
 if __name__ == '__main__':
     main()

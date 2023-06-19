@@ -9,6 +9,3 @@ def solve():
         b -= 1
     print(a,b)
 solve()
-
-if __name__ == '__main__':
-    solve()

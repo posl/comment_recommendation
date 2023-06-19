@@ -1,12 +1,14 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    ans = 1
-    for i in range(1, n):
-        if a[i] != a[i - 1]:
-            ans += 1
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+def jump(i, x):
+    if i >= N:
+        return False
+    if x == X:
+        return True
+    return jump(i + 1, x + a[i]) or jump(i + 1, x + b[i])
+N, X = map(int, input().split())
+a = []
+b = []
+for i in range(N):
+    a_i, b_i = map(int, input().split())
+    a.append(a_i)
+    b.append(b_i)
+print("Yes" if jump(0, 0) else "No")

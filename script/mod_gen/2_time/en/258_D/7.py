@@ -16,6 +16,3 @@ def main():
     ans += B[i] * X
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -21,6 +21,3 @@ def   main ():
              ans [ dist [ j ] - 1 ]   +=   1 
      for   i   in   range ( N - 1 ): 
          print ( ans [ i ])
-
-if __name__ == '__main__':
-    ()

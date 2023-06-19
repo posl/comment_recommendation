@@ -5,6 +5,3 @@ def main():
     else:
         print(int(((n//x)+1)*t))
 main()
-
-if __name__ == '__main__':
-    main()

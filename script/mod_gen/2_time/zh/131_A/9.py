@@ -1,18 +1,11 @@
 def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    ans = 0
-    right = 0
-    total = 0
-    for left in range(n):
-        while (right < n) and (total < k):
-            total += a[right]
-            right += 1
-        if total < k:
-            break
-        ans += n - right + 1
-        total -= a[left]
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+    s = input()
+    if s[0]==s[1] and s[1]==s[2] and s[2]==s[3]:
+        print('Bad')
+    elif s[0]==s[1] and s[1]==s[2]:
+        print('Bad')
+    elif s[1]==s[2] and s[2]==s[3]:
+        print('Bad')
+    else:
+        print('Good')
+main()

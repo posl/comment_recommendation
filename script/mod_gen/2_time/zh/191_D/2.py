@@ -1,24 +1,14 @@
-def solve():
-    H, W = map(int, input().split())
-    S = []
-    for i in range(H):
-        S.append(input())
+def main():
+    # 读入数据
+    X, Y, R = map(float, input().split())
+    # 计算圆内网格点的数量
     ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#':
-                if S[i - 1][j] == '.':
-                    ans += 1
-                if S[i + 1][j] == '.':
-                    ans += 1
-                if S[i][j - 1] == '.':
-                    ans += 1
-                if S[i][j + 1] == '.':
-                    ans += 1
-    if ans == 0:
-        print(0)
-    else:
-        print(ans // 2 + 1)
+    for x in range(int(X - R), int(X + R) + 1):
+        for y in range(int(Y - R), int(Y + R) + 1):
+            if (X - x) ** 2 + (Y - y) ** 2 <= R ** 2:
+                ans += 1
+    # 输出答案
+    print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

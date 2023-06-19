@@ -1,15 +1,12 @@
 def main():
-    s, t, x = map(int, input().split())
-    if s <= t:
-        if s <= x and x < t:
-            print("Yes")
-        else:
-            print("No")
-    else:
-        if s <= x or x < t:
-            print("Yes")
-        else:
-            print("No")
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    T = [0 for i in range(N)]
+    T[X-1] = 1
+    for i in range(N):
+        if T[A[i]-1] == 1:
+            T[i] = 1
+    print(sum(T))
 
 if __name__ == '__main__':
     main()

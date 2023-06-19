@@ -1,19 +1,16 @@
 def main():
-    h, w = map(int, input().split())
-    #print(h, w)
-    data = [0 for i in range(w)]
-    #print(data)
-    for i in range(h):
-        row = input()
-        #print(row)
-        for j in range(w):
-            #print(row[j])
-            if row[j] == '#':
-                data[j] += 1
-    #print(data)
-    for i in range(w):
-        print(data[i], end=' ')
-    print()
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2 * N + 1)
+    for i in range(N):
+        ans[A[i]] = i + 1
+    for i in range(1, N + 1):
+        j = i
+        while j != 1:
+            ans[j // 2] = max(ans[j // 2], ans[j] + 1)
+            j //= 2
+    for i in range(1, 2 * N + 1):
+        print(ans[i])
 
 if __name__ == '__main__':
     main()

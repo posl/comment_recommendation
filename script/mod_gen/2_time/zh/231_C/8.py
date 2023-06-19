@@ -1,22 +1,16 @@
 def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.sort()
-    S.append('')
-    max = 0
-    max_name = ''
-    count = 0
-    for i in range(N):
-        if S[i] == S[i+1]:
-            count += 1
-        else:
-            if max < count:
-                max = count
-                max_name = S[i]
-            count = 0
-    print(max_name)
+    n,q = map(int, input().split())
+    A = list(map(int, input().split()))
+    x = []
+    for i in range(q):
+        x.append(int(input()))
+    A.sort()
+    for i in range(q):
+        num = 0
+        for j in range(n):
+            if x[i] <= A[j]:
+                num += 1
+        print(num)
 
 if __name__ == '__main__':
     main()

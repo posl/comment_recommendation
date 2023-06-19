@@ -1,11 +1,7 @@
-def main():
-    n,a,b = map(int,input().split())
-    if a == 0:
-        print(0)
-    elif n <= a+b:
-        print(a)
-    else:
-        print(a*(n//(a+b)) + min(a,n%(a+b)))
-
-if __name__ == '__main__':
-    main()
+def tax(a,b):
+    for i in range(1,101):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            return i
+    return -1
+a,b = map(int,input().split())
+print(tax(a,b))

@@ -1,9 +1,10 @@
 def main():
-    N, A, X, Y = map(int, input().split())
-    if N <= A:
-        print(N * X)
+    n = int(input())
+    s = input()
+    if s[0] == '0':
+        print("Takahashi")
     else:
-        print(A * X + (N - A) * Y)
+        print("Aoki")
 
 if __name__ == '__main__':
     main()

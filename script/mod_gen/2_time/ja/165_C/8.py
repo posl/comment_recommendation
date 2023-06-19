@@ -15,6 +15,3 @@ def get_max_score(n, m, q, abcd):
 n, m, q = map(int, input().split())
 abcd = [list(map(int, input().split())) for _ in range(q)]
 print(get_max_score(n, m, q, abcd))
-
-if __name__ == '__main__':
-    get_max_score()

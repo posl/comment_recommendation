@@ -1,8 +1,14 @@
-def f(x):
-    if x==1:
-        return 1
-    else:
-        return x*f(x-1)
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    t = k//n
+    r = k%n
+    for i in range(n):
+        if i < r:
+            print(t+1)
+        else:
+            print(t)
 
 if __name__ == '__main__':
-    f()
+    main()

@@ -1,10 +1,8 @@
-def problems148_b():
-    n = int(input())
-    s, t = input().split()
-    result = ""
-    for i in range(n):
-        result += s[i] + t[i]
-    print(result)
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+    # 输出
+    print(A * B)
 
 if __name__ == '__main__':
-    problems148_b()
+    main()

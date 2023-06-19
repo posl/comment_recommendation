@@ -1,11 +1,6 @@
 def main():
-    a,b,c,x = map(int,input().split())
-    if x <= a:
-        print(1)
-    elif x <= b:
-        print(c/(b-a))
-    else:
-        print(0)
+    s = input()
+    print(min(s[i:] + s[:i] for i in range(len(s))))
 
 if __name__ == '__main__':
     main()

@@ -1,14 +1,14 @@
-def problems246_c():
-    n, k, x = map(int, input().split())
-    a = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        if a[i] > k:
-            ans += (a[i] - k) * x
-            k = 0
-        else:
-            k -= a[i]
-    print(ans)
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    x = 1
+    while True:
+        if x**3 >= N:
+            break
+        x += 1
+    print(x**3)
 
 if __name__ == '__main__':
-    problems246_c()
+    main()

@@ -1,15 +1,11 @@
 def main():
-    # input
     N = int(input())
-    # process
-    price = int(1.08 * N)
-    # output
-    if price < 206:
-        print("Yay!")
-    elif price == 206:
-        print("so-so")
-    else:
-        print(":(")
+    sum = 0
+    for i in range(1, N+1):
+        sum += i
+        if sum >= N:
+            print(i)
+            break
 
 if __name__ == '__main__':
     main()

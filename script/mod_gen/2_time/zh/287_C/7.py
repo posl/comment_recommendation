@@ -1,13 +1,17 @@
 def main():
-    n, m = map(int, input().split())
-    s = [input() for _ in range(n)]
-    t = [input() for _ in range(m)]
-    ans = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][3:] == t[j]:
-                ans += 1
-    print(ans)
+    N, M = map(int, input().split())
+    edges = []
+    for i in range(M):
+        edges.append(list(map(int, input().split())))
+    edges.sort()
+    print(edges)
+    for i in range(M):
+        if edges[i][0] == edges[i+1][0] or edges[i][1] == edges[i+1][1]:
+            print("No")
+            break
+        else:
+            print("Yes")
+            break
 
 if __name__ == '__main__':
     main()

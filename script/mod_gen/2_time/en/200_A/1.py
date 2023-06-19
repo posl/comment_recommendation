@@ -5,6 +5,3 @@ def century(year):
         return int(year / 100) + 1
 year = int(input())
 print(century(year))
-
-if __name__ == '__main__':
-    century()

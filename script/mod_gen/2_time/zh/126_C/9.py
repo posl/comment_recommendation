@@ -1,15 +1,12 @@
-def main():
-    S = input()
-    S1 = int(S[0:2])
-    S2 = int(S[2:4])
-    if 1 <= S1 <= 12 and 1 <= S2 <= 12:
-        print("AMBIGUOUS")
-    elif 1 <= S1 <= 12 and not 1 <= S2 <= 12:
-        print("MMYY")
-    elif not 1 <= S1 <= 12 and 1 <= S2 <= 12:
-        print("YYMM")
-    else:
-        print("NA")
+def problem126_c():
+    n,k = map(int,input().split())
+    ans = 0
+    for i in range(1,n+1):
+        if i >= k:
+            ans += 1/n
+        else:
+            ans += 1/n * (1/2)**(len(bin(k-1))-2)
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    problem126_c()

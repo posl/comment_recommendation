@@ -1,9 +1,9 @@
-def count_abc(s):
-    count = 0
-    for i in range(len(s)-2):
-        if s[i:i+3] == "ABC":
-            count += 1
-    return count
+def solve(n, p, q):
+    a, b = 0, 0
+    for i in range(n):
+        a = a * (n - i) + p[i] - 1
+        b = b * (n - i) + q[i] - 1
+    return abs(a - b)
 
 if __name__ == '__main__':
-    count_abc()
+    solve()

@@ -1,23 +1,23 @@
 def main():
-    #读取数据
-    n,a,b = map(int,input().split())
-    p,q,r,s = map(int,input().split())
-    #初始化
-    #矩阵
-    matrix = [['.' for i in range(n)] for j in range(n)]
-    #计算最大最小值
-    min1 = min(1-a,1-b)
-    max1 = max(n-a,n-b)
-    min2 = min(1-a,b-n)
-    max2 = max(n-a,b-1)
-    #对矩阵进行填充
-    for i in range(min1,max1+1):
-        matrix[a+i-1][b+i-1] = '#'
-    for i in range(min2,max2+1):
-        matrix[a+i-1][b-i-1] = '#'
-    #输出结果
-    for i in range(p-1,q):
-        print(''.join(matrix[i][r-1:s]))
+    n,d = map(int,input().split())
+    walls = []
+    for i in range(n):
+        walls.append(list(map(int,input().split())))
+    walls.sort(key=lambda x:x[0])
+    #print(walls)
+    #print(n,d)
+    #print(walls)
+    i = 0
+    j = 0
+    count = 0
+    while i < n:
+        if j < n and walls[j][0] - walls[i][0] < d:
+            count += 1
+            j += 1
+        else:
+            count -= 1
+            i += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

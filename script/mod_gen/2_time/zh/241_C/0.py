@@ -1,17 +1,21 @@
 def solve():
-    n,m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    a.sort()
-    b.sort()
-    if m > n:
-        print("No")
-        return
-    for i in range(m):
-        if a[i] < b[i]:
-            print("No")
-            return
-    print("Yes")
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '#':
+                S[i] = S[i][:j] + '1' + S[i][j+1:]
+            else:
+                S[i] = S[i][:j] + '0' + S[i][j+1:]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '0':
+                S[i] = S[i][:j] + '1' + S[i][j+1:]
+                if check(S):
+                    print('Yes')
+                    return
+                S[i] = S[i][:j] + '0' + S[i][j+1:]
+    print('No')
 
 if __name__ == '__main__':
     solve()

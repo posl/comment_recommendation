@@ -1,13 +1,11 @@
-def main():
+def solve():
     n, t = map(int, input().split())
     a = list(map(int, input().split()))
-    t = t % (sum(a))
-    s = 0
+    sum_a = sum(a)
+    t %= sum_a
     for i in range(n):
-        s += a[i]
-        if t < s:
+        if t < a[i]:
             print(i + 1, t)
             break
-
-if __name__ == '__main__':
-    main()
+        t -= a[i]
+solve()

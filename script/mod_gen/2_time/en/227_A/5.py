@@ -7,6 +7,3 @@ def last_card():
     else:
         print((K-A)%(N-A))
 last_card()
-
-if __name__ == '__main__':
-    last_card()

@@ -21,6 +21,3 @@ def  main():
          if  min(level) >= X:
             ans = min(ans, cost)
      print( -1  if  ans == 10 ** 10  else  ans)
-
-if __name__ == '__main__':
-    ()

@@ -17,6 +17,3 @@ def main():
             right = mid
     print(B[left])
 main()
-
-if __name__ == '__main__':
-    main()

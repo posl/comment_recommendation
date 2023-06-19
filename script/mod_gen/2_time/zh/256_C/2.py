@@ -1,18 +1,41 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    p = 0
-    for i in range(n):
-        p += 1
-        if a[i] == 1:
-            p += 1
-        elif a[i] == 2:
-            p += 2
-        elif a[i] == 3:
-            p += 3
-        else:
-            p += 4
-    print(p)
+    h = [int(x) for x in input().split()]
+    w = [int(x) for x in input().split()]
+    print(h, w)
+    # print('h1', h[0])
+    # print('h2', h[1])
+    # print('h3', h[2])
+    # print('w1', w[0])
+    # print('w2', w[1])
+    # print('w3', w[2])
+    # print('-----------')
+    # print('h1+h2+h3', h[0]+h[1]+h[2])
+    # print('w1+w2+w3', w[0]+w[1]+w[2])
+    # print('-----------')
+    # print('h1+h2', h[0]+h[1])
+    # print('h2+h3', h[1]+h[2])
+    # print('-----------')
+    # print('w1+w2', w[0]+w[1])
+    # print('w2+w3', w[1]+w[2])
+    # print('-----------')
+    # print('h1+h2+h3', h[0]+h[1]+h[2])
+    # print('w1+w2+w3', w[0]+w[1]+w[2])
+    # print('-----------')
+    # print('h1+h2', h[0]+h[1])
+    # print('h2+h3', h[1]+h[2])
+    # print('-----------')
+    # print('w1+w2', w[0]+w[1])
+    # print('w2+w3', w[1]+w[2])
+    # print('-----------')
+    # print('h1+h2+h3', h[0]+h[1]+h[2])
+    # print('w1+w2+w3', w[0]+w[1]+w[2])
+    # print('-----------')
+    # print('h1+h2', h[0]+h[1])
+    # print('h2+h3', h[1]+h[2])
+    # print('h1+h3', h[0]+h[2])
+    # print('-----------')
+    # print('w1+w2', w[0]+w[1])
+    #
 
 if __name__ == '__main__':
     main()

@@ -1,8 +1,10 @@
-def solve():
-    print 'Yes'
-    print '1 1'
-    print '1 2'
-    return 0
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[2] - a[1] == a[1] - a[0]:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    solve()
+    main()

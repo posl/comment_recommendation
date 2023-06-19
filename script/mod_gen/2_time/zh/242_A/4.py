@@ -1,6 +1,5 @@
-def insert(x, A):
-    A.append(x)
-    return A
+def problems242_a():
+    pass
 
 if __name__ == '__main__':
-    insert()
+    problems242_a()

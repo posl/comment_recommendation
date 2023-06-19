@@ -1,13 +1,9 @@
-def gcd(a, b):
-    if b == 0:
-        return a
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(N // 2)
     else:
-        return gcd(b, a % b)
-n, a, b = map(int, input().split())
-g = gcd(a, b)
-a //= g
-b //= g
-p = 10 ** 9 + 7
+        print(N // 2 + 1)
 
 if __name__ == '__main__':
-    gcd()
+    main()

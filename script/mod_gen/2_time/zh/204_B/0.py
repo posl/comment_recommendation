@@ -1,9 +1,8 @@
-def main():
-    x,y = map(int,input().split())
-    if x == y:
-        print(x)
-    else:
-        print(3-x-y)
+def get_nuts(nuts):
+    nuts.sort()
+    nuts.reverse()
+    nuts.pop(0)
+    return sum(nuts)
 
 if __name__ == '__main__':
-    main()
+    get_nuts()

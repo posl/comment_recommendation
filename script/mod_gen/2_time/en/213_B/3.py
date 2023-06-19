@@ -5,6 +5,3 @@ def main():
     A.remove(min_a)
     print(A.index(min(A))+1)
 main()
-
-if __name__ == '__main__':
-    main()

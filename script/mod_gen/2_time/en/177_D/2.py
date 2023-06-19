@@ -23,6 +23,3 @@ def main():
                 stack.append(u)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

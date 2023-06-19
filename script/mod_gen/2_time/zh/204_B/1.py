@@ -1,6 +1,11 @@
 def main():
-    x, y = map(int, input().split())
-    print((x + 1) % 3 if x == y else 3 - x - y)
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in a:
+        if i > 10:
+            ans += i - 10
+    print(ans)
 
 if __name__ == '__main__':
     main()

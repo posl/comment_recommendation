@@ -1,22 +1,22 @@
-def gcd(a, b):
-    if a<b:
-        a,b=b,a
-    while b:
-        a,b=b,a%b
-    return a
-n=int(input())
-a=list(map(int, input().split()))
-max_gcd=0
-ans=0
-for i in range(2, 1001):
-    cnt=0
-    for j in range(n):
-        if gcd(a[j], i)==i:
-            cnt+=1
-    if cnt>=max_gcd:
-        max_gcd=cnt
-        ans=i
-print(ans)
+def main():
+    N = input()
+    k = len(N)
+    if k == 1:
+        if int(N) % 3 == 0:
+            print(0)
+        else:
+            print(-1)
+    else:
+        for i in range(1, k):
+            if int(N[i]) % 3 == 0:
+                print(1)
+                break
+            else:
+                if (int(N[i-1]) + int(N[i])) % 3 == 0:
+                    print(2)
+                    break
+        else:
+            print(-1)
 
 if __name__ == '__main__':
-    gcd()
+    main()

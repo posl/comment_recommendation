@@ -1,5 +1,6 @@
-def problems197_d():
-    pass
+def main():
+    N = int(input())
+    print(N-1)
 
 if __name__ == '__main__':
-    problems197_d()
+    main()

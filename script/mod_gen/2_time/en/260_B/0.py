@@ -17,6 +17,3 @@ def main():
     for i in range(len(G)):
         print(G[i][1]+1)
 main()
-
-if __name__ == '__main__':
-    main()

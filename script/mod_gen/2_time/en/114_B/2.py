@@ -6,6 +6,3 @@ def main():
             min = abs(int(s[i:i+3]) - 753)
     print(min)
 main()
-
-if __name__ == '__main__':
-    main()

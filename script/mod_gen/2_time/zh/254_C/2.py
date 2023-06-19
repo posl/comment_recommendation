@@ -1,15 +1,16 @@
-def pascal_triangle(n):
-    if n == 1:
-        return [[1]]
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    if sorted(A) == A:
+        print("Yes")
     else:
-        new_row = [1]
-        result = pascal_triangle(n-1)
-        last_row = result[-1]
-        for i in range(len(last_row)-1):
-            new_row.append(last_row[i]+last_row[i+1])
-        new_row += [1]
-        result.append(new_row)
-        return result
+        for i in range(N-K):
+            if A[i] > A[i+K]:
+                A[i],A[i+K] = A[i+K],A[i]
+        if sorted(A) == A:
+            print("Yes")
+        else:
+            print("No")
 
 if __name__ == '__main__':
-    pascal_triangle()
+    main()

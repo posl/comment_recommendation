@@ -1,17 +1,10 @@
-def get_distance(x, y):
-    distance = 0
-    for i in range(len(x)):
-        distance += (x[i] - y[i]) ** 2
-    return distance
-N, D = map(int, input().split())
-X = [list(map(int, input().split())) for _ in range(N)]
-count = 0
-for i in range(N - 1):
-    for j in range(i + 1, N):
-        distance = get_distance(X[i], X[j])
-        if (distance ** 0.5).is_integer():
-            count += 1
-print(count)
+def main():
+    L,R = map(int, input().split())
+    ans = 2019
+    for i in range(L, R):
+        for j in range(i+1, R+1):
+            ans = min(ans, (i*j)%2019)
+    print(ans)
 
 if __name__ == '__main__':
-    get_distance()
+    main()

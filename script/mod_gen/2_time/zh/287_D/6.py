@@ -1,19 +1,22 @@
-def solve():
-    N, M = map(int, input().split())
-    if M == 0:
-        print('No')
-        return
-    edges = [tuple(map(int, input().split())) for _ in range(M)]
-    edges.sort()
-    if edges[0][0] != 1:
-        print('No')
-        return
-    for i in range(1, M):
-        if edges[i][0] != edges[i-1][1]:
-            print('No')
-            return
-    print('Yes')
-    return
+def main():
+    S = input()
+    T = input()
+    lenS = len(S)
+    lenT = len(T)
+    for x in range(lenT+1):
+        S1 = S[0:x] + S[lenS-lenT+x:lenS]
+        if len(S1) == len(T):
+            flag = True
+            for i in range(lenT):
+                if S1[i] != T[i] and S1[i] != "?":
+                    flag = False
+                    break
+            if flag:
+                print("Yes")
+            else:
+                print("No")
+        else:
+            print("No")
 
 if __name__ == '__main__':
-    solve()
+    main()

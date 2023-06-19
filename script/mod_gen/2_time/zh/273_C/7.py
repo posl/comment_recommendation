@@ -1,8 +1,16 @@
 def main():
-    x, k = map(int, input().split())
-    for i in range(k):
-        x = (x + 5) // 10 * 10
-    print(x)
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    ans = [0] * n
+    ans[0] = 1
+    cnt = 1
+    for i in range(1, n):
+        if a[i] != a[i-1]:
+            cnt += 1
+        ans[i] = cnt
+    for i in range(n):
+        print(ans[i])
 
 if __name__ == '__main__':
     main()

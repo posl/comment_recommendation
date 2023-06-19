@@ -14,6 +14,3 @@ def main():
     else:
         print(minp)
 main()
-
-if __name__ == '__main__':
-    main()

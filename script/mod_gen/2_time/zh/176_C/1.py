@@ -1,14 +1,8 @@
-def main():
-    #n = int(input())
-    n = input()
-    #print(n)
-    sum = 0
-    for i in range(len(n)):
-        sum += int(n[i])
-    if sum % 9 == 0:
-        print("Yes")
-    else:
-        print("No")
-
-if __name__ == '__main__':
-    main()
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += max(a[i]-i, 0)
+    print(ans)
+solve()

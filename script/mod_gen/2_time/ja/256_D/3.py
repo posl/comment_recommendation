@@ -21,6 +21,3 @@ def solve():
     for a in ans:
         print(a[0], a[1])
 solve()
-
-if __name__ == '__main__':
-    solve()

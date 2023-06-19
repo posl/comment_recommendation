@@ -1,11 +1,8 @@
-def main():
-    N, K = map(int, input().split())
-    h = list(map(int, input().split()))
-    count = 0
-    for i in h:
-        if i >= K:
-            count += 1
-    print(count)
+def solve(n, a):
+    b = [None] * n
+    for i in range(n):
+        b[a[i]-1] = i+1
+    return b
 
 if __name__ == '__main__':
-    main()
+    solve()

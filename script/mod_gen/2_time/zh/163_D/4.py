@@ -1,11 +1,14 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = [0] * N
-    for i in range(1, N):
-        B[A[i] - 1] += 1
-    for i in range(N):
-        print(B[i])
+    N, K = map(int, input().split())
+    mod = 10 ** 9 + 7
+    if N == K - 1:
+        print(1)
+    else:
+        ans = 0
+        for i in range(K, N + 2):
+            ans += (N + 1) * i - i * (i - 1) // 2 + 1
+            ans %= mod
+        print(ans)
 
 if __name__ == '__main__':
     main()

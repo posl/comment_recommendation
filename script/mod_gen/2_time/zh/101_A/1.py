@@ -1,10 +1,12 @@
-def solve():
+def main():
     s = input()
-    result = 0
-    for i in s:
-        if i == "+":
-            result += 1
+    ans = 0
+    for i in range(4):
+        if s[i] == '+':
+            ans += 1
         else:
-            result -= 1
-    print(result)
-solve()
+            ans -= 1
+    print(ans)
+
+if __name__ == '__main__':
+    main()

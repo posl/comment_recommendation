@@ -1,11 +1,12 @@
-def solve():
-    S = input()
-    for i in range(len(S)):
-        if i & 1 and S[i] in 'RL':
-            print('No')
-            return
-        if not i & 1 and S[i] in 'UD':
-            print('No')
-            return
-    print('Yes')
-solve()
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    b = [0] * n
+    for i in range(q):
+        b[a[i] - 1] += 1
+    for i in range(n):
+        if k - q + b[i] > 0:
+            print("Yes")
+        else:
+            print("No")
+main()

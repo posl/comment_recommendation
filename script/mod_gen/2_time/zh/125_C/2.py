@@ -1,17 +1,14 @@
-def main():
-    n = int(input())
-    v = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    ans = 0
-    for i in range(1<<n):
-        x = 0
-        y = 0
-        for j in range(n):
-            if (i>>j)&1:
-                x += v[j]
-                y += c[j]
-        ans = max(ans, x-y)
-    print(ans)
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+n = int(input())
+a = list(map(int,input().split()))
+g = a[0]
+for i in range(1,n):
+    g = gcd(g, a[i])
+print(g)
 
 if __name__ == '__main__':
-    main()
+    gcd()

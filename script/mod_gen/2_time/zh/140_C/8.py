@@ -1,14 +1,12 @@
 def main():
     n = int(input())
-    a = [int(i) for i in input().split()]
-    b = [int(i) for i in input().split()]
-    c = [int(i) for i in input().split()]
-    total = 0
-    for i in range(n):
-        total += b[a[i]-1]
-        if i < n - 1 and a[i+1] - a[i] == 1:
-            total += c[a[i]-1]
-    print(total)
+    b = list(map(int, input().split()))
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    a[n-1] = b[n-2]
+    for i in range(n-2):
+        a[i+1] = min(b[i], b[i+1])
+    print(sum(a))
 
 if __name__ == '__main__':
     main()

@@ -1,11 +1,11 @@
 def main():
-    N = int(input())
-    T,A = map(int,input().split())
-    H = list(map(int,input().split()))
-    h = []
-    for i in range(N):
-        h.append(abs(A - (T - H[i]*0.006)))
-    print(h.index(min(h)) + 1)
+    N, M = map(int, input().split())
+    PY = [list(map(int, input().split())) for i in range(M)]
+    PY.sort(key=lambda x: x[1])
+    city = [0] * (N + 1)
+    for p, y in PY:
+        city[p] += 1
+        print("{:06d}{:06d}".format(p, city[p]))
 
 if __name__ == '__main__':
     main()

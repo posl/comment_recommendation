@@ -1,11 +1,11 @@
 def main():
-    # 读入数据
-    a,b,n = map(int, input().split())
-    # 计算结果
-    x = min(b-1,n)
-    ans = (a*x)//b - a*(x//b)
-    # 打印结果
-    print(ans)
+    S = input()
+    if S == "ABC":
+        print("ARC")
+    elif S == "ARC":
+        print("ABC")
+    else:
+        pass
 
 if __name__ == '__main__':
     main()

@@ -1,13 +1,21 @@
-def getMinSteps(n):
-    steps = []
-    while n > 0:
-        if n % 2 == 0:
-            n = n / 2
-            steps.append('B')
-        else:
-            n = n - 1
-            steps.append('A')
-    return steps[::-1]
+def main():
+    N, M = map(int, input().split())
+    k = []
+    for i in range(M):
+        k.append(int(input()))
+        a = list(map(int, input().split()))
+    if N % 2 == 1:
+        print("No")
+        exit()
+    for i in range(M):
+        if k[i] % 2 == 1:
+            print("No")
+            exit()
+        for j in range(k[i]):
+            if a[j] == a[j + 1]:
+                print("No")
+                exit()
+    print("Yes")
 
 if __name__ == '__main__':
-    getMinSteps()
+    main()

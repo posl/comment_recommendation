@@ -1,4 +1,5 @@
-def solve(a, b):
+def get_snow_cover(a, b):
     return b - a - 1
-print(solve(8, 13))
-print(solve(54, 65))
+
+if __name__ == '__main__':
+    get_snow_cover()

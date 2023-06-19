@@ -17,6 +17,3 @@ def main():
     else:
         print((n // (a+b)) * a + a)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,11 +1,14 @@
 def main():
-    N = int(input())
-    S = input()
-    count = 0
-    for i in range(N - 2):
-        if S[i:i+3] == 'ABC':
-            count += 1
-    print(count)
+    n = int(input())
+    p = list(map(int,input().split()))
+    q = list(map(int,input().split()))
+    # print(p,q)
+    a = 0
+    b = 0
+    for i in range(n):
+        a += p[i]*(n-i)
+        b += q[i]*(n-i)
+    print(abs(a-b))
 
 if __name__ == '__main__':
     main()

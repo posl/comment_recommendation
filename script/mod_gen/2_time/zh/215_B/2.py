@@ -1,9 +1,10 @@
 def main():
-    input = raw_input()
-    if input == "Hello,World":
-        print "AC"
-    else:
-        print "WA"
+    N = int(input())
+    k = 0
+    while N > 1:
+        N /= 2
+        k += 1
+    print(k)
 
 if __name__ == '__main__':
     main()

@@ -10,6 +10,3 @@ def main():
     else:
         print("No War")
 main()
-
-if __name__ == '__main__':
-    main()

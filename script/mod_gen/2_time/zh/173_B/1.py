@@ -1,6 +1,10 @@
-def solution():
-    N = int(input())
-    print(1000 - N % 1000)
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("AC x", s.count("AC"))
+    print("WA x", s.count("WA"))
+    print("TLE x", s.count("TLE"))
+    print("RE x", s.count("RE"))
 
 if __name__ == '__main__':
-    solution()
+    main()

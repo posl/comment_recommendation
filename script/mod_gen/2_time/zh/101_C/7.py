@@ -1,12 +1,12 @@
-def main():
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    cnt = 0
-    if (n-1) % (k-1) == 0:
-        cnt = (n-1) // (k-1)
-    else:
-        cnt = (n-1) // (k-1) + 1
-    print(cnt)
+def calc(a, k):
+    n = len(a)
+    count = 0
+    for i in range(n-k+1):
+        m = min(a[i:i+k])
+        for j in range(i, i+k):
+            a[j] = m
+        count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    calc()

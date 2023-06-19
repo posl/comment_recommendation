@@ -1,13 +1,14 @@
-def main():
-    A,B = map(int,input().split())
-    if A+B>=15 and B>=8:
-        print(1)
-    elif A+B>=10 and B>=3:
-        print(2)
-    elif A+B>=3:
-        print(3)
-    else:
-        print(4)
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    print(min(A[N-1], B[N-1]))
 
 if __name__ == '__main__':
-    main()
+    solve()

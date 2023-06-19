@@ -1,13 +1,14 @@
 def main():
-    N = int(input())
-    p = list(map(int, input().split()))
-    #print(N, p)
-    #print(p.index(1))
-    #print(p.index(N))
-    if p.index(1) < p.index(N):
-        print("YES")
-    else:
-        print("NO")
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i + 1], b[i])
+        a[i + 1] -= min(a[i + 1], b[i])
+    print(ans)
 
 if __name__ == '__main__':
     main()

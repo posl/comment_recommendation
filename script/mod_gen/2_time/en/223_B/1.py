@@ -11,6 +11,3 @@ def main():
     print(smin)
     print(smax)
 main()
-
-if __name__ == '__main__':
-    main()

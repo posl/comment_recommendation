@@ -1,13 +1,44 @@
 def solve():
-    n = int(input())
-    d = {}
-    for _ in range(n):
-        l = int(input())
-        a = tuple(map(int, input().split()))
-        if a not in d:
-            d[a] = 0
-        d[a] += 1
-    print(len(d))
+    N = int(input())
+    T = []
+    K = []
+    A = []
+    for i in range(N):
+        t,k,*a = map(int,input().split())
+        T.append(t)
+        K.append(k)
+        A.append(a)
+    #print(T,K,A)
+    #print(T[0],K[0],A[0])
+    #print(T[1],K[1],A[1])
+    #print(T[2],K[2],A[2])
+    #print(T[3],K[3],A[3])
+    #print(T[4],K[4],A[4])
+    #print(T[5],K[5],A[5])
+    #print(T[6],K[6],A[6])
+    #print(T[7],K[7],A[7])
+    #print(T[8],K[8],A[8])
+    #print(T[9],K[9],A[9])
+    #print(T[10],K[10],A[10])
+    #print(T[11],K[11],A[11])
+    #print(T[12],K[12],A[12])
+    #print(T[13],K[13],A[13])
+    #print(T[14],K[14],A[14])
+    #print(T[15],K[15],A[15])
+    #print(T[16],K[16],A[16])
+    #print(T[17],K[17],A[17])
+    #print(T[18],K[18],A[18])
+    #print(T[19],K[19],A[19])
+    #print(T[20],K[20],A[20])
+    #print(T[21],K[21],A[21])
+    #print(T[22],K[22],A[22])
+    #print(T[23],K[23],A[23])
+    #print(T[24],K[24],A[24])
+    #print(T[25],K[25],A[25])
+    #print(T[26],K[26],A[26])
+    #print(T[27],K[27],A[27])
+    #print(T[28],K[28],A[28])
+    #print(T
 
 if __name__ == '__main__':
     solve()

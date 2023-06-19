@@ -1,11 +1,9 @@
-def solve():
-    N, K = map(int, input().split())
-    h = [int(input()) for _ in range(N)]
-    h.sort()
-    ans = h[K-1] - h[0]
-    for i in range(1, N-K+1):
-        ans = min(ans, h[i+K-1] - h[i])
-    print(ans)
-
-if __name__ == '__main__':
-    solve()
+def burger(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + burger(n-1, burger(n-1, x-1)):
+        return burger(n-1, x-1)
+    else:
+        return 1 + burger(n-1, burger(n-1, x-2))
+n, x = map(int, input().split())
+print(burger(n, x))

@@ -1,8 +1,9 @@
-def f(x, a_list):
-    res = 0
-    for a in a_list:
-        res += x ^ a
-    return res
+def main():
+    A,B = map(int,input().split())
+    if A % B == 0:
+        print(A+B)
+    else:
+        print(B-A)
 
 if __name__ == '__main__':
-    f()
+    main()

@@ -1,6 +1,9 @@
-def main():
-    n, l = map(int, input().split())
-    print(sum(range(l+1, l+n)) if l >= 0 else sum(range(l+1, l+n)) + n - 1)
+def getNum(A,B,C,D):
+    res = 0
+    for i in range(A,B+1):
+        if i % C == 0 and i % D == 0:
+            res += 1
+    return res
 
 if __name__ == '__main__':
-    main()
+    getNum()

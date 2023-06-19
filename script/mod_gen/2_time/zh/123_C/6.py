@@ -1,26 +1,26 @@
 def main():
-    A = int(input())
-    B = int(input())
-    C = int(input())
-    D = int(input())
-    E = int(input())
-    a = A
-    b = B
-    c = C
-    d = D
-    e = E
-    if A % 10 != 0:
-        A = A + (10 - (A % 10))
-    if B % 10 != 0:
-        B = B + (10 - (B % 10))
-    if C % 10 != 0:
-        C = C + (10 - (C % 10))
-    if D % 10 != 0:
-        D = D + (10 - (D % 10))
-    if E % 10 != 0:
-        E = E + (10 - (E % 10))
-    print(A + B + C + D + E - 10 - max(A, B, C, D, E))
-    return 0
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    n1 = n // a
+    if n % a != 0:
+        n1 += 1
+    n2 = n1 // b
+    if n1 % b != 0:
+        n2 += 1
+    n3 = n2 // c
+    if n2 % c != 0:
+        n3 += 1
+    n4 = n3 // d
+    if n3 % d != 0:
+        n4 += 1
+    n5 = n4 // e
+    if n4 % e != 0:
+        n5 += 1
+    print(n5 + 4)
 
 if __name__ == '__main__':
     main()

@@ -1,12 +1,18 @@
-def main():
-    n, m = map(int, input().split())
-    l = []
-    r = []
-    for i in range(m):
-        l_i, r_i = map(int, input().split())
-        l.append(l_i)
-        r.append(r_i)
-    print(min(r) - max(l) + 1 if min(r) - max(l) >= 0 else 0)
+def solve(n, m, a, bc):
+    a.sort(reverse=True)
+    bc.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] >= bc[j][1]:
+            i += 1
+        else:
+            a[i] = bc[j][1]
+            bc[j][0] -= 1
+            if bc[j][0] == 0:
+                j += 1
+            i += 1
+    return sum(a)
 
 if __name__ == '__main__':
-    main()
+    solve()

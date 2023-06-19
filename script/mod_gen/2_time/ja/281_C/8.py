@@ -21,6 +21,3 @@ def main():
     Quotient4 = Remainder2 // Asum
     #TをAの合計値で割った余りで割った余りをAの合計値で割った商にかけたものをAの合計値で割った余りに足したものをAの合計値で割った余りで割った余り
     Remainder3 = Remainder2 % Asum
-
-if __name__ == '__main__':
-    main()

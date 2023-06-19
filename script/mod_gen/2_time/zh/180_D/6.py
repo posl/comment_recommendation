@@ -1,11 +1,12 @@
-def main():
-    n = int(input())
-    for i in range(1, int(n**0.5)+1):
-        if n%i == 0:
-            print(i)
-            if i != n//i:
-                print(n//i)
-    return
+def solve(x, y, a, b):
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+        else:
+            x += b
+        exp += 1
+    return exp
 
 if __name__ == '__main__':
-    main()
+    solve()

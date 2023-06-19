@@ -16,6 +16,3 @@ def main():
         sdp[i+1] %= mod
     print(dp[-1])
 main()
-
-if __name__ == '__main__':
-    main()

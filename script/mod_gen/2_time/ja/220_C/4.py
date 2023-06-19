@@ -15,6 +15,3 @@ def main():
         k += 1
     print(k)
 main()
-
-if __name__ == '__main__':
-    main()

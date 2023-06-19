@@ -7,6 +7,3 @@ def main():
                 dp[a][b][c] = 1 + (dp[a+1][b][c] * a + dp[a][b+1][c] * b + dp[a][b][c+1] * c) / (a + b + c)
     print(dp[A][B][C])
 main()
-
-if __name__ == '__main__':
-    main()

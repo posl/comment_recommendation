@@ -1,11 +1,15 @@
-def find_min_diff(x, p):
-    min_diff = 100
-    for i in range(0, 101):
-        if i not in p:
-            if abs(x - i) < min_diff:
-                min_diff = abs(x - i)
-                result = i
-    return result
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0] * (A[-1] + 1)
+    for i in range(N):
+        if B[A[i]] == 0:
+            for j in range(A[i], A[-1] + 1, A[i]):
+                B[j] = 1
+        else:
+            B[A[i]] += 1
+    print(N - sum(B))
 
 if __name__ == '__main__':
-    find_min_diff()
+    main()

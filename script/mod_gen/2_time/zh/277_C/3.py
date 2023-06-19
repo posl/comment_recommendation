@@ -1,19 +1,19 @@
 def main():
     n = int(input())
-    cards = []
-    for i in range(n):
-        cards.append(input())
-    if len(set(cards)) == n:
-        for card in cards:
-            if card[0] not in ['H','D','C','S']:
-                print('No')
-                return
-            if card[1] not in ['A','2','3','4','5','6','7','8','9','T','J','Q','K']:
-                print('No')
-                return
-        print('Yes')
-    else:
-        print('No')
+    ab = []
+    for _ in range(n):
+        ab.append(list(map(int, input().split())))
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1] - x[0])
+    #print(ab)
+    now = 1
+    for a, b in ab:
+        if b <= now:
+            continue
+        else:
+            now = b
+    print(now)
 
 if __name__ == '__main__':
     main()

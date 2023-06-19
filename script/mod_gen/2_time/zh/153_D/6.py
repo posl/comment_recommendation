@@ -1,9 +1,9 @@
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort(reverse=True)
-    H = H[K:]
-    print(sum(H))
-
-if __name__ == '__main__':
-    main()
+def func(h):
+    if h == 1:
+        return 1
+    elif h == 2:
+        return 3
+    else:
+        return 2 * func(h // 2) + 1
+h = int(input())
+print(func(h))

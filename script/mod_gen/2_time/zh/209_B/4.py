@@ -1,6 +1,13 @@
-def main():
-    a, b = map(int, input().split())
-    print(b - a + 1 if b - a >= 0 else 0)
+def buy_product(N, X, A):
+    for i in range(N):
+        if i % 2 == 0:
+            X -= A[i]
+        else:
+            X -= A[i] - 1
+    if X >= 0:
+        return "Yes"
+    else:
+        return "No"
 
 if __name__ == '__main__':
-    main()
+    buy_product()

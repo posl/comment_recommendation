@@ -1,14 +1,7 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    sum = 0
-    for i in range(n):
-        sum += a[i] * b[i]
-    if sum == 0:
-        print('Yes')
-    else:
-        print('No')
+def get_second_player(players):
+    players.sort()
+    players.reverse()
+    return players[1]
 
 if __name__ == '__main__':
-    main()
+    get_second_player()

@@ -4,6 +4,3 @@ def main():
     apple.sort()
     print(sum(apple) - apple[0])
 main()
-
-if __name__ == '__main__':
-    main()

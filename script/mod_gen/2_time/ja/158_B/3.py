@@ -7,6 +7,3 @@ def main():
     else:
         print((N // (A + B)) * A + min(A, N % (A + B)))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,13 +1,17 @@
-def triangle(n, l):
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if l[i] != l[j] and l[j] != l[k] and l[k] != l[i]:
-                    if l[i] + l[j] > l[k]:
-                        ans += 1
-    return ans
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x-k*d)
+        return
+    else:
+        k -= x//d
+        x %= d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(d-x)
+        return
 
 if __name__ == '__main__':
-    triangle()
+    main()

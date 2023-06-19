@@ -1,5 +1,15 @@
-def get_area(x1,y1,x2,y2,x3,y3):
-    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+def dfs(state, pos, depth, limit, prev):
+    if depth == limit:
+        return state == goal
+    if depth + h(state) > limit:
+        return False
+    for d in range(4):
+        if prev == d:
+            continue
+        t = move(state, pos, d)
+        if dfs(t[0], t[1], depth + 1, limit, d):
+            return True
+    return False
 
 if __name__ == '__main__':
-    get_area()
+    dfs()

@@ -1,8 +1,13 @@
-def problems198_a(n):
-    if n%2 == 0:
-        return n//2 - 1
+def isPalindromic(num):
+    numStr = str(num)
+    length = len(numStr)
+    if length == 1:
+        return True
     else:
-        return n//2
+        for i in range(length//2):
+            if numStr[i] != numStr[length-i-1]:
+                return False
+        return True
 
 if __name__ == '__main__':
-    problems198_a()
+    isPalindromic()

@@ -1,17 +1,21 @@
 def main():
-    N, K = map(int, input().split())
-    S = [input() for i in range(N)]
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
     ans = 0
-    for i in range(1 << N):
-        if bin(i).count('1') != K:
-            continue
-        A = []
-        for j in range(N):
-            if (i >> j) & 1:
-                A.append(S[j])
-        C = set(''.join(A))
-        if len(C) == K:
-            ans = max(ans, len(C))
+    for i in range(n):
+        for j in range(n):
+            if a[j] == 0:
+                continue
+            if a[i] % a[j] != 0:
+                continue
+            if a[i] // a[j] in d:
+                ans += d[a[i] // a[j]]
     print(ans)
 
 if __name__ == '__main__':

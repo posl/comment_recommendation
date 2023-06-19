@@ -1,13 +1,15 @@
-def main():
-    N = int(input())
-    A = [int(i) for i in input().split()]
-    A.sort()
-    A.append(A[0]+360)
-    max = 0
-    for i in range(N):
-        if max < A[i+1]-A[i]:
-            max = A[i+1]-A[i]
-    print(360-max)
+def f(x):
+    if x < 10:
+        return x
+    else:
+        return f(x//10) + 1
+N = int(input())
+mod = 998244353
+ans = 0
+for i in range(1, N+1):
+    ans += f(i)
+    ans %= mod
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    f()

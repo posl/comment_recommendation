@@ -1,12 +1,14 @@
-def get_input():
-    n, q = map(int, input().split())
-    l = []
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
     for i in range(n):
-        l.append(list(map(int, input().split())))
-    s_t = []
-    for i in range(q):
-        s_t.append(list(map(int, input().split())))
-    return n, q, l, s_t
+        if i == 0:
+            ans = a[0]
+        else:
+            ans = (ans + a[i]) / 2
+    print(ans)
 
 if __name__ == '__main__':
-    get_input()
+    main()

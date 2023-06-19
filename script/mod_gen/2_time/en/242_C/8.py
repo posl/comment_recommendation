@@ -12,6 +12,3 @@ def  main():
                 dp[i %  2 ][j] = dp[(i -  1 ) %  2 ][j -  1 ]
                  continue 
             dp[i %  2 ][j] = dp[(i -  1 ) %  2 ][j -  1 ] + dp[(i -  1 ) %  2 ][j +  1 ]
-
-if __name__ == '__main__':
-    ()

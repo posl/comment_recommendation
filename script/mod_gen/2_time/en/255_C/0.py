@@ -26,6 +26,3 @@ def solve():
         else:
             return 1
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -1,11 +1,10 @@
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort(reverse=True)
-    for i in range(m):
-        a[0] = a[0] // 2
-        a.sort(reverse=True)
-    print(sum(a))
+    n = int(input())
+    odd = 0
+    for i in range(1, n+1):
+        if i % 2 == 1:
+            odd += 1
+    print(odd / n)
 
 if __name__ == '__main__':
     main()

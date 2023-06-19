@@ -1,8 +1,10 @@
-def is_in_range(n):
-    if -2**31 <= n and n <= 2**31 - 1:
-        return True
-    else:
-        return False
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    for i in range(w):
+        for j in range(h):
+            print(a[j][i], end=' ')
+        print()
 
 if __name__ == '__main__':
-    is_in_range()
+    main()

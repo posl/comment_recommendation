@@ -1,13 +1,19 @@
-def is_permutation(array):
-    # 从小到大排序
-    array.sort()
-    # 检查是否为1到N的连续数列
-    for i in range(len(array)):
-        if array[i] != i + 1:
-            return False
-    return True
-n = int(input())
-a = list(map(int, input().split()))
+def solve():
+    A, B, C = map(int, input().split())
+    if A == B:
+        print('=')
+    elif C % 2 == 0:
+        if abs(A) == abs(B):
+            print('=')
+        elif abs(A) > abs(B):
+            print('>')
+        else:
+            print('<')
+    else:
+        if A > B:
+            print('>')
+        else:
+            print('<')
 
 if __name__ == '__main__':
-    is_permutation()
+    solve()

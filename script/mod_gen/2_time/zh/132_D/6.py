@@ -1,11 +1,10 @@
-def main():
-    n = int(input())
-    d = [int(x) for x in input().split()]
-    d.sort()
-    if n % 2 == 0:
-        print(d[n//2] - d[n//2-1])
+def C(n, m):
+    if n == m:
+        return 1
+    elif m == 1:
+        return n
     else:
-        print(0)
-
-if __name__ == '__main__':
-    main()
+        return C(n-1, m-1) + C(n-1, m)
+n, k = map(int, input().split())
+for i in range(k):
+    print(C(n-k+1, i+1) * C(k-1, i) % (10**9+7))

@@ -1,11 +1,20 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(1, n):
-        b[a[i] - 1] += 1
-    for i in range(n):
-        print(b[i])
+    n, k = map(int, input().split())
+    mod = 10**9+7
+    if n == k-1:
+        print(1)
+        return
+    elif n < k-1:
+        print(0)
+        return
+    else:
+        ans = 0
+        for i in range(k, n+2):
+            min = i*(i-1)//2
+            max = i*(2*n-i+1)//2
+            ans += max-min+1
+            ans %= mod
+        print(ans)
 
 if __name__ == '__main__':
     main()

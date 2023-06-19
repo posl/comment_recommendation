@@ -8,6 +8,3 @@ def problem():
                     count += 1
     print(count)
 problem()
-
-if __name__ == '__main__':
-    problem()

@@ -1,15 +1,5 @@
-def main():
-    N = int(input())
-    S = input()
-    A = [0]
-    for i in range(N):
-        if S[i] == 'L':
-            A.insert(i, i+1)
-        else:
-            A.insert(i+1, i+1)
-    for i in range(N):
-        print(A[i], end=' ')
-    print('')
+def is_greater_than(n):
+    return 2**n > n**2
 
 if __name__ == '__main__':
-    main()
+    is_greater_than()

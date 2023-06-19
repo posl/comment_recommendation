@@ -1,15 +1,16 @@
 def main():
     n,k = map(int,input().split())
     x = list(map(int,input().split()))
-    ans = 10**9
-    for i in range(n-k+1):
-        l = x[i]
-        r = x[i+k-1]
-        if l*r <= 0:
-            ans = min(ans,min(-2*l+r,r-2*r+l))
-        else:
-            ans = min(ans,max(l,r))
-    print(ans)
+    #print(n,k,x)
+    if k == 1:
+        print(0)
+    else:
+        #x.sort()
+        #print(x)
+        result = 0
+        for i in range(0,k-1):
+            result += x[i]
+        print(result)
 
 if __name__ == '__main__':
     main()

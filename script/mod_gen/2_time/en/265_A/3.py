@@ -8,6 +8,3 @@ def solve():
             cost += x
     print(cost)
 solve()
-
-if __name__ == '__main__':
-    solve()

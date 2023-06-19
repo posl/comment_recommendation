@@ -1,12 +1,11 @@
 def main():
-    k = int(input())
-    a, b = map(int, input().split())
-    if a%k == 0 or b%k == 0:
-        print('OK')
-    elif a//k != b//k:
-        print('OK')
-    else:
-        print('NG')
+    x = int(input())
+    money = 100
+    year = 0
+    while money < x:
+        money = int(money * 1.01)
+        year += 1
+    print(year)
 
 if __name__ == '__main__':
     main()

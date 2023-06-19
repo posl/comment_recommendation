@@ -1,6 +1,6 @@
-def attack_num(h, k):
-    h.sort(reverse=True)
-    return sum(h[k:])
-
-if __name__ == '__main__':
-    attack_num()
+def solve(h):
+    if h == 1:
+        return 1
+    else:
+        return 2 * solve(h // 2) + 1
+print(solve(int(input())))

@@ -1,9 +1,12 @@
-def check(x,y):
-    for i in range(x+1):
-        for j in range(x+1-i):
-            if 2*i+4*j == y:
-                return True
-    return False
+def main():
+    x,n = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.append(x)
+    p.sort()
+    for i in range(101):
+        if i not in p:
+            break
+    print(i)
 
 if __name__ == '__main__':
-    check()
+    main()

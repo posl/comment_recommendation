@@ -1,7 +1,11 @@
-def problem142_a():
-    n = int(input())
-    if n % 2 == 0:
-        print(0.5)
-    else:
-        print((n // 2 + 1) / n)
-problem142_a()
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if h[i] >= k:
+            count += 1
+    print(count)
+
+if __name__ == '__main__':
+    main()

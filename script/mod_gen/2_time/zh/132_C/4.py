@@ -1,11 +1,10 @@
 def main():
-    N = int(input())
-    P = list(map(int, input().split()))
-    cnt = 0
-    for i in range(1, N - 1):
-        if (P[i - 1] < P[i] < P[i + 1]) or (P[i + 1] < P[i] < P[i - 1]):
-            cnt += 1
-    print(cnt)
+    n = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    n1 = n//2
+    n2 = n1-1
+    print(d[n1]-d[n2])
 
 if __name__ == '__main__':
     main()

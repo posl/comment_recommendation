@@ -24,6 +24,3 @@ def main():
                 print(p[i + 1])
                 return
 main()
-
-if __name__ == '__main__':
-    main()

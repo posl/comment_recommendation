@@ -1,8 +1,11 @@
-def get_distance(d, x1, x2):
-    distance = 0
-    for i in range(d):
-        distance += (x1[i] - x2[i]) ** 2
-    return int(distance ** 0.5)
+def main():
+    l, r = map(int, input().split())
+    min = 2020
+    for i in range(l, r):
+        for j in range(i+1, r+1):
+            if min > (i*j)%2019:
+                min = (i*j)%2019
+    print(min)
 
 if __name__ == '__main__':
-    get_distance()
+    main()

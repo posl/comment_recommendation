@@ -1,12 +1,18 @@
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    s4 = input()
-    if (s1 == 'H' or s2 == 'H' or s3 == 'H' or s4 == 'H') and (s1 == '2B' or s2 == '2B' or s3 == '2B' or s4 == '2B') and (s1 == '3B' or s2 == '3B' or s3 == '3B' or s4 == '3B') and (s1 == 'HR' or s2 == 'HR' or s3 == 'HR' or s4 == 'HR'):
-        print('Yes')
-    else:
-        print('No')
+    S = input()
+    N = len(S)
+    chokudai = "chokudai"
+    M = len(chokudai)
+    dp = [[0 for j in range(M+1)] for i in range(N+1)]
+    for i in range(N+1):
+        dp[i][0] = 1
+    for i in range(1,N+1):
+        for j in range(1,M+1):
+            if S[i-1]==chokudai[j-1]:
+                dp[i][j] = (dp[i-1][j]+dp[i-1][j-1])%1000000007
+            else:
+                dp[i][j] = dp[i-1][j]
+    print(dp[N][M])
 
 if __name__ == '__main__':
     main()

@@ -1,12 +1,7 @@
-def f(n, a, b):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return a
-    elif n == 2:
-        return a + b
-    else:
-        return f(n - 1, a, b) + f(n - 2, a, b)
-
-if __name__ == '__main__':
-    f()
+def fun(a,b):
+    for i in range(1,100):
+        if int(i*0.08) == a and int(i*0.1) == b:
+            return i
+    return -1
+a,b = map(int,input().split())
+print(fun(a,b))

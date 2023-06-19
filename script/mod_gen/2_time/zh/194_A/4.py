@@ -1,35 +1,12 @@
-def main():
-    k = int(input())
-    s = input()
-    t = input()
-    #print(k, s, t)
-    sc = [0]*10
-    tc = [0]*10
-    for i in range(4):
-        sc[int(s[i])] += 1
-        tc[int(t[i])] += 1
-    #print(sc, tc)
-    #print(sc.index(max(sc)), tc.index(max(tc)))
-    #print(sc[sc.index(max(sc))], tc[tc.index(max(tc))])
-    #print(sc[sc.index(max(sc))] + tc[tc.index(max(tc))])
-    if sc[sc.index(max(sc))] + tc[tc.index(max(tc))] > k:
-        print(0)
-        return
+def icecream(a,b):
+    if a+b >= 15 and b >= 8:
+        print(1)
+    elif a+b >= 10 and b >= 3:
+        print(2)
+    elif a+b < 10 and b >= 3:
+        print(3)
     else:
-        #print(sc[sc.index(max(sc))], tc[tc.index(max(tc))])
-        #print(k - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8)
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        #print(9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])
-        print((9*k - 8 - sc[sc.index(max(sc))] - tc[tc.index(max(tc))])/(9*k - 8))
-        return
+        print(4)
 
 if __name__ == '__main__':
-    main()
+    icecream()

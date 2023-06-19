@@ -1,18 +1,67 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    count1 = 0
-    count2 = 0
-    for i in range(n):
-        if a[i] == b[i]:
-            count1 += 1
-    for i in range(n):
-        for j in range(n):
-            if i != j and a[i] == b[j]:
-                count2 += 1
-    print(count1)
-    print(count2)
+    N = int(input())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    S = input()
+    #print(N,X,Y,S)
+    #print(X[0],Y[0])
+    #print(X[1],Y[1])
+    #print(X[2],Y[2])
+    #print(S[0])
+    #print(S[1])
+    #print(S[2])
+    #print(S[3])
+    #print(S[4])
+    #print(S[5])
+    #print(S[6])
+    #print(S[7])
+    #print(S[8])
+    #print(S[9])
+    #print(S[10])
+    #for i in range(N):
+    #    print(X[i],Y[i])
+    #    print(S[i])
+    #print(N,X,Y,S)
+    #print(N,X,Y,S)
+    #print(X[0],Y[0])
+    #print(X[1],Y[1])
+    #print(X[2],Y[2])
+    #print(S[0])
+    #print(S[1])
+    #print(S[2])
+    #print(S[3])
+    #print(S[4])
+    #print(S[5])
+    #print(S[6])
+    #print(S[7])
+    #print(S[8])
+    #print(S[9])
+    #print(S[10])
+    #for i in range(N):
+    #    print(X[i],Y[i])
+    #    print(S[i])
+    #print(N,X,Y,S)
+    #print(N,X,Y,S)
+    #print(X[0],Y[0])
+    #print(X[1],Y[1])
+    #print(X[2],Y[2])
+    #print(S[0])
+    #print(S[1])
+    #print(S[2])
+    #print(S[3])
+    #print(S[4])
+    #print(S[5])
+    #print(S[6])
+    #print(S[7])
+    #print(S[8])
+    #print(S[9])
+    #print(S[10])
+    #for i in range(N):
+    #    print(X[i],Y[i])
+    #    print(S[i])
+    #
 
 if __name__ == '__main__':
     main()

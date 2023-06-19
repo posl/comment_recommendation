@@ -1,9 +1,10 @@
 def main():
-    v, t, s, d = map(int, input().split())
-    if d / v >= t and d / v <= s:
-        print("No")
-    else:
-        print("Yes")
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i],end=' ')
+    print()
 
 if __name__ == '__main__':
     main()

@@ -1,9 +1,5 @@
-def main():
-    A,B,C = map(int,input().split())
-    if A**2+B**2<C**2:
-        print("Yes")
-    else:
-        print("No")
+def get_int():
+    return int(input())
 
 if __name__ == '__main__':
-    main()
+    get_int()

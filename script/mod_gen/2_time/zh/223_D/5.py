@@ -1,25 +1,20 @@
-def cal_distance(AB):
-    N = len(AB)
-    if N == 1:
-        return AB[0][0]
-    else:
-        left = AB[0][0]
-        right = AB[N-1][0]
-        while left < right:
-            mid = (left + right) / 2
-            sum = 0
-            for i in range(N):
-                if mid < AB[i][0]:
-                    sum += AB[i][0] - mid
-            if sum == mid:
-                return mid
-            elif sum > mid:
-                left = mid
-            else:
-                right = mid
-N = int(raw_input())
-AB = []
-for i in range(N):
-    AB.append(map(int, raw_input().split()))
-AB.sort()
-print cal_distance(AB)
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for i in range(m):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    # 逆向思维，从后往前找，即从N开始
+    ans = [i for i in range(1,n+1)]
+    for i in range(m):
+        if ans.index(a[m-1-i]) < ans.index(b[m-1-i]):
+            continue
+        else:
+            ans.remove(a[m-1-i])
+            ans.insert(ans.index(b[m-1-i]), a[m-1-i])
+    print(*ans)
+
+if __name__ == '__main__':
+    main()

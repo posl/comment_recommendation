@@ -1,16 +1,12 @@
 def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    sum = 0
+    n = int(input())
+    c = list(map(int,input().split()))
+    c.sort()
+    ans = 1
     for i in range(n):
-        if (i+1)%2 == 0:
-            sum += a[i] - 1
-        else:
-            sum += a[i]
-    if sum <= x:
-        print("Yes")
-    else:
-        print("No")
+        ans *= c[i] - i
+        ans %= (10**9 + 7)
+    print(ans)
 
 if __name__ == '__main__':
     main()

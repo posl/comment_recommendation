@@ -1,14 +1,6 @@
-def main():
-    N, X = map(int, input().split())
-    L = list(map(int, input().split()))
-    D = [0] * (N + 1)
-    for i in range(1, N + 1):
-        D[i] = D[i - 1] + L[i - 1]
-        if D[i] > X:
-            print(i)
-            break
-    else:
-        print(N + 1)
+def solve():
+    W, H, x, y = map(int, input().split())
+    print(W*H/2, 1 if W/2 == x and H/2 == y else 0)
 
 if __name__ == '__main__':
-    main()
+    solve()

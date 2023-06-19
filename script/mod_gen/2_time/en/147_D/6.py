@@ -11,6 +11,3 @@ def solve():
         ans %= 10 ** 9 + 7
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

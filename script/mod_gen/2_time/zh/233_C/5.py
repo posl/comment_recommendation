@@ -1,7 +1,12 @@
-def main():
-    L,R = map(int, input().split())
-    S = input()
-    print(S[:L-1] + S[L-1:R][::-1] + S[R:])
+def get_list():
+    n_x = input()
+    n_x = n_x.split(' ')
+    n = int(n_x[0])
+    x = int(n_x[1])
+    bag = []
+    for i in range(n):
+        bag.append(input())
+    return n,x,bag
 
 if __name__ == '__main__':
-    main()
+    get_list()

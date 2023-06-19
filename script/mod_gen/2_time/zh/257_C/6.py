@@ -1,20 +1,24 @@
-def main():
-    n,k,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    l = list(map(int,input().split()))
-    #初始化
-    #l中的值对应a中的索引
-    #r中的值对应a中的值
-    r = [0]*n
-    for i in range(k):
-        r[a[i]-1] = 1
-    #计算每个位置的值
-    for i in range(n):
-        if r[i] == 0:
-            r[i] = r[i-1]
-    #计算每个位置的值
-    for i in range(q):
-        print(r[l[i]-1])
-
-if __name__ == '__main__':
-    main()
+def solve(n, s, w):
+    s = list(s)
+    w = list(w)
+    l = 0
+    r = 10**9 + 1
+    while r - l > 1:
+        mid = (l + r) // 2
+        cnt = 0
+        for i in range(n):
+            if s[i] == '0':
+                if w[i] <= mid:
+                    cnt += 1
+            else:
+                if w[i] > mid:
+                    cnt += 1
+        if cnt == n:
+            l = mid
+        else:
+            r = mid
+    return l
+n = int(input())
+s = input()
+w = input().split()
+print(solve(n, s, w))

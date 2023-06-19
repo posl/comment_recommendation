@@ -19,6 +19,3 @@ def main():
                 ans = min(ans, D[i][j] * A[0][j] + D[j][k] * A[1][k] + D[k][i] * A[2][i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

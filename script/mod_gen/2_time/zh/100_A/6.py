@@ -1,9 +1,11 @@
 def main():
-    A,B = map(int,input().split())
-    if A <= 8 and B <= 8:
-        print("Yay!")
+    # n = int(input())
+    # a, b = map(int, input().split())
+    a, b = map(int, input().split())
+    if a <= 8 and b <= 8:
+        print('Yay!')
     else:
-        print(":(")
+        print(':(')
 
 if __name__ == '__main__':
     main()

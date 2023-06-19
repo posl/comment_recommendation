@@ -24,6 +24,3 @@ def find_squares(n,a,b,p,q,r,s):
 n,a,b = map(int,input().split())
 p,q,r,s = map(int,input().split())
 print('\n'.join([''.join([['.','\#'][i] for i in find_squares(n,a,b,p+k,q+k,r+k,s+k)]) for k in range(q-p+1)]))
-
-if __name__ == '__main__':
-    find_squares()

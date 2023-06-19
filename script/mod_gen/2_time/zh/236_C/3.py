@@ -1,13 +1,15 @@
-def find_lost_card(n, cards):
-    card_count = {}
-    for card in cards:
-        if card in card_count:
-            card_count[card] += 1
-        else:
-            card_count[card] = 1
-    for i in range(1, n+1):
-        if i not in card_count or card_count[i] != 4:
-            return i
+def main():
+    n, m = map(int, input().split())
+    s = list(input().split())
+    t = list(input().split())
+    if n < m:
+        print("No")
+        return
+    for i in range(n):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
 
 if __name__ == '__main__':
-    find_lost_card()
+    main()

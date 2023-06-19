@@ -1,7 +1,10 @@
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-n = int(input())
-print((2 * n) // gcd(2, n))
+def problem102_a(n):
+    i = 1
+    while True:
+        if i % 2 == 0 and i % n == 0:
+            break
+        i += 1
+    return i
+
+if __name__ == '__main__':
+    problem102_a()

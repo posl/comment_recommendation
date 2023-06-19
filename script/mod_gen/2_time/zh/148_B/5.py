@@ -1,7 +1,8 @@
 def main():
-    a = int(input())
-    b = int(input())
-    print(6-a-b)
-
-if __name__ == '__main__':
-    main()
+    n = int(input())
+    s, t = input().split()
+    result = ''
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+main()

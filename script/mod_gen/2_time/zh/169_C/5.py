@@ -1,12 +1,8 @@
-def solve(n, a):
-    if 0 in a:
-        return 0
-    ans = 1
-    for i in range(n):
-        ans *= a[i]
-        if ans > 10**18:
-            return -1
-    return ans
-n = int(input())
-a = list(map(int, input().split()))
-print(solve(n, a))
+def main():
+    a, b = input().split()
+    a = int(a)
+    b = int(b.replace('.', ''))
+    print(a * b // 100)
+
+if __name__ == '__main__':
+    main()

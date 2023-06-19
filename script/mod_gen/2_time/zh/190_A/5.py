@@ -1,11 +1,15 @@
 def main():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    ans = 1
-    for i in range(n):
-        if s[i] == 'OR':
-            ans += 2 ** (i + 1)
-    print(ans)
+    A, B, C = map(int, input().split())
+    if C == 0:
+        if A > B:
+            print('Takahashi')
+        else:
+            print('Aoki')
+    else:
+        if B > A:
+            print('Aoki')
+        else:
+            print('Takahashi')
 
 if __name__ == '__main__':
     main()

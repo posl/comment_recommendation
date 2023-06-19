@@ -8,6 +8,3 @@ def shiritori():
             return 'No'
     return 'Yes'
 print(shiritori())
-
-if __name__ == '__main__':
-    shiritori()

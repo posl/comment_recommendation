@@ -1,8 +1,11 @@
-def solve(n, m, a):
-    if n < sum(a):
-        return -1
+def countSubordinates(i, subordinates):
+    if len(subordinates[i]) == 0:
+        return 0
     else:
-        return n - sum(a)
+        result = len(subordinates[i])
+        for sub in subordinates[i]:
+            result += countSubordinates(sub, subordinates)
+        return result
 
 if __name__ == '__main__':
-    solve()
+    countSubordinates()

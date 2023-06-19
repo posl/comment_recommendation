@@ -1,12 +1,12 @@
 def main():
-    S = input()
-    n = len(S)
-    ans = 0
-    for i in range(n):
-        for j in range(i+3,n):
-            if int(S[i:j+1]) % 2019 == 0:
-                ans += 1
-    print(ans)
+    K = int(input())
+    A,B = map(int,input().split())
+    if A % K == 0:
+        print("OK")
+    elif A // K != B // K:
+        print("OK")
+    else:
+        print("NG")
 
 if __name__ == '__main__':
     main()

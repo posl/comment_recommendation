@@ -1,12 +1,6 @@
-def getStr():
-    n = int(input())
-    s = input()
-    t = input()
-    result = ""
-    for i in range(n):
-        result += s[i]
-        result += t[i]
-    print(result)
+def lcm(x, y):
+    import math
+    return (x * y) // math.gcd(x, y)
 
 if __name__ == '__main__':
-    getStr()
+    lcm()

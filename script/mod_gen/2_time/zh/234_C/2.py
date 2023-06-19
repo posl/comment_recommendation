@@ -1,18 +1,12 @@
 def main():
-    N = int(input())
-    x = []
-    y = []
-    for i in range(N):
-        x_i,y_i = map(int,input().split())
-        x.append(x_i)
-        y.append(y_i)
-    max_length = 0
-    for i in range(N):
-        for j in range(i+1,N):
-            length = ((x[i]-x[j])**2+(y[i]-y[j])**2)**(1/2)
-            if length > max_length:
-                max_length = length
-    print(max_length)
+    K = int(input())
+    #print("K=",K)
+    #print("1<<K=",1<<K)
+    #print("bin(1<<K)=",bin(1<<K))
+    #print("bin(1<<K)[3:]=",bin(1<<K)[3:])
+    #print("bin(1<<K)[3:-1]=",bin(1<<K)[3:-1])
+    #print("int(bin(1<<K)[3:-1],2)=",int(bin(1<<K)[3:-1],2))
+    print("2" + bin(1<<K)[3:-1] + "2")
 
 if __name__ == '__main__':
     main()

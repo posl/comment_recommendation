@@ -1,5 +1,10 @@
-def snow_covering(a, b):
-    return b - a - 1
+def solve():
+    a,b = map(int,input().split())
+    h = b - a
+    x = 1
+    while x*(x+1)//2 < h:
+        x += 1
+    print(x*(x+1)//2 - h)
 
 if __name__ == '__main__':
-    snow_covering()
+    solve()

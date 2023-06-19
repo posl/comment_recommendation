@@ -1,12 +1,13 @@
-def find_kth_permutation(n, k, permutation):
-    if n == 0:
-        return permutation
-    index, fac = 0, factorial(n - 1)
-    while k > fac:
-        index += 1
-        k -= fac
-    permutation.append(index + 1)
-    return find_kth_permutation(n - 1, k, permutation)
+def solution():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if sum([i % 2 for i in a]) != 0:
+            break
+        a = [i // 2 for i in a]
+        ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    find_kth_permutation()
+    solution()

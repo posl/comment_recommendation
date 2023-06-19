@@ -1,11 +1,21 @@
-def get_min_time(a, b, c, d, e):
-    time = [a, b, c, d, e]
-    min_time = 0
-    for i in range(5):
-        if time[i] % 10 != 0:
-            time[i] = time[i] + 10 - time[i] % 10
-    min_time = max(time)
-    return min_time
+def getmin(n, a, b, c, d, e):
+    min = 0
+    if n % a != 0:
+        min += 1
+    min += int(n/a)
+    if n % b != 0:
+        min += 1
+    min += int(n/b)
+    if n % c != 0:
+        min += 1
+    min += int(n/c)
+    if n % d != 0:
+        min += 1
+    min += int(n/d)
+    if n % e != 0:
+        min += 1
+    min += int(n/e)
+    return min
 
 if __name__ == '__main__':
-    get_min_time()
+    getmin()

@@ -1,26 +1,25 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    ans = 0
-    for i in range(N):
-        if A[i] <= B[i]:
-            ans += A[i]
-            B[i] -= A[i]
-            A[i] = 0
+    s = input()
+    l = len(s)
+    dp = [0]*13
+    dp[0] = 1
+    for i in range(l):
+        if s[i] == '?':
+            dp1 = [0]*13
+            for j in range(10):
+                for k in range(13):
+                    dp1[(k*10+j)%13] += dp[k]
+            dp = dp1
+            for j in range(13):
+                dp[j] %= 1000000007
         else:
-            ans += B[i]
-            A[i] -= B[i]
-            B[i] = 0
-        if A[i+1] <= B[i]:
-            ans += A[i+1]
-            B[i] -= A[i+1]
-            A[i+1] = 0
-        else:
-            ans += B[i]
-            A[i+1] -= B[i]
-            B[i] = 0
-    print(ans)
+            dp1 = [0]*13
+            for k in range(13):
+                dp1[(k*10+int(s[i]))%13] += dp[k]
+            dp = dp1
+            for j in range(13):
+                dp[j] %= 1000000007
+    print(dp[5])
 
 if __name__ == '__main__':
     main()

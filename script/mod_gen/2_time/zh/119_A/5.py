@@ -1,13 +1,13 @@
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort(reverse=True)
-    dp = [0] * (n + 1)
-    for i in range(m):
-        for j in range(n + 1):
-            if j >= a[i]:
-                dp[j] = max(dp[j], dp[j - a[i]] * 10 + a[i])
-    print(dp[n])
+    date = list(map(int, input().split('/')))
+    if date[0] < 2019:
+        print('Heisei')
+    elif date[1] < 4:
+        print('Heisei')
+    elif date[2] <= 30:
+        print('Heisei')
+    else:
+        print('TBD')
 
 if __name__ == '__main__':
     main()

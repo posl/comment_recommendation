@@ -1,15 +1,28 @@
 def main():
     n = int(input())
-    s = []
+    a = []
+    b = []
     for i in range(n):
-        s.append(input())
-    s.sort()
-    for i in range(n-1):
-        if s[i] == s[i+1]:
-            print("存在")
-            return
-    print("不存在")
-    return
+        x,y = map(int,input().split())
+        a.append(x)
+        b.append(y)
+    a.sort()
+    b.sort()
+    a_sum = sum(a)
+    b_sum = sum(b)
+    if a_sum < b_sum:
+        print(0)
+        return
+    else:
+        diff = a_sum - b_sum
+        count = 0
+        for i in range(n-1,-1,-1):
+            diff -= (a[i] - b[i])
+            count += 1
+            if diff < 0:
+                break
+        print(count)
+        return
 
 if __name__ == '__main__':
     main()

@@ -1,12 +1,13 @@
 def main():
-    # 读入
-    S = input()
-    # 处理
-    # 输出
-    if S[0] == S[1] == S[2]:
-        print('No')
+    n,a,b = map(int,input().split())
+    if a+b == 0:
+        print(0)
+        return
     else:
-        print('Yes')
+        if n%(a+b) > a:
+            print(a*(n//(a+b))+a)
+        else:
+            print(a*(n//(a+b))+n%(a+b))
 
 if __name__ == '__main__':
     main()

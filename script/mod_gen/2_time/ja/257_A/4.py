@@ -5,6 +5,3 @@ def main():
         ans += chr(65 + (X - i) // N)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,21 +1,20 @@
-def main():
-    S = input()
-    T = input()
-    if len(set(S)) != len(set(T)):
-        print("No")
-        exit()
-    if len(S) != len(T):
-        print("No")
-        exit()
-    dic = {}
-    for i in range(len(S)):
-        if S[i] in dic:
-            if dic[S[i]] != T[i]:
-                print("No")
-                exit()
-        else:
-            dic[S[i]] = T[i]
-    print("Yes")
+def factorization(n):
+    n_origin = n
+    arr = []
+    tmp = 2
+    while tmp * tmp <= n_origin:
+        if n % tmp == 0:
+            cnt = 0
+            while n % tmp == 0:
+                cnt += 1
+                n //= tmp
+            arr.append((tmp, cnt))
+        tmp += 1
+    if n != 1:
+        arr.append((n, 1))
+    if not arr:
+        arr.append((n_origin, 1))
+    return arr
 
 if __name__ == '__main__':
-    main()
+    factorization()

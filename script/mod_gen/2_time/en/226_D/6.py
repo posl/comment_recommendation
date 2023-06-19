@@ -12,6 +12,3 @@ def main():
             ans = max(ans,abs(x[i]-x[j])+abs(y[i]-y[j]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

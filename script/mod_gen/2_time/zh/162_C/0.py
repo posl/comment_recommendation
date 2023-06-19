@@ -1,6 +1,10 @@
-def main():
-    n = int(input())
-    print(sum([i for i in range(1, n + 1) if i % 3 != 0 and i % 5 != 0 or i % 15 == 0]))
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
 
 if __name__ == '__main__':
-    main()
+    gcd()

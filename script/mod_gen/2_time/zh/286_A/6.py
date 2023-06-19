@@ -1,20 +1,14 @@
 def main():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        si, ti = input().split()
-        s.append(si)
-        t.append(ti)
-    for i in range(n):
-        for j in range(n):
-            if i != j:
-                if s[i] == t[j]:
-                    s[i], s[j] = s[j], s[i]
-    if s == t:
-        print('Yes')
-    else:
-        print('No')
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A.copy()
+    for i in range(P-1, Q):
+        B[i] = A[i+R-Q]
+    for i in range(R-1, S):
+        B[i] = A[i+P-R]
+    for i in range(N):
+        print(B[i], end=' ')
+    print()
 
 if __name__ == '__main__':
     main()

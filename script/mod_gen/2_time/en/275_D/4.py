@@ -4,6 +4,3 @@ def f(k):
     return f(k//2) + f(k//3)
 N = int(input())
 print(f(N))
-
-if __name__ == '__main__':
-    f()

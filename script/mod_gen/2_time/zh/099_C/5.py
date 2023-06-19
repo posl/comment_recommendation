@@ -1,11 +1,10 @@
-def solve():
-    n = int(input())
-    dp = [0]*(n+1)
-    for i in range(1,n+1):
-        dp[i] = i
-        j = 1
-        while j*j <= i:
-            dp[i] = min(dp[i],dp[i-j*j]+1)
-            j += 1
-    print(dp[n])
-solve()
+def getLeastTimes(n):
+    if n <= 6:
+        return n
+    elif n <= 9:
+        return 2
+    else:
+        return 1 + min(getLeastTimes(n-1), getLeastTimes(n-6), getLeastTimes(n-9))
+
+if __name__ == '__main__':
+    getLeastTimes()

@@ -1,6 +1,6 @@
 def main():
-    N = int(input())
-    if N % 7 == 0 or N % 4 == 0:
+    n = int(input())
+    if n % 4 == 0 or n % 7 == 0 or n % 11 == 0:
         print("Yes")
     else:
         print("No")

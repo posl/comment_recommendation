@@ -1,10 +1,74 @@
-def solve(k, n, a):
-    a.sort()
-    a.append(a[0] + k)
-    ans = 0
-    for i in range(n):
-        ans = max(ans, a[i + 1] - a[i])
-    return k - ans
-k, n = map(int, input().split())
-a = list(map(int, input().split()))
-print(solve(k, n, a))
+def find_shortest_path(n, x, y):
+    # n = 10
+    # x = 4
+    # y = 8
+    # n = 7
+    # x = 3
+    # y = 7
+    # n = 3
+    # x = 1
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 5
+    # x = 1
+    # y = 5
+    # n = 5
+    # x = 1
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 5
+    # n = 5
+    # x = 3
+    # y = 5
+    # n = 5
+    # x = 4
+    # y = 5
+    # n = 5
+    # x = 1
+    # y = 2
+    # n = 5
+    # x = 1
+    # y = 3
+    # n = 5
+    # x = 1
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 5
+    # x = 3
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 5
+    # x = 3
+    # y = 4
+    # n = 5
+    # x = 1
+    # y = 2
+    # n = 5
+    # x = 1
+    # y = 3
+    # n = 5
+    # x = 1
+    # y = 4
+    # n = 5
+    # x = 2
+    # y = 3
+    # n = 5
+    # x = 2
+    # y = 4
+    # n = 3
+
+if __name__ == '__main__':
+    find_shortest_path()

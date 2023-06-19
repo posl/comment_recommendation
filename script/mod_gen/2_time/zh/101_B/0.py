@@ -1,12 +1,9 @@
-def main():
-    N = int(input())
+def S(n):
     sum = 0
-    for i in range(len(str(N))):
-        sum += int(str(N)[i])
-    if N % sum == 0:
-        print("Yes")
-    else:
-        print("No")
+    while n > 0:
+        sum += n % 10
+        n = n // 10
+    return sum
 
 if __name__ == '__main__':
-    main()
+    S()

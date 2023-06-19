@@ -1,7 +1,5 @@
-def solve():
-    n, w = map(int, input().split())
-    # 人数
-    # 热水器每分钟
-
-if __name__ == '__main__':
-    solve()
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(a*d-b*c)
+main()

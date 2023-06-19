@@ -1,11 +1,12 @@
 def main():
-    N = int(input())
-    S = list(map(int, input().split()))
-    A = [0] * N
-    A[0] = S[0]
-    for i in range(1, N):
-        A[i] = S[i] - S[i-1]
-    print(*A)
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    if i == len(s)-1:
+        print(len(s)+1)
 
 if __name__ == '__main__':
     main()

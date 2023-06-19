@@ -1,5 +1,8 @@
-def problems163_d():
-    pass
+def sheep_safe(s,w):
+    if s > w:
+        print('safe')
+    else:
+        print('unsafe')
 
 if __name__ == '__main__':
-    problems163_d()
+    sheep_safe()

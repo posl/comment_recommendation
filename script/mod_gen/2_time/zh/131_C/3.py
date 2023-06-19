@@ -1,11 +1,12 @@
-def main():
-    n, l = map(int, input().split())
-    if l >= 0:
-        print(sum(range(l+1, l+n)))
-    elif l+n <= 0:
-        print(sum(range(l, l+n)))
+def gcd(a,b):
+    if b==0:
+        return a
     else:
-        print(sum(range(l, 0)) + sum(range(1, l+n)))
+        return gcd(b,a%b)
+a,b,c,d=map(int,input().split())
+g=gcd(c,d)
+lcm=c*d//g
+print(b-a+1-(b//c-(a-1)//c)-(b//d-(a-1)//d)+(b//lcm-(a-1)//lcm))
 
 if __name__ == '__main__':
-    main()
+    gcd()

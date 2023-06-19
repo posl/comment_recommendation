@@ -1,6 +1,10 @@
 def main():
-    a, b, c, d, e = map(int, input().split())
-    print(len(set([a, b, c, d, e])))
+    s = input()
+    t = input()
+    if t.startswith(s):
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
     main()

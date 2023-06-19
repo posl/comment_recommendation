@@ -15,6 +15,3 @@ T = int(input())
 for _ in range(T):
     a,s = map(int,input().split())
     print(solve(a,s))
-
-if __name__ == '__main__':
-    solve()

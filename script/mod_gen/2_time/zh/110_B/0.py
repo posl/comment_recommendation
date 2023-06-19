@@ -1,6 +1,8 @@
-def main():
-    a,b,c = map(int,input().split())
-    print(10*a+b+c)
+def war_or_peace(N, M, X, Y, x_list, y_list):
+    for Z in range(X + 1, Y + 1):
+        if max(x_list) < Z and min(y_list) >= Z:
+            return '无战争'
+    return '战争'
 
 if __name__ == '__main__':
-    main()
+    war_or_peace()

@@ -5,6 +5,3 @@ def solve(n):
         return solve(n-1) + [n] + solve(n-1)
 N = int(input())
 print(*solve(N))
-
-if __name__ == '__main__':
-    solve()

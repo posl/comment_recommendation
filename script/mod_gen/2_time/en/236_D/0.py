@@ -15,6 +15,3 @@ def solve():
                 dp[k + 1][i | 1 << k] = max(dp[k + 1][i | 1 << k], dp[j + 1][i] + A[j][k])
     print(dp[N][(1 << N) - 1])
 solve()
-
-if __name__ == '__main__':
-    solve()

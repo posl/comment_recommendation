@@ -6,6 +6,3 @@ def func(n, x, y):
     return func(n-1, x, y) + func(n-2, x, y)
 n, x, y = map(int, input().split())
 print(func(n, x, y))
-
-if __name__ == '__main__':
-    func()

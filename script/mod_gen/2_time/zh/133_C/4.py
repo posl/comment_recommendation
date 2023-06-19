@@ -1,8 +1,10 @@
-def calcDist(x, y):
-    dist = 0
-    for i in range(len(x)):
-        dist += (x[i] - y[i])**2
-    return dist**0.5
+def problem133_c(l,r):
+    min = 2019
+    for i in range(l,r):
+        for j in range(i+1,r+1):
+            if (i*j)%2019 < min:
+                min = (i*j)%2019
+    return min
 
 if __name__ == '__main__':
-    calcDist()
+    problem133_c()

@@ -27,6 +27,3 @@ def nextConfusingTime(H,M):
         return nextConfusingTime(int(H),int(M))
 H,M=map(int,input().split())
 print(nextConfusingTime(H,M))
-
-if __name__ == '__main__':
-    nextConfusingTime()

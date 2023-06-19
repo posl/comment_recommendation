@@ -1,9 +1,14 @@
 def main():
-    a, b, c = map(int, input().split())
-    if b > a and b < c or b < a and b > c:
-        print("是")
-    else:
-        print("没有")
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    print(S)
+    print(H)
+    print(W)
+    print(S[0])
+    print(S[1])
+    print(S[2])
+    print(S[3])
+    print(S[4])
 
 if __name__ == '__main__':
     main()

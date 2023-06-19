@@ -1,13 +1,17 @@
-def main():
-    pin = input()
-    if pin == '0000' or pin == '1111' or pin == '2222' or pin == '3333' or pin == '4444' or pin == '5555' or pin == '6666' or pin == '7777' or pin == '8888' or pin == '9999':
-        print('Weak')
-    elif pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print('Weak')
-    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
-        print('Weak')
-    else:
-        print('Strong')
+def findMinDiff(A, B, n, m):
+    A.sort()
+    B.sort()
+    a = 0
+    b = 0
+    result = 999999999999
+    while(a<n and b<m):
+        if(abs(A[a]-B[b])<result):
+            result = abs(A[a]-B[b])
+        if(A[a]>B[b]):
+            b+=1
+        else:
+            a+=1
+    return result
 
 if __name__ == '__main__':
-    main()
+    findMinDiff()

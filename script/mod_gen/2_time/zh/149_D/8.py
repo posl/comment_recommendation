@@ -1,12 +1,31 @@
-def is_prime(x):
-    for i in range(2, x):
-        if (x % i == 0):
-            return False
-    return True
-x = int(input())
-while (not is_prime(x)):
-    x += 1
-print(x)
+def main():
+    n, k = map(int, input().split())
+    r, s, p = map(int, input().split())
+    t = input()
+    ans = 0
+    for i in range(n):
+        if t[i] == 'r':
+            if i < k:
+                ans += p
+            elif t[i - k] == 'r':
+                ans += 0
+            else:
+                ans += p
+        elif t[i] == 's':
+            if i < k:
+                ans += r
+            elif t[i - k] == 's':
+                ans += 0
+            else:
+                ans += r
+        elif t[i] == 'p':
+            if i < k:
+                ans += s
+            elif t[i - k] == 'p':
+                ans += 0
+            else:
+                ans += s
+    print(ans)
 
 if __name__ == '__main__':
-    is_prime()
+    main()

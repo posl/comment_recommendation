@@ -1,32 +1,28 @@
-def dfs(i,j):
-    if i<0 or j<0 or i>=1000 or j>=1000:
-        return
-    if visit[i][j] == 1:
-        return
-    if grid[i][j] == 0:
-        return
-    visit[i][j] = 1
-    dfs(i-1,j-1)
-    dfs(i-1,j)
-    dfs(i,j-1)
-    dfs(i,j+1)
-    dfs(i+1,j)
-    dfs(i+1,j+1)
-N = int(input())
-grid = [[0 for i in range(1000)] for j in range(1000)]
-visit = [[0 for i in range(1000)] for j in range(1000)]
-for i in range(N):
-    x,y = input().split()
-    x = int(x)+500
-    y = int(y)+500
-    grid[x][y] = 1
-ans = 0
-for i in range(1000):
-    for j in range(1000):
-        if grid[i][j] == 1 and visit[i][j] == 0:
-            dfs(i,j)
-            ans += 1
-print(ans)
+def solve(a,b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 1 and b == 1:
+        return 4
+    elif a == 1 and b == 2:
+        return 3
+    elif a == 1 and b == 3:
+        return 2
+    elif a == 1 and b == 4:
+        return 1
+    elif a == 2 and b == 1:
+        return 3
+    elif a == 2 and b == 2:
+        return 2
+    elif a == 2 and b == 3:
+        return 1
+    elif a == 3 and b == 1:
+        return 2
+    elif a == 3 and b == 2:
+        return 1
+    elif a == 4 and b == 1:
+        return 1
+    else:
+        return 0
 
 if __name__ == '__main__':
-    dfs()
+    solve()

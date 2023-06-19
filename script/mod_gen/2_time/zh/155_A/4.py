@@ -1,13 +1,13 @@
 def main():
-    n,k = map(int, input().split())
-    p = list(map(int, input().split()))
-    sum_p = sum(p[:k])
-    max_sum_p = sum_p
-    for i in range(k,n):
-        sum_p = sum_p - p[i-k] + p[i]
-        if sum_p > max_sum_p:
-            max_sum_p = sum_p
-    print((max_sum_p+k)/2)
+    a = input().split()
+    a = list(map(int, a))
+    a.sort()
+    if a[0] == a[1] and a[1] != a[2]:
+        print("Yes")
+    elif a[0] != a[1] and a[1] == a[2]:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
     main()

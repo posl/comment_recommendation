@@ -1,16 +1,60 @@
-def solve():
-    N,M,C = map(int,input().split())
-    B = list(map(int,input().split()))
-    A = [list(map(int,input().split())) for _ in range(N)]
-    cnt = 0
-    for i in range(N):
-        tmp = 0
-        for j in range(M):
-            tmp += A[i][j] * B[j]
-        tmp += C
-        if tmp > 0:
-            cnt += 1
-    print(cnt)
+def main():
+    n, m = map(int, input().split())
+    #print(n, m)
+    #print(type(n))
+    #print(type(m))
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    #print(a)
+    #print(b)
+    #print(type(a))
+    #print(type(b))
+    #print(sum(b))
+    if sum(b) <= m:
+        print(sum([a[i] * b[i] for i in range(n)]))
+    else:
+        b_a = list(zip(a, b))
+        b_a.sort()
+        #print(b_a)
+        #print(type(b_a))
+        #print(b_a[0][0])
+        #print(b_a[0][1])
+        #print(b_a[1][0])
+        #print(b_a[1][1])
+        #print(b_a[2][0])
+        #print(b_a[2][1])
+        #print(b_a[3][0])
+        #print(b_a[3][1])
+        #print(b_a[4][0])
+        #print(b_a[4][1])
+        #print(b_a[5][0])
+        #print(b_a[5][1])
+        #print(b_a[6][0])
+        #print(b_a[6][1])
+        #print(b_a[7][0])
+        #print(b_a[7][1])
+        #print(b_a[8][0])
+        #print(b_a[8][1])
+        #print(b_a[9][0])
+        #print(b_a[9][1])
+        #print(b_a[10][0])
+        #print(b_a[10][1])
+        #print(b_a[11][0])
+        #print(b_a[11][1])
+        #print(b_a[12][0])
+        #print(b_a[12][1])
+        #print(b_a[13][0])
+        #print(b_a[13][1])
+        #print(b_a[14][0])
+        #print(b_a[14][1])
+        #print(b_a[15][0])
+        #print(b_a[15][1])
+        #print(b_a[16][0])
+        #print(b_a[16][1])
 
 if __name__ == '__main__':
-    solve()
+    main()

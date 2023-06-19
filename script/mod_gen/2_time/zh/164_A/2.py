@@ -1,9 +1,8 @@
-def solve():
-    N, K = map(int, input().split())
-    MOD = 10**9+7
-    ans = 0
-    for i in range(K, N+2):
-        ans += N*(N+1)//2 - (N-i+1)*(N-i)//2 + 1
-        ans %= MOD
-    print(ans)
-solve()
+def print_safe_or_not(s,w):
+    if s > w:
+        print("安全")
+    else:
+        print("不安全")
+
+if __name__ == '__main__':
+    print_safe_or_not()

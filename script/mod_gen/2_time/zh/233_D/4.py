@@ -1,15 +1,19 @@
-def main():
-    n, x = map(int, input().split())
-    a = [list(map(int, input().split())) for _ in range(n)]
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
     ans = 0
-    for i in range(1, 1 << n):
-        cnt = 1
-        for j in range(n):
-            if i >> j & 1:
-                cnt *= a[j][0]
-        if cnt == x:
-            ans += 1
+    right = 0
+    sum = 0
+    for left in range(N):
+        while right < N and sum + A[right] < K:
+            sum += A[right]
+            right += 1
+        ans += right - left
+        if left == right:
+            right += 1
+        else:
+            sum -= A[left]
     print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

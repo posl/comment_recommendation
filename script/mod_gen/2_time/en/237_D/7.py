@@ -9,6 +9,3 @@ def main():
             arr.append(i+1)
     print(*arr)
 main()
-
-if __name__ == '__main__':
-    main()

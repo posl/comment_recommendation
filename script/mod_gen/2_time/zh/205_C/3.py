@@ -1,11 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    if a == [i for i in range(1, n+1)]:
-        print("Yes")
+def pow(a, b):
+    if b == 0:
+        return 1
     else:
-        print("No")
+        return a * pow(a, b - 1)
 
 if __name__ == '__main__':
-    main()
+    pow()

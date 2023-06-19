@@ -1,10 +1,10 @@
-def solve():
-    S = input()
-    N = len(S)
-    ans = 0
-    for i in range(N):
-        if S[i] == "1":
-            ans += 1
-    ans = min(ans, N-ans)
-    print(ans)
-solve()
+def findRoot(x):
+    global root
+    if root[x] == x:
+        return x
+    else:
+        root[x] = findRoot(root[x])
+        return root[x]
+
+if __name__ == '__main__':
+    findRoot()

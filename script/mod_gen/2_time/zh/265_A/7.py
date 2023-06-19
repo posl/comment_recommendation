@@ -1,19 +1,12 @@
-def main():
-    s = input()
-    s = list(s)
-    atcoder = list('atcoder')
+def solve():
+    x,y,n = map(int,input().split())
     ans = 0
-    for i in range(len(s)):
-        if s[i] == atcoder[i]:
-            continue
+    for i in range(1,n+1):
+        if i % 3 == 0:
+            ans += x
         else:
-            for j in range(i+1, len(s)):
-                if s[j] == atcoder[i]:
-                    for k in range(j, i, -1):
-                        s[k], s[k-1] = s[k-1], s[k]
-                        ans += 1
-                    break
+            ans += y
     print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

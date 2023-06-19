@@ -1,17 +1,23 @@
-def solve():
-    N, M = map(int, input().split())
-    L = []
-    R = []
-    for _ in range(M):
-        l, r = map(int, input().split())
-        L.append(l)
-        R.append(r)
-    L.sort()
-    R.sort()
-    if L[-1] > R[0]:
-        print(0)
-    else:
-        print(R[0] - L[-1] + 1)
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    bc = []
+    for i in range(m):
+        bc.append(list(map(int,input().split())))
+    a.sort()
+    bc.sort(key=lambda x:x[1],reverse=True)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < bc[j][1]:
+            a[i] = bc[j][1]
+            bc[j][0] -= 1
+            if bc[j][0] == 0:
+                j += 1
+            i += 1
+        else:
+            break
+    print(sum(a))
 
 if __name__ == '__main__':
-    solve()
+    main()

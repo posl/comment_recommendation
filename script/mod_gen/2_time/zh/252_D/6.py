@@ -1,15 +1,17 @@
-def solve():
+def main():
     n = int(input())
-    s = [input() for _ in range(n)]
-    ans = 1<<60
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
     for i in range(n):
-        for j in range(10):
-            t = 0
-            for k in range(n):
-                d = (i+k)%n
-                t += min(abs(j-int(s[d][k])), 10-abs(j-int(s[d][k])))
-            ans = min(ans, t)
+        for j in range(i + 1, n):
+            if a[i] == a[j]:
+                continue
+            for k in range(j + 1, n):
+                if a[j] == a[k]:
+                    continue
+                ans += 1
     print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

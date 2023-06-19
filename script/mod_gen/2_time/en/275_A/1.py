@@ -3,6 +3,3 @@ def main():
     h = list(map(int, input().split()))
     print(h.index(max(h)) + 1)
 main()
-
-if __name__ == '__main__':
-    main()

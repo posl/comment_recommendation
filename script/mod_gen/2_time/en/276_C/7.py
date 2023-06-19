@@ -12,6 +12,3 @@ def permute(a, b):
             print(a, b)
         return True
 permute(0, 9)
-
-if __name__ == '__main__':
-    permute()

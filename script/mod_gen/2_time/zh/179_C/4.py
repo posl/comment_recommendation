@@ -1,14 +1,11 @@
-def main():
-    n = int(input())
-    d = [list(map(int, input().split())) for i in range(n)]
-    cnt = 0
-    for i in range(n-2):
-        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
-            cnt += 1
-    if cnt >= 1:
-        print("Yes")
-    else:
-        print("No")
+def get_divisor(n):
+    divisor = []
+    for i in range(1, int(n**0.5) + 1):
+        if n % i == 0:
+            divisor.append(i)
+            if i != n // i:
+                divisor.append(n // i)
+    return divisor
 
 if __name__ == '__main__':
-    main()
+    get_divisor()

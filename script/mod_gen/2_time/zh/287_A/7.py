@@ -1,17 +1,12 @@
-def solve():
-    n,x = map(int,input().split())
-    a = []
-    b = []
+def main():
+    n = int(input())
+    s = []
     for i in range(n):
-        ai,bi = map(int,input().split())
-        a.append(ai)
-        b.append(bi)
-    #print(n,x,a,b)
-    #print(sum([a[i]*b[i] for i in range(n)]))
-    if sum([a[i]*b[i] for i in range(n)]) >= x:
+        s.append(input())
+    if s.count("For") > n/2:
         print("Yes")
     else:
         print("No")
 
 if __name__ == '__main__':
-    solve()
+    main()

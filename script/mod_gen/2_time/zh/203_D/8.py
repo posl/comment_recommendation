@@ -1,14 +1,19 @@
-def main():
-    N, K = map(int, input().split())
-    AB = [list(map(int, input().split())) for _ in range(N)]
-    AB.sort(key=lambda x: x[0])
-    money = K
-    for a, b in AB:
-        if a <= money:
-            money += b
-        else:
-            break
-    print(money)
+def get_median(arr):
+    arr.sort()
+    return arr[(len(arr)-1)//2]
+n,k = list(map(int,input().split()))
+a = []
+for i in range(n):
+    a.append(list(map(int,input().split())))
+ans = 10**9
+for i in range(n-k+1):
+    for j in range(n-k+1):
+        arr = []
+        for x in range(k):
+            for y in range(k):
+                arr.append(a[i+x][j+y])
+        ans = min(ans,get_median(arr))
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    get_median()

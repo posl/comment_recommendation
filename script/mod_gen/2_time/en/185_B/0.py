@@ -18,6 +18,3 @@ def main():
     current -= T - B[-1]
     print('Yes' if current > 0 else 'No')
 main()
-
-if __name__ == '__main__':
-    main()

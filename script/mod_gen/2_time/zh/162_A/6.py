@@ -1,12 +1,9 @@
 def main():
-    k = int(input())
-    count = 0
-    for i in range(1,10**6):
-        if is_lucky(i):
-            count += 1
-        if count == k:
-            print(i)
-            break
+    n = int(input())
+    if n % 10 == 7 or n // 10 % 10 == 7 or n // 100 % 10 == 7:
+        print("是")
+    else:
+        print("否")
 
 if __name__ == '__main__':
     main()

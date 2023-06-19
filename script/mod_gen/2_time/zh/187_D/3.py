@@ -1,17 +1,17 @@
-def solve(n, s):
-    s1 = set()
-    s2 = set()
-    for i in range(n):
-        if s[i][0] == '!':
-            s1.add(s[i][1:])
-        else:
-            s2.add(s[i])
-    for i in s2:
-        if i in s1:
-            return i
-    return 'satisfiable'
-n = int(input())
-s = []
-for i in range(n):
-    s.append(input())
-print(solve(n, s))
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N-1, -1, -1):
+        A[i] += ans
+        if A[i] % B[i] != 0:
+            ans += B[i] - A[i] % B[i]
+    print(ans)
+
+if __name__ == '__main__':
+    solve()

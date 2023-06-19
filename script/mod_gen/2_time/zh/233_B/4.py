@@ -1,9 +1,6 @@
-def main():
-    x, y = map(int, input().split())
-    if x >= y:
-        print(0)
-    else:
-        print((y - x) // 10)
+def reverse_string(s, start, end):
+    s[start:end+1] = list(reversed(s[start:end+1]))
+    return s
 
 if __name__ == '__main__':
-    main()
+    reverse_string()

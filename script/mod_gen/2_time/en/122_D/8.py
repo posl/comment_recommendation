@@ -7,6 +7,3 @@ def dfs(n, s):
         if s[-1:] + c in ["AGC", "GAC", "ACG"]:
             continue
         dfs(n - 1, s[-2:] + c)
-
-if __name__ == '__main__':
-    dfs()

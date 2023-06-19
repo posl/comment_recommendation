@@ -1,7 +1,9 @@
-def main():
-    # Read from stdin
-    a, b = map(int, input().split())
-    print(2*a+100-b)
+def gcd(n, m):
+    if n < m:
+        n, m = m, n
+    while m != 0:
+        n, m = m, n % m
+    return n
 
 if __name__ == '__main__':
-    main()
+    gcd()

@@ -8,6 +8,3 @@ def main():
                     cnt += 1
     print(cnt)
 main()
-
-if __name__ == '__main__':
-    main()

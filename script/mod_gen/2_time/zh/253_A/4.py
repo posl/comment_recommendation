@@ -1,17 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.append(0)
-    ans = 0
-    l = 0
-    for i in range(n):
-        if a[i] == a[i+1]:
-            l += 1
-        else:
-            ans += l * (l-1) // 2
-            l = 0
-    print(ans)
+def is_middle(a,b,c):
+    if (a <= b and a >= c) or (a >= b and a <= c):
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    main()
+    is_middle()

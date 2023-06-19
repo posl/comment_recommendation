@@ -1,15 +1,25 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    c = [0] * (max(a)+1)
-    for i in range(n):
-        c[a[i]] += 1
-    s = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if a[i] * a[j] <= max(a):
-                s += c[a[i]*a[j]]
-    print(s)
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    if r == 1 and c == 1:
+        print(0)
+        return
+    if r == 1 and c == w:
+        print(0)
+        return
+    if r == h and c == 1:
+        print(0)
+        return
+    if r == h and c == w:
+        print(0)
+        return
+    if r == 1 or r == h:
+        print(1)
+        return
+    if c == 1 or c == w:
+        print(1)
+        return
+    print(2)
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,26 @@
 def main():
+    # 输入
     n = int(input())
-    print(1000 - n%1000)
+    s = []
+    for i in range(n):
+        s.append(input())
+    # 计算
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+    for i in range(n):
+        if s[i] == "AC":
+            ac += 1
+        elif s[i] == "WA":
+            wa += 1
+        elif s[i] == "TLE":
+            tle += 1
+        elif s[i] == "RE":
+            re += 1
+    # 输出
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
 main()

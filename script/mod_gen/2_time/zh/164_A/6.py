@@ -1,11 +1,9 @@
-def main():
-    n,k = map(int,input().split())
-    mod = 10**9+7
-    ans = 0
-    for i in range(k,n+2):
-        ans += (i*(n-i+1)+1)%mod
-        ans %= mod
-    print(ans)
+def problem164_a():
+    s, w = map(int, input().split())
+    if s > w:
+        print('安全')
+    else:
+        print('不安全')
 
 if __name__ == '__main__':
-    main()
+    problem164_a()

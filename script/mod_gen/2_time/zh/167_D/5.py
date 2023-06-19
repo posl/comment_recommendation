@@ -1,28 +1,12 @@
 def main():
-    N, M, X = map(int, input().split())
-    C = []
-    A = []
-    for i in range(N):
-        c, *a = map(int, input().split())
-        C.append(c)
-        A.append(a)
-    #print(C)
-    #print(A)
-    min_cost = 10 ** 6
-    for i in range(2 ** N):
-        cost = 0
-        level = [0] * M
-        for j in range(N):
-            if (i >> j) & 1:
-                cost += C[j]
-                for k in range(M):
-                    level[k] += A[j][k]
-        if all([l >= X for l in level]):
-            min_cost = min(min_cost, cost)
-    if min_cost == 10 ** 6:
-        print(-1)
-    else:
-        print(min_cost)
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    #print(n,k,a)
+    #print(a)
+    for i in range(k):
+        a = a[a[i]-1:] + a[:a[i]-1]
+        #print(a)
+    print(a[0])
 
 if __name__ == '__main__':
     main()

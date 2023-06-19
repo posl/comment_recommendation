@@ -22,6 +22,3 @@ def solve():
                 dp[j] = max(dp[j], dp[j-W[i]] + V[i])
         print(dp[-1])
 solve()
-
-if __name__ == '__main__':
-    solve()

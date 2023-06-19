@@ -13,6 +13,3 @@ def main():
     #output
     print(winner)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,10 +1,9 @@
-def calc(A,B,N):
-    max = 0
-    for x in range(0, N+1):
-        temp = A*x/B - A*(x/B)
-        if max < temp:
-            max = temp
-    return max
+def main():
+    s = input()
+    if s == "ABC":
+        print("ARC")
+    elif s == "ARC":
+        print("ABC")
 
 if __name__ == '__main__':
-    calc()
+    main()

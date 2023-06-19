@@ -1,22 +1,10 @@
 def main():
-    n, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    k = [int(input()) for _ in range(q)]
-    a.sort()
-    i = 0
-    j = 0
-    while i < q:
-        if j < n:
-            if k[i] == a[j]:
-                j += 1
-            else:
-                k[i] -= j
-                i += 1
-        else:
-            k[i] -= j
-            i += 1
-    for i in k:
-        print(i)
+    # 读取数据
+    N = int(input())
+    # 处理数据
+    result = "Yay!" if int(N * 1.08) < 206 else "so-so" if int(N * 1.08) == 206 else ":("
+    # 输出结果
+    print(result)
 
 if __name__ == '__main__':
     main()

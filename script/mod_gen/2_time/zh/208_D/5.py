@@ -1,16 +1,8 @@
-def main():
-    N, K = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.append(a[0] + K)
-    #print(a)
-    ans = [K//N for i in range(N)]
-    #print(ans)
-    tmp = K%N
-    for i in range(tmp):
-        ans[a[i]-1] += 1
-    for i in range(N):
-        print(ans[i])
+def floyd_warshall(n, d):
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
 
 if __name__ == '__main__':
-    main()
+    floyd_warshall()

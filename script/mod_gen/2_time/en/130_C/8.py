@@ -5,6 +5,3 @@ def f(W,H,x,y):
         return W*H/2,0
 W,H,x,y=map(int,input().split())
 print(*f(W,H,x,y))
-
-if __name__ == '__main__':
-    f()

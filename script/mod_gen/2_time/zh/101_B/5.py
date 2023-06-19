@@ -1,9 +1,9 @@
-def sum_digits(n):
-    s = 0
-    while n:
-        s += n % 10
-        n //= 10
-    return s
+def S(n):
+    result = 0
+    while n > 0:
+        result += n % 10
+        n = n // 10
+    return result
 
 if __name__ == '__main__':
-    sum_digits()
+    S()

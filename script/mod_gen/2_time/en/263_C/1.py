@@ -10,6 +10,3 @@ def print_sequences(n, m):
             print()
 n, m = map(int, input().split())
 print_sequences(n, m)
-
-if __name__ == '__main__':
-    print_sequences()

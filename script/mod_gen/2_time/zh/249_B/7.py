@@ -1,25 +1,13 @@
-def main():
-    A, B, C, D, E, F, X = map(int, input().split())
-    Takahashi = 0
-    Aoki = 0
-    time = 0
-    while time < X:
-        if Takahashi == Aoki:
-            Takahashi += B * A
-            Aoki += D * E
-            time += A + C
-        elif Takahashi > Aoki:
-            Aoki += D * E
-            time += D + F
+def check(s):
+    if s.islower() or s.isupper():
+        return False
+    if s.isalpha():
+        if s[0].isupper() and s[-1].islower():
+            return True
         else:
-            Takahashi += B * A
-            time += A + C
-    if Takahashi == Aoki:
-        print("DRAW")
-    elif Takahashi > Aoki:
-        print("AOKI")
+            return False
     else:
-        print("TAKAHASHI")
+        return False
 
 if __name__ == '__main__':
-    main()
+    check()

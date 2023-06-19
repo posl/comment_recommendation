@@ -1,14 +1,10 @@
-def problems108_a():
-    k = int(input())
-    if k < 2 or k > 100:
-        print("输入的k不符合要求")
-        return
-    count = 0
-    for i in range(1, k + 1):
-        for j in range(i+1, k + 1):
-            if i % 2 == 0 and j % 2 == 1:
-                count += 1
-    print(count * 2)
+def p108_b():
+    x1,y1,x2,y2 = map(int,input().split())
+    x3 = x2 - y2 + y1
+    y3 = y2 + x2 - x1
+    x4 = x1 - y2 + y1
+    y4 = y1 + x2 - x1
+    print(x3,y3,x4,y4)
 
 if __name__ == '__main__':
-    problems108_a()
+    p108_b()

@@ -1,12 +1,10 @@
-def solve():
-    # 读取输入
-    n, m, x, t, d = map(int, input().split())
-    # 计算
-    h = t
-    for i in range(x, m):
-        h += d
-    for i in range(m, n):
-        h += d
-    # 输出
-    print(h)
-solve()
+def rotate(x, y, d):
+    import math
+    pi = math.pi
+    r = d * pi / 180
+    x1 = x * math.cos(r) - y * math.sin(r)
+    y1 = x * math.sin(r) + y * math.cos(r)
+    return x1, y1
+
+if __name__ == '__main__':
+    rotate()

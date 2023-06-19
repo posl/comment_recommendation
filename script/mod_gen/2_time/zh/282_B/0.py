@@ -1,14 +1,16 @@
 def main():
-    k = int(input())
-    # print(k)
-    # print(type(k))
-    if k >= 1 and k <= 26:
-        for i in range(0,k):
-            print(chr(65+i),end="")
-        print()
-    else:
-        print("K is out of range.")
-        return 0
+    n, m = map(int, input().split())
+    s = [input() for i in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            ok = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    ok = False
+            if ok:
+                ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

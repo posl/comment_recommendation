@@ -1,8 +1,15 @@
 def main():
-    A, B = input().split()
-    A = int(A)
-    B = int(B)
-    print(A * B / 100)
+    n = int(input())
+    a = list(map(int, input().split()))
+    if n == len(a):
+        a.sort()
+        for i in range(n):
+            if a[i] != i+1:
+                print('No')
+                exit()
+        print('Yes')
+    else:
+        print('No')
 
 if __name__ == '__main__':
     main()

@@ -1,8 +1,15 @@
-def factorial(n):
-    if n <= 1:
-        return 1
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 处理
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
     else:
-        return n * factorial(n-1)
+        print(0)
 
 if __name__ == '__main__':
-    factorial()
+    main()

@@ -10,6 +10,3 @@ def   main ():
          print ( - 1 ) 
      else : 
          print ( N   -   ans )
-
-if __name__ == '__main__':
-    ()

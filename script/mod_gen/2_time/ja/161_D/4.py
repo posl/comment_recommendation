@@ -8,6 +8,3 @@ def runrun(n):
             yield from runrun(10*n+b)
 K = int(input())
 print(sorted(runrun(n)) [K-1])
-
-if __name__ == '__main__':
-    runrun()

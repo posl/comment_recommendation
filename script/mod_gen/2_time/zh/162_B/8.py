@@ -1,13 +1,11 @@
-def isSevenInNum(num):
-    if num%10==7:
-        return True
-    elif num/10%10==7:
-        return True
-    elif num/100%10==7:
-        return True
-    else:
-        return False
-num = int(raw_input())
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if i % 3 == 0 or i % 5 == 0:
+            continue
+        ans += i
+    print(ans)
 
 if __name__ == '__main__':
-    isSevenInNum()
+    solve()

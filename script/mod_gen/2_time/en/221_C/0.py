@@ -5,6 +5,3 @@ def main():
     else:
         print(max(int(N[0]) * int(N[1:]), int(N[0:2]) * int(N[2:]), int(N[0:3]) * int(N[3:])))
 main()
-
-if __name__ == '__main__':
-    main()

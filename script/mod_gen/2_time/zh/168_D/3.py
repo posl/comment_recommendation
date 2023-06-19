@@ -1,14 +1,30 @@
-def main():
-    a, b, h, m = map(int, input().split())
-    import math
-    pi = math.pi
-    h_angle = (h * 60 + m) / 720 * 2 * pi
-    m_angle = m / 60 * 2 * pi
-    h_x = a * math.cos(h_angle)
-    h_y = a * math.sin(h_angle)
-    m_x = b * math.cos(m_angle)
-    m_y = b * math.sin(m_angle)
-    print(math.sqrt((h_x - m_x) ** 2 + (h_y - m_y) ** 2))
+def dfs(now, pre):
+    for i in G[now]:
+        if i == pre:
+            continue
+        if vis[i] == 0:
+            vis[i] = now
+            dfs(i, now)
+        else:
+            if vis[now] == 0:
+                vis[now] = i
+                dfs(i, now)
+N, M = map(int, input().split())
+G = [[] for i in range(N+1)]
+for i in range(M):
+    a, b = map(int, input().split())
+    G[a].append(b)
+    G[b].append(a)
+vis = [0] * (N+1)
+vis[1] = -1
+dfs(1, -1)
+for i in range(1, N+1):
+    if vis[i] == 0:
+        print('No')
+        exit()
+print('Yes')
+for i in range(2, N+1):
+    print(vis[i])
 
 if __name__ == '__main__':
-    main()
+    dfs()

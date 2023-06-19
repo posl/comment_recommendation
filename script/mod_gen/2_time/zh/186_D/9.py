@@ -1,7 +1,11 @@
-def count(n):
-    count=0
-    for i in range(1,n+1):
-        if not '7' in str(i) and not '7' in oct(i):
-            count+=1
-    return count
-print(count(100000))
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += (a[i] - a[0]) * (i - (n - i - 1))
+    print(ans * 2)
+
+if __name__ == '__main__':
+    main()

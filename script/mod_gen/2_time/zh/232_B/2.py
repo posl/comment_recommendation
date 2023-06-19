@@ -1,12 +1,14 @@
 def main():
-    # 读取输入
     S = input()
-    # 在此编写处理逻辑
-    a = int(S[0])
-    b = int(S[2])
-    print(a*b)
-    # 输出结果
-    pass
+    T = input()
+    for i in range(26):
+        s = ""
+        for j in range(len(S)):
+            s += chr((ord(S[j]) - ord("a") + i) % 26 + ord("a"))
+        if s == T:
+            print("Yes")
+            exit()
+    print("No")
 
 if __name__ == '__main__':
     main()

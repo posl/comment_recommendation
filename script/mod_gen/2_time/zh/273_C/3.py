@@ -1,10 +1,19 @@
-def problems273_b():
-    X,K = input().split()
-    K = int(K)
-    num = int(X)
-    for i in range(K):
-        num = round(num, -i-1)
-    print(num)
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A.sort()
+    count = 0
+    for i in range(N):
+        if i == 0:
+            print(0)
+            continue
+        elif A[i] == A[i-1]:
+            print(count)
+            continue
+        else:
+            count += 1
+            print(count)
+            continue
 
 if __name__ == '__main__':
-    problems273_b()
+    main()

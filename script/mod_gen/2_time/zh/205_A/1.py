@@ -1,16 +1,6 @@
 def main():
-    n = int(input())
-    t = list(map(int, input().split()))
-    t.sort()
-    t.reverse()
-    a = 0
-    b = 0
-    for i in range(n):
-        if a < b:
-            a += t[i]
-        else:
-            b += t[i]
-    print(max(a, b))
+    a, b = map(int, input().split())
+    print((a * b) / 100)
 
 if __name__ == '__main__':
     main()

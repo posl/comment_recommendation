@@ -1,34 +1,15 @@
 def main():
-    H, W = map(int, input().split())
-    S = [input() for i in range(H)]
+    x,y,r = map(float,input().split())
+    x = int(x*10000)
+    y = int(y*10000)
+    r = int(r*10000)
+    r2 = r*r
     ans = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
+    for i in range(x-r,x+r+1):
+        for j in range(y-r,y+r+1):
+            if (i-x)*(i-x)+(j-y)*(j-y)<=r2:
                 ans += 1
-    if ans == 0:
-        print(0)
-        return
-    ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#' and S[i - 1][j] == '.' and S[i + 1][j] == '.' and S[i][j - 1] == '.' and S[i][j + 1] == '.':
-                ans += 1
-    if ans == 0:
-        print(1)
-        return
-    ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#' and ((S[i - 1][j] == '.' and S[i + 1][j] == '#' and S[i][j - 1] == '#' and S[i][j + 1] == '.') or (S[i - 1][j] == '#' and S[i + 1][j] == '.' and S[i][j - 1] == '.' and S[i][j + 1] == '#') or (S[i - 1][j] == '#' and S[i + 1][j] == '#' and S[i][j - 1] == '.' and S[i][j + 1] == '.') or (S[i - 1][j] == '.' and S[i + 1][j] == '#' and S[i][j - 1] == '#' and S[i][j + 1] == '#')):
-                ans += 1
-    if ans == 0:
-        print(2)
-        return
-    ans = 0
-    for i in range(1, H - 1):
-        for j in range(1, W - 1):
-            if S[i][j] == '#' and ((S[i - 1][j] == '.' and S[i + 1][j] == '.' and S[i][j - 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

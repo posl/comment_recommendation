@@ -1,10 +1,9 @@
 def S(n):
+    n_str = str(n)
     sum = 0
-    while n != 0:
-        sum += n % 10
-        n //= 10
+    for i in n_str:
+        sum += int(i)
     return sum
-N = int(input())
 
 if __name__ == '__main__':
     S()

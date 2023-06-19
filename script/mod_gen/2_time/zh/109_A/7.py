@@ -1,7 +1,9 @@
-def solve():
-    L = int(input())
-    print(2*L, L+1)
-    for i in range(1, L+1):
-        print(i, i+1, 0)
-        print(i, i+1, 2*L-i)
-solve()
+def solution():
+    a,b = map(int,input().split())
+    if a*b%2==0:
+        print("No")
+    else:
+        print("Yes")
+
+if __name__ == '__main__':
+    solution()

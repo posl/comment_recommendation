@@ -1,6 +1,11 @@
 def main():
-    a = int(input())
-    print(a+a**2+a**3)
+    s = input()
+    t = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

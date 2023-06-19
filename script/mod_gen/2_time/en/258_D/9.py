@@ -14,6 +14,3 @@ def main():
         ans += (X - 1) * AB[N - 1][1]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

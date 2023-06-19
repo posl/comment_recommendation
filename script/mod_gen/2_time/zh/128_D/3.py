@@ -1,16 +1,13 @@
-def readinput():
-    line = input()
-    N,M = line.split()
-    N = int(N)
-    M = int(M)
-    switches = []
-    for i in range(M):
-        line = input()
-        switch = list(map(int, line.split()))
-        switches.append(switch)
-    line = input()
-    P = list(map(int, line.split()))
-    return (N,M,switches,P)
-
-if __name__ == '__main__':
-    readinput()
+def solve():
+    n,k = map(int,input().split())
+    v = list(map(int,input().split()))
+    ans = 0
+    for i in range(min(n,k)+1):
+        for j in range(min(n,k)-i+1):
+            a = v[:i]
+            b = v[n-j:]
+            c = a + b
+            c.sort()
+            ans = max(ans,sum(c[max(0,k-i-j):]))
+    print(ans)
+solve()

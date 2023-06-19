@@ -10,6 +10,3 @@ def is_split(pins):
                     return "No"
 pins = input()
 print(is_split(pins))
-
-if __name__ == '__main__':
-    is_split()

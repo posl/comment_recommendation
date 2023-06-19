@@ -1,15 +1,8 @@
-def main():
-    # 读取输入
-    n, k = map(int, input().split())
-    p = list(map(int, input().split()))
-    # 排序
-    p.sort()
-    # 计算结果
-    ans = 0
-    for i in range(k):
-        ans += p[i]
-    # 输出结果
-    print(ans)
+def get_name(n):
+    if n <= 26:
+        return chr(ord('a') + n - 1)
+    else:
+        return get_name((n - 1) // 26) + get_name((n - 1) % 26 + 1)
 
 if __name__ == '__main__':
-    main()
+    get_name()

@@ -1,15 +1,7 @@
-def main():
-    #a, n = map(int, input().split(" "))
-    a, n = 2, 767090
-    count = 0
-    while n > 1:
-        if n % a == 0:
-            n = n / a
-            count += 1
-        else:
-            n = n - 1
-            count += 1
-    print(count)
+def swap(s,a,b):
+    s = list(s)
+    s[a-1],s[b-1] = s[b-1],s[a-1]
+    return "".join(s)
 
 if __name__ == '__main__':
-    main()
+    swap()

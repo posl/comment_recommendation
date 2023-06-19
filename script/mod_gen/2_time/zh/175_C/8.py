@@ -1,12 +1,15 @@
-def triangle(n, l):
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            for k in range(j+1,n):
-                if l[i]+l[j] > l[k] and l[i] != l[j] and l[j] != l[k] and l[k] != l[i]:
-                    ans += 1
-    return ans
+def problems175_c():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x-k*d)
+    else:
+        k = k - x//d
+        x = x%d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(d-x)
 
 if __name__ == '__main__':
-    triangle()
+    problems175_c()

@@ -1,9 +1,13 @@
-def solve(n, t, a):
-    t %= sum(a)
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    #print(n,k,d)
+    #print(a)
+    ans = 0
     for i in range(n):
-        if t < a[i]:
-            return i + 1, t
-        t -= a[i]
+        ans += a[i]
+    ans = ans//d
+    print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

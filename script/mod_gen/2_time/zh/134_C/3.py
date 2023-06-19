@@ -1,5 +1,6 @@
-def calc_min_checker_num(num_of_trees, distance):
-    return num_of_trees // (2 * distance + 1) + 1
+def max_num(num_list):
+    max_num = max(num_list)
+    return max_num
 
 if __name__ == '__main__':
-    calc_min_checker_num()
+    max_num()

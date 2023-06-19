@@ -6,6 +6,3 @@ def   main ():
          for   j   in   range ( i   +   1 ,   min ( i   +   mod ,   R   +   1 )): 
              ans   =   min ( ans ,   i   *   j   %   mod ) 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

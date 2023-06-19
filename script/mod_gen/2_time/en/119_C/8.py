@@ -28,6 +28,3 @@ def main():
     # 出力
     print(min_mp)
 main()
-
-if __name__ == '__main__':
-    main()

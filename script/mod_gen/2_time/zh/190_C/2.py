@@ -1,28 +1,30 @@
-def read_data():
-    #读取数据
-    #输入格式
-    #N S D
-    #X_1 Y_1
-    #.
-    #.
-    #.
-    #X_N Y_N
-    #输出格式
-    #如果高桥能对怪物造成伤害，打印Yes；否则，打印No。
-    #返回值
-    #N:法术数量
-    #S:伤害时间
-    #D:伤害力度
-    #X:法术施展时间列表
-    #Y:法术伤害力度列表
-    N,S,D = map(int,input().split())
-    X = []
-    Y = []
-    for i in range(N):
-        x,y = map(int,input().split())
-        X.append(x)
-        Y.append(y)
-    return N,S,D,X,Y
+def judge(plate,condition):
+    for i in range(condition[0]-1,condition[1]):
+        if plate[i] == 0:
+            return False
+    return True
+N,M = map(int,input().split())
+condition = []
+for i in range(M):
+    condition.append(list(map(int,input().split())))
+K = int(input())
+ball = []
+for i in range(K):
+    ball.append(list(map(int,input().split())))
+ans = 0
+for i in range(2**K):
+    plate = [0 for i in range(N)]
+    for j in range(K):
+        if((i >> j) & 1):
+            plate[ball[j][1]-1] += 1
+        else:
+            plate[ball[j][0]-1] += 1
+    cnt = 0
+    for j in range(M):
+        if judge(plate,condition[j]):
+            cnt += 1
+    ans = max(ans,cnt)
+print(ans)
 
 if __name__ == '__main__':
-    read_data()
+    judge()

@@ -1,10 +1,14 @@
 def main():
-    S = input().split()
-    T = input().split()
-    if S == T:
-        print('Yes')
+    a,b,c,d = map(int,input().split())
+    if a > c:
+        print("高桥")
+    elif a == c:
+        if b > d:
+            print("高桥")
+        else:
+            print("青木")
     else:
-        print('No')
+        print("青木")
 
 if __name__ == '__main__':
     main()

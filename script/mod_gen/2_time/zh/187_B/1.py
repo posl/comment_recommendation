@@ -1,9 +1,9 @@
-def S(n):
-    sum = 0
-    while n > 0:
-        sum += n % 10
-        n = n // 10
-    return sum
+def gcd(x, y):
+    if x < y:
+        x, y = y, x
+    if y == 0:
+        return x
+    return gcd(y, x%y)
 
 if __name__ == '__main__':
-    S()
+    gcd()

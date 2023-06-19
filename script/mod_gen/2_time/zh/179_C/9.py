@@ -1,13 +1,12 @@
-def main():
-    n = int(input())
-    d = []
-    for i in range(n):
-        d.append(list(map(int, input().split())))
-    for i in range(0, n-2):
-        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
-            print("Yes")
-            return
-    print("No")
+def problem179_c():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            m = N//i - 1
+            if m > i:
+                ans += m
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    problem179_c()

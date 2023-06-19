@@ -1,9 +1,13 @@
-def solve():
-    a,b = map(int,input().split())
-    if b % a == 0:
-        print(b//a)
-    else:
-        print(b//a+1)
+def func(n, h):
+    ans = 0
+    cnt = 0
+    for i in range(n-1):
+        if h[i] >= h[i+1]:
+            cnt += 1
+        else:
+            cnt = 0
+        ans = max(ans, cnt)
+    return ans
 
 if __name__ == '__main__':
-    solve()
+    func()

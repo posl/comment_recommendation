@@ -1,9 +1,8 @@
-def main():
-    K, X = map(int,input().split())
-    start = X - K + 1
-    end = X + K
-    for i in range(start,end):
-        print(i,end=' ')
+def count_anagram(s):
+    count = {}
+    for c in s:
+        count[c] = count.get(c, 0) + 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    count_anagram()

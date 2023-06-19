@@ -1,7 +1,8 @@
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
+def judge(num):
+    if num%8==0:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    gcd()
+    judge()

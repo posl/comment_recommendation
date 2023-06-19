@@ -1,18 +1,9 @@
-def prime_factorize(n):
-    a = []
-    while n % 2 == 0:
-        a.append(2)
-        n //= 2
-    f = 3
-    while f * f <= n:
-        if n % f == 0:
-            a.append(f)
-            n //= f
-        else:
-            f += 2
-    if n != 1:
-        a.append(n)
-    return a
+def main():
+    n = input().split()
+    for i in range(len(n)):
+        if n[i] == '0':
+            print(i+1)
+            break
 
 if __name__ == '__main__':
-    prime_factorize()
+    main()

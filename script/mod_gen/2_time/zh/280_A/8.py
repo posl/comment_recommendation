@@ -1,13 +1,10 @@
-def f(x):
-    return x + a / (x ** 0.5)
-a, b = map(int, input().split())
-l = 0
-r = a
-for _ in range(1000):
-    c1 = (l * 2 + r) / 3
-    c2 = (l + r * 2) / 3
-    if f(c1) < f(c2):
-        r = c2
-    else:
-        l = c1
-print(f(l))
+def problems280_a():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    print(ans)
+problems280_a()

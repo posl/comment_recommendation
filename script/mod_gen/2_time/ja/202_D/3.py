@@ -20,6 +20,3 @@ for i in range(A + 1):
         else:
             C[i][j] = C[i - 1][j] + C[i][j - 1]
 print(f(A, B, K))
-
-if __name__ == '__main__':
-    f()

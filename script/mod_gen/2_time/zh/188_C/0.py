@@ -1,17 +1,11 @@
-def main():
-    # get input
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    # calculate
-    sum = 0
-    for i in range(n):
-        sum += a[i]*b[i]
-    # output
-    if sum == 0:
-        print("Yes")
+def merge_sort(a):
+    if len(a) <= 1:
+        return a
     else:
-        print("No")
+        mid = len(a) // 2
+        left = merge_sort(a[:mid])
+        right = merge_sort(a[mid:])
+        return merge(left, right)
 
 if __name__ == '__main__':
-    main()
+    merge_sort()

@@ -1,12 +1,13 @@
 def main():
-    import math
-    a, b, h, m = map(int, input().split())
-    h_angle = 30 * h + 0.5 * m
-    m_angle = 6 * m
-    angle = abs(h_angle - m_angle)
-    angle = min(angle, 360 - angle)
-    angle = angle * math.pi / 180
-    print(math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(angle)))
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    print(N)
+    print(M)
+    print(A)
+    print(B)
 
 if __name__ == '__main__':
     main()

@@ -8,6 +8,3 @@ def  main():
     T = [list(t) for t in T]
     #output
     print('Yes' if solve(N, S, T) else 'No')
-
-if __name__ == '__main__':
-    ()

@@ -1,30 +1,17 @@
 def main():
-    n, a, b, c = map(int, input().split())
-    l = [int(input()) for _ in range(n)]
-    ans = 10 ** 9
-    for i in range(4 ** n):
-        mp = 0
-        la, lb, lc = 0, 0, 0
-        for j in range(n):
-            if (i >> (2 * j)) % 4 == 1:
-                mp += 10
-                if la > 0:
-                    mp += abs(l[j] - la)
-                la += l[j]
-            elif (i >> (2 * j)) % 4 == 2:
-                mp += 10
-                if lb > 0:
-                    mp += abs(l[j] - lb)
-                lb += l[j]
-            elif (i >> (2 * j)) % 4 == 3:
-                mp += 10
-                if lc > 0:
-                    mp += abs(l[j] - lc)
-                lc += l[j]
-        if la > 0 and lb > 0 and lc > 0:
-            mp += abs(la - a) + abs(lb - b) + abs(lc - c)
-            ans = min(ans, mp)
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+    A, B, Q = map(int, input().split())
+    s = [int(input()) for _ in range(A)]
+    t = [int(input()) for _ in range(B)]
+    x = [int(input()) for _ in range(Q)]
+    s.append(10**11)
+    t.append(10**11)
+    from bisect import bisect_left, bisect_right
+    for i in range(Q):
+        j = bisect_left(s, x[i])
+        k = bisect_left(t, x[i])
+        ans = 10**11
+        for sj in [s[j-1], s[j]]:
+            for tk in [t[k-1], t[k]]:
+                ans = min(ans, abs(sj-x[i])+abs(tk-sj), abs(tk-x[i])+abs(sj-tk))
+        print(ans)
+main()

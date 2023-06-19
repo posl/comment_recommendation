@@ -1,9 +1,12 @@
 def main():
-    n = int(input())
-    if n >= -2**31 and n <= 2**31-1:
-        print('是')
-    else:
-        print('否')
+    h, w = [int(i) for i in input().split()]
+    a = []
+    for _ in range(h):
+        a.append([int(i) for i in input().split()])
+    for i in range(w):
+        for j in range(h):
+            print(a[j][i], end=' ')
+        print()
 
 if __name__ == '__main__':
     main()

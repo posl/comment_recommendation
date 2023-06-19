@@ -1,17 +1,14 @@
-def f(x,y):
-    if x==0 and y==1:
-        print(2)
-    elif x==0 and y==2:
-        print(0)
-    elif x==1 and y==0:
-        print(0)
-    elif x==1 and y==2:
-        print(1)
-    elif x==2 and y==0:
-        print(1)
-    elif x==2 and y==1:
-        print(2)
-    else:
-        print(x)
-x,y=map(int,input().split())
-f(x,y)
+def main():
+    #输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    #处理
+    ans = 0
+    for i in range(n):
+        if a[i] > 10:
+            ans += a[i] - 10
+    #输出
+    print(ans)
+
+if __name__ == '__main__':
+    main()

@@ -1,13 +1,13 @@
-def check(s, t):
-    if len(s) != len(t):
-        return False
-    for i in range(len(s)):
-        s = s[-1] + s[0:-1]
-        if s == t:
-            return True
-    return False
-s = input()
-t = input()
+def main():
+    s = input()
+    t = input()
+    if len(s) == len(t):
+        if t in (s + s):
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    check()
+    main()

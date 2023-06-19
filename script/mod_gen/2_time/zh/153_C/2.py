@@ -1,10 +1,9 @@
 def main():
-    H,N = map(int,input().split())
-    A = list(map(int,input().split()))
-    if H <= sum(A):
-        print("Yes")
-    else:
-        print("No")
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    H.reverse()
+    print(sum(H[K:]))
 
 if __name__ == '__main__':
     main()

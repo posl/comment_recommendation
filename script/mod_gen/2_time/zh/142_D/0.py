@@ -1,10 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    print(*b)
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
 if __name__ == '__main__':
-    main()
+    gcd()

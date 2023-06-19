@@ -1,14 +1,12 @@
-def main():
-    N, T = map(int, input().split())
-    A = list(map(int, input().split()))
-    T -= 1
-    T = T % (sum(A))
-    for i in range(N):
-        if T < A[i]:
-            print(i + 1, T)
+def problem281_c():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    t = t%n
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        if sum >= t:
+            print(i+1,t)
             break
-        else:
-            T -= A[i]
-
-if __name__ == '__main__':
-    main()
+    return
+problem281_c()

@@ -1,11 +1,10 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = 0
-    for i in a:
-        if i > 10:
-            ans += i - 10
-    print(ans)
+def readinput():
+    n,m=list(map(int,input().split()))
+    ab=[]
+    for _ in range(m):
+        a,b=list(map(int,input().split()))
+        ab.append((a,b))
+    return n,m,ab
 
 if __name__ == '__main__':
-    main()
+    readinput()

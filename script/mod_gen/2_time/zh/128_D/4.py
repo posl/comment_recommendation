@@ -1,20 +1,16 @@
-def main():
-    n,m = map(int,input().split())
-    k = []
-    for _ in range(m):
-        k.append(list(map(int,input().split()))[1:])
-    p = list(map(int,input().split()))
-    ans = 0
-    for i in range(2**n):
-        light = [0]*m
-        for j in range(n):
-            if (i>>j)&1 == 1:
-                for l in range(m):
-                    if j+1 in k[l]:
-                        light[l] += 1
-        if light == p:
-            ans += 1
-    print(ans)
+def get_max_value(N, K, V):
+    max_value = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i+j <= N and i+j <= K:
+                temp = 0
+                for k in range(i):
+                    temp += V[k]
+                for k in range(N-j, N):
+                    temp += V[k]
+                if temp > max_value:
+                    max_value = temp
+    return max_value
 
 if __name__ == '__main__':
-    main()
+    get_max_value()

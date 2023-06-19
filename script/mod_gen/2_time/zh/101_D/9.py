@@ -1,22 +1,22 @@
-def S(n):
-    sum = 0
-    while n>0:
-        sum += n%10
-        n = n//10
-    return sum
+def snuke(k):
+    result = []
+    for i in range(1, 10):
+        result.append(i)
+    count = 9
+    while count < k:
+        for i in range(len(result)):
+            for j in range(10):
+                n = result[i] * 10 + j
+                if n % (sum(map(int, str(n)))) == 0:
+                    result.append(n)
+                    count += 1
+                    if count == k:
+                        return result
+    return result
 k = int(input())
-count = 0
-n = 1
-while True:
-    if S(n) == 1:
-        n += 9
-        continue
-    if n%S(n) == 0:
-        count += 1
-        print(n)
-    if count == k:
-        break
-    n += 1
+result = snuke(k)
+for i in range(k):
+    print(result[i])
 
 if __name__ == '__main__':
-    S()
+    snuke()

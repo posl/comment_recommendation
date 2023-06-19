@@ -1,10 +1,17 @@
 def main():
-    n = int(input())
-    p = [int(i) for i in input().split()]
-    q = [0 for i in range(n)]
-    for i in range(n):
-        q[p[i]-1] = i+1
-    print(' '.join([str(i) for i in q]))
+    L, Q = map(int, input().split())
+    cut = [0] * (Q + 1)
+    for i in range(1, Q + 1):
+        c, x = map(int, input().split())
+        if c == 1:
+            cut[i] = x
+    cut[0] = 0
+    cut[Q] = L
+    cut.sort()
+    for i in range(1, Q + 1):
+        if cut[i] == 0:
+            continue
+        print(cut[i] - cut[i - 1])
 
 if __name__ == '__main__':
     main()

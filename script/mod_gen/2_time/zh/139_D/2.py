@@ -1,16 +1,7 @@
-def solve():
-    N = int(input())
-    H = list(map(int, input().split()))
-    cnt = 0
+def solve(n):
     ans = 0
-    for i in range(N - 1):
-        if H[i] >= H[i + 1]:
-            cnt += 1
-        else:
-            ans = max(ans, cnt)
-            cnt = 0
-    ans = max(ans, cnt)
-    print(ans)
-
-if __name__ == '__main__':
-    solve()
+    for i in range(1, n + 1):
+        ans += i % (n + 1)
+    return ans
+n = int(input())
+print(solve(n))

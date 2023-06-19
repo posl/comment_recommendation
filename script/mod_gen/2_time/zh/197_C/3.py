@@ -1,26 +1,14 @@
-def solve():
-    H, W, X, Y = map(int, input().split())
-    S = [list(input()) for i in range(H)]
-    X -= 1
-    Y -= 1
-    ans = 1
-    for i in range(X - 1, -1, -1):
-        if S[i][Y] == "#":
-            break
-        ans += 1
-    for i in range(X + 1, H):
-        if S[i][Y] == "#":
-            break
-        ans += 1
-    for i in range(Y - 1, -1, -1):
-        if S[X][i] == "#":
-            break
-        ans += 1
-    for i in range(Y + 1, W):
-        if S[X][i] == "#":
-            break
-        ans += 1
-    print(ans)
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    min_xor = 2 ** 30
+    for i in range(n):
+        for j in range(i, n):
+            xor = 0
+            for k in range(i, j + 1):
+                xor ^= a[k]
+            min_xor = min(min_xor, xor)
+    print(min_xor)
 
 if __name__ == '__main__':
-    solve()
+    main()

@@ -1,9 +1,9 @@
 def main():
-    # 读取输入
-    x = int(input())
-    # 写下你的代码
-    # 打印答案
-    print(x//10)
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 10:
+        print('Yes')
+    else:
+        print('No')
 
 if __name__ == '__main__':
     main()

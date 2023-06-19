@@ -1,12 +1,22 @@
-def value_of_gems(N, V, C):
-    X = 0
-    Y = 0
-    for i in range(N):
-        if V[i] > C[i]:
-            X += V[i]
-            Y += C[i]
-    return X - Y
-N = int(input())
-V = list(map(int, input().split()))
-C = list(map(int, input().split()))
-print(value_of_gems(N, V, C))
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+n=int(input())
+a=[int(i) for i in input().split()]
+l=[0 for i in range(n)]
+r=[0 for i in range(n)]
+l[0]=a[0]
+r[n-1]=a[n-1]
+for i in range(1,n):
+    l[i]=gcd(l[i-1],a[i])
+for i in range(n-2,-1,-1):
+    r[i]=gcd(r[i+1],a[i])
+ans=max(l[n-2],r[1])
+for i in range(1,n-1):
+    ans=max(ans,gcd(l[i-1],r[i+1]))
+print(ans)
+
+if __name__ == '__main__':
+    gcd()

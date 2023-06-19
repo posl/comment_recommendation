@@ -1,15 +1,19 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    if a[0] % 2 == 0:
-        print(a[0])
-    elif a[1] % 2 == 0:
-        print(a[1])
-    elif a[0] + a[1] % 2 == 0:
-        print(a[0] + a[1])
-    else:
-        print(-1)
+    n,m = map(int,input().split())
+    m = m**0.5
+    m = int(m)
+    #print(m)
+    for i in range(n):
+        for j in range(n):
+            if i==0 and j==0:
+                print(0,end=' ')
+            elif i==0:
+                print(j,end=' ')
+            elif j==0:
+                print(i,end=' ')
+            else:
+                print(m,end=' ')
+        print()
 
 if __name__ == '__main__':
     main()

@@ -8,6 +8,3 @@ def main():
         b.append(tuple(a[i][1::]))
     print(len(set(b)))
 main()
-
-if __name__ == '__main__':
-    main()

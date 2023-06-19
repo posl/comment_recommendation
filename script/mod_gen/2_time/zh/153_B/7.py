@@ -1,6 +1,10 @@
 def main():
-    H, A = map(int, input().split())
-    print(H // A + (1 if H % A else 0))
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) >= H:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
     main()

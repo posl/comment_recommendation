@@ -1,6 +1,5 @@
-def main():
-    n, m = map(int, input().split())
-    print(n*(n-1)//2 + m*(m-1)//2)
+def check_palindrome(s):
+    return s == s[::-1]
 
 if __name__ == '__main__':
-    main()
+    check_palindrome()

@@ -1,13 +1,14 @@
-def main():
-    a, b = map(int, input().split())
-    if a + b >= 15 and b >= 8:
-        print(1)
-    elif a + b >= 10 and b >= 3:
-        print(2)
-    elif a + b >= 3:
-        print(3)
-    else:
-        print(4)
+def find_min_time(n, a, b):
+    min_time = 1000000
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                time = a[i] + b[j]
+            else:
+                time = max(a[i], b[j])
+            if time < min_time:
+                min_time = time
+    return min_time
 
 if __name__ == '__main__':
-    main()
+    find_min_time()

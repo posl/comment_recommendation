@@ -13,6 +13,3 @@ def main():
         x[p[i]]+=x[i]
     print(*x)
 main()
-
-if __name__ == '__main__':
-    main()

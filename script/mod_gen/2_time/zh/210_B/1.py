@@ -1,9 +1,10 @@
-def problems210_a():
-    N, A, X, Y = map(int, input().split())
-    if N <= A:
-        print(N * X)
+def main():
+    n = int(input())
+    s = input()
+    if s.count('1') % 2 == 1:
+        print('高桥')
     else:
-        print(A * X + (N - A) * Y)
+        print('青木')
 
 if __name__ == '__main__':
-    problems210_a()
+    main()

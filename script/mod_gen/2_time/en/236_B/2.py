@@ -7,6 +7,3 @@ def main():
             print(A[i])
             return
 main()
-
-if __name__ == '__main__':
-    main()

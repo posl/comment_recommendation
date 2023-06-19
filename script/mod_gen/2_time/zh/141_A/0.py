@@ -1,12 +1,10 @@
-def solve():
-    N, K = map(int, input().split())
-    S = input()
-    ans = 0
-    for i in range(N-1):
-        if S[i] == S[i+1]:
-            ans += 1
-    ans += min(2*K, N-1)
-    print(ans)
+def main():
+    # 晴天，阴天，雨天，晴天，阴天，雨天，......
+    weather = ['晴天', '阴天', '雨天']
+    # 输入
+    today_weather = input()
+    # 打印输出
+    print(weather[(weather.index(today_weather) + 1) % 3])
 
 if __name__ == '__main__':
-    solve()
+    main()

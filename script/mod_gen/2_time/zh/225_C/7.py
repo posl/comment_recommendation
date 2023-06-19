@@ -1,13 +1,8 @@
 def main():
-    n = int(input())
-    ab = [list(map(int, input().split())) for _ in range(n-1)]
-    ab = sorted(ab, key=lambda x: x[1])
-    ab = sorted(ab, key=lambda x: x[0])
-    max_num = max([i[1] for i in ab])
-    if ab[-1][1] == max_num:
-        print("Yes")
-    else:
-        print("No")
+    n,m = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(n)]
+    A = [[(i-1)*7+j for j in range(1,8)] for i in range(1,10**100+1)]
+    print('Yes' if B in A else 'No')
 
 if __name__ == '__main__':
     main()

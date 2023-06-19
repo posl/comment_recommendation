@@ -6,6 +6,3 @@ def move(S):
     return ans
 S = input()
 print(move(S))
-
-if __name__ == '__main__':
-    move()

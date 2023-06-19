@@ -1,20 +1,16 @@
-def dfs(v):
-    seen[v] = True
-    for i in range(n):
-        if not seen[i] and G[v][i] == 1:
-            dfs(i)
-n, m = map(int, input().split())
-G = [[0 for _ in range(n)] for _ in range(n)]
-for _ in range(m):
-    a, b = map(int, input().split())
-    G[a-1][b-1] = G[b-1][a-1] = 1
-seen = [False for _ in range(n)]
-res = 0
-for i in range(n):
-    if not seen[i]:
-        dfs(i)
-        res += 1
-print(res)
+def isPrime(n):
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n%2 == 0 or n%3 == 0:
+        return False
+    i = 5
+    while i*i <= n:
+        if n%i == 0 or n%(i+2) == 0:
+            return False
+        i += 6
+    return True
 
 if __name__ == '__main__':
-    dfs()
+    isPrime()

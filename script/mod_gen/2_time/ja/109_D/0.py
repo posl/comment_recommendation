@@ -17,6 +17,3 @@ def main():
     for y1, x1, y2, x2 in ans:
         print(y1, x1, y2, x2)
 main()
-
-if __name__ == '__main__':
-    main()

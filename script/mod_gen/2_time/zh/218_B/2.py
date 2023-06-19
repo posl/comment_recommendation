@@ -1,7 +1,7 @@
 def main():
-    n = input()
-    s = input()
-    print("是" if s[n-1] == "o" else "否")
+    p = list(map(int, input().split()))
+    p = [chr(ord('a') + x - 1) for x in p]
+    print(''.join(p))
 
 if __name__ == '__main__':
     main()

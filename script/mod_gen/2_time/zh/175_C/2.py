@@ -1,14 +1,15 @@
-def triangle():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if l[i] != l[j] and l[j] != l[k] and l[i] + l[j] > l[k]:
-                    ans += 1
-    print(ans)
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x/d >= k:
+        print(x-d*k)
+        return
+    k -= x//d
+    x %= d
+    if k%2 == 0:
+        print(x)
+    else:
+        print(abs(x-d))
 
 if __name__ == '__main__':
-    triangle()
+    main()

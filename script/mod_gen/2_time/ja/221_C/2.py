@@ -8,6 +8,3 @@ def main():
         ans = max(ans, A*B)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def main():
     for i in range(K, N):
         print(P[i])
 main()
-
-if __name__ == '__main__':
-    main()

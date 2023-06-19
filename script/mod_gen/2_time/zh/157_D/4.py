@@ -1,19 +1,25 @@
-def get_num(n, m, s_c):
-    if n == 1:
-        if s_c[0][0] == 1:
-            return s_c[0][1]
-        else:
-            return -1
-    elif n == 2:
-        if s_c[0][0] == 1 and s_c[1][0] == 2:
-            return s_c[0][1]*10 + s_c[1][1]
-        else:
-            return -1
-    else:
-        if s_c[0][0] == 1 and s_c[1][0] == 2 and s_c[2][0] == 3:
-            return s_c[0][1]*100 + s_c[1][1]*10 + s_c[2][1]
-        else:
-            return -1
+def getFriends(N,M,K,AB,CD):
+    #先建立邻接表
+    adj = [[] for _ in range(N)]
+    for i in range(M):
+        adj[AB[i][0]-1].append(AB[i][1]-1)
+        adj[AB[i][1]-1].append(AB[i][0]-1)
+    #print(adj)
+    #再建立阻隔表
+    block = [[] for _ in range(N)]
+    for i in range(K):
+        block[CD[i][0]-1].append(CD[i][1]-1)
+        block[CD[i][1]-1].append(CD[i][0]-1)
+    #print(block)
+    #最后判断是否是候选好友
+    res = []
+    for i in range(N):
+        tmp = 0
+        for j in range(N):
+            if i!=j and j not in adj[i] and j not in block[i]:
+                tmp += 1
+        res.append(tmp)
+    return res
 
 if __name__ == '__main__':
-    get_num()
+    getFriends()

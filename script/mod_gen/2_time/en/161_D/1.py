@@ -11,6 +11,3 @@ def solve():
             Q.append(10*x + x%10 + 1)
     print(x)
 solve()
-
-if __name__ == '__main__':
-    solve()

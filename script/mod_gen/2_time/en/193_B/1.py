@@ -17,6 +17,3 @@ def solve():
     else:
         return min_price
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -1,17 +1,17 @@
-def get_score():
-    while True:
-        score = input("请输入你的分数：")
-        if score.isdigit():
-            score = int(score)
-            if score >= 0 and score <= 100:
-                break
-            else:
-                print("请输入0到100之间的数字")
-                continue
-        else:
-            print("请输入数字")
-            continue
-    return score
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = []
+    for i in range(len(t)):
+        if t[i] == '1':
+            result.append(s1)
+        elif t[i] == '2':
+            result.append(s2)
+        elif t[i] == '3':
+            result.append(s3)
+    print(''.join(result))
 
 if __name__ == '__main__':
-    get_score()
+    main()

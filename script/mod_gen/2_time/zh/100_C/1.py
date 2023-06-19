@@ -1,14 +1,10 @@
-def solve():
-    N = int(input())
-    a = list(map(int, input().split()))
-    ans = 0
-    while True:
-        for i in range(N):
-            if a[i] % 2 == 1:
-                return ans
-        for i in range(N):
-            a[i] //= 2
-        ans += 1
+def solve(N, a):
+    count = 0
+    for i in range(N):
+        while a[i] % 2 == 0:
+            a[i] = a[i] / 2
+            count += 1
+    return count
 
 if __name__ == '__main__':
     solve()

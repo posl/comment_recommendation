@@ -1,15 +1,14 @@
 def main():
-    N, M = map(int, input().split())
-    A = []
-    B = []
-    for i in range(M):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    print(A)
-    print(B)
-    print(N)
-    print(M)
+    # 读取输入
+    a, b = map(int, input().split())
+    if a > 0 and b > 0:
+        print("合金")
+    elif a > 0 and b == 0:
+        print("黄金")
+    elif a == 0 and b > 0:
+        print("银")
+    else:
+        print("输入错误")
 
 if __name__ == '__main__':
     main()

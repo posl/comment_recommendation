@@ -1,15 +1,11 @@
 def main():
-    s = input()
-    t = input()
-    min = len(t)
-    for i in range(len(s)-len(t)+1):
-        count = 0
-        for j in range(len(t)):
-            if s[i+j] != t[j]:
-                count += 1
-        if count < min:
-            min = count
-    print(min)
+    N = int(input())
+    A = list(map(int,input().split()))
+    A.sort()
+    sum = 0
+    for i in range(N-1):
+        sum += A[i] * sum(A[i+1:])
+    print(sum%(10**9+7))
 
 if __name__ == '__main__':
     main()

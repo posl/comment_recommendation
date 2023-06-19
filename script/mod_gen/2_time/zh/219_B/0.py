@@ -1,13 +1,17 @@
 def main():
-    x = int(input())
-    if x < 40:
-        print(40 - x)
-    elif x < 70:
-        print(70 - x)
-    elif x < 90:
-        print(90 - x)
-    else:
-        print("expert")
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            result += s1
+        elif t[i] == "2":
+            result += s2
+        elif t[i] == "3":
+            result += s3
+    print(result)
 
 if __name__ == '__main__':
     main()

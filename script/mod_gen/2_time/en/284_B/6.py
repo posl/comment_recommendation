@@ -9,6 +9,3 @@ for t in range(T):
     N = int(raw_input())
     A = map(int, raw_input().split())
     print odd_count(A)
-
-if __name__ == '__main__':
-    odd_count()

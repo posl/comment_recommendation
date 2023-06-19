@@ -5,6 +5,3 @@ def f(n):
 MOD = 998244353
 N = int(input())
 print((f(N) + f(N + 1)) % MOD)
-
-if __name__ == '__main__':
-    f()

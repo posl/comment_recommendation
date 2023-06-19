@@ -1,17 +1,11 @@
-def main():
+def solve():
     n = int(input())
-    if n < 2 or n > 3 * 10 ** 5:
-        return
     a = list(map(int, input().split()))
-    if len(a) != n:
-        return
-    # print(a)
-    count = 0
-    for i in range(n - 1):
-        for j in range(i + 1, n):
-            if a[i] != a[j]:
-                count += 1
-    print(count)
+    ans = 0
+    for i in range(n // 2):
+        if a[i] != a[n - 1 - i]:
+            ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

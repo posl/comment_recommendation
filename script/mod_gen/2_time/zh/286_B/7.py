@@ -1,28 +1,16 @@
-def main():
-    #get N,P,Q,R,S
-    line = input()
-    line = line.split()
-    N = int(line[0])
-    P = int(line[1])
-    Q = int(line[2])
-    R = int(line[3])
-    S = int(line[4])
-    #get A
-    line = input()
-    line = line.split()
-    A = []
-    for i in range(N):
-        A.append(int(line[i]))
-    #get B
-    B = []
-    for i in range(N):
-        if i < P-1 or i > Q-1:
-            B.append(A[i])
-        else:
-            B.append(A[i+R-Q])
-    #print B
-    for i in range(N):
-        print(B[i], end=" ")
+def replace_na(s):
+    if len(s) <= 1:
+        return s
+    elif len(s) == 2 and s == 'na':
+        return 'nya'
+    else:
+        result = ''
+        for i in range(len(s)):
+            if s[i] == 'n' and i < len(s) - 1 and s[i + 1] == 'a':
+                result += 'nya'
+            else:
+                result += s[i]
+        return result
 
 if __name__ == '__main__':
-    main()
+    replace_na()

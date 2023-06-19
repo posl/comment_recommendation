@@ -18,6 +18,3 @@ def main():
                 a[y] = 1
                 break
 main()
-
-if __name__ == '__main__':
-    main()

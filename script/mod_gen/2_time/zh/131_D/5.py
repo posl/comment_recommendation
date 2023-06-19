@@ -1,10 +1,17 @@
-def gcd(x, y):
-    if x < y:
-        x, y = y, x
-    if y == 0:
-        return x
+def main():
+    N = int(input())
+    AB = []
+    for _ in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[1])
+    t = 0
+    for i in range(N):
+        t += AB[i][0]
+        if t > AB[i][1]:
+            print("No")
+            break
     else:
-        return gcd(y, x%y)
+        print("Yes")
 
 if __name__ == '__main__':
-    gcd()
+    main()

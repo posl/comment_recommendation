@@ -1,17 +1,17 @@
-def getMinCost(s, a, b):
-    if len(s) == 0:
-        return 0
-    if len(s) == 1:
-        return a
-    if len(s) == 2:
-        if s[0] == s[1]:
-            return 0
-        else:
-            return min(a, b)
-    if s[0] == s[-1]:
-        return getMinCost(s[1:-1], a, b)
+def solve():
+    # 读取输入
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # 算法
+    for i in range(N):
+        X -= A[i] * B[i]
+    if X < 0:
+        print("No")
     else:
-        return min(getMinCost(s[1:], a, b) + a, getMinCost(s[:-1], a, b) + a, getMinCost(s[1:-1], a, b) + b)
-
-if __name__ == '__main__':
-    getMinCost()
+        print("Yes")
+solve()

@@ -1,7 +1,9 @@
-def gcd(a: int, b: int) -> int:
-    if b == 0:
-        return a
-    return gcd(b, a % b)
+def solve():
+    N = int(input())
+    if N % 2 == 0:
+        print(N // 2)
+    else:
+        print((N // 2) + 1)
 
 if __name__ == '__main__':
-    gcd()
+    solve()

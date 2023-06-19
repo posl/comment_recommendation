@@ -12,6 +12,3 @@ def solve():
     for i in range(10):
         print(DP[N-1][i])
 solve()
-
-if __name__ == '__main__':
-    solve()

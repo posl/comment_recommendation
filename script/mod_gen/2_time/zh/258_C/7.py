@@ -1,23 +1,14 @@
 def main():
-    n = int(input())
-    a = []
-    for i in range(n):
-        a.append(list(map(int, input())))
-    ans = -1
-    for i in range(n):
-        for j in range(n):
-            for k in range(8):
-                x = i
-                y = j
-                s = str(a[x][y])
-                for l in range(n - 1):
-                    x += dx[k]
-                    y += dy[k]
-                    s += str(a[x][y])
-                ans = max(ans, int(s))
-    print(ans)
-dx = [1, 1, 0, -1, -1, -1, 0, 1]
-dy = [0, 1, 1, 1, 0, -1, -1, -1]
+    n, q = map(int, input().split())
+    s = input()
+    s = list(s)
+    for i in range(q):
+        t, x = map(str, input().split())
+        x = int(x)
+        if t == '1':
+            s = s[-x:] + s[:-x]
+        if t == '2':
+            print(s[x - 1])
 
 if __name__ == '__main__':
     main()

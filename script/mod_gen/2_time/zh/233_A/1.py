@@ -1,16 +1,6 @@
 def main():
-    H, W = map(int, input().split())
-    M = [input() for _ in range(H)]
-    dp = [[0] * W for _ in range(H)]
-    dp[0][0] = 1
-    for i in range(H):
-        for j in range(W):
-            if M[i][j] == '.':
-                if i > 0:
-                    dp[i][j] += dp[i - 1][j]
-                if j > 0:
-                    dp[i][j] += dp[i][j - 1]
-    print(dp[H - 1][W - 1])
+    x, y = map(int, input().split())
+    print((y - x) // 10)
 
 if __name__ == '__main__':
     main()

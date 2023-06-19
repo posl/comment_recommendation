@@ -1,9 +1,10 @@
-def find_ABC(S):
+def permutation(n, p, q):
     count = 0
-    for i in range(len(S)-2):
-        if S[i] == 'A' and S[i+1] == 'B' and S[i+2] == 'C':
-            count += 1
+    for i in range(n):
+        for j in range(n):
+            if p[i] == q[j]:
+                count += abs(i-j)
     return count
 
 if __name__ == '__main__':
-    find_ABC()
+    permutation()

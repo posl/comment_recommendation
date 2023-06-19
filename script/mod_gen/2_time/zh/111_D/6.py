@@ -1,18 +1,67 @@
-def check(l):
-    if len(l) % 2 != 0:
-        return False
-    if len(l) == 2:
-        return False
-    if len(l) == 4:
-        if l[0] == l[2] and l[1] == l[3] and l[0] != l[1]:
-            return True
-        else:
-            return False
-    if len(l) > 4:
-        if l[0] == l[2] and l[1] == l[3] and l[0] != l[1]:
-            return check(l[2:])
-        else:
-            return False
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x1, y1 = map(int, input().split())
+        x.append(x1)
+        y.append(y1)
+    #print(x)
+    #print(y)
+    #print("----------")
+    #print(x[0])
+    #print(y[0])
+    #print("----------")
+    #print(x[1])
+    #print(y[1])
+    #print("----------")
+    #print(x[2])
+    #print(y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    #print(x[0], y[0])
+    #print(x[1], y[1])
+    #print(x[2], y[2])
+    #print("----------")
+    m = 0
+    d = []
+    w = []
+    for i in range(n):
+        d.append(0)
+        w.append("")
+    #print(d)
+    #print(w)
+    #print("----------")
+    #print(d[0])
+    #print(w[0])
+    #
 
 if __name__ == '__main__':
-    check()
+    main()

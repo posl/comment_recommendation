@@ -14,6 +14,3 @@ cards = []
 for i in range(0, n):
     cards.append(list(map(int, input().split())))
 result, i = solve(n, s, cards)
-
-if __name__ == '__main__':
-    solve()

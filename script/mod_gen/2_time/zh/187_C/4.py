@@ -1,8 +1,17 @@
-def count_slope(a, b):
-    if a[0] - b[0] == 0:
-        return 0
-    else:
-        return (a[1] - b[1]) / (a[0] - b[0])
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = set(S)
+    for s in S:
+        if s[0] == '!':
+            if s[1:] in S:
+                return print(s[1:])
+        else:
+            if '!'+s in S:
+                return print(s)
+    print('satisfiable')
 
 if __name__ == '__main__':
-    count_slope()
+    main()

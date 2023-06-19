@@ -1,6 +1,9 @@
-def f(x):
-    if x == 0:
-        return 1
-    else:
-        return x * f(x - 1)
-print(f(int(input())))
+def main():
+    x,k=map(int,input().split())
+    ans=x
+    for i in range(k):
+        ans=(ans+5)//10*10
+    print(ans)
+
+if __name__ == '__main__':
+    main()

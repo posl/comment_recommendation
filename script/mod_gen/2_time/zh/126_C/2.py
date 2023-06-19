@@ -1,17 +1,15 @@
 def main():
-    S = input()
-    m1 = int(S[0:2])
-    m2 = int(S[2:4])
-    if m1 < 1 or m1 > 12:
-        if m2 < 1 or m2 > 12:
-            print('NA')
-        else:
-            print('YYMM')
-    else:
-        if m2 < 1 or m2 > 12:
-            print('MMYY')
-        else:
-            print('AMBIGUOUS')
-
-if __name__ == '__main__':
-    main()
+    n,k = map(int,input().split())
+    if n >= k:
+        print(1)
+        return
+    p = 1
+    for i in range(1,n):
+        if i >= k:
+            break
+        t = 1
+        while i*t < k:
+            t *= 2
+        p += 1/(n*t)
+    print(p/2)
+main()

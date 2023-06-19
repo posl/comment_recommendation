@@ -1,15 +1,17 @@
-def FizzBuzz(n):
-    sum=0
-    for i in range(1,n+1):
-        if i%3==0 and i%5==0:
-            sum=sum
-        elif i%3==0:
-            sum=sum
-        elif i%5==0:
-            sum=sum
-        else:
-            sum=sum+i
-    return sum
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+k=int(input())
+ans=0
+for a in range(1,k+1):
+    for b in range(1,k+1):
+        for c in range(1,k+1):
+            ans+=gcd(a,gcd(b,c))
+print(ans)
 
 if __name__ == '__main__':
-    FizzBuzz()
+    gcd()

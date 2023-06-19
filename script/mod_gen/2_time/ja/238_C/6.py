@@ -4,6 +4,3 @@ def  main():
     for  i  in  range(1, 10):
         ans += (N - i) // 10 + 1
     print(ans % 998244353)
-
-if __name__ == '__main__':
-    ()

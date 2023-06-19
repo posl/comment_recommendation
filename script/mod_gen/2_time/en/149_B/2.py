@@ -11,6 +11,3 @@ def main():
             B = 0
     print(A, B)
 main()
-
-if __name__ == '__main__':
-    main()

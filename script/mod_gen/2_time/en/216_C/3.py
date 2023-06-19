@@ -10,6 +10,3 @@ def main():
             N //= 2
     print(S)
 main()
-
-if __name__ == '__main__':
-    main()

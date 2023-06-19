@@ -1,20 +1,12 @@
-def problem119_a():
-    S = input()
-    S = S.split("/")
-    if int(S[0]) < 2019:
-        print("Heisei")
-    elif int(S[0]) == 2019:
-        if int(S[1]) < 4:
-            print("Heisei")
-        elif int(S[1]) == 4:
-            if int(S[2]) <= 30:
-                print("Heisei")
-            else:
-                print("TBD")
-        else:
-            print("TBD")
-    else:
-        print("TBD")
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == 'BTC':
+            x = float(x) * 380000
+        sum += float(x)
+    print(sum)
 
 if __name__ == '__main__':
-    problem119_a()
+    main()

@@ -1,24 +1,17 @@
 def main():
-    n, k = map(int, input().split())
-    candies = list(map(int, input().split()))
-    colors = {}
-    for i in range(k):
-        if candies[i] in colors.keys():
-            colors[candies[i]] += 1
-        else:
-            colors[candies[i]] = 1
-    max_colors = len(colors.keys())
-    for i in range(k, n):
-        if candies[i] in colors.keys():
-            colors[candies[i]] += 1
-        else:
-            colors[candies[i]] = 1
-        if colors[candies[i-k]] == 1:
-            del colors[candies[i-k]]
-        else:
-            colors[candies[i-k]] -= 1
-        max_colors = max(max_colors, len(colors.keys()))
-    print(max_colors)
+    h, w, c = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    ans = 1000000000000000000
+    for i in range(h):
+        for j in range(w):
+            for k in range(h):
+                for l in range(w):
+                    if i == k and j == l:
+                        continue
+                    ans = min(ans, a[i][j] + a[k][l] + c * (abs(i - k) + abs(j - l)))
+    print(ans)
 
 if __name__ == '__main__':
     main()

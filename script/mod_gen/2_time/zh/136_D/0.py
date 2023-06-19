@@ -1,15 +1,15 @@
 def main():
-    N = int(input())
-    H = list(map(int, input().split()))
-    for i in range(N-1):
-        if H[i] > H[i+1]:
-            H[i] -= 1
-    for i in range(N-1):
-        if H[i] > H[i+1]:
-            print("No")
-            break
-    else:
-        print("Yes")
+    s = input()
+    n = len(s)
+    ans = [0] * n
+    for i in range(n):
+        if s[i] == 'L':
+            ans[i - 1] += (n - i + 1) // 2
+            ans[i] += (n - i) // 2
+        else:
+            ans[i + 1] += (i + 2) // 2
+            ans[i] += (i + 1) // 2
+    print(' '.join(map(str, ans)))
 
 if __name__ == '__main__':
     main()

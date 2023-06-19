@@ -1,7 +1,14 @@
-def sheep_wolf(sheep,wolf):
-    if wolf >= sheep:
-        print("不安全")
-    else:
-        print("安全")
-sheep,wolf = map(int,input().split())
-sheep_wolf(sheep,wolf)
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break
+
+if __name__ == '__main__':
+    main()

@@ -1,8 +1,10 @@
-def buy_cabbage(n,a,x,y):
-    if n<=a:
-        return n*x
+def main():
+    N = int(input())
+    S = input()
+    if S[0] == '1':
+        print('高桥')
     else:
-        return a*x+(n-a)*y
+        print('青木')
 
 if __name__ == '__main__':
-    buy_cabbage()
+    main()

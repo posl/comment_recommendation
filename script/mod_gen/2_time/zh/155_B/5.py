@@ -1,13 +1,14 @@
-def problem155_a():
-    a,b,c = map(int,input().split())
-    if a==b and b!=c:
-        print('是')
-    elif a==c and b!=c:
-        print('是')
-    elif b==c and a!=b:
-        print('是')
-    else:
-        print('否')
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 == 0 or a[i] % 5 == 0:
+                continue
+            else:
+                print('DENIED')
+                exit()
+    print('APPROVED')
 
 if __name__ == '__main__':
-    problem155_a()
+    main()

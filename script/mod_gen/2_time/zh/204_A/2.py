@@ -1,6 +1,6 @@
-def get_median(a):
-    a.sort()
-    return a[len(a) // 2]
+def main():
+    x, y = map(int, input().split())
+    print((x - y) % 3)
 
 if __name__ == '__main__':
-    get_median()
+    main()

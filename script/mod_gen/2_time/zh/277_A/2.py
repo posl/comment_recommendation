@@ -1,18 +1,10 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    count = 0
-    for i in range(N):
-        while A[i] % 2 == 0:
-            A[i] = A[i] / 2
-            count += 1
-        while A[i] % 3 == 0:
-            A[i] = A[i] / 3
-            count += 1
-    if len(set(A)) == 1:
-        print(count)
-    else:
-        print(-1)
+    n,x = map(int,input().split())
+    p = list(map(int,input().split()))
+    for i in range(n):
+        if p[i] == x:
+            print(i+1)
+            break
 
 if __name__ == '__main__':
     main()

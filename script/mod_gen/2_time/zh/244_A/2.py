@@ -1,13 +1,7 @@
-def solve(n,x,s):
-    ans = x
-    for i in range(n):
-        if s[i] == 'U':
-            ans = ans//2
-        elif s[i] == 'L':
-            ans = ans*2
-        elif s[i] == 'R':
-            ans = ans*2 + 1
-    return ans
+def main():
+    num = input()
+    str = raw_input()
+    print str[-1]
 
 if __name__ == '__main__':
-    solve()
+    main()

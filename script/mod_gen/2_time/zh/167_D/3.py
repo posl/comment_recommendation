@@ -1,13 +1,11 @@
 def main():
-    n, m, x = map(int, input().split())
-    c = []
-    a = []
-    for i in range(n):
-        c_a = list(map(int, input().split()))
-        c.append(c_a[0])
-        a.append(c_a[1:])
-    print(c)
-    print(a)
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    i = 0
+    while k > 0:
+        i = a[i] - 1
+        k -= 1
+    print(i+1)
 
 if __name__ == '__main__':
     main()

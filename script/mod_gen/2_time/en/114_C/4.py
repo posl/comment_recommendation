@@ -10,6 +10,3 @@ def dfs(n, x):
     return ans
 N = int(input())
 print(dfs(0, set()))
-
-if __name__ == '__main__':
-    dfs()

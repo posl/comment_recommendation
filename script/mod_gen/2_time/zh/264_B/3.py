@@ -1,7 +1,15 @@
-def problem264_a():
-    l,r = map(int,input().split())
-    s = 'atcoder'
-    print(s[l-1:r])
+def main():
+    row, col = map(int, input().split())
+    if row % 2 == 0:
+        if col % 2 == 0:
+            print("black")
+        else:
+            print("white")
+    else:
+        if col % 2 == 0:
+            print("white")
+        else:
+            print("black")
 
 if __name__ == '__main__':
-    problem264_a()
+    main()

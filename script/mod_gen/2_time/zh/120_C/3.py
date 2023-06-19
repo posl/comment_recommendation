@@ -1,25 +1,11 @@
-def get_common_multiple(A,B,K):
-    #A,B,K = map(int,input().split())
-    #print(A,B,K)
-    #print(A,B,K)
-    #print(type(A))
-    #print(type(B))
-    #print(type(K))
-    #print(type(A*B))
-    #print(type(A*B/K))
-    #print(type(A*B//K))
-    #print(type(int(A*B/K)))
-    #print(type(int(A*B//K)))
-    #print(A*B/K)
-    #print(A*B//K)
-    #print(int(A*B/K))
-    #print(int(A*B//K))
-    #print(A*B%K)
-    #print(A*B//K+1)
-    if A*B%K == 0:
-        return int(A*B//K)
-    else:
-        return int(A*B//K+1)
-
-if __name__ == '__main__':
-    get_common_multiple()
+def solve(s):
+    n = len(s)
+    r = 0
+    b = 0
+    for i in range(n):
+        if s[i] == '0':
+            r += 1
+        else:
+            b += 1
+    return min(r, b) * 2
+print(solve(input()))

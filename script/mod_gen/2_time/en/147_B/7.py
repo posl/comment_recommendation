@@ -7,6 +7,3 @@ def main():
             count += 1
     print(count//2)
 main()
-
-if __name__ == '__main__':
-    main()

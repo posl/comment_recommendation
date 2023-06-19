@@ -1,6 +1,19 @@
 def main():
-    A, B, C, D, E = map(int, open(0).read().split())
-    print((A - 1) // 10 * 10 + A + (B - 1) // 10 * 10 + B + (C - 1) // 10 * 10 + C + (D - 1) // 10 * 10 + D + (E - 1) // 10 * 10 + E)
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    x = [a,b,c,d,e]
+    min = x[0]
+    for i in range(1,5):
+        if(x[i] < min):
+            min = x[i]
+    if(n % min == 0):
+        print(int(n/min) + 4)
+    else:
+        print(int(n/min) + 5)
 
 if __name__ == '__main__':
     main()

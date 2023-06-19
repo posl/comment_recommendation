@@ -12,6 +12,3 @@ def main():
             ans.add((X[j]-X[i],Y[j]-Y[i]))
     print(len(ans))
 main()
-
-if __name__ == '__main__':
-    main()

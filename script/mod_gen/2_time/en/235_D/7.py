@@ -8,6 +8,3 @@ def solve(a, N):
     return -1
 a, N = map(int, input().split())
 print(solve(a, N))
-
-if __name__ == '__main__':
-    solve()

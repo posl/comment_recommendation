@@ -1,6 +1,15 @@
 def main():
     N, K = map(int, input().split())
-    print(sum([int(str(i) + str(j)) for i in range(1, N + 1) for j in range(1, K + 1)]))
+    friends = []
+    for _ in range(N):
+        friends.append(list(map(int, input().split())))
+    friends.sort()
+    for friend in friends:
+        if friend[0] <= K:
+            K += friend[1]
+        else:
+            break
+    print(K)
 
 if __name__ == '__main__':
     main()

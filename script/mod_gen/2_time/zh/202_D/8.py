@@ -1,21 +1,14 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int,input().split()))
-    #print(n,a,b,c)
-    d = [0] * n
-    for i in range(n):
-        d[c[i]-1] += 1
-    #print(d)
-    e = [0] * n
-    for i in range(n):
-        e[b[c[i]-1]-1] += 1
-    #print(e)
-    sum = 0
-    for i in range(n):
-        sum += d[i] * e[i]
-    print(sum)
+def solve(a, b, k):
+    if k == 0:
+        return 'a' * a + 'b' * b
+    elif a == 0:
+        return 'b' + 'a' * a + 'b' * b
+    elif b == 0:
+        return 'a' + 'a' * a + 'b' * b
+    elif k <= combi(a + b - 1, a - 1):
+        return 'a' + solve(a - 1, b, k)
+    else:
+        return 'b' + solve(a, b - 1, k - combi(a + b - 1, a - 1))
 
 if __name__ == '__main__':
-    main()
+    solve()

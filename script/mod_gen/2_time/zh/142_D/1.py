@@ -1,10 +1,15 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(n):
-        b[a[i]-1] = i + 1
-    print(' '.join(map(str, b)))
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+a, b = map(int, input().split())
+ans = 1
+for i in range(2, b+1):
+    if b % i == 0:
+        if gcd(a, b//i) == 1:
+            ans = max(ans, b//i)
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    gcd()

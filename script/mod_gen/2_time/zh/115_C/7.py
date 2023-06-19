@@ -1,10 +1,8 @@
-def problems115_b():
-    n = int(input())
-    p = []
-    for i in range(n):
-        p.append(int(input()))
-    p.sort()
-    print(p[0]//2 + sum(p[1:]))
+def main():
+    n, k = map(int, input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    print(min(h[i+k-1]-h[i] for i in range(n-k+1)))
 
 if __name__ == '__main__':
-    problems115_b()
+    main()

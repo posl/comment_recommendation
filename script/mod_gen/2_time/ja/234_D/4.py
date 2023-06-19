@@ -35,6 +35,3 @@ def  main ( ) :
         E [ D [ i ] ]  +=  1
     #print(E)
      #E[i]:i+1が
-
-if __name__ == '__main__':
-    ()

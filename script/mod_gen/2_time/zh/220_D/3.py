@@ -1,13 +1,22 @@
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    x = int(input())
-    sum_a = sum(a)
-    sum_b = sum_a * (10 ** (100 - 1))
-    if sum_b <= x:
-        print(10 ** 100)
-        return
-    sum_b -= sum_a
-    d = (x - sum_b) // sum_a
-    print(100 * d + 1)
-solve()
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        for j in range(10):
+            dp = [0] * 10
+            dp[(i + j) % 10] += 1
+            for a in A:
+                ndp = [0] * 10
+                for k in range(10):
+                    ndp[(k * a + (i + j)) % 10] += dp[k]
+                    ndp[(k * a + (i * j)) % 10] += dp[k]
+                dp = ndp
+            for k in range(10):
+                ans[k] += dp[k]
+    for a in ans:
+        print(a % MOD)
+
+if __name__ == '__main__':
+    main()

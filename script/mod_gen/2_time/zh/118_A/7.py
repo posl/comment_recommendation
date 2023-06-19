@@ -1,8 +1,9 @@
-def f(x, arr):
-    sum = 0
-    for i in range(len(arr)):
-        sum += x ^ arr[i]
-    return sum
+def problems118_a():
+    a,b = map(int,input().split())
+    if b%a==0:
+        print(a+b)
+    else:
+        print(b-a)
 
 if __name__ == '__main__':
-    f()
+    problems118_a()

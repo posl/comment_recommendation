@@ -1,16 +1,15 @@
-def dayToSat(s):
-    if s == '星期一':
-        return 5
-    elif s == '星期二':
-        return 4
-    elif s == '星期三':
-        return 3
-    elif s == '星期四':
-        return 2
-    elif s == '星期五':
-        return 1
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
     else:
-        return 0
+        if s[1] == '1':
+            print('Yes')
+        else:
+            if s[2] == '1':
+                print('Yes')
+            else:
+                print('No')
 
 if __name__ == '__main__':
-    dayToSat()
+    main()

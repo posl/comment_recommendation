@@ -1,5 +1,8 @@
-def get_middle_char(s):
-    return s[int((len(s)+1)/2)-1]
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
 
 if __name__ == '__main__':
-    get_middle_char()
+    gcd()

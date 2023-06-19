@@ -1,16 +1,11 @@
 def main():
-    s = input()
-    t = input()
-    n = len(s)
-    m = len(t)
-    ans = m
-    for i in range(n-m+1):
-        cnt = 0
-        for j in range(m):
-            if s[i+j] != t[j]:
-                cnt += 1
-        ans = min(ans, cnt)
-    print(ans)
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9+7
+    sum = 0
+    for i in range(n):
+        sum += a[i] * (sum(a[i+1:]) % mod)
+    print(sum % mod)
 
 if __name__ == '__main__':
     main()

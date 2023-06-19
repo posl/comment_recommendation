@@ -1,5 +1,6 @@
-def solve(H):
-    return (H*(12800000+H))**(1/2)
+def main():
+    num = int(input())
+    print(num//10)
 
 if __name__ == '__main__':
-    solve()
+    main()

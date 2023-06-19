@@ -1,13 +1,13 @@
-def solve():
+def main():
     N = int(input())
-    P = list(map(int, input().split()))
-    min_val = N + 1
     ans = 0
-    for i in range(N):
-        if P[i] <= min_val:
-            ans += 1
-            min_val = P[i]
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            k = str(i)
+            l = str(j)
+            if k[-1] == l[0] and k[0] == l[-1]:
+                ans += 1
     print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

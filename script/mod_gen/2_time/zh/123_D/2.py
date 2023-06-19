@@ -1,16 +1,15 @@
 def main():
-    n = int(input())
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    #print(n,a,b,c,d,e)
-    if n % a == 0:
-        ans = int(n/a) + 4
-    else:
-        ans = int(n/a) + 5
-    print(ans)
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ab = [i + j for i in a for j in b]
+    ab.sort(reverse=True)
+    ab = ab[:k]
+    abc = [i + j for i in ab for j in c]
+    abc.sort(reverse=True)
+    for i in abc[:k]:
+        print(i)
 
 if __name__ == '__main__':
     main()

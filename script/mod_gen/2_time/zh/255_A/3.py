@@ -1,8 +1,5 @@
-def f(n):
-    import math
-    ans = 0
-    for i in range(1,int(math.sqrt(n))+1):
-        ans += int(n/i)-i+1
-    return ans
-n = int(input())
-print(f(n))
+def solve():
+    r,c = map(int,input().split())
+    a = [list(map(int,input().split())) for _ in range(2)]
+    print(a[r-1][c-1])
+solve()

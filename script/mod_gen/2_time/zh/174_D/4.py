@@ -1,13 +1,13 @@
-def find_multiple_of_K(K):
-    if K % 5 == 0:
-        return -1
-    
-    x = 7 % K
-    for i in range(1, K):
-        if x == 0:
-            return i
-        x = (x * 10 + 7) % K
-    return -1
+def solve(n,c):
+    r = 0
+    w = 0
+    for i in range(n):
+        if c[i] == 'R':
+            r += 1
+    for i in range(r):
+        if c[i] == 'W':
+            w += 1
+    return w
 
 if __name__ == '__main__':
-    find_multiple_of_K()
+    solve()

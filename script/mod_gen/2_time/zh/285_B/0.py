@@ -1,9 +1,11 @@
 def main():
-    a,b = map(int,input().split())
-    if a+1 == b:
-        print("Yes")
-    else:
-        print("No")
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        while i + l < n and s[l] != s[i + l]:
+            l += 1
+        print(l)
 
 if __name__ == '__main__':
     main()

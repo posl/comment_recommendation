@@ -1,19 +1,11 @@
 def main():
-    s = input()
-    k = int(input())
-    s = s.replace('.',' ')
-    s = s.split()
-    s = [len(i) for i in s]
-    if len(s) == 1:
-        print(s[0] + k)
-        exit()
-    ans = 0
-    for i in range(len(s)):
-        if i == 0 or i == len(s) - 1:
-            ans = max(ans, s[i] + k)
-        else:
-            ans = max(ans, s[i] + k + 1)
-    print(ans)
+    n = int(input())
+    if n < 10:
+        print('AGC00'+str(n))
+    elif n < 100:
+        print('AGC0'+str(n))
+    else:
+        print('AGC'+str(n))
 
 if __name__ == '__main__':
     main()

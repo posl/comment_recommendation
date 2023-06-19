@@ -1,18 +1,8 @@
-def main():
-    S = input()
-    mod = 10**9+7
-    dp = [[0]*13 for _ in range(len(S)+1)]
-    dp[0][0] = 1
-    for i in range(len(S)):
-        for j in range(10):
-            if S[i] == '?':
-                for k in range(13):
-                    dp[i+1][(k*10+j)%13] += dp[i][k]
-            else:
-                dp[i+1][(int(S[i])*10+j)%13] += dp[i][j]
-        for k in range(13):
-            dp[i+1][k] %= mod
-    print(dp[len(S)][5])
+def pour_water(a,b,c):
+    if c <= a - b:
+        return 0
+    else:
+        return c - (a - b)
 
 if __name__ == '__main__':
-    main()
+    pour_water()

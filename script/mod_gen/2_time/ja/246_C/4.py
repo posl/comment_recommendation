@@ -11,6 +11,3 @@ def main():
             ans += a[i]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def   main () :
          for   j   in   range ( i   +   1 ,  R   +   1 ): 
              min_mod   =   min ( min_mod ,   ( i   *   j )   %   2019 ) 
      print ( min_mod )
-
-if __name__ == '__main__':
-    ()

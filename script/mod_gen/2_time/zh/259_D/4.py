@@ -1,19 +1,8 @@
-def main():
-    s = input()
-    t = input()
-    if len(s) + 1 == len(t):
-        for i in range(len(s)):
-            if s[i] == t[i]:
-                continue
-            else:
-                if s[i] == t[i+1]:
-                    continue
-                else:
-                    print("No")
-                    exit()
-        print("Yes")
-    else:
-        print("No")
+def check(x, y, circles):
+    for circle in circles:
+        if (x-circle[0])**2+(y-circle[1])**2 < circle[2]**2:
+            return True
+    return False
 
 if __name__ == '__main__':
-    main()
+    check()

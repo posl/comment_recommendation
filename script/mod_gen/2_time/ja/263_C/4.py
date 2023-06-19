@@ -10,6 +10,3 @@ def dfs(n, m, l):
             dfs(n - 1, m, l + [i])
 n, m = map(int, input().split())
 dfs(n, m, [])
-
-if __name__ == '__main__':
-    dfs()

@@ -1,9 +1,5 @@
-def main():
-    p = list(map(int,input().split()))
-    s = ''
-    for i in range(26):
-        s += chr(p[i]+96)
-    print(s)
+def rotate90(grid):
+    return list(zip(*grid[::-1]))
 
 if __name__ == '__main__':
-    main()
+    rotate90()

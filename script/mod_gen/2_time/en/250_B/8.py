@@ -9,6 +9,3 @@ def  solve ( N ,  A ,  B ):
          for  j  in  range ( B * N ):
             ans [ i ][ j ] =  '.'   if  ans [ i ][ j ] ==  0   else  '#'
          print ( '' . join ( ans [ i ]))
-
-if __name__ == '__main__':
-    ()

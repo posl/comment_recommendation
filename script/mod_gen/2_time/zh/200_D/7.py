@@ -1,16 +1,9 @@
-def count_pairs(n, a):
-    d = {}
-    for i in range(n):
-        r = a[i] % 200
-        if r in d:
-            d[r] += 1
-        else:
-            d[r] = 1
-    count = 0
-    for k in d:
-        if d[k] > 1:
-            count += (d[k] - 1) * d[k] // 2
-    return count
+def find_seq(nums, mod):
+    for i in range(len(nums)):
+        for j in range(i+1,len(nums)):
+            if (nums[i] + nums[j]) % mod == 0:
+                return (i,j)
+    return None
 
 if __name__ == '__main__':
-    count_pairs()
+    find_seq()

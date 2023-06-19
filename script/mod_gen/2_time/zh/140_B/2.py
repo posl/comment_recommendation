@@ -1,6 +1,18 @@
 def main():
-    n = int(raw_input())
-    print n**3
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    #print(B)
+    #print(C)
+    score = 0
+    for i in range(N):
+        score += B[A[i]-1]
+        if i < N-1 and A[i]+1 == A[i+1]:
+            score += C[A[i]-1]
+    print(score)
 
 if __name__ == '__main__':
     main()

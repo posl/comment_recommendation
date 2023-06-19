@@ -9,6 +9,3 @@ def rec(arr, n, m):
             rec(arr+[i], n, m)
 n, m = list(map(int, input().split()))
 rec([], n, m)
-
-if __name__ == '__main__':
-    rec()

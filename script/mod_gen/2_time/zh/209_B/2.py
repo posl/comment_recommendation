@@ -1,9 +1,19 @@
 def main():
-    a, b = map(int, input().split())
-    count = 0
-    for i in range(a, b + 1):
-        count += 1
-    print(count)
+    # input
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    # process
+    sum = 0
+    for i in range(n):
+        if i%2 == 1:
+            sum += a[i]-1
+        else:
+            sum += a[i]
+    # output
+    if sum <= x:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
     main()

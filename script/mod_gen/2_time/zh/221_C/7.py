@@ -1,11 +1,12 @@
-def swap(S, T):
-    for i in range(len(S)-1):
-        if S[i] != T[i]:
-            if S[i+1] != T[i+1]:
-                return False
-    return True
-S = input()
-T = input()
+def get_max_product(num):
+    num = str(num)
+    length = len(num)
+    if length == 2:
+        return int(num[0]) * int(num[1])
+    elif length == 3:
+        return int(num[0]) * int(num[1:]) if int(num[0]) > int(num[1]) else int(num[0]) * int(num[2])
+    else:
+        return int(num[0]) * int(num[1:]) if int(num[0]) > int(num[1]) else int(num[0]) * int(num[2:])
 
 if __name__ == '__main__':
-    swap()
+    get_max_product()

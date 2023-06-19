@@ -1,11 +1,10 @@
-def solve(n,k):
-    ans = n
-    while True:
-        if ans > abs(ans-k):
-            ans = abs(ans-k)
-        else:
-            break
-    return ans
+def f(n):
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    else:
+        return f(n - 1) + f(n - 2)
 
 if __name__ == '__main__':
-    solve()
+    f()

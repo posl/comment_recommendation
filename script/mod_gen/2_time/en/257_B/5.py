@@ -19,6 +19,3 @@ def main():
         else:
             print(A[B[i] - 1], end=' ')
 main()
-
-if __name__ == '__main__':
-    main()

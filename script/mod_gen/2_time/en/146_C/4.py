@@ -15,6 +15,3 @@ def  main():
         else:
             max = mid
     print(min)
-
-if __name__ == '__main__':
-    ()

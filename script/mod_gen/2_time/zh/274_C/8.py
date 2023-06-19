@@ -1,45 +1,11 @@
 def main():
-    h, w = map(int, input().split())
-    c = [input() for _ in range(h)]
-    ans = [[0 for _ in range(w)] for _ in range(h)]
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in range(h):
-        for j in range(w):
-            if c[i][j] == '#':
-                ans[i][j] = '#'
-    for i in ans:
-        print(''.join(i))
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    ans = [0] * (2 * n + 1)
+    for i in range(n):
+        ans[a[i]] = i + 1
+    for i in range(1, 2 * n):
+        print(ans[i])
 
 if __name__ == '__main__':
     main()

@@ -1,18 +1,14 @@
 def main():
-    a,b,c,d = map(int,input().split())
-    if a < b:
-        print(-1)
-        return
-    if c >= b*d:
-        print(-1)
-        return
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        tlr.append(list(map(int, input().split())))
     ans = 0
-    while a > b*d:
-        a += b
-        a -= c
-        ans += 1
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if (tlr[i][1] <= tlr[j][1] and tlr[j][1] <= tlr[i][2]) or (tlr[i][1] <= tlr[j][2] and tlr[j][2] <= tlr[i][2]) or (tlr[j][1] <= tlr[i][1] and tlr[i][1] <= tlr[j][2]) or (tlr[j][1] <= tlr[i][2] and tlr[i][2] <= tlr[j][2]):
+                ans += 1
     print(ans)
-    return
 
 if __name__ == '__main__':
     main()

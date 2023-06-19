@@ -1,10 +1,11 @@
 def main():
-    s = input()
-    t = input()
-    if s == t[:-1]:
-        print('Yes')
+    a,b,c,k = map(int,input().split())
+    if a >= k:
+        print(k)
+    elif a+b >= k:
+        print(a)
     else:
-        print('No')
+        print(a-(k-a-b))
 
 if __name__ == '__main__':
     main()

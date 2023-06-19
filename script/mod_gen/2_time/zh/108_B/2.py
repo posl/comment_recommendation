@@ -1,6 +1,6 @@
 def main():
-    n = int(input())
-    print((n//2)*(n-n//2))
+    x1,y1,x2,y2 = map(int,input().split())
+    print(x2+y1-y2,y2+x2-x1,x1+y1-y2,y1+x2-x1)
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,3 @@ def takoyaki(N,X,T):
     return count
 N,X,T = list(map(int,input().split()))
 print(takoyaki(N,X,T))
-
-if __name__ == '__main__':
-    takoyaki()

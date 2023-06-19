@@ -1,8 +1,19 @@
 def main():
-    h, w = map(int, input().split())
-    s = [input() for _ in range(h)]
-    print(s)
-    # 从上往下第1行和从左往下第3列的棋子可以通过3步棋到达另一个棋子所在的位置：下、左、左。  由于不可能在两步或更短的时间内做到这一点，所以应该打印3。
+    n = int(input())
+    s = []
+    for i in range(n):
+        query = input().split()
+        if query[0] == '1':
+            s.append(int(query[1]))
+        elif query[0] == '2':
+            c = int(query[2])
+            for j in range(c):
+                if int(query[1]) in s:
+                    s.remove(int(query[1]))
+                else:
+                    break
+        else:
+            print(max(s) - min(s))
 
 if __name__ == '__main__':
     main()

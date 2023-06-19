@@ -6,6 +6,3 @@ def f(a):
 n = int(input())
 a = [list(map(int,input().split())) for _ in range(n)]
 print(f([a[i][j] for i in range(n) for j in range(i+1,n)]))
-
-if __name__ == '__main__':
-    f()

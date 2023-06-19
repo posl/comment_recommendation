@@ -1,13 +1,11 @@
-def main():
-    N, M = map(int, input().split())
-    S = [input() for i in range(N)]
-    T = [input() for i in range(M)]
-    ans = 0
-    for s in S:
-        for t in T:
-            if s[-3:] == t:
-                ans += 1
-    print(ans)
+def isPathGraph(n, m, edges):
+    if m != n-1:
+        return False
+    edges = sorted(edges, key=lambda x: x[0])
+    for i in range(0, n-1):
+        if edges[i][0] != i+1 or edges[i][1] != i+2:
+            return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    isPathGraph()

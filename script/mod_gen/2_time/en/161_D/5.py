@@ -10,6 +10,3 @@ def lunlun(n):
     return ret
 n = int(input())
 print(lunlun(n))
-
-if __name__ == '__main__':
-    lunlun()

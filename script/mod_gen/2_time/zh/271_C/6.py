@@ -1,11 +1,12 @@
 def main():
-    n, q = map(int, input().split())
-    L = []
-    for i in range(n):
-        L.append(list(map(int, input().split())))
-    for i in range(q):
-        s, t = map(int, input().split())
-        print(L[s-1][t-1])
-
-if __name__ == '__main__':
-    main()
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n-1):
+        if a[i] * 2 < a[i+1]:
+            ans = 0
+        else:
+            ans += 1
+    print(ans + 1)
+main()

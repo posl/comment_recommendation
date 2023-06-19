@@ -1,9 +1,9 @@
-def main():
-    x = input().split(" ")
-    for i in range(0, len(x)):
-        if x[i] == '0':
-            print(i+1)
-            break
+def count_legs(num_animals, num_legs):
+    for num_tur in range(num_animals + 1):
+        num_crane = num_animals - num_tur
+        if 2 * num_crane + 4 * num_tur == num_legs:
+            return True
+    return False
 
 if __name__ == '__main__':
-    main()
+    count_legs()

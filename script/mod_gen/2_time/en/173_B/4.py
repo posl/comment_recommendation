@@ -12,6 +12,3 @@ def main():
     print("TLE x {}".format(TLE))
     print("RE x {}".format(RE))
 main()
-
-if __name__ == '__main__':
-    main()

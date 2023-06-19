@@ -1,25 +1,10 @@
-def main():
-    # 读取输入
+def problem146_b():
+    n = int(input())
     s = input()
-    # 请在此添加代码
-    day = 0
-    # 请在此添加代码
-    if s == 'SUN':
-        day = 7
-    elif s == 'MON':
-        day = 6
-    elif s == 'TUE':
-        day = 5
-    elif s == 'WED':
-        day = 4
-    elif s == 'THU':
-        day = 3
-    elif s == 'FRI':
-        day = 2
-    elif s == 'SAT':
-        day = 1
-    # 请在此添加代码
-    print(day)
+    ans = ''
+    for c in s:
+        ans += chr((ord(c) - ord('A') + n) % 26 + ord('A'))
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    problem146_b()

@@ -1,13 +1,13 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    max_angle = 0
-    for i in range(N):
-        angle = 0
-        for j in range(N):
-            angle += A[(j + i) % N]
-            max_angle = max(max_angle, min(angle, 360 - angle))
-    print(360 - max_angle)
-
-if __name__ == '__main__':
-    main()
+def calc(N):
+    if N < 10:
+        return N
+    else:
+        s = str(N)
+        l = len(s)
+        first = int(s[0])
+        if first == 1:
+            return calc(10 ** (l - 1) - 1) + calc(N - 10 ** (l - 1))
+        else:
+            return first * calc(10 ** (l - 1) - 1) + calc(N - first * (10 ** (l - 1)))
+N = int(input())
+print(calc(N) % 998244353)

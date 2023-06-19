@@ -1,21 +1,18 @@
-def main():
-    #输入
-    n = int(input())
-    p = [int(x) for x in input().split()]
-    q = [int(x) for x in input().split()]
-    #处理
-    def permutation_to_number(p):
-        n = len(p)
-        r = 0
-        for i in range(n):
-            c = 0
-            for j in range(i + 1, n):
-                if p[i] > p[j]:
-                    c += 1
-            r += c * math.factorial(n - i - 1)
-        return r
-    #输出
-    print(abs(permutation_to_number(p) - permutation_to_number(q)))
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+a.sort()
+lcm = a[0]
+for i in range(1, n):
+    lcm = lcm * a[i] // gcd(lcm, a[i])
+count = 0
+for i in range(n):
+    count += (lcm // a[i]) // 2
+print(count % (10 ** 9 + 7))
 
 if __name__ == '__main__':
-    main()
+    gcd()

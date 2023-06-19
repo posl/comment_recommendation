@@ -1,9 +1,10 @@
-def main():
-    n = int(input())
-    if n % 2 == 0:
-        print('白色')
-    else:
-        print('黑')
+def solve():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        sum += (B-A+1)*(A+B)//2
+    print(sum)
 
 if __name__ == '__main__':
-    main()
+    solve()

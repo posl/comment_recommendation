@@ -1,12 +1,12 @@
 def main():
     D, G = map(int, input().split())
-    P = []
-    C = []
+    p = []
+    c = []
     for i in range(D):
-        p, c = map(int, input().split())
-        P.append(p)
-        C.append(c)
-    min_count =
+        p_i, c_i = map(int, input().split())
+        p.append(p_i)
+        c.append(c_i)
+    ans =
 
 if __name__ == '__main__':
     main()

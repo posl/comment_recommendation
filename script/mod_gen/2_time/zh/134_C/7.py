@@ -1,8 +1,10 @@
-def calc_min_checker(tree_num, distance):
-    if tree_num < 2:
-        return 1
-    else:
-        return 1 + (tree_num - 2 * distance - 1) // (2 * distance + 1)
-
-if __name__ == '__main__':
-    calc_min_checker()
+def main():
+    N=int(input())
+    A=[]
+    for i in range(N):
+        A.append(int(input()))
+    for i in range(N):
+        A_copy=A.copy()
+        A_copy.remove(A[i])
+        print(max(A_copy))
+main()

@@ -1,8 +1,9 @@
-def solve(n, a):
-    b = [0] * n
-    for i in range(n):
-        b[i] = 1 if a[i] else 0
-    return b
+def problems135_a():
+    a,b = map(int,input().split())
+    if (a+b)%2==0:
+        print((a+b)//2)
+    else:
+        print("IMPOSSIBLE")
 
 if __name__ == '__main__':
-    solve()
+    problems135_a()

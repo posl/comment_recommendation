@@ -1,19 +1,20 @@
-def findNumber(D, N):
-    if D == 0:
-        if N == 100:
-            return 101
+def main():
+    d, n = map(int, input().split())
+    if d == 0:
+        if n == 100:
+            print(101)
         else:
-            return N
-    elif D == 1:
-        if N == 100:
-            return 10100
+            print(n)
+    elif d == 1:
+        if n == 100:
+            print(10100)
         else:
-            return 100 * N
-    else:
-        if N == 100:
-            return 1010000
+            print(100*n)
+    elif d == 2:
+        if n == 100:
+            print(1010000)
         else:
-            return 10000 * N
+            print(10000*n)
 
 if __name__ == '__main__':
-    findNumber()
+    main()

@@ -1,68 +1,29 @@
 def main():
-    # N, P = input().split()
-    # grades = input().split()
-    # print(grades)
-    # print(grades[0])
-    # print(grades[1])
-    # print(grades[2])
-    # print(grades[3])
-    # print(N)
-    # print(P)
-    # print(grades)
-    # print(grades[0])
-    # print(grades[1])
-    # print(grades[2])
-    # print(grades[3])
-    # print(grades[4])
-    # print(grades[5])
-    # print(grades[6])
-    # print(grades[7])
-    # print(grades[8])
-    # print(grades[9])
-    # print(grades[10])
-    # print(grades[11])
-    # print(grades[12])
-    # print(grades[13])
-    # print(grades[14])
-    # print(grades[15])
-    # print(grades[16])
-    # print(grades[17])
-    # print(grades[18])
-    # print(grades[19])
-    # print(grades[20])
-    # print(grades[21])
-    # print(grades[22])
-    # print(grades[23])
-    # print(grades[24])
-    # print(grades[25])
-    # print(grades[26])
-    # print(grades[27])
-    # print(grades[28])
-    # print(grades[29])
-    # print(grades[30])
-    # print(grades[31])
-    # print(grades[32])
-    # print(grades[33])
-    # print(grades[34])
-    # print(grades[35])
-    # print(grades[36])
-    # print(grades[37])
-    # print(grades[38])
-    # print(grades[39])
-    # print(grades[40])
-    # print(grades[41])
-    # print(grades[42])
-    # print(grades[43])
-    # print(grades[44])
-    # print(grades[45])
-    # print(grades[46])
-    # print(grades[47])
-    # print(grades[48])
-    # print(grades[49])
-    # print(grades[50])
-    # print(grades[51])
-    # print(grades[52])
-    #
+    n, m = map(int, input().split())
+    a = [input() for _ in range(2*n)]
+    rank = [[i+1, 0] for i in range(2*n)]
+    for i in range(m):
+        for j in range(n):
+            p1 = rank[2*j][0]-1
+            p2 = rank[2*j+1][0]-1
+            if a[p1][i] == 'G':
+                if a[p2][i] == 'C':
+                    rank[2*j][1] += 1
+                elif a[p2][i] == 'P':
+                    rank[2*j+1][1] += 1
+            elif a[p1][i] == 'C':
+                if a[p2][i] == 'P':
+                    rank[2*j][1] += 1
+                elif a[p2][i] == 'G':
+                    rank[2*j+1][1] += 1
+            elif a[p1][i] == 'P':
+                if a[p2][i] == 'G':
+                    rank[2*j][1] += 1
+                elif a[p2][i] == 'C':
+                    rank[2*j+1][1] += 1
+        rank.sort(key=lambda x: (-x[1], x[0]))
+    for i in range(2*n):
+        print(rank[i][0])
 
 if __name__ == '__main__':
     main()

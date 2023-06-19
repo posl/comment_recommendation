@@ -1,9 +1,16 @@
 def main():
-    A,B = map(int,input().split())
-    if A > B:
-        print(0)
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        if i % 2 == 1:
+            sum += a[i] - 1
+        else:
+            sum += a[i]
+    if sum <= x:
+        print("Yes")
     else:
-        print(B-A+1)
+        print("No")
 
 if __name__ == '__main__':
     main()

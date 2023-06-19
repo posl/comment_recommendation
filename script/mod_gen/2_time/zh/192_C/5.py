@@ -1,11 +1,7 @@
-def isDifficult(s):
-    for i in range(len(s)):
-        if i%2 == 0 and s[i].islower():
-            return False
-        if i%2 == 1 and s[i].isupper():
-            return False
-    return True
-s = input()
+def g1(x):
+    x = str(x)
+    x = ''.join(sorted(x, reverse=True))
+    return int(x)
 
 if __name__ == '__main__':
-    isDifficult()
+    g1()

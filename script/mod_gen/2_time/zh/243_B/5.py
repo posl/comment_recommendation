@@ -1,22 +1,9 @@
-def problems243_a():
-    v,a,b,c = map(int, input().split())
-    while v > 0:
-        if v >= a:
-            v -= a
-        else:
-            print('F')
-            return
-        if v >= b:
-            v -= b
-        else:
-            print('M')
-            return
-        if v >= c:
-            v -= c
-        else:
-            print('T')
-            return
-    print('T')
+def get_same_num(a_list, b_list):
+    same_num = 0
+    for i in range(len(a_list)):
+        if a_list[i] in b_list and a_list[i] == b_list[i]:
+            same_num += 1
+    return same_num
 
 if __name__ == '__main__':
-    problems243_a()
+    get_same_num()

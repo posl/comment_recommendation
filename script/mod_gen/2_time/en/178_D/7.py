@@ -7,6 +7,3 @@ def get_num_sequences(S):
         dp[i] %= MOD
     return dp[S]
 print(get_num_sequences(int(input())))
-
-if __name__ == '__main__':
-    get_num_sequences()

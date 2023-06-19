@@ -1,6 +1,15 @@
-def isPolygon(L):
-    L.sort(reverse=True)
-    return L[0] < sum(L[1:])
-N = int(input())
-L = list(map(int, input().split()))
-print("是" if isPolygon(L) else "否")
+def solution():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    if N >= M:
+        print(0)
+        return
+    else:
+        X_diff = []
+        for i in range(M-1):
+            X_diff.append(X[i+1]-X[i])
+        X_diff.sort(reverse=True)
+        print(sum(X_diff[N-1:]))
+        return
+solution()

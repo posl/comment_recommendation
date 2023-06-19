@@ -1,41 +1,31 @@
 def main():
-    X = input()
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    X = list(X)
-    X.sort()
-    X = ''.join(X)
-    X = X[::-1]
-    S.sort(key = lambda x:X.index(x[0]))
-    S.sort(key = lambda x:X.index(x[1]))
-    S.sort(key = lambda x:X.index(x[2]))
-    S.sort(key = lambda x:X.index(x[3]))
-    S.sort(key = lambda x:X.index(x[4]))
-    S.sort(key = lambda x:X.index(x[5]))
-    S.sort(key = lambda x:X.index(x[6]))
-    S.sort(key = lambda x:X.index(x[7]))
-    S.sort(key = lambda x:X.index(x[8]))
-    S.sort(key = lambda x:X.index(x[9]))
-    S.sort(key = lambda x:X.index(x[10]))
-    S.sort(key = lambda x:X.index(x[11]))
-    S.sort(key = lambda x:X.index(x[12]))
-    S.sort(key = lambda x:X.index(x[13]))
-    S.sort(key = lambda x:X.index(x[14]))
-    S.sort(key = lambda x:X.index(x[15]))
-    S.sort(key = lambda x:X.index(x[16]))
-    S.sort(key = lambda x:X.index(x[17]))
-    S.sort(key = lambda x:X.index(x[18]))
-    S.sort(key = lambda x:X.index(x[19]))
-    S.sort(key = lambda x:X.index(x[20]))
-    S.sort(key = lambda x:X.index(x[21]))
-    S.sort(key = lambda x:X.index(x[22]))
-    S.sort(key = lambda x:X.index(x[23]))
-    S.sort(key = lambda x:X.index(x[24]))
-    S.sort(key = lambda x:X.index(x[25]))
-    for i in range(N):
-        print(S[i])
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    dp = [[False for i in range(y+1)] for j in range(x+1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(x, -1, -1):
+            for k in range(y, -1, -1):
+                if j >= a[i] and k >= b[i]:
+                    dp[j][k] = dp[j][k] or dp[j-a[i]][k-b[i]]
+    if dp[x][y]:
+        print(0)
+        return
+    for i in range(n):
+        for j in range(x, -1, -1):
+            for k in range(y, -1, -1):
+                if j >= a[i] and k >= b[i]:
+                    dp[j][k] = dp[j][k] or dp[j-a[i]][k-b[i]]
+    if dp[x][y]:
+        print(1)
+        return
+    print(-1)
 
 if __name__ == '__main__':
     main()

@@ -1,9 +1,10 @@
-def calcScore(A, Q):
-    score = 0
-    for i in range(len(Q)):
-        if (A[Q[i][1]-1] - A[Q[i][0]-1]) == Q[i][2]:
-            score += Q[i][3]
-    return score
+def calc(A, B, N):
+    max = 0
+    for x in range(0, N+1):
+        val = A*x//B - A*(x//B)
+        if max < val:
+            max = val
+    return max
 
 if __name__ == '__main__':
-    calcScore()
+    calc()

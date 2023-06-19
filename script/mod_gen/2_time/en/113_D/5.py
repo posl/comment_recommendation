@@ -10,6 +10,3 @@ def  main():
                 dp[i + 1][j + 1] += dp[i][j]
             dp[i + 1][j] += dp[i][j]
     print(dp[h][k - 1] % 1000000007)
-
-if __name__ == '__main__':
-    ()

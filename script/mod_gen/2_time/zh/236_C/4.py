@@ -1,13 +1,18 @@
-def get_missing_card(n, cards):
-    card_dict = {}
-    for card in cards:
-        if card in card_dict:
-            card_dict[card] += 1
+def solve():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+    s_dict = {}
+    for i in range(n):
+        s_dict[s[i]] = i
+    t_dict = {}
+    for i in range(m):
+        t_dict[t[i]] = i
+    for i in range(n):
+        if s[i] in t_dict:
+            print("Yes")
         else:
-            card_dict[card] = 1
-    for i in range(1, n + 1):
-        if i not in card_dict or card_dict[i] != 4:
-            return i
+            print("No")
 
 if __name__ == '__main__':
-    get_missing_card()
+    solve()

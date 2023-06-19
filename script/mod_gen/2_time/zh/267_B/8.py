@@ -1,7 +1,5 @@
-def solve():
-    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    s = input()
-    print(7 - days.index(s))
+def problem267_b():
+    pass
 
 if __name__ == '__main__':
-    solve()
+    problem267_b()

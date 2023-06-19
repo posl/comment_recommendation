@@ -1,10 +1,9 @@
 def main():
-    a,b,n = map(int, input().split())
-    if b > n:
-        x = n
+    s = input()
+    if s == "ABC":
+        print("ARC")
     else:
-        x = b-1
-    print((a*x)//b - a*(x//b))
+        print("ABC")
 
 if __name__ == '__main__':
     main()

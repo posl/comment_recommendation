@@ -1,22 +1,10 @@
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    if s1 == 'ABC':
-        if s2 == 'ARC':
-            print('AGC')
-        else:
-            print('ARC')
-    elif s1 == 'ARC':
-        if s2 == 'ABC':
-            print('AGC')
-        else:
-            print('ABC')
-    else:
-        if s2 == 'ABC':
-            print('ARC')
-        else:
-            print('ABC')
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(*Q)
 
 if __name__ == '__main__':
     main()

@@ -1,14 +1,8 @@
-def main():
-    a,b,c,d = map(int,input().split())
-    while True:
-        c -= b
-        if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
+def count_words(words):
+    #print(words)
+    words_list = words.split()
+    #print(words_list)
+    return len(set(words_list))
 
 if __name__ == '__main__':
-    main()
+    count_words()

@@ -16,6 +16,3 @@ def main():
         dp[1][i] = dp[0][A[i]] + dp[1][A[i]]
     print((dp[1][0] + 1) // 2)
 main()
-
-if __name__ == '__main__':
-    main()

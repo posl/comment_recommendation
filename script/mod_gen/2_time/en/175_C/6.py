@@ -9,6 +9,3 @@ def main():
     else:
         print(d - x % d)
 main()
-
-if __name__ == '__main__':
-    main()

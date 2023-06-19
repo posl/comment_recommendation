@@ -1,14 +1,9 @@
-def main():
+def problems238_a():
     n = int(input())
-    s = input()
-    a = [0]
-    for i in range(n):
-        if s[i] == 'L':
-            a.insert(0,i+1)
-        else:
-            a.append(i+1)
-    for i in range(n+1):
-        print(a[i],end=' ')
+    if 2**n > n**2:
+        print('是')
+    else:
+        print('否')
 
 if __name__ == '__main__':
-    main()
+    problems238_a()

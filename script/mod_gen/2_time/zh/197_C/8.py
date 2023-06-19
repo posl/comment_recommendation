@@ -1,9 +1,13 @@
-def get_input():
-    H, W, X, Y = map(int, input().split())
-    S = []
-    for i in range(H):
-        S.append(input())
-    return H, W, X, Y, S
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    res = 2**30
+    for i in range(N):
+        t = A[i]
+        for j in range(i, N):
+            t = t | A[j]
+            res = min(res, t)
+    print(res)
 
 if __name__ == '__main__':
-    get_input()
+    main()

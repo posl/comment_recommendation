@@ -1,11 +1,9 @@
-def get_input():
-    N = int(input())
-    x = []
-    y = []
-    for i in range(N):
-        x.append(int(input().split()[0]))
-        y.append(int(input().split()[1]))
-    return N, x, y
+def main():
+    n, k, a = map(int, input().split())
+    if k % n == 0:
+        print(a)
+    else:
+        print(a + k % n - 1)
 
 if __name__ == '__main__':
-    get_input()
+    main()

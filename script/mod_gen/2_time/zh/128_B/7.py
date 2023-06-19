@@ -1,5 +1,5 @@
-def solve(a, p):
-    return (a * 3 + p) // 2
+def get_key(x):
+    return x[1]
 
 if __name__ == '__main__':
-    solve()
+    get_key()

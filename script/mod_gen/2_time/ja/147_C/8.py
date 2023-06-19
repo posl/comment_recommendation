@@ -22,6 +22,3 @@ def   main ():
         if ok:
             ans = max(ans, bin(i).count("1"))
     print(ans)
-
-if __name__ == '__main__':
-    ()

@@ -12,6 +12,3 @@ for i in range(N):
     for j in range(i + 1, N):
         max_dist = max(max_dist, dist(X[i], Y[i], X[j], Y[j]))
 print(max_dist)
-
-if __name__ == '__main__':
-    dist()

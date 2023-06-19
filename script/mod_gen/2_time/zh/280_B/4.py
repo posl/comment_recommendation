@@ -1,12 +1,11 @@
 def main():
-    h, w = map(int, input().split())
-    s = [input() for _ in range(h)]
-    cnt = 0
-    for i in range(h):
-        for j in range(w):
-            if s[i][j] == "#":
-                cnt += 1
-    print(cnt)
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1, N):
+        A[i] = S[i] - S[i-1]
+    print(' '.join(map(str, A)))
 
 if __name__ == '__main__':
     main()

@@ -12,6 +12,3 @@ def main():
                 ans = min(ans, i - j + min(abs(j - k) for k in t))
         print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

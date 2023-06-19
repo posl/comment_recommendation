@@ -1,11 +1,15 @@
 def main():
-    n = int(input())
-    c = list(map(int, input().split()))
-    c.sort()
-    ans = 1
-    for i in range(n):
-        ans = ans * max(c[i] - i, 0) % (10 ** 9 + 7)
-    print(ans)
+    n, q = map(int, input().split())
+    roads = []
+    for i in range(n-1):
+        a, b = map(int, input().split())
+        roads.append((a, b))
+    for i in range(q):
+        c, d = map(int, input().split())
+        if c == d:
+            print("Town")
+        else:
+            print("Road")
 
 if __name__ == '__main__':
     main()

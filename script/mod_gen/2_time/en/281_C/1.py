@@ -9,6 +9,3 @@ def main():
             print(i + 1, A[i] + x)
             break
 main()
-
-if __name__ == '__main__':
-    main()

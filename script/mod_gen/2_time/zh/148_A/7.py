@@ -1,12 +1,18 @@
-def solve(n, a):
-    ans=0
-    for i in range(60):
-        one=0
-        for j in range(n):
-            if a[j]>>i & 1:
-                one+=1
-        ans+=one*(n-one)*(1<<i)
-    return ans%((10**9)+7)
-n=int(input())
-a=list(map(int, input().split()))
-print(solve(n, a))
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 2:
+        print(1)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 3 and b == 1:
+        print(2)
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,9 @@
-def problems173_d():
-    return None
+def main():
+    temperature = int(input())
+    if temperature >= 30:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    problems173_d()
+    main()

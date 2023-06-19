@@ -1,10 +1,14 @@
-def min_sadness(n, a):
-    a.sort()
-    b = a[0] - 1
-    min_sad = 0
-    for i in range(1, n):
-        min_sad += abs(a[i] - (b + i))
-    return min_sad
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - (i + 1)
+    b.sort()
+    ans = 0
+    for i in range(n):
+        ans += abs(b[i] - b[n // 2])
+    print(ans)
 
 if __name__ == '__main__':
-    min_sadness()
+    main()

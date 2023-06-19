@@ -1,18 +1,17 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    d = [0] * (n + 1)
-    for i in range(n):
-        d[c[i]] += 1
-    e = [0] * (n + 1)
-    for i in range(1, n + 1):
-        e[b[c[i - 1] - 1]] += 1
-    ans = 0
-    for i in range(1, n + 1):
-        ans += d[a[i - 1]] * e[i]
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+def solve(A,B,K):
+    def dfs(a,b,k):
+        if a==0:
+            return 'b'*b
+        elif b==0:
+            return 'a'*a
+        elif k<=dp[a-1][b]:
+            return 'a'+dfs(a-1,b,k)
+        else:
+            return 'b'+dfs(a,b-1,k-dp[a-1][b])
+    dp=[[1]*(B+1) for _ in range(A+1)]
+    for i in range(1,A+1):
+        for j in range(1,B+1):
+            dp[i][j]=dp[i-1][j]+dp[i][j-1]
+    return dfs(A,B,K)
+A,B,K=map(int,input().split())
+print(solve(A,B,K))

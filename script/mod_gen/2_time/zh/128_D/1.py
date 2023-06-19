@@ -1,14 +1,11 @@
-def getSwitchState(switch_status, switch_num, bulb_num):
-    if switch_num == 1:
-        return [switch_status]
-    else:
-        switch_state = []
-        for i in range(switch_num):
-            if i == 0:
-                switch_state.append([switch_status[i]])
-            else:
-                switch_state[0].append(switch_status[i])
-        return switch_state
+def max_jewel_value(n, k, v):
+    max_v = 0
+    for i in range(min(n, k) + 1):
+        for j in range(min(n, k) + 1 - i):
+            v2 = v[:i] + v[-j:]
+            v2.sort()
+            max_v = max(max_v, sum(v2))
+    return max_v
 
 if __name__ == '__main__':
-    getSwitchState()
+    max_jewel_value()

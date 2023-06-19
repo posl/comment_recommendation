@@ -1,15 +1,12 @@
-def func(N, x, y, h):
-    for C_X in range(101):
-        for C_Y in range(101):
-            H = h[0] + abs(x[0] - C_X) + abs(y[0] - C_Y)
-            if H > 0:
-                break
-        if H > 0:
-            break
-    for i in range(N):
-        if h[i] != max(H - abs(x[i] - C_X) - abs(y[i] - C_Y), 0):
-            return False
-    return C_X, C_Y, H
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+n, m = map(int, input().split())
+for i in range(m // n, 0, -1):
+    if m % i == 0 and gcd(i, m // i) == 1:
+        print(i)
+        break
 
 if __name__ == '__main__':
-    func()
+    gcd()

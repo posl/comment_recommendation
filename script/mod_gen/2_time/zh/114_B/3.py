@@ -1,9 +1,10 @@
 def main():
-    x = int(input())
-    if x == 3 or x == 5 or x == 7:
-        print('YES')
-    else:
-        print('NO')
+    S = input()
+    ans = 10**9
+    for i in range(len(S)-2):
+        X = int(S[i:i+3])
+        ans = min(ans,abs(753-X))
+    print(ans)
 
 if __name__ == '__main__':
     main()

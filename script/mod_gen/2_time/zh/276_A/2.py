@@ -1,7 +1,9 @@
-def f(x):
-    if x == 0:
-        return 1
+def main():
+    s = input()
+    if s.rfind('a') != -1:
+        print(s.rfind('a') + 1)
     else:
-        return f(x//2) + f(x//3)
-N = int(input())
-print(f(N))
+        print(-1)
+
+if __name__ == '__main__':
+    main()

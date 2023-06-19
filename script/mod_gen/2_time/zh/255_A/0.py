@@ -1,11 +1,9 @@
 def main():
-    N = int(input())
-    count = 0
-    for i in range(1, int(N ** 0.5) + 1):
-        for j in range(1, int(N ** 0.5) + 1):
-            if i * j <= N:
-                count += 1
-    print(count)
+    R,C = map(int,input().split())
+    A = []
+    for i in range(2):
+        A.append(list(map(int,input().split())))
+    print(A[R-1][C-1])
 
 if __name__ == '__main__':
     main()

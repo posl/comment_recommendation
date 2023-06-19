@@ -1,19 +1,33 @@
-def main():
-    h, w = map(int, input().split())
-    s = [input() for _ in range(h)]
-    ans = 0
-    for i in range(h):
-        for j in range(w):
-            if s[i][j] == 'o':
-                if i > 0 and s[i-1][j] == '-':
-                    ans += 1
-                if i < h-1 and s[i+1][j] == '-':
-                    ans += 1
-                if j > 0 and s[i][j-1] == '-':
-                    ans += 1
-                if j < w-1 and s[i][j+1] == '-':
-                    ans += 1
-    print(ans)
+def solve():
+    from collections import defaultdict
+    from heapq import heappush, heappop
+    import sys
+    input = sys.stdin.readline
+    q = int(input())
+    s = []
+    sdict = defaultdict(int)
+    smin = []
+    smax = []
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            s.append(query[1])
+            sdict[query[1]] += 1
+        elif query[0] == 2:
+            x, c = query[1], query[2]
+            while c > 0:
+                if sdict[x] == 0:
+                    break
+                sdict[x] -= 1
+                c -= 1
+            if sdict[x] == 0:
+                sdict.pop(x)
+        else:
+            while sdict[s[0]] == 0:
+                s.pop(0)
+            while sdict[s[-1]] == 0:
+                s.pop()
+            print(s[-1] - s[0])
 
 if __name__ == '__main__':
-    main()
+    solve()

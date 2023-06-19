@@ -16,6 +16,3 @@ def  main():
          if  flag:
              ans  +=  1 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

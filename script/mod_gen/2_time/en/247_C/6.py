@@ -4,6 +4,3 @@ def sequence(n):
     else:
         return sequence(n-1) + str(n) + sequence(n-1)
 print(sequence(int(input())))
-
-if __name__ == '__main__':
-    sequence()

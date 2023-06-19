@@ -1,15 +1,10 @@
 def main():
-    N = int(input())
-    H = list(map(int, input().split()))
-    count = 1
-    for i in range(1, N):
-        flag = True
-        for j in range(0, i):
-            if H[j] >= H[i]:
-                flag = False
-        if flag:
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if (i % 2 == 0 and s[i] == '1') or (i % 2 == 1 and s[i] == '0'):
             count += 1
-    print(count)
+    print(min(count, len(s) - count))
 
 if __name__ == '__main__':
     main()

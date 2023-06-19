@@ -1,11 +1,6 @@
-def main():
-    n = int(input())
-    p = []
-    for i in range(0,n):
-        p.append(int(input()))
-    p.sort()
-    p[n-1] = int(p[n-1]/2)
-    print(sum(p))
-
-if __name__ == '__main__':
-    main()
+def f(n,k,h):
+    h.sort()
+    return h[k-1]-h[0]
+n,k=map(int,input().split())
+h=[int(input()) for i in range(n)]
+print(f(n,k,h))

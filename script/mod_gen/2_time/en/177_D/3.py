@@ -21,6 +21,3 @@ def main():
         group_count += 1
     print(group_count)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,9 +1,6 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    max_a = max(a)
-    min_a = min(a)
-    print(max_a - min_a)
+def max_abs_diff(a):
+    a.sort()
+    return a[-1] - a[0]
 
 if __name__ == '__main__':
-    main()
+    max_abs_diff()

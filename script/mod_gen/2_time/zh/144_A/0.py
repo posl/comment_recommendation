@@ -1,7 +1,9 @@
-def isTriangle(a, b, c):
-    if a < b + c and b < c + a and c < a + b:
-        return True
-    return False
+def main():
+    a, b = map(int, input().split())
+    if a > 9 or b > 9:
+        print(-1)
+    else:
+        print(a*b)
 
 if __name__ == '__main__':
-    isTriangle()
+    main()

@@ -1,15 +1,8 @@
-def f(n):
-    if n%2==0:
-        return n//2
-    else:
-        return 3*n+1
-s=int(input())
-a=[s]
-for i in range(2,1000000):
-    a.append(f(a[-1]))
-    if a.count(a[-1])>=2:
-        break
-print(len(a))
+def water_the_flowers(N, H):
+    ans = 0
+    for i in range(N):
+        ans += H[i]
+    return ans
 
 if __name__ == '__main__':
-    f()
+    water_the_flowers()

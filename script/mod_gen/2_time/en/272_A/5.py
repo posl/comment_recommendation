@@ -5,6 +5,3 @@ def sum_of_ints():
     print(ans)
     return
 sum_of_ints()
-
-if __name__ == '__main__':
-    sum_of_ints()

@@ -1,12 +1,12 @@
 def main():
     N = int(input())
-    A = [int(x) for x in input().split()]
-    B = [int(x) for x in input().split()]
-    C = [int(x) for x in input().split()]
-    total = 0
-    for i in range(N):
-        total += B[A[i]-1]
-        if i < N-1 and A[i+1] == A[i]+1:
-            total += C[A[i]-1]
-    print(total)
-main()
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[N-1] = B[N-2]
+    for i in range(1, N-1):
+        A[i] = min(B[i-1], B[i])
+    print(sum(A))
+
+if __name__ == '__main__':
+    main()

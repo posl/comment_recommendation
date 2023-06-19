@@ -1,9 +1,13 @@
-def find_index(s):
-    # 用26进制的思想
-    index = 0
-    for i in range(len(s)):
-        index = index * 26 + ord(s[i]) - ord('A') + 1
-    return index
+def is_changeable(S,T):
+    if S == T:
+        return False
+    if len(S) != len(T):
+        return False
+    if S[0] == T[-1]:
+        return False
+    if T[0] == S[-1]:
+        return False
+    return True
 
 if __name__ == '__main__':
-    find_index()
+    is_changeable()

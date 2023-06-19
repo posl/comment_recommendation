@@ -1,26 +1,18 @@
-def main():
-    s = input()
-    t = input()
-    if len(s) != len(t):
-        print("No")
-        return
-    s_dic = {}
-    t_dic = {}
-    for i in range(len(s)):
-        if s[i] not in s_dic:
-            s_dic[s[i]] = t[i]
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
         else:
-            if s_dic[s[i]] != t[i]:
-                print("No")
-                return
-        if t[i] not in t_dic:
-            t_dic[t[i]] = s[i]
-        else:
-            if t_dic[t[i]] != s[i]:
-                print("No")
-                return
-    print("Yes")
-    return
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
 
 if __name__ == '__main__':
-    main()
+    prime_factorize()

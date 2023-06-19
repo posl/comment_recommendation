@@ -1,15 +1,13 @@
-def main():
-    s = input()
-    min_s = s
-    max_s = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    print(min_s)
-    print(max_s)
+def solve():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(N):
+        ans += AB[i][0] / AB[i][1]
+    ans /= 2
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

@@ -1,6 +1,8 @@
-def main():
-    a,b = map(int, input().split())
-    print(a/b, b/a)
+def solve(N, K, X, A):
+    ans = 0
+    for i in range(N):
+        ans += max(A[i]-X, 0)
+    return ans
 
 if __name__ == '__main__':
-    main()
+    solve()

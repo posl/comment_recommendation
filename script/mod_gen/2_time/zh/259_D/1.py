@@ -1,13 +1,11 @@
-def diff(a,b):
-    if len(a) != len(b):
-        return False
-    else:
-        for i in range(len(a)):
-            if a[i] != b[i]:
-                return False
-        return True
-s = input()
-t = input()
+def main():
+    N = int(input())
+    sx, sy, tx, ty = map(int, input().split())
+    circles = []
+    for i in range(N):
+        x, y, r = map(int, input().split())
+        circles.append((x, y, r))
+    print('Yes')
 
 if __name__ == '__main__':
-    diff()
+    main()

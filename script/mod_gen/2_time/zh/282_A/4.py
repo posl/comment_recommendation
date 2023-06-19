@@ -1,12 +1,6 @@
-def func():
-    n, k, d = map(int, input().split())
-    a = list(map(int, input().split()))
-    ans = -1
-    for i in range(n-k+1):
-        s = sum(a[i:i+k])
-        if s % d == 0:
-            ans = max(ans, s)
-    print(ans)
+def main():
+    K = int(input())
+    print(''.join([chr(x) for x in range(ord('A'), ord('A') + K)]))
 
 if __name__ == '__main__':
-    func()
+    main()

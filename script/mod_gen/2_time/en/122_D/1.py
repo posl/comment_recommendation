@@ -34,6 +34,3 @@ def main():
                 ans %= MOD
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

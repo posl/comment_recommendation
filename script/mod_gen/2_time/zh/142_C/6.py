@@ -1,11 +1,14 @@
 def main():
-    n, k = map(int, input().split())
-    h = list(map(int, input().split()))
-    count = 0
-    for i in h:
-        if i >= k:
-            count += 1
-    print(count)
+    #读取数据
+    n = int(input())
+    a = list(map(int, input().split()))
+    #创建一个数组，用于记录学生的学号
+    ans = [0]*n
+    #遍历a数组，将a[i]放到ans[a[i]-1]的位置
+    for i in range(n):
+        ans[a[i]-1] = i+1
+    #输出结果
+    print(' '.join(map(str, ans)))
 
 if __name__ == '__main__':
     main()

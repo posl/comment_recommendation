@@ -1,14 +1,10 @@
-def clock():
-    import math
-    import sys
-    # 读取输入
-    a, b, h, m = map(int, sys.stdin.readline().strip().split())
-    # 计算角度
-    angle = abs(30 * h + 0.5 * m - 6 * m)
-    # 计算距离
-    ans = math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(math.radians(angle)))
-    # 打印答案
-    print(ans)
+def get_next_node(node, link, visited):
+    for i in range(len(link)):
+        if link[i][0] == node and link[i][1] not in visited:
+            return link[i][1]
+        elif link[i][1] == node and link[i][0] not in visited:
+            return link[i][0]
+    return 0
 
 if __name__ == '__main__':
-    clock()
+    get_next_node()

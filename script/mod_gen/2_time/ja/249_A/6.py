@@ -23,6 +23,3 @@ def jog(a, b, c, d, e, f, x):
                 return takahashi, aoki
 a, b, c, d, e, f, x = map(int, input().split())
 takahashi, aoki = jog(a, b, c, d, e, f, x)
-
-if __name__ == '__main__':
-    jog()

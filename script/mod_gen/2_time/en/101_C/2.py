@@ -14,6 +14,3 @@ def main():
             return
     print((N + K - 1) // K)
 main()
-
-if __name__ == '__main__':
-    main()

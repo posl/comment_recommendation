@@ -1,9 +1,17 @@
-def count_num(num):
-    count = 0
-    while num > 0:
-        num = num // 10
-        count += 1
-    return count
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            if a[i] == a[j]:
+                continue
+            for k in range(j+1, n):
+                if a[i] == a[k] or a[j] == a[k]:
+                    continue
+                ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    count_num()
+    main()

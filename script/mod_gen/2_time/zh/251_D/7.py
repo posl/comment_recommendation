@@ -1,14 +1,14 @@
-def get_input():
-    n = int(input())
-    if n < 1 or n > 100000:
-        raise Exception('N is out of range')
-    data = []
-    for i in range(n):
-        line = input().strip().split(' ')
-        if len(line) != 2:
-            raise Exception('Input format error')
-        data.append((line[0], int(line[1])))
-    return data
+def solve():
+    w = int(input())
+    if w <= 3:
+        print(1)
+        print(w)
+    elif w <= 5:
+        print(2)
+        print(2, w - 2)
+    else:
+        print(3)
+        print(2, 3, w - 5)
 
 if __name__ == '__main__':
-    get_input()
+    solve()

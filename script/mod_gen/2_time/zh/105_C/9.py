@@ -3,15 +3,15 @@ def main():
     if N == 0:
         print(0)
         return
-    ans = ''
+    result = ""
     while N != 0:
         if N % 2 == 0:
-            ans = '0' + ans
+            result = "0" + result
             N = N // (-2)
         else:
-            ans = '1' + ans
+            result = "1" + result
             N = (N - 1) // (-2)
-    print(ans)
+    print(result)
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,3 @@ def candy():
         ans = max(ans, len(set(C[i:i+K])))
     print(ans)
 candy()
-
-if __name__ == '__main__':
-    candy()

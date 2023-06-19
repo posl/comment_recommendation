@@ -1,9 +1,9 @@
-def f(n,a,b):
-    count = 0
-    for i in range(1,n+1):
-        if i%a != 0 and i%b != 0:
-            count += i
-    return count
+def printLastTwoDigits():
+    n = int(input())
+    if n < 100 or n > 999:
+        print("输入错误")
+    else:
+        print(n % 100)
 
 if __name__ == '__main__':
-    f()
+    printLastTwoDigits()

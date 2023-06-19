@@ -1,11 +1,9 @@
-def problem280_c():
-    s = input()
-    t = input()
-    for i in range(len(s)):
-        if s[i] != t[i]:
-            print(i+1)
-            return
-    print(len(s)+1)
+def main():
+    k = int(input())
+    print(k)
+    print(k)
+    print(k)
+    print(k)
 
 if __name__ == '__main__':
-    problem280_c()
+    main()

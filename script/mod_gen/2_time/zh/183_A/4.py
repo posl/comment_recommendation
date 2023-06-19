@@ -1,13 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    maxa = 0
-    sum = 0
-    for i in range(n):
-        sum += a[i]
-        if sum > maxa:
-            maxa = sum
-    print(maxa)
+def relu(x):
+    if x < 0:
+        return 0
+    else:
+        return x
 
 if __name__ == '__main__':
-    main()
+    relu()

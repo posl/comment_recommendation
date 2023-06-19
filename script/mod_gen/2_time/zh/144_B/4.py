@@ -1,9 +1,9 @@
 def main():
-    a, b = map(int, input().split())
-    if a > 9 or b > 9:
-        print(-1)
-    else:
-        print(a * b)
-
-if __name__ == '__main__':
-    main()
+    n = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if i * j == n:
+                print('Yes')
+                return
+    print('No')
+main()

@@ -1,6 +1,5 @@
 def main():
-    n = int(input())
-    print(' '.join(map(str, s(n))))
+    pass
 
 if __name__ == '__main__':
     main()

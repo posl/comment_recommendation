@@ -8,6 +8,3 @@ def main():
         sum += x[i+1] - x[i]
     print(sum)
 main()
-
-if __name__ == '__main__':
-    main()

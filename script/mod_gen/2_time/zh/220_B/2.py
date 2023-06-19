@@ -1,10 +1,7 @@
 def main():
-    a,b,c = map(int,input().split())
-    for i in range(a,b+1):
-        if i % c == 0:
-            print(i)
-            exit()
-    print(-1)
+    K = int(input())
+    A,B = map(int,input().split())
+    print(A*B)
 
 if __name__ == '__main__':
     main()

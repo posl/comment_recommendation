@@ -1,11 +1,10 @@
-def main():
-    R = int(input())
-    if R < 1200:
-        print('ABC')
-    elif R < 2800:
-        print('ARC')
+def get_next_game_name(score):
+    if score < 1200:
+        return "ABC"
+    elif score < 2800:
+        return "ARC"
     else:
-        print('AGC')
+        return "AGC"
 
 if __name__ == '__main__':
-    main()
+    get_next_game_name()

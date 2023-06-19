@@ -1,5 +1,6 @@
-def problems128_a():
-    pass
+def print_restaurant_list(restaurant_list):
+    for restaurant in restaurant_list:
+        print(restaurant[2])
 
 if __name__ == '__main__':
-    problems128_a()
+    print_restaurant_list()

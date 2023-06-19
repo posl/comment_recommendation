@@ -1,23 +1,20 @@
-def main():
-    n = int(input())
-    ab = []
-    for i in range(n):
-        ab.append(list(map(int,input().split())))
-    ab.sort(key = lambda x:x[0])
-    #print(ab)
-    for i in range(n):
-        if i == 0:
-            min = ab[i][0]
-            max = ab[i][1]
+def problem277_d():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0 for i in range(M)]
+    for i in range(N):
+        B[A[i]] += 1
+    ans = 0
+    for i in range(M):
+        if B[i] == 0:
+            continue
+        if B[i] % 2 == 0:
+            ans += B[i] * i
         else:
-            if ab[i][0] >= min and ab[i][0] <= max:
-                min = ab[i][0]
-                if ab[i][1] < max:
-                    max = ab[i][1]
-            else:
-                print(ab[i][0]-1)
-                return
-    print(max)
+            ans += (B[i] - 1) * i
+            B[i + 1] += 1
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    problem277_d()

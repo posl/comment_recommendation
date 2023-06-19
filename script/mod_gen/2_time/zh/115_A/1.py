@@ -1,9 +1,13 @@
 def main():
-    n = int(input())
-    count = 0
-    for i in range(1, n + 1):
-        count += is_seven_five(i)
-    print(count)
+    D = int(input())
+    if D == 25:
+        print("圣诞节")
+    elif D == 24:
+        print("平安夜")
+    elif D == 23:
+        print("平安夜的前夜")
+    else:
+        print("平安夜的前夜的前夜")
 
 if __name__ == '__main__':
     main()

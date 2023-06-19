@@ -1,11 +1,13 @@
 def main():
-    a,b = map(int,input().split())
-    if a == b:
-        print(str(a)*b)
-    elif a < b:
-        print(str(a)*b)
-    else:
-        print(str(b)*a)
+    N = int(input())
+    P = list(map(int,input().split()))
+    count = 0
+    min = N+1
+    for i in range(N):
+        if P[i] < min:
+            count += 1
+            min = P[i]
+    print(count)
 
 if __name__ == '__main__':
     main()

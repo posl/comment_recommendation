@@ -1,11 +1,15 @@
-def weather():
-    weather = input()
-    if weather == '晴天':
-        print('阴天')
-    elif weather == '阴天':
-        print('雨天')
-    elif weather == '雨天':
-        print('晴天')
+def main():
+    s = input()
+    for i in range(len(s)):
+        if (i + 1) % 2 == 1:
+            if s[i] not in ['R', 'U', 'D']:
+                print('No')
+                return
+        else:
+            if s[i] not in ['L', 'U', 'D']:
+                print('No')
+                return
+    print('Yes')
 
 if __name__ == '__main__':
-    weather()
+    main()

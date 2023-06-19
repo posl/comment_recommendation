@@ -40,6 +40,3 @@ def main():
         S270 = [list(i) for i in zip(*S270)]
     print("No")
 main()
-
-if __name__ == '__main__':
-    main()

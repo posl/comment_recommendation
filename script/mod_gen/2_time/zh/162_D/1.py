@@ -1,15 +1,19 @@
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-k=int(input())
-ans=0
-for a in range(1,k+1):
-    for b in range(1,k+1):
-        for c in range(1,k+1):
-            ans+=gcd(gcd(a,b),c)
-print(ans)
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    #print(r,g,b)
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1,n):
+            k = j + (j - i)
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[j] != s[k] and s[i] != s[k]:
+                ans -= 1
+    print(ans)
 
 if __name__ == '__main__':
-    gcd()
+    main()

@@ -1,9 +1,5 @@
-def main():
-    N = int(input())
-    if N % 2 == 0:
-        print('白色')
-    else:
-        print('黑色')
+def sum_of_natural_numbers(n):
+    return (1 + n) * n // 2
 
 if __name__ == '__main__':
-    main()
+    sum_of_natural_numbers()

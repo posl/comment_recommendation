@@ -1,14 +1,22 @@
 def main():
-    n,m = map(int,input().split())
-    b = []
-    for i in range(n):
-        b.append(list(map(int,input().split())))
-    for i in range(10**100):
-        for j in range(7):
-            if b == [[(i*7+j+1)+k*7 for k in range(m)] for i in range(n)]:
-                print("Yes")
-                return
-    print("No")
+    N, Q = map(int, input().split())
+    ans = []
+    train = [[] for _ in range(N)]
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            x, y = query[1] - 1, query[2] - 1
+            train[x].append(y)
+            train[y].append(x)
+        elif query[0] == 2:
+            x, y = query[1] - 1, query[2] - 1
+            train[x].remove(y)
+            train[y].remove(x)
+        elif query[0] == 3:
+            x = query[1] - 1
+            ans.append(train[x])
+    for i in range(len(ans)):
+        print(len(ans[i]), *ans[i])
 
 if __name__ == '__main__':
     main()

@@ -1,19 +1,24 @@
-def main():
-    h, m = map(int, input().split())
-    while True:
-        m += 1
-        if m == 60:
-            m = 0
-            h += 1
-        if h == 24:
-            h = 0
-        h1 = h // 10
-        h2 = h % 10
-        m1 = m // 10
-        m2 = m % 10
-        if h1 == m2 and h2 == m1:
-            print(h, m)
-            break
+def solve():
+    N, Q = map(int, input().split())
+    a = [0] * N
+    b = [0] * N
+    for i in range(Q):
+        t, a[i], b[i] = map(int, input().split())
+        a[i] -= 1
+        b[i] -= 1
+    c = [0] * N
+    for i in range(Q):
+        if t == 1:
+            c[a[i]] |= 1 << b[i]
+        elif t == 2:
+            c[a[i]] &= ~(1 << b[i])
+        elif t == 3:
+            if c[a[i]] & (1 << b[i]) and c[b[i]] & (1 << a[i]):
+                print("Yes")
+            else:
+                print("No")
+        else:
+            assert(False)
 
 if __name__ == '__main__':
-    main()
+    solve()

@@ -4,6 +4,3 @@ def solve():
     ans = A*X//B - A*(X//B)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

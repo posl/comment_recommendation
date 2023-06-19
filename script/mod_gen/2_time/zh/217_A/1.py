@@ -1,13 +1,12 @@
 def main():
-    N, M = map(int, input().split())
-    k = []
-    a = []
-    for i in range(M):
-        k.append(int(input()))
-        a.append(list(map(int, input().split())))
-    print(k)
-    print(a)
-    print(N, M)
+    # 读取输入
+    s,t = input().split()
+    # 比较
+    if s < t:
+        print("Yes")
+    else:
+        print("No")
+    return
 
 if __name__ == '__main__':
     main()

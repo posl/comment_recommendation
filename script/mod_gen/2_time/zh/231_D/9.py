@@ -1,13 +1,17 @@
-def binary_search(a, x, low, high):
-    if low > high:
-        return -1
-    mid = (low + high) // 2
-    if a[mid] == x:
-        return mid
-    elif a[mid] > x:
-        return binary_search(a, x, low, mid - 1)
+def main():
+    n,m = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    a = sorted(a)
+    b = sorted(b)
+    if a[0] > b[-1]:
+        print('No')
     else:
-        return binary_search(a, x, mid + 1, high)
+        print('Yes')
 
 if __name__ == '__main__':
-    binary_search()
+    main()

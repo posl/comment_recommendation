@@ -1,8 +1,12 @@
-def judge(num):
-    if -2**31 <= num <= 2**31-1:
-        return "是"
-    else:
-        return "否"
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(H)]
+    for i in range(W):
+        for j in range(H):
+            if j == H - 1:
+                print(A[j][i])
+            else:
+                print(A[j][i], end=' ')
 
 if __name__ == '__main__':
-    judge()
+    main()

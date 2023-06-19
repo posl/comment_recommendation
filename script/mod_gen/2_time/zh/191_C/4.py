@@ -1,10 +1,13 @@
 def main():
-    N, X = map(int, input().split())
-    A = list(map(int, input().split()))
-    for i in range(N):
-        if A[i] != X:
-            print(A[i], end=' ')
-    print()
+    H,W = map(int,input().split())
+    S = [list(input()) for i in range(H)]
+    print(S)
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

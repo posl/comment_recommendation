@@ -1,21 +1,12 @@
 def main():
-    # 读取输入
-    n = int(input())
+    N = int(input())
     a = list(map(int, input().split()))
-    
-    # 保存中位数
     m = []
-    for i in range(n):
-        temp = a[i]
-        for j in range(i+1, n):
-            temp = temp + a[j]
-            m.append(temp)
-    
-    # 排序
+    for i in range(N):
+        for j in range(i, N):
+            m.append(a[i:j+1])
     m.sort()
-    
-    # 输出
-    print(m[int(len(m)/2)])
+    print(m[len(m)//2][len(m[len(m)//2])//2])
 
 if __name__ == '__main__':
     main()

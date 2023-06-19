@@ -1,7 +1,12 @@
-def judge():
-    x = int(input())
-    if x == 3 or x == 5 or x == 7:
-        print("YES")
-    else:
-        print("NO")
-judge()
+def main():
+    S = input()
+    l = len(S)
+    diff = 1000
+    for i in range(l-2):
+        X = int(S[i:i+3])
+        if abs(X-753) < diff:
+            diff = abs(X-753)
+    print(diff)
+
+if __name__ == '__main__':
+    main()

@@ -1,7 +1,7 @@
-def swap_list(list, p, q, r, s):
-    # 交换A的P项到Q项和R项到S项得到序列B
-    list[p:q], list[r:s] = list[r:s], list[p:q]
-    return list
+def replace_na(s):
+    if 'na' not in s:
+        return s
+    return replace_na(s.replace('na', 'nya', 1))
 
 if __name__ == '__main__':
-    swap_list()
+    replace_na()

@@ -1,9 +1,9 @@
 def main():
-    v,t,s,d = map(int,input().split())
-    if v*t <= d <= v*s:
-        print("No")
-    else:
-        print("Yes")
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i],end=" ")
 
 if __name__ == '__main__':
     main()

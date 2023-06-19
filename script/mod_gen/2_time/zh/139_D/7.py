@@ -1,18 +1,8 @@
-def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    # print(n)
-    # print(h)
-    max = 0
-    count = 0
-    for i in range(1, n):
-        if h[i-1] >= h[i]:
-            count += 1
-        else:
-            count = 0
-        if max < count:
-            max = count
-    print(max)
+def solve(n):
+    if n==1:
+        return 0
+    else:
+        return n*(n-1)//2
 
 if __name__ == '__main__':
-    main()
+    solve()

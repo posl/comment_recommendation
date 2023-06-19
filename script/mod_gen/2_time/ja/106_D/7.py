@@ -14,6 +14,3 @@ def main():
     for p, q in PQ:
         print(d[q]-d[p-1])
 main()
-
-if __name__ == '__main__':
-    main()

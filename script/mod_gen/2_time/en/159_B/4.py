@@ -6,6 +6,3 @@ def strongPalindrome(S):
     return "No"
 S = input()
 print(strongPalindrome(S))
-
-if __name__ == '__main__':
-    strongPalindrome()

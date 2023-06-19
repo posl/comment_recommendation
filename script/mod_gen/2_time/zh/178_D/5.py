@@ -1,10 +1,16 @@
-def solve(n):
-    if n == 1:
-        return 0
-    elif n == 2:
-        return 2
-    else:
-        return (10 * 9 * (pow(10, n-2, 10**9+7) - pow(9, n-2, 10**9+7)) + 10 * pow(9, n-2, 10**9+7)) % (10**9+7)
+def main():
+    S = int(input())
+    MOD = 10**9+7
+    dp = [[0]*(S+1) for _ in range(S+1)]
+    dp[0][0] = 1
+    for i in range(S+1):
+        for j in range(S+1):
+            if i >= 3:
+                dp[i][j] += dp[i-3][j]
+            if j >= 3:
+                dp[i][j] += dp[i][j-3]
+            dp[i][j] %= MOD
+    print(dp[S][S])
 
 if __name__ == '__main__':
-    solve()
+    main()

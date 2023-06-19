@@ -1,13 +1,14 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    result = 0
-    for i in range(n):
-        now = 0
-        for j in range(n):
-            now += a[(i + j) % n]
-            result = max(result, now)
-    print(360 - result)
+def f(x):
+    if x < 10:
+        return x
+    else:
+        return f(x//10) + 1
+N = int(input())
+ans = 0
+for i in range(1, N+1):
+    ans += f(i)
+    ans %= 998244353
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    f()

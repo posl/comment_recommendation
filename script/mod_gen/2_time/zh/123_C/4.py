@@ -1,21 +1,28 @@
 def main():
-    A = int(input())
-    B = int(input())
-    C = int(input())
-    D = int(input())
-    E = int(input())
-    # print(A)
-    # print(B)
-    # print(C)
-    # print(D)
-    # print(E)
-    time = 0
-    time += (A % 10) * 10
-    time += (B % 10) * 10
-    time += (C % 10) * 10
-    time += (D % 10) * 10
-    time += (E % 10) * 10
-    print(time)
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    min = 0
+    if n % a != 0:
+        min += 1
+    min += int(n / a)
+    if n % b != 0:
+        min += 1
+    min += int(n / b)
+    if n % c != 0:
+        min += 1
+    min += int(n / c)
+    if n % d != 0:
+        min += 1
+    min += int(n / d)
+    if n % e != 0:
+        min += 1
+    min += int(n / e)
+    print(min)
+    return 0
 
 if __name__ == '__main__':
     main()

@@ -1,47 +1,8 @@
-def main():
-    N,M,X = map(int,input().split())
-    C = []
-    A = []
-    for i in range(N):
-        C.append(list(map(int,input().split())))
-        A.append(C[i][1:])
-    #print(N,M,X)
-    #print(C)
-    #print(A)
-    #print(len(C),len(A))
-    #print(len(C[0]),len(A[0]))
-    #print(len(C[1]),len(A[1]))
-    #print(len(C[2]),len(A[2]))
-    #print(len(C[3]),len(A[3]))
-    #print(len(C[4]),len(A[4]))
-    #print(len(C[5]),len(A[5]))
-    #print(len(C[6]),len(A[6]))
-    #print(len(C[7]),len(A[7]))
-    #print(len(C[8]),len(A[8]))
-    #print(len(C[9]),len(A[9]))
-    #print(len(C[10]),len(A[10]))
-    #print(len(C[11]),len(A[11]))
-    #print(len(C[12]),len(A[12]))
-    #print(len(C[13]),len(A[13]))
-    #print(len(C[14]),len(A[14]))
-    #print(len(C[15]),len(A[15]))
-    #print(len(C[16]),len(A[16]))
-    #print(len(C[17]),len(A[17]))
-    #print(len(C[18]),len(A[18]))
-    #print(len(C[19]),len(A[19]))
-    #print(len(C[20]),len(A[20]))
-    #print(len(C[21]),len(A[21]))
-    #print(len(C[22]),len(A[22]))
-    #print(len(C[23]),len(A[23]))
-    #print(len(C[24]),len(A[24]))
-    #print(len(C[25]),len(A[25]))
-    #print(len(C[26]),len(A[26]))
-    #print(len(C[27]),len(A[27]))
-    #print(len(C[28]),len(A[28]))
-    #print(len(C[29]),len(A[29]))
-    #print(len(C[30]),len(A[30]))
-    #print(len(C[31]),len(A[31]))
-    #print(len(C[32]),len(A[32
-
-if __name__ == '__main__':
-    main()
+def solve(n, k, a):
+    k = k % n
+    for i in range(k):
+        a = a[a-1]
+    return a
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+print(solve(n, k, a))

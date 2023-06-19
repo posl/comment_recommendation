@@ -1,18 +1,15 @@
-def problems130_d(N, K, A):
-    count = 0
-    start = 0
-    end = 0
-    sum = A[0]
-    while start < N and end < N:
-        if sum < K:
-            end += 1
-            if end < N:
-                sum += A[end]
-        else:
-            count += N - end
-            sum -= A[start]
-            start += 1
-    return count
+def main():
+    s = input()
+    if s[0] == s[1] == s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[1] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[2] and s[1] == s[3]:
+        print("Bad")
+    elif s[0] == s[3] and s[1] == s[2]:
+        print("Bad")
+    else:
+        print("Good")
 
 if __name__ == '__main__':
-    problems130_d()
+    main()

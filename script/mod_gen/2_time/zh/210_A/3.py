@@ -1,9 +1,7 @@
-def find_root(x):
-    if par[x] == x:
-        return x
+def solve():
+    N, A, X, Y = map(int, input().split())
+    if N <= A:
+        return N * X
     else:
-        par[x] = find_root(par[x])
-        return par[x]
-
-if __name__ == '__main__':
-    find_root()
+        return A * X + (N - A) * Y
+print(solve())

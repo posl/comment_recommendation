@@ -1,15 +1,18 @@
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    mod = 10**9 + 7
-    ans = 0
-    for i in range(60):
-        cnt = 0
-        for j in range(n):
-            if a[j] & 1:
-                cnt += 1
-            a[j] >>= 1
-        ans += cnt * (n - cnt) * pow(2, i, mod)
-        ans %= mod
-    print(ans)
-solve()
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 3 and b == 2:
+        print(1)
+
+if __name__ == '__main__':
+    main()

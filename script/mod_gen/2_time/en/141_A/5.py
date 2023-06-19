@@ -9,6 +9,3 @@ def main():
     else:
         print("Invalid input")
 main()
-
-if __name__ == '__main__':
-    main()

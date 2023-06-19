@@ -1,7 +1,10 @@
-def problem120_a():
-    a, b, c = map(int, input().split())
-    if a > b:
-        print(0)
-    else:
-        print(b // a if c > b // a else c)
-problem120_a()
+def func(a,b,k):
+    c=a*b
+    d=c//a
+    e=c//b
+    f=d+e
+    g=f//2
+    h=g//k
+    return h
+a,b,k=map(int,input().split())
+print(func(a,b,k))

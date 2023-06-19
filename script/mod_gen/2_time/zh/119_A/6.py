@@ -1,24 +1,17 @@
 def main():
-    num, match = map(int, input().split())
-    matchsticks = list(map(int, input().split()))
-    matchsticks.sort(reverse=True)
-    dp = [-1 for _ in range(num + 1)]
-    dp[0] = 0
-    for i in range(1, num + 1):
-        for j in range(match):
-            if i >= matchsticks[j] and dp[i - matchsticks[j]] >= 0:
-                dp[i] = max(dp[i], dp[i - matchsticks[j]] + 1)
-    if dp[num] == -1:
-        print(0)
+    s=input()
+    year=int(s[:4])
+    month=int(s[5:7])
+    day=int(s[8:])
+    if year<2019:
+        print("Heisei")
+    elif year==2019:
+        if month<=4:
+            print("Heisei")
+        else:
+            print("TBD")
     else:
-        ans = ''
-        for i in range(dp[num]):
-            for j in range(match):
-                if num >= matchsticks[j] and dp[num - matchsticks[j]] == dp[num] - 1:
-                    ans += str(matchsticks[j])
-                    num -= matchsticks[j]
-                    break
-        print(ans)
+        print("TBD")
 
 if __name__ == '__main__':
     main()

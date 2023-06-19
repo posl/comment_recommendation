@@ -11,6 +11,3 @@ def  main():
         dp[i] %= 998244353
         sumdp[i + 1] = sumdp[i] + dp[i]
     print(dp[-1])
-
-if __name__ == '__main__':
-    ()

@@ -1,11 +1,11 @@
-def main():
+def get_graph():
     n,m = map(int,input().split())
-    s = [input() for _ in range(n)]
-    t = [input() for _ in range(m)]
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                count += 1
-    print(count)
-main()
+    graph = [[0 for i in range(n)] for i in range(n)]
+    for i in range(m):
+        u,v = map(int,input().split())
+        graph[u-1][v-1] = 1
+        graph[v-1][u-1] = 1
+    return graph
+
+if __name__ == '__main__':
+    get_graph()

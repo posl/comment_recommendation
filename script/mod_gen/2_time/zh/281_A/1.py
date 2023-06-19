@@ -1,7 +1,6 @@
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-k = int(input())
-g = gcd(k, 10)
+def print_descending_order(n):
+    for i in range(0, n+1):
+        print(n-i)
+
+if __name__ == '__main__':
+    print_descending_order()

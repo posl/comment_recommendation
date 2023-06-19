@@ -1,15 +1,25 @@
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    x_list.append(x)
-    y_list.append(y)
-    x_list.sort()
-    y_list.sort()
-    if x_list[-1] < y_list[0] and x < y:
-        print('No War')
-    else:
-        print('War')
+    S = input()
+    T = input()
+    s = S
+    t = T
+    s_list = list(s)
+    t_list = list(t)
+    s_list.sort()
+    t_list.sort()
+    if s_list != t_list:
+        print("No")
+        return
+    s_list = list(s)
+    t_list = list(t)
+    for i in range(len(s_list)):
+        for j in range(i+1,len(s_list)):
+            s_list[i],s_list[j] = s_list[j],s_list[i]
+            if s_list == t_list:
+                print("Yes")
+                return
+            s_list[i],s_list[j] = s_list[j],s_list[i]
+    print("No")
 
 if __name__ == '__main__':
     main()

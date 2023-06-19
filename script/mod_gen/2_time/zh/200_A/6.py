@@ -1,19 +1,12 @@
-def dfs(i, color):
-    global ans
-    if i == n:
-        ans += 1
-        return
-    for j in range(3):
-        if color[j] == 1:
-            continue
-        color[j] = 1
-        dfs(i + 1, color)
-        color[j] = 0
-ans = 0
-n, m = map(int, input().split())
-color = [0] * 3
-dfs(0, color)
-print(ans)
+def problem200_a():
+    #解法1
+    n = int(input())
+    if n % 100 == 0:
+        print(n // 100)
+    else:
+        print(n // 100 + 1)
+    #解法2
+    #print((n + 99) // 100)
 
 if __name__ == '__main__':
-    dfs()
+    problem200_a()

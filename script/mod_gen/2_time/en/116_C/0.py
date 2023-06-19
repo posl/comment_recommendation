@@ -8,6 +8,3 @@ def solve():
             h[i+1] = h[i]
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

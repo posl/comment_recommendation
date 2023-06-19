@@ -1,19 +1,18 @@
-def median(a, b, c):
-    if a < b:
-        if b < c:
-            return b
-        else:
-            if a < c:
-                return c
-            else:
-                return a
-    else:
-        if a < c:
-            return a
-        else:
-            if b < c:
-                return c
-            else:
-                return b
-a, b, c = map(int, input().split())
-print('是' if b == median(a, b, c) else '否')
+def main():
+    h,w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    #print(s)
+    min_ = h+w
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                #print(i,j)
+                for k in range(h):
+                    for l in range(w):
+                        if s[k][l] == 'o' and (i != k or j != l):
+                            #print(k,l)
+                            min_ = min(min_, abs(i-k)+abs(j-l))
+    print(min_ - 1)
+
+if __name__ == '__main__':
+    main()

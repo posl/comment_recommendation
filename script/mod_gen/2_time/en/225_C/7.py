@@ -9,6 +9,3 @@ b = []
 for i in range(n):
     b.append(list(map(int,input().split())))
 print(solve(n,m,b))
-
-if __name__ == '__main__':
-    solve()

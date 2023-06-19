@@ -1,10 +1,23 @@
 def main():
-    N = int(input())
-    X = list(map(int,input().split()))
-    sum = 0
-    for i in range(1,101):
-        sum += min([(x-i)**2 for x in X])
-    print(sum)
+    n, a, b = map(int, input().split())
+    MOD = 10**9 + 7
+    ans = pow(2, n, MOD) - 1
+    c, d = 1, 1
+    for i in range(b):
+        c *= n - i
+        c %= MOD
+        d *= i + 1
+        d %= MOD
+    ans -= c * pow(d, MOD - 2, MOD)
+    c, d = 1, 1
+    for i in range(a):
+        c *= n - i
+        c %= MOD
+        d *= i + 1
+        d %= MOD
+    ans -= c * pow(d, MOD - 2, MOD)
+    ans %= MOD
+    print(ans)
 
 if __name__ == '__main__':
     main()

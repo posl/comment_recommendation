@@ -1,14 +1,11 @@
-def main():
-    N, W = map(int, input().split())
-    A = list(map(int, input().split()))
-    if W <= 10**6:
-        ans = 0
-        for i in range(1, W+1):
-            for j in range(1, W+1):
-                for k in range(1, W+1):
-                    if i*A[0] + j*A[1] + k*A[2] == W:
-                        ans += 1
-        print(ans)
+def get_max_score_index( n, s, t ):
+    max_score = 0
+    max_score_index = 0
+    for i in range( 0, n ):
+        if t[i] > max_score:
+            max_score = t[i]
+            max_score_index = i
+    return max_score_index
 
 if __name__ == '__main__':
-    main()
+    get_max_score_index()

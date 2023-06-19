@@ -1,6 +1,12 @@
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    print(a[1])
-solve()
+def get_input():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    return H, W, N, A, B
+
+if __name__ == '__main__':
+    get_input()

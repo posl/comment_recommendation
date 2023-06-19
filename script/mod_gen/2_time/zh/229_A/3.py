@@ -1,17 +1,20 @@
 def main():
-    n = 2**20
-    q = int(input())
-    a = [-1]*n
-    for _ in range(q):
-        t, x = map(int, input().split())
-        x = x % n
-        if t == 1:
-            while a[x] != -1:
-                x += 1
-                x = x % n
-            a[x] = x
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s2[0] == '#':
+        print('Yes')
+    elif s1[0] == '#' and s2[0] == '.':
+        if s1[1] == '#':
+            print('Yes')
         else:
-            print(a[x])
+            print('No')
+    elif s1[0] == '.' and s2[0] == '#':
+        if s2[1] == '#':
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
 
 if __name__ == '__main__':
     main()

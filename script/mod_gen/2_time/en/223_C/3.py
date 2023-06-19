@@ -7,6 +7,3 @@ def solve():
         B += 1 / b
     return A / B
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -1,13 +1,7 @@
-def main():
-    s = []
-    for i in range(9):
-        s.append(input())
-    ans = 0
-    for i in range(9):
-        for j in range(9):
-            if s[i][j] == "#":
-                ans += 1
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)
+N = int(input())
+print(f(N))

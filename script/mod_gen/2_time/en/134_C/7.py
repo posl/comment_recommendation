@@ -11,6 +11,3 @@ def main():
     max_a2 = max(A)
     print(*[max_a2 for _ in range(N)])
 main()
-
-if __name__ == '__main__':
-    main()

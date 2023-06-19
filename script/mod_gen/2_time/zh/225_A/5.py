@@ -1,5 +1,6 @@
-def getMinStep():
-    return 0
+def main():
+    S = input()
+    print(len(set(S)))
 
 if __name__ == '__main__':
-    getMinStep()
+    main()

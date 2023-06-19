@@ -1,12 +1,15 @@
-def main():
-    H, W = map(int, input().split())
-    A = []
-    for i in range(H):
-        A.append(list(map(int, input().split())))
-    for i in range(W):
-        for j in range(H):
-            print(A[j][i], end=' ')
-        print()
+def is_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+s = input()
+n = len(s)
+for i in range(n+1):
+    if is_palindrome(s[:i] + 'a' + s[i:]):
+        print('Yes')
+        exit()
+print('No')
 
 if __name__ == '__main__':
-    main()
+    is_palindrome()

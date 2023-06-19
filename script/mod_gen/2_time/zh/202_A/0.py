@@ -1,45 +1,8 @@
-def main():
-    h,w=map(int,input().split())
-    a=[input() for _ in range(h)]
-    dp=[[0]*w for _ in range(h)]
-    for i in range(h-1,-1,-1):
-        for j in range(w-1,-1,-1):
-            #print(i,j)
-            if i==h-1 and j==w-1:
-                continue
-            if (i+j)%2==0:
-                if i==h-1:
-                    dp[i][j]=dp[i][j+1]
-                    if a[i][j]=='-':
-                        dp[i][j]+=1
-                elif j==w-1:
-                    dp[i][j]=dp[i+1][j]
-                    if a[i][j]=='-':
-                        dp[i][j]+=1
-                else:
-                    dp[i][j]=max(dp[i+1][j],dp[i][j+1])
-                    if a[i][j]=='-':
-                        dp[i][j]+=1
-            else:
-                if i==h-1:
-                    dp[i][j]=dp[i][j+1]
-                    if a[i][j]=='+':
-                        dp[i][j]+=1
-                elif j==w-1:
-                    dp[i][j]=dp[i+1][j]
-                    if a[i][j]=='+':
-                        dp[i][j]+=1
-                else:
-                    dp[i][j]=min(dp[i+1][j],dp[i][j+1])
-                    if a[i][j]=='+':
-                        dp[i][j]+=1
-    #print(dp)
-    if dp[0][0]>0:
-        print("Takahashi")
-    elif dp[0][0]<0:
-        print("Aoki")
+def dice_sum(a, b, c):
+    if a >= 1 and a <= 6 and b >= 1 and b <= 6 and c >= 1 and c <= 6:
+        print(7 - a + 7 - b + 7 - c)
     else:
-        print("Draw")
-
-if __name__ == '__main__':
-    main()
+        print("输入的数值不在范围内")
+dice_sum(1, 4, 3)
+dice_sum(5, 6, 4)
+dice_sum(7, 8, 9)

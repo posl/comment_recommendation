@@ -19,6 +19,3 @@ def getChar(num):
         return chr(num//17576+97)+chr(num%17576//676+97)+chr(num%676//26+97)+chr(num%26+97)
 num = int(input())
 print(getChar(num))
-
-if __name__ == '__main__':
-    getChar()

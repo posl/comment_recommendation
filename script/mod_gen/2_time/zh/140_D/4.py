@@ -1,12 +1,14 @@
 def main():
-    n = int(input())
-    b = list(map(int, input().split()))
-    a = []
-    a.append(b[0])
-    for i in range(n-2):
-        a.append(min(b[i], b[i+1]))
-    a.append(b[-1])
-    print(sum(a))
+    N, K = map(int, input().split())
+    S = input()
+    cnt = 0
+    for i in range(N-1):
+        if S[i] == S[i+1]:
+            cnt += 1
+    cnt += 2 * K
+    if cnt > N-1:
+        cnt = N-1
+    print(cnt)
 
 if __name__ == '__main__':
     main()

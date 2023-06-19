@@ -1,21 +1,12 @@
-def solve():
-    n, m, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    a = sorted(a)
-    b = sorted(b)
-    ans = 0
-    for i in range(n):
-        if k < a[i]:
-            break
-        k -= a[i]
-        ans += 1
-    for i in range(m):
-        if k < b[i]:
-            break
-        k -= b[i]
-        ans += 1
-    print(ans)
+def f(x):
+    if x == 1:
+        return 1
+    else:
+        sum = 1
+        for i in range(2, x+1):
+            if x % i == 0:
+                sum += i
+        return sum
 
 if __name__ == '__main__':
-    solve()
+    f()

@@ -1,15 +1,14 @@
 def main():
-    b=input()
-    if b=='A':
-        print('T')
-    elif b=='T':
-        print('A')
-    elif b=='C':
-        print('G')
-    elif b=='G':
-        print('C')
-    else:
-        print('输入有误')
+    s = input()
+    ans = 0
+    cnt = 0
+    for i in range(len(s)):
+        if s[i] == 'A' or s[i] == 'C' or s[i] == 'G' or s[i] == 'T':
+            cnt += 1
+        else:
+            ans = max(cnt, ans)
+            cnt = 0
+    print(ans)
 
 if __name__ == '__main__':
     main()

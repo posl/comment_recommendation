@@ -1,8 +1,9 @@
-def f(m, a):
-    sum = 0
-    for i in range(len(a)):
-        sum += m % a[i]
-    return sum
+def get_max_f(a):
+    max = 0
+    for i in a:
+        if i > max:
+            max = i
+    return max
 
 if __name__ == '__main__':
-    f()
+    get_max_f()

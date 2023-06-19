@@ -1,11 +1,13 @@
 def main():
-    weather = input()
-    if weather == '晴天':
-        print('阴天')
-    elif weather == '阴天':
-        print('雨天')
-    else:
-        print('晴天')
-
-if __name__ == '__main__':
-    main()
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                exit(0)
+        else:
+            if s[i] == 'R':
+                print('No')
+                exit(0)
+    print('Yes')
+main()

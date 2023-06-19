@@ -7,6 +7,3 @@ def solve():
             ans += 1
     print(N - ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -1,12 +1,6 @@
-def find_substring(s):
-    s_len = len(s)
-    for i in range(1, s_len//2+1):
-        if s_len%i != 0:
-            continue
-        else:
-            if s[:i]*(s_len//i) == s:
-                return True
-    return False
+def get_distance(x1,y1,x2,y2):
+    distance = ((x1-x2)**2 + (y1-y2)**2)**(1/2)
+    return distance
 
 if __name__ == '__main__':
-    find_substring()
+    get_distance()

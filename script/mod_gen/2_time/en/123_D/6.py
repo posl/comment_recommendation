@@ -19,6 +19,3 @@ def main():
   for i in range(K):
     print(ABC[i])
 main()
-
-if __name__ == '__main__':
-    main()

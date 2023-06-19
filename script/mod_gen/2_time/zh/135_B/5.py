@@ -1,9 +1,14 @@
 def main():
-    a,b = map(int,input().split())
-    if (a+b)%2 == 0:
-        print(int((a+b)/2))
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if p[i] != i + 1:
+            count += 1
+    if count <= 2:
+        print('YES')
     else:
-        print("IMPOSIBLE")
+        print('NO')
 
 if __name__ == '__main__':
     main()

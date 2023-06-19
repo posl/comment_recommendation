@@ -5,6 +5,3 @@ def getNumOfWays(L):
         return 12 * getNumOfWays(L - 1) + 1
 L = int(input())
 print(getNumOfWays(L))
-
-if __name__ == '__main__':
-    getNumOfWays()

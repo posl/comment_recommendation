@@ -1,11 +1,15 @@
-def problems200_b():
-    n,k = map(int,input().split())
-    for i in range(k):
-        if n % 200 == 0:
-            n = n // 200
+def get200(n, a):
+    a.sort()
+    a_dic = {}
+    for i in a:
+        if i % 200 in a_dic:
+            a_dic[i % 200] += 1
         else:
-            n = int(str(n) + "200")
-    print(n)
+            a_dic[i % 200] = 1
+    res = 0
+    for i in a_dic:
+        res += a_dic[i] * (a_dic[i] - 1) / 2
+    return res
 
 if __name__ == '__main__':
-    problems200_b()
+    get200()

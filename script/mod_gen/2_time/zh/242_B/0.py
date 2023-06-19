@@ -1,11 +1,6 @@
-def main():
-    A,B,C,X = map(int,input().split())
-    if X <= A:
-        print(1)
-    elif A+1 <= X <= B:
-        print(C/(B-A))
-    else:
-        print(0)
+def problem242_b():
+    S = input()
+    print(''.join(sorted(S)))
 
 if __name__ == '__main__':
-    main()
+    problem242_b()

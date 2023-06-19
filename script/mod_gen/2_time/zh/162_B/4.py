@@ -1,4 +1,15 @@
-def is_contain_seven(num):
-    return num % 10 == 7 or num // 10 % 10 == 7 or num // 100 == 7
-num = int(input())
-print("是" if is_contain_seven(num) else "否")
+def fizzbuzz(n):
+    sum = 0
+    for i in range(1,n+1):
+        if i % 3 == 0 and i % 5 == 0:
+            sum += 0
+        elif i % 3 == 0:
+            sum += 0
+        elif i % 5 == 0:
+            sum += 0
+        else:
+            sum += i
+    return sum
+
+if __name__ == '__main__':
+    fizzbuzz()

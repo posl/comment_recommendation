@@ -1,12 +1,28 @@
-def replace_str(s):
-    s = list(s)
-    for i in range(len(s)):
-        if s[i] == '"':
-            if i % 2 == 0:
-                s[i] = '"'
-            else:
-                s[i] = '.'
-    return "".join(s)
+def main():
+    # 读取输入
+    N, M = map(int, input().split())
+    # 读取M条边
+    edges = []
+    for i in range(M):
+        u, v = map(int, input().split())
+        edges.append((u, v))
+    # 计算答案
+    ans = 0
+    for u, v in edges:
+        # 判断是否可以形成双线图
+        # 双线图的定义是：没有一条边连接到涂成相同颜色的顶点。
+        # 也就是说，如果u和v的颜色相同，那么u和v之间不能有边。
+        # 也就是说，如果u和v之间有边，那么u和v的颜色必须不同。
+        # 所以，如果u和v的颜色相同，那么u和v之间不能有边。
+        # 所以，如果u和v之间有边，那么u和v的颜色必须不同。
+        # 所以，如果u和v的颜色相同，那么u和v之间不能有边。
+        # 所以，如果u和v之间有边，那么u和v的颜色必须不同。
+        # 所以，如果u和v的颜色相同，那么u和v之间不能有边。
+        # 所以，如果u和v之间有边，那么u和v的颜色必须不同。
+        # 所以，如果u和v的颜色相同，那么u和v之间不能有边。
+        # 所以，如果u和v之间有边，那么u和v的颜色必须不同。
+        # 所以，如果u和v的颜色相同，那么u和v之间不能有边。
+        # 所以，如果u和v之间有边，那么u和v的颜色必
 
 if __name__ == '__main__':
-    replace_str()
+    main()

@@ -1,9 +1,5 @@
-def print_alphabet(P):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    result = ''
-    for i in P:
-        result += alphabet[i-1]
-    return result
+def rotate90(m):
+    return [list(x) for x in zip(*m[::-1])]
 
 if __name__ == '__main__':
-    print_alphabet()
+    rotate90()

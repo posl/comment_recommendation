@@ -1,15 +1,15 @@
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    #print(n,k,p)
-    psum = [0] * (n+1)
-    for i in range(n):
-        psum[i+1] = psum[i] + p[i]
-    #print(psum)
-    ans = 0
-    for i in range(n-k+1):
-        ans = max(ans,(psum[i+k]-psum[i]+k)/2)
-    print(ans)
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 逻辑处理
+    if a == b and a != c:
+        print("是")
+    elif a == c and a != b:
+        print("是")
+    elif b == c and b != a:
+        print("是")
+    else:
+        print("否")
 
 if __name__ == '__main__':
     main()

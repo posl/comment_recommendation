@@ -1,15 +1,11 @@
 def main():
-    A,B,C = map(int,input().split())
-    if C == 0:
-        if A > B:
-            print("Takahashi")
-        else:
-            print("Aoki")
-    else:
-        if A >= B:
-            print("Takahashi")
-        else:
-            print("Aoki")
+    n,s,d = map(int,input().split())
+    for i in range(n):
+        x,y = map(int,input().split())
+        if x < s and y > d:
+            print("Yes")
+            return
+    print("No")
 
 if __name__ == '__main__':
     main()

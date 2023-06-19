@@ -1,22 +1,17 @@
-def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    # 从左边开始，找到最大的那个，然后从右边开始，找到最大的那个，然后比较两个最大的那个，取最大的那个
-    # 从左边开始，找到最大的那个
-    max_left = 0
-    for i in range(n):
-        if h[i] > max_left:
-            max_left = h[i]
-    # 从右边开始，找到最大的那个
-    max_right = 0
-    for i in range(n-1, -1, -1):
-        if h[i] > max_right:
-            max_right = h[i]
-    # 比较两个最大的那个，取最大的那个
-    if max_right > max_left:
-        print(max_right)
-    else:
-        print(max_left)
+def problem235_c():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        count = 0
+        for j in range(n):
+            if a[j] == x:
+                count += 1
+                if count == k:
+                    print(j+1)
+                    break
+        else:
+            print(-1)
 
 if __name__ == '__main__':
-    main()
+    problem235_c()

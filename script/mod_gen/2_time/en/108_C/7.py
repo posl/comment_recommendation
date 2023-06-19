@@ -7,6 +7,3 @@ def  main():
                 if  (a+b)%K == 0  and  (b+c)%K == 0  and  (c+a)%K == 0:
                     count += 1
     print(count)
-
-if __name__ == '__main__':
-    ()

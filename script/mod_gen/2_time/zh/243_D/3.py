@@ -1,28 +1,16 @@
 def main():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(n):
-        x_i, y_i = map(int, input().split())
-        x.append(x_i)
-        y.append(y_i)
+    n,x = map(int,input().split())
     s = input()
-    flag = False
+    #print(n,x,s)
+    ans = x
     for i in range(n):
-        if s[i] == 'R':
-            for j in range(n):
-                if j != i and x[j] > x[i] and y[j] == y[i]:
-                    flag = True
-                    break
+        if s[i] == 'L':
+            ans -= 1
+        elif s[i] == 'R':
+            ans += 1
         else:
-            for j in range(n):
-                if j != i and x[j] < x[i] and y[j] == y[i]:
-                    flag = True
-                    break
-    if flag:
-        print('Yes')
-    else:
-        print('No')
+            ans = ans // 2
+    print(ans)
 
 if __name__ == '__main__':
     main()

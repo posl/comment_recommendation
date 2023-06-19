@@ -11,6 +11,3 @@ def get_num_of_stamps(num_of_squares, num_of_blue_squares, blue_squares):
 N, M = map(int, input().split())
 A = list(map(int, input().split()))
 print(get_num_of_stamps(N, M, A))
-
-if __name__ == '__main__':
-    get_num_of_stamps()

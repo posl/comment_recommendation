@@ -1,6 +1,6 @@
 def main():
-    S = input()
-    print(S[int((len(S)+1)/2)-1])
+    N = int(input())
+    print(N%998244353)
 
 if __name__ == '__main__':
     main()

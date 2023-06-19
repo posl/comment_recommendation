@@ -1,49 +1,18 @@
 def main():
-    #print("请输入字母表顺序：")
-    #x = input()
-    #print("请输入人数：")
-    #n = int(input())
-    #print("请输入人名：")
-    #s = []
-    #for i in range(n):
-    #    s.append(input())
-    #print("字母表顺序为：",x)
-    #print("人数为：",n)
-    #print("人名为：",s)
-    x = "bacdefghijklmnopqrstuvwxzy"
-    n = 4
-    s = ["abx","bzz","bzy","caa"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 5
-    #s = ["a","ab","abc","ac","b"]
-    #x = "abcdefghijklmnopqrstuvwxyz"
-    #n = 2
-    #s = ["ac","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 2
-    #s = ["ac","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 2
-    #s = ["ab","ac"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ab","ac","abc"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["abc","ab","ac"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["abc","ac","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ac","abc","ab"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ac","ab","abc"]
-    #x = "zyxwvutsrqponmlkjihgfedcba"
-    #n = 3
-    #s = ["ab","abc","ac"]
-    #x =
+    n = int(input())
+    x, y = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    dp = [[[float('inf') for _ in range(y+1)] for _ in range(x+1)] for _ in range(n+1)]
+    dp[0][0][0] = 0
+    for i in range(n):
+        for j in range(x+1):
+            for k in range(y+1):
+                if dp[i][j][k] == float('inf'):
+                    continue
+                dp[i+1][j][k] = min(dp[i+1][j][k], dp[i][j][k])
+                a, b = ab[i]
+                dp[i+1][min(j+a, x)][min(k+b, y)] = min(dp[i+1][min(j+a, x)][min(k+b, y)], dp[i][j][k]+1)
+    print(dp[n][x][y] if dp[n][x][y] != float('inf') else -1)
 
 if __name__ == '__main__':
     main()

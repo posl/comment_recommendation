@@ -12,6 +12,3 @@ def main():
         else:
             print(A[x%N])
 main()
-
-if __name__ == '__main__':
-    main()

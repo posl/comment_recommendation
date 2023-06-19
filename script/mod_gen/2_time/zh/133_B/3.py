@@ -1,5 +1,8 @@
-def minCost(a, b, n):
-    return min(a * n, b)
+def is_integer(x):
+    if x % 1 == 0:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    minCost()
+    is_integer()

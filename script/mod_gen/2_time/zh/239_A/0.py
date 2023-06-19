@@ -1,16 +1,6 @@
-def judge(a,s):
-    if s < a:
-        return False
-    if s == a:
-        return True
-    if s > 2 * a:
-        return False
-    if s == 2 * a:
-        return True
-    if a % 2 == 0:
-        return True
-    else:
-        return False
+def main():
+    H = int(input())
+    print((H*(12800000+H))**(1/2))
 
 if __name__ == '__main__':
-    judge()
+    main()

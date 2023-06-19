@@ -1,9 +1,11 @@
 def main():
-    n,m = map(int,input().split())
-    if n == m:
-        print('Yes')
+    a, b = map(int, input().split())
+    if a < b:
+        print(str(a)*b)
+    elif a > b:
+        print(str(b)*a)
     else:
-        print('No')
+        print(str(a)*b)
 
 if __name__ == '__main__':
     main()

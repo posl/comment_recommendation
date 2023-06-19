@@ -7,6 +7,3 @@ def main():
         P -= (A[i] + P) // 4
     print(P)
 main()
-
-if __name__ == '__main__':
-    main()

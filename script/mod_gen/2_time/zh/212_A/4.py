@@ -1,14 +1,11 @@
 def main():
-    N, M = map(int, input().split())
-    AB = [list(map(int, input().split())) for _ in range(M)]
-    AB.sort(key=lambda x: x[1])
-    ans = 0
-    now = 0
-    for a, b in AB:
-        if a > now:
-            now = b - 1
-            ans += 1
-    print(ans)
+    A,B = map(int,input().split())
+    if A>0 and B==0:
+        print('黄金')
+    elif A==0 and B>0:
+        print('银')
+    else:
+        print('合金')
 
 if __name__ == '__main__':
     main()

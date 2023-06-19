@@ -1,9 +1,12 @@
-def main():
-    N = int(input())
-    for i in range(N, 1000):
-        if i % 111 == 0:
-            print(i)
-            break
+def find_min_change_num(n, v):
+    min_change_num = n
+    for i in range(2):
+        cnt = 0
+        for j in range(i, n, 2):
+            if v[j] != v[i]:
+                cnt += 1
+        min_change_num = min(min_change_num, cnt)
+    return min_change_num
 
 if __name__ == '__main__':
-    main()
+    find_min_change_num()

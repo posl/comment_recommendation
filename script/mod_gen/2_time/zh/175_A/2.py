@@ -1,18 +1,15 @@
-def main():
-    n = int(input())
-    c = input()
-    r = c.count('R')
-    w = c.count('W')
-    if r == 0 or w == 0:
-        print(0)
-        return
-    if r == w:
-        print(1)
-        return
-    if r > w:
-        print(w)
-    else:
-        print(r)
+def solve():
+    s = input()
+    count = 0
+    max = 0
+    for i in range(3):
+        if s[i] == 'R':
+            count += 1
+        else:
+            count = 0
+        if max < count:
+            max = count
+    print(max)
 
 if __name__ == '__main__':
-    main()
+    solve()

@@ -1,6 +1,8 @@
 def main():
-    H = int(input())
-    print(((H*(12800000+H))**(1/2)))
-
-if __name__ == '__main__':
-    main()
+    # 读入数据
+    x = int(input())
+    # 计算结果
+    result = int(x / 10)
+    # 输出结果
+    print(result)
+main()

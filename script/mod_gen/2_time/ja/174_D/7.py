@@ -26,6 +26,3 @@ def main():
     # 結果を出力
     print(min + max - max_cnt)
 main()
-
-if __name__ == '__main__':
-    main()

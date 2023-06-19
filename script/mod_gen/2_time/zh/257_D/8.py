@@ -1,13 +1,14 @@
-def f(x, N, S, W):
-    count = 0
+def get_input():
+    N = int(input())
+    x = []
+    y = []
+    P = []
     for i in range(N):
-        if S[i] == '0':
-            if W[i] < x:
-                count += 1
-        else:
-            if W[i] >= x:
-                count += 1
-    return count
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    return N, x, y, P
 
 if __name__ == '__main__':
-    f()
+    get_input()

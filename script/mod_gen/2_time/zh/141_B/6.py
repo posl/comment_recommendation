@@ -1,9 +1,11 @@
-def weather():
-    weather = input()
-    if weather == "晴天":
-        print("阴天")
-    elif weather == "阴天":
-        print("雨天")
+def main():
+    S = input()
+    odd = S[::2]
+    even = S[1::2]
+    if odd == odd.upper() and even == even.lower():
+        print('Yes')
     else:
-        print("晴天")
-weather()
+        print('No')
+
+if __name__ == '__main__':
+    main()

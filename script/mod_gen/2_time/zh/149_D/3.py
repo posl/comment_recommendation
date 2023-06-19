@@ -1,19 +1,26 @@
-def is_prime(n):
-    if n == 2:
-        return True
-    elif n % 2 == 0:
-        return False
-    else:
-        for i in range(3, int(n**0.5)+2, 2):
-            if n % i == 0:
-                return False
-        return True
-x = int(input())
-while True:
-    if is_prime(x):
-        print(x)
-        break
-    x += 1
+def main():
+    n,k = map(int,input().split())
+    r,s,p = map(int,input().split())
+    t = input()
+    #print(n,k,r,s,p,t)
+    #print(type(n),type(k),type(r),type(s),type(p),type(t))
+    #print(len(t))
+    #print(type(len(t)))
+    #print(t[0])
+    #print(type(t[0]))
+    #print(t[0] == 'r')
+    #print(type(t[0] == 'r'))
+    #print(t[0] == 'r' and t[1] == 's')
+    #print(type(t[0] == 'r' and t[1] == 's'))
+    #print(t[0] == 'r' and t[1] == 's' and t[2] == 'r')
+    #print(type(t[0] == 'r' and t[1] == 's' and t[2] == 'r'))
+    #print(t[0] == 'r' and t[1] == 's' and t[2] == 'r' and t[3] == 'p')
+    #print(type(t[0] == 'r' and t[1] == 's' and t[2] == 'r' and t[3] == 'p'))
+    #print(t[0] == 'r' and t[1] == 's' and t[2] == 'r' and t[3] == 'p' and t[4] == 's')
+    #print(type(t[0] == 'r' and t[1] == 's' and t[2] == 'r' and t[3] == 'p' and t[4] == 's'))
+    #print(t[0] == 'r' and t[1] == 's' and t[2] == 'r' and t[3] == 'p' and t[4] == 's' and t[5] == 's')
+    #print(type(t[0] == 'r' and t[1] == 's' and t[2] == 'r' and t[3] == 'p' and t[4] == 's' and t[5] == 's'))
+    #print(t[
 
 if __name__ == '__main__':
-    is_prime()
+    main()

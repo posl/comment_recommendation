@@ -1,5 +1,5 @@
-def problems243_c():
-    return None
+def problems243_d():
+    pass
 
 if __name__ == '__main__':
-    problems243_c()
+    problems243_d()

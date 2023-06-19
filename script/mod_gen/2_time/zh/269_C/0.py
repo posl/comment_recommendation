@@ -1,8 +1,8 @@
-def get_input():
-    s = []
-    for i in range(10):
-        s.append(input())
-    return s
+def main():
+    n = int(input())
+    #n = 576461302059761664
+    #n = 11
+    #n
 
 if __name__ == '__main__':
-    get_input()
+    main()

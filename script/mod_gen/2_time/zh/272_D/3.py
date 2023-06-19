@@ -1,15 +1,12 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.reverse()
+    n,m = map(int,input().split())
     for i in range(n):
-        for j in range(i+1, n):
-            if (a[i] + a[j])%2 == 0:
-                print(a[i]+a[j])
-                return
-    print(-1)
-    return
+        for j in range(n):
+            if i==j:
+                print(0,end=' ')
+            else:
+                print(1,end=' ')
+        print()
 
 if __name__ == '__main__':
     main()

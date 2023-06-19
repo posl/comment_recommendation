@@ -1,17 +1,11 @@
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    ans = ''
-    for i in range(len(t)):
-        if t[i] == '1':
-            ans += s1
-        elif t[i] == '2':
-            ans += s2
-        else:
-            ans += s3
-    print(ans)
+    x = input()
+    n = int(input())
+    s = [input() for i in range(n)]
+    x = x.lower()
+    s.sort(key=lambda x: [x.translate(str.maketrans(x, x.lower())), x])
+    for i in s:
+        print(i)
 
 if __name__ == '__main__':
     main()

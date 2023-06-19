@@ -1,22 +1,20 @@
-def main():
-    n, m = map(int, input().split())
-    a = []
-    for i in range(m):
-        a.append(list(map(int, input().split())))
-    a.sort()
-    b = []
-    for i in range(n):
-        b.append([])
-    for i in range(m):
-        b[a[i][0]-1].append(a[i][1])
-        b[a[i][1]-1].append(a[i][0])
-    for i in range(n):
-        b[i].sort()
-    for i in range(n):
-        print(len(b[i]), end = " ")
-        for j in range(len(b[i])):
-            print(b[i][j], end = " ")
-        print()
+def get_next_permutation(a):
+    for i in range(len(a)-2, -1, -1):
+        if a[i] < a[i+1]:
+            target = i
+            break
+    else:
+        return False
+    for i in range(len(a)-1, target, -1):
+        if a[i] > a[target]:
+            a[i], a[target] = a[target], a[i]
+            break
+    a[target+1:] = reversed(a[target+1:])
+    return True
+n = int(input())
+p = list(map(int, input().split()))
+p = [0] + p
+q = p[:]
 
 if __name__ == '__main__':
-    main()
+    get_next_permutation()

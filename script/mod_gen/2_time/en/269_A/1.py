@@ -3,6 +3,3 @@ def main():
     print((a + b) * (c - d))
     print('Takahashi')
 main()
-
-if __name__ == '__main__':
-    main()

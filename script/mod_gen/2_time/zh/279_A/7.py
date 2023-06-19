@@ -1,19 +1,9 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    q = int(input())
-    for _ in range(q):
-        query = input().split()
-        if query[0] == '1':
-            x = int(query[1])
-            for i in range(n):
-                a[i] = x
-        elif query[0] == '2':
-            i, x = int(query[1]), int(query[2])
-            a[i-1] += x
-        else:
-            i = int(query[1])
-            print(a[i-1])
+def count_vw(s):
+    count = 0
+    for i in range(len(s)-1):
+        if s[i] == 'v' and s[i+1] == 'w':
+            count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    count_vw()

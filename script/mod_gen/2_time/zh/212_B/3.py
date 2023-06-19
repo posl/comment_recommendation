@@ -1,9 +1,10 @@
-def main():
-    a,b = map(int,input().split())
-    if a > 0 and b == 0:
-        print("黄金")
-    elif a == 0 and b > 0:
-        print("银")
+def isWeak(pin):
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        return True
+    elif (int(pin[1]) - int(pin[0]) + 10) % 10 == 1 and (int(pin[2]) - int(pin[1]) + 10) % 10 == 1 and (int(pin[3]) - int(pin[2]) + 10) % 10 == 1:
+        return True
     else:
-        print("合金")
-main()
+        return False
+
+if __name__ == '__main__':
+    isWeak()

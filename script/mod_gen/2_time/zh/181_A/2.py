@@ -1,12 +1,9 @@
-def solve(x,y,a,b):
-    if a == 1:
-        return (y-x)//b
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print('白色')
     else:
-        n = 0
-        while x*a <= x+b and x*a < y:
-            n += 1
-            x *= a
-        return n + (y-x-1)//b
+        print('黑色')
 
 if __name__ == '__main__':
-    solve()
+    main()

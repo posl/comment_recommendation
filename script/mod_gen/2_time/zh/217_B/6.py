@@ -1,14 +1,23 @@
 def main():
-    # 读取输入
-    s, t = input().split()
-    # 在这里编写处理
-    if s < t:
-        print("Yes")
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC':
+        if s2 == 'ARC':
+            print('AGC')
+        else:
+            print('ARC')
+    elif s1 == 'ARC':
+        if s2 == 'ABC':
+            print('AGC')
+        else:
+            print('ABC')
     else:
-        print("No")
-    # 输出结果
-    #print(s, t)
-    pass
+        if s2 == 'ARC':
+            print('ABC')
+        else:
+            print('ARC')
+    return
 
 if __name__ == '__main__':
     main()

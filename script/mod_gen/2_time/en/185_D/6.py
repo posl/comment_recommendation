@@ -23,6 +23,3 @@ def main():
         k = max(k, d[i] + 1)
     print((k + 1) // 2)
 main()
-
-if __name__ == '__main__':
-    main()

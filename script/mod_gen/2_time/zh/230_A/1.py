@@ -1,14 +1,11 @@
 def main():
-    S = input()
-    K = int(input())
-    S = S.replace('X','X.')
-    S = S.split('.')
-    S = [len(i) for i in S]
-    S = [i for i in S if i > 0]
-    if len(S) <= K:
-        print(sum(S)+K-len(S))
+    n = int(input())
+    if n >= 1 and n <= 9:
+        print('AGC00' + str(n))
+    elif n >= 10 and n <= 99:
+        print('AGC0' + str(n))
     else:
-        print(sum(S[:K])+K)
+        print('AGC' + str(n))
 
 if __name__ == '__main__':
     main()

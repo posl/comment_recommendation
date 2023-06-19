@@ -3,6 +3,3 @@ def main():
     A = list(map(int, input().split()))
     print(sum(A))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -14,6 +14,3 @@ def main():
         ans *= A[i] ** A[i]
     print(ans % (10**9 + 7))
 main()
-
-if __name__ == '__main__':
-    main()

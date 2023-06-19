@@ -10,6 +10,3 @@ def seven_multiple(K):
             return -1
 K = int(input())
 print(seven_multiple(K))
-
-if __name__ == '__main__':
-    seven_multiple()

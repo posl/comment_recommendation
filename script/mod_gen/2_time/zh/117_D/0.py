@@ -1,15 +1,18 @@
 def main():
-    n, m = map(int, input().split())
-    x = list(map(int, input().split()))
-    x.sort()
-    if n >= m:
-        print(0)
-        return
-    dis = []
-    for i in range(m - 1):
-        dis.append(x[i + 1] - x[i])
-    dis.sort()
-    print(sum(dis[:m - n]))
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(40, -1, -1):
+        cnt = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                cnt += 1
+        if cnt <= n - cnt and ans + (1 << i) <= k:
+            ans += (1 << i)
+    s = 0
+    for i in range(n):
+        s += ans ^ a[i]
+    print(s)
 
 if __name__ == '__main__':
     main()

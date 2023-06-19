@@ -1,9 +1,6 @@
-def get_bit_sum(a,s):
-    res = 0
-    while s > 0:
-        res += s & 1
-        s = s >> 1
-    return res
+def main():
+    h = int(input())
+    print((h*(12800000+h))**0.5)
 
 if __name__ == '__main__':
-    get_bit_sum()
+    main()

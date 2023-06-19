@@ -1,9 +1,15 @@
 def main():
-    k,n = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.append(a[0]+k)
-    d = [a[i+1]-a[i] for i in range(n)]
-    print(k-max(d))
+    n,x,y = map(int,input().split())
+    for k in range(1,n):
+        ans = 0
+        for i in range(1,n):
+            for j in range(i+1,n+1):
+                if i == x and j == y:
+                    continue
+                d = min(j-i,abs(x-i)+1+abs(y-j))
+                if d == k:
+                    ans += 1
+        print(ans)
 
 if __name__ == '__main__':
     main()

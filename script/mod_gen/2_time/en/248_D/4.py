@@ -6,6 +6,3 @@ def main():
     l, r, x = map(int, input().split())
     print(sum(1 for i in range(l-1, r) if a[i] == x))
 main()
-
-if __name__ == '__main__':
-    main()

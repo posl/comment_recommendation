@@ -1,9 +1,10 @@
-def problem200_a():
-    n = int(input())
-    if n%100 == 0:
-        print(int(n/100))
+def problem200_b(n,k):
+    if k == 0:
+        return n
+    if n % 200 == 0:
+        return problem200_b(n//200,k-1)
     else:
-        print(int(n/100)+1)
+        return problem200_b(int(str(n)+"200"),k-1)
 
 if __name__ == '__main__':
-    problem200_a()
+    problem200_b()

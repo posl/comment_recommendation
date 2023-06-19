@@ -1,12 +1,16 @@
-def get_min_operation(n):
-    min_operation = n
-    for i in range(0,n+1):
-        for j in range(0,n+1):
-            if 6**i + 9**j > n:
-                break
-            if 6**i + 9**j == n:
-                min_operation = min(min_operation,i+j)
-    return min_operation
+def solution(n):
+    if n == 0:
+        return 0
+    elif n < 6:
+        return n
+    else:
+        min_num = n
+        for i in range(1, 6):
+            if n >= 6 ** i:
+                min_num = min(min_num, solution(n - 6 ** i) + 1)
+            if n >= 9 ** i:
+                min_num = min(min_num, solution(n - 9 ** i) + 1)
+        return min_num
 
 if __name__ == '__main__':
-    get_min_operation()
+    solution()

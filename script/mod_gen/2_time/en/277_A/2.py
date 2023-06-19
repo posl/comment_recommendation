@@ -6,6 +6,3 @@ def main():
             print(i+1)
             break
 main()
-
-if __name__ == '__main__':
-    main()

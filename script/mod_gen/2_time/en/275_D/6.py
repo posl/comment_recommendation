@@ -21,6 +21,3 @@ The function f(x) is defined for x > 0. The function f(0) is defined as 1. The f
 The function f(x) is defined for x > 0. The function f(0) is defined as 1. The function f(x) is defined recursively.
 The function f(x) is defined for x > 0. The function f(0) is defined as 1. The function f(x) is defined recursively.
 The function f(x)
-
-if __name__ == '__main__':
-    f()

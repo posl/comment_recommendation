@@ -5,6 +5,3 @@ def rec(n):
         return rec(n-1) + [n] + rec(n-1)
 n = int(input())
 print(*rec(n))
-
-if __name__ == '__main__':
-    rec()

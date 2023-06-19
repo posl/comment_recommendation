@@ -10,6 +10,3 @@ def main():
         ans = max(ans, sum(cakes[j][0] + cakes[j][1] + cakes[j][2] for j in range(M)))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

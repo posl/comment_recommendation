@@ -1,5 +1,10 @@
-def get_min_permutation(n):
-    return range(1,n+1)
+def gcd(x, y):
+    if x < y:
+        x, y = y, x
+    if x % y == 0:
+        return y
+    else:
+        return gcd(y, x % y)
 
 if __name__ == '__main__':
-    get_min_permutation()
+    gcd()

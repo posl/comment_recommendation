@@ -1,17 +1,18 @@
 def main():
     n = int(input())
-    s = []
+    a = list(map(int, input().split()))
+    d = {}
     for i in range(n):
-        s.append(input())
-    # print(s)
-    ans = 0
-    for i in range(10):
-        for j in range(n):
-            if s[j][i] == str(i):
-                break
-            if j == n - 1:
-                ans = ans + 1
-    print(ans)
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+    s = 0
+    for i in d:
+        s += d[i] * (d[i] - 1) * (d[i] - 2) // 6
+    for i in range(n):
+        s -= (d[a[i]] - 1) * (d[a[i]] - 2) // 2
+    print(s)
 
 if __name__ == '__main__':
     main()

@@ -1,16 +1,9 @@
-def amidakuji(h,w,k):
-    if h==1:
-        if k==1:
-            return 1
-        else:
-            return 2
+def main():
+    X = int(input())
+    if X == 3 or X == 5 or X == 7:
+        print("Yes")
     else:
-        if k==1:
-            return 1
-        elif k==w:
-            return 1
-        else:
-            return amidakuji(h-1,w-1,k-1)+amidakuji(h-1,w-1,k)
+        print("No")
 
 if __name__ == '__main__':
-    amidakuji()
+    main()

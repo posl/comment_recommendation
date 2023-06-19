@@ -1,8 +1,9 @@
-def f(n,s):
-    if n == 0:
-        return 1 if s == 0 else 0
-    elif n > s:
-        return f(n-1,s)
+def main():
+    s = input()
+    if s[-1] == 's':
+        print(s + 'es')
     else:
-        return f(n-1,s) + f(n,s-n)
-print(f(2000,2000))
+        print(s + 's')
+
+if __name__ == '__main__':
+    main()

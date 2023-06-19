@@ -1,16 +1,23 @@
-def get_min_cost(n, m, x, costs, understand):
-    costs = [costs[i] for i in range(n) if understand[i] < x]
-    if len(costs) == 0:
-        return 0
-    min_cost = min(costs)
-    min_cost_index = costs.index(min_cost)
-    understand = [understand[i] + understand[min_cost_index] for i in range(n)]
-    return min_cost + get_min_cost(n, m, x, costs, understand)
-n, m, x = map(int, input().split())
-costs = []
-understand = []
-for i in range(n):
-    cost, *understand_level = map(int, input().split())
-    costs.append(cost)
-    understand.append(sum(understand_level))
-print(get_min_cost(n, m, x, costs, understand))
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [0]*n
+    b[0] = 1
+    c = 0
+    for i in range(1, n+1):
+        c = a[c] - 1
+        if b[c] > 0:
+            break
+        else:
+            b[c] = i + 1
+    if i == n:
+        print(c+1)
+    else:
+        d = i - b[c] + 1
+        e = (k - i) % d
+        for i in range(e):
+            c = a[c] - 1
+        print(c+1)
+
+if __name__ == '__main__':
+    main()

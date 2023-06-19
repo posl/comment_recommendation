@@ -1,8 +1,6 @@
-def findRoots(n, m, edges):
-    roots = [i for i in range(n)]
-    for edge in edges:
-        roots[edge[1]] = roots[edge[0]]
-    return roots
+def main():
+    x = int(input())
+    print(1-x)
 
 if __name__ == '__main__':
-    findRoots()
+    main()

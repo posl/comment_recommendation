@@ -1,11 +1,13 @@
-def main():
-    A,B,K = map(int,input().split())
-    if K <= A:
-        print(A-K,B)
-    elif K > A and K <= A+B:
-        print(0,B-(K-A))
+def is_prime(n):
+    if n == 2:
+        return True
+    elif n % 2 == 0 or n == 1:
+        return False
     else:
-        print(0,0)
+        for i in range(3, int(n**0.5) + 1, 2):
+            if n % i == 0:
+                return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    is_prime()

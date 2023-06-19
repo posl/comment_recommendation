@@ -18,6 +18,3 @@ def  main():
      # The sum of the distances between the coordinates of the pieces 
     ans = sum(D[0:M - N])
     print(ans)
-
-if __name__ == '__main__':
-    ()

@@ -1,12 +1,14 @@
 def main():
-    pins = input()
-    if pins[0] == '1':
-        if pins[3] == '1':
-            if pins[5] == '1':
-                if pins[7] == '1':
-                    print('Yes')
-                    return
-    print('No')
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = [0]
+    for i in range(n):
+        b.append(b[i]+a[i])
+    print(b)
+    ans = -float("inf")
+    for i in range(m,n+1):
+        ans = max(ans,b[i]-b[i-m])
+    print(ans)
 
 if __name__ == '__main__':
     main()

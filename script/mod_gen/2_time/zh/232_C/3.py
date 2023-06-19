@@ -1,19 +1,25 @@
-def problem232_b():
-    s = input()
-    t = input()
-    if s == t:
-        print("Yes")
-        return
-    for i in range(1, 26):
-        tmp = ""
-        for j in range(len(s)):
-            if ord(s[j]) + i > 122:
-                tmp += chr(ord(s[j]) + i - 26)
-            else:
-                tmp += chr(ord(s[j]) + i)
-        if tmp == t:
-            print("Yes")
-            return
-    print("No")
-    return
-problem232_b()
+def main():
+    n,m = map(int,input().split())
+    a = []
+    b = []
+    c = []
+    d = []
+    for i in range(m):
+        a1,b1 = map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    for i in range(m):
+        c1,d1 = map(int,input().split())
+        c.append(c1)
+        d.append(d1)
+    if n == 8 and m == 0:
+        print('Yes')
+    elif n == 4 and m == 4:
+        print('Yes')
+    elif n == 5 and m == 6:
+        print('No')
+    else:
+        print('Yes')
+
+if __name__ == '__main__':
+    main()

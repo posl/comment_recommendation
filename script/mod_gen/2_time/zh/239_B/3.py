@@ -1,5 +1,6 @@
-def answer(H):
-    return (H*(12800000+H))**(1/2)
+def main():
+    X = int(input())
+    print(X//10)
 
 if __name__ == '__main__':
-    answer()
+    main()

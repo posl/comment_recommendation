@@ -16,6 +16,3 @@ def solve():
         ans ^= A[i]
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

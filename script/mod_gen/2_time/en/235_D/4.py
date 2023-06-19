@@ -13,6 +13,3 @@ def solve(a, n):
     return cnt
 a, n = map(int, input().split())
 print(solve(a, n))
-
-if __name__ == '__main__':
-    solve()

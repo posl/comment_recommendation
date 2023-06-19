@@ -1,12 +1,15 @@
-def answer(A,B,C):
-    if A == B and B != C:
-        return "是"
-    elif A == C and B != C:
-        return "是"
-    elif B == C and A != B:
-        return "是"
-    else:
-        return "否"
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for a in A:
+        if a % 2 == 0:
+            if a % 3 == 0 or a % 5 == 0:
+                continue
+            else:
+                print('DENIED')
+                return
+    print('APPROVED')
+    return
 
 if __name__ == '__main__':
-    answer()
+    main()

@@ -1,16 +1,14 @@
-def main():
-    n, m = map(int, input().split())
-    data = [tuple(map(int, input().split())) for _ in range(m)]
-    data.sort(key=lambda x: x[1])
-    cnt = [0] * (n + 1)
-    for p, y in data:
-        cnt[p] += 1
-    ans = {}
-    for p, y in data:
-        ans[y] = (str(p).zfill(6) + str(cnt[p]).zfill(6))
-        cnt[p] -= 1
-    for p, y in data:
-        print(ans[y])
+def amidakuji(h,w,k):
+    #h:垂直线的高度
+    #w:垂直线的数量
+    #k:从最左边的垂直线的顶部追踪到底部，当我们遇到水平线时，我们会从左边到达第K条垂直线的底部。
+    #返回值：满足条件的羊皮纸的数量
+    #思路：将问题分解为两部分，第一部分是垂直线的排序，第二部分是水平线的排序
+    #第一部分垂直线的排序
+    #第一步：计算垂直线的排序
+    #第二步：计算水平线的排序
+    #第三步：计算满足条件的羊皮纸的数量
+    #第一步�
 
 if __name__ == '__main__':
-    main()
+    amidakuji()

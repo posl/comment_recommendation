@@ -1,13 +1,14 @@
 def main():
     # 读取输入
-    n = int(input())
-    # 解决问题
-    ans = 0
-    for i in range(1, n+1):
-        if i % 2 == 1:
-            ans += 1
-    # 输出答案
-    print(ans/n)
+    num, height = map(int, input().split())
+    heights = list(map(int, input().split()))
+    # 计算
+    count = 0
+    for h in heights:
+        if h >= height:
+            count += 1
+    # 打印结果
+    print(count)
 
 if __name__ == '__main__':
     main()

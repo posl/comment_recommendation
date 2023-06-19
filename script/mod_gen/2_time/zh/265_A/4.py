@@ -1,13 +1,11 @@
 def main():
-    s = input()
-    t = "atcoder"
-    count = 0
-    for i in range(len(s)):
-        if s[i] == t[i]:
-            continue
-        else:
-            count += 1
-    print(count)
+    x,y,n = map(int,input().split())
+    if n%3 == 0:
+        print(int(n/3)*y)
+    elif n%3 == 1:
+        print(int(n/3)*y+x)
+    else:
+        print(int(n/3)*y+2*x)
 
 if __name__ == '__main__':
     main()

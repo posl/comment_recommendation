@@ -1,9 +1,12 @@
-def get_sum(n, k):
-    sum = 0
-    for i in range(1, n+1):
-        for j in range(1, k+1):
-            sum += i*100 + j
-    return sum
+def main():
+    n,k = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort()
+    for a,b in ab:
+        if a > k:
+            break
+        k += b
+    print(k)
 
 if __name__ == '__main__':
-    get_sum()
+    main()

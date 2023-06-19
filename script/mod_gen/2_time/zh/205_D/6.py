@@ -1,10 +1,9 @@
-def compare_pow(a, b, c):
-    if a == b:
-        return "="
-    elif a > b:
-        return ">"
-    else:
-        return "<"
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    K = [int(input()) for _ in range(Q)]
+    for k in K:
+        print(get_kth(A, k))
 
 if __name__ == '__main__':
-    compare_pow()
+    main()

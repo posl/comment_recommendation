@@ -9,6 +9,3 @@ def max_sum(A):
 N = int(input())
 A = list(map(int, input().split()))
 print(max_sum(A))
-
-if __name__ == '__main__':
-    max_sum()

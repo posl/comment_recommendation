@@ -1,13 +1,6 @@
 def main():
-    a,b,c = map(int,input().split())
-    if a == b:
-        print(c)
-    elif b == c:
-        print(a)
-    elif a == c:
-        print(b)
-    else:
-        print(0)
+    n,k = map(int,input().split())
+    print(n*100*k*(k+1)//2)
 
 if __name__ == '__main__':
     main()

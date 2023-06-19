@@ -6,6 +6,3 @@ def is_substring_of_t(s):
         return "No"
 s = input()
 print(is_substring_of_t(s))
-
-if __name__ == '__main__':
-    is_substring_of_t()

@@ -1,9 +1,10 @@
 def main():
-    N, M = map(int, input().split())
-    if N == M:
-        print('Yes')
-    else:
-        print('No')
+    a,b = map(int,input().split())
+    a = str(a)
+    b = str(b)
+    a = a * int(b)
+    b = b * int(a)
+    print(min(a,b))
 
 if __name__ == '__main__':
     main()

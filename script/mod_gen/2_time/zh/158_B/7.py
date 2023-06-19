@@ -1,9 +1,6 @@
 def main():
-    s = input()
-    if s.count('A') == 1 and s.count('B') == 1:
-        print('Yes')
-    else:
-        print('No')
+    N, A, B = map(int, input().split())
+    print(N // (A + B) * A + min(N % (A + B), A))
 
 if __name__ == '__main__':
     main()

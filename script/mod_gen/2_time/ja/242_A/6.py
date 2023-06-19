@@ -7,6 +7,3 @@ def calc_prob(a,b,c,x):
         return 0
 a,b,c,x = map(int,input().split())
 print(calc_prob(a,b,c,x))
-
-if __name__ == '__main__':
-    calc_prob()

@@ -1,5 +1,13 @@
-def swap(a, b, s):
-    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(0, 4*n-3, 4):
+        if a[i] != a[i+1]:
+            print(a[i])
+            break
+    else:
+        print(a[-1])
 
 if __name__ == '__main__':
-    swap()
+    main()

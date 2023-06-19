@@ -16,6 +16,3 @@ def main():
         S += count * (c - b)
         print(S)
 main()
-
-if __name__ == '__main__':
-    main()

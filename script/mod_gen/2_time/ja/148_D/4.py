@@ -12,6 +12,3 @@ def main():
     else:
         print(N - ans)
 main()
-
-if __name__ == '__main__':
-    main()

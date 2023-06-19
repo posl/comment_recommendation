@@ -1,15 +1,16 @@
 def main():
-    N = int(input())
-    S = list(map(int, input().split()))
-    T = list(map(int, input().split()))
-    ans = [0] * N
-    for i in range(N):
-        if i == 0:
-            ans[i] = T[i]
-        else:
-            ans[i] = min(ans[i - 1] + S[i - 1], T[i])
-    for i in range(N):
-        print(ans[i])
+    n = int(input())
+    edges = []
+    for _ in range(n-1):
+        u,v,w = map(int,input().split())
+        edges.append((w,u,v))
+    edges.sort()
+    uf = UnionFind(n)
+    ans = 0
+    for w,u,v in edges:
+        ans += w * uf.size(u) * uf.size(v)
+        uf.union(u,v)
+    print(ans)
 
 if __name__ == '__main__':
     main()

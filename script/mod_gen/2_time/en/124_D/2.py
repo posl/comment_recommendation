@@ -20,6 +20,3 @@ def solve():
         ans += K
     print(min(ans, N))
 solve()
-
-if __name__ == '__main__':
-    solve()

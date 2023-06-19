@@ -11,6 +11,3 @@ def solve():
                     dp[i][j+k] %= mod
     print(dp[N][K])
 solve()
-
-if __name__ == '__main__':
-    solve()

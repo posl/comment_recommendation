@@ -1,12 +1,31 @@
-def isLine(x1, y1, x2, y2, x3, y3):
-    if x1 == x2 and x1 == x3:
-        return True
-    elif y1 == y2 and y1 == y3:
-        return True
-    elif (y1 - y2) * (x1 - x3) == (y1 - y3) * (x1 - x2):
-        return True
-    else:
-        return False
+def main():
+    S = input()
+    if len(S) == 1:
+        if S == '8':
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 2:
+        if int(S)%8 == 0 or int(S[1]+S[0])%8 == 0:
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 3:
+        if int(S)%8 == 0 or int(S[2]+S[0]+S[1])%8 == 0 or int(S[1]+S[2]+S[0])%8 == 0 or int(S[2]+S[1]+S[0])%8 == 0 or int(S[1]+S[0]+S[2])%8 == 0:
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 4:
+        if int(S)%8 == 0 or int(S[3]+S[0]+S[1]+S[2])%8 == 0 or int(S[2]+S[3]+S[0]+S[1])%8 == 0 or int(S[1]+S[2]+S[3]+S[0])%8 == 0 or int(S[0]+S[1]+S[2]+S[3])%8 == 0 or int(S[3]+S[2]+S[1]+S[0])%8 == 0 or int(S[2]+S[1]+S[0]+S[3])%8 == 0 or int(S[1]+S[0]+S[3]+S[2])%8 == 0:
+            print("是")
+        else:
+            print("否")
+        return
+    if len(S) == 5:
+        if int(S)%8 == 0 or int(S[4]+S[0]+S[1]+S[2]+S[3])%8 == 0 or int(S[3]+S[4]+S[0]+S[1]+S[2])%8 == 0 or int(S[2]+S[3]+S[4]+S[0]+S[1])%8 == 0 or int(S[1
 
 if __name__ == '__main__':
-    isLine()
+    main()

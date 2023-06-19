@@ -1,12 +1,9 @@
-def main():
-    S = input()
-    N = len(S)
-    min_753 = 753
-    for i in range(N-2):
-        X = int(S[i:i+3])
-        if abs(X-753) < min_753:
-            min_753 = abs(X-753)
-    print(min_753)
+def count753(num):
+    count = 0
+    for i in range(1, num+1):
+        if '7' in str(i) and '5' in str(i) and '3' in str(i):
+            count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    count753()

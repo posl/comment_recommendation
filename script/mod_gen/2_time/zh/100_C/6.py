@@ -1,15 +1,9 @@
-def solve():
-    N = int(input())
-    a = list(map(int, input().split()))
-    ans = 0
-    while True:
-        for i in range(N):
-            if a[i] % 2 == 1:
-                print(ans)
-                return
-            else:
-                a[i] //= 2
-        ans += 1
+def count2(n):
+    count = 0
+    while n % 2 == 0:
+        n = n / 2
+        count += 1
+    return count
 
 if __name__ == '__main__':
-    solve()
+    count2()

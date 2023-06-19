@@ -15,6 +15,3 @@ def check(n, a):
 n = int(input())
 a = [list(input()) for _ in range(n)]
 print('correct' if check(n, a) else 'incorrect')
-
-if __name__ == '__main__':
-    check()

@@ -20,6 +20,3 @@ def solve():
     else:
         print('No')
 solve()
-
-if __name__ == '__main__':
-    solve()

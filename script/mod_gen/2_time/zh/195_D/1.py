@@ -1,16 +1,17 @@
-def main():
-    # 读取输入
-    N = int(input().strip())
-    # 初始化
-    ans = 0
-    # 逐位判断
-    while N > 0:
-        # 逢三进一
-        ans += (N + 2) // 3
-        # 去掉最后三位
-        N //= 10
-    # 输出结果
-    print(ans)
+def get_max_value(w, v, x):
+    # w: weight
+    # v: value
+    # x: box size
+    # return: max value
+    dp = [[0 for _ in range(10001)] for _ in range(51)]
+    for i in range(1, len(w)+1):
+        for j in range(1, 10001):
+            if j < w[i-1]:
+                dp[i][j] = dp[i-1][j]
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i-1]]+v[i-1])
+    # print(dp)
+    return dp[len(w)][x]
 
 if __name__ == '__main__':
-    main()
+    get_max_value()

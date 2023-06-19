@@ -1,19 +1,12 @@
 def main():
     n = int(input())
-    a = []
-    b = []
+    a = list(map(int,input().split()))
+    ans = 0
+    sum_a = sum(a)
     for i in range(n):
-        a_i, b_i = map(int, input().split())
-        a.append(a_i)
-        b.append(b_i)
-    min_time = 10**10
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                continue
-            else:
-                min_time = min(min_time, max(a[i], b[j]))
-    print(min_time)
+        sum_a -= a[i]
+        ans += (n-1)*a[i]**2 - 2*a[i]*sum_a
+    print(ans)
 
 if __name__ == '__main__':
     main()

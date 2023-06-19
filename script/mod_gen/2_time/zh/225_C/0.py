@@ -1,17 +1,12 @@
 def main():
-    n = int(input())
-    a = []
-    b = []
-    for i in range(n-1):
-        x, y = map(int, input().split())
-        a.append(x)
-        b.append(y)
-    a.sort()
-    b.sort()
-    if a[0] == 1 and b.count(n) == n-1:
-        print('Yes')
-    else:
-        print('No')
+    n,m = map(int, input().split())
+    b = [list(map(int, input().split())) for _ in range(n)]
+    for i in range(1,n):
+        for j in range(1,m):
+            if b[i][j] != b[i-1][j-1] + 7:
+                print("No")
+                exit()
+    print("Yes")
 
 if __name__ == '__main__':
     main()

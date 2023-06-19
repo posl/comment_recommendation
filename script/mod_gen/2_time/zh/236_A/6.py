@@ -1,17 +1,7 @@
-def main():
-    a,n = map(int,input().split())
-    count = 0
-    while n != 1:
-        if n % a == 0:
-            n /= a
-            count += 1
-        else:
-            n -= 1
-            count += 1
-        if n < 1:
-            print(-1)
-            return
-    print(count)
+def swap_char(s, a, b):
+    if a > b:
+        a, b = b, a
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
 
 if __name__ == '__main__':
-    main()
+    swap_char()

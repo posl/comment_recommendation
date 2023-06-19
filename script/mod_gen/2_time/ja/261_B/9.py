@@ -14,6 +14,3 @@ def check_result():
                 return False
     return True
 print('correct' if check_result() else 'incorrect')
-
-if __name__ == '__main__':
-    check_result()

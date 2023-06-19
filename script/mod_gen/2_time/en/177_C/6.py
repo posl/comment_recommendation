@@ -6,6 +6,3 @@ def main():
         sum += A[i] * A[i+1]
     print(sum)
 main()
-
-if __name__ == '__main__':
-    main()

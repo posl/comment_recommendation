@@ -1,8 +1,7 @@
-def gcd(x, y):
-    if y == 0:
-        return x
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(int(n/2))
     else:
-        return gcd(y, x%y)
-
-if __name__ == '__main__':
-    gcd()
+        print(int((n+1)/2))
+main()

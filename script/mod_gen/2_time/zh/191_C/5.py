@@ -1,8 +1,14 @@
 def main():
-    n, x = map(int, input().split())
-    a = list(map(int, input().split()))
-    a = [i for i in a if i != x]
-    print(*a)
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    count = 0
+    #print(S)
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                count += 1
+    print(count)
+    return
 
 if __name__ == '__main__':
     main()

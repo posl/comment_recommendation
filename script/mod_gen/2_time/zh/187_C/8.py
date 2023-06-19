@@ -1,18 +1,20 @@
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-N = int(input())
-points = []
-for i in range(N):
-    points.append(list(map(int, input().split())))
-cnt = 0
-for i in range(N):
-    for j in range(i + 1, N):
-        if abs(points[i][0] - points[j][0]) <= abs(points[i][1] - points[j][1]):
-            cnt += 1
-print(cnt)
+def main():
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s2 = []
+    for i in range(N):
+        if s[i][0] == '!':
+            s2.append(s[i][1:])
+        else:
+            s2.append('!' + s[i])
+    s2.sort()
+    for i in range(N-1):
+        if s2[i] == s2[i+1]:
+            print(s2[i][1:])
+            exit()
+    print('satisfiable')
 
 if __name__ == '__main__':
-    gcd()
+    main()

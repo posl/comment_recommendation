@@ -1,5 +1,6 @@
-def solve():
-    print("hello")
+def main():
+    s = input()
+    print(len(set(s)))
 
 if __name__ == '__main__':
-    solve()
+    main()

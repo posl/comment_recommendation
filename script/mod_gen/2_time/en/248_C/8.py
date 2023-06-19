@@ -13,6 +13,3 @@ def   main ():
                      dp [ i + 1 ][ j + 1 ][ x   +   j   +   1 ]   %=   mod
     res   =   sum ( dp [ n ][ m ])   %   mod
      print ( res )
-
-if __name__ == '__main__':
-    ()

@@ -1,13 +1,12 @@
 def main():
-    s = input()
-    s = s[::-1]
-    s = s.replace("6","x")
-    s = s.replace("9","6")
-    s = s.replace("x","9")
-    s = s.replace("0","x")
-    s = s.replace("1","0")
-    s = s.replace("x","1")
-    print(s)
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n+1):
+        count += b[c[i-1]-1] == a[i-1]
+    print(count)
 
 if __name__ == '__main__':
     main()

@@ -1,17 +1,18 @@
 def problem106_d():
-    n,m,q = map(int,input().split())
-    l = [0]*m
-    r = [0]*m
-    for i in range(m):
-        l[i],r[i] = map(int,input().split())
-    p = [0]*q
-    q = [0]*q
-    for i in range(q):
-        p[i],q[i] = map(int,input().split())
-    for i in range(q):
-        count = 0
-        for j in range(m):
-            if p[i]<=l[j] and r[j]<=q[i]:
-                count += 1
-        print(count)
+    N, M, Q = map(int, input().split())
+    LR = []
+    for i in range(M):
+        L, R = map(int, input().split())
+        LR.append((L, R))
+    PQ = []
+    for i in range(Q):
+        P, Q = map(int, input().split())
+        PQ.append((P, Q))
+    ans = [0] * Q
+    for i in range(M):
+        for j in range(Q):
+            if LR[i][0] <= PQ[j][0] and LR[i][1] >= PQ[j][1]:
+                ans[j] += 1
+    for i in range(Q):
+        print(ans[i])
 problem106_d()

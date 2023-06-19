@@ -1,18 +1,22 @@
-def main():
-    n = int(input())
-    edges = []
-    for i in range(n-1):
-        edges.append(list(map(int, input().split())))
-    edges.sort()
-    #print(edges)
-    if edges[0][0] != 1:
-        print('No')
-        exit()
-    for i in range(n-1):
-        if edges[i][0] != edges[i+1][0]:
-            print('No')
-            exit()
-    print('Yes')
-
-if __name__ == '__main__':
-    main()
+def solve():
+    n, m = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(n)]
+    A = [[0] * 7 for _ in range(10**2)]
+    for i in range(10**2):
+        for j in range(7):
+            A[i][j] = (i) * 7 + j + 1
+    for i in range(10**2):
+        for j in range(7):
+            if A[i][j] == B[0][0]:
+                for k in range(n):
+                    for l in range(m):
+                        if i + k >= 10**2 or j + l >= 7:
+                            print("No")
+                            return
+                        if A[i + k][j + l] != B[k][l]:
+                            print("No")
+                            return
+                print("Yes")
+                return
+    print("No")
+solve()

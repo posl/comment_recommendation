@@ -1,9 +1,10 @@
-def main():
-    x,y = map(int,input().split())
-    if x >= y :
-        print(0)
-    else:
-        print(int((y-x)/10))
+def reverseString(s, l, r):
+    l -= 1
+    r -= 1
+    temp = s[l:r+1]
+    temp = temp[::-1]
+    s = s[:l] + temp + s[r+1:]
+    return s
 
 if __name__ == '__main__':
-    main()
+    reverseString()

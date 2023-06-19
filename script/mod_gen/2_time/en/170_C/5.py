@@ -12,6 +12,3 @@ def main():
             print(x + d)
             return
 main()
-
-if __name__ == '__main__':
-    main()

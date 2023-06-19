@@ -23,6 +23,3 @@ def main():
                 visited[nv] = True
                 queue.append((nv, d + 1))
 main()
-
-if __name__ == '__main__':
-    main()

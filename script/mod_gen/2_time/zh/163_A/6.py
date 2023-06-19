@@ -1,15 +1,6 @@
 def main():
-    n = int(input())
-    s = input()
-    ans = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            k = 2*j - i
-            if k >= n:
-                continue
-            if s[i] != s[j] and s[i] != s[k] and s[j] != s[k]:
-                ans += 1
-    print(ans)
+    r = int(input())
+    print(2*r*3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170678)
 
 if __name__ == '__main__':
     main()

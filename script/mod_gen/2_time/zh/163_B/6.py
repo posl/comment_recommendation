@@ -1,6 +1,11 @@
 def main():
-    r = int(input())
-    print(2*r*3.14159265358979323846264338327950288419716939937510582097494459230781640628620899)
-
-if __name__ == '__main__':
-    main()
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(M):
+        sum += A[i]
+    if sum > N:
+        print(-1)
+    else:
+        print(N - sum)
+main()

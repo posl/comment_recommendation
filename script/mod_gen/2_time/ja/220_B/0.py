@@ -3,6 +3,3 @@ def main():
     A, B = map(str, input().split())
     print(int(A, K) * int(B, K))
 main()
-
-if __name__ == '__main__':
-    main()

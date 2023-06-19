@@ -7,6 +7,3 @@ def calc(x, y, n):
         return calc(x, y, n-1) + calc(x, y, n-2)
 n, x, y = map(int, input().split())
 print(calc(x, y, n))
-
-if __name__ == '__main__':
-    calc()

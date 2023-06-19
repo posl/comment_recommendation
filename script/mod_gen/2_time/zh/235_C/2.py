@@ -1,11 +1,11 @@
-def main():
-    n = int(input())
-    h = [int(i) for i in input().split()]
-    maxh = 0
-    for i in range(n-1):
-        if h[i] < h[i+1]:
-            maxh = h[i+1]
-    print(maxh)
+def get_index(num, k, list):
+    count = 0
+    for i in range(len(list)):
+        if list[i] == num:
+            count += 1
+            if count == k:
+                return i + 1
+    return -1
 
 if __name__ == '__main__':
-    main()
+    get_index()

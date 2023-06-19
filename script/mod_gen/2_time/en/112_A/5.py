@@ -7,6 +7,3 @@ def main():
         b = int(input())
         print(a + b)
 main()
-
-if __name__ == '__main__':
-    main()

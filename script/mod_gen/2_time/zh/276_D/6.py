@@ -1,22 +1,17 @@
-def get_min_permutation(n, p):
-    q = []
-    for i in range(n):
-        q.append(p[i])
-    for i in range(n):
-        for j in range(n-1-i):
-            if q[j] > q[j+1]:
-                tmp = q[j]
-                q[j] = q[j+1]
-                q[j+1] = tmp
-    return q
-n = int(input())
-p = list(map(int, input().split()))
-q = get_min_permutation(n, p)
-for i in range(n):
-    if i == n-1:
-        print(q[i])
-    else:
-        print(q[i], end=' ')
-
-if __name__ == '__main__':
-    get_min_permutation()
+def solve(N, A):
+    count = 0
+    while True:
+        if all(a % 2 == 0 for a in A):
+            count += 1
+            A = [a / 2 for a in A]
+        elif all(a % 3 == 0 for a in A):
+            count += 1
+            A = [a / 3 for a in A]
+        elif all(a == A[0] for a in A):
+            break
+        else:
+            return -1
+    return count
+N = int(raw_input())
+A = map(int, raw_input().split())
+print solve(N, A)

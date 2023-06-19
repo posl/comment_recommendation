@@ -1,14 +1,11 @@
-def get_min_max_str(s):
-    l = len(s)
-    min_str = s
-    max_str = s
-    for i in range(l):
-        tmp_str = s[i:] + s[:i]
-        if tmp_str < min_str:
-            min_str = tmp_str
-        if tmp_str > max_str:
-            max_str = tmp_str
-    return min_str, max_str
+def get_distance(ropes):
+    total_length = 0
+    for rope in ropes:
+        total_length += rope[0]
+    total_time = total_length
+    for rope in ropes:
+        total_time += rope[0]/rope[1]
+    return total_length/2.0
 
 if __name__ == '__main__':
-    get_min_max_str()
+    get_distance()

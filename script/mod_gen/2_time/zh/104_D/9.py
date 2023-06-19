@@ -1,31 +1,19 @@
-def main():
-    s = input()
-    n = len(s)
-    q = s.count('?')
-    mod = 10**9 + 7
+def solve():
+    S = input()
+    N = len(S)
+    MOD = 10**9 + 7
     ans = 0
-    for i in range(n-2):
-        if s[i] == 'A' or s[i] == '?':
-            a = 3**q % mod
-            b = 3**(q-1) % mod
-            c = 3**(q-1) % mod
-            ans += a+b+c
-            ans %= mod
-        if s[i] == 'B' or s[i] == '?':
-            a = 3**q % mod
-            b = 3**(q-1) % mod
-            c = 3**(q-1) % mod
-            ans += a+b+c
-            ans %= mod
-        if s[i] == 'C' or s[i] == '?':
-            a = 3**q % mod
-            b = 3**(q-1) % mod
-            c = 3**(q-1) % mod
-            ans += a+b+c
-            ans %= mod
-        if s[i] == '?':
-            q -= 1
+    power3 = 1
+    for i in range(N-1, -1, -1):
+        if S[i] == 'C':
+            ans += power3
+            ans %= MOD
+        elif S[i] == '?':
+            ans *= 3
+            ans %= MOD
+            power3 *= 3
+            power3 %= MOD
+        else:
+            pass
     print(ans)
-
-if __name__ == '__main__':
-    main()
+solve()

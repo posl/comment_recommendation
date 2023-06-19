@@ -1,53 +1,42 @@
 def main():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    for i in range(n):
-        s[i] = s[i].replace('.', '0')
-        s[i] = s[i].replace('#', '1')
-        s[i] = s[i].replace('0', '.')
-        s[i] = s[i].replace('1', '#')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].replace(s[i][j], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[j][i] == '#':
-                s[j] = s[j].replace(s[j][i], '1')
-            else:
-                s[j] = s[j].replace(s[j][i], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].replace(s[i][j], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[j][i] == '#':
-                s[j] = s[j].replace(s[j][i], '1')
-            else:
-                s[j] = s[j].replace(s[j][i], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].replace(s[i][j], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[j][i] == '#':
-                s[j] = s[j].replace(s[j][i], '1')
-            else:
-                s[j] = s[j].replace(s[j][i], '0')
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i].replace(s[i][j], '1')
-            else:
-                s[i] = s[i].
+    # 问题陈述
+    # 我们有一个空序列A。
+    # 给出Q个查询，按顺序处理它们。
+    # 每个查询都是以下三种类型中的一种。
+    # 1 x : 向A插入x。
+    # 2 x k : 在A中小于或等于x的元素中，打印第k个最大值。  (k不超过5)
+    # 如果A中小于等于或等于x的元素少于k，则打印-1。
+    # 3 x k : 在A中大于或等于x的元素中，打印第k个最小的值。  (k不超过5)
+    # 如果A中小于k的元素大于或等于x，则打印-1。
+    #
+    #
+    # 限制条件
+    # 1≦ Q ≦ 2× 10^5
+    # 1≦ x≦ 10^{18}
+    # 1≦ k≦ 5
+    # 输入的所有数值都是整数。
+    #
+    # 输入
+    # 输入是由标准输入提供的，格式如下：
+    # Q
+    # query_1
+    # query_2
+    # .
+    # .
+    # .
+    # query_Q
+    # 在第i个查询query_i中，首先给出查询的类型c_i（是1，2，还是3）。
+    # 如果c_i=1，则另外给出x；如果c_i=2，3，则另外给出x和k。
+    # 换句话说，每个查询都是以以下三种格式之一给出的：
+    # 1 x
+    # 2 x k
+    # 3 x k
+    #
+    # 输出
+    # 打印q行，其中q是指c_i=2,3的查询的数量。
+    # 第j行（1≦ j≦ q）应该包含第j个这样的查询的答案。
+    #
+    # 输入样本 1
 
 if __name__ == '__main__':
     main()

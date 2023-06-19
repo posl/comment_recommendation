@@ -7,6 +7,3 @@ def main():
         ans[i] = A[i-1] - ans[i-1]
     print(" ".join(map(str, ans)))
 main()
-
-if __name__ == '__main__':
-    main()

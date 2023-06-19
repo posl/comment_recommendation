@@ -1,30 +1,11 @@
-def main():
-    s = input()
-    t = input()
-    if len(s) == len(t):
-        s_list = list(s)
-        t_list = list(t)
-        if s_list == t_list:
-            print('Yes')
-        else:
-            for i in range(len(s_list)):
-                for j in range(len(s_list)):
-                    if i == j:
-                        continue
-                    else:
-                        s_list[i],s_list[j] = s_list[j],s_list[i]
-                        if s_list == t_list:
-                            print('Yes')
-                            break
-                        else:
-                            s_list[i],s_list[j] = s_list[j],s_list[i]
-                else:
-                    continue
-                break
-            else:
-                print('No')
-    else:
-        print('No')
+def calc_max_product(n):
+    n = str(n)
+    max_product = 0
+    for i in range(1, len(n)):
+        left = int(n[:i])
+        right = int(n[i:])
+        max_product = max(max_product, left * right)
+    return max_product
 
 if __name__ == '__main__':
-    main()
+    calc_max_product()

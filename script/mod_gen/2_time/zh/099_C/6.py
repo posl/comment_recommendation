@@ -1,16 +1,15 @@
-def withdrawl(n):
-    count = 0
-    while n > 0:
-        if n % 9 == 0:
-            n = n - 9
-            count = count + 1
-        elif n % 6 == 0:
-            n = n - 6
-            count = count + 1
-        elif n % 1 == 0:
-            n = n - 1
-            count = count + 1
-    return count
-
-if __name__ == '__main__':
-    withdrawl()
+def min_count(n):
+    dp = [100000] * (n + 1)
+    dp[0] = 0
+    for i in range(1, n + 1):
+        j = 1
+        while i - j >= 0:
+            dp[i] = min(dp[i], dp[i - j] + 1)
+            j *= 6
+        j = 1
+        while i - j >= 0:
+            dp[i] = min(dp[i], dp[i - j] + 1)
+            j *= 9
+    return dp[n]
+n = int(input())
+print(min_count(n))

@@ -1,10 +1,10 @@
-def solve():
-    n = int(input())
-    s = input()
-    if s[n-1] == 'o':
-        print('Yes')
-    else:
-        print('No')
+def main():
+    p = list(map(int, input().split()))
+    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    ans = ''
+    for i in p:
+        ans += alpha[i-1]
+    print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

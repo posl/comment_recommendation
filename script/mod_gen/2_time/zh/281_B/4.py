@@ -1,6 +1,8 @@
-def print_descending_order(n):
-    for i in range(n+1):
-        print(n-i)
+def isUpperLetter(s):
+    if s >= 'A' and s <= 'Z':
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    print_descending_order()
+    isUpperLetter()

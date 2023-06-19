@@ -1,8 +1,9 @@
-def swap(s, a, b):
-    a = a - 1
-    b = b - 1
-    s[a], s[b] = s[b], s[a]
-    return s
+def solve(n, a):
+    from collections import Counter
+    c = Counter(a)
+    for k, v in c.items():
+        if v == 1:
+            return k
 
 if __name__ == '__main__':
-    swap()
+    solve()

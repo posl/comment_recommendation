@@ -18,6 +18,3 @@ def main():
         ans += dist[i]*(N-1-i)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

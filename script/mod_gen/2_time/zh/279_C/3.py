@@ -1,10 +1,36 @@
 def main():
-    S = input()
-    T = input()
-    if T in S:
-        print("Yes")
-    else:
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    T = [input() for _ in range(H)]
+    # 1. S, T中的#的数目是否相同
+    num_s = sum(s.count("#") for s in S)
+    num_t = sum(t.count("#") for t in T)
+    if num_s != num_t:
         print("No")
+        return
+    # 2. S, T中的#的分布是否相同
+    # 2.1 S, T中的#的位置是否相同
+    # 2.2 S, T中的#的位置是否相同
+    # 2.3 S, T中的#的位置是否相同
+    # 2.4 S, T中的#的位置是否相同
+    # 2.5 S, T中的#的位置是否相同
+    # 2.6 S, T中的#的位置是否相同
+    # 2.7 S, T中的#的位置是否相同
+    # 2.8 S, T中的#的位置是否相同
+    # 2.9 S, T中的#的位置是否相同
+    # 2.10 S, T中的#的位置是否相同
+    # 2.11 S, T中的#的位置是否相同
+    # 2.12 S, T中的#的位置是否相同
+    # 2.13 S, T中的#的位置是否相同
+    # 2.14 S, T中的#的位置是否相同
+    # 2.15 S, T中的#的位置是否相同
+    # 2.16 S, T中的#的位置是否相同
+    # 2.17 S, T中的#的位置是否相同
+    # 2.18 S, T中的#的位置是否相同
+    # 2.19 S, T中的#的位置是否相同
+    # 2.20 S, T中的#的位置是否相同
+    # 2.21 S, T中的#的位置是否相同
+    # 2
 
 if __name__ == '__main__':
     main()

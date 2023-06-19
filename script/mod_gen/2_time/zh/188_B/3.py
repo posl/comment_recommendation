@@ -1,14 +1,14 @@
 def main():
-    #input
-    x, y = input().split()
-    x = int(x)
-    y = int(y)
-    #process
-    if x < y:
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        result += a[i] * b[i]
+    if result == 0:
         print("Yes")
     else:
         print("No")
-    #output
 
 if __name__ == '__main__':
     main()

@@ -1,12 +1,17 @@
-def main():
-    S, T = map(int, input().split())
-    count = 0
-    for a in range(S + 1):
-        for b in range(S + 1):
-            for c in range(S + 1):
-                if a + b + c <= S and a * b * c <= T:
-                    count += 1
-    print(count)
+def get_first_time(N, S, T):
+    time = [0] * N
+    for i in range(N):
+        time[i] = T[i]
+    for i in range(N):
+        if (i == 0):
+            if (S[i] > T[i]):
+                time[i] = S[i]
+        else:
+            if (S[i] > T[i - 1] + S[i - 1]):
+                time[i] = S[i]
+            else:
+                time[i] = T[i - 1] + S[i - 1] + S[i]
+    return time
 
 if __name__ == '__main__':
-    main()
+    get_first_time()

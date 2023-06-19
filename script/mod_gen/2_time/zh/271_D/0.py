@@ -1,10 +1,10 @@
-def main():
-    n=int(input())
-    a=list(map(int,input().split()))
-    a.sort()
-    ans=1
+def get_input():
+    n,s = map(int,input().split())
+    cards = []
     for i in range(n):
-        ans*=a[i]-i
-        ans%=10**9+7
-    print(ans)
-main()
+        card = list(map(int,input().split()))
+        cards.append(card)
+    return n,s,cards
+
+if __name__ == '__main__':
+    get_input()

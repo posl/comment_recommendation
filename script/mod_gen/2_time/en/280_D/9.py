@@ -10,6 +10,3 @@ def problem():
             break
         n += 1
 problem()
-
-if __name__ == '__main__':
-    problem()

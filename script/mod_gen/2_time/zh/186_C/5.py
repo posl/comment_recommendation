@@ -1,12 +1,7 @@
-def solve():
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(H)]
-    min_num = min([min(a) for a in A])
-    ans = 0
-    for a in A:
-        for i in a:
-            ans += i - min_num
-    print(ans)
-
-if __name__ == '__main__':
-    solve()
+def func(n):
+    count = 0
+    for i in range(1,n+1):
+        if '7' not in str(i) and '7' not in oct(i):
+            count += 1
+    print(count)
+func(100000)

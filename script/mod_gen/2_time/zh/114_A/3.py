@@ -1,15 +1,9 @@
-def dfs(h,w,k):
-    if w==1:
-        if k==1:
-            return 1
-        else:
-            return 0
-    elif k==1:
-        return dfs(h-1,w-1,1)
-    elif k==w:
-        return dfs(h-1,w-1,w-1)
+def child_age():
+    age = int(input())
+    if age == 3 or age == 5 or age == 7:
+        print("Yes")
     else:
-        return dfs(h-1,w-1,k-1)+dfs(h-1,w-1,k)*(w-k)
+        print("No")
 
 if __name__ == '__main__':
-    dfs()
+    child_age()

@@ -1,26 +1,23 @@
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    ans = 0
-    for i in range(N):
-        if A[i] > B[i]:
-            ans += B[i]
-            A[i] -= B[i]
-            B[i] = 0
+def solve(s):
+    #print("s={}".format(s))
+    #print("len(s)={}".format(len(s)))
+    if len(s) == 0:
+        return 0
+    if len(s) == 1:
+        if s[0] == '?':
+            return 0
+        if int(s[0]) % 13 == 5:
+            return 1
         else:
-            ans += A[i]
-            B[i] -= A[i]
-            A[i] = 0
-        if A[i+1] > B[i]:
-            ans += B[i]
-            A[i+1] -= B[i]
-            B[i] = 0
-        else:
-            ans += A[i+1]
-            B[i] -= A[i+1]
-            A[i+1] = 0
-    print(ans)
+            return 0
+    if s[0] == '?':
+        #print("s[0] == '?'")
+        #print("solve(s[1:])={}".format(solve(s[1:])))
+        return 10 * solve(s[1:])
+    else:
+        #print("s[0] != '?'")
+        #print("solve(s[1:])={}".format(solve(s[1:])))
+        return solve(s[1:])
 
 if __name__ == '__main__':
     solve()

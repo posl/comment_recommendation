@@ -1,7 +1,19 @@
-def main():
-    H, W = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(H)]
-    print('Yes' if all(A[i1][j1] + A[i2][j2] <= A[i2][j1] + A[i1][j2] for i1 in range(H) for i2 in range(i1 + 1, H) for j1 in range(W) for j2 in range(j1 + 1, W)) else 'No')
+def area(x1, y1, x2, y2, x3, y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+n = int(input())
+points = []
+for i in range(n):
+    points.append(list(map(int, input().split())))
+ans = 0
+for i in range(n):
+    for j in range(i+1, n):
+        for k in range(j+1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            x3, y3 = points[k]
+            if area(x1, y1, x2, y2, x3, y3) != 0:
+                ans += 1
+print(ans)
 
 if __name__ == '__main__':
-    main()
+    area()

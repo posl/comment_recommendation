@@ -1,12 +1,14 @@
 def main():
-    n,m,x=map(int,input().split())
-    c,a=[],[]
-    for i in range(n):
-        c.append(list(map(int,input().split())))
-    for i in range(n):
-        a.append(c[i][1:])
-    print(c)
-    print(a)
+    # 读取数据
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 一开始的镇
+    start = 1
+    # 从第一次开始循环
+    for i in range(k):
+        start = a[start - 1]
+    # 输出结果
+    print(start)
 
 if __name__ == '__main__':
     main()

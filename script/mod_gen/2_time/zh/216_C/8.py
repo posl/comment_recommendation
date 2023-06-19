@@ -1,14 +1,15 @@
 def main():
     n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    for i in range(n):
-        for j in range(i + 1, n):
-            if name_list[i] == name_list[j]:
-                print("Yes")
-                return
-    print("No")
+    result = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            result.append('B')
+        else:
+            n = n - 1
+            result.append('A')
+    result.reverse()
+    print(''.join(result))
 
 if __name__ == '__main__':
     main()

@@ -13,6 +13,3 @@ def solve():
                 visited[nx][ny] = True
     return sum([sum(row) for row in visited])
 print(solve())
-
-if __name__ == '__main__':
-    solve()

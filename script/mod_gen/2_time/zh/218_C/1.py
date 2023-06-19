@@ -1,8 +1,5 @@
-def main():
-    #p = list(map(int, input().split()))
-    p = list(map(int, '5 11 12 16 25 17 18 1 7 10 4 23 20 3 2 24 26 19 14 9 6 22 8 13 15 21'.split()))
-    s = [chr(96 + i) for i in p]
-    print(''.join(s))
+def rotate90(grid):
+    return [''.join([grid[i][j] for i in range(len(grid))]) for j in range(len(grid[0])-1,-1,-1)]
 
 if __name__ == '__main__':
-    main()
+    rotate90()

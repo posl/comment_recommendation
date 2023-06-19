@@ -1,13 +1,20 @@
-def main():
-    a,b,k = map(int, input().split())
-    if k > a:
-        b = b - (k - a)
-        a = 0
-        if b < 0:
-            b = 0
+def is_prime(n):
+    if n < 2:
+        return False
+    elif n == 2:
+        return True
     else:
-        a = a - k
-    print(a,b)
+        for i in range(2, int(n**0.5)+1):
+            if n%i == 0:
+                return False
+        return True
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    else:
+        x += 1
 
 if __name__ == '__main__':
-    main()
+    is_prime()

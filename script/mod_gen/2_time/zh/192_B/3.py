@@ -1,8 +1,8 @@
-def get_next_prize_coin_num(coin_num):
-    if coin_num % 100 == 0:
-        return 100
-    else:
-        return 100 - (coin_num % 100)
-
-if __name__ == '__main__':
-    get_next_prize_coin_num()
+def isHardToRead(s):
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i].isupper():
+            return False
+        if i % 2 == 1 and s[i].islower():
+            return False
+    return True
+print('Yes' if isHardToRead(input()) else 'No')

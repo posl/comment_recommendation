@@ -1,9 +1,11 @@
-def f(n):
-    if n == 0:
-        return ''
-    if n % 2 == 0:
-        return f((n - 2) // 2) + 'b'
-    else:
-        return f((n - 1) // 2) + 'a'
-n = int(input())
-print(f(n))
+def main():
+    N, M = map(int, input().split())
+    k = [0] * M
+    a = [[] for _ in range(M)]
+    for i in range(M):
+        k[i] = int(input())
+        a[i] = list(map(int, input().split()))
+    print(solve(N, M, k, a))
+
+if __name__ == '__main__':
+    main()

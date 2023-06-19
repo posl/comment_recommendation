@@ -1,20 +1,11 @@
 def problems100_b():
     D, N = map(int, input().split())
     if D == 0:
-        if N == 100:
-            print(101)
-        else:
-            print(N)
+        print(N if N != 100 else 101)
     elif D == 1:
-        if N == 100:
-            print(10100)
-        else:
-            print(100 * N)
+        print(N * 100 if N != 100 else 10100)
     else:
-        if N == 100:
-            print(1010000)
-        else:
-            print(10000 * N)
+        print(N * 10000 if N != 100 else 1010000)
 
 if __name__ == '__main__':
     problems100_b()

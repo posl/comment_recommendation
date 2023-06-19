@@ -10,6 +10,3 @@ def main():
     s = s.split('t')
     print(s)
 main()
-
-if __name__ == '__main__':
-    main()

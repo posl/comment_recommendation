@@ -1,17 +1,29 @@
 def main():
-    s = input()
-    s = s[::-1]
-    t = "chokudai"[::-1]
-    mod = 10**9+7
-    dp = [[0]*9 for _ in range(len(s)+1)]
-    dp[0][0] = 1
-    for i in range(len(s)):
-        for j in range(9):
-            if s[i] != t[j]:
-                dp[i+1][j] = dp[i][j]
-            else:
-                dp[i+1][j] = (dp[i][j] + dp[i][j-1]) % mod
-    print(dp[-1][-1])
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(M)]
+    AB.sort(key=lambda x: x[1])
+    # print(AB)
+    count = 0
+    for i in range(M):
+        if AB[i][0] == 1:
+            count += 1
+        else:
+            break
+    # print(count)
+    if count == 0:
+        print(0)
+        exit()
+    else:
+        count += 1
+    end = AB[count - 1][1]
+    # print(end)
+    for i in range(count, M):
+        if AB[i][0] <= end:
+            continue
+        else:
+            count += 1
+            end = AB[i][1]
+    print(count)
 
 if __name__ == '__main__':
     main()

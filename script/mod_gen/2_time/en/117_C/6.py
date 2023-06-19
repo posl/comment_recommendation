@@ -9,6 +9,3 @@ def main():
     diff.sort()
     print(sum(diff[:M - N]))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,12 +1,22 @@
 def main():
-    n, q = map(int, input().split())
-    s = input()
-    for i in range(q):
-        t, x = map(int, input().split())
-        if t == 1:
-            s = s[-x:] + s[:-x]
-        else:
-            print(s[x - 1])
-
-if __name__ == '__main__':
-    main()
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    res = 0
+    for i in range(n):
+        res += a[i] + b[i]
+    if res <= x:
+        print(res)
+    else:
+        res = 0
+        for i in range(n):
+            res += a[i]
+            if res > x:
+                print(i)
+                return
+        print(n)
+main()

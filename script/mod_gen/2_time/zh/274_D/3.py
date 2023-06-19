@@ -1,16 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * (2 * n + 1)
-    for i in range(n):
-        b[a[i]] = i + 1
-    for i in range(1, 2 * n + 1):
-        j = i
-        while j <= 2 * n:
-            b[j] = max(b[j], b[i] + 1)
-            j += i
-    for i in range(1, 2 * n + 1):
-        print(b[i] - 1)
+def is_90degree(x1,y1,x2,y2,x3,y3):
+    if (x2-x1)*(x3-x2)+(y2-y1)*(y3-y2)==0:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    main()
+    is_90degree()

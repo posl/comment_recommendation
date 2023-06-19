@@ -1,20 +1,29 @@
 def main():
-    h, w, n = map(int, input().split())
-    a = []
-    b = []
-    for i in range(n):
-        a_, b_ = map(int, input().split())
-        a.append(a_)
-        b.append(b_)
-    a_sorted = sorted(a)
-    b_sorted = sorted(b)
-    a_dict = {}
-    b_dict = {}
-    for i in range(n):
-        a_dict[a_sorted[i]] = i + 1
-        b_dict[b_sorted[i]] = i + 1
-    for i in range(n):
-        print(a_dict[a[i]], b_dict[b[i]])
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    graph = [[] for _ in range(n+1)]
+    for a, b in ab:
+        graph[a].append(b)
+        graph[b].append(a)
+    visited = [False] * (n+1)
+    visited[1] = True
+    ans = []
+    ans.append(1)
+    #print(graph)
+    #print(visited)
+    #print(ans)
+    while True:
+        for i in graph[ans[-1]]:
+            if visited[i] == False:
+                visited[i] = True
+                ans.append(i)
+                break
+        else:
+            if ans[-1] == 1:
+                break
+            else:
+                ans.pop(-1)
+    print(*ans)
 
 if __name__ == '__main__':
     main()

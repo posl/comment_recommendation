@@ -1,10 +1,11 @@
-def solve(n, k):
-    for i in range(k):
-        if n % 200 == 0:
-            n = n // 200
-        else:
-            n = int(str(n) + "200")
-    return n
-
-if __name__ == '__main__':
-    solve()
+def problems200_c():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * 200
+    for i in range(n):
+        b[a[i] % 200] += 1
+    ans = 0
+    for i in range(200):
+        ans += b[i] * (b[i] - 1) // 2
+    print(ans)
+problems200_c()

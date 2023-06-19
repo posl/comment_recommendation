@@ -1,13 +1,17 @@
-def solve():
-    s = input()
-    t = input()
-    if len(s) != len(t):
+def main():
+    S = input()
+    T = input()
+    if len(S) != len(T):
         print("No")
-        return
-    for i in range(len(s)):
-        if s == t:
-            print("Yes")
-            return
-        s = s[-1] + s[:-1]
-    print("No")
-solve()
+    else:
+        for i in range(len(S)):
+            if S == T:
+                print("Yes")
+                break
+            else:
+                S = S[-1] + S[:-1]
+        else:
+            print("No")
+
+if __name__ == '__main__':
+    main()

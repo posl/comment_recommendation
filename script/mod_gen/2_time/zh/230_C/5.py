@@ -1,9 +1,13 @@
 def main():
-    s = input()
-    if s == 'ox' or s == 'xo':
-        print('Yes')
-    else:
-        print('No')
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q+1):
+        for j in range(r, s+1):
+            if (i+a-j >= 1 and i+a-j <= n) or (i+a+j >= 1 and i+a+j <= n) or (i-a+j >= 1 and i-a+j <= n) or (i-a-j >= 1 and i-a-j <= n):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
 
 if __name__ == '__main__':
     main()

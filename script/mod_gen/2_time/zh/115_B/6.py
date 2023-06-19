@@ -1,13 +1,16 @@
-def main():
-    D = int(input())
-    if D == 25:
-        print("圣诞节")
-    elif D == 24:
-        print("平安夜")
-    elif D == 23:
-        print("平安夜")
-    elif D == 22:
-        print("平安夜的前夜")
+def solve():
+    n = int(input())
+    p = []
+    for i in range(n):
+        p.append(int(input()))
+    p.sort(reverse=True)
+    s = 0
+    for i in range(n):
+        if i == 0:
+            s += p[i] // 2
+        else:
+            s += p[i]
+    print(s)
 
 if __name__ == '__main__':
-    main()
+    solve()

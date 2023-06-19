@@ -1,12 +1,13 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    for i in range(n - 1):
-        if a[i] == a[i + 1]:
-            print("No")
-            return
-    print("Yes")
+def solve():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    P.sort(reverse=True)
+    ans = 0
+    for i in range(K):
+        ans += P[i]
+    ans += K
+    ans /= 2
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

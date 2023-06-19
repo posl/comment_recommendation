@@ -1,16 +1,16 @@
-def count_anagrams(arr):
-    anagrams = {}
-    for s in arr:
-        key = ''.join(sorted(s))
-        if key in anagrams:
-            anagrams[key] += 1
-        else:
-            anagrams[key] = 1
-    count = 0
-    for key in anagrams:
-        n = anagrams[key]
-        count += n * (n-1) / 2
-    return count
+def main():
+    N, M = map(int, input().split())
+    works = []
+    for i in range(N):
+        works.append(tuple(map(int, input().split())))
+    works.sort(key=lambda x:x[0])
+    ans = 0
+    day = 0
+    for i in range(N):
+        if day + works[i][0] <= M:
+            ans += works[i][1]
+            day += works[i][0]
+    print(ans)
 
 if __name__ == '__main__':
-    count_anagrams()
+    main()

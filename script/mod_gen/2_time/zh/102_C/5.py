@@ -1,7 +1,14 @@
-def get_input():
-    n = int(input())
-    a = list(map(int, input().split()))
-    return n, a
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    b = 0
+    for i in range(N):
+        b += A[i] - (i+1)
+    b //= N
+    ans = 0
+    for i in range(N):
+        ans += abs(A[i] - (b + i + 1))
+    print(ans)
 
 if __name__ == '__main__':
-    get_input()
+    main()

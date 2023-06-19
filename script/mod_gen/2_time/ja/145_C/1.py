@@ -16,6 +16,3 @@ def main():
         sum += sum(permutation[i])
     print(sum/len(permutation))
 main()
-
-if __name__ == '__main__':
-    main()

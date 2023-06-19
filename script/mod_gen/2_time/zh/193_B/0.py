@@ -1,6 +1,5 @@
-def main():
-    a,b = map(int, input().split())
-    print(100 - (b*100/a))
+def buy_game():
+    n = int(input())
 
 if __name__ == '__main__':
-    main()
+    buy_game()

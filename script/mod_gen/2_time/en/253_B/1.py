@@ -20,6 +20,3 @@ def main():
                 Q.append((ni, nj))
     print(dist[goal[0]][goal[1]])
 main()
-
-if __name__ == '__main__':
-    main()

@@ -9,6 +9,3 @@ def find_missing_number(numbers):
 n = int(input())
 numbers = list(map(int, input().split()))
 print(find_missing_number(numbers))
-
-if __name__ == '__main__':
-    find_missing_number()

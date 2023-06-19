@@ -1,11 +1,19 @@
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    ans = 0
-    a.append(n + 1)
-    for i in range(k):
-        ans += max(0, a[i + 1] - a[i] - 1)
-    print(n - ans)
-
-if __name__ == '__main__':
-    main()
+def hex(n):
+    if n < 10:
+        return str(n)
+    elif n == 10:
+        return "A"
+    elif n == 11:
+        return "B"
+    elif n == 12:
+        return "C"
+    elif n == 13:
+        return "D"
+    elif n == 14:
+        return "E"
+    elif n == 15:
+        return "F"
+    else:
+        return "error"
+n = int(input())
+print(hex(n//16) + hex(n%16))

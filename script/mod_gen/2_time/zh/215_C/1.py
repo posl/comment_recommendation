@@ -1,7 +1,8 @@
-def main():
-    N = int(input())
-    k = 0
-    while 2**k <= N:
-        k += 1
-    print(k-1)
-main()
+def check(s):
+    for i in range(len(s)):
+        if s.count(s[i]) > 1:
+            return False
+    return True
+
+if __name__ == '__main__':
+    check()

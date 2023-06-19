@@ -1,9 +1,12 @@
 def main():
-    n,x,t=map(int,input().split())
-    if n%x==0:
-        print(n//x*t)
+    n = input()
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print("Yes")
     else:
-        print((n//x+1)*t)
+        print("No")
 
 if __name__ == '__main__':
     main()

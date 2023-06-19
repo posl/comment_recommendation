@@ -1,18 +1,19 @@
 def main():
     n,m = map(int,input().split())
     a = list(map(int,input().split()))
-    s = [0]*(n+1)
-    for i in range(n):
-        s[i+1] = s[i]+a[i]
-    mod = {}
-    for i in range(n+1):
-        if s[i]%m in mod:
-            mod[s[i]%m] += 1
+    a = [i%m for i in a]
+    a = [0]+a
+    for i in range(1,n+1):
+        a[i] += a[i-1]
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
         else:
-            mod[s[i]%m] = 1
+            d[i] = 1
     ans = 0
-    for i in mod:
-        ans += mod[i]*(mod[i]-1)//2
+    for i in d:
+        ans += d[i]*(d[i]-1)//2
     print(ans)
 
 if __name__ == '__main__':

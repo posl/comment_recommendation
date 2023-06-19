@@ -1,17 +1,14 @@
 def main():
-    N, M, C = map(int, input().split())
-    B = list(map(int, input().split()))
-    A = []
+    N,M=map(int,input().split())
+    AB=[list(map(int,input().split())) for _ in range(N)]
+    AB.sort()
+    ans=0
     for i in range(N):
-        A.append(list(map(int, input().split())))
-    ans = 0
-    for i in range(N):
-        tmp = 0
-        for j in range(M):
-            tmp += A[i][j] * B[j]
-        if tmp + C > 0:
-            ans += 1
+        if M>AB[i][1]:
+            ans+=AB[i][0]*AB[i][1]
+            M-=AB[i][1]
+        else:
+            ans+=AB[i][0]*M
+            break
     print(ans)
-
-if __name__ == '__main__':
-    main()
+main()

@@ -1,10 +1,13 @@
-def main():
-    n = int(input())
-    mountains = []
-    for i in range(n):
-        mountains.append(input().split())
-    mountains = sorted(mountains, key=lambda x:int(x[1]), reverse=True)
-    print(mountains[1][0])
+def get_possible_passwords(s):
+    possible_passwords = 1
+    for i in range(10):
+        if s[i] == 'o':
+            possible_passwords *= 1
+        elif s[i] == 'x':
+            possible_passwords *= 0
+        else:
+            possible_passwords *= 10
+    return possible_passwords
 
 if __name__ == '__main__':
-    main()
+    get_possible_passwords()

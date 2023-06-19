@@ -1,17 +1,15 @@
-def getPerm(num, k):
-    num.sort()
-    k -= 1
-    while k > 0:
-        for i in range(len(num) - 2, -1, -1):
-            if num[i] < num[i + 1]:
-                break
-        for j in range(len(num) - 1, -1, -1):
-            if num[j] > num[i]:
-                break
-        num[i], num[j] = num[j], num[i]
-        num[i + 1:] = num[len(num) - 1:i:-1]
-        k -= 1
-    return num
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if all([a[i] % 2 == 0 for i in range(N)]):
+            a = [a[i] // 2 for i in range(N)]
+            ans += 1
+        else:
+            break
+    print(ans)
+    return
 
 if __name__ == '__main__':
-    getPerm()
+    main()

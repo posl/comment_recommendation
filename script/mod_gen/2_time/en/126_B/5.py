@@ -9,6 +9,3 @@ def checkdate(S):
         return "NA"
 S = input()
 print(checkdate(S))
-
-if __name__ == '__main__':
-    checkdate()

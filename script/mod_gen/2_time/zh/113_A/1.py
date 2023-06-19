@@ -1,11 +1,6 @@
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-n, m = map(int, input().split())
-c = gcd(n, m)
-print(m // c)
+def main():
+    x,y = map(int,input().split())
+    print(int(x+y/2))
 
 if __name__ == '__main__':
-    gcd()
+    main()

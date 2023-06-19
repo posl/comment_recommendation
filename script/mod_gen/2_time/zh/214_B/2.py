@@ -1,13 +1,12 @@
 def main():
-    # 读入一个整数
-    n = int(input())
-    # 判断
-    if n <= 125:
-        print(4)
-    elif n <= 211:
-        print(6)
-    else:
-        print(8)
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if a + b + c <= S and a * b * c <= T:
+                    ans += 1
+    print(ans)
 
 if __name__ == '__main__':
     main()

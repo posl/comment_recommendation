@@ -1,33 +1,20 @@
 def main():
-    A,B,C = map(int,input().split())
-    #print(A,B,C)
-    #print(type(A),type(B),type(C))
-    #print(A+B+C)
-    #print(type(A+B+C))
-    #print(100/(A+B+C))
-    #print(type(100/(A+B+C)))
-    #print((A/(A+B+C)))
-    #print(type(A/(A+B+C)))
-    #print((A/(A+B+C))*((A-1)/(A+B+C-1)))
-    #print(type((A/(A+B+C))*((A-1)/(A+B+C-1))))
-    #print((A/(A+B+C))*((A-1)/(A+B+C-1))*2)
-    #print(type((A/(A+B+C))*((A-1)/(A+B+C-1))*2))
-    #print((A/(A+B+C))*((B)/(A+B+C-1)))
-    #print(type((A/(A+B+C))*((B)/(A+B+C-1))))
-    #print((A/(A+B+C))*((C)/(A+B+C-1)))
-    #print(type((A/(A+B+C))*((C)/(A+B+C-1))))
-    #print((A/(A+B+C))*((B)/(A+B+C-1))*2)
-    #print(type((A/(A+B+C))*((B)/(A+B+C-1))*2))
-    #print((A/(A+B+C))*((C)/(A+B+C-1))*2)
-    #print(type((A/(A+B+C))*((C)/(A+B+C-1))*2))
-    #print((B/(A+B+C))*((B-1)/(A+B+C-1)))
-    #print(type((B/(A+B+C))*((B-1)/(A+B+C-1))))
-    #print((B/(A+B+C))*((C)/(A+B+C-1)))
-    #print(type((B/(A+B+C))*((C)/(A+B+C-1))))
-    #print((B/(A+B+C))*((C)/(A+B+C-1))*2)
-    #print(type((B/(A+B+C))*((C)/(A+B+C-1))*2))
-    #print((B/(A+B+C))*((B-1)/(A+B+C-1))*2)
-    #print(type((B/(A+B+C
+    # 读取输入
+    a = input()
+    # 分割输入
+    a_list = a.split(" ")
+    # 把输入转换成整数
+    for i in range(len(a_list)):
+        a_list[i] = int(a_list[i])
+    # 排序
+    a_list.sort()
+    # 计算
+    count = 0
+    for i in range(len(a_list)):
+        if a_list[i] % 100 == 0:
+            count += 1
+    # 输出
+    print(count)
 
 if __name__ == '__main__':
     main()

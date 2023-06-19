@@ -1,10 +1,8 @@
-def main():
-    N,K=map(int,input().split())
-    H=list(map(int,input().split()))
-    H.sort(reverse=True)
-    #print(H)
-    if K>=N:
-        print(0)
+def solve(h):
+    if h == 1:
+        return 1
     else:
-        print(sum(H[K:]))
-main()
+        return 1 + 2 * solve(h // 2)
+
+if __name__ == '__main__':
+    solve()

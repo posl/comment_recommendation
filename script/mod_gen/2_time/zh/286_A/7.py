@@ -1,16 +1,16 @@
 def main():
-    n = int(input())
-    s = []
-    t = []
-    for i in range(n):
-        temp = input().split()
-        s.append(temp[0])
-        t.append(temp[1])
-    for i in range(n):
-        if s[i] in t:
-            print("No")
-            return
-    print("Yes")
+    N,P,Q,R,S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N):
+        if i >= P-1 and i <= Q-1:
+            B.append(A[i+R-Q])
+        elif i >= R-1 and i <= S-1:
+            B.append(A[i+P-R])
+        else:
+            B.append(A[i])
+    for i in range(N):
+        print(B[i], end = ' ')
 
 if __name__ == '__main__':
     main()

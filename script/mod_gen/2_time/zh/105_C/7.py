@@ -1,18 +1,11 @@
-def main():
-    n = int(input())
+def base_2(n):
     if n == 0:
-        print(0)
-        return
-    s = []
-    while n != 0:
-        if n % 2 == 0:
-            s.append(0)
-            n = n // (-2)
-        else:
-            s.append(1)
-            n = (n - 1) // (-2)
-    s.reverse()
-    print(''.join(map(str, s)))
+        return '0'
+    res = ''
+    while n:
+        res = str(n % -2) + res
+        n = n // -2
+    return res
 
 if __name__ == '__main__':
-    main()
+    base_2()

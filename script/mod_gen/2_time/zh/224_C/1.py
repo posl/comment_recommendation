@@ -1,16 +1,26 @@
 def main():
-    h,w = map(int, input().split())
-    a = []
-    for i in range(h):
-        a.append(list(map(int, input().split())))
-    for i1 in range(h):
-        for i2 in range(i1+1, h):
-            for j1 in range(w):
-                for j2 in range(j1+1, w):
-                    if a[i1][j1] + a[i2][j2] > a[i2][j1] + a[i1][j2]:
-                        print('No')
-                        return
-    print('Yes')
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            for k in range(N):
+                if i == k or j == k:
+                    continue
+                x1 = x[i] - x[k]
+                y1 = y[i] - y[k]
+                x2 = x[j] - x[k]
+                y2 = y[j] - y[k]
+                if x1 * y2 - x2 * y1 != 0:
+                    ans += 1
+    print(ans // 6)
 
 if __name__ == '__main__':
     main()

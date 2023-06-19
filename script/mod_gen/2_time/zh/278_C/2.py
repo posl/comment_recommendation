@@ -1,15 +1,8 @@
-def main():
-    h, m = map(int, input().split())
-    while True:
-        m += 1
-        if m == 60:
-            m = 0
-            h += 1
-        if h == 24:
-            h = 0
-        if h // 10 == m % 10 and h % 10 == m // 10:
-            print("%d:%d" % (h, m))
-            break
+def follow(a,b):
+    if a in follow_dic:
+        if b in follow_dic[a]:
+            return True
+    return False
 
 if __name__ == '__main__':
-    main()
+    follow()

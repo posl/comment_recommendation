@@ -7,6 +7,3 @@ def f(n):
 n = int(input())
 a = list(map(int, input().split()))
 print(sum([f(a[i]) for i in range(n)]))
-
-if __name__ == '__main__':
-    f()

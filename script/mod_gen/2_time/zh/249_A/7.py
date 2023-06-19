@@ -1,14 +1,30 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    Q = int(input())
-    for i in range(Q):
-        L, R, X = map(int, input().split())
-        count = 0
-        for j in range(L-1, R):
-            if A[j] == X:
-                count += 1
-        print(count)
+    A,B,C,D,E,F,X = map(int,input().split())
+    T = 0
+    while True:
+        if A > B:
+            T += B
+            A -= B
+        else:
+            T += A
+            A = 0
+        if T >= X:
+            print("高桥")
+            break
+        T += C
+        if D > E:
+            T += E
+            D -= E
+        else:
+            T += D
+            D = 0
+        if T >= X:
+            print("青木")
+            break
+        T += F
+        if A == D:
+            print("画")
+            break
 
 if __name__ == '__main__':
     main()

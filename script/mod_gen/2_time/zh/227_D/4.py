@@ -1,12 +1,12 @@
 def main():
-    n = int(input())
-    count = 0
-    for i in range(1,n+1):
-        for j in range(i,n+1):
-            for k in range(j,n+1):
-                if i*j*k <= n:
-                    count += 1
-    print(count)
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    print(a)
+    print(n,k)
+    print(a[0:k])
+    print(a[n-k:n])
+    print(max(a[0:k])+max(a[n-k:n]))
 
 if __name__ == '__main__':
     main()

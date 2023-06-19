@@ -1,20 +1,11 @@
-def dfs(v,p):
-    for u in g[v]:
-        if u==p: continue
-        cnt[u]+=cnt[v]
-        dfs(u,v)
-n,q=map(int,input().split())
-g=[[] for i in range(n)]
-for i in range(n-1):
-    a,b=map(int,input().split())
-    g[a-1].append(b-1)
-    g[b-1].append(a-1)
-cnt=[0]*n
-for i in range(q):
-    p,x=map(int,input().split())
-    cnt[p-1]+=x
-dfs(0,-1)
-print(*cnt)
+def main():
+    S = input()
+    T = input()
+    result = 0
+    for i in range(0,3):
+        if S[i] == T[i]:
+            result += 1
+    print(result)
 
 if __name__ == '__main__':
-    dfs()
+    main()

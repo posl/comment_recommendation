@@ -1,12 +1,28 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    for i in a:
-        if i % 2 == 0:
-            if i % 3 != 0 and i % 5 != 0:
-                print('DENIED')
-                exit()
-    print('APPROVED')
+    s = [input() for i in range(n)]
+    s.sort()
+    max = 0
+    count = 1
+    for i in range(1,n):
+        if s[i] == s[i-1]:
+            count += 1
+        else:
+            if max < count:
+                max = count
+            count = 1
+    if max < count:
+        max = count
+    count = 1
+    for i in range(1,n):
+        if s[i] == s[i-1]:
+            count += 1
+        else:
+            if max == count:
+                print(s[i-1])
+            count = 1
+    if max == count:
+        print(s[n-1])
 
 if __name__ == '__main__':
     main()

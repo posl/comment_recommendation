@@ -1,12 +1,8 @@
-def main():
-    s = input()
-    t = input()
-    for i in range(len(s)):
-        if s[i] != t[i]:
-            print(i+1)
-            break
+def factorial(n):
+    if n==1:
+        return 1
     else:
-        print(len(s)+1)
+        return n*factorial(n-1)
 
 if __name__ == '__main__':
-    main()
+    factorial()

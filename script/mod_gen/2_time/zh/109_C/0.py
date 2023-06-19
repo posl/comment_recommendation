@@ -1,16 +1,20 @@
-def shiritori():
-    n = int(input())
-    words = []
-    for i in range(n):
-        words.append(input())
-    for i in range(n-1):
-        if words[i][-1] != words[i+1][0]:
-            print('No')
-            return
-    if len(set(words)) != n:
-        print('No')
-        return
-    print('Yes')
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+N, X = map(int, input().split())
+x = list(map(int, input().split()))
+x.append(X)
+x.sort()
+d = []
+for i in range(N):
+    d.append(x[i+1] - x[i])
+d.sort()
+ans = d[0]
+for i in range(1, N):
+    ans = gcd(ans, d[i])
+print(ans)
 
 if __name__ == '__main__':
-    shiritori()
+    gcd()

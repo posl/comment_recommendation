@@ -10,6 +10,3 @@ def judge(s):
         return 'Heisei'
 s = input()
 print(judge(s))
-
-if __name__ == '__main__':
-    judge()

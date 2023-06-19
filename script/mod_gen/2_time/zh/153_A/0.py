@@ -1,11 +1,9 @@
 def main():
-    N = int(input())
-    count = 0
-    for i in range(1, N+1):
-        for j in range(1, N+1):
-            if i % 10 == int(j / 10) and i / 10 == j % 10:
-                count += 1
-    print(count)
+    H, A = map(int, input().split())
+    if H % A == 0:
+        print(H // A)
+    else:
+        print(H // A + 1)
 
 if __name__ == '__main__':
     main()

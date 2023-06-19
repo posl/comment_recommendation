@@ -14,6 +14,3 @@ def main():
             ans = min(ans, B[i][0]+B[j][0]+C*(abs(B[i][1]-B[j][1])+abs(B[i][2]-B[j][2])))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

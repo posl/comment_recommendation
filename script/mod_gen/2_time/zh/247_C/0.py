@@ -1,22 +1,7 @@
-def check(s,t):
-    for i in range(len(s)):
-        for j in range(len(t)):
-            if s[i] == t[j]:
-                return True
-    return False
+def S(n):
+    if n == 1:
+        return [1]
+    else:
+        return S(n-1) + [n] + S(n-1)
 n = int(input())
-s = []
-t = []
-for i in range(n):
-    s.append(input().split()[0])
-    t.append(input().split()[1])
-for i in range(n):
-    for j in range(n):
-        if i != j:
-            if s[i] == s[j] or t[i] == t[j]:
-                print('Yes')
-                exit()
-print('No')
-
-if __name__ == '__main__':
-    check()
+print(*S(n))

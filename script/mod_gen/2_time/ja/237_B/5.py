@@ -14,6 +14,3 @@ def main():
     for i in range(W):
         print(*B[i])
 main()
-
-if __name__ == '__main__':
-    main()

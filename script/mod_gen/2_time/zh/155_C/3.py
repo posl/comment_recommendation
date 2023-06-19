@@ -1,9 +1,20 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    for i in a:
-        if i % 2 == 0 and i % 3 != 0 and i % 5 != 0:
-            print("DENIED")
-            exit()
-    print("APPROVED")
-main()
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    max = 0
+    for i in range(N):
+        if S[i] != S[i-1]:
+            count = S.count(S[i])
+            if max < count:
+                max = count
+    for i in range(N):
+        if S[i] != S[i-1]:
+            count = S.count(S[i])
+            if max == count:
+                print(S[i])
+
+if __name__ == '__main__':
+    main()

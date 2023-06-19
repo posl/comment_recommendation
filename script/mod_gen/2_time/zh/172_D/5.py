@@ -1,20 +1,14 @@
-def main():
-    n,m,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
-    for i in range(1,n):
-        a[i] += a[i-1]
-    for i in range(1,m):
-        b[i] += b[i-1]
-    ans = 0
-    j = m
-    for i in range(n+1):
-        if a[i] > k:
-            break
-        while j > 0 and b[j-1] > k - a[i]:
-            j -= 1
-        ans = max(ans,i+j)
-    print(ans)
+def f(x):
+    sum = 0
+    for i in range(1,x+1):
+        if x % i == 0:
+            sum += 1
+    return sum
+n = int(input())
+sum = 0
+for i in range(1,n+1):
+    sum += i * f(i)
+print(sum)
 
 if __name__ == '__main__':
-    main()
+    f()

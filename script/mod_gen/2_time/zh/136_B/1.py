@@ -1,9 +1,7 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a >= b + c:
-        print(0)
-    else:
-        print(c - (a - b))
+    # N = int(input())
+    # print(len([i for i in range(1, N+1) if i % 2 == 1]))
+    print(len([i for i in range(1, int(input())+1) if i % 2 == 1]))
 
 if __name__ == '__main__':
     main()

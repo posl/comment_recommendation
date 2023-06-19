@@ -1,16 +1,56 @@
-def main():
-    # 读入数据
-    str = input()
-    # 计算数据
-    count0 = 0
-    count1 = 0
-    for i in range(len(str)):
-        if str[i] == '0':
-            count0 += 1
-        else:
-            count1 += 1
-    # 输出结果
-    print(min(count0, count1) * 2)
+def solve():
+    N, M = map(int, input().split())
+    AB = []
+    for i in range(M):
+        AB.append(list(map(int, input().split())))
+    #print(AB)
+    #print(N, M)
+    #print(AB)
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[5][0])
+    #print(AB[5][1])
+    #print(AB[6][0])
+    #print(AB[6][1])
+    #print(AB[7][0])
+    #print(AB[7][1])
+    #print(AB[8][0])
+    #print(AB[8][1])
+    #print(AB[9][0])
+    #print(AB[9][1])
+    #print(AB[10][0])
+    #print(AB[10][1])
+    #print(AB[11][0])
+    #print(AB[11][1])
+    #print(AB[12][0])
+    #print(AB[12][1])
+    #print(AB[13][0])
+    #print(AB[13][1])
+    #print(AB[14][0])
+    #print(AB[14][1])
+    #print(AB[15][0])
+    #print(AB[15][1])
+    #print(AB[16][0])
+    #print(AB[16][1])
+    #print(AB[17][0])
+    #print(AB[17][1])
+    #print(AB[18][0])
+    #print(AB[18][1])
+    #print(AB[19][0])
+    #print(AB[19][1])
+    #print(AB[20][0])
+    #print(AB[20][1])
+    #print(AB[21][0])
+    #print(AB[21][1])
+    #print(AB
 
 if __name__ == '__main__':
-    main()
+    solve()

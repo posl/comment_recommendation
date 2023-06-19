@@ -1,12 +1,9 @@
-def is_diff(a, b, c):
-    if a == b and a != c:
-        return True
-    elif a == c and a != b:
-        return True
-    elif b == c and b != a:
-        return True
-    else:
-        return False
+def judge(n, a):
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 != 0 and a[i] % 5 != 0:
+                return False
+    return True
 
 if __name__ == '__main__':
-    is_diff()
+    judge()

@@ -1,11 +1,16 @@
 def main():
-    n, d = map(int, input().split())
+    k = int(input())
+    if k % 2 == 0:
+        print(-1)
+        return
     count = 0
-    for i in range(n):
-        x, y = map(int, input().split())
-        if x**2+y**2 <= d**2:
-            count += 1
-    print(count)
+    for i in range(1, k):
+        count = count * 10 + 7
+        count %= k
+        if count == 0:
+            print(i)
+            return
+    print(-1)
 
 if __name__ == '__main__':
     main()

@@ -4,6 +4,3 @@ def main():
     x = n * (n + 1) // 2
     print(x - a)
 main()
-
-if __name__ == '__main__':
-    main()

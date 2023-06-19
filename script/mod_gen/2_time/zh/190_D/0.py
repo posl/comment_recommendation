@@ -1,25 +1,12 @@
 def main():
-    N,M = map(int,input().split())
-    AB = []
-    for i in range(M):
-        AB.append(list(map(int,input().split())))
-    K = int(input())
-    CD = []
-    for i in range(K):
-        CD.append(list(map(int,input().split())))
+    N = int(input())
     ans = 0
-    for i in range(2**K):
-        cnt = 0
-        balls = [0]*N
-        for j in range(K):
-            if (i>>j)&1:
-                balls[CD[j][0]-1] += 1
-            else:
-                balls[CD[j][1]-1] += 1
-        for k in range(M):
-            if balls[AB[k][0]-1] and balls[AB[k][1]-1]:
-                cnt += 1
-        ans = max(ans,cnt)
+    for i in range(1, int(N**0.5) + 1):
+        if N % i == 0:
+            if i % 2 == 1:
+                ans += 2
+            if N // i % 2 == 1 and N // i != i:
+                ans += 2
     print(ans)
 
 if __name__ == '__main__':

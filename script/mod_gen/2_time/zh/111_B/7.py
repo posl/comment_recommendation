@@ -1,12 +1,9 @@
-def main():
-    n = input()
-    for i in range(len(n)):
-        if n[i] == '1':
-            print('9', end='')
-        elif n[i] == '9':
-            print('1', end='')
-        else:
-            print(n[i], end='')
+def problems111_b():
+    n = int(input())
+    if n % 111 != 0:
+        print((n // 111 + 1) * 111)
+    else:
+        print(n)
 
 if __name__ == '__main__':
-    main()
+    problems111_b()

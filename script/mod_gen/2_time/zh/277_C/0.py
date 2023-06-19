@@ -1,14 +1,12 @@
 def main():
     n = int(input())
-    cards = []
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[1])
+    last = 0
     for i in range(n):
-        cards.append(input())
-    cards.sort()
-    for i in range(n-1):
-        if cards[i] == cards[i+1]:
-            print('No')
-            return
-    print('Yes')
+        if ab[i][0] > last:
+            last = ab[i][1] - 1
+    print(last)
 
 if __name__ == '__main__':
     main()

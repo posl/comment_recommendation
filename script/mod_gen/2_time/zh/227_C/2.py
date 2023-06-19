@@ -1,18 +1,17 @@
 def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    ans = 0
-    for i in range(0, n):
-        a = 1
-        while a * a <= s[i]:
-            if s[i] % a == 0:
-                b = s[i] // a
-                if 4 * a * b + 3 * a + 3 * b == s[i]:
+    N = int(input())
+    cnt = 0
+    for i in range(1, N+1):
+        for j in range(i, N+1):
+            for k in range(j, N+1):
+                if i*j*k <= N:
+                    if i == j and j == k:
+                        cnt += 1
+                    elif i == j or j == k or i == k:
+                        cnt += 3
+                    else:
+                        cnt += 6
+                else:
                     break
-            a += 1
-        if a * a > s[i]:
-            ans += 1
-    print(ans)
-
-if __name__ == '__main__':
-    main()
+    print(cnt)
+main()

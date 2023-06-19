@@ -1,16 +1,11 @@
-def main():
-    n,q = map(int,input().split())
-    s = input()
-    queries = []
-    for _ in range(q):
-        queries.append(input().split())
-    #print(n,q,s,queries)
-    #print(s[int(queries[0][1])-1])
-    for i in range(q):
-        if int(queries[i][0]) == 1:
-            s = s[-1] + s[:-1]
+def get_min_time(n, x, a_list, b_list):
+    min_time = 0
+    for i in range(n):
+        if i == 0:
+            min_time += a_list[i] + b_list[i]
         else:
-            print(s[int(queries[i][1])-1])
+            min_time += a_list[i]
+    return min_time
 
 if __name__ == '__main__':
-    main()
+    get_min_time()

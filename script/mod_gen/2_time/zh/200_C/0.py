@@ -1,10 +1,10 @@
-def problem200_b(n,k):
-    for i in range(k):
-        if n%200 == 0:
-            n = int(n/200)
-        else:
-            n = int(str(n) + "200")
-    return n
+def find_pairs(a):
+    pairs = 0
+    for i in range(len(a)):
+        for j in range(i+1, len(a)):
+            if (a[i] - a[j]) % 200 == 0:
+                pairs += 1
+    return pairs
 
 if __name__ == '__main__':
-    problem200_b()
+    find_pairs()

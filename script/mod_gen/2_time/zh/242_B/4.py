@@ -1,11 +1,8 @@
 def main():
-    A,B,C,X = [int(x) for x in input().split()]
-    if X <= A:
-        print(1)
-    elif X > B:
-        print(0)
-    else:
-        print(C/(B-A))
+    S = input()
+    l = list(S)
+    l.sort()
+    print(''.join(l))
 
 if __name__ == '__main__':
     main()

@@ -25,6 +25,3 @@ def main():
     dfs2(0, -1)
     print(sum(s))
 main()
-
-if __name__ == '__main__':
-    main()

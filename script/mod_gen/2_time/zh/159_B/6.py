@@ -1,6 +1,8 @@
-def solve():
-    N,M = map(int,input().split())
-    print(N*(N-1)//2 + M*(M-1)//2)
+def is_palindrome(string):
+    if string == string[::-1]:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    solve()
+    is_palindrome()

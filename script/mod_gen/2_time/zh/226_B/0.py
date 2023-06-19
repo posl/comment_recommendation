@@ -1,12 +1,12 @@
 def main():
-    x = float(input())
-    if x < 0 or x >= 100:
-        return
-    y = x * 10
-    if y % 10 >= 5:
-        print(int(x) + 1)
-    else:
-        print(int(x))
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        l = list(map(int, input().split()))
+        l.pop(0)
+        a[i] = tuple(l)
+    print(len(set(a)))
+    return
 
 if __name__ == '__main__':
     main()

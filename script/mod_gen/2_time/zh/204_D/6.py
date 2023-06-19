@@ -1,25 +1,10 @@
-def solve():
-    n, m = map(int, input().split())
-    if m == 0:
-        print(n)
-        return
-    edge = [[] for _ in range(n)]
-    for _ in range(m):
-        a, b = map(int, input().split())
-        edge[a - 1].append(b - 1)
-    ans = 0
-    for i in range(n):
-        visited = [False] * n
-        visited[i] = True
-        stack = [i]
-        while stack:
-            now = stack.pop()
-            for next in edge[now]:
-                if not visited[next]:
-                    visited[next] = True
-                    stack.append(next)
-        ans += sum(visited)
-    print(ans)
+def solve(n, t):
+    if n == 1:
+        return t[0]
+    elif n == 2:
+        return max(t[0], t[1])
+    else:
+        return max(t[0] + solve(n-1, t[1:]), t[-1] + solve(n-1, t[:-1]))
 
 if __name__ == '__main__':
     solve()

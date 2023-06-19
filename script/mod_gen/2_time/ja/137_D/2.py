@@ -10,6 +10,3 @@ def main():
                 AB[j][0] = 0
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

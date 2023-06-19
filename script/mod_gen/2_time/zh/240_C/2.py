@@ -1,15 +1,24 @@
-def get_num():
-    N = input()
-    a = raw_input()
-    a = a.split(' ')
-    a = map(int, a)
-    a.sort()
-    a.append(0)
-    count = 1
-    for i in range(1, N):
-        if a[i] != a[i - 1]:
-            count += 1
-    print count
+def solve():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    d = [0] * (x + 1)
+    d[0] = 1
+    for i in range(n):
+        for j in range(a[i], x + 1):
+            if d[j - a[i]]:
+                d[j] = 1
+        for j in range(b[i], x + 1):
+            if d[j - b[i]]:
+                d[j] = 1
+    if d[x]:
+        print('Yes')
+    else:
+        print('No')
 
 if __name__ == '__main__':
-    get_num()
+    solve()

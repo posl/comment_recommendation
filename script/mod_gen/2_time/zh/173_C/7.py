@@ -1,21 +1,18 @@
-def count(s):
-    count = [0,0,0,0]
-    for i in s:
-        if i == "AC":
-            count[0] += 1
-        elif i == "WA":
-            count[1] += 1
-        elif i == "TLE":
-            count[2] += 1
-        elif i == "RE":
-            count[3] += 1
-    return count
-n = int(input())
-s = []
-for i in range(n):
-    s.append(input())
-count = count(s)
-print("AC x",count[0])
-print("WA x",count[1])
-print("TLE x",count[2])
-print("RE x",count[3])
+def solve(h, w, k, c):
+    # dp[i][j][k] : i行目まで見たときにj個の行を選択し、k個の黒マスになる場合の数
+    dp = [[[0 for _ in range(k+1)] for _ in range(w+1)] for _ in range(h+1)]
+    dp[0][0][0] = 1
+    for i in range(h):
+        for j in range(w):
+            for l in range(k+1):
+                # 何もしない
+                dp[i+1][j][l] += dp[i][j][l]
+                # 行を選択
+                if c[i][j] == "#":
+                    dp[i+1][j][l+1] += dp[i][j][l]
+                # 列を選択
+                dp[i][j+1][l] += dp[i][j][l]
+    return dp[h][w][k]
+
+if __name__ == '__main__':
+    solve()

@@ -1,11 +1,5 @@
-def get_candy():
-    n = int(input())
-    if n == 1:
-        return 0
-    elif n == 2:
-        return 1
-    else:
-        return n-1
-
-if __name__ == '__main__':
-    get_candy()
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+num = int(input())
+print('Yes' if is_palindrome(num) else 'No')

@@ -24,6 +24,3 @@ def main():
     print('
 '.join(map(str, C)))
 main()
-
-if __name__ == '__main__':
-    main()

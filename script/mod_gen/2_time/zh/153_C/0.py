@@ -1,10 +1,11 @@
-def solve(h, a):
-    if h <= 0:
-        return True
-    if len(a) == 0:
-        return False
-    t = a.pop()
-    return solve(h, a) or solve(h-t, a)
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort(reverse=True)
+    ans = sum(h)
+    for i in range(k):
+        ans -= h[i]
+    print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

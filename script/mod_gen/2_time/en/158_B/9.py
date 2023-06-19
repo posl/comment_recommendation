@@ -5,6 +5,3 @@ def main():
     #output
     print(min(N//A*B + min(N%A, B), N))
 main()
-
-if __name__ == '__main__':
-    main()

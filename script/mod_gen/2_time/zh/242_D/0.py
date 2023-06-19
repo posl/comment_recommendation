@@ -1,20 +1,19 @@
 def main():
-    N = int(input())
-    dp = [[0 for i in range(10)] for j in range(N + 1)]
-    for i in range(1, 10):
-        dp[1][i] = 1
-    for i in range(2, N + 1):
-        for j in range(10):
-            if j == 0:
-                dp[i][j] = dp[i - 1][j + 1]
-            elif j == 9:
-                dp[i][j] = dp[i - 1][j - 1]
-            else:
-                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1]
-            dp[i][j] %= 998244353
-    ans = 0
-    for i in range(10):
-        ans += dp[N][i]
-        ans %= 998244353
-    print(ans)
-main()
+    s = input()
+    q = int(input())
+    for _ in range(q):
+        t, k = map(int, input().split())
+        t = t % 3
+        k -= 1
+        for i in range(t):
+            k = (k + 1) % len(s)
+            if s[k] == "a":
+                s = s[:k] + "bc" + s[k + 1:]
+            elif s[k] == "b":
+                s = s[:k] + "ca" + s[k + 1:]
+            elif s[k] == "c":
+                s = s[:k] + "ab" + s[k + 1:]
+        print(s[k])
+
+if __name__ == '__main__':
+    main()

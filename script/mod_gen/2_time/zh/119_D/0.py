@@ -1,12 +1,16 @@
-def dfs(i, a, b, c):
-    if i == n:
-        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else float('inf')
-    ret0 = dfs(i + 1, a, b, c)
-    ret1 = dfs(i + 1, a + l[i], b, c) + 10
-    ret2 = dfs(i + 1, a, b + l[i], c) + 10
-    ret3 = dfs(i + 1, a, b, c + l[i]) + 10
-    return min(ret0, ret1, ret2, ret3)
- 
-n, A, B, C = map(int, input().split())
-l = [int(input()) for _ in range(n)]
-print(dfs(0, 0, 0, 0))
+def search(s,t,x):
+    i = 0
+    j = 0
+    while i < len(s) and s[i] < x:
+        i += 1
+    while j < len(t) and t[j] < x:
+        j += 1
+    if i == 0:
+        return t[j] - x
+    elif j == 0:
+        return s[i] - x
+    else:
+        return min(s[i] - x + s[i] - t[j-1], t[j] - x + t[j] - s[i-1], s[i] - x + t[j] - x, s[i] - x + t[j] - x)
+
+if __name__ == '__main__':
+    search()

@@ -20,6 +20,3 @@ def main():
         ans += B[N - 1 - i] * X
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

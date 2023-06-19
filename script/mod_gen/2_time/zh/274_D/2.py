@@ -1,13 +1,12 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = [0] * (2 * n + 1)
-    for i in range(n):
-        ans[a[i]] = i + 1
-    for i in range(2, 2 * n + 1):
-        ans[i] = ans[i // 2] + 1
-    for i in range(1, 2 * n + 1):
-        print(ans[i])
+def is90(x1, y1, x2, y2, x3, y3):
+    x1 = x1 - x2
+    y1 = y1 - y2
+    x3 = x3 - x2
+    y3 = y3 - y2
+    if x1*x3 + y1*y3 == 0:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    main()
+    is90()

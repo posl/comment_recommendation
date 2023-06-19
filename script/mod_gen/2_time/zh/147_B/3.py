@@ -1,13 +1,9 @@
-def main():
-    a = input()
-    a = a.split()
-    sum = 0
-    for i in range(3):
-        sum += int(a[i])
-    if sum >= 22:
-        print('bust')
-    else:
-        print('win')
+def check_palindrome(str):
+    length = len(str)
+    for i in range(0, length//2):
+        if str[i] != str[length-1-i]:
+            return False
+    return True
 
 if __name__ == '__main__':
-    main()
+    check_palindrome()

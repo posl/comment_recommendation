@@ -1,12 +1,14 @@
 def main():
-    n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    if len(name_list) == len(set(name_list)):
-        print('No')
-    else:
-        print('Yes')
+    N = int(input())
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            N = N // 2
+            ans += "B"
+        else:
+            N -= 1
+            ans += "A"
+    print(ans[::-1])
 
 if __name__ == '__main__':
     main()

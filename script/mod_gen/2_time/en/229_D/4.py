@@ -8,6 +8,3 @@ def main():
         S = S.replace(".", "X", K)
         print(S.count("X"))
 main()
-
-if __name__ == '__main__':
-    main()

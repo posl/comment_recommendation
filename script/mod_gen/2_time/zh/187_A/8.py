@@ -1,10 +1,8 @@
-def solve(n, a):
-    a.sort()
-    ans = 0
-    for i in range(n-1):
-        ans += (i+1) * a[i] - sum(a[:i+1])
-        ans += sum(a[i+1:]) - (n-i-1) * a[i]
-    return ans
-
-if __name__ == '__main__':
-    solve()
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+a, b = map(int, input().split())
+print(max(sum_digits(a), sum_digits(b)))

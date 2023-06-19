@@ -1,6 +1,9 @@
-def main():
-    s = input()
-    print(min(abs(int(s[i:i+3])-753) for i in range(len(s)-2)))
+def is753(num):
+    # 7,5,3がそれぞれ1回以上入っているかチェック
+    if num.count('7') > 0 and num.count('5') > 0 and num.count('3') > 0:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    main()
+    is753()

@@ -20,6 +20,3 @@ def main():
                     S[i][j] = max(S[i-1][j], S[i][j-1]) + 1
     print(S[-1][-1])
 main()
-
-if __name__ == '__main__':
-    main()

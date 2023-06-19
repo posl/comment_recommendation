@@ -1,44 +1,17 @@
 def main():
-    n, k = map(int, input().split())
-    c = list(map(int, input().split()))
-    # print(n, k)
-    # print(c)
-    # print(len(c))
-    # print(len(set(c)))
-    # print(set(c))
-    # print(list(set(c)))
-    # print(c[0:0 + k])
-    # print(c[0:0 + k - 1])
-    # print(c[0:0 + k - 2])
-    # print(c[0:0 + k - 3])
-    # print(c[0:0 + k - 4])
-    # print(c[0:0 + k - 5])
-    # print(c[0:0 + k - 6])
-    # print(c[0:0 + k - 7])
-    # print(c[0:0 + k - 8])
-    # print(c[0:0 + k - 9])
-    # print(c[0:0 + k - 10])
-    # print(c[0:0 + k - 11])
-    # print(c[0:0 + k - 12])
-    # print(c[0:0 + k - 13])
-    # print(c[0:0 + k - 14])
-    # print(c[0:0 + k - 15])
-    # print(c[0:0 + k - 16])
-    # print(c[0:0 + k - 17])
-    # print(c[0:0 + k - 18])
-    # print(c[0:0 + k - 19])
-    # print(c[0:0 + k - 20])
-    # print(c[0:0 + k - 21])
-    # print(c[0:0 + k - 22])
-    # print(c[0:0 + k - 23])
-    # print(c[0:0 + k - 24])
-    # print(c[0:0 + k - 25])
-    # print(c[0:0 + k - 26])
-    # print(c[0:0 + k - 27])
-    # print(c[0:0 + k - 28])
-    # print(c[0:0 + k - 29])
-    # print(c[0:0 + k - 30])
-    # print(c[0
+    h, w, c = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    min_cost = 10 ** 18
+    for i in range(h):
+        for j in range(w):
+            for k in range(i, h):
+                for l in range(w):
+                    if i == k and j == l:
+                        continue
+                    min_cost = min(min_cost, a[i][j] + a[k][l] + c * (abs(i - k) + abs(j - l)))
+    print(min_cost)
 
 if __name__ == '__main__':
     main()

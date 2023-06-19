@@ -1,17 +1,13 @@
 def main():
-    s = input()
-    t = input()
-    len_s = len(s)
-    len_t = len(t)
-    min_change = len_t
-    for i in range(len_s - len_t + 1):
-        change = 0
-        for j in range(len_t):
-            if s[i + j] != t[j]:
-                change += 1
-        if change < min_change:
-            min_change = change
-    print(min_change)
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    sum = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            sum += A[i]*A[j]
+            sum %= MOD
+    print(sum)
 
 if __name__ == '__main__':
     main()

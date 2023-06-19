@@ -1,12 +1,17 @@
 def main():
-    n = int(input())
+    n,m = map(int,input().split())
     s = []
+    t = []
     for i in range(n):
         s.append(input())
-    if s.count("For") > s.count("Against"):
-        print("Yes")
-    else:
-        print("No")
+    for i in range(m):
+        t.append(input())
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:] == t[j] or s[i][4:] == t[j] or s[i][5:] == t[j]:
+                count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

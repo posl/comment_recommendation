@@ -1,9 +1,9 @@
 def main():
-    x,y,z = map(int,input().split())
-    if y > 0:
-        print(-1)
-    else:
-        print(abs(x)+abs(z))
+    N,X,Y = map(int,input().split())
+    print(N,X,Y)
+    for i in range(N-1):
+        U,V = map(int,input().split())
+        print(U,V)
 
 if __name__ == '__main__':
     main()

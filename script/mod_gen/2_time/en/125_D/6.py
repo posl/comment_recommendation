@@ -9,6 +9,3 @@ def main():
     else:
         print(ans-2*min(abs(a[i]) for i in range(n)))
 main()
-
-if __name__ == '__main__':
-    main()

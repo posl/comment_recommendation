@@ -17,6 +17,3 @@ def solve():
         ans %= mod
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -5,6 +5,3 @@ def round_to_nearest_int(x):
         return int(x)
 x = float(input())
 print(round_to_nearest_int(x))
-
-if __name__ == '__main__':
-    round_to_nearest_int()

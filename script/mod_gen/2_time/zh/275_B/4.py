@@ -1,11 +1,10 @@
 def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    max_index = 0
-    for i in range(1, n):
-        if h[i] > h[max_index]:
-            max_index = i
-    print(max_index + 1)
+    # 读取输入
+    A, B, C, D, E, F = map(int, input().split())
+    # 计算答案
+    ans = (A * B * C - D * E * F) % 998244353
+    # 输出结果
+    print(ans)
 
 if __name__ == '__main__':
     main()

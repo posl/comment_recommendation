@@ -1,22 +1,31 @@
-def water_flowers(N, h):
-    # 从左到右遍历花坛
-    # 如果左边比右边高，就浇水，浇水量为左边高度减去右边高度
-    # 如果右边比左边高，就不浇水，浇水量为0
-    # 如果左右相等，就不浇水，浇水量为0
-    # 浇水量累加，就是最小浇水次数
-    # 浇水过程中，花坛的高度也会变化
-    # 浇水过程中，花坛的高度不能为负数
-    # 浇水过程中，花坛的高度不能超过100
-    # 浇水过程中，花坛的高度不能超过左右两边的最小值
-    # 浇水过程中，花坛的高度不能超过左右两边的最大值
-    # 浇水过程中，花坛的高度不能超过左右两边的平均值
-    # 浇水过程中，花坛的高度不能超过左右两边的中位数
-    # 浇水过程中，花坛的高度不能超过左右两边的众数
-    # 浇水过程中，花坛的高度不能超过左右两边的最大值和最小值的差值
-    # 浇水过程中，花坛的高度不能超过左右两边的最大值和最小值的差值的平方
-    # 浇水过程中，花坛的高度不能超过左右两边的最大值和最小值的差值的立方
-    # 浇水过程中，花坛的高度不能超过左右两边的最大值和最小值的差值的立方根
-    # 浇水过程
+def main():
+    n,k = map(int, input().split())
+    t = []
+    d = []
+    for i in range(n):
+        t1, d1 = map(int, input().split())
+        t.append(t1)
+        d.append(d1)
+    # print(t)
+    # print(d)
+    # print("n,k = ", n,k)
+    # print("t = ", t)
+    # print("d = ", d)
+    # print("sum(d) = ", sum(d))
+    # print("sum(d[:k]) = ", sum(d[:k]))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # print("sum(d[:k]) + (len(set(t[:k]))**2) = ", sum(d[:k]) + (len(set(t[:k]))**2))
+    # for i in range(k):
+    #     print("i = ", i)
+    #     print("t[i] = ", t[i])
+    #     print("d
 
 if __name__ == '__main__':
-    water_flowers()
+    main()

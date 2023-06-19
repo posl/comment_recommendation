@@ -1,10 +1,7 @@
 def main():
-    n,m = map(int,input().split())
-    A = [0]*m
-    B = [0]*m
-    for i in range(m):
-        A[i],B[i] = map(int,input().split())
-    print(n,m,A,B)
+    h,w = map(int,input().split())
+    h1,w1 = map(int,input().split())
+    print(h*w-h1*w-w1*h+h1*w1)
 
 if __name__ == '__main__':
     main()

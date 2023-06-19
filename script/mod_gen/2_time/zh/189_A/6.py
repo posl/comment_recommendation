@@ -1,16 +1,13 @@
 def main():
-    N,C = map(int,input().split())
-    AB = []
-    for i in range(N):
-        AB.append(list(map(int,input().split())))
-    AB.sort()
-    A = [AB[i][0] for i in range(N)]
-    B = [AB[i][1] for i in range(N)]
-    C = [AB[i][2] for i in range(N)]
-    total = 0
-    for i in range(N):
-        total += C[i]*(B[i]-A[i])
-    print(total)
+    # 读取输入
+    c1,c2,c3 = input().split()
+    # 处理
+    if c1 == c2 == c3:
+        result = "Won"
+    else:
+        result = "Lost"
+    # 输出结果
+    print(result)
 
 if __name__ == '__main__':
     main()

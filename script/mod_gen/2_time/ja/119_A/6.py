@@ -18,6 +18,3 @@ def judge():
     else:
         print('TBD')
 judge()
-
-if __name__ == '__main__':
-    judge()

@@ -1,14 +1,18 @@
-def main():
-    S = input()
-    Q = int(input())
-    t_k = [list(map(int, input().split())) for _ in range(Q)]
-    for t, k in t_k:
-        t = t % 3
-        for _ in range(t):
-            S = S.replace('a', 'bc')
-            S = S.replace('b', 'ca')
-            S = S.replace('c', 'ab')
-        print(S[k-1])
+def solve():
+    v,a,b,c = map(int,input().split())
+    while v > 0:
+        v -= a
+        if v <= 0:
+            print("T")
+            break
+        v -= b
+        if v <= 0:
+            print("M")
+            break
+        v -= c
+        if v <= 0:
+            print("F")
+            break
 
 if __name__ == '__main__':
-    main()
+    solve()

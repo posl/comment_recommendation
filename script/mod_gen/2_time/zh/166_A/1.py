@@ -1,7 +1,9 @@
-def solve():
-    A, B, N = map(int, input().split())
-    x = min(B - 1, N)
-    print((A * x // B) - A * (x // B))
+def main():
+    s = input()
+    if s == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
 
 if __name__ == '__main__':
-    solve()
+    main()

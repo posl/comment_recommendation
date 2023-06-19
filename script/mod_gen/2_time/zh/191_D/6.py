@@ -1,18 +1,13 @@
 def main():
-    H, W = map(int, input().split())
-    S = []
-    for i in range(H):
-        S.append(input())
+    X,Y,R = map(float,input().split())
+    X = int(X*10000)
+    Y = int(Y*10000)
+    R = int(R*10000)
     ans = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
+    for i in range(int(X-R),int(X+R+1)):
+        for j in range(int(Y-R),int(Y+R+1)):
+            if (i-X)**2+(j-Y)**2 <= R**2:
                 ans += 1
-    if ans == 0:
-        print(0)
-        return
-    ans += 4
-    ans -= 2 * (H + W)
     print(ans)
 
 if __name__ == '__main__':

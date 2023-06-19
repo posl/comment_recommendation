@@ -1,8 +1,9 @@
-def problem258_a():
-    k = int(input())
-    h = k//60
-    m = k%60
-    print("{:02d}:{:02d}".format(21+h,m))
+def get_max_num(grid):
+    max_num = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            max_num = max(max_num, int(grid[i][j]))
+    return max_num
 
 if __name__ == '__main__':
-    problem258_a()
+    get_max_num()

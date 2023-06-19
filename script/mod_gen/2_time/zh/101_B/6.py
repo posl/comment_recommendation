@@ -1,8 +1,15 @@
-def sum_digits(n):
-    s = 0
-    while n:
-        s += n % 10
-        n //= 10
-    return s
-N = int(input())
-print("Yes" if N % sum_digits(N) == 0 else "No")
+def main():
+    # 读取输入
+    N = int(input())
+    # 计算S(N)
+    S = 0
+    for i in str(N):
+        S += int(i)
+    # 判断是否能够整除
+    if N % S == 0:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    main()

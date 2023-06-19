@@ -11,6 +11,3 @@ def main():
                 y2 = j
     print(max(abs(x1 - x2), abs(y1 - y2)))
 main()
-
-if __name__ == '__main__':
-    main()

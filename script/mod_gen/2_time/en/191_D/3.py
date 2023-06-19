@@ -7,6 +7,3 @@ def circle(x, y, r):
     return count
 x, y, r = map(float, input().split())
 print(circle(x, y, r))
-
-if __name__ == '__main__':
-    circle()

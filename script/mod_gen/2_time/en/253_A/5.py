@@ -8,6 +8,3 @@ def median(a,b,c):
     return b
 a,b,c = map(int, input().split())
 print("Yes" if median(a,b,c) == b else "No")
-
-if __name__ == '__main__':
-    median()

@@ -1,6 +1,7 @@
-def main():
-    x, y = map(int, input().split())
-    print((y - x + 3) % 3)
+def get_nut():
+    n = int(input())
+    nut = list(map(int, input().split()))
+    return n, nut
 
 if __name__ == '__main__':
-    main()
+    get_nut()

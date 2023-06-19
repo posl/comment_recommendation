@@ -1,14 +1,11 @@
 def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    ans = [0] * n
-    for i in range(n):
-        ans[i] = k // n
-    B = sorted(A)
-    for i in range(k % n):
-        ans[B[i] - 1] += 1
-    for i in range(n):
-        print(ans[i])
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * M
+    for i in range(M):
+        A[i], B[i], C[i] = map(int, input().split())
+    print(solve(N, M, A, B, C))
 
 if __name__ == '__main__':
     main()

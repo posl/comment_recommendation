@@ -14,6 +14,3 @@ def main():
         ans += s[i] - a[i]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

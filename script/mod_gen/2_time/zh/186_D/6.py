@@ -1,10 +1,13 @@
-def is_contain_seven(n):
-    if n%10 == 7:
-        return True
-    elif n//10 == 0:
-        return False
-    else:
-        return is_contain_seven(n//10)
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    S = sum(A)
+    ans = 0
+    for i in range(N):
+        S -= A[i]
+        ans += S - A[i] * (N - i - 1)
+    print(ans)
 
 if __name__ == '__main__':
-    is_contain_seven()
+    main()

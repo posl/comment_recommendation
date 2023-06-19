@@ -8,6 +8,3 @@ def triples(S,T):
     return count
 S,T = map(int,input().split())
 print(triples(S,T))
-
-if __name__ == '__main__':
-    triples()

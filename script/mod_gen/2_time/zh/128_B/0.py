@@ -1,4 +1,12 @@
-def problem128_a():
-    a, p = map(int, input().split())
-    print((a*3+p)//2)
-problem128_a()
+def main():
+    num = int(input())
+    rest = []
+    for i in range(num):
+        name, score = input().split()
+        rest.append([name, int(score)])
+    rest = sorted(rest, key=lambda x: (x[0], -x[1]))
+    for i in range(num):
+        print(rest[i][1])
+
+if __name__ == '__main__':
+    main()

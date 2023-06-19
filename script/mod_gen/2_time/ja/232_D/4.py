@@ -14,6 +14,3 @@ def main():
                     dp[i][j] += dp[i][j - 1]
     print(dp[-1][-1] % (10 ** 9 + 7))
 main()
-
-if __name__ == '__main__':
-    main()

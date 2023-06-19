@@ -1,11 +1,9 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for i in range(N):
-        ans += A[i] * i - A[i] * (N - 1 - i)
-    print(ans)
+def get_sum_of_digits(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
 
 if __name__ == '__main__':
-    main()
+    get_sum_of_digits()

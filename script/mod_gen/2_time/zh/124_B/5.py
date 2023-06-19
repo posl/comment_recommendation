@@ -1,11 +1,9 @@
-def main():
-    A,B = map(int,input().split())
-    if A == B:
-        print(A+B)
-    elif A > B:
-        print(2*A-1)
-    else:
-        print(2*B-1)
-
-if __name__ == '__main__':
-    main()
+def problems124_b():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        if h[i] >= max(h[:i]):
+            count += 1
+    print(count)
+problems124_b()

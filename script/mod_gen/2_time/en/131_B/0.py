@@ -7,6 +7,3 @@ def main():
     else:
         print(sum(range(L, L+N-1))-L)
 main()
-
-if __name__ == '__main__':
-    main()

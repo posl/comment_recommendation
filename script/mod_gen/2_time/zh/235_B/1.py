@@ -1,10 +1,11 @@
 def main():
-    abc = input()
-    abc = int(abc)
-    a = abc // 100
-    b = (abc - a * 100) // 10
-    c = abc - a * 100 - b * 10
-    print(a * 100 + b * 10 + c + b * 100 + c * 10 + a + c * 100 + a * 10 + b)
+    n = int(input())
+    h = list(map(int, input().split()))
+    max_h = 0
+    for i in range(n):
+        if h[i] >= max_h:
+            max_h = h[i]
+    print(max_h)
 
 if __name__ == '__main__':
     main()

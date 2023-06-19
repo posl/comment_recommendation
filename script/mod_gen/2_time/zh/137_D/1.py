@@ -1,19 +1,19 @@
-def main():
-    N = int(input())
-    s = []
+def solve():
+    N, M = map(int, input().split())
+    works = []
     for i in range(N):
-        s.append(input())
-    s.sort()
-    s.append('end')
-    cnt = 0
+        works.append(list(map(int, input().split())))
+    works.sort(key=lambda x: x[0])
     ans = 0
-    for i in range(N):
-        if s[i] == s[i+1]:
-            cnt += 1
+    i = 0
+    while M > 0:
+        if works[i][0] > M:
+            break
         else:
-            ans += (cnt+1)*cnt//2
-            cnt = 0
+            ans += works[i][1]
+            M -= works[i][0]
+            i += 1
     print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

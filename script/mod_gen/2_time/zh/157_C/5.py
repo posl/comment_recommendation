@@ -1,27 +1,23 @@
 def solve():
-    bingo = [[False for i in range(3)] for j in range(3)]
-    for i in range(3):
-        bingo[i][0], bingo[i][1], bingo[i][2] = map(int, input().split())
-    N = int(input())
-    for i in range(N):
-        b = int(input())
-        for j in range(3):
-            for k in range(3):
-                if bingo[j][k] == b:
-                    bingo[j][k] = True
-    flag = False
-    for i in range(3):
-        if bingo[i][0] and bingo[i][1] and bingo[i][2]:
-            flag = True
-    for i in range(3):
-        if bingo[0][i] and bingo[1][i] and bingo[2][i]:
-            flag = True
-    if bingo[0][0] and bingo[1][1] and bingo[2][2]:
+    N,M = map(int,input().split())
+    s = [0]*M
+    c = [0]*M
+    for i in range(M):
+        s[i],c[i] = map(int,input().split())
+    #print(s,c)
+    ans = -1
+    for i in range(10**N):
+        num = str(i).zfill(N)
         flag = True
-    if bingo[0][2] and bingo[1][1] and bingo[2][0]:
-        flag = True
-    if flag:
-        print("Yes")
-    else:
-        print("No")
-solve()
+        for j in range(M):
+            if num[s[j]-1] != str(c[j]):
+                flag = False
+                break
+        if flag:
+            ans = i
+            break
+    print(ans)
+    return 0
+
+if __name__ == '__main__':
+    solve()

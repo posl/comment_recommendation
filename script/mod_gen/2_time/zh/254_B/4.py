@@ -1,7 +1,13 @@
-def last_two_digits(N):
-    if N < 100 or N > 999:
-        print("N is not in the range of 100 to 999.")
-    else:
-        print(N%100)
-N = int(input())
-last_two_digits(N)
+def main():
+    n = int(input())
+    a = [[1 for i in range(n)] for j in range(n)]
+    for i in range(2, n):
+        for j in range(1, i):
+            a[i][j] = a[i-1][j-1] + a[i-1][j]
+    for i in range(n):
+        for j in range(i+1):
+            print(a[i][j], end = ' ')
+        print()
+
+if __name__ == '__main__':
+    main()

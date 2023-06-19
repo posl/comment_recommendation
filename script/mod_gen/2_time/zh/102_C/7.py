@@ -1,19 +1,15 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    B = []
-    for i in range(N):
-        B.append(A[i] - (i + 1))
-    B.sort()
-    if N % 2 == 0:
-        b = (B[N // 2 - 1] + B[N // 2]) // 2
+    n = int(input())
+    a = list(map(int,input().split()))
+    a.sort()
+    b = []
+    for i in range(n):
+        b.append(a[i]-i-1)
+    b.sort()
+    if n % 2 == 0:
+        print(b[n//2]-b[n//2-1])
     else:
-        b = B[N // 2]
-    ans = 0
-    for i in range(N):
-        ans += abs(A[i] - (b + i + 1))
-    print(ans)
+        print(b[n//2])
 
 if __name__ == '__main__':
     main()

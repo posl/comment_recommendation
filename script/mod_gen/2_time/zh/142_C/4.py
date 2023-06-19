@@ -1,9 +1,10 @@
-def check_ride_roller_coaster(n,k,h):
-    count=0
-    for i in h:
-        if i>=k:
-            count+=1
-    return count
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = [0]*n
+    for i in range(n):
+        b[a[i]-1] = i+1
+    print(' '.join(map(str,b)))
 
 if __name__ == '__main__':
-    check_ride_roller_coaster()
+    main()

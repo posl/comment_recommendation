@@ -1,10 +1,17 @@
-def solve(n, a):
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(0)
     ans = 0
-    cnt = [0] * (10 ** 6 + 1)
-    for i in range(n):
-        ans += i - cnt[a[i]]
-        cnt[a[i]] += 1
-    return ans
+    i = 0
+    while i < n:
+        if a[i] == a[i + 1]:
+            ans += 1
+            i += 2
+        else:
+            i += 1
+    print(ans)
 
 if __name__ == '__main__':
-    solve()
+    main()

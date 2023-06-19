@@ -1,17 +1,14 @@
 def main():
-    import sys
-    N = int(sys.stdin.readline())
-    towns = []
-    for i in range(N):
-        line = sys.stdin.readline().strip()
-        towns.append(list(map(int, line.split())))
-    import itertools
-    import math
-    total = 0
-    for i in itertools.permutations(range(N)):
-        for j in range(N-1):
-            total += math.sqrt((towns[i[j]][0]-towns[i[j+1]][0])**2 + (towns[i[j]][1]-towns[i[j+1]][1])**2)
-    print(total/math.factorial(N))
+    x,y = map(int,input().split())
+    dp = [[0]*(y+1) for _ in range(x+1)]
+    dp[0][0] = 1
+    for i in range(x+1):
+        for j in range(y+1):
+            if i+1<=x and j+2<=y:
+                dp[i+1][j+2] += dp[i][j]
+            if i+2<=x and j+1<=y:
+                dp[i+2][j+1] += dp[i][j]
+    print(dp[x][y]%(10**9+7))
 
 if __name__ == '__main__':
     main()

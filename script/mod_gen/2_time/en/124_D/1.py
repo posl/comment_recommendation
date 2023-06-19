@@ -10,6 +10,3 @@ def main():
             ans = max(ans, j - i)
     print(min(ans + 2 * K, N))
 main()
-
-if __name__ == '__main__':
-    main()

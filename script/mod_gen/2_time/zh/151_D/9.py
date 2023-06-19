@@ -1,18 +1,29 @@
 def main():
-    N, M = map(int, input().split())
-    p = [0] * M
-    s = [0] * M
-    for i in range(M):
-        p[i], s[i] = input().split()
-        p[i] = int(p[i])
-    ac = [0] * N
-    wa = [0] * N
-    for i in range(M):
-        if s[i] == 'AC':
-            ac[p[i]-1] = 1
-        elif ac[p[i]-1] == 0:
-            wa[p[i]-1] += 1
-    print(sum(ac), sum([ac[i]*wa[i] for i in range(N)]))
+    print("请输入H W")
+    H,W = map(int,input().split())
+    print("请输入迷宫")
+    s = []
+    for i in range(H):
+        s.append(input())
+    print(s)
+    #print(s[0][0])
+    #print(s[1][1])
+    #print(s[2][2])
+    #print(s[2][3])
+    #print(s[2][4])
+    #print(s[1][4])
+    #print(s[0][4])
+    #print(s[0][3])
+    #print(s[0][2])
+    print(s[0][0])
+    print(s[0][1])
+    print(s[0][2])
+    print(s[1][2])
+    print(s[2][2])
+    print(s[2][1])
+    print(s[2][0])
+    print(s[1][0])
+    print(s[1][1])
 
 if __name__ == '__main__':
     main()

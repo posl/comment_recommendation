@@ -6,6 +6,3 @@ def solve():
         ans += max(A[i]-K*X, 0)
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

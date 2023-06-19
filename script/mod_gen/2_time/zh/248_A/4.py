@@ -1,13 +1,9 @@
 def main():
-    q = int(input())
-    ans = 0
-    for i in range(q):
-        query = list(map(int, input().split()))
-        if query[0] == 1:
-            ans += query[1] * query[2]
-        else:
-            print(ans)
-            ans = 0
+    S = input()
+    for i in range(10):
+        if str(i) not in S:
+            print(i)
+            break
 
 if __name__ == '__main__':
     main()

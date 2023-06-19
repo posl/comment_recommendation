@@ -5,6 +5,3 @@ def main():
     b = int(b, k)
     print(a * b)
 main()
-
-if __name__ == '__main__':
-    main()

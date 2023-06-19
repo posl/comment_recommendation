@@ -1,10 +1,5 @@
-def main():
-    N, K = map(int, input().split())
-    digits = 0
-    while N > 0:
-        N //= K
-        digits += 1
-    print(digits)
+def min_power(x, p):
+    return (x - p)**2
 
 if __name__ == '__main__':
-    main()
+    min_power()

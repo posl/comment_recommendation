@@ -1,11 +1,11 @@
 def main():
-    # 读取输入
-    x = int(input())
-    # 判断是否需要庆祝
-    if x == 3 or x == 5 or x == 7:
-        print('YES')
-    else:
-        print('NO')
+    s = input()
+    s = list(map(int, s))
+    ans = 1000
+    for i in range(len(s)-2):
+        x = s[i]*100 + s[i+1]*10 + s[i+2]
+        ans = min(ans, abs(x-753))
+    print(ans)
 
 if __name__ == '__main__':
     main()

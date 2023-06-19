@@ -1,14 +1,12 @@
 def main():
-    # 读取输入
-    x = float(input())
-    # 四舍五入
-    # round()函数返回浮点数x的四舍五入值。
-    # round(x,n)函数返回浮点数x的四舍五入值，n表示要保留的小数位数。
-    # round()函数的返回值是一个浮点数，而不是一个整数。
-    # round()函数的返回值是一个浮点数，而不是一个整数。
-    # round()函数的返回值是一个浮点数，而不是一个整数。
-    # 请记住这一点，以避免误解。
-    print(round(x))
+    n = int(input())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    d = {}
+    for i in range(n):
+        a[i].pop(0)
+        d.setdefault(tuple(a[i]), 0)
+        d[tuple(a[i])] += 1
+    print(len(d))
 
 if __name__ == '__main__':
     main()

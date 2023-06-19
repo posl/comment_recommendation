@@ -1,29 +1,24 @@
 def main():
-    # 读入数据
     D, G = map(int, input().split())
-    p = [0] * D
-    c = [0] * D
-    for i in range(D):
-        p[i], c[i] = map(int, input().split())
-    # 枚举解决问题的组合
-    ans = float('inf')
-    for i in range(1 << D):
+    pc = [list(map(int, input().split())) for _ in range(D)]
+    ans = 10**9
+    for i in range(2**D):
+        cnt = 0
         score = 0
-        solved = 0
         rest_max = -1
         for j in range(D):
-            if i >> j & 1:
-                score += 100 * (j + 1) * p[j] + c[j]
-                solved += p[j]
+            if (i >> j) & 1:
+                score += 100*(j+1)*pc[j][0]+pc[j][1]
+                cnt += pc[j][0]
             else:
                 rest_max = j
         if score < G:
-            s1 = 100 * (rest_max + 1)
-            need = (G - score + s1 - 1) // s1
-            if need >= p[rest_max]:
+            s1 = 100*(rest_max+1)
+            need = (G-score+s1-1)//s1
+            if need >= pc[rest_max][0]:
                 continue
-            solved += need
-        ans = min(ans, solved)
+            cnt += need
+        ans = min(ans, cnt)
     print(ans)
 
 if __name__ == '__main__':

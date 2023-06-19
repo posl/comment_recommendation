@@ -20,6 +20,3 @@ I'm not sure if this is the best way to do it, but I think it's pretty neat.
 I think this is a pretty neat solution. I like how you used the set function to get rid of all duplicates and then compared the length of the list to the length of the set. If they are not the same, that means there are duplicates, and you can print the length of the list.
 I'm not sure if this is the best way to do it, but I think it's pretty neat.
 I think this is a pretty neat solution. I like how you used the set function to get rid of all duplicates and then compared the length of the list to the length
-
-if __name__ == '__main__':
-    f()

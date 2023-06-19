@@ -1,9 +1,16 @@
-def check(n):
-    x = 0
-    for i in range(1, n+1):
-        x += i
-        if x >= n:
-            return i
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    i = 0
+    while i < n:
+        j = i + 1
+        while j < n and a[i] == a[j]:
+            j += 1
+        ans += (j - i - 1)
+        i = j
+    print(ans)
 
 if __name__ == '__main__':
-    check()
+    main()

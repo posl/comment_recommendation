@@ -3,6 +3,3 @@ def main():
     Sx, Sy, Gx, Gy = int(Sx), int(Sy), int(Gx), int(Gy)
     print((Gx*Sy + Sx*Gy)/(Sy + Gy))
 main()
-
-if __name__ == '__main__':
-    main()

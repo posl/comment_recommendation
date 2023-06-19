@@ -1,16 +1,34 @@
-def check(n, s):
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                if i + 5 < n and s[i + 1][j] == '#' and s[i + 2][j] == '#' and s[i + 3][j] == '#' and s[i + 4][j] == '#' and s[i + 5][j] == '#':
-                    return True
-                if j + 5 < n and s[i][j + 1] == '#' and s[i][j + 2] == '#' and s[i][j + 3] == '#' and s[i][j + 4] == '#' and s[i][j + 5] == '#':
-                    return True
-                if i + 5 < n and j + 5 < n and s[i + 1][j + 1] == '#' and s[i + 2][j + 2] == '#' and s[i + 3][j + 3] == '#' and s[i + 4][j + 4] == '#' and s[i + 5][j + 5] == '#':
-                    return True
-                if i + 5 < n and j - 5 >= 0 and s[i + 1][j - 1] == '#' and s[i + 2][j - 2] == '#' and s[i + 3][j - 3] == '#' and s[i + 4][j - 4] == '#' and s[i + 5][j - 5] == '#':
-                    return True
-    return False
+def main():
+    from bisect import bisect_left, bisect_right
+    from collections import defaultdict
+    from sys import stdin
+    input = stdin.readline
+    q = int(input())
+    a = []
+    d = defaultdict(list)
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a.append(query[1])
+            d[query[1]].append(len(a) - 1)
+        elif query[0] == 2:
+            if len(a) == 0:
+                print(-1)
+            else:
+                i = bisect_right(a, query[1])
+                if i == 0:
+                    print(-1)
+                else:
+                    print(a[d[a[i - 1]][query[2] - 1]])
+        else:
+            if len(a) == 0:
+                print(-1)
+            else:
+                i = bisect_left(a, query[1])
+                if i == len(a):
+                    print(-1)
+                else:
+                    print(a[d[a[i]][query[2] - 1]])
 
 if __name__ == '__main__':
-    check()
+    main()

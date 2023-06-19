@@ -6,6 +6,3 @@ def f(s, n):
         f(s[:i]+s[i+1:], n+s[i])
 s = bin(int(input()))[2:]
 f(s, 0)
-
-if __name__ == '__main__':
-    f()

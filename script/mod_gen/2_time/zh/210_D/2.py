@@ -1,10 +1,15 @@
-def get_max_color_count(candies, k):
-    max_color_count = 0
-    for i in range(0, len(candies) - k + 1):
-        color_count = len(set(candies[i:i+k]))
-        if color_count > max_color_count:
-            max_color_count = color_count
-    return max_color_count
+def main():
+    h, w, c = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(h)]
+    ans = 10**18
+    for i in range(h):
+        for j in range(w):
+            for k in range(h):
+                for l in range(w):
+                    if i == k and j == l:
+                        continue
+                    ans = min(ans, A[i][j]+A[k][l]+c*(abs(i-k)+abs(j-l)))
+    print(ans)
 
 if __name__ == '__main__':
-    get_max_color_count()
+    main()

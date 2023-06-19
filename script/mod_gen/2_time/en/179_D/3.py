@@ -12,6 +12,3 @@ def solve(n, k, lrs):
 n, k = map(int, input().split())
 lrs = [map(int, input().split()) for _ in range(k)]
 print(solve(n, k, lrs))
-
-if __name__ == '__main__':
-    solve()

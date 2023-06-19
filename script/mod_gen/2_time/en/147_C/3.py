@@ -25,6 +25,3 @@ def solve():
     print(ans)
 solve()
 The key to this problem is that the number of testimonies given by an honest person is equal to the number of honest persons. Therefore, we can check all the possible combinations of the number of honest persons and the number of testimonies given by each person. The following code solves this problem by brute force.
-
-if __name__ == '__main__':
-    solve()

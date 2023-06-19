@@ -1,14 +1,9 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = sorted(a)
-    ans = 0
-    for i in range(n-2):
-        for j in range(i+1,n-1):
-            for k in range(j+1,n):
-                if a[i] != a[j] and a[j] != a[k]:
-                    ans += 1
-    print(ans)
+    a,b,c = map(int,input().split())
+    if a <= b <= c or c <= b <= a:
+        print("是")
+    else:
+        print("没有")
 
 if __name__ == '__main__':
     main()

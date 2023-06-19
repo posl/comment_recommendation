@@ -1,6 +1,9 @@
-def main():
-    k = int(input())
-    print(''.join([chr(i) for i in range(ord('A'), ord('A') + k)]))
+def get_input():
+    N, M = map(int, input().split())
+    S = []
+    for i in range(N):
+        S.append(input())
+    return N, M, S
 
 if __name__ == '__main__':
-    main()
+    get_input()

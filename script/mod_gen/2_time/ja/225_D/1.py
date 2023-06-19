@@ -14,6 +14,3 @@ def main():
                 x = train[x]
             print(len(ans), *ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,15 +1,26 @@
 def main():
-    #读取输入
-    a, b, c, k = map(int, input().split())
-    #计算
-    if k <= a:
-        ans = k
-    elif k <= a + b:
-        ans = a
+    N, M, X = map(int, input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c, *a = map(int, input().split())
+        C.append(c)
+        A.append(a)
+    total_cost = float('inf')
+    for i in range(1 << N):
+        cost = 0
+        understanding = [0] * M
+        for j in range(N):
+            if i >> j & 1:
+                cost += C[j]
+                for k in range(M):
+                    understanding[k] += A[j][k]
+        if all(x >= X for x in understanding):
+            total_cost = min(total_cost, cost)
+    if total_cost == float('inf'):
+        print(-1)
     else:
-        ans = a - (k - a - b)
-    #打印输出
-    print(ans)
+        print(total_cost)
 
 if __name__ == '__main__':
     main()

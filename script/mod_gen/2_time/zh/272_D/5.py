@@ -1,15 +1,16 @@
-def evenSum(n, a):
-    a.sort()
-    if a[0] == 0 and a[1] == 0:
-        return 0
-    elif a[0] == 0 and a[1] == 1:
-        return -1
-    elif a[0] == 0 and a[1] > 1:
-        return a[1] - 1
-    elif a[0] == 1:
-        return -1
-    else:
-        return a[0] + a[1]
+def main():
+    N, M = map(int, input().split())
+    for i in range(N):
+        for j in range(N):
+            if i == 0 and j == 0:
+                print(0, end=' ')
+            elif i == 0:
+                print(1, end=' ')
+            elif j == 0:
+                print(1, end=' ')
+            else:
+                print(2, end=' ')
+        print()
 
 if __name__ == '__main__':
-    evenSum()
+    main()

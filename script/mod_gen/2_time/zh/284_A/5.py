@@ -1,19 +1,10 @@
-def main():
-    S = input()
-    stack = []
-    for c in S:
-        if c == '(':
-            stack.append(c)
-        elif c == ')':
-            if stack:
-                stack.pop()
-            else:
-                print('否')
-                return
-    if stack:
-        print('否')
-    else:
-        print('是')
+def reverse_print():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n - i - 1])
 
 if __name__ == '__main__':
-    main()
+    reverse_print()

@@ -48,6 +48,3 @@ def main():
     for a in ans[2:]:
         print(a)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,9 +1,31 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a <= b <= c or c <= b <= a:
-        print('是')
-    else:
-        print('没有')
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    #print(H, W)
+    #print(S)
+    #print(S[0][0])
+    #print(S[0][1])
+    #print(S[1][0])
+    #print(S[1][1])
+    #print(S[0][2])
+    #print(S[1][2])
+    #print(S[0][0] == 'o')
+    #print(S[0][1] == 'o')
+    #print(S[1][0] == 'o')
+    #print(S[1][1] == 'o')
+    #print(S[0][2] == 'o')
+    #print(S[1][2] == 'o')
+    #print(S[0][0] == 'o' and S[0][1] == 'o')
+    #print(S[0][0] == 'o' and S[1][0] == 'o')
+    #print(S[0][1] == 'o' and S[1][1] == 'o')
+    #print(S[0][1] == 'o' and S[0][2] == 'o')
+    #print(S[1][1] == 'o' and S[1][2] == 'o')
+    #print(S[0][0] == 'o' and S[0][1] == 'o' and S[1][0] == 'o')
+    #print(S[0][1] == 'o' and S[1][0] == 'o' and S[1][1] == 'o')
+    #print(S[0][1] == 'o' and S[1][1] == 'o' and S[1][2] == 'o')
+    #print(S[0][0] == 'o' and S[0][1] == 'o' and S[0][2] == 'o')
+    #print(S[0][1] == 'o' and S[0][2] == 'o' and S[1][2] == 'o')
+    #print(S[0][2] == 'o' and S[1][2] == 'o' and S[1][1] == 'o')
 
 if __name__ == '__main__':
     main()

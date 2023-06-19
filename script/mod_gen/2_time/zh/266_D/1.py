@@ -1,8 +1,41 @@
-def is_convex_polygon(A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y):
-    if (A_x * B_y + B_x * C_y + C_x * D_y + D_x * A_y - A_y * B_x - B_y * C_x - C_y * D_x - D_y * A_x) > 0:
-        return 'Yes'
-    else:
-        return 'No'
+def main():
+    n = int(input())
+    txa = []
+    for i in range(n):
+        txa.append(list(map(int, input().split())))
+    # print(txa)
+    # print(txa[0])
+    # print(txa[0][0])
+    # print(txa[0][1])
+    # print(txa[0][2])
+    # print(txa[1])
+    # print(txa[1][0])
+    # print(txa[1][1])
+    # print(txa[1][2])
+    # print(txa[2])
+    # print(txa[2][0])
+    # print(txa[2][1])
+    # print(txa[2][2])
+    # print(txa[3])
+    # print(txa[3][0])
+    # print(txa[3][1])
+    # print(txa[3][2])
+    # print(txa[4])
+    # print(txa[4][0])
+    # print(txa[4][1])
+    # print(txa[4][2])
+    # print(txa[0][1])
+    # print(txa[0][2])
+    # print(txa[0][2] + txa[1][1])
+    # print(txa[0][2] + txa[1][2])
+    # print(txa[0][2] + txa[1][2] + txa[2][1])
+    # print(txa[0][2] + txa[1][2] + txa[2][2])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][1])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][2])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][2] + txa[4][1])
+    # print(txa[0][2] + txa[1][2] + txa[2][2] + txa[3][2] + txa[4][2])
+    # print(txa[0][0])
+    #
 
 if __name__ == '__main__':
-    is_convex_polygon()
+    main()

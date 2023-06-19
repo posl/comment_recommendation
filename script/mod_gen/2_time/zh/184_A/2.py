@@ -1,13 +1,8 @@
 def main():
-    n, w = map(int, input().split())
-    #print(n, w)
-    #print(type(n), type(w))
-    #print(type(n))
-    #print(type(w))
-    #print(n)
-    #print(w)
-    #print(type(n))
-    #print(type(w
+    A = []
+    for i in range(2):
+        A.append(list(map(int, input().split())))
+    print(A[0][0]*A[1][1] - A[0][1]*A[1][0])
 
 if __name__ == '__main__':
     main()

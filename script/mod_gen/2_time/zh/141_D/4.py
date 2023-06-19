@@ -1,14 +1,11 @@
-def main():
-    n,k,q = map(int,input().split())
-    scores = [k]*n
-    for i in range(q):
-        scores[int(input())-1] += 1
+def buy_goods(n, m, a):
+    a.sort()
+    cost = 0
     for i in range(n):
-        if scores[i] <= q:
-            print("No")
-        else:
-            print("Yes")
-    return 0
+        cost += a[i]
+    for i in range(m):
+        cost = cost / 2
+    return int(cost)
 
 if __name__ == '__main__':
-    main()
+    buy_goods()

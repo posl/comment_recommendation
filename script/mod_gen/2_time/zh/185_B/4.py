@@ -1,36 +1,20 @@
-def main():
-    #读取输入
-    a = input()
-    #print(a)
-    #将输入转换成整数数组
-    a = list(map(int, a.split()))
-    #print(a)
-    #计算最小的数值
-    min = a[0]
-    for i in range(1, len(a)):
-        if min > a[i]:
-            min = a[i]
-    #print(min)
-    #计算最大的数值
-    max = a[0]
-    for i in range(1, len(a)):
-        if max < a[i]:
-            max = a[i]
-    #print(max)
-    #计算最大的数值出现的次数
-    maxCount = 0
-    for i in range(0, len(a)):
-        if max == a[i]:
-            maxCount += 1
-    #print(maxCount)
-    #计算最大的数值出现的次数
-    minCount = 0
-    for i in range(0, len(a)):
-        if min == a[i]:
-            minCount += 1
-    #print(minCount)
-    #计算最大的数值出现的次数
-    print(maxCount * minCount)
+def f1():
+    n,m,t = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        a1,b1 = map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    a.append(t)
+    b.append(t)
+    l = 0
+    for i in range(m+1):
+        l += (b[i]-a[i])
+    if l >= n:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    main()
+    f1()

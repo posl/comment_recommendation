@@ -1,6 +1,6 @@
 def main():
     n = int(input())
-    print(1110-n)
+    print((n+110)//111*111)
 
 if __name__ == '__main__':
     main()

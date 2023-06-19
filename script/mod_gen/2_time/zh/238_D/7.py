@@ -1,14 +1,17 @@
-def main():
-    N = int(input())
-    MOD = 998244353
-    ans = 0
-    for i in range(1, 10):
-        x = i
-        while x <= N:
-            y = min(N, x * 10 - 1)
-            ans += (y - x + 1) * i
-            x *= 10
-    print(ans % MOD)
+def get_bit_sum(a, s):
+    if a > s:
+        return 'No'
+    elif a == s:
+        return 'Yes'
+    else:
+        bit_sum = 0
+        while s > 0:
+            bit_sum += s % 2
+            s = s // 2
+        if bit_sum % 2 == 0:
+            return 'No'
+        else:
+            return 'Yes'
 
 if __name__ == '__main__':
-    main()
+    get_bit_sum()

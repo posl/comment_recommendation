@@ -1,7 +1,6 @@
-def problems239_a():
-    from math import sqrt
-    H = int(input())
-    print(sqrt(H*(12800000+H)))
+def main():
+    x = int(input())
+    print(x // 10)
 
 if __name__ == '__main__':
-    problems239_a()
+    main()

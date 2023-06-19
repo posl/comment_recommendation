@@ -1,8 +1,14 @@
-def get_sum(num_list):
-    sum_num = 0
-    for i in num_list:
-        sum_num += i
-    return sum_num
+def main():
+    n = int(input())
+    l = []
+    r = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        l.append(a)
+        r.append(b)
+    l.sort()
+    r.sort()
+    print(l[0], r[-1])
 
 if __name__ == '__main__':
-    get_sum()
+    main()

@@ -1,8 +1,9 @@
-def check(s):
-    if s[0][0] == '#' and s[0][1] == '#' and s[1][0] == '#' and s[1][1] == '#':
-        print('Yes')
+def easy_or_hard():
+    A, B = map(int, input().split())
+    if A + B >= 10 ** 10:
+        print("Hard")
     else:
-        print('No')
+        print("Easy")
 
 if __name__ == '__main__':
-    check()
+    easy_or_hard()

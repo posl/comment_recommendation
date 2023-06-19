@@ -1,11 +1,18 @@
 def main():
-    s_list = []
-    for i in range(4):
-        s_list.append(input())
-    if 'H' in s_list and '2B' in s_list and '3B' in s_list and 'HR' in s_list:
-        print("Yes")
-    else:
-        print("No")
+    s = input()
+    s_len = len(s)
+    target = "chokudai"
+    target_len = len(target)
+    dp = [[0 for j in range(s_len+1)] for i in range(target_len+1)]
+    for i in range(s_len+1):
+        dp[0][i] = 1
+    for i in range(1, target_len+1):
+        for j in range(1, s_len+1):
+            if target[i-1] == s[j-1]:
+                dp[i][j] = (dp[i-1][j-1] + dp[i][j-1]) % (10**9+7)
+            else:
+                dp[i][j] = dp[i][j-1]
+    print(dp[target_len][s_len])
 
 if __name__ == '__main__':
     main()

@@ -1,11 +1,10 @@
 def main():
-    a,b = input().split()
-    a = int(a)
-    b = int(b)
-    if a > 9 or b > 9:
-        print(-1)
-    else:
-        print(a*b)
+    n = int(input())
+    for i in range(1,10):
+        if n % i == 0 and n // i < 10:
+            print("Yes")
+            return
+    print("No")
 
 if __name__ == '__main__':
     main()

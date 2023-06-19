@@ -13,6 +13,3 @@ def f(a,b):
         return f((a+1)//2, b//2) * 2 + 1
 a, b = map(int, input().split())
 print(f(a,b))
-
-if __name__ == '__main__':
-    f()

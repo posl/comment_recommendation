@@ -1,16 +1,10 @@
-def check(s):
-    for i in range(len(s)):
-        if i % 2 == 0:
-            if s[i].islower():
-                continue
-            else:
-                return False
-        else:
-            if s[i].isupper():
-                continue
-            else:
-                return False
-    return True
+def g_1(x):
+    x = str(x)
+    x = list(x)
+    x.sort(reverse=True)
+    x = ''.join(x)
+    x = int(x)
+    return x
 
 if __name__ == '__main__':
-    check()
+    g_1()

@@ -1,8 +1,8 @@
-def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort()
-    print(sum(H[:N - K]))
+def solve(H):
+    if H == 1:
+        return 1
+    else:
+        return 2 * solve(H // 2) + 1
 
 if __name__ == '__main__':
-    main()
+    solve()

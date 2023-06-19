@@ -1,17 +1,22 @@
 def main():
-    N, Q = map(int, input().split())
-    follow = []
-    for _ in range(Q):
-        T, A, B = map(int, input().split())
-        if T == 1:
-            follow.append((A, B))
-        elif T == 2:
-            follow.remove((A, B))
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    queries = []
+    for _ in range(q):
+        queries.append(list(map(int, input().split())))
+    # 初始值
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    # 处理
+    for query in queries:
+        if query[0] == 1:
+            sum += query[1] * n
+        elif query[0] == 2:
+            sum += query[2]
         else:
-            if (A, B) in follow and (B, A) in follow:
-                print("Yes")
-            else:
-                print("No")
+            print(sum)
 
 if __name__ == '__main__':
     main()

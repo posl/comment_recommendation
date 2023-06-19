@@ -6,6 +6,3 @@ def single_char(s):
     return -1
 s = input()
 print(single_char(s))
-
-if __name__ == '__main__':
-    single_char()

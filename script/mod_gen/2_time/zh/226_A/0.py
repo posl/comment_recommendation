@@ -1,9 +1,9 @@
-def get_query():
-    N, Q = map(int, input().split())
-    query = []
-    for i in range(Q):
-        query.append(list(map(int, input().split())))
-    return N, Q, query
+def main():
+    x = float(input())
+    if x - int(x) >= 0.5:
+        print(int(x) + 1)
+    else:
+        print(int(x))
 
 if __name__ == '__main__':
-    get_query()
+    main()

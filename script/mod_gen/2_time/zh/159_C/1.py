@@ -1,5 +1,5 @@
-def is_palindrome(s):
-    return s == s[::-1]
+def max_volume(L):
+    return (L/3)**3 if L%3 == 0 else (L//3+1)*(L//3)*(L//3)
 
 if __name__ == '__main__':
-    is_palindrome()
+    max_volume()

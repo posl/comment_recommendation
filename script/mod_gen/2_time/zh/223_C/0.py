@@ -1,19 +1,14 @@
-def main():
-    s = input()
-    if len(s) == 1:
-        print(s)
-        print(s)
-        return
-    min_s = s
-    max_s = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    print(min_s)
-    print(max_s)
+def solve(n, a, b):
+    total = 0
+    for i in range(n):
+        total += a[i] / b[i]
+    half = total / 2
+    sum = 0
+    for i in range(n):
+        sum += a[i] / b[i]
+        if sum > half:
+            return sum * b[i] - (sum - half) * b[i]
+    return 0
 
 if __name__ == '__main__':
-    main()
+    solve()

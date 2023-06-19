@@ -10,6 +10,3 @@ def solve():
         ans += (i + 1) * B[i][0]
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

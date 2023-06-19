@@ -9,6 +9,3 @@ def main():
         s = s + P[K+i] - P[i]
         print(s)
 main()
-
-if __name__ == '__main__':
-    main()

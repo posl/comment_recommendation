@@ -5,6 +5,3 @@ def print_seq(n):
     print_seq(n-1)
     print(n, end=" ")
     print_seq(n-1)
-
-if __name__ == '__main__':
-    print_seq()

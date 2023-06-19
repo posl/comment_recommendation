@@ -1,9 +1,10 @@
-def problem176_a():
-    n,x,t = map(int,input().split())
-    if n % x == 0:
-        print(n//x*t)
+def is_multiple_of_9(n):
+    if n == 0:
+        return True
+    if n % 9 == 0:
+        return True
     else:
-        print((n//x+1)*t)
+        return False
 
 if __name__ == '__main__':
-    problem176_a()
+    is_multiple_of_9()

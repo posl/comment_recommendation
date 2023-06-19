@@ -1,32 +1,51 @@
 def main():
-    bingo = []
-    for i in range(3):
-        bingo.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-    for i in range(3):
-        for j in range(3):
-            for k in range(n):
-                if bingo[i][j] == b[k]:
-                    bingo[i][j] = 0
-    for i in range(3):
-        if bingo[i][0] == bingo[i][1] == bingo[i][2] == 0:
-            print("Yes")
-            return
-    for i in range(3):
-        if bingo[0][i] == bingo[1][i] == bingo[2][i] == 0:
-            print("Yes")
-            return
-    if bingo[0][0] == bingo[1][1] == bingo[2][2] == 0:
-        print("Yes")
-        return
-    if bingo[0][2] == bingo[1][1] == bingo[2][0] == 0:
-        print("Yes")
-        return
-    print("No")
-    return
+    N, M = map(int, input().split())
+    s = []
+    c = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        s.append(a)
+        c.append(b)
+    if N == 1 and M == 0:
+        print(0)
+    elif N == 1 and M == 1:
+        print(c[0])
+    elif N == 1 and M > 1:
+        print(-1)
+    elif N == 2 and M == 0:
+        print(10)
+    elif N == 2 and M == 1:
+        print(-1)
+    elif N == 2 and M == 2:
+        if s[0] == 1 and s[1] == 2:
+            print(c[0]*10+c[1])
+        elif s[0] == 2 and s[1] == 1:
+            print(c[1]*10+c[0])
+        else:
+            print(-1)
+    elif N == 2 and M > 2:
+        print(-1)
+    elif N == 3 and M == 0:
+        print(100)
+    elif N == 3 and M == 1:
+        print(-1)
+    elif N == 3 and M == 2:
+        if s[0] == 1 and s[1] == 2:
+            print(c[0]*100+c[1]*10)
+        elif s[0] == 1 and s[1] == 3:
+            print(c[0]*100+c[1])
+        elif s[0] == 2 and s[1] == 1:
+            print(c[1]*100+c[0]*10)
+        elif s[0] == 2 and s[1] == 3:
+            print(c[1]*100+c[0])
+        elif s[0] == 3 and s[1] == 1:
+            print(c[1]*100+c[0])
+        elif s[0] == 3 and s[1] == 2:
+            print(c[1]*100+c[0]*10)
+        else:
+            print(-1)
+    elif N == 3 and M == 3:
+        if s[0] == 1 and s[1] == 2 and s[2]
 
 if __name__ == '__main__':
     main()

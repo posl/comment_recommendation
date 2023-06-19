@@ -1,5 +1,15 @@
-def get_ints():
-    return map(int, raw_input().split())
+def main():
+    #input
+    N = int(input())
+    #calculation
+    price = int(1.08 * N)
+    #output
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
 
 if __name__ == '__main__':
-    get_ints()
+    main()

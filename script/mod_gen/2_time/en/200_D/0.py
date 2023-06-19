@@ -18,6 +18,3 @@ def   main ():
              print ( 1 ,   C [ 0 ]) 
      else : 
          print ( 'No' )
-
-if __name__ == '__main__':
-    ()

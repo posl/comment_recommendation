@@ -29,6 +29,3 @@ S1 = input()
 S2 = input()
 S3 = input()
 print(solve(S1, S2, S3))
-
-if __name__ == '__main__':
-    solve()

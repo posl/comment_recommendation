@@ -21,6 +21,3 @@ def main():
                 print(P[i])
                 return
 main()
-
-if __name__ == '__main__':
-    main()

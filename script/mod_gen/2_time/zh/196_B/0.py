@@ -1,7 +1,6 @@
 def main():
-    a, b = map(int, input().split())
-    c, d = map(int, input().split())
-    print(b - c)
+    x = float(input())
+    print(int(x+0.5))
 
 if __name__ == '__main__':
     main()

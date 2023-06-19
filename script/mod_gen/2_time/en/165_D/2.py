@@ -3,6 +3,3 @@ def main():
     x = min(N, B-1)
     print((A*x)//B - A*(x//B))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -1,11 +1,11 @@
-def my_swap(s, a, b):
-    if a > b:
-        a, b = b, a
-    if a == b:
-        return s
-    if a == 1:
-        return s[b-1] + s[a:b-1] + s[a-1] + s[b:]
-    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+def solve():
+    n = int(input())
+    total = 4*n
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in a:
+        sum += i
+    print(sum - total*(total+1)//2)
 
 if __name__ == '__main__':
-    my_swap()
+    solve()

@@ -1,11 +1,9 @@
 def main():
-    N = int(input())
-    if N <= 9:
-        print("AGC00" + str(N))
-    elif N <= 99:
-        print("AGC0" + str(N))
+    s = input()
+    if s.count('o') == 1 or s.count('x') == 1:
+        print('Yes')
     else:
-        print("AGC" + str(N))
+        print('No')
 
 if __name__ == '__main__':
     main()

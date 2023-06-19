@@ -1,9 +1,18 @@
-def follow(a,b):
-    if a in follow_dict.keys():
-        follow_dict[a].append(b)
-    else:
-        follow_dict[a] = [b]
-    if b in followed_dict.keys():
-        followed_dict[b].append(a)
-    else:
-        followed_dict[b] = [a]
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    for i in range(Q):
+        if query[i][0] == 1:
+            for j in range(N):
+                A[j] = query[i][1]
+        elif query[i][0] == 2:
+            A[query[i][1]-1] += query[i][2]
+        else:
+            print(A[query[i][1]-1])
+
+if __name__ == '__main__':
+    main()

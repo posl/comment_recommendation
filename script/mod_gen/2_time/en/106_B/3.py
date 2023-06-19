@@ -16,6 +16,3 @@ I'm not sure what the problem is. I'm trying to find the number of odd numbers w
 I'm not sure if this is the most efficient way to do this, but it works. I'm just not sure if it's the most efficient way to do this. Is there a better way to do this?
 Of course there is. First, you don't need to check all the odd numbers between 1 and N . You only need to check the odd numbers between 1 and N/2 . Second, your divisors() function is inefficient. You can easily find the number of divisors of a number n by counting the powers of the prime factors of n . You can also do this in a more efficient way by using the fact that the number of divisors of n is equal to the product of (p+1) for all prime factors p .
 I'm not sure if this is the most efficient way to do this, but it works. I'm just not sure if it's the most efficient way to do this. Is there a better way to do this? Of course there is. First, you don't need to check all the odd numbers between 1 and N . You only need to check the odd numbers between 1 and N/2 . Second, your divisors() function is inefficient. You can easily find the number of divisors of a number n by counting
-
-if __name__ == '__main__':
-    divisors()

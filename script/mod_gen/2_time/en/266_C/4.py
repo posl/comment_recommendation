@@ -10,6 +10,3 @@ B = map(int, raw_input().split())
 C = map(int, raw_input().split())
 D = map(int, raw_input().split())
 print "Yes" if is_convex(A,B,C,D) else "No"
-
-if __name__ == '__main__':
-    is_convex()

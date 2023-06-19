@@ -1,14 +1,11 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    print(a)
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if a[i] != a[j]:
-                ans += 1
-    print(ans)
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    cnt = 0
+    for i in range(N//2):
+        if A[i] != A[N-1-i]:
+            cnt += 1
+    print(cnt)
 
 if __name__ == '__main__':
-    main()
+    solve()

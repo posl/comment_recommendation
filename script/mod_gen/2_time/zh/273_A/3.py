@@ -1,5 +1,7 @@
-def dist(x,y):
-    return (x[0]-y[0])**2 + (x[1]-y[1])**2
-
-if __name__ == '__main__':
-    dist()
+def f(n):
+    if n == 0:
+        return 1
+    else:
+        return n * f(n - 1)
+n = int(input())
+print(f(n))

@@ -1,28 +1,36 @@
 def main():
-    # 读取输入
-    N, M, T = map(int, input().split())
-    A = list(map(int, input().split()))
-    XY = [list(map(int, input().split())) for _ in range(M)]
-    # 从1号房间开始，所以当前时间限制为T
-    now = T
-    # 遍历每个房间
-    for i in range(N-1):
-        # 消耗时间
-        now -= A[i]
-        # 如果时间到了，就返回No
-        if now <= 0:
-            print("No")
+    H, W = map(int, input().split())
+    G = [input() for i in range(H)]
+    i, j = 0, 0
+    while True:
+        if G[i][j] == "U":
+            if i == 0:
+                print(i + 1, j + 1)
+                return
+            i -= 1
+        elif G[i][j] == "D":
+            if i == H - 1:
+                print(i + 1, j + 1)
+                return
+            i += 1
+        elif G[i][j] == "L":
+            if j == 0:
+                print(i + 1, j + 1)
+                return
+            j -= 1
+        elif G[i][j] == "R":
+            if j == W - 1:
+                print(i + 1, j + 1)
+                return
+            j += 1
+        else:
+            print(i + 1, j + 1)
             return
-        # 遍历奖励房间
-        for j in range(M):
-            # 如果当前房间是奖励房间，就增加时间
-            if XY[j][0] == i + 1:
-                now += XY[j][1]
-    # 遍历完了，如果时间还有，就返回Yes
-    if now > 0:
-        print("Yes")
-    else:
-        print("No")
+        if G[i][j] == ".":
+            print(i + 1, j + 1)
+            return
+        G[i] = G[i][:j] + "." + G[i][j + 1:]
+    print(-1)
 
 if __name__ == '__main__':
     main()

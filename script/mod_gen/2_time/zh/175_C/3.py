@@ -1,13 +1,13 @@
-def triangles(l):
-    l.sort()
-    n = len(l)
-    cnt = 0
-    for i in range(n-2):
-        for j in range(i+1,n-1):
-            for k in range(j+1,n):
-                if l[i] != l[j] and l[j] != l[k] and l[i] + l[j] > l[k]:
-                    cnt += 1
-    return cnt
-
-if __name__ == '__main__':
-    triangles()
+def solve():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D >= K:
+        print(X - K * D)
+    else:
+        K -= X // D
+        X %= D
+        if K % 2 == 0:
+            print(X)
+        else:
+            print(D - X)
+solve()

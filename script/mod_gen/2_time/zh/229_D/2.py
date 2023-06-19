@@ -1,22 +1,17 @@
-def main():
-    N, W = map(int, input().split())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    max_a = max(A)
-    max_b = max(B)
-    if (max_a * max_b * N) < W:
-        print(sum(A) * sum(B))
-        return
-    dp = [0] * (W + 1)
-    for i in range(N):
-        for j in range(W, -1, -1):
-            if j >= B[i]:
-                dp[j] = max(dp[j], dp[j - B[i]] + A[i])
-    print(dp[W])
-
-if __name__ == '__main__':
-    main()
+def solve(s, k):
+    n = len(s)
+    max_consecutive_x = 0
+    consecutive_x = 0
+    for i in range(n):
+        if s[i] == 'X':
+            consecutive_x += 1
+        else:
+            max_consecutive_x = max(max_consecutive_x, consecutive_x)
+            consecutive_x = 0
+    max_consecutive_x = max(max_consecutive_x, consecutive_x)
+    max_consecutive_x += k
+    max_consecutive_x = min(max_consecutive_x, n)
+    return max_consecutive_x
+s = input()
+k = int(input())
+print(solve(s, k))

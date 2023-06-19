@@ -7,6 +7,3 @@ def main():
             total += a[i] - 10
     print(total)
 main()
-
-if __name__ == '__main__':
-    main()

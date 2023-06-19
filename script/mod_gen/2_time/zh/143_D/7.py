@@ -1,17 +1,14 @@
-def slime(s):
-    if len(s) == 1:
-        return 1
-    else:
-        i = 0
-        while i < len(s):
-            if i == len(s) - 1:
-                break
-            if s[i] == s[i + 1]:
-                s = s[:i] + s[i + 2:]
-                i = 0
-            else:
-                i += 1
-        return len(s)
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k] and L[j] + L[k] > L[i] and L[k] + L[i] > L[j]:
+                    ans += 1
+    print(ans)
 
 if __name__ == '__main__':
-    slime()
+    main()

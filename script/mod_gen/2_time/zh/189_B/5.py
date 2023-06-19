@@ -1,7 +1,11 @@
-def problem189_a():
-    c1,c2,c3 = input().split()
-    if c1 == c2 and c2 == c3:
-        print("Won")
-    else:
-        print("Lost")
-problem189_a()
+def solve():
+    n, x = map(int, input().split())
+    p = 0
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
+solve()

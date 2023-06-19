@@ -1,17 +1,8 @@
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    min = 0
-    max = 0
-    for i in range(1,1001):
-        if a*i <= w <= b*i:
-            if min == 0:
-                min = i
-            max = i
-    if min == 0:
-        print('UNSATISFIABLE')
+def count_commas(n):
+    if n < 1000:
+        return 0
     else:
-        print(min,max)
+        return n//1000 + count_commas(n//1000)
 
 if __name__ == '__main__':
-    main()
+    count_commas()

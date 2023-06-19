@@ -49,6 +49,3 @@ while True:
         break
 print(len(a))
 The reason why the second solution is faster is that the first solution checks the condition a[-1] in a[:-1] every
-
-if __name__ == '__main__':
-    f()

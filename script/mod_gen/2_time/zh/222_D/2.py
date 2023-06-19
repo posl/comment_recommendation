@@ -1,29 +1,15 @@
-def main():
-    n,m = map(int,input().split())
-    a = [input() for _ in range(2*n)]
-    rank = [[i+1,0] for i in range(2*n)]
-    #print(rank)
-    for i in range(m):
-        for j in range(n):
-            p1,p2 = rank[2*j][0]-1,rank[2*j+1][0]-1
-            if a[p1][i] == a[p2][i]:
-                continue
-            elif a[p1][i] == 'G' and a[p2][i] == 'C':
-                rank[2*j][1] -= 1
-            elif a[p1][i] == 'G' and a[p2][i] == 'P':
-                rank[2*j+1][1] -= 1
-            elif a[p1][i] == 'C' and a[p2][i] == 'G':
-                rank[2*j+1][1] -= 1
-            elif a[p1][i] == 'C' and a[p2][i] == 'P':
-                rank[2*j][1] -= 1
-            elif a[p1][i] == 'P' and a[p2][i] == 'G':
-                rank[2*j][1] -= 1
-            elif a[p1][i] == 'P' and a[p2][i] == 'C':
-                rank[2*j+1][1] -= 1
-        rank.sort(key=lambda x:(x[1],-x[0]))
-        #print(rank)
-    for i in range(2*n):
-        print(rank[i][0])
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+    dp = [[0 for _ in range(3001)] for _ in range(3001)]
+    for i in range(A[0], B[0] + 1):
+        dp[0][i] = 1
+    for i in range(1, N):
+        for j in range(A[i], B[i] + 1):
+            dp[i][j] = sum(dp[i - 1][A[i - 1]:j + 1]) % MOD
+    print(sum(dp[N - 1]) % MOD)
 
 if __name__ == '__main__':
-    main()
+    solve()

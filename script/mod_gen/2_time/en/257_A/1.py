@@ -53,6 +53,3 @@ def main():
     elif x <= n * 26:
         print('Z')
 main()
-
-if __name__ == '__main__':
-    main()

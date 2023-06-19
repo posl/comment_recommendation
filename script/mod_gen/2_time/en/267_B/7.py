@@ -8,6 +8,3 @@ def bowling_pins(s):
     return 'No'
 s = input()
 print(bowling_pins(s))
-
-if __name__ == '__main__':
-    bowling_pins()

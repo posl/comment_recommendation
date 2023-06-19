@@ -1,20 +1,20 @@
 def main():
-    a,b,c,d = map(int,input().split())
-    if a > b * d:
-        print(-1)
-        return
-    if d * a <= b:
-        print(0)
-        return
-    if c >= d * b:
-        print(-1)
-        return
-    ans = 0
-    while a > b * d:
-        a += b
-        a -= c
-        ans += 1
-    print(ans)
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        tlr.append(list(map(int,input().split())))
+    count = 0
+    for i in range(0,N):
+        for j in range(i+1,N):
+            if tlr[i][1] <= tlr[j][1] and tlr[j][1] <= tlr[i][2]:
+                count += 1
+            elif tlr[i][1] <= tlr[j][2] and tlr[j][2] <= tlr[i][2]:
+                count += 1
+            elif tlr[j][1] <= tlr[i][1] and tlr[i][1] <= tlr[j][2]:
+                count += 1
+            elif tlr[j][1] <= tlr[i][2] and tlr[i][2] <= tlr[j][2]:
+                count += 1
+    print(count)
 
 if __name__ == '__main__':
     main()

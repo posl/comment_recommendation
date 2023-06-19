@@ -1,10 +1,7 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    sum_a = sum(a)
-    sum_a_square = sum([i**2 for i in a])
-    ans = (sum_a**2 - sum_a_square) // 2 % (10**9 + 7)
-    print(ans)
+def find_parent(parent,x):
+	if parent[x] != x:
+		parent[x] = find_parent(parent,parent[x])
+	return parent[x]
 
 if __name__ == '__main__':
-    main()
+    find_parent()

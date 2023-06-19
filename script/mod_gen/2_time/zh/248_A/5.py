@@ -1,16 +1,11 @@
-def main():
-    Q = int(input())
-    balls = []
-    total = 0
-    for i in range(Q):
-        query = input().split()
-        if query[0] == '1':
-            balls.append(int(query[1]))
-            total += int(query[2])
-        else:
-            print(total)
-            total -= balls.pop(0)
-    return
+def find_missing_number(s):
+    s = list(s)
+    s = map(int, s)
+    s.sort()
+    for i in range(0, len(s)):
+        if s[i] != i:
+            return i
+    return 9
 
 if __name__ == '__main__':
-    main()
+    find_missing_number()

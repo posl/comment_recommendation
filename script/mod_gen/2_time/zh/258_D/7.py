@@ -1,12 +1,13 @@
-def main():
-    N, Q = map(int, input().split())
-    S = list(input())
-    for i in range(Q):
-        t, x = map(int, input().split())
-        if t == 1:
-            S = S[-x:] + S[:-x]
-        else:
-            print(S[x-1])
+def solve():
+    N,X=list(map(int,input().split()))
+    AB=[list(map(int,input().split())) for _ in range(N)]
+    AB.sort(key=lambda x:x[1])
+    ans=0
+    for a,b in AB:
+        ans+=a+b
+    ans*=X
+    ans-=AB[-1][1]
+    print(ans)
 
 if __name__ == '__main__':
-    main()
+    solve()

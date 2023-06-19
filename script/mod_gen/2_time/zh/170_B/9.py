@@ -1,9 +1,10 @@
-def main():
-    a = input().split()
-    for i in range(5):
-        if a[i] == '0':
-            print(i+1)
-            break
+def solve():
+    x,y = map(int,input().split())
+    for i in range(x+1):
+        if i*2 + (x-i)*4 == y:
+            print("Yes")
+            return
+    print("No")
 
 if __name__ == '__main__':
-    main()
+    solve()

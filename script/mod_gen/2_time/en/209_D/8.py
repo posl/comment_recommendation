@@ -4,6 +4,3 @@ def dfs(v, p, d):
         if u == p:
             continue
         dfs(u, v, d + 1)
-
-if __name__ == '__main__':
-    dfs()

@@ -19,6 +19,3 @@ def   main ():
          ans   =   nxt 
      for   i   in   range ( 10 ): 
          print ( ans [ i ]   %   MOD )
-
-if __name__ == '__main__':
-    ()

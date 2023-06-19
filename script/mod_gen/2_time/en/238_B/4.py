@@ -6,6 +6,3 @@ def main():
         C += A[i]
     print((360-C)%360)
 main()
-
-if __name__ == '__main__':
-    main()

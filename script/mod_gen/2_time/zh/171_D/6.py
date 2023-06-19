@@ -1,10 +1,18 @@
-def get_new_name(n):
-    name = ''
-    while n > 0:
-        n -= 1
-        name = chr(ord('a') + n % 26) + name
-        n //= 26
-    return name
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = []
+    c = []
+    for i in range(q):
+        b_temp, c_temp = map(int, input().split())
+        b.append(b_temp)
+        c.append(c_temp)
+    sum_a = sum(a)
+    for i in range(q):
+        sum_a += (c[i] - b[i]) * a.count(b[i])
+        print(sum_a)
+        sum_a -= (c[i] - b[i]) * a.count(b[i])
 
 if __name__ == '__main__':
-    get_new_name()
+    main()

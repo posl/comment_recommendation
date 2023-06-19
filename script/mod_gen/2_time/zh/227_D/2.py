@@ -1,11 +1,11 @@
-def solve(n):
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
     ans = 0
-    for a in range(1, n+1):
-        for b in range(a, n+1):
-            for c in range(b, n+1):
-                if a * b * c <= n:
-                    ans += 1
-    return ans
+    for i in range(n - k + 1):
+        ans += a[i]
+    print(ans)
 
 if __name__ == '__main__':
     solve()

@@ -11,6 +11,3 @@ def main():
             b[i] = a[i]
     print(sum(b))
 main()
-
-if __name__ == '__main__':
-    main()

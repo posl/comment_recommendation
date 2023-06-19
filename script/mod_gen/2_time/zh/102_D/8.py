@@ -1,13 +1,17 @@
-def solution():
-    N = int(input())
-    A = list(map(int, input().split()))
-    ans = 10 ** 9
-    for i in range(1, N - 2):
-        for j in range(i + 1, N - 1):
-            p = sum(A[:i])
-            q = sum(A[i:j])
-            r = sum(A[j:N])
-            s = sum(A) - p - q - r
-            ans = min(ans, max(p, q, r, s) - min(p, q, r, s))
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    s = sum(a)
+    ans = s
+    p = 0
+    q = 0
+    for i in range(1,n):
+        p += a[i-1]
+        q += a[i-1]
+        r = s-p
+        s = r
+        ans = min(ans,abs(max(p,q,r,s)-min(p,q,r,s)))
     print(ans)
-solution()
+
+if __name__ == '__main__':
+    main()

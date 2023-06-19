@@ -1,12 +1,13 @@
 def main():
-    n,k = map(int,input().split())
-    p = list(map(int,input().split()))
-    s = sum(p[:k])
-    ans = s
-    for i in range(n-k):
-        s = s - p[i] + p[i+k]
-        ans = max(ans,s)
-    print((ans+k)/2)
+    a,b,c = map(int,input().split())
+    if a == b and a != c:
+        print("Yes")
+    elif a == c and a != b:
+        print("Yes")
+    elif b == c and b != a:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
     main()

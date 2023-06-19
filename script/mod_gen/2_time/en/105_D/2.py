@@ -12,6 +12,3 @@ def main():
         d[s % m] += 1
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

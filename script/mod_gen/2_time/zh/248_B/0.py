@@ -1,9 +1,10 @@
 def main():
-    s = input()
-    for i in range(10):
-        if str(i) not in s:
-            print(i)
+    a,b,k = map(int, input().split())
+    count = 0
+    while 1:
+        if a >= b:
             break
-
-if __name__ == '__main__':
-    main()
+        a += a * (k - 1)
+        count += 1
+    print(count)
+main()

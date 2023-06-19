@@ -7,6 +7,3 @@ def main():
         N //= 26
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

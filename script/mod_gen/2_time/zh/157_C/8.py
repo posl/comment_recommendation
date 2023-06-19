@@ -1,26 +1,23 @@
-def bingo():
-    # 读取输入
-    a = []
-    for i in range(3):
-        a.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-    # 检查是否有bingo
-    bingo = False
-    for i in range(3):
-        for j in range(3):
-            if a[i][j] in b:
-                bingo = True
+def main():
+    N,M = map(int,input().split())
+    s = []
+    c = []
+    for i in range(M):
+        s1,c1 = map(int,input().split())
+        s.append(s1)
+        c.append(c1)
+    for i in range(10**(N-1),10**N):
+        s_i = str(i)
+        flag = True
+        for j in range(M):
+            if int(s_i[s[j]-1]) != c[j]:
+                flag = False
                 break
-        if bingo:
+        if flag:
+            print(i)
             break
-    # 输出结果
-    if bingo:
-        print("Yes")
     else:
-        print("No")
+        print(-1)
 
 if __name__ == '__main__':
-    bingo()
+    main()

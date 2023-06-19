@@ -1,15 +1,9 @@
-def is_palindrome(n):
-    n = str(n)
-    if n == n[::-1]:
-        return True
+def main():
+    R, X, Y = map(int, input().split())
+    if (X**2 + Y**2) % (R**2) == 0:
+        print((X**2 + Y**2) // (R**2))
     else:
-        return False
-n = int(input())
-for i in range(1, n):
-    if is_palindrome(str(i) + str(i)[::-1]):
-        print("Yes")
-        exit()
-print("No")
+        print((X**2 + Y**2) // (R**2) + 1)
 
 if __name__ == '__main__':
-    is_palindrome()
+    main()

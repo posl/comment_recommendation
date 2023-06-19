@@ -12,6 +12,3 @@ def dfs(cur, A, B, C):
 N, a, b, c = map(int, input().split())
 l = [int(input()) for _ in range(N)]
 print(dfs(0, 0, 0, 0))
-
-if __name__ == '__main__':
-    dfs()

@@ -13,6 +13,3 @@ def main():
     #出力
     print(int(ans))
 main()
-
-if __name__ == '__main__':
-    main()
