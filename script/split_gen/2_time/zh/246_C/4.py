@@ -1,8 +1,5 @@
-def get_pos(a, b):
-    if a == 0:
-        return 0, 1
-    elif b == 0:
-        return 1, 0
-    else:
-        c = (a**2 + b**2)**0.5
-        return a/c, b/c
+def solution(n, k, x, a):
+    sum = 0
+    for i in range(n):
+        sum += max(a[i]-x, 0)
+    return sum

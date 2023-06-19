@@ -1,7 +1,5 @@
-def f(m):
+def f(m, a_list):
     result = 0
-    for i in range(N):
-        result += m % a[i]
+    for a in a_list:
+        result += m % a
     return result
-N = int(input())
-a = list(map(int, input().split()))

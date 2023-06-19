@@ -1,8 +1,7 @@
-def problem230_a():
-    n = int(input())
-    if n <= 9:
-        print("AGC00"+str(n))
-    elif n <= 99:
-        print("AGC0"+str(n))
+def main():
+    s = input()
+    t = "x" * 100000
+    if s in t:
+        print("Yes")
     else:
-        print("AGC"+str(n))
+        print("No")

@@ -1,7 +1,2 @@
-def solve():
-    R, C = map(int, input().split())
-    A = []
-    for i in range(2):
-        A.append(list(map(int, input().split())))
-    print(A[R-1][C-1])
-solve()
+def get_distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5

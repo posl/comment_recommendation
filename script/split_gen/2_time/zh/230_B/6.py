@@ -1,9 +1,5 @@
-def main():
-    N = input()
-    if int(N) < 10:
-        N = '00' + N
-    elif int(N) < 100:
-        N = '0' + N
+def solve(s):
+    if s.count('o') == 1:
+        return 'Yes'
     else:
-        N = N
-    print('AGC' + N)
+        return 'No'

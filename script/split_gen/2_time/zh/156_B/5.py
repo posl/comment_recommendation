@@ -1,5 +1,3 @@
-def getInnerScore(n,r):
-    if n >= 10:
-        return r
-    else:
-        return r + (10-n)*100
+def main():
+    n, k = map(int, input().split())
+    print(len(str(n)))

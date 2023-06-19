@@ -1,11 +1,7 @@
-def f(x):
-    sum = 0
-    for i in range(1, x+1):
-        if x % i == 0:
-            sum += 1
-    return sum
-n = int(input())
-sum = 0
-for i in range(1, n+1):
-    sum += i * f(i)
-print(sum)
+def main():
+    # 读取输入
+    n = int(input())
+    # 计算结果
+    ans = 1000 - n % 1000
+    # 输出结果
+    print(ans)

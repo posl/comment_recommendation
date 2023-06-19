@@ -1,6 +1,5 @@
-def problem099_a():
-    n = int(input())
-    if n <= 999:
-        print('ABC')
+def get_round(n):
+    if n < 1000:
+        return 'ABC'
     else:
-        print('ABD')
+        return 'ABD'

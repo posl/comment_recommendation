@@ -1,7 +1,7 @@
 def main():
-    import sys
-    a, b = map(int, sys.stdin.readline().split())
-    if a >= 1 and a <= 20 and b >= 1 and b <= 20:
-        print(a * b)
-    else:
-        print(-1)
+    n = int(input())
+    for i in range(1,10):
+        if n % i == 0 and n // i <= 9:
+            print("Yes")
+            return
+    print("No")

@@ -1,6 +1,8 @@
-def solve():
-    x, y = map(int, input().split())
-    if x == y:
-        print(x)
-    else:
-        print(3 - x - y)
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if A[i] > 10:
+            count += A[i] - 10
+    print(count)

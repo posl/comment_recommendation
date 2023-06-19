@@ -1,8 +1,11 @@
 def main():
-    a,b = map(int,input().split())
-    if a == b:
-        print(a+b)
-    elif a > b:
-        print(a+a-1)
-    else:
-        print(b+b-1)
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if i == 0:
+            count += 1
+        else:
+            if max(h[:i]) <= h[i]:
+                count += 1
+    print(count)

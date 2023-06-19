@@ -1,15 +1,16 @@
-def solution():
-    n,m = map(int, input().split())
-    problem = [0]*n
-    ac = 0
-    wa = 0
-    for i in range(m):
-        p,s = input().split()
-        p = int(p)
-        if problem[p-1] == 0 and s == "AC":
-            problem[p-1] = 1
-            ac += 1
-        elif s == "WA" and problem[p-1] == 0:
-            wa += 1
-    print(ac,wa)
-solution()
+def dfs(h,w,board,cnt):
+    global ans
+    ans = max(ans,cnt)
+    for i in range(h):
+        for j in range(w):
+            if board[i][j] == '.':
+                board[i][j] = '#'
+                if i > 0 and board[i-1][j] == '.':
+                    dfs(h,w,board,cnt+1)
+                if i < h-1 and board[i+1][j] == '.':
+                    dfs(h,w,board,cnt+1)
+                if j > 0 and board[i][j-1] == '.':
+                    dfs(h,w,board,cnt+1)
+                if j < w-1 and board[i][j+1] == '.':
+                    dfs(h,w,board,cnt+1)
+                board[i][j] = '.'

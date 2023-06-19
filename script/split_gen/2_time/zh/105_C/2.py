@@ -1,12 +1,14 @@
-def base2(num):
+def main():
+    num = int(input())
     if num == 0:
-        return '0'
-    ans = ''
-    while num != 0:
-        if num % 2 == 0:
-            ans = '0' + ans
-        else:
-            ans = '1' + ans
-            num -= 1
-        num = num // (-2)
-    return ans
+        print(0)
+    else:
+        result = ""
+        while num != 0:
+            if num % 2 == 0:
+                result = "0" + result
+                num = int(num / (-2))
+            else:
+                result = "1" + result
+                num = int((num - 1) / (-2))
+        print(result)

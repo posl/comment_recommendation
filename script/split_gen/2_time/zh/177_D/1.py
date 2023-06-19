@@ -1,7 +1,6 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        ans += a[i] * sum(a[i + 1:])
-    print(ans % (10 ** 9 + 7))
+    n,m = map(int,input().split())
+    a = []
+    for i in range(m):
+        a.append(list(map(int,input().split())))
+    print(n-m)

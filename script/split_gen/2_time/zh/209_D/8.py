@@ -1,8 +1,4 @@
-def solve():
-    N = int(input())
-    C = list(map(int, input().split()))
-    C.sort()
-    ans = 1
-    for i in range(N):
-        ans = ans * max(0, C[i] - i) % (10**9 + 7)
-    print(ans)
+def find_root(x, parent):
+    if parent[x] == x: return x
+    parent[x] = find_root(parent[x], parent)
+    return parent[x]

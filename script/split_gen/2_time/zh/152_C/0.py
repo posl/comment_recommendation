@@ -1,8 +1,9 @@
 def main():
-    a, b = map(int, input().split())
-    if a == b:
-        print(str(a) * a)
-    elif a > b:
-        print(str(b) * a)
-    else:
-        print(str(a) * b)
+    N = int(input())
+    P = input().split()
+    P = [int(i) for i in P]
+    count = 0
+    for i in range(1, N+1):
+        if P[i-1] <= i:
+            count += 1
+    print(count)

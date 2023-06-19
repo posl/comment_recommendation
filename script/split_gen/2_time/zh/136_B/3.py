@@ -1,3 +1,7 @@
 def main():
-    A,B,C = map(int,input().split())
-    print(C-(A-B) if C-(A-B) > 0 else 0)
+    n = int(input())
+    count = 0
+    for i in range(1, n + 1):
+        if len(str(i)) % 2 != 0:
+            count += 1
+    print(count)

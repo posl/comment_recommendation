@@ -1,7 +1,9 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    sum = 0
-    for i in range(n):
-        sum += 1 / a[i]
-    print(1 / sum)
+def get_max_value(v_list):
+    if len(v_list) == 1:
+        return v_list[0]
+    else:
+        v_list.sort()
+        value = (v_list[0] + v_list[1]) / 2
+        v_list[0] = value
+        v_list.pop(1)
+        return get_max_value(v_list)

@@ -1,20 +1,12 @@
-def binary_search(a, x):
-    """二分查找"""
-    n = len(a)
-    left = 0
-    right = n - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if a[mid] == x:
-            return mid
-        elif a[mid] < x:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return -1
-n, q = map(int, input().split())
-a = list(map(int, input().split()))
-a = sorted(a)
-for _ in range(q):
-    x = int(input())
-    print(binary_search(a, x) + 1)
+def solve():
+    # 读取输入
+    n, m = map(int, input().split())
+    # 初始化并查集
+    uf = UnionFind(n)
+    # 读取条件
+    for _ in range(m):
+        a, b = map(int, input().split())
+        uf.union(a - 1, b - 1)
+    # 判断是否满足条件
+    print("Yes" if uf.all_same() else "No")
+    return

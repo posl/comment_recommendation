@@ -1,7 +1,5 @@
-def findNum(k):
-    base = 10
-    num = 0
-    while k > 0:
-        num += base ** (k % 2)
-        k = k // 2
-    return num
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    for i in range(k,n+1):
+        print(sorted(p[:i])[-k])

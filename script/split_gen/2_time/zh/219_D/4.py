@@ -1,12 +1,47 @@
 def main():
-    x = input()
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort(key=lambda x: [x.index(c) for c in x])
-    s.sort(key=lambda x: [x.index(c) for c in x], reverse=True)
-    print(s)
-    print(x)
-    print(n)
-    print(s)
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    # print(N, X, Y, A, B)
+    # N = 3
+    # X, Y = 5, 6
+    # A = [2, 3, 2]
+    # B = [1, 4, 3]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A = [3, 2, 2]
+    # B = [4, 3, 1]
+    # N = 3
+    # X, Y = 8, 8
+    # A

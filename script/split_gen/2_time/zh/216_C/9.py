@@ -1,9 +1,9 @@
-def main():
-    n = int(input())
-    names = []
-    for _ in range(n):
-        names.append(input())
-    if len(names) == len(set(names)):
-        print("No")
+def getA(n):
+    if n==0:
+        return ""
+    elif n==1:
+        return "A"
+    elif n%2==0:
+        return getA(n//2)+"B"
     else:
-        print("Yes")
+        return getA(n-1)+"A"

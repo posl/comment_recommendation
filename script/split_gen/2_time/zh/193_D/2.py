@@ -1,10 +1,42 @@
 def main():
-    N = int(input())
-    ans = N
-    for b in range(2, int(N**0.5)+1):
-        for a in range(2, int(N**0.5)+1):
-            if a**b <= N:
-                ans -= 1
-            else:
-                break
-    print(ans)
+    k = int(input())
+    s = input()
+    t = input()
+    #print(k, s, t)
+    s = s.replace('#', '')
+    t = t.replace('#', '')
+    #print(k, s, t)
+    s = list(map(int, s))
+    t = list(map(int, t))
+    #print(k, s, t)
+    s.sort()
+    t.sort()
+    #print(k, s, t)
+    s = ''.join(map(str, s))
+    t = ''.join(map(str, t))
+    #print(k, s, t)
+    #print(s > t)
+    #print(s, t)
+    #print(s[0:4], t[0:4])
+    #print(s[0:4] > t[0:4])
+    #print(s[0:4] < t[0:4])
+    #print(int(s[0:4]) > int(t[0:4]))
+    #print(int(s[0:4]) < int(t[0:4]))
+    #print(int(s[0:4]) == int(t[0:4]))
+    #print(s[0:4] > t[0:4])
+    #print(s[0:4] < t[0:4])
+    #print(s[0:4] == t[0:4])
+    #print(s[0:4] > t[0:4])
+    #print(s[0:4] < t[0:4])
+    #print(s[0:4] == t[0:4])
+    #print(s[0:4] > t[0:4])
+    #print(s[0:4] < t[0:4])
+    #print(s[0:4] == t[0:4])
+    #print(s[0:4] > t[0:4])
+    #print(s[0:4] < t[0:4])
+    #print(s[0:4] == t[0:4])
+    #print(s[0:4] > t[0:4])
+    #print(s[0:4] < t[0:4])
+    #print(s[0:4] == t[0:4])
+    #print(s[0:4] > t[0:4])
+    #print(s

@@ -1,23 +1,10 @@
-def solve():
-    K = int(input())
-    S = input()
-    T = input()
-    #print(K, S, T)
-    #print(type(K), type(S), type(T))
-    #print(len(S), len(T))
-    #print(S[0:4], S[4], T[0:4], T[4])
-    #print(S[0:4] == T[0:4])
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] == T[0:4] and S[4] == '#' and T[4] == '#')
-    #print(S[0:4] ==
+def main():
+    A,B = map(int,input().split())
+    if A+B >= 15 and B >= 8:
+        print(1)
+    elif A+B >= 10 and B >= 3:
+        print(2)
+    elif A+B >= 3:
+        print(3)
+    else:
+        print(4)

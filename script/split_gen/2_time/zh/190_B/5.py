@@ -1,12 +1,8 @@
-def main():
-    a,b,c = map(int,input().split())
-    if c == 0:
-        if a > b:
-            print('Takahashi')
-        else:
-            print('Aoki')
-    else:
-        if b > a:
-            print('Aoki')
-        else:
-            print('Takahashi')
+def solve():
+    n, s, d = map(int, input().split())
+    for _ in range(n):
+        x, y = map(int, input().split())
+        if x < s and y > d:
+            print('Yes')
+            return
+    print('No')

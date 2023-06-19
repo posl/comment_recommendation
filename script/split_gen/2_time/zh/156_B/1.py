@@ -1,5 +1,7 @@
-def get_inner_grade(n, r):
-    if n < 10:
-        return r + 100 * (10 - n)
-    else:
-        return r
+def main():
+    N, K = map(int, input().split())
+    result = 0
+    while N > 0:
+        result += 1
+        N = N // K
+    print(result)

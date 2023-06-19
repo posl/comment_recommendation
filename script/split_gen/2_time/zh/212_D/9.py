@@ -1,13 +1,15 @@
 def main():
-    n, m = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    A.sort()
-    B.sort()
-    ans = 10**9
-    i = 0
-    for b in B:
-        while i+1 < n and A[i] < b:
-            i += 1
-        ans = min(ans, abs(A[i]-b))
-    print(ans)
+    q = int(input())
+    query = []
+    for i in range(q):
+        query.append(list(map(int, input().split())))
+    bag = []
+    for i in range(q):
+        if query[i][0] == 1:
+            bag.append(query[i][1])
+        elif query[i][0] == 2:
+            for j in range(len(bag)):
+                bag[j] += query[i][1]
+        else:
+            print(min(bag))
+            bag.remove(min(bag))

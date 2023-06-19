@@ -1,5 +1,13 @@
-def main():
-    r, D, x2000 = map(int, input().split())
-    for i in range(10):
-        x2000 = r * x2000 - D
-        print(x2000)
+def solve():
+    N, M = map(int, input().split())
+    L, R = [], []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)

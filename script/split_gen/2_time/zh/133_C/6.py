@@ -1,16 +1,11 @@
-def getDistance(p1, p2):
-    D = len(p1)
-    sum = 0
-    for i in range(D):
-        sum += (p1[i] - p2[i]) ** 2
-    return sum ** 0.5
-N, D = map(int, input().split())
-points = []
-for i in range(N):
-    points.append(list(map(int, input().split())))
-count = 0
-for i in range(N):
-    for j in range(i+1, N):
-        if getDistance(points[i], points[j]).is_integer():
-            count += 1
-print(count)
+def solve():
+    L, R = list(map(int, input().split()))
+    if R - L >= 2019:
+        print(0)
+    else:
+        ans = 2019
+        for i in range(L, R):
+            for j in range(i+1, R+1):
+                ans = min(ans, (i*j)%2019)
+        print(ans)
+solve()

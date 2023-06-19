@@ -1,2 +1,9 @@
-def det(a, b, c, d):
-    return a*d - b*c
+def answer(n, x, s):
+    score = x
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        else:
+            if score > 0:
+                score -= 1
+    return score

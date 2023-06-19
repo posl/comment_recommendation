@@ -1,5 +1,6 @@
-def max(a,b):
-    if a>b:
-        return a
-    else:
-        return b
+def main():
+    print("start")
+    n = input()
+    n = int(n)
+    print(n)
+    print("end")

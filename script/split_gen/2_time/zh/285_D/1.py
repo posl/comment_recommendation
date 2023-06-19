@@ -1,8 +1,22 @@
-def get_index(s):
-    n = len(s)
-    if n == 1:
-        return ord(s) - ord('A') + 1
-    elif n == 2:
-        return 26 + (ord(s[0]) - ord('A')) * 26 + (ord(s[1]) - ord('A')) + 1
+def is_ok(i):
+    if i == 0:
+        return True
+    if s[i] == t[i-1]:
+        return True
     else:
-        return 26 + 26 * 26 + (ord(s[0]) - ord('A')) * 26 * 26 + (ord(s[1]) - ord('A')) * 26 + (ord(s[2]) - ord('A')) + 1
+        return False
+n = int(input())
+s = []
+t = []
+for i in range(n):
+    s1, t1 = input().split()
+    s.append(s1)
+    t.append(t1)
+for i in range(n):
+    if is_ok(i):
+        continue
+    else:
+        print('No')
+        break
+else:
+    print('Yes')

@@ -1,17 +1,14 @@
-def is_wonderful(s):
-    if len(s) < 3:
-        return False
-    if s.islower():
-        return False
-    if s.isupper():
-        return False
-    if s.lower() == s.upper():
-        return False
-    for i in range(0, len(s)):
-        if s[i].islower():
-            if s[i].upper() not in s[i+1:]:
-                return False
-        if s[i].isupper():
-            if s[i].lower() not in s[i+1:]:
-                return False
-    return True
+def main():
+    n,k = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ans = 0
+    for i in range(1<<n):
+        t = set()
+        for j in range(n):
+            if i&(1<<j):
+                t |= set(s[j])
+        if len(t) == k:
+            ans = max(ans, bin(i).count("1"))
+    print(ans)

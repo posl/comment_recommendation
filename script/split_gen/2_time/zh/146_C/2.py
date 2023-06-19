@@ -1,10 +1,5 @@
-def main():
-    n = int(input())
-    s = input()
-    s = list(s)
-    for i in range(len(s)):
-        if ord(s[i]) + n > 90:
-            s[i] = chr(ord(s[i]) + n - 26)
-        else:
-            s[i] = chr(ord(s[i]) + n)
-    print(''.join(s))
+def d(x):
+    if x < 10:
+        return 1
+    else:
+        return 1 + d(x // 10)

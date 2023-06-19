@@ -1,7 +1,8 @@
-def S(n):
+def problem101_b(n):
     sum = 0
-    while n != 0:
-        sum += n % 10
-        n = n / 10
-    return sum
-n = int(raw_input())
+    for i in range(len(n)):
+        sum += int(n[i])
+    if int(n) % sum == 0:
+        print('Yes')
+    else:
+        print('No')

@@ -1,18 +1,28 @@
 def main():
-    n,m = map(int,input().split())
-    k = [0] * m
-    s = [0] * m
-    for i in range(m):
-        k[i],*s[i] = map(int,input().split())
-    p = list(map(int,input().split()))
-    ans = 0
-    for i in range(2**n):
-        light = [0] * m
-        for j in range(n):
-            if (i >> j) & 1:
-                for l in range(m):
-                    if j+1 in s[l]:
-                        light[l] += 1
-        if all(light[l]%2 == p[l] for l in range(m)):
-            ans += 1
-    print(ans)
+    N,K = map(int,input().split())
+    V = list(map(int,input().split()))
+    max_sum = 0
+    for i in range(0,min(N,K)+1):
+        for j in range(0,min(N,K)-i+1):
+            left = V[:i]
+            right = V[N-j:]
+            if len(left) > 0:
+                left.sort()
+                for k in range(0,min(len(left),K-i-j)):
+                    if left[k] < 0:
+                        left[k] = 0
+                    else:
+                        break
+            if len(right) > 0:
+                right.sort(reverse=True)
+                for k in range(0,min(len(right),K-i-j)):
+                    if right[k] < 0:
+                        right[k] = 0
+                    else:
+                        break
+            if len(left) > 0:
+                left.sort(reverse=True)
+                max_sum = max(max_sum,sum(left[:K-i-j])+sum(right[:K-i-j]))
+            else:
+                max_sum = max(max_sum,sum(right[:K-i-j]))
+    print(max_sum)

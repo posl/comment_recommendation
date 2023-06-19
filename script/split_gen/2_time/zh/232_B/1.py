@@ -1,5 +1,10 @@
-def main():
-    S = input()
-    a = int(S[0])
-    b = int(S[2])
-    print(a * b)
+def solve():
+    s = raw_input()
+    t = raw_input()
+    if len(s) != len(t):
+        return False
+    for i in range(len(s)):
+        if s == t:
+            return True
+        s = s[-1] + s[:-1]
+    return False

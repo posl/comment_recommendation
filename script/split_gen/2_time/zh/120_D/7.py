@@ -1,8 +1,10 @@
 def main():
-    s = input()
-    n = len(s)
-    cnt = 0
-    for i in range(n):
-        if s[i] == "1":
-            cnt += 1
-    print(min(cnt, n - cnt) * 2)
+    N,M = map(int,input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i],B[i] = map(int,input().split())
+    print(N)
+    print(M)
+    print(A)
+    print(B)

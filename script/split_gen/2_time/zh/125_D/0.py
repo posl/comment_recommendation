@@ -1,12 +1,13 @@
-def gcd(a,b):
-    if a%b==0:
-        return b
+def solve(n, a):
+    ans = 0
+    minus = 0
+    min_abs = 10**9
+    for i in range(n):
+        if a[i] < 0:
+            minus += 1
+        ans += abs(a[i])
+        min_abs = min(min_abs, abs(a[i]))
+    if minus % 2 == 0:
+        return ans
     else:
-        return gcd(b,a%b)
-n=int(input())
-a=list(map(int,input().split()))
-b=[0]*n
-b[0]=a[0]
-for i in range(1,n):
-    b[i]=gcd(b[i-1],a[i])
-print(b[n-1])
+        return ans - 2 * min_abs

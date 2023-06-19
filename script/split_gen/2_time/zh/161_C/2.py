@@ -1,10 +1,6 @@
-def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    total = sum(a)
-    for i in range(m):
-        if a[i] < total/(4*m):
-            print("否")
-            return
-    print("是")
+def solve(n,k):
+    if k==1:
+        return 0
+    if n<k:
+        return min(n,abs(n-k))
+    return min(n%k,abs(n%k-k))

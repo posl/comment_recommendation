@@ -1,9 +1,9 @@
-def move(x,y):
-    count = 0
-    if x == 0 and y == 0:
-        return 1
-    if x >= 1 and y >= 2:
-        count += move(x-1,y-2)
-    if x >= 2 and y >= 1:
-        count += move(x-2,y-1)
-    return count
+def main():
+    # 读取输入
+    week = input().strip()
+    # 处理
+    week_list = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    week_index = week_list.index(week)
+    day = 7 - week_index
+    # 输出
+    print(day)

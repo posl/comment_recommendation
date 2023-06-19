@@ -1,6 +1,16 @@
-def getB(n, m, A, C):
-    B = [0 for i in range(m + 1)]
-    B[0] = C[0] // A[0]
-    for i in range(1, m + 1):
-        B[i] = (C[i] - sum([B[j] * A[i - j] for j in range(i)])) // A[0]
-    return B
+def getPoint(x1,y1,x2,y2,x3,y3):
+    x4 = 0
+    y4 = 0
+    if x1==x2:
+        x4 = x3
+    elif x1==x3:
+        x4 = x2
+    else:
+        x4 = x1
+    if y1==y2:
+        y4 = y3
+    elif y1==y3:
+        y4 = y2
+    else:
+        y4 = y1
+    return x4,y4

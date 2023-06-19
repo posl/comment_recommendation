@@ -1,6 +1,11 @@
-def solve(N, S):
-    A = [0] * N
-    A[0] = S[0]
-    for i in range(1, N):
-        A[i] = S[i] - A[0]
-    return A
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    i = 0
+    while i < s_len:
+        if s[i] != t[i]:
+            break
+        i += 1
+    print(i+1)

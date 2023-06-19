@@ -1,6 +1,5 @@
-def main():
-    k, x = map(int, input().split())
-    start = x - k + 1
-    end = x + k
-    for i in range(start, end):
-        print(i, end=" ")
+def getStrHash(str):
+    hash = 0
+    for i in range(len(str)):
+        hash += ord(str[i]) * pow(2, i)
+    return hash

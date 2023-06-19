@@ -1,9 +1,10 @@
 def main():
-    n = int(input())
-    s = []
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    ans = 0
     for i in range(n):
-        s.append(input())
-    if s.count('For') > n//2:
-        print('Yes')
-    else:
-        print('No')
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                ans += 1
+    print(ans)

@@ -1,5 +1,9 @@
-def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    n = N - K
-    print(1 + (n + K - 2) // (K - 1))
+def min_times(n, k, a):
+    min_times = 0
+    for i in range(n):
+        if i + k > n:
+            break
+        else:
+            min_times += 1
+            a[i:i+k] = [min(a[i:i+k])] * k
+    return min_times

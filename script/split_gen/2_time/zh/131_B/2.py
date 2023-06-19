@@ -1,6 +1,14 @@
-def main():
-    S = input()
-    if S[0] == S[1] == S[2] == S[3]:
-        print("Bad")
+def solve():
+    n, l = map(int, input().split())
+    ans = 0
+    if l >= 0:
+        ans = (l + n - 1) * (l + n) // 2 - l * (l - 1) // 2
     else:
-        print("Good")
+        if l + n - 1 >= 0:
+            ans = (l + n - 1) * (l + n) // 2
+        else:
+            if l + n >= 0:
+                ans = (l + n) * (l + n + 1) // 2 - l * (l + 1) // 2
+            else:
+                ans = (l + n) * (l + n + 1) // 2 - (l + n - 1) * (l + n) // 2
+    print(ans)

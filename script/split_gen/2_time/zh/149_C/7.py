@@ -1,10 +1,15 @@
-def main():
-    A, B, K = map(int, input().split())
-    if A >= K:
-        A -= K
-    else:
-        B -= K - A
-        A = 0
-        if B < 0:
-            B = 0
-    print(A, B)
+def isPrime(n):
+    if n < 2:
+        return False
+    i = 2
+    while i * i <= n:
+        if (n % i) == 0:
+            return False
+        i += 1
+    return True
+x = int(input())
+while True:
+    if isPrime(x):
+        print(x)
+        break
+    x += 1

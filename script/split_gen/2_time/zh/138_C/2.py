@@ -1,8 +1,7 @@
-def problems138_b():
-    n = int(input())
-    a = list(map(int, input().split()))
-    result = 0
-    for i in a:
-        result += 1/i
-    print(1/result)
-problems138_b()
+def main():
+    N = int(input())
+    v = list(map(int,input().split()))
+    v.sort()
+    for i in range(N-1):
+        v[i+1] = (v[i]+v[i+1])/2
+    print(v[N-1])

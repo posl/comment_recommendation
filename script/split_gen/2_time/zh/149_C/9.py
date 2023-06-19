@@ -1,10 +1,17 @@
-def solve():
-    A,B,K = map(int,input().split())
-    if A >= K:
-        A -= K
-    else:
-        B -= (K - A)
-        A = 0
-        if B < 0:
-            B = 0
-    print(A,B)
+def isPrime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+n = int(input())
+while True:
+    if isPrime(n):
+        print(n)
+        break
+    n += 1

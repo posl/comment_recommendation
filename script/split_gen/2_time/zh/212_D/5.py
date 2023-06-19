@@ -1,15 +1,16 @@
-def min_diff(a, b):
-    a.sort()
-    b.sort()
-    i = 0
-    j = 0
-    min_diff = abs(a[0] - b[0])
-    while i < len(a) and j < len(b):
-        diff = abs(a[i] - b[j])
-        if diff < min_diff:
-            min_diff = diff
-        if a[i] < b[j]:
-            i += 1
-        else:
-            j += 1
-    return min_diff
+def main():
+    n = int(input())
+    q = []
+    for i in range(n):
+        q.append(list(map(int,input().split())))
+    bag = []
+    for i in range(n):
+        if q[i][0] == 1:
+            bag.append(q[i][1])
+        elif q[i][0] == 2:
+            for j in range(len(bag)):
+                bag[j] += q[i][1]
+        elif q[i][0] == 3:
+            bag.sort()
+            print(bag[0])
+            bag.pop(0)

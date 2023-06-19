@@ -1,6 +1,7 @@
-def find(x):
-    if x == p[x]:
-        return x
+def problem178_a():
+    x = int(input())
+    if x == 0:
+        print(1)
     else:
-        p[x] = find(p[x])
-        return p[x]
+        print(0)
+problem178_a()

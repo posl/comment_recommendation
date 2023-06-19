@@ -1,11 +1,11 @@
 def main():
-    N = int(input())
-    p = list(map(int, input().split()))
-    count = 0
-    for i in range(N):
-        if p[i] != i+1:
-            count += 1
-    if count > 2:
-        print('NO')
-    else:
-        print('YES')
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i + 1], b[i])
+        a[i + 1] -= min(a[i + 1], b[i])
+    print(ans)

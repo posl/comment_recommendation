@@ -1,5 +1,12 @@
-def str2int(str):
-    int = 0
-    for s in str:
-        int = int * 26 + ord(s) - ord('a')
-    return int
+def get_input():
+    n = int(input())
+    x,y = input().split()
+    x = int(x)
+    y = int(y)
+    a = []
+    b = []
+    for i in range(n):
+        ai,bi = input().split()
+        a.append(int(ai))
+        b.append(int(bi))
+    return n,x,y,a,b

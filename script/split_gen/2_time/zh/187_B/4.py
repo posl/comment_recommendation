@@ -1,6 +1,7 @@
-def sum_of_digits(n):
-    sum = 0
-    while n > 0:
-        sum += n % 10
-        n = n // 10
-    return sum
+def solve(n, x, y):
+    res = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if abs(y[i] - y[j]) <= abs(x[i] - x[j]):
+                res += 1
+    return res

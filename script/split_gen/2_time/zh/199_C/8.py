@@ -1,13 +1,18 @@
 def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    ans = 0
-    for i in range(1, 1001):
-        flag = True
-        for j in range(N):
-            if i < A[j] or i > B[j]:
-                flag = False
-        if flag:
-            ans += 1
-    print(ans)
+    n = int(input())
+    s = input()
+    q = int(input())
+    s = list(s)
+    rev = False
+    for _ in range(q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            if rev:
+                a = a + n if a <= n else a - n
+                b = b + n if b <= n else b - n
+            s[a-1], s[b-1] = s[b-1], s[a-1]
+        else:
+            rev = not rev
+    if rev:
+        s = s[n:] + s[:n]
+    print(''.join(s))

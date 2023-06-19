@@ -1,8 +1,12 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    P = 0
-    for i in range(N):
-        P += A[i] - 1
-    print(P)
-main()
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)
+    print(h1, h2, h3, w1, w2, w3)

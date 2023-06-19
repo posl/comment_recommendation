@@ -1,14 +1,12 @@
 def main():
-    # 读取输入
-    n, k, a = map(int, input().split())
-    # 模拟发卡
-    cards = [i for i in range(1, k + 1)]
-    for i in range(k):
-        # 人数循环
-        if i % n + 1 == a:
-            # 该人拿到最后一张牌
-            print(i % n + 1)
-            break
-        else:
-            # 该人拿不到最后一张牌
-            cards[i % n] = 0
+    #n = int(input())
+    #s = list(map(int, input().split()))
+    n = 5
+    s = [666,777,888,777,666]
+    ans = 0
+    for i in range(n):
+        if s[i] % 2 == 0:
+            ans += 1
+        if s[i] % 3 == 2:
+            ans += 1
+    print(ans)

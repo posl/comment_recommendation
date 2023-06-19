@@ -1,11 +1,15 @@
 def main():
     n = int(input())
     a = list(map(int, input().split()))
-    x = int(input())
-    b = a * 100
-    s = 0
-    for i in range(len(b)):
-        s += b[i]
-        if s > x:
-            print(i+1)
-            break
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = a.count(i)
+    for i in range(1, n):
+        tmp = [0] * 10
+        for j in range(10):
+            for k in range(10):
+                tmp[(j + k) % 10] += ans[j] * a[k]
+                tmp[(j * k) % 10] += ans[j] * a[k]
+        ans = tmp
+    for i in range(10):
+        print(ans[i] % 998244353)

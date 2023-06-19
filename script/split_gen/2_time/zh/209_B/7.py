@@ -1,6 +1,13 @@
 def main():
-    a,b = map(int,input().split())
-    if a > b:
-        print(0)
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    total = 0
+    for i in range(n):
+        if i%2 == 1:
+            total += a[i]-1
+        else:
+            total += a[i]
+    if total <= x:
+        print('Yes')
     else:
-        print(b-a+1)
+        print('No')

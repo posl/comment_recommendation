@@ -1,57 +1,15 @@
 def main():
-    H,W = map(int,input().split())
-    Ch,Cw = map(int,input().split())
-    Dh,Dw = map(int,input().split())
-    S = [input() for _ in range(H)]
-    Ch -= 1
-    Cw -= 1
-    Dh -= 1
-    Dw -= 1
-    #print(H,W,Ch,Cw,Dh,Dw)
-    #print(S)
-    #print(S[0][0])
-    #print(S[0][1])
-    #print(S[1][0])
-    #print(S[1][1])
-    #print(S[1][2])
-    #print(S[2][1])
-    #print(S[2][2])
-    #print(S[2][3])
-    #print(S[3][2])
-    #print(S[3][3])
-    #print(S[3][4])
-    #print(S[4][3])
-    #print(S[4][4])
-    #print(S[4][5])
-    #print(S[5][4])
-    #print(S[5][5])
-    #print(S[5][6])
-    #print(S[6][5])
-    #print(S[6][6])
-    #print(S[6][7])
-    #print(S[7][6])
-    #print(S[7][7])
-    #print(S[7][8])
-    #print(S[8][7])
-    #print(S[8][8])
-    #print(S[8][9])
-    #print(S[9][8])
-    #print(S[9][9])
-    #print(S[9][10])
-    #print(S[10][9])
-    #print(S[10][10])
-    #print(S[10][11])
-    #print(S[11][10])
-    #print(S[11][11])
-    #print(S[11][12])
-    #print(S[12][11])
-    #print(S[12][12])
-    #print(S[12][13])
-    #print(S[13][12])
-    #print(S[13][13])
-    #print(S[13][14])
-    #print(S[14][13])
-    #print(S[14][14])
-    #print(S[14][15])
-    #print(S[15][14])
-    #print(S[
+    line = input().split()
+    D = int(line[0])
+    T = int(line[1])
+    S = int(line[2])
+    if D % S == 0:
+        if D / S <= T:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if D / S < T:
+            print("Yes")
+        else:
+            print("No")

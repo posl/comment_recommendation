@@ -1,4 +1,8 @@
-def main():
-    H,W = map(int,input().split())
-    R,C = map(int,input().split())
-    print(H*W-((H-R)*W+(W-C)*R))
+def print_tile(a,b):
+    for i in range(a):
+        for j in range(b):
+            if (i+j)%2==0:
+                print('.',end='')
+            else:
+                print('#',end='')
+        print()

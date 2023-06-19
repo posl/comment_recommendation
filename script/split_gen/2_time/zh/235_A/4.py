@@ -1,5 +1,10 @@
-def func():
-    n, k = map(int, input().split())
-    p = list(map(int, input().split()))
-    for i in range(k-1, n):
-        print(sorted(p[:i+1], reverse=True)[k-1])
+def main():
+    num = input()
+    if len(num) == 3:
+        num = int(num)
+        x = num // 100
+        y = (num // 10) % 10
+        z = num % 10
+        print(x + y + z + (x * 10 + y) + (y * 10 + z) + (z * 10 + x))
+    else:
+        print("输入不合法")

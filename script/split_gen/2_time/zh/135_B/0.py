@@ -1,7 +1,5 @@
-def solve(a, b):
-    if (a+b)%2==0:
-        return (a+b)//2
-    else:
-        return "IMPOSSIBLE"
-a, b = map(int, input().split())
-print(solve(a, b))
+def is_sorted(arr):
+    for i in range(len(arr)-1):
+        if arr[i] > arr[i+1]:
+            return False
+    return True

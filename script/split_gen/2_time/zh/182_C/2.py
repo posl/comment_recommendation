@@ -1,18 +1,27 @@
-def gcd(a, b):
-    if b == 0:
-        return a
+def main():
+    n = input()
+    n = int(n)
+    n_list = list(str(n))
+    n_list.reverse()
+    #print(n_list)
+    n_len = len(n_list)
+    k = 0
+    for i in range(n_len):
+        if n_list[i] == '0':
+            k += 1
+        else:
+            break
+    #print(k)
+    if k == n_len:
+        print(-1)
     else:
-        return gcd(b, a % b)
-N = int(input())
-A = list(map(int, input().split()))
-ans = 0
-ans_num = 0
-for k in range(2, 1001):
-    cnt = 0
-    for i in range(N):
-        if A[i] % k == 0:
-            cnt += 1
-    if cnt > ans:
-        ans = cnt
-        ans_num = k
-print(ans_num)
+        #print(n_list[k:])
+        #print(len(n_list[k:]))
+        sum = 0
+        for i in range(len(n_list[k:])):
+            sum += int(n_list[k+i])
+        #print(sum)
+        if sum % 3 == 0:
+            print(k)
+        else:
+            print(-1)

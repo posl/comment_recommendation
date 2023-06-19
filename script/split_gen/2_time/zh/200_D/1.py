@@ -1,11 +1,23 @@
-def problems200_c():
+def solve():
     n = int(input())
     a = list(map(int, input().split()))
-    ans = 0
-    mod = [0] * 200
-    for i in range(n):
-        mod[a[i] % 200] += 1
-    for i in range(200):
-        ans += mod[i] * (mod[i] - 1) // 2
-    print(ans)
-problems200_c()
+    mod = 200
+    b = [[] for _ in range(mod)]
+    c = [[] for _ in range(mod)]
+    for i in range(1, 1 << n):
+        s = 0
+        for j in range(n):
+            if i >> j & 1:
+                s += a[j]
+                s %= mod
+        if len(b[s]) == 0:
+            b[s] = [j + 1 for j in range(n) if i >> j & 1]
+        else:
+            c[s] = [j + 1 for j in range(n) if i >> j & 1]
+            break
+    if len(c[s]) == 0:
+        print("No")
+    else:
+        print("Yes")
+        print(len(b[s]), *b[s])
+        print(len(c[s]), *c[s])

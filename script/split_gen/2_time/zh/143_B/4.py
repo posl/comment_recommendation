@@ -1,5 +1,8 @@
-def solution(a, b):
-    if a <= b:
-        return 0
-    else:
-        return a - b * 2
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            ans += d[i] * d[j]
+    print(ans)

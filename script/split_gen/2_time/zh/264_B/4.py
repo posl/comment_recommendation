@@ -1,4 +1,11 @@
 def main():
-    l, r = map(int, input().split())
-    s = "atcoder"
-    print(s[l-1:r])
+    #读取输入
+    r, c = map(int, input().split())
+    #处理
+    #判断是不是偶数行偶数列
+    if r % 2 == 0 and c % 2 == 0:
+        print('黑色')
+    elif r % 2 != 0 and c % 2 != 0:
+        print('黑色')
+    else:
+        print('白色')

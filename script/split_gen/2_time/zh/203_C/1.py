@@ -1,3 +1,16 @@
 def main():
+    # 读入数据
     N, K = map(int, input().split())
-    print(sum([100 * n + k for n in range(1, N + 1) for k in range(1, K + 1)]))
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    # AB.sort(key=lambda x: x[0])
+    # print(AB)
+    # 处理数据
+    AB.sort(key=lambda x: x[0])
+    # print(AB)
+    for i in range(N):
+        if K >= AB[i][0]:
+            K += AB[i][1]
+        else:
+            break
+    # 输出结果
+    print(K)

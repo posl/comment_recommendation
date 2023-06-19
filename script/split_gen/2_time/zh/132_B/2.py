@@ -1,14 +1,8 @@
-def main():
-    s = input()
-    if len(s) == 4:
-        if s[0] == s[1] and s[2] == s[3]:
-            print("Yes")
-        elif s[0] == s[2] and s[1] == s[3]:
-            print("Yes")
-        elif s[0] == s[3] and s[1] == s[2]:
-            print("Yes")
-        else:
-            print("No")
-    else:
-        print("No")
-main()
+def problem132_b():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i + 1] < p[i] < p[i - 1]:
+            count += 1
+    print(count)

@@ -1,11 +1,11 @@
-def main():
-    n,q = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort()
-    for i in range(q):
-        x = int(input())
-        cnt = 0
-        for j in range(n):
-            if a[j] >= x:
-                cnt += 1
-        print(cnt)
+def solve():
+    N,M = map(int,input().split())
+    AB = [list(map(int,input().split())) for _ in range(M)]
+    AB.sort(key=lambda x:x[1])
+    right = 0
+    ans = 0
+    for a,b in AB:
+        if right < a:
+            ans += 1
+            right = b - 1
+    print('Yes' if ans == 1 else 'No')

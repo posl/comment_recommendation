@@ -1,10 +1,8 @@
 def main():
     N = int(input())
-    P = list(map(int, input().split()))
-    count = 0
-    min = N
-    for i in range(N):
-        if P[i] <= min:
-            count += 1
-            min = P[i]
-    print(count)
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i % 10 == j // 10 and i // 10 == j % 10:
+                ans += 1
+    print(ans)

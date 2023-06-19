@@ -1,7 +1,6 @@
-def isMultipleOf9(n):
-    if (n == 0 or n == 9):
-        return True
-    if (n < 9):
-        return False
-    return isMultipleOf9(int(n/9) - int(n%9))
-n = input()
+def solve(N, A):
+    A = sorted(A)
+    ans = 0
+    for i in range(N):
+        ans += A[i] - A[0]
+    return ans

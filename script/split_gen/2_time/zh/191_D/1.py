@@ -1,10 +1,9 @@
-def solve():
-    H, W = map(int, input().split())
-    S = [input() for _ in range(H)]
-    ans = 0
-    for i in range(H):
-        for j in range(W):
-            if S[i][j] == '#':
-                ans += 1
-    print(ans - (H + W - 1))
-solve()
+def problem191_d():
+    x,y,r = map(float,input().split())
+    x,y,r = int(x*10000),int(y*10000),int(r*10000)
+    count = 0
+    for i in range(x-r,x+r+1):
+        for j in range(y-r,y+r+1):
+            if (i-x)*(i-x)+(j-y)*(j-y) <= r*r:
+                count += 1
+    print(count)

@@ -1,11 +1,6 @@
-def main():
-    n = int(input())
-    d = []
-    for i in range(n):
-        d.append(list(map(int, input().split())))
-    #print(d)
-    for i in range(n-2):
-        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
-            print('Yes')
-            exit()
-    print('No')
+def problem179_c(n):
+    count = 0
+    for i in range(1,n):
+        if n % i == 0:
+            count += 1
+    return count

@@ -1,8 +1,10 @@
-def get_max_num(n, a):
-    a.sort(reverse=True)
-    num = ''
-    for i in a:
-        while n >= i:
-            num += str(i)
-            n -= i
-    return num
+def main():
+    s = input()
+    year, month, day = map(int, s.split('/'))
+    if year < 2019:
+        print("Heisei")
+        return
+    if year == 2019 and month <= 4:
+        print("Heisei")
+        return
+    print("TBD")

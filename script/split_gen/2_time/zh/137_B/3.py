@@ -1,5 +1,5 @@
 def main():
-    # 读取标准输入
-    a, b = map(int, input().split())
-    # 计算
-    print(max(a + b, a - b, a * b))
+    K, X = map(int, input().split())
+    for i in range(X-K+1, X+K):
+        print(i, end=' ')
+    print()

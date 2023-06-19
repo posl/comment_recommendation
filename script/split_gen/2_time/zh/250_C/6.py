@@ -1,15 +1,8 @@
-def main():
-    n,a,b = map(int,input().split())
-    #n = int(n)
-    #a = int(a)
-    #b = int(b)
-    for i in range(n):
-        for j in range(a):
-            for k in range(n):
-                for l in range(b):
-                    if (i+j)%2 == 0:
-                        print('.',end='')
-                    else:
-                        print('#',end='')
-            print()
-main()
+def swap(a, b):
+    return b, a
+N, Q = map(int, input().split())
+balls = [i for i in range(1, N+1)]
+for i in range(Q):
+    x = int(input())
+    balls[x-1], balls[x] = swap(balls[x-1], balls[x])
+print(' '.join(map(str, balls)))

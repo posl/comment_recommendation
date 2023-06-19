@@ -1,6 +1,11 @@
-def problem177_a():
-    d,t,s = map(int,input().split())
-    if d <= t*s:
-        print('Yes')
-    else:
-        print('No')
+def solve():
+    s = input()
+    t = input()
+    ans = 1000
+    for i in range(len(s)-len(t)+1):
+        cnt = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)

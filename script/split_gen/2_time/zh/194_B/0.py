@@ -1,9 +1,11 @@
-def icecream_type(A,B):
-    if A+B>=15 and B>=8:
-        return 1
-    elif A+B>=10 and B>=3:
-        return 2
-    elif A+B>=3:
-        return 3
-    else:
-        return 4
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    print(min([max(a[i], b[i]) for i in range(n)]))
+    
+main()

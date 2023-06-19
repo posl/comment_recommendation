@@ -1,11 +1,13 @@
-def get_square_count():
-    chessboard = []
-    for i in range(9):
-        chessboard.append(input())
-    count = 0
-    for r in range(8):
-        for c in range(8):
-            if chessboard[r][c] == '#' and chessboard[r][c+1] == '#' and chessboard[r+1][c] == '#' and chessboard[r+1][c+1] == '#':
-                count += 1
-    print(count)
-get_square_count()
+def f(x):
+    if x == 0:
+        return 1
+    elif x == 1:
+        return 2
+    elif x == 2:
+        return 3
+    elif x == 3:
+        return 4
+    else:
+        return f(x//2) + f(x//3)
+n = int(input())
+print(f(n))

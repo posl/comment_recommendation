@@ -1,8 +1,11 @@
 def main():
-    A,B = map(int,input().split())
-    if A == 0:
-        print("银")
-    elif B == 0:
-        print("黄金")
+    s = input()
+    if s[0] == s[1] and s[1] == s[2] and s[2] == s[3]:
+        print('Weak')
     else:
-        print("合金")
+        for i in range(3):
+            if (int(s[i])+1)%10 != int(s[i+1]):
+                print('Strong')
+                break
+        else:
+            print('Weak')

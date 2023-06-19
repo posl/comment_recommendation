@@ -1,10 +1,10 @@
-def main():
-    n=int(input())
-    a=list(map(int,input().split()))
-    ans=0
-    for l in range(n):
-        x=a[l]
-        for r in range(l,n):
-            x=min(x,a[r])
-            ans=max(ans,x*(r-l+1))
-    print(ans)
+def dfs(i, x, s):
+    if i == n:
+        return s
+    if s == 'AND':
+        return dfs(i + 1, x, s) + dfs(i + 1, x + 1, s)
+    else:
+        return dfs(i + 1, x, s) * 2 + dfs(i + 1, x + 1, s)
+n = int(input())
+s = [input() for _ in range(n)]
+print(dfs(0, 0, s[0]))

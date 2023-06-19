@@ -1,6 +1,16 @@
 def main():
-    a,b,c = map(int,input().split())
-    if b+c<a:
-        print(c)
-    else:
-        print(a-b)
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        if i < 10:
+            count += 1
+        elif i < 100:
+            count += 1
+        elif i < 1000:
+            count += 1
+        elif i < 10000:
+            count += 1
+        elif i < 100000:
+            count += 1
+    print(count)
+main()

@@ -1,12 +1,6 @@
-def solve(n):
-    ans = 1
-    while ans * ans < n:
-        ans += 1
-    if ans * ans == n:
-        return 2 * ans - 2
-    elif (ans - 1) * ans < n <= (ans - 1) * ans + ans:
-        return 2 * ans - 1
+def main():
+    a,b,x = map(int, input().split())
+    if x <= a*a*b/2:
+        print(90 - (x*2)/(a*b*b))
     else:
-        return 2 * ans
-n = int(input())
-print(solve(n))
+        print((x*2)/(a*a) - (b/2))

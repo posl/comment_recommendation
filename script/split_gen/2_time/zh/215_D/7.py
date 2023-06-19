@@ -1,15 +1,11 @@
-def getPermutation(s, k):
-    if len(s) == 1:
-        return s
+def gcd(a, b):
+    if b == 0:
+        return a
     else:
-        n = len(s)
-        a = 1
-        for i in range(n):
-            a *= (i + 1)
-        b = a / n
-        c = k / b
-        d = k % b
-        if d == 0:
-            c -= 1
-            d = b
-        return s[c] + getPermutation(s[0:c] + s[c + 1:n], d)
+        return gcd(b, a % b)
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+# 用于记录已经找到的满足条件的数
+ans = [1] * (m + 1)
+# 用于记录已经找到的满足条件的数的个数
+cnt = 0

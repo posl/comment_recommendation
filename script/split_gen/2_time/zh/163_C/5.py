@@ -1,4 +1,11 @@
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    print(n - sum(a) if n >= sum(a) else -1)
+    import sys
+    import numpy as np
+    input = sys.stdin.readline
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A = np.array(A)
+    A = np.sort(A)
+    B = np.bincount(A)
+    for i in range(1, N+1):
+        print(B[i])

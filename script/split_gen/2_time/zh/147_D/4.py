@@ -1,12 +1,11 @@
-def getPersonNum(n, a, x, y):
-    max = 0
-    for i in range(2**n):
-        flag = True
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        cnt = 0
         for j in range(n):
-            if i & (1 << j):
-                if not check(j, a, x, y, i):
-                    flag = False
-                    break
-        if flag:
-            max = max if max > bin(i).count('1') else bin(i).count('1')
-    return max
+            if (a[j] >> i) & 1:
+                cnt += 1
+        ans += (cnt * (n - cnt) * (1 << i))
+    print(ans % (10 ** 9 + 7))

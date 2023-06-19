@@ -1,20 +1,27 @@
-def get_distance(a, b, n):
-    """
-    二分法
-    :param a: a
-    :param b: b
-    :param n: n
-    :return: distance
-    """
-    left = 0
-    right = 1000
-    while left < right:
-        mid = (left + right) / 2
-        sum = 0
-        for i in range(n):
-            sum += a[i] / (mid - b[i])
-        if sum < 1:
-            right = mid
-        else:
-            left = mid
-    return left
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    p = list(range(1, N+1))
+    for i in range(M):
+        if A[i] > B[i]:
+            A[i], B[i] = B[i], A[i]
+    for i in range(M):
+        if A[i] == p[0] and B[i] == p[1]:
+            p[0], p[1] = p[1], p[0]
+            break
+    for i in range(2, N):
+        for j in range(M):
+            if A[j] == p[i]:
+                if B[j] == p[i-1]:
+                    p[i-1], p[i] = p[i], p[i-1]
+                    break
+                elif B[j] == p[i-2]:
+                    p[i-2], p[i-1] = p[i-1], p[i-2]
+                    p[i-1], p[i] = p[i], p[i-1]
+                    break
+    print(*p)

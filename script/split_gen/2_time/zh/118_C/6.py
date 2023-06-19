@@ -1,16 +1,11 @@
 def main():
-    n,m = map(int,input().split())
-    k = []
-    a = []
-    for i in range(n):
-        k.append(list(map(int,input().split())))
-        a.append(list(map(int,input().split())))
-    food = [0]*m
-    for i in range(n):
-        for j in range(k[i][0]):
-            food[a[i][j]-1] += 1
-    count = 0
-    for i in range(m):
-        if food[i] == n:
-            count += 1
-    print(count)
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(1, N):
+        A[i] %= A[0]
+        if A[i] == 0:
+            A[i] = A[0]
+    A[0] = 0
+    A.sort()
+    print(A[0])

@@ -1,7 +1,5 @@
-def main():
-    s, t = input().split()
-    if s < t:
-        print("Yes")
-    else:
-        print("No")
-    return 0
+def get_input():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    return s1,s2,s3

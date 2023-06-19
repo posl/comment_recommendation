@@ -1,10 +1,13 @@
 def main():
-    x,y = map(int,input().split())
-    if y%2 == 0:
-        if x <= y/2 and x >= y/4:
-            print('Yes')
-        else:
-            print('No')
-    else:
-        print('No')
-main()
+    x, n = map(int, input().split())
+    if n == 0:
+        print(x)
+        return
+    p = [int(i) for i in input().split()]
+    for i in range(0, 100):
+        if x - i not in p:
+            print(x - i)
+            return
+        if x + i not in p:
+            print(x + i)
+            return

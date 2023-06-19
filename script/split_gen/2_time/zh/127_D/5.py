@@ -1,9 +1,19 @@
 def main():
-    n, m = map(int, input().split())
-    l = [0] * m
-    r = [0] * m
-    for i in range(m):
-        l[i], r[i] = map(int, input().split())
-    lmax = max(l)
-    rmin = min(r)
-    print(max(0, rmin - lmax + 1))
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    C = []
+    for i in range(M):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+    A.sort()
+    C.sort()
+    j = 0
+    for i in range(N):
+        if j < M and A[i] < C[M-j-1] and B[M-j-1] > 0:
+            A[i] = C[M-j-1]
+            B[M-j-1] -= 1
+        else:
+            j += 1
+    print(sum(A))

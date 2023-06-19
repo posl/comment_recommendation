@@ -1,12 +1,8 @@
 def main():
-    n, k = map(int, input().split())
-    s = input()
-    s = list(s)
-    s.append(' ')
-    #print(s)
-    ans = 0
-    for i in range(n):
-        if s[i] == s[i+1]:
-            ans += 1
-    ans += 2 * min(k, ans)
-    print(ans)
+    weather = input()
+    if weather == '晴天':
+        print('阴天')
+    elif weather == '阴天':
+        print('雨天')
+    elif weather == '雨天':
+        print('晴天')

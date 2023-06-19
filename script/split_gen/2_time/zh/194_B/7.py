@@ -1,14 +1,16 @@
 def main():
-    A, B = map(int, input().split())
-    if A == 0:
-        print(4)
-    elif B == 0:
-        print(3)
-    elif A + B < 15:
-        print(4)
-    elif A + B >= 15 and B >= 8:
-        print(1)
-    elif A + B >= 10 and B >= 3:
-        print(2)
-    else:
-        print(4)
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    min_time = 1000000
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                min_time = min(min_time, a[i]+b[j])
+            else:
+                min_time = min(min_time, max(a[i], b[j]))
+    print(min_time)

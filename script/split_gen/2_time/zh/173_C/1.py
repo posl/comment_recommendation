@@ -1,9 +1,16 @@
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    print("AC x " + str(s.count("AC")))
-    print("WA x " + str(s.count("WA")))
-    print("TLE x " + str(s.count("TLE")))
-    print("RE x " + str(s.count("RE")))
+    h,w,k = map(int,input().split())
+    c = []
+    for i in range(h):
+        c.append(input())
+    ans = 0
+    for i in range(2**h):
+        for j in range(2**w):
+            cnt = 0
+            for x in range(h):
+                for y in range(w):
+                    if (i>>x)&1==0 and (j>>y)&1==0 and c[x][y]=='#':
+                        cnt += 1
+            if cnt == k:
+                ans += 1
+    print(ans)

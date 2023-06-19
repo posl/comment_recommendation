@@ -1,32 +1,25 @@
-def main():
-    X,A,D,N = map(int,input().split())
-    if D == 0:
-        if X == A:
-            print(0)
+def problem255_d():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for i in range(q)]
+    sum = 0
+    for i in range(1,n):
+        sum += abs(a[i]-a[i-1])
+    for i in range(q):
+        if x[i] == 0:
+            print(sum)
         else:
-            print("inf")
-        return
-    if N == 1:
-        if X == A:
-            print(0)
-        else:
-            print("inf")
-        return
-    if D > 0:
-        if X < A or (X-A) % D != 0:
-            print("inf")
-            return
-    else:
-        if X > A or (X-A) % D != 0:
-            print("inf")
-            return
-    if D > 0:
-        if (X-A) // D >= 0:
-            print((X-A) // D)
-        else:
-            print("inf")
-    else:
-        if (X-A) // D <= 0:
-            print((X-A) // D)
-        else:
-            print("inf")
+            if x[i] == a[0]:
+                sum += abs(a[1]-a[0])
+                sum -= abs(a[1]-a[0]-1)
+            elif x[i] == a[n-1]:
+                sum += abs(a[n-1]-a[n-2])
+                sum -= abs(a[n-1]-a[n-2]-1)
+            else:
+                sum += abs(a[1]-a[0])
+                sum += abs(a[n-1]-a[n-2])
+                sum -= abs(a[1]-a[0]-1)
+                sum -= abs(a[n-1]-a[n-2]-1)
+            a[0] = x[i]
+            a[n-1] = x[i]
+            print(sum)

@@ -1,7 +1,6 @@
-def main():
-    n,x = map(int,input().split())
-    l = list(map(int,input().split()))
-    d = [0]
-    for i in range(n):
-        d.append(d[i]+l[i])
-    print(sum([1 for i in d if i<=x]))
+def solve():
+    W,H,x,y = map(int,input().split())
+    if x*2 == W and y*2 == H:
+        print(W*H/2,1)
+    else:
+        print(W*H/2,0)

@@ -1,3 +1,2 @@
-def main():
-    N = int(input())
-    print((998244353 - N % 998244353) % 998244353)
+def cross(x1, y1, x2, y2):
+    return x1 * y2 - x2 * y1

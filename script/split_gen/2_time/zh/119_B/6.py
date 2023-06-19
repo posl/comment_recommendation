@@ -1,11 +1,10 @@
 def main():
-    str = input()
-    str_list = str.split('/')
-    if int(str_list[0]) < 2019:
-        print('Heisei')
-    elif int(str_list[1]) < 4:
-        print('Heisei')
-    elif int(str_list[2]) <= 30:
-        print('Heisei')
-    else:
-        print('TBD')
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        x, u = input().split()
+        if u == 'BTC':
+            sum += 380000.0 * float(x)
+        else:
+            sum += float(x)
+    print(sum)

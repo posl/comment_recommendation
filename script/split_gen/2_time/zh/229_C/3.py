@@ -1,15 +1,11 @@
-def main():
-    N, W = map(int, input().split())
-    cheese = []
-    for i in range(N):
-        cheese.append(list(map(int, input().split())))
-    cheese.sort(key=lambda x: x[0])
+def get_max_cheese(n, w, cheese):
+    cheese = sorted(cheese, key=lambda x: x[0] / x[1], reverse=True)
     sum = 0
-    for i in range(N):
-        if cheese[i][1] >= W:
-            sum += cheese[i][0] * W
-            break
+    for i in range(n):
+        if w >= cheese[i][1]:
+            w -= cheese[i][1]
+            sum += cheese[i][0]
         else:
-            sum += cheese[i][0] * cheese[i][1]
-            W -= cheese[i][1]
-    print(sum)
+            sum += cheese[i][0] * w / cheese[i][1]
+            break
+    return sum

@@ -1,9 +1,13 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    for i in range(N):
-        if A[i] % 2 == 0 and A[i] % 3 != 0 and A[i] % 5 != 0:
-            print('DENIED')
-            return
-    print('APPROVED')
-    return
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    max = 0
+    for i in range(n):
+        if s.count(s[i]) > max:
+            max = s.count(s[i])
+    for i in range(n):
+        if s.count(s[i]) == max:
+            print(s[i])

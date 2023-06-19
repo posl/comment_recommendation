@@ -1,7 +1,3 @@
-def main():
-    a = list(map(int, input().split()))
-    a.sort()
-    if a[2]-a[1] == a[1]-a[0]:
-        print("Yes")
-    else:
-        print("No")
+def get_second_height_mountain_number(n, height_list):
+    height_list.sort(reverse=True)
+    return height_list[1][0]

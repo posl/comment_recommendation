@@ -1,10 +1,15 @@
 def main():
-    pin = input()
-    if pin[0] == pin[1] == pin[2] == pin[3]:
-        print("Weak")
-        return
-    if (int(pin[1])+1)%10 == int(pin[0]) and (int(pin[2])+1)%10 == int(pin[1]) and (int(pin[3])+1)%10 == int(pin[2]):
-        print("Weak")
-        return
-    print("Strong")
-    return
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    i, j = 0, 0
+    ans = 1000000000000000000
+    while i < N and j < M:
+        ans = min(ans, abs(A[i] - B[j]))
+        if A[i] < B[j]:
+            i += 1
+        else:
+            j += 1
+    print(ans)

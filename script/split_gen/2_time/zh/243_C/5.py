@@ -1,16 +1,26 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    count1 = 0
-    count2 = 0
+    x = []
+    y = []
+    s = []
     for i in range(n):
-        if a[i] == b[i]:
-            count1 += 1
+        x1, y1 = map(int, input().split())
+        x.append(x1)
+        y.append(y1)
+    s = input()
+    print(x)
+    print(y)
+    print(s)
     for i in range(n):
-        for j in range(n):
-            if i != j:
-                if a[i] == b[j]:
-                    count2 += 1
-    print(count1)
-    print(count2//2)
+        if s[i] == 'R':
+            x[i] += 1
+        elif s[i] == 'L':
+            x[i] -= 1
+    print(x)
+    for i in range(n):
+        for j in range(i+1, n):
+            if x[i] == x[j] and y[i] == y[j]:
+                print('Yes')
+                return
+    print('No')
+    return

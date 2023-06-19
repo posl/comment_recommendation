@@ -1,6 +1,7 @@
 def main():
     n = int(input())
-    if n % 1000 == 0:
-        print(0)
-    else:
-        print(1000 - n % 1000)
+    s = [input() for _ in range(n)]
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))

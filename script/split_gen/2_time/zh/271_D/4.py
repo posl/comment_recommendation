@@ -1,10 +1,8 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for i in range(N):
-        if A[i] > ans + 1:
-            break
-        ans += A[i]
-    print(ans + 1)
+def dfs(i, sum):
+    if i == n:
+        return sum == S
+    if dfs(i + 1, sum):
+        return True
+    if dfs(i + 1, sum + a[i]):
+        return True
+    return False

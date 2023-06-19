@@ -1,5 +1,14 @@
-def apple(N, D):
-    if N % (2 * D + 1) == 0:
-        return N // (2 * D + 1)
-    else:
-        return N // (2 * D + 1) + 1
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    max = 0
+    for i in range(n):
+        if max < a[i]:
+            max = a[i]
+    for i in range(n):
+        if max == a[i]:
+            a[i] = 0
+    for i in range(n):
+        print(max(a))

@@ -1,15 +1,13 @@
 def main():
-    N = int(input())
-    words = []
-    for i in range(N):
-        words.append(input())
-    for i in range(N):
-        if i == 0:
-            continue
-        if words[i] in words[:i]:
-            print("No")
-            return
-        if words[i][0] != words[i-1][-1]:
-            print("No")
-            return
-    print("Yes")
+    N, X = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.append(X)
+    x.sort()
+    d = []
+    for i in range(1, N+1):
+        d.append(x[i] - x[i-1])
+    import math
+    ans = d[0]
+    for i in range(1, N):
+        ans = math.gcd(ans, d[i])
+    print(ans)

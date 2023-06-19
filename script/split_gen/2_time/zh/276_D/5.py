@@ -1,7 +1,7 @@
-def main():
-    n = int(input())
-    p = [int(i) for i in input().split()]
-    q = [0] * n
-    for i in range(n):
-        q[p[i]-1] = i+1
-    print(' '.join(map(str, q)))
+def func(a):
+    if a % 2 == 0:
+        return a/2
+    elif a % 3 == 0:
+        return a/3
+    else:
+        return -1

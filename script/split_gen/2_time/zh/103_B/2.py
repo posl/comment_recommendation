@@ -1,2 +1,7 @@
-def rotate(s):
-    return s[-1] + s[:-1]
+def main():
+    s = input()
+    t = input()
+    if s in t+t:
+        print("Yes")
+    else:
+        print("No")

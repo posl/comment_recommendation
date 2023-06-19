@@ -1,6 +1,18 @@
-def get_num_of_stones(n, k, a):
-    num_of_stones = 0
-    for i in range(k-1, -1, -1):
-        num_of_stones += (n//a[i])
-        n = n%a[i]
-    return num_of_stones
+def hex(n):
+    if n < 10:
+        return str(n)
+    elif n == 10:
+        return 'A'
+    elif n == 11:
+        return 'B'
+    elif n == 12:
+        return 'C'
+    elif n == 13:
+        return 'D'
+    elif n == 14:
+        return 'E'
+    elif n == 15:
+        return 'F'
+    else:
+        return '0'
+n = int(input())

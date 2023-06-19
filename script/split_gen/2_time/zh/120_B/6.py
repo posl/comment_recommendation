@@ -1,10 +1,12 @@
-def main():
-    # 读入数据
-    a, b, c = map(int, input().split())
-    # 解决问题
-    if a * c <= b:
-        ans = c
+def gcd(a, b):
+    if b == 0:
+        return a
     else:
-        ans = b // a
-    # 输出结果
-    print(ans)
+        return gcd(b, a % b)
+a, b, k = map(int, input().split())
+gcd = gcd(a, b)
+gcd_list = []
+for i in range(1, gcd + 1):
+    if gcd % i == 0:
+        gcd_list.append(i)
+print(gcd_list[-k])

@@ -1,4 +1,6 @@
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
+def main():
+    num = input()
+    if len(num) < 3:
+        print('0' + num)
+    else:
+        print(num[-2:])

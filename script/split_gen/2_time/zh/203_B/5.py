@@ -1,12 +1,8 @@
-def main():
-    # 读取输入
-    a, b, c = map(int, input().split())
-    # 逻辑处理
-    if a == b:
-        print(c)
-    elif a == c:
-        print(b)
-    elif b == c:
-        print(a)
-    else:
-        print(0)
+def problems203_b(n,k):
+    sum = 0
+    for i in range(1,n+1):
+        for j in range(1,k+1):
+            sum += i*100+j
+    return sum
+n,k = map(int,input().split())
+print(problems203_b(n,k))

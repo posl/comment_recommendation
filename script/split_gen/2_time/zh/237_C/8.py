@@ -1,14 +1,7 @@
-def main():
-    H, W = map(int, input().split())
-    A = []
-    for i in range(H):
-        A.append(list(map(int, input().split())))
-    B = []
-    for i in range(W):
-        B.append([])
-        for j in range(H):
-            B[i].append(A[j][i])
-    for i in range(W):
-        for j in range(H):
-            print(B[i][j], end=' ')
-        print('')
+def is_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+s = input()
+l = len(s)

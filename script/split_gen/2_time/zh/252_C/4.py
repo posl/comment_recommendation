@@ -1,10 +1,11 @@
-def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    for i in range(K):
-        A[B[i]-1] = 0
-    if max(A) != 0:
-        print('Yes')
+def get_min_time(s1, s2):
+    s1 = list(s1)
+    s2 = list(s2)
+    if s1 == s2:
+        return 0
     else:
-        print('No')
+        count = 0
+        for i in range(len(s1)):
+            if s1[i] != s2[i]:
+                count += 1
+        return count

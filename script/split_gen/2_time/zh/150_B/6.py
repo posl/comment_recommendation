@@ -1,6 +1,8 @@
-def main():
-    k,x = map(int, input().split())
-    if k*500 >= x:
-        print('Yes')
-    else:
-        print('No')
+def solve():
+    n = int(input())
+    s = input()
+    ans = 0
+    for i in range(n-2):
+        if s[i:i+3] == "ABC":
+            ans += 1
+    print(ans)

@@ -1,2 +1,3 @@
-def solve():
-    pass
+def main():
+    n = int(input())
+    print(1110-n)

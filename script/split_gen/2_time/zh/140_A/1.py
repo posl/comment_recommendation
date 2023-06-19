@@ -1,3 +1,3 @@
 def main():
     N = int(input())
-    print(N*(N-1)//2)
+    print(pow(N, 3))

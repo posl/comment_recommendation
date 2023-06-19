@@ -1,6 +1,6 @@
-def main():
-    n,k = list(map(int, input().split()))
-    if n < k:
-        print(n)
-    else:
-        print(min(n % k, k - n % k))
+def is_rounroun(n):
+    s = str(n)
+    for i in range(len(s) - 1):
+        if abs(int(s[i]) - int(s[i + 1])) > 1:
+            return False
+    return True

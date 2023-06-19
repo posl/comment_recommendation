@@ -1,5 +1,3 @@
-def main():
-    # 读取输入
-    A,B = map(int, input().split())
-    # 计算
-    print(A*B - (A+B) + 1)
+def solve():
+    a,b = map(int, input().split())
+    print(a*b-1)

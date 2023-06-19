@@ -1,11 +1,11 @@
-def main():
-    s = input()
-    max_len = 0
+def countAC(s):
     count = 0
-    for i in range(len(s)):
-        if s[i] in 'ACGT':
+    for i in range(len(s)-1):
+        if s[i] == 'A' and s[i+1] == 'C':
             count += 1
-            max_len = max(max_len, count)
-        else:
-            count = 0
-    print(max_len)
+    return count
+n, q = map(int, input().split())
+s = input()
+for i in range(q):
+    l, r = map(int, input().split())
+    print(countAC(s[l-1:r]))

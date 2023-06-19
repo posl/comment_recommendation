@@ -1,3 +1,5 @@
-def main():
-    n = int(input())
-    print(n * (n - 1) / (2 * (n - 1)) + 1)
+def solve(m, h):
+    if h % m == 0:
+        print('Yes')
+    else:
+        print('No')

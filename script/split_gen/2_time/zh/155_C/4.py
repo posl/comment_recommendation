@@ -1,11 +1,16 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
+    l = []
     for i in range(n):
-        if a[i] % 2 == 0:
-            if a[i] % 3 == 0 or a[i] % 5 == 0:
-                pass
-            else:
-                print("DENIED")
-                exit(0)
-    print("APPROVED")
+        l.append(input())
+    l.sort()
+    max = 1
+    for i in range(n-1):
+        if l[i] == l[i+1]:
+            max += 1
+        else:
+            max = 1
+        if max > (n//2):
+            print(l[i])
+            break
+main()

@@ -1,7 +1,3 @@
-def get_input():
-    n, m = map(int, input().split())
-    edges = []
-    for i in range(m):
-        u, v = map(int, input().split())
-        edges.append((u, v))
-    return n, m, edges
+def main():
+    a, b = map(int, input().split())
+    print(a ** b)

@@ -1,5 +1,9 @@
-def main():
-    # 读取输入
-    p, q, r = map(int, input().split())
-    # 计算最短时间
-    print(min(p + q, q + r, r + p))
+def get_min_diff(n, weights):
+    min_diff = 1000000
+    for i in range(1, n):
+        left_sum = sum(weights[:i])
+        right_sum = sum(weights[i:])
+        diff = abs(left_sum - right_sum)
+        if diff < min_diff:
+            min_diff = diff
+    return min_diff

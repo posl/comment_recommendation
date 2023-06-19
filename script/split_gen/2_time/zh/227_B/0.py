@@ -1,8 +1,15 @@
 def main():
-    n,k,a = map(int,input().split())
-    if k < n:
-        print(k+a)
-    else:
-        k = k-n
-        a = a-1
-        print((a+k)%n+1)
+    N = int(input())
+    S = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        a = 1
+        while a * a <= S[i]:
+            if S[i] % a == 0:
+                b = S[i] // a
+                if 4 * a * b + 3 * a + 3 * b == S[i]:
+                    break
+            a += 1
+        if a * a > S[i]:
+            count += 1
+    print(count)

@@ -1,8 +1,9 @@
 def main():
     n = int(input())
-    sum = 0
-    for i in range(1, n+1):
-        sum += i
-        if sum >= n:
-            print(i)
-            break
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if a[i] != a[j]:
+                ans += 1
+    print(ans)

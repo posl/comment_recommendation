@@ -1,10 +1,5 @@
-def problem237_d():
-    N = int(input())
-    S = input()
-    A = [0]
-    for i in range(N):
-        if S[i] == "L":
-            A.insert(0, i+1)
-        else:
-            A.append(i+1)
-    print(" ".join(map(str, A)))
+def solve(n):
+    if 2**n > n**2:
+        return '是'
+    else:
+        return '否'

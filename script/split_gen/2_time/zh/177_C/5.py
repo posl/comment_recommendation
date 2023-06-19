@@ -1,12 +1,11 @@
-def solve():
-    s = input()
-    t = input()
-    min = len(t)
-    for i in range(len(s)-len(t)+1):
-        count = 0
-        for j in range(len(t)):
-            if s[i+j] != t[j]:
-                count += 1
-        if count < min:
-            min = count
-    print(min)
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    s = sum(a)
+    ans = 0
+    for i in range(n):
+        s -= a[i]
+        ans += a[i] * s
+        ans %= mod
+    print(ans)

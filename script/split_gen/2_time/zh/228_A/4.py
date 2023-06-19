@@ -1,6 +1,12 @@
 def main():
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort()
-    a.reverse()
-    print(sum(a[0:k]))
+    s, t, x = map(int, input().split())
+    if s < t:
+        if x > s and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if x > s or x < t:
+            print("Yes")
+        else:
+            print("No")

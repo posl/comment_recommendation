@@ -1,5 +1,7 @@
 def main():
-    N, K = map(int, input().split())
-    H = list(map(int, input().split()))
-    H.sort(reverse=True)
-    print(sum(H[K:]))
+    H = int(input())
+    count = 0
+    while H > 0:
+        count += 1
+        H //= 2
+    print(2**count - 1)

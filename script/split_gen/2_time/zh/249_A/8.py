@@ -1,17 +1,13 @@
-def binary_search(arr, l, r, x):
-    if r >= l:
-        mid = l + (r - l) // 2
-        if arr[mid] == x:
-            return mid
-        elif arr[mid] > x:
-            return binary_search(arr, l, mid - 1, x)
-        else:
-            return binary_search(arr, mid + 1, r, x)
+def problem249_a():
+    # 读取输入
+    a, b, c, d, e, f, x = map(int, input().split())
+    # 计算高桥和青木的跑步距离
+    taka = (a + b) * c
+    aoki = (d + e) * f
+    # 判断谁跑得更远
+    if taka > aoki:
+        print("高桥")
+    elif taka < aoki:
+        print("青木")
     else:
-        return -1
-N = int(input())
-A = list(map(int, input().split()))
-Q = int(input())
-for i in range(Q):
-    L, R, X = map(int, input().split())
-    print(binary_search(A, L - 1, R - 1, X))
+        print("画")

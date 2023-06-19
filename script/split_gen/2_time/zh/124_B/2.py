@@ -1,3 +1,13 @@
-def problems124_a():
-    A, B = map(int, input().split())
-    print(max(A + A - 1, B + B - 1, A + B))
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        flag = True
+        for j in range(i):
+            if h[j] >= h[i]:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)

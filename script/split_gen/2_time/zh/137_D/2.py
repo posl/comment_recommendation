@@ -1,21 +1,14 @@
-def count_chars(s):
-    chars = {}
-    for c in s:
-        if c in chars:
-            chars[c] += 1
+def main():
+    N, M = map(int, input().split())
+    jobs = [list(map(int, input().split())) for i in range(N)]
+    jobs.sort(key=lambda x:x[0])
+    ans = 0
+    i = 0
+    while i < N:
+        if M >= jobs[i][0]:
+            ans += jobs[i][1]
+            M -= 1
         else:
-            chars[c] = 1
-    return chars
-n = int(input())
-strings = []
-for i in range(n):
-    strings.append(input())
-strings_chars = []
-for s in strings:
-    strings_chars.append(count_chars(s))
-count = 0
-for i in range(n):
-    for j in range(i+1, n):
-        if strings_chars[i] == strings_chars[j]:
-            count += 1
-print(count)
+            break
+        i += 1
+    print(ans)

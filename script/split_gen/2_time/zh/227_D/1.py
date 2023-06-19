@@ -1,8 +1,17 @@
-def solve(N):
-    cnt = 0
-    for i in range(1, int(N ** (1.0 / 3)) + 1):
-        for j in range(i, int((N - i ** 3) ** (1.0 / 2)) + 1):
-            cnt += int((N - i ** 3 - j ** 3) ** (1.0 / 2)) - j
-    return cnt
-N = int(input())
-print(solve(N))
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort() # 排序
+    # print(n, k, a)
+    # 统计每个部门的人数
+    count = 1
+    num = 0
+    for i in range(1, n):
+        if a[i] == a[i-1]:
+            count += 1
+        else:
+            num += count // k
+            count = 1
+    num += count // k
+    print(num)

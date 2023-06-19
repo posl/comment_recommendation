@@ -1,2 +1,6 @@
-def solve(n,l):
-    return sum(range(l+1,l+n))
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a

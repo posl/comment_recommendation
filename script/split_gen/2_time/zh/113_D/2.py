@@ -1,10 +1,17 @@
-def main():
-    N, M = map(int, input().split())
-    py = [list(map(int, input().split())) for _ in range(M)]
-    py.sort()
-    city = [0] * N
-    for i, (p, y) in enumerate(py):
-        city[p - 1] += 1
-        py[i].append(city[p - 1])
-    for p, y, c in py:
-        print(str(p).zfill(6) + str(c).zfill(6))
+def amidakuji(h,w,k):
+    if h == 1:
+        if k == 1:
+            return 1
+        elif k == w:
+            return 2
+        else:
+            return 0
+    else:
+        if k == 1:
+            return amidakuji(h-1,w,k)
+        elif k == w:
+            return amidakuji(h-1,w-1,k-1)
+        else:
+            return amidakuji(h-1,w,k) + amidakuji(h-1,w-1,k-1)
+h,w,k = map(int,input().split())
+print(amidakuji(h,w,k)%1000000007)

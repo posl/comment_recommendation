@@ -1,8 +1,2 @@
-def main():
-    t = int(input())
-    for i in range(t):
-        a, s = map(int, input().split())
-        if a <= s:
-            print("Yes")
-        else:
-            print("No")
+def get_distance(h):
+    return (h*(12800000+h))**0.5

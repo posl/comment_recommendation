@@ -1,5 +1,5 @@
-def move_letter(letter, n):
-    letter = ord(letter) + n
-    if letter > ord('Z'):
-        letter = letter - ord('Z') + ord('A') - 1
-    return chr(letter)
+def d(n):
+    if n < 10:
+        return 1
+    else:
+        return d(n // 10) + 1

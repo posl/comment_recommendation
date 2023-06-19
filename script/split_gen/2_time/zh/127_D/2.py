@@ -1,14 +1,23 @@
 def main():
-    N, M = map(int, input().split())
-    L = []
-    R = []
-    for i in range(M):
-        l, r = map(int, input().split())
-        L.append(l)
-        R.append(r)
-    L.sort()
-    R.sort()
-    if L[-1] > R[0]:
-        print(0)
-    else:
-        print(R[0] - L[-1] + 1)
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    bc = []
+    for i in range(m):
+        bc.append(list(map(int,input().split())))
+    bc.sort(key=lambda x:x[1],reverse=True)
+    j = 0
+    for i in range(n):
+        if j < m:
+            if bc[j][0] > 0:
+                if a[i] < bc[j][1]:
+                    a[i] = bc[j][1]
+                    bc[j][0] -= 1
+                else:
+                    break
+            else:
+                j += 1
+                i -= 1
+        else:
+            break
+    print(sum(a))

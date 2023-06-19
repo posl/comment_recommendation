@@ -1,11 +1,11 @@
-def main():
-    a,b,w = map(int,input().split())
-    w *= 1000
-    ans = []
-    for i in range(1,w+1):
-        if a*i <= w <= b*i:
-            ans.append(i)
-    if len(ans) == 0:
-        print("UNSATISFIABLE")
+def count_comma(num):
+    count = 0
+    num = str(num)
+    num_len = len(num)
+    if num_len <= 3:
+        return 0
     else:
-        print(min(ans),max(ans))
+        for i in range(1, num_len):
+            if i % 3 == 0:
+                count += 1
+    return count

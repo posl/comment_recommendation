@@ -1,6 +1,6 @@
-def swap(num):
-    num = str(num)
-    num = num.replace('1','x')
-    num = num.replace('9','1')
-    num = num.replace('x','9')
-    return num
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print((n // 111 + 1) * 111)

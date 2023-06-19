@@ -1,7 +1,14 @@
-def solve():
-    a,b = map(int, input().split())
-    for i in range(1, 1000):
-        if int(i*0.08) == a and int(i*0.1) == b:
-            print(i)
-            exit()
-    print(-1)
+def main():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        t = input()
+        if t == '1':
+            s = s[::-1]
+        else:
+            f,c = t.split()[1:]
+            if f == '1':
+                s = c + s
+            else:
+                s = s + c
+    print(s)

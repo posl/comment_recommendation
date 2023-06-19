@@ -1,16 +1,13 @@
-def problems227_b(N):
-    S = []
-    for i in range(N):
-        S.append(int(input()))
+def main():
+    n = int(input())
     count = 0
-    for i in range(N):
-        a = 1
-        while a * a <= S[i]:
-            if S[i] % a == 0:
-                b = S[i] // a
-                if 4 * a * b + 3 * a + 3 * b == S[i]:
+    for a in range(1, n+1):
+        for b in range(a, n+1):
+            if a * b > n:
+                break
+            for c in range(b, n+1):
+                if a * b * c > n:
                     break
-            a += 1
-        if a * a > S[i]:
-            count += 1
+                else:
+                    count += 1
     print(count)

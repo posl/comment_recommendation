@@ -1,33 +1,30 @@
 def main():
-    # 读入数据
-    data = []
-    for i in range(3):
-        data.append(list(map(int, input().split())))
-    n = int(input())
-    b = []
-    for i in range(n):
-        b.append(int(input()))
-    # 生成标记数组
-    mark = [[False for i in range(3)] for j in range(3)]
-    for i in range(3):
-        for j in range(3):
-            if data[i][j] in b:
-                mark[i][j] = True
-    # 判断是否有宾果
-    flag = False
-    for i in range(3):
-        if mark[i][0] and mark[i][1] and mark[i][2]:
-            flag = True
-            break
-        if mark[0][i] and mark[1][i] and mark[2][i]:
-            flag = True
-            break
-    if mark[0][0] and mark[1][1] and mark[2][2]:
-        flag = True
-    if mark[0][2] and mark[1][1] and mark[2][0]:
-        flag = True
-    # 输出结果
-    if flag:
-        print("Yes")
-    else:
-        print("No")
+    # 输入
+    N, M = map(int, input().split())
+    s_c = [list(map(int, input().split())) for _ in range(M)]
+    # 处理
+    # 1. 生成一个列表，用于存储最终结果
+    result = [0 for _ in range(N)]
+    # 2. 遍历输入的数据
+    for s, c in s_c:
+        # 2.1 如果输入的位置是第一位，且输入的数字是0，那么直接返回-1
+        if s == 1 and c == 0:
+            print(-1)
+            return
+        # 2.2 如果输入的位置不是第一位，且输入的数字是0，那么直接将该位置的数字设置为0
+        if s != 1 and c == 0:
+            result[s-1] = 0
+        # 2.3 如果输入的位置是第一位，且输入的数字不是0，那么直接将该位置的数字设置为输入的数字
+        if s == 1 and c != 0:
+            result[s-1] = c
+        # 2.4 如果输入的位置不是第一位，且输入的数字不是0，那么直接将该位置的数字设置为输入的数字
+        if s != 1 and c != 0:
+            result[s-1] = c
+    # 3. 如果第一位是0，那么直接返回-1
+    if result[0] == 0:
+        print(-1)
+        return
+    # 4. 将列表转换成字符串，然后转换成整数
+    result = int("".join(map(str, result)))
+    # 5. 打印结果
+    print(result)

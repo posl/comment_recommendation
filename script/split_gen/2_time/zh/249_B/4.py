@@ -1,20 +1,21 @@
-def main():
-    A,B,C,D,E,F,X = map(int,input().split())
-    t = 0
-    while True:
-        if t % (A+B) < A:
-            X -= E
+def iswonderful(s):
+    if len(s) <= 1:
+        return False
+    if len(s) == 2:
+        if s[0].isupper() and s[1].islower():
+            return True
         else:
-            X -= F
-        if X <= 0:
-            print("高桥" if t % (A+B) < A else "青木")
-            break
-        if t % (C+D) < C:
-            X -= E
-        else:
-            X -= F
-        if X <= 0:
-            print("高桥" if t % (C+D) < C else "青木")
-            break
-        t += 1
-main()
+            return False
+    if len(s) > 2:
+        if s.islower():
+            return False
+        if s.isupper():
+            return False
+        if s[0].isupper() and s[1].islower():
+            return iswonderful(s[2:])
+        if s[0].islower() and s[1].isupper():
+            return iswonderful(s[1:])
+        if s[0].isupper() and s[1].isupper():
+            return iswonderful(s[1:])
+        if s[0].islower() and s[1].islower():
+            return iswonderful(s[1:])

@@ -1,4 +1,6 @@
-def get_input():
-    input_str = input()
-    input_str = input_str.split()
-    return input_str
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(100)
+    else:
+        print(100 - x % 100)

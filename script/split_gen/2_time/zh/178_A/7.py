@@ -1,4 +1,6 @@
-def find(x):
-    if x != p[x]:
-        p[x] = find(p[x])
-    return p[x]
+def solve():
+    x = float(input())
+    if x == 0:
+        print(1)
+    else:
+        print(0)

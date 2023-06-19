@@ -1,3 +1,16 @@
-def main():
-    w, h, x, y = map(int, input().split())
-    print(w * h / 2, 1 if w == 2 * x and h == 2 * y else 0)
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    sum = 0
+    for left in range(N):
+        while right < N and sum + A[right] < K:
+            sum += A[right]
+            right += 1
+        ans += (right - left)
+        if right == left:
+            right += 1
+        else:
+            sum -= A[left]
+    print(ans)

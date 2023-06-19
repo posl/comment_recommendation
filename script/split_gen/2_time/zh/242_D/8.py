@@ -1,12 +1,14 @@
 def main():
-    N = int(input())
-    dp = [[0] * 10 for _ in range(N + 1)]
-    for i in range(1, 10):
-        dp[1][i] = 1
-    for i in range(2, N + 1):
-        for j in range(10):
-            for k in range(10):
-                if abs(j - k) <= 1:
-                    dp[i][j] += dp[i - 1][k]
-                    dp[i][j] %= 998244353
-    print(sum(dp[N]) % 998244353)
+    s = input()
+    q = int(input())
+    tks = []
+    for i in range(q):
+        tks.append(tuple(map(int, input().split())))
+    for t, k in tks:
+        t = t % 3
+        if t == 0:
+            print(s[k-1])
+        elif t == 1:
+            print(s[k-1].translate(str.maketrans('abc', 'bca')))
+        else:
+            print(s[k-1].translate(str.maketrans('abc', 'cab')))

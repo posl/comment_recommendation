@@ -1,11 +1,9 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
     b = list(map(int, input().split()))
-    c = list(map(int, input().split()))
-    sum = 0
-    for i in range(n):
-        sum += b[a[i]-1]
-        if i < n-1 and a[i] == a[i+1]-1:
-            sum += c[a[i]-1]
-    print(sum)
+    a = [0] * n
+    a[0] = b[0]
+    for i in range(n-2):
+        a[i+1] = min(b[i], b[i+1])
+    a[n-1] = b[n-2]
+    print(sum(a))

@@ -1,12 +1,12 @@
 def main():
-    #输入数据
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    #解决问题
-    maxA = max(A)
-    maxB = max(B)
-    if maxA > maxB:
-        print('Yes')
-    else:
-        print('No')
+    n = int(input())
+    s = []
+    for _ in range(n):
+        s.append(input())
+    ans = 0
+    for i in range(10):
+        for j in range(n):
+            if s[j][i] == str((i+1)%10):
+                ans += 1
+                break
+    print(ans)

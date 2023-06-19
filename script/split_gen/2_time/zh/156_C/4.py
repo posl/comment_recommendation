@@ -1,8 +1,5 @@
-def main():
-    n, k = map(int, input().split())
-    count = 0
-    while n > 0:
-        n = n // k
-        count += 1
-    print(count)
-main()
+def cal_min(x, n):
+    min = 0
+    for i in range(n):
+        min += (x - i) ** 2
+    return min

@@ -1,4 +1,16 @@
 def main():
-    l, r = map(int, input().split())
-    s = 'atcoder'
-    print(s[l-1:r])
+    R,C = map(int,input().split())
+    for i in range(R):
+        if i%2 == 0:
+            for j in range(C):
+                if j%2 == 0:
+                    print('#',end='')
+                else:
+                    print('.',end='')
+        else:
+            for j in range(C):
+                if j%2 == 0:
+                    print('.',end='')
+                else:
+                    print('#',end='')
+        print()

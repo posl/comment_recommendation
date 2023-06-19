@@ -1,6 +1,5 @@
-def count_abc(s):
-    count = 0
-    for i in range(len(s)-2):
-        if s[i:i+3] == 'ABC':
-            count += 1
-    return count
+def permutation(n):
+    if n == 1:
+        return [[1]]
+    else:
+        return [[n] + p for p in permutation(n-1)] + [p + [n] for p in permutation(n-1)]

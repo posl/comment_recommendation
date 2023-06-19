@@ -1,10 +1,6 @@
 def main():
-    n = int(input())
-    count = 0
-    while n != 2:
-        if n % 2 == 0:
-            n = n // 2
-        else:
-            n = n - 1
-        count += 1
-    print(count + 2)
+    a, b, x = map(int, input().split())
+    if x <= a*a*b/2:
+        print(90 - 2*x/a/a/b*180)
+    else:
+        print(2*(a*a*b-x)/a/a/a*180)

@@ -1,9 +1,4 @@
-def problem222_a(n):
-    if n < 10:
-        print('000' + str(n))
-    elif n < 100:
-        print('00' + str(n))
-    elif n < 1000:
-        print('0' + str(n))
-    else:
-        print(str(n))
+def get_input():
+    n,p = map(int,input().split())
+    a = list(map(int,input().split()))
+    return n,p,a

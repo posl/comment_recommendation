@@ -1,13 +1,11 @@
-def main():
-    N = int(input())
-    H = [int(i) for i in input().split()]
+def problem124_c():
+    S = input()
     count = 0
-    for i in range(N):
-        flag = True
-        for j in range(i):
-            if H[j] >= H[i]:
-                flag = False
-                break
-        if flag:
-            count += 1
+    for i in range(len(S)):
+        if i%2 == 0:
+            if S[i] == '1':
+                count += 1
+        else:
+            if S[i] == '0':
+                count += 1
     print(count)

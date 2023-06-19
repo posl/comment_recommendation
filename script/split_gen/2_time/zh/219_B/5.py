@@ -1,13 +1,14 @@
-def getScore():
-    score = int(input())
-    if score >= 0 and score < 40:
-        print(40-score)
-    elif score >= 40 and score < 70:
-        print(70-score)
-    elif score >= 70 and score < 90:
-        print(90-score)
-    elif score >= 90 and score <= 100:
-        print('专家')
-    else:
-        print('输入错误')
-getScore()
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    ans = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            ans += s1
+        elif t[i] == "2":
+            ans += s2
+        elif t[i] == "3":
+            ans += s3
+    print(ans)

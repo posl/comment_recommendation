@@ -1,11 +1,10 @@
 def main():
-    N = int(input())
-    H_list = list(map(int, input().split()))
+    s = input()
+    n = len(s)
     count = 0
-    for i in range(N):
-        if i == 0:
+    for i in range(n):
+        if i % 2 == 0 and s[i] == '1':
             count += 1
-        else:
-            if max(H_list[:i]) <= H_list[i]:
-                count += 1
-    print(count)
+        elif i % 2 == 1 and s[i] == '0':
+            count += 1
+    print(min(count, n - count))

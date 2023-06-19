@@ -1,7 +1,4 @@
-def main():
-    N = int(input())
-    A = input().split()
-    sum = 0
-    for i in range(N):
-        sum += int(A[i])
-    print(sum)
+def get_input():
+    input_str = input()
+    input_str = input_str.split(' ')
+    return int(input_str[0]), int(input_str[1])

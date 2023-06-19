@@ -1,8 +1,11 @@
 def main():
-    x,y = map(float,input().split('.'))
-    if 0<=y<=2:
-        print(str(int(x))+'-')
-    elif 3<=y<=6:
-        print(str(int(x)))
-    else:
-        print(str(int(x))+'+')
+    N = int(input())
+    names = []
+    for i in range(N):
+        names.append(input().split())
+    names.sort()
+    for i in range(N-1):
+        if names[i] == names[i+1]:
+            print("Yes")
+            exit()
+    print("No")

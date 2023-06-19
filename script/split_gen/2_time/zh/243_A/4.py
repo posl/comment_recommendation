@@ -1,13 +1,17 @@
-def main():
-    s = input()
-    q = int(input())
-    t_k = []
-    for i in range(q):
-        t_k.append(list(map(int, input().split())))
-    #print(t_k)
-    for i in range(q):
-        t = t_k[i][0]
-        k = t_k[i][1]
-        for j in range(t):
-            s = s.replace('a', 'bc').replace('b', 'ca').replace('c', 'ab')
-        print(s[k-1])
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    while v > 0:
+        v = v - a
+        if v < 0:
+            print('F')
+            return
+        v = v - b
+        if v < 0:
+            print('M')
+            return
+        v = v - c
+        if v < 0:
+            print('T')
+            return
+    return
+problems243_a()

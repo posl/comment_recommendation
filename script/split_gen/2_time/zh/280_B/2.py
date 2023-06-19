@@ -1,4 +1,6 @@
-def problems280_a():
-    H, W = map(int, input().split())
-    S = [input() for i in range(H)]
-    print(sum([s.count("#") for s in S]))
+def solve(n, s):
+    a = [0]*n
+    a[0] = s[0]
+    for i in range(1, n):
+        a[i] = s[i] - s[i-1]
+    return a

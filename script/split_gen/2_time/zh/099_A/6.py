@@ -1,6 +1,5 @@
-def main():
-    n = int(input())
+def get_abc(n):
     if n < 999:
-        print('ABC')
+        return 'ABC'
     else:
-        print('ABD')
+        return 'ABD'

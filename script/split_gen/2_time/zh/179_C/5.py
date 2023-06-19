@@ -1,14 +1,17 @@
-def main():
-    n = int(input())
-    dice = []
-    for i in range(n):
-        dice.append(list(map(int, input().split())))
-    #print(dice)
-    #print(dice[0][0])
-    #print(dice[0][1])
-    for i in range(n-2):
-        if dice[i][0] == dice[i][1] and dice[i+1][0] == dice[i+1][1] and dice[i+2][0] == dice[i+2][1]:
-            print("Yes")
-            break
-    else:
-        print("No")
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n ** 0.5) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n // i)
+    divisors.sort()
+    return divisors
+N = int(input())
+divisors = get_divisors(N)
+count = 0
+for i in range(len(divisors)):
+    for j in range(i, len(divisors)):
+        if N % divisors[i] == 0 and N // divisors[i] % divisors[j] == 0:
+            count += 1
+print(count)

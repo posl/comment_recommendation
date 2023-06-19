@@ -1,14 +1,44 @@
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    t = input()
-    res = ''
-    for i in t:
-        if i == '1':
-            res += s1
-        elif i == '2':
-            res += s2
-        else:
-            res += s3
-    print(res)
+    x=input()
+    n=int(input())
+    s=[]
+    for i in range(n):
+        s.append(input())
+    #print(x)
+    #print(n)
+    #print(s)
+    #print(sorted(s))
+    #print(sorted(s,key=lambda x:x[1]))
+    #print(sorted(s,key=lambda x:x[0]))
+    #print(sorted(s,key=lambda x:x[0],reverse=True))
+    #print(sorted(s,key=lambda x:x[1]))
+    #print(sorted(s,key=lambda x:x[1],reverse=True))
+    #print(sorted(s,key=lambda x:x[2]))
+    #print(sorted(s,key=lambda x:x[2],reverse=True))
+    #print(sorted(s,key=lambda x:x[3]))
+    #print(sorted(s,key=lambda x:x[3],reverse=True))
+    #print(sorted(s,key=lambda x:x[4]))
+    #print(sorted(s,key=lambda x:x[4],reverse=True))
+    #print(sorted(s,key=lambda x:x[5]))
+    #print(sorted(s,key=lambda x:x[5],reverse=True))
+    #print(sorted(s,key=lambda x:x[6]))
+    #print(sorted(s,key=lambda x:x[6],reverse=True))
+    #print(sorted(s,key=lambda x:x[7]))
+    #print(sorted(s,key=lambda x:x[7],reverse=True))
+    #print(sorted(s,key=lambda x:x[8]))
+    #print(sorted(s,key=lambda x:x[8],reverse=True))
+    #print(sorted(s,key=lambda x:x[9]))
+    #print(sorted(s,key=lambda x:x[9],reverse=True))
+    #print(sorted(s,key=lambda x:x[10]))
+    #print(sorted(s,key=lambda x:x[10],reverse=True))
+    #print(sorted(s,key=lambda x:x[11]))
+    #print(sorted(s,key=lambda x:x[11],reverse=True))
+    #print(sorted(s,key=lambda x:x[12]))
+    #print(sorted(s,key=lambda x:x[12],reverse=True))
+    #print(sorted(s,key=lambda x:x[13]))
+    #print(sorted(s,key=lambda x:x[13],reverse=True))
+    #print(sorted(s,key=lambda x:x[14]))
+    #print(sorted(s,key=lambda x:x[14],reverse=True))
+    #print(sorted(s,key=lambda x:x[15]))
+    #print(sorted(s,key=lambda x:x[15],reverse=True))
+    #print(sorted(s,key=lambda x:x

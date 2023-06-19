@@ -1,2 +1,7 @@
-def problem239_a(h):
-    return (h*(12800000+h))**(1/2)
+def floor(x):
+    if x >= 0:
+        return x // 10
+    else:
+        return -((-x + 9) // 10)
+x = int(input())
+print(floor(x))

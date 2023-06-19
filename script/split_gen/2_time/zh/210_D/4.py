@@ -1,11 +1,10 @@
-def main():
-    N, K = map(int, input().split())
-    c = list(map(int, input().split()))
-    c_set = set(c[:K])
-    c_max = len(c_set)
-    for i in range(N-K):
-        c_set.remove(c[i])
-        c_set.add(c[i+K])
-        if len(c_set) > c_max:
-            c_max = len(c_set)
-    print(c_max)
+def min_cost(h, w, c, a):
+    min_cost = 10**9 * h * w
+    for i in range(h):
+        for j in range(w):
+            for k in range(h):
+                for l in range(w):
+                    cost = a[i][j] + a[k][l] + c * (abs(i-k) + abs(j-l))
+                    if cost < min_cost:
+                        min_cost = cost
+    return min_cost

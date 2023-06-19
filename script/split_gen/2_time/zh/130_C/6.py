@@ -1,7 +1,7 @@
 def main():
-    n, x = map(int, input().split())
-    l = list(map(int, input().split()))
-    d = [0]
-    for i in range(n):
-        d.append(d[i]+l[i])
-    print(len(list(filter(lambda y: y <= x, d))))
+    W,H,x,y = map(int,input().split())
+    area = W*H/2
+    if x*2 == W and y*2 == H:
+        print(area,1)
+    else:
+        print(area,0)

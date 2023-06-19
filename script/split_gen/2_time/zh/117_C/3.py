@@ -1,6 +1,12 @@
-def is_polygon(n, L):
-    L.sort(reverse=True)
-    if L[0] < sum(L[1:]):
-        return True
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n == 1:
+        print(abs(x[0]))
     else:
-        return False
+        x_diff = []
+        for i in range(m - 1):
+            x_diff.append(abs(x[i + 1] - x[i]))
+        x_diff.sort()
+        print(sum(x_diff[:n - 1]))

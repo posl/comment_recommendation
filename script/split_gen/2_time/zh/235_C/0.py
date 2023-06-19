@@ -1,4 +1,7 @@
 def get_input():
-    n = int(input())
-    h = list(map(int, input().split()))
-    return n, h
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    xk = []
+    for _ in range(q):
+        xk.append(list(map(int, input().split())))
+    return n, q, a, xk

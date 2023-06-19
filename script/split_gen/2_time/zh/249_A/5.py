@@ -1,12 +1,20 @@
-def count_element(start, end, x):
-    count = 0
-    for i in range(start, end+1):
-        if a[i] == x:
-            count += 1
-    return count
-n = int(input())
-a = list(map(int, input().split()))
-q = int(input())
-for i in range(q):
-    l, r, x = map(int, input().split())
-    print(count_element(l-1, r-1, x))
+def main():
+    A, B, C, D, E, F, X = map(int, input().split())
+    time = 0
+    while True:
+        if time % (A + B) < A:
+            X -= E
+        else:
+            X -= F
+        if X <= 0:
+            print("青木")
+            break
+        if time % (D + E) < D:
+            X -= C
+        else:
+            X -= F
+        if X <= 0:
+            print("高桥")
+            break
+        time += 1
+main()

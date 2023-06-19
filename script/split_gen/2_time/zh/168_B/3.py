@@ -1,8 +1,7 @@
 def main():
-    n = int(input())
-    if n%10 in [2, 4, 5, 7, 9]:
-        print("hon")
-    elif n%10 in [0, 1, 6, 8]:
-        print("pon")
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        print(s[0:k] + "...")
     else:
-        print("bon")
+        print(s)

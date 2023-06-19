@@ -1,6 +1,22 @@
 def S(n):
-    s = 0
-    while n > 0:
-        s += n % 10
-        n //= 10
-    return s
+    return sum(map(int, str(n)))
+K = int(input())
+ans = []
+for i in range(1, 10):
+    ans.append(i)
+    while len(ans) < K and ans[-1] < 10 ** 15:
+        ans.append(ans[-1] * 10)
+    if len(ans) == K:
+        break
+for i in range(1, 10):
+    for j in range(1, 10):
+        ans.append(i * 10 ** 10 + j)
+        while len(ans) < K and ans[-1] < 10 ** 15:
+            ans.append(ans[-1] * 10)
+        if len(ans) == K:
+            break
+    if len(ans) == K:
+        break
+ans.sort()
+for a in ans:
+    print(a)

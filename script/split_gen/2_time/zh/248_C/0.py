@@ -1,7 +1,5 @@
 def main():
-    a, b, k = map(int, input().split())
-    ans = 0
-    while a < b:
-        a += (a * k)
-        ans += 1
-    print(ans)
+    n = 2
+    m = 3
+    k = 4
+    print(solve(n,m,k))

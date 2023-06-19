@@ -1,5 +1,6 @@
-def round(x):
-    if x == int(x):
-        print(int(x))
+def is_even_digit(n):
+    n = str(n)
+    if len(n) % 2 == 0:
+        return True
     else:
-        print(round(x))
+        return False

@@ -1,4 +1,19 @@
-def problem267_a():
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    s = input()
-    print(6 - week.index(s))
+def main():
+    S = input()
+    if S[0] == '0':
+        print('No')
+        return
+    if S[4] == '0':
+        print('No')
+        return
+    if S[5] == '0':
+        print('No')
+        return
+    if S[6] == '0':
+        print('No')
+        return
+    if S[7] == '0':
+        print('No')
+        return
+    print('Yes')
+    return

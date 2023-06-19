@@ -1,6 +1,5 @@
-def main():
-    n = int(input())
-    if n >= -2**31 and n <= 2**31-1:
-        print("是")
-    else:
-        print("否")
+def print_matrix(matrix):
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            print(matrix[i][j], end=" ")
+        print()

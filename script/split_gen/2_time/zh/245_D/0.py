@@ -1,10 +1,9 @@
-def solve():
-    n,k = [int(i) for i in input().split()]
-    a = [int(i) for i in input().split()]
-    b = [int(i) for i in input().split()]
-    for i in range(n):
-        if abs(a[i]-b[i])>k:
-            print("No")
-            return
-    print("Yes")
-    return
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0]*(M+1)
+    B[0] = C[0]//A[0]
+    for i in range(1, M+1):
+        B[i] = (C[i] - sum([B[j]*A[i-j] for j in range(i)]))//A[0]
+    print(' '.join(map(str, B)))

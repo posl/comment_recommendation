@@ -1,5 +1,11 @@
-def is_int_32(num):
-    if num >= -2**31 and num <= 2**31-1:
-        print("是")
-    else:
-        print("否")
+def main():
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    for i in range(w):
+        for j in range(h):
+            if j == h - 1:
+                print(a[j][i])
+            else:
+                print(a[j][i], end = ' ')

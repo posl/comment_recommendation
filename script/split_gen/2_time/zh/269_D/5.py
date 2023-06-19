@@ -1,19 +1,27 @@
-def main():
-    n = int(input())
-    nbin = bin(n)[2:]
-    nlen = len(nbin)
-    ans = []
-    for i in range(1 << nlen):
-        x = bin(i)[2:]
-        xlen = len(x)
-        if xlen > nlen:
-            break
-        ok = True
-        for j in range(xlen):
-            if x[j] == '1' and nbin[nlen - xlen + j] == '0':
-                ok = False
-                break
-        if ok:
-            ans.append(i)
-    for a in ans:
-        print(a)
+def dfs(x,y):
+    if x < -1000 or x > 1000 or y < -1000 or y > 1000:
+        return
+    if not (x,y) in d:
+        return
+    if d[(x,y)]:
+        return
+    d[(x,y)] = True
+    dfs(x-1,y-1)
+    dfs(x-1,y)
+    dfs(x,y-1)
+    dfs(x,y+1)
+    dfs(x+1,y)
+    dfs(x+1,y+1)
+n = int(input())
+d = {}
+for i in range(n):
+    x,y = map(int,input().split())
+    d[(x,y)] = False
+ans = 0
+for i in range(n):
+    x,y = map(int,input().split())
+    if d[(x,y)]:
+        continue
+    ans += 1
+    dfs(x,y)
+print(ans)

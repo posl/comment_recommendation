@@ -1,9 +1,10 @@
-def get_input():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(0,n):
-        line = input()
-        x.append(int(line.split(" ")[0]))
-        y.append(int(line.split(" ")[1]))
-    return n,x,y
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print('expert')

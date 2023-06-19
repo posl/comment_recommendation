@@ -1,10 +1,12 @@
 def main():
-    s = input()
-    s = s[::-1]
-    s = s.replace('6', 'a')
-    s = s.replace('9', 'b')
-    s = s.replace('1', 'c')
-    s = s.replace('a', '1')
-    s = s.replace('b', '9')
-    s = s.replace('c', '1')
-    print(s)
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda i: int(i) - 1, input().split()))
+    d = [0] * n
+    for i in range(n):
+        d[c[i]] += 1
+    ans = 0
+    for i in range(n):
+        ans += d[b[i] - 1]
+    print(ans)

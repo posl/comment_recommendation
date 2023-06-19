@@ -1,9 +1,5 @@
-def solve():
+def main():
     n = int(input())
-    s = input()
-    count = 0
-    for i in range(n-2):
-        if s[i:i+3] == 'ABC':
-            count += 1
-    print(count)
-solve()
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+    print(abs(p.index(1)-q.index(1)))

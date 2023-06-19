@@ -1,9 +1,7 @@
 def main():
-    s,t = input().split()
-    a,b = map(int, input().split())
-    u = input()
-    if u == s:
-        a -= 1
-    elif u == t:
-        b -= 1
-    print(a,b)
+    # 读入输入
+    S = input()
+    # 计算结果
+    ans = 'x' * len(S)
+    # 输出结果
+    print(ans)

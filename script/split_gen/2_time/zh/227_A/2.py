@@ -1,14 +1,7 @@
 def main():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(n):
-        a, b = map(int, input().split())
-        x.append(a)
-        y.append(b)
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if abs(x[i]-x[j]) >= abs(y[i]-y[j]):
-                ans += 1
-    print(ans)
+    n,k,a = map(int,input().split())
+    res = (k+a-1) % n
+    if res == 0:
+        print(n)
+    else:
+        print(res)

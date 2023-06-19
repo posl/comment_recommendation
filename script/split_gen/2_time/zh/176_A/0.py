@@ -1,2 +1,3 @@
-def solve():
-    return
+def problems176_a():
+    n,x,t = map(int, input().split())
+    print((n+x-1)//x * t)

@@ -1,5 +1,6 @@
-def solve(n,k,p):
-    ans=[]
-    for i in range(k,n+1):
-        ans.append(max(p[i-k:i]))
-    print(*ans,sep='\n')
+def main():
+    abc = input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    print(a*111+b*111+c*111)

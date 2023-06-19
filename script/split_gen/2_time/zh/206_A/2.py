@@ -1,9 +1,8 @@
-def get_next_num(num):
-    if num == 0:
-        return 1
-    elif num == 1:
-        return 2
-    elif num == 2:
-        return 4
+def main():
+    N = int(input())
+    if int(N*1.08) < 206:
+        print("Yay!")
+    elif int(N*1.08) == 206:
+        print("so-so")
     else:
-        return num*2
+        print(":(")

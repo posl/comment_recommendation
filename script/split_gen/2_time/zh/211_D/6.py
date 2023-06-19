@@ -1,12 +1,13 @@
 def main():
-    s = input()
-    chokudai = "chokudai"
-    MOD = 10 ** 9 + 7
-    dp = [0] * (len(chokudai) + 1)
-    dp[0] = 1
-    for c in s:
-        for i, c2 in enumerate(chokudai):
-            if c == c2:
-                dp[i + 1] += dp[i]
-                dp[i + 1] %= MOD
-    print(dp[-1])
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+    print(N)
+    print(M)
+    return

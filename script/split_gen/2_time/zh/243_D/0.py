@@ -1,2 +1,2 @@
-def problems243_c():
-    return None
+def problems243_d():
+    pass

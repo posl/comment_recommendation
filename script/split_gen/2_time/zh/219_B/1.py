@@ -1,11 +1,15 @@
-def get_score_level(score):
-    if score >= 0 and score < 40:
-        return "新手"
-    elif score >= 40 and score < 70:
-        return "中级"
-    elif score >= 70 and score < 90:
-        return "高级"
-    elif score >= 90 and score <= 100:
-        return "专家"
-    else:
-        return "输入分数有误"
+def get_s(s, t):
+    s1 = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            s1 += s[0]
+        elif t[i] == '2':
+            s1 += s[1]
+        else:
+            s1 += s[2]
+    return s1
+s1 = input()
+s2 = input()
+s3 = input()
+t = input()
+print(get_s(s1, t) + get_s(s2, t) + get_s(s3, t))

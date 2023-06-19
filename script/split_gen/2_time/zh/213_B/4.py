@@ -1,3 +1,4 @@
-def main():
-    a, b = map(int, input().split())
-    print(a^b)
+def readinput():
+    n=int(input())
+    a=list(map(int,input().split()))
+    return n,a

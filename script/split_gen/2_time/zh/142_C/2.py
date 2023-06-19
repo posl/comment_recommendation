@@ -1,8 +1,7 @@
-def fun1():
-    n,k = map(int,input().split())
-    h = list(map(int,input().split()))
-    count = 0
-    for i in h:
-        if i >= k:
-            count += 1
-    print(count)
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(" ".join(map(str, b)))

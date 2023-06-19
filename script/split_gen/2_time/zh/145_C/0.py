@@ -1,10 +1,2 @@
-def main():
-    N = int(input())
-    S = input()
-    if N % 2 == 0:
-        if S[0:N//2] == S[N//2:N]:
-            print("Yes")
-        else:
-            print("No")
-    else:
-        print("No")
+def getDistance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5

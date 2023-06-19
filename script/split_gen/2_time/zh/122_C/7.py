@@ -1,8 +1,14 @@
 def main():
-    s = input()
-    max_len = 0
-    for i in range(len(s)):
-        for j in range(i+1, len(s)+1):
-            if is_ACGT(s[i:j]):
-                max_len = max(max_len, j-i)
-    print(max_len)
+    N, Q = map(int, input().split())
+    S = input()
+    lr = []
+    for i in range(Q):
+        lr.append(list(map(int, input().split())))
+    ac = [0] * N
+    for i in range(1, N):
+        if S[i - 1] == 'A' and S[i] == 'C':
+            ac[i] = ac[i - 1] + 1
+        else:
+            ac[i] = ac[i - 1]
+    for i in range(Q):
+        print(ac[lr[i][1] - 1] - ac[lr[i][0] - 1])

@@ -1,9 +1,11 @@
-def direction_change(direction):
-    if direction == 'N':
-        return 'E'
-    elif direction == 'E':
-        return 'S'
-    elif direction == 'S':
-        return 'W'
-    elif direction == 'W':
-        return 'N'
+def main():
+    n = int(input())
+    i = 1
+    while True:
+        print(i)
+        x = int(input())
+        if x == 0:
+            break
+        i = x
+        if i >= 2 * n + 1:
+            break

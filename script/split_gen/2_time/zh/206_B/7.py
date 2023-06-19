@@ -1,8 +1,9 @@
-def problem206_a():
-    n = int(input())
-    if n * 1.08 < 206:
-        print("Yay!")
-    elif n * 1.08 > 206:
-        print(":(")
-    else:
-        print("so-so")
+def main():
+    N = int(input())
+    x = 0
+    while True:
+        x += 1
+        if x * (x + 1) / 2 >= N:
+            break
+    print(x)
+main()

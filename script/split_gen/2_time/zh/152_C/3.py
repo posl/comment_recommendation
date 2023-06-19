@@ -1,10 +1,10 @@
 def main():
-    a,b = map(int, input().split())
-    a_str = str(a)
-    b_str = str(b)
-    if a_str == b_str:
-        print(a_str*a)
-    elif a_str < b_str:
-        print(a_str*b)
-    else:
-        print(b_str*a)
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    min_p = n + 1
+    for i in range(n):
+        if min_p > p[i]:
+            count += 1
+            min_p = p[i]
+    print(count)

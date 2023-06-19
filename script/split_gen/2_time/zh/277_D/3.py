@@ -1,18 +1,12 @@
-def main():
-    N = int(input())
-    A = []
-    B = []
-    for i in range(N):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
+def solve(N, M, A):
+    ans = 0
     A.sort()
-    B.sort()
-    if N % 2 == 0:
-        a = (A[N // 2 - 1] + A[N // 2]) // 2
-        b = (B[N // 2 - 1] + B[N // 2]) // 2
-        print(b - a + 1)
-    else:
-        a = A[N // 2]
-        b = B[N // 2]
-        print(b - a + 1)
+    for i in range(N):
+        if A[i] <= ans % M:
+            ans += M - ans % M + A[i] + 1
+        else:
+            ans += A[i] - ans % M + 1
+    return ans - 1
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+print(solve(N, M, A))

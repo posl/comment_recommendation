@@ -1,7 +1,17 @@
 def main():
     N,M = map(int,input().split())
-    A = [0 for _ in range(M)]
-    B = [0 for _ in range(M)]
+    a = [0] * M
+    b = [0] * M
     for i in range(M):
-        A[i],B[i] = map(int,input().split())
-    print(solve(N,M,A,B))
+        a[i],b[i] = map(int,input().split())
+    #print(a)
+    #print(b)
+    #print(N)
+    #print(M)
+    #print(a)
+    #print(b)
+    #print(N)
+    #print(M)
+    
+    print(N-1-M)
+    return 0

@@ -1,4 +1,3 @@
-def main():
-    print("请输入糖果的数目：")
-    N = int(input())
-    print("共有",count(N),"种方法可以使每个男孩得到正整数的糖果。")
+def isPalindrome(num):
+    num = str(num)
+    return num == num[::-1]

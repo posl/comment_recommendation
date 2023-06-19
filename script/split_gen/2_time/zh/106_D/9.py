@@ -1,14 +1,13 @@
 def main():
-    n, m, q = map(int, input().split())
-    lr = []
-    for i in range(m):
-        lr.append(list(map(int, input().split())))
-    pq = []
-    for i in range(q):
-        pq.append(list(map(int, input().split())))
-    for i in range(q):
+    n,m,q = map(int, input().split())
+    trains = []
+    for _ in range(m):
+        l,r = map(int, input().split())
+        trains.append((l,r))
+    for _ in range(q):
+        p,q = map(int, input().split())
         count = 0
-        for j in range(m):
-            if pq[i][0] <= lr[j][0] and lr[j][1] <= pq[i][1]:
+        for l,r in trains:
+            if p <= l and r <= q:
                 count += 1
         print(count)

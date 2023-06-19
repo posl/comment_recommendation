@@ -1,9 +1,8 @@
-def get_input():
-    # 获取输入
-    print("请输入H,W")
-    h, w = map(int, input().split())
-    print("请输入S_1, S_2, ..., S_H")
-    s = []
-    for i in range(h):
-        s.append(input())
-    return h, w, s
+def solution():
+    n = int(input())
+    s = list(map(int,input().split()))
+    a = [0 for i in range(n)]
+    a[0] = s[0]
+    for i in range(1,n):
+        a[i] = s[i] - s[i-1]
+    print(" ".join(map(str,a)))

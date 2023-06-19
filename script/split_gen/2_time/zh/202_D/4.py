@@ -1,8 +1,24 @@
-def count_same_num(N, A, B, C):
-    # 暴力法
-    count = 0
-    for i in range(N):
-        for j in range(N):
-            if A[i] == B[C[j]-1]:
-                count += 1
-    return count
+def getPermutation(n,k):
+    if n==1:
+        return '1'
+    nums = [i for i in range(1,n+1)]
+    res = ''
+    while n>0:
+        if k==1:
+            res += ''.join(str(i) for i in nums)
+            break
+        else:
+            if k==factorial(n):
+                nums.reverse()
+                res += ''.join(str(i) for i in nums)
+                break
+            else:
+                if k%factorial(n-1)==0:
+                    index = k/factorial(n-1)
+                else:
+                    index = k/factorial(n-1)+1
+                res += str(nums[index-1])
+                nums.remove(nums[index-1])
+                k = k%factorial(n-1)
+                n -= 1
+    return res

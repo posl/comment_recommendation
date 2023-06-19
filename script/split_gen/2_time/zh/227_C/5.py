@@ -1,9 +1,8 @@
-def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if s[i] == s[j]:
-                ans += 1
-    print(ans)
+def countABC(N):
+    count = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            for c in range(b, N+1):
+                if a*b*c <= N:
+                    count += 1
+    return count

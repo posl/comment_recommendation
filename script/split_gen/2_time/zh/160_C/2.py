@@ -1,3 +1,8 @@
 def main():
-    x = int(input())
-    print(x//500*1000+(x%500)//5*5)
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0]+k)
+    ans = k
+    for i in range(n):
+        ans = min(ans, k - (a[i+1]-a[i]))
+    print(ans)

@@ -1,6 +1,2 @@
-def solve(N, K, A):
-    A = sorted(A)
-    for i in range(N-K):
-        if A[i] >= A[i+K]:
-            return "No"
-    return "Yes"
+def is_square(n):
+    return n**0.5 == int(n**0.5)

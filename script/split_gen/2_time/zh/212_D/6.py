@@ -1,16 +1,14 @@
-def find_min_diff(a_list, b_list):
-    a_list.sort()
-    b_list.sort()
-    a_index = 0
-    b_index = 0
-    min_diff = abs(a_list[a_index] - b_list[b_index])
-    while a_index < len(a_list) and b_index < len(b_list):
-        if a_list[a_index] == b_list[b_index]:
-            return 0
-        elif a_list[a_index] < b_list[b_index]:
-            a_index += 1
-            min_diff = min(min_diff, abs(a_list[a_index] - b_list[b_index]))
-        else:
-            b_index += 1
-            min_diff = min(min_diff, abs(a_list[a_index] - b_list[b_index]))
-    return min_diff
+def main():
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    bag = []
+    for i in range(Q):
+        if query[i][0] == 1:
+            bag.append(query[i][1])
+        elif query[i][0] == 2:
+            bag = [x + query[i][1] for x in bag]
+        elif query[i][0] == 3:
+            print(min(bag))
+            bag.pop(bag.index(min(bag)))

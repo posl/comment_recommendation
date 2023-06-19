@@ -1,12 +1,13 @@
-def main():
-    a,b,c = map(int,input().split())
-    if c == 0:
-        if a > b:
-            print("Takahashi")
-        else:
-            print("Aoki")
-    else:
-        if b > a:
-            print("Aoki")
-        else:
-            print("Takahashi")
+def solve():
+    N,S,D = map(int,input().split())
+    X,Y = [],[]
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    for i in range(N):
+        if X[i] < S and Y[i] > D:
+            print('Yes')
+            return
+    print('No')
+    return

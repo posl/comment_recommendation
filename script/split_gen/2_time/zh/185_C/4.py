@@ -1,23 +1,6 @@
-def main():
-    N,M,T = map(int,input().split())
-    A = []
-    B = []
-    for i in range(M):
-        a,b = map(int,input().split())
-        A.append(a)
-        B.append(b)
-    result = 'Yes'
-    if A[0] > 0.5:
-        result = 'No'
-    if B[-1] < T-0.5:
-        result = 'No'
-    for i in range(M-1):
-        if B[i] != A[i+1]:
-            result = 'No'
-    for i in range(M):
-        if (B[i]-A[i]) % 2 == 0:
-            result = 'No'
-    for i in range(M-1):
-        if A[i+1]-B[i] < 2:
-            result = 'No'
-    print(result)
+def cut_rod(L):
+    if L == 0:
+        return 1
+    if L < 0:
+        return 0
+    return cut_rod(L-1) + cut_rod(L-2) + cut_rod(L-3) + cut_rod(L-4) + cut_rod(L-5) + cut_rod(L-6) + cut_rod(L-7) + cut_rod(L-8) + cut_rod(L-9) + cut_rod(L-10) + cut_rod(L-11)

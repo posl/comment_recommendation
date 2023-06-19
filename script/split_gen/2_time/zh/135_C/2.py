@@ -1,8 +1,13 @@
-def main():
+def solve():
     n = int(input())
-    p = list(map(int, input().split()))
-    ans = 'YES'
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
     for i in range(n):
-        if p[i] != i+1:
-            ans = 'NO'
+        ans += min(a[i], b[i])
+        a[i] -= min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i+1], b[i])
+        a[i+1] -= min(a[i+1], b[i])
     print(ans)
+solve()

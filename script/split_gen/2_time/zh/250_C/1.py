@@ -1,13 +1,7 @@
 def main():
-    N,A,B = map(int, input().split())
-    for i in range(N):
-        for j in range(A):
-            for k in range(N):
-                for l in range(B):
-                    if (i+j)%2 == 0:
-                        print("#", end='')
-                    else:
-                        print(".", end='')
-                print("", end='')
-            print("")
-        print("")
+    N, Q = map(int, input().split())
+    x = [int(input()) for _ in range(Q)]
+    a = [i for i in range(1, N+1)]
+    for i in range(Q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    print(*a)

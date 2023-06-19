@@ -1,17 +1,11 @@
 def main():
-    s = input()
-    #s = "0601889"
-    s = s[::-1]
-    #print(s)
-    s = s.replace("0","a")
-    s = s.replace("1","b")
-    s = s.replace("6","c")
-    s = s.replace("8","d")
-    s = s.replace("9","e")
-    s = s.replace("a","0")
-    s = s.replace("b","1")
-    s = s.replace("c","9")
-    s = s.replace("d","8")
-    s = s.replace("e","6")
-    print(s)
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    
+    cnt = 0
+    for i in range(n):
+        cnt += b.count(c[a[i]-1])
+    print(cnt)
 main()

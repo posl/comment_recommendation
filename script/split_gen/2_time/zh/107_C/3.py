@@ -1,12 +1,12 @@
 def main():
     n, k = map(int, input().split())
     x = list(map(int, input().split()))
-    ans = 10 ** 9
-    for i in range(n - k + 1):
-        l = x[i]
-        r = x[i + k - 1]
-        if l * r <= 0:
-            ans = min(ans, min(-l, r) * 2 + max(-l, r))
-        else:
-            ans = min(ans, max(l, r))
+    if k == 1:
+        print(0)
+        exit()
+    ans = 10**9
+    for i in range(n-k+1):
+        a = x[i]
+        b = x[i+k-1]
+        ans = min(ans, b-a+min(abs(a), abs(b)))
     print(ans)

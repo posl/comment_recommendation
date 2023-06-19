@@ -1,13 +1,8 @@
-def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    a.append(m)
-    a.append(m)
-    ans = 0
-    for i in range(n):
-        d = a[i + 1] - a[i]
-        ans += d
-        if d > 1:
-            ans -= 1
-    print(ans)
+def problems278_a():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(k):
+        a.pop(0)
+        a.append(0)
+    print(*a)
+problems278_a()

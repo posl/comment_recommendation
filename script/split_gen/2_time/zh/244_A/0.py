@@ -1,2 +1,4 @@
-def problem243_d():
-    pass
+def problems244_a():
+    n = int(input())
+    s = input()
+    print(s[-1])

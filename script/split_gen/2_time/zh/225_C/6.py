@@ -1,15 +1,20 @@
-def main():
-    N = int(input())
-    a = [0] * (N - 1)
-    b = [0] * (N - 1)
-    for i in range(N - 1):
-        a[i], b[i] = map(int, input().split())
-    c = [0] * N
-    for i in range(N - 1):
-        c[a[i] - 1] += 1
-        c[b[i] - 1] += 1
+def solve():
+    N,M = map(int,input().split())
+    B = [list(map(int,input().split())) for i in range(N)]
+    #print(N,M,B)
+    A = [[0 for i in range(7)] for j in range(N)]
     for i in range(N):
-        if c[i] == N - 1:
-            print('Yes')
-            return
-    print('No')
+        for j in range(7):
+            A[i][j] = (i)*7+j+1
+    #print(A)
+    for i in range(N):
+        for j in range(7):
+            if A[i][j] == B[0][0]:
+                for k in range(N-i):
+                    for l in range(7-j):
+                        if A[i+k][j+l] == B[k][l]:
+                            pass
+                        else:
+                            return False
+                return True
+    return False

@@ -1,11 +1,6 @@
 def main():
-    N = int(input())
     S = input()
-    for i in range(1, N):
-        l = 0
-        while l + i < N:
-            if S[l] != S[l + i]:
-                l += 1
-            else:
-                break
-        print(l)
+    #print(S)
+    #print(ord('A'))
+    #print(ord('Z'))
+    #print(o

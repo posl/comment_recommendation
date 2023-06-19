@@ -1,17 +1,6 @@
-def solve():
-    N = int(input())
-    L = list(map(int, input().split()))
-    L.sort()
-    ans = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            ok = j
-            ng = N
-            while abs(ok-ng) > 1:
-                mid = (ok+ng)//2
-                if L[mid] < L[i]+L[j]:
-                    ok = mid
-                else:
-                    ng = mid
-            ans += ok-j
-    print(ans)
+def main():
+    a,b = map(int,input().split())
+    if a <= 9 and b <= 9:
+        print(a*b)
+    else:
+        print(-1)

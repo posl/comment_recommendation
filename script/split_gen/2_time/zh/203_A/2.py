@@ -1,4 +1,10 @@
-def get_num_of_word(a, b):
-    if a == 0 or b == 0:
-        return 1
-    return get_num_of_word(a-1, b) + get_num_of_word(a, b-1)
+def main():
+    a,b,c = map(int,input().split())
+    if a==b:
+        print(c)
+    elif b==c:
+        print(a)
+    elif c==a:
+        print(b)
+    else:
+        print(0)

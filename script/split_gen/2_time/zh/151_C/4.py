@@ -1,10 +1,9 @@
-def main():
-    N, K, M = map(int, input().split())
-    A = list(map(int, input().split()))
-    if N * M - sum(A) > K:
-        print(-1)
-    elif N * M - sum(A) < 0:
-        print(0)
-    else:
-        print(N * M - sum(A))
-main()
+def get_input():
+    n, m = map(int, input().split())
+    p = []
+    s = []
+    for i in range(m):
+        p_, s_ = input().split()
+        p.append(int(p_))
+        s.append(s_)
+    return n, m, p, s

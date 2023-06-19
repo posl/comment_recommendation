@@ -1,2 +1,2 @@
 def main():
-    pass
+    N, W = map(int, input().split())

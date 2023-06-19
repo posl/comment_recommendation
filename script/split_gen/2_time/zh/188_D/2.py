@@ -1,5 +1,5 @@
-def find_second_player(players):
-    players.sort(reverse=True)
-    players.pop(0)
-    players.pop(0)
-    return players[0]
+def get_min_cost(n, c, l):
+    min_cost = 0
+    for i in range(n):
+        min_cost += l[i][2]
+    return min_cost

@@ -1,8 +1,13 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    for i in range(n):
-        print(b[i], end=" ")
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
+a, b = map(int, input().split())
+c = gcd(a, b)
+ans = 1
+for i in range(2, int(c ** 0.5) + 1):
+    if c % i == 0:
+        ans += 1
+        while c % i == 0:
+            c //= i

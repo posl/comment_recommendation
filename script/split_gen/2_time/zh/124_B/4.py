@@ -1,8 +1,11 @@
 def main():
-    A, B = map(int, input().split())
-    if A > B:
-        print(A + A - 1)
-    elif A < B:
-        print(B + B - 1)
-    else:
-        print(A + B)
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 1
+    for i in range(1, N):
+        for j in range(i):
+            if H[j] > H[i]:
+                break
+        else:
+            count += 1
+    print(count)

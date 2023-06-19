@@ -1,8 +1,25 @@
 def main():
-    # 读取输入
-    k = int(input())
-    # 计算结果
-    h = k // 60
-    m = k % 60
-    # 输出
-    print("{:02d}:{:02d}".format(h+21, m))
+    N = int(input())
+    A = [list(map(int, input())) for _ in range(N)]
+    ans = -1
+    for i in range(N):
+        for j in range(N):
+            if A[i][j] == 0:
+                continue
+            s = []
+            for k in range(N):
+                s.append(A[(i+k)%N][j])
+            ans = max(ans, int("".join(map(str, s))))
+            s = []
+            for k in range(N):
+                s.append(A[i][(j+k)%N])
+            ans = max(ans, int("".join(map(str, s))))
+            s = []
+            for k in range(N):
+                s.append(A[(i+k)%N][(j+k)%N])
+            ans = max(ans, int("".join(map(str, s))))
+            s = []
+            for k in range(N):
+                s.append(A[(i+k)%N][(j-k)%N])
+            ans = max(ans, int("".join(map(str, s))))
+    print(ans)

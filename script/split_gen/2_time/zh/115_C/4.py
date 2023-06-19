@@ -1,12 +1,12 @@
-def main():
-    #import time
-    #start = time.clock()
-    N = int(input())
-    p = []
+def resolve():
+    N,K = map(int,input().split())
+    h = []
     for i in range(N):
-        p.append(int(input()))
-    p.sort(reverse=True)
-    p[0] = p[0] / 2
-    print(int(sum(p)))
-    #end = time.clock()
-    #print(end - start)
+        h.append(int(input()))
+    h.sort()
+    ans = 10**9
+    for i in range(N-K+1):
+        tmp = h[i+K-1]-h[i]
+        if tmp < ans:
+            ans = tmp
+    print(ans)

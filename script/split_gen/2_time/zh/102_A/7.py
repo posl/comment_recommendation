@@ -1,6 +1,8 @@
-def func(n):
-    for i in range(1, n):
-        if i % 2 == 0 and i % n == 0:
-            return i
-    return n * 2
-print(func(999999999))
+def gcd(x,y):
+    if x < y:
+        x,y = y,x
+    while y > 0:
+        r = x%y
+        x = y
+        y = r
+    return x

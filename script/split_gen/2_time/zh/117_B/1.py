@@ -1,5 +1,6 @@
-def main():
-    # 读取输入
-    T,X = map(int,input().split())
-    # 计算
-    print(T/X)
+def judge(n, l):
+    l.sort()
+    if l[n-1] < sum(l[:n-1]):
+        return "是"
+    else:
+        return "否"

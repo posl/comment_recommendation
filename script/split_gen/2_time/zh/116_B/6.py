@@ -1,7 +1,5 @@
-def main():
-    #input
-    a,b,c = map(int, input().split())
-    #compute
-    area = a*b/2
-    #output
-    print(int(area))
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1

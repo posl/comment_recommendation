@@ -1,8 +1,8 @@
 def main():
-    n, k = map(int, input().split())
-    mod = 10**9 + 7
-    ans = 0
-    for i in range(k, n+2):
-        ans += i * (n-i+1) + 1
-        ans %= mod
-    print(ans)
+    # 读取输入
+    s,w = map(int,input().split())
+    # 判断
+    if s <= w:
+        print("不安全")
+    else:
+        print("安全")

@@ -1,7 +1,15 @@
-def main():
-    w,h,x,y = map(int,input().split())
-    s = w*h/2
-    if w/2 == x and h/2 == y:
-        print(s,1)
-    else:
-        print(s,0)
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    sum = 0
+    for left in range(N):
+        while right < N and sum < K:
+            sum += A[right]
+            right += 1
+        if sum >= K:
+            ans += N - right + 1
+        sum -= A[left]
+    print(ans)
+solve()

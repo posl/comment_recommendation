@@ -1,4 +1,8 @@
 def main():
-    a = int(input())
-    b = int(input())
-    print(6-a-b)
+    n = int(input())
+    s, t = input().split()
+    result = ''
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+main()

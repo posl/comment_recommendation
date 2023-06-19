@@ -1,6 +1,8 @@
 def main():
-    n, a, x, y = map(int, input().split())
-    if n > a:
-        print(a*x+(n-a)*y)
+    n = int(input())
+    s = input()
+    if s.count('1')%2 == 0:
+        print('Takahashi')
     else:
-        print(n*x)
+        print('Aoki')
+main()

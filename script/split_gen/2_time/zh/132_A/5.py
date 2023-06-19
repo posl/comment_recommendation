@@ -1,14 +1,9 @@
 def main():
-    N = int(input())
-    AB = []
-    for i in range(N):
-        AB.append(list(map(int, input().split())))
-    AB.sort(key=lambda x: x[1])
-    time = 0
-    for ab in AB:
-        time += ab[0]
-        if time > ab[1]:
-            print('No')
-            return
-    print('Yes')
-    return
+    s = input()
+    if len(s) != 4:
+        print("No")
+        return
+    if len(set(s)) == 2:
+        print("Yes")
+    else:
+        print("No")

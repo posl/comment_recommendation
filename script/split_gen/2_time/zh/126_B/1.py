@@ -1,5 +1,5 @@
-def problems126_a():
-    n,k = map(int,input().split())
-    s = input()
-    print(s[:k-1]+s[k-1].lower()+s[k:])
-problems126_a()
+def is_valid_month(month):
+    if month > 0 and month < 13:
+        return True
+    else:
+        return False

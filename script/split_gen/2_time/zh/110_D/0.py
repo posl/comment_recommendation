@@ -1,22 +1,12 @@
-def main():
-    S = list(input())
-    T = list(input())
-    if len(S) != len(T):
-        print("No")
-        return
-    if S == T:
-        print("Yes")
-        return
-    for i in range(len(S)):
-        if S[i] != T[i]:
-            for j in range(i+1, len(S)):
-                if S[j] == T[i]:
-                    S[i], S[j] = S[j], S[i]
-                    break
-            else:
-                print("No")
-                return
-    if S == T:
-        print("Yes")
-    else:
-        print("No")
+def prime_factorization(n):
+    """分解质因数"""
+    i = 2
+    table = []
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+            table.append(i)
+        i += 1
+    if n > 1:
+        table.append(n)
+    return table

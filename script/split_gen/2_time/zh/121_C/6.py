@@ -1,12 +1,32 @@
-def solve():
-    N, M, C = map(int, input().split())
-    B = list(map(int, input().split()))
-    A = [list(map(int, input().split())) for _ in range(N)]
-    ans = 0
+def main():
+    N, M = map(int, input().split())
+    # print(N, M)
+    A = []
+    B = []
     for i in range(N):
-        tmp = 0
-        for j in range(M):
-            tmp += A[i][j] * B[j]
-        if tmp + C > 0:
-            ans += 1
-    print(ans)
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # print(A, B)
+    # print('------')
+    # print(sorted(B))
+    # print('------')
+    # print(sorted(B, reverse=True))
+    # print('------')
+    # print(sorted(zip(B, A)))
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True))
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0][0])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0][1])
+    # print('------')
+    # print(sorted(zip(B, A), reverse=True)[:M][0][0] * sorted(zip(B, A), reverse=True)[:M][0][1])
+    # print('------')
+    # print(sum([sorted(zip(B, A), reverse=True)[:M][i][0] * sorted(zip(B, A), reverse=True)[:M][i][1] for i in range(M)]))
+    # print('------')
+    print(sum([sorted(zip(B, A), reverse=True)[:M][i][0] * sorted(zip(B, A), reverse=True)[:M][i][1] for i in range(M)]))

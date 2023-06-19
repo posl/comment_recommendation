@@ -1,8 +1,6 @@
-def judge(s):
-    if s[0] == 'A':
-        if s[2:-1].count('C') == 1:
-            for i in s[1:]:
-                if i.isupper():
-                    return False
-            return True
-    return False
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1 and s.replace('A', '').replace('C', '').islower():
+        print('AC')
+    else:
+        print('WA')

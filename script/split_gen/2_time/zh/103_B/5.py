@@ -1,11 +1,13 @@
 def main():
-    S = input()
-    T = input()
-    for i in range(len(S)):
-        if S == T:
-            print("Yes")
-            break
+    s = input()
+    t = input()
+    if len(s) == len(t):
+        for i in range(len(s)):
+            if s == t:
+                print('Yes')
+                break
+            s = s[-1] + s[0:-1]
         else:
-            S = S[-1] + S[:-1]
+            print('No')
     else:
-        print("No")
+        print('No')

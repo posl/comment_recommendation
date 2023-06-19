@@ -1,3 +1,3 @@
 def main():
-    A,B = input().split()
-    print(int(A)*int(B)-1)
+    A, B = map(int, input().split())
+    print((A-1)*B+(B-1)*A)

@@ -1,5 +1,2 @@
-def sum(N):
-    sum = 0
-    for i in range(1, N+1):
-        sum += i * f(i)
-    return sum
+def change(N):
+    return 1000 - N % 1000

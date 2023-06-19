@@ -1,8 +1,9 @@
-def solve(n, k):
-    ans = 0
-    for i in range(1, n + 1):
-        if i % k == 0:
-            ans += 1
-        else:
-            ans += 2
-    return ans
+def main():
+    L = int(input())
+    N = 2
+    M = 2 * L + 1
+    print(N, M)
+    print(1, 2, 0)
+    for i in range(1, L + 1):
+        print(2 * i - 1, 2 * i + 1, 1)
+        print(2 * i, 2 * i + 1, 0)

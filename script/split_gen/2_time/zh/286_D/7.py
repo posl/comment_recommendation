@@ -1,15 +1,16 @@
 def main():
-    N,A,B = map(int,input().split())
-    S = input()
-    #print(N,A,B)
-    #print(S)
-    cnt = 0
+    N, X = map(int, input().split())
+    A = []
+    B = []
     for i in range(N):
-        if S[i] == S[N-1-i]:
-            cnt += 1
-    if cnt == N:
-        print(A*N+B*(N-1))
-    elif cnt == N-1:
-        print(A*N+B)
-    elif cnt < N-1:
-        print(A*N)
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum > X:
+        print("No")
+    else:
+        print("Yes")
+main()

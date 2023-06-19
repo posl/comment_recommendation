@@ -1,14 +1,16 @@
-def main():
-    N, Q = map(int, input().split())
-    A = list(map(int, input().split()))
-    for i in range(Q):
-        x, k = map(int, input().split())
-        count = 0
-        for j in range(N):
-            if A[j] == x:
-                count += 1
-            if count == k:
-                print(j+1)
-                break
+def f(a, n):
+    if n % a != 0:
+        return -1
+    m = n // a
+    ans = 1
+    while m > 1:
+        if m % a == 0:
+            m //= a
+        elif m % a == 1:
+            m = (m - 1) // a
         else:
-            print(-1)
+            return -1
+        ans += 1
+    return ans
+a, n = map(int, input().split())
+print(f(a, n))

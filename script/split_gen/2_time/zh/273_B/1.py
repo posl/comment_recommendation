@@ -1,7 +1,7 @@
-def f(x):
-    if x == 0:
-        return 1
-    else:
-        return x * f(x - 1)
-N = int(input())
-print(f(N))
+def main():
+    x,k = map(int,input().split())
+    i = 0
+    while i < k:
+        x = x + 5 - x % 10 if x % (10 ** (i + 1)) >= 5 * 10 ** i else x - x % 10
+        i += 1
+    print(x)

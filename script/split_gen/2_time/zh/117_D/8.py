@@ -1,14 +1,27 @@
 def main():
-    n, m = map(int, input().split())
-    x = list(map(int, input().split()))
-    x.sort()
-    if n >= m:
-        print(0)
-        return
-    if n == 1:
-        print(min(abs(x[i] - x[i + n - 1]) for i in range(m - n + 1)))
-        return
-    if n == 2:
-        print(min(abs(x[i] - x[i + n - 1]) + abs(x[i + n - 1] - x[i + n]) for i in range(m - n + 2)))
-        return
-    print(min(abs(x[i] - x[i + n - 1]) + abs(x[i + n - 1] - x[i + n]) + abs(x[i + n] - x[i + n + 1]) for i in range(m - n + 3)))
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K, A)
+    #N, K = 3, 7
+    #A = [1, 6, 3]
+    #N, K = 4, 9
+    #A = [7, 4, 0, 3]
+    #N, K = 1, 0
+    #A = [1000000000000]
+    #print(N, K, A)
+    # 1. 先计算出每个数的二进制表示中有多少个1
+    # 2. 从最高位开始，如果某个数的二进制表示中的某一位为1，则该位的值为1的数的个数为N-1个
+    # 3. 如果某个数的二进制表示中的某一位为0，则该位的值为1的数的个数为N个
+    # 4. 如果该位的值为1的数的个数大于该位的值为0的数的个数，则该位的值为1，否则为0
+    # 5. 重复2-4步骤，直到计算出所有位的值
+    # 6. 将所有位的值组合起来，得到最终的结果
+    # 7. 如果K的二进制表示中的某一位为1，则最终结果的该位为0，否则为1
+    # 8. 将最终结果转换为十进制，得到最终的结果
+    # 9. 如果最终结果大于K，则最终结果为K
+    # 10. 输出最终结果
+    #print(bin(3), bin(5), bin(6))
+    #print(bin(3^5), bin(3^6), bin(5^6))
+    #print(bin(3^5^6))
+    #print(bin(3^5^6).count('1'))
+    #print(bin(3^5^6).count('0'))
+    #print(bin(

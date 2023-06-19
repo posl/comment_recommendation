@@ -1,8 +1,16 @@
-def get_input():
-    #input()函数返回的是str类型，所以要转换成int类型
+def main():
     N = int(input())
-    S = input().split()
-    #map()函数接收两个参数，一个是函数，一个是Iterable，
-    #map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。
-    S = list(map(int,S))
-    return N,S
+    count = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            for c in range(b, N+1):
+                if a*b*c <= N:
+                    if a == b and b == c:
+                        count += 1
+                    elif a == b or b == c or a == c:
+                        count += 3
+                    else:
+                        count += 6
+                else:
+                    break
+    print(count)

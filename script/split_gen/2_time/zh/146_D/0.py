@@ -1,2 +1,2 @@
-def d(n):
-    return len(str(n))
+def main():
+    pass

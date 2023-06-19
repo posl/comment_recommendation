@@ -1,17 +1,18 @@
 def main():
-    N = int(input())
-    S = [input() for i in range(N)]
-    ac = wa = tle = re = 0
-    for i in range(N):
-        if S[i] == "AC":
-            ac += 1
-        elif S[i] == "WA":
-            wa += 1
-        elif S[i] == "TLE":
-            tle += 1
-        elif S[i] == "RE":
-            re += 1
-    print("AC x " + str(ac))
-    print("WA x " + str(wa))
-    print("TLE x " + str(tle))
-    print("RE x " + str(re))
+    H, W, K = map(int, input().split())
+    c = [input() for _ in range(H)]
+    ans = 0
+    for i in range(2 ** H):
+        for j in range(2 ** W):
+            cnt = 0
+            for k in range(H):
+                for l in range(W):
+                    if (i >> k) & 1:
+                        continue
+                    if (j >> l) & 1:
+                        continue
+                    if c[k][l] == '#':
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)

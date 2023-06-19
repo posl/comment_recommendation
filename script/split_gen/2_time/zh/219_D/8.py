@@ -1,28 +1,24 @@
-def main():
-    # 读取输入
-    x = raw_input()
-    n = int(raw_input())
-    s = []
-    for i in range(n):
-        s.append(raw_input())
-    # 解决问题
-    # 排序
-    # 用一个字典来存储字母和新字母的映射
-    x_dict = {}
-    for i in range(26):
-        x_dict[x[i]] = chr(ord('a')+i)
-    # 用一个字典来存储新字母和字母的映射
-    x_dict_reverse = {}
-    for i in range(26):
-        x_dict_reverse[chr(ord('a')+i)] = x[i]
-    # 用一个字典来存储字符串和新字符串的映射
-    s_dict = {}
-    for i in range(n):
-        s_dict[s[i]] = ''
-        for j in range(len(s[i])):
-            s_dict[s[i]] += x_dict[s[i][j]]
-    # 排序
-    s_dict_sorted = sorted(s_dict.items(), key=lambda d:d[1])
-    # 输出
-    for i in range(n):
-        print s_dict_sorted[i][0]
+def solve():
+    N = int(input())
+    X,Y = map(int,input().split())
+    AB = []
+    for i in range(N):
+        A,B = map(int,input().split())
+        AB.append((A,B))
+    dp = [[False]*(Y+1) for _ in range(X+1)]
+    dp[0][0] = True
+    for A,B in AB:
+        for x in range(X,-1,-1):
+            for y in range(Y,-1,-1):
+                if x-A >= 0 and y-B >= 0:
+                    dp[x][y] = dp[x][y] or dp[x-A][y-B]
+    ans = float('inf')
+    for x in range(X+1):
+        for y in range(Y+1):
+            if dp[x][y]:
+                ans = min(ans,x+y)
+    if ans == float('inf'):
+        print(-1)
+    else:
+        print(ans)
+solve()

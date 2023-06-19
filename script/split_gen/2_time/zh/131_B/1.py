@@ -1,12 +1,9 @@
 def main():
-    s = input()
-    if s[0] == s[1] and s[1] == s[2] and s[2] == s[3]:
-        print("Bad")
-    elif s[0] == s[1] and s[1] == s[2] and s[2] != s[3]:
-        print("Bad")
-    elif s[0] == s[1] and s[1] != s[2] and s[2] == s[3]:
-        print("Bad")
-    elif s[0] != s[1] and s[1] == s[2] and s[2] == s[3]:
-        print("Bad")
+    n, l = map(int, input().split())
+    if l >= 0:
+        print(sum(range(l+1, l+n)))
     else:
-        print("Good")
+        if n <= -l:
+            print(sum(range(l+n, l)))
+        else:
+            print(sum(range(l+1, l+n)))

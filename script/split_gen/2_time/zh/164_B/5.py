@@ -1,9 +1,11 @@
 def main():
-    line = input()
-    S,W = line.split()
-    S = int(S)
-    W = int(W)
-    if S > W:
-        print("安全")
-    else:
-        print("不安全")
+    A, B, C, D = map(int, input().split())
+    while True:
+        C -= B
+        if C <= 0:
+            print('Yes')
+            break
+        A -= D
+        if A <= 0:
+            print('No')
+            break

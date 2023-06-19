@@ -1,11 +1,5 @@
 def main():
-    n,x,y = map(int, input().split())
-    x -= 1
-    y -= 1
-    ans = [0]*(n-1)
-    for i in range(n):
-        for j in range(i+1, n):
-            d = min(j-i, abs(x-i)+abs(y-j)+1)
-            ans[d-1] += 1
-    for i in range(n-1):
-        print(ans[i])
+    x,y,z = map(int,input().split())
+    print(z,x,y)
+    
+main()

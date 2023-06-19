@@ -1,3 +1,3 @@
 def main():
-    s = input()
-    print(s[int((len(s)+1)/2)-1])
+    n = int(input())
+    print((998244353 - n % 998244353) % 998244353)

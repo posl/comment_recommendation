@@ -1,15 +1,7 @@
-def solve():
-    H, W = map(int, input().split())
-    A = []
-    for i in range(H):
-        A.append(list(map(int, input().split())))
-    min_num = 100
-    for i in range(H):
-        for j in range(W):
-            min_num = min(min_num, A[i][j])
+def main():
+    n = int(input())
     ans = 0
-    for i in range(H):
-        for j in range(W):
-            ans += A[i][j] - min_num
+    for i in range(1, n+1):
+        if '7' not in str(i) and '7' not in oct(i):
+            ans += 1
     print(ans)
-solve()

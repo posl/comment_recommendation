@@ -1,9 +1,8 @@
-def add_zero(num):
-    if num < 10:
-        return '000' + str(num)
-    elif num < 100:
-        return '00' + str(num)
-    elif num < 1000:
-        return '0' + str(num)
-    else:
-        return str(num)
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] < p:
+            count += 1
+    print(count)

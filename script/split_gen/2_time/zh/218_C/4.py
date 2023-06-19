@@ -1,4 +1,6 @@
-def main():
-    p = list(map(int, input().split()))
-    s = [chr(ord('a') + p[i] - 1) for i in range(26)]
-    print(''.join(s))
+def rotate90(n,matrix):
+    new_matrix = [[0 for i in range(n)] for j in range(n)]
+    for i in range(n):
+        for j in range(n):
+            new_matrix[j][n-i-1] = matrix[i][j]
+    return new_matrix

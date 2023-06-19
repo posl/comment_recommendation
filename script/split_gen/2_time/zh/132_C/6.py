@@ -1,8 +1,5 @@
-def problem132_b():
-    n = int(input())
-    p = [int(x) for x in input().split()]
-    count = 0
-    for i in range(1, n-1):
-        if p[i-1] < p[i] < p[i+1] or p[i+1] < p[i] < p[i-1]:
-            count += 1
-    print(count)
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[N//2]-d[N//2-1])

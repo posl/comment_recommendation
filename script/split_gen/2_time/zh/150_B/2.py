@@ -1,6 +1,9 @@
-def problem150_a():
-    k,x = map(int,input().split())
-    if k*500 >= x:
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n = int(input())
+    s = input()
+    count = 0
+    for i in range(n - 2):
+        if s[i:i+3] == "ABC":
+            count += 1
+    print(count)
+    return 0

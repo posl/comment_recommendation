@@ -1,3 +1,9 @@
 def main():
-    n,x,t = map(int, input().split())
-    print(int((n+x-1)/x*t))
+    n = input()
+    sum = 0
+    for i in n:
+        sum += int(i)
+    if sum % 9 == 0:
+        print("Yes")
+    else:
+        print("No")

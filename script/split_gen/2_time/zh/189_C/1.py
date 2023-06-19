@@ -1,15 +1,10 @@
-def main():
-    n,x = map(int,input().split())
-    v = []
-    p = []
-    for _ in range(n):
-        v_i,p_i = map(int,input().split())
-        v.append(v_i)
-        p.append(p_i)
-    sum = 0
-    for i in range(n):
-        sum += v[i]*p[i]
-        if sum > x*100:
-            print(i+1)
-            exit()
-    print(-1)
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for l in range(N):
+        x = A[l]
+        for r in range(l, N):
+            x = min(x, A[r])
+            ans = max(ans, x * (r - l + 1))
+    print(ans)

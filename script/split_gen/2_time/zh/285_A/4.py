@@ -1,7 +1,6 @@
-def isPrime(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i ==0:
-            return False
-    return True
+def main():
+    a,b = map(int,input().split())
+    if a in [1,3,4,5,6,8,9,10,11,13,15] and b in [1,3,4,5,6,8,9,10,11,13,15]:
+        print("Yes")
+    else:
+        print("No")

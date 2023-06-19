@@ -1,3 +1,3 @@
-def problem107_a(n, i):
-    j = n - i + 1
-    print(j)
+def main():
+    N, i = map(int, input().split())
+    print(N-i+1)

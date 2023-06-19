@@ -1,7 +1,5 @@
-def main():
-    # 读取输入
-    a, b, c = map(int, input().split())
-    # 计算结果
-    result = min(b // a, c)
-    # 输出结果
-    print(result)
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)

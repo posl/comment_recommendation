@@ -1,10 +1,5 @@
-def abc(s):
-    count = 0
-    for i in range(len(s)):
-        if s[i] == "A":
-            for j in range(i+1,len(s)):
-                if s[j] == "B":
-                    for k in range(j+1,len(s)):
-                        if s[k] == "C":
-                            count += 1
-    return count
+def dfs(p,q):
+    if len(p) == 0:
+        return 0
+    else:
+        return dfs(p[1:],q[1:]) + (p[0] - q[0])**2

@@ -1,13 +1,11 @@
-def f():
-    N = int(input())
-    a = [0] * (N - 1)
-    b = [0] * (N - 1)
-    for i in range(N - 1):
-        a[i], b[i] = map(int, input().split())
-    a.sort()
-    b.sort()
-    if a[0] == 1 and a[N - 2] == N:
-        print("Yes")
-    else:
-        print("No")
-f()
+def main():
+    n, m = map(int, input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int, input().split())))
+    for i in range(1, n):
+        for j in range(m):
+            if b[i][j] != b[i-1][j]:
+                print('No')
+                return
+    print('Yes')

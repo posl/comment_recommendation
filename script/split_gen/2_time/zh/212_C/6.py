@@ -1,27 +1,12 @@
-def main():
-    # 输入
-    pin = input()
-    # 计算
-    # 1. 四个数字都是一样的
-    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
-        print("Weak")
-        return
-    # 2. 对于每个整数i，如1≦i≦3，X_{i+1}跟随X_i。这里，对于每一个0≦ j≦ 8的j+1跟随j，而0跟随9。
-    # 2.1 第一位数字跟随第四位数字
-    if pin[0] == str((int(pin[3]) + 1) % 10):
-        print("Weak")
-        return
-    # 2.2 第二位数字跟随第一位数字
-    if pin[1] == str((int(pin[0]) + 1) % 10):
-        print("Weak")
-        return
-    # 2.3 第三位数字跟随第二位数字
-    if pin[2] == str((int(pin[1]) + 1) % 10):
-        print("Weak")
-        return
-    # 2.4 第四位数字跟随第三位数字
-    if pin[3] == str((int(pin[2]) + 1) % 10):
-        print("Weak")
-        return
-    # 输出
-    print("Strong")
+def min_diff(A, B):
+    A.sort()
+    B.sort()
+    i, j = 0, 0
+    min_diff = abs(A[0] - B[0])
+    while i < len(A) and j < len(B):
+        min_diff = min(min_diff, abs(A[i] - B[j]))
+        if A[i] < B[j]:
+            i += 1
+        else:
+            j += 1
+    return min_diff

@@ -1,17 +1,15 @@
-def solve():
-    N, M = list(map(int, input().split()))
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    A.sort()
-    B.sort()
-    i = 0
-    j = 0
-    ans = 10**9
-    while i < N and j < M:
-        ans = min(ans, abs(A[i]-B[j]))
-        if A[i] < B[j]:
-            i += 1
+def main():
+    import sys
+    input = sys.stdin.readline
+    from heapq import heappush, heappop
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    bag = []
+    add = 0
+    for p, x in query:
+        if p == 1:
+            heappush(bag, x - add)
+        elif p == 2:
+            add += x
         else:
-            j += 1
-    print(ans)
-solve()
+            print(heappop(bag) + add)

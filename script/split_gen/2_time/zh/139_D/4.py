@@ -1,13 +1,9 @@
-def main():
-    n = int(input())
-    h = list(map(int, input().split()))
-    max = 0
-    count = 0
-    for i in range(1, n):
-        if h[i-1] >= h[i]:
-            count += 1
-            if count > max:
-                max = count
-        else:
-            count = 0
-    print(max)
+def get_max_M(N):
+    if N == 1:
+        return 0
+    if N == 2:
+        return 1
+    if N % 2 == 0:
+        return int(N / 2) * int(N / 2)
+    else:
+        return int(N / 2) * int(N / 2 + 1)

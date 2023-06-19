@@ -1,13 +1,14 @@
-def min_diff(a, b):
-    a.sort()
-    b.sort()
-    i = 0
-    j = 0
-    min_diff = abs(a[0] - b[0])
-    while i < len(a) and j < len(b):
-        min_diff = min(min_diff, abs(a[i] - b[j]))
-        if a[i] < b[j]:
-            i += 1
+def main():
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        p, x = map(int, input().split())
+        if p == 1:
+            a[i] = x
+        elif p == 2:
+            for j in range(n):
+                a[j] += x
         else:
-            j += 1
-    return min_diff
+            print(min(a))
+            a.remove(min(a))
+            a.append(0)

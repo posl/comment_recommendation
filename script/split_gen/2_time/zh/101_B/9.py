@@ -1,5 +1,4 @@
 def s(n):
-    sum = 0
-    for i in str(n):
-        sum += int(i)
-    return sum
+    return sum([int(i) for i in str(n)])
+n = int(input())
+print("Yes" if n % s(n) == 0 else "No")

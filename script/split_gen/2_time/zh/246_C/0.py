@@ -1,4 +1,9 @@
-def move(x,y):
-    x = x - 0.5
-    y = y - 0.5
-    return x,y
+def main():
+    n, k, x = map(int, input().split())
+    items = list(map(int, input().split()))
+    items.sort()
+    total = 0
+    for item in items[:-k]:
+        total += item
+    total += k * x
+    print(total)

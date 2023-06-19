@@ -1,18 +1,8 @@
-def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    d = {}
-    for name in S:
-        if name in d:
-            d[name] += 1
-        else:
-            d[name] = 1
-    max = 0
-    max_name = ''
-    for name in d:
-        if d[name] > max:
-            max = d[name]
-            max_name = name
-    print(max_name)
+def binary_search(l, r, x, a):
+    if l == r:
+        return l
+    m = (l + r) // 2
+    if a[m] >= x:
+        return binary_search(l, m, x, a)
+    else:
+        return binary_search(m + 1, r, x, a)

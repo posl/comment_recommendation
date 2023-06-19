@@ -1,9 +1,13 @@
-def solve():
-    S, T = map(int, input().split())
-    ans = 0
-    for a in range(S+1):
-        for b in range(S+1):
-            for c in range(S+1):
-                if a + b + c <= S and a * b * c <= T:
-                    ans += 1
-    print(ans)
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    time = [0] * n
+    time[0] = t[0]
+    for i in range(1, n):
+        if time[i-1] + s[i-1] > t[i]:
+            time[i] = time[i-1] + s[i-1]
+        else:
+            time[i] = t[i]
+    for i in range(n):
+        print(time[i])

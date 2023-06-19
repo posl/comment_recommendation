@@ -1,11 +1,7 @@
 def main():
-    N,X = map(int,input().split())
-    L = list(map(int,input().split()))
-    D = [0]
-    for i in range(N):
-        D.append(D[-1]+L[i])
-    count = 0
-    for i in range(N+1):
-        if D[i] <= X:
-            count += 1
-    print(count)
+    w,h,x,y = map(int,input().split())
+    print(w*h/2,end=' ')
+    if w/2 == x and h/2 == y:
+        print(1)
+    else:
+        print(0)

@@ -1,4 +1,11 @@
-def get_weather():
-    # weather = input("请输入今天的天气：")
-    weather = input()
-    return weather
+def is_easy_to_play(str):
+    is_even_pos = True
+    for c in str:
+        if is_even_pos:
+            if c == 'L':
+                return False
+        else:
+            if c == 'R':
+                return False
+        is_even_pos = not is_even_pos
+    return True

@@ -1,8 +1,8 @@
-def get_divisors(n):
-    divisors = []
-    for i in range(1, int(n**0.5)+1):
-        if n % i == 0:
-            divisors.append(i)
-            if i != n // i:
-                divisors.append(n//i)
-    return divisors
+def replace(n):
+    n = str(n)
+    n = n.replace("1","x")
+    n = n.replace("9","1")
+    n = n.replace("x","9")
+    return int(n)
+n = input()
+print(replace(n))

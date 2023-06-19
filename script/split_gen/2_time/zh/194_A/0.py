@@ -1,19 +1,11 @@
-def main():
-    k = int(input())
-    s = input()
-    t = input()
-    s = s[0:4]
-    t = t[0:4]
-    #print(k)
-    #print(s)
-    #print(t)
-    #print(s[0])
-    #print(s[1])
-    #print(s[2])
-    #print(s[3])
-    #print(t[0])
-    #print(t[1])
-    #print(t[2])
-    #print(t[3])
-    #print(s[0:4])
-    #print(t[0:
+def icecream():
+    a,b = map(int, input().split())
+    if a+b >= 15 and b >= 8:
+        print(1)
+    elif a+b >= 10 and b >= 3:
+        print(2)
+    elif a+b >= 3:
+        print(3)
+    else:
+        print(4)
+icecream()

@@ -1,2 +1,2 @@
-def solve(a, p):
-    return (a * 3 + p) // 2
+def get_key(x):
+    return x[1]

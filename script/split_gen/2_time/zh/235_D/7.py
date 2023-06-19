@@ -1,8 +1,11 @@
-def get_answer(a, x, k):
+def main():
+    a, N = map(int, input().split())
+    # print(a, N)
     count = 0
-    for i in range(len(a)):
-        if a[i] == x:
-            count += 1
-            if count == k:
-                return i+1
-    return -1
+    if N % a != 0:
+        count += 1
+        N = N * a
+    while N % 10 == 0:
+        count += 1
+        N = N // 10
+    print(count)

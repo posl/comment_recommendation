@@ -1,9 +1,5 @@
-def find_min_factorial(k):
-    if k % 2 == 0:
-        return 2
-    elif k % 3 == 0:
-        return 3
-    elif k % 5 == 0:
-        return 5
-    else:
-        return k
+def problem281_a():
+    n = int(input())
+    for i in range(n+1):
+        print(n-i)
+problem281_a()

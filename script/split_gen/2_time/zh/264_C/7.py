@@ -1,12 +1,27 @@
-def main():
-    r,c = map(int,input().split())
-    if r%2==0:
-        if c%2==0:
-            print("白色")
-        else:
-            print("黑色")
-    else:
-        if c%2==0:
-            print("黑色")
-        else:
-            print("白色")
+def solve(h1, w1, a, h2, w2, b):
+    #print(h1, w1, a, h2, w2, b)
+    if h1 < h2 or w1 < w2:
+        return False
+    for i in range(h1 - h2 + 1):
+        for j in range(w1 - w2 + 1):
+            if a[i][j] == b[0][0]:
+                #print(a[i][j], b[0][0])
+                flag = True
+                for k in range(h2):
+                    for l in range(w2):
+                        if a[i + k][j + l] != b[k][l]:
+                            flag = False
+                            break
+                    if flag == False:
+                        break
+                if flag == True:
+                    return True
+    return False
+h1, w1 = map(int, input().split())
+a = []
+for i in range(h1):
+    a.append(list(map(int, input().split())))
+h2, w2 = map(int, input().split())
+b = []
+for i in range(h2):
+    b.append(list(map(int, input().split())))

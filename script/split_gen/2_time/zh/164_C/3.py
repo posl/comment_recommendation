@@ -1,11 +1,5 @@
-def problem164_b():
-    A, B, C, D = map(int, input().split())
-    while True:
-        C = C - B
-        if C <= 0:
-            print('Yes')
-            break
-        A = A - D
-        if A <= 0:
-            print('No')
-            break
+def unique(l):
+    return list(set(l))
+N = int(input())
+S = [input() for i in range(N)]
+print(len(unique(S)))

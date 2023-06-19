@@ -1,8 +1,10 @@
 def main():
-    N = int(input())
-    A = list(map(int,input().split()))
-    B = [0 for i in range(N)]
-    for i in range(N-1):
-        B[A[i]-1] += 1
-    for i in range(N):
-        print(B[i])
+    n, k = map(int, input().split())
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(k, n+2):
+        min = (i-1)*i//2
+        max = (2*n-i+1)*i//2
+        ans += max - min + 1
+        ans %= mod
+    print(ans)

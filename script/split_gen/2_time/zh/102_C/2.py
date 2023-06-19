@@ -1,8 +1,10 @@
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [a[i] - i - 1 for i in range(n)]
-    a.sort()
-    b = a[n // 2]
-    ans = sum([abs(a[i] - b) for i in range(n)])
-    print(ans)
+def calcSadness(a, b):
+    res = 0
+    for i in range(len(a)):
+        res += abs(a[i] - (b + i + 1))
+    return res
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+b = a[n // 2]
+print(calcSadness(a, b))

@@ -1,7 +1,7 @@
 def main():
-    n = int(input())
-    s = input()
-    if s.count('1') % 2 == 0:
-        print('0')
-    else:
-        print('1')
+    N, K = map(int, input().split())
+    C = list(map(int, input().split()))
+    s = set()
+    for i in range(N-K+1):
+        s.add(len(set(C[i:i+K])))
+    print(max(s))

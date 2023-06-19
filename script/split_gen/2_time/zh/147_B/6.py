@@ -1,6 +1,9 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a + b + c >= 22:
-        print("bust")
-    else:
-        print("win")
+    s=input()
+    n=len(s)
+    count=0
+    for i in range(int(n/2)):
+        if s[i]!=s[n-i-1]:
+            count+=1
+    print(count)
+main()

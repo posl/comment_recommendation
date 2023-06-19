@@ -1,51 +1,22 @@
-def main():
-    n,m = map(int,input().split())
-    p = []
-    s = []
-    for i in range(m):
-        p1,s1 = map(str,input().split())
-        p.append(p1)
-        s.append(s1)
-    print(p)
-    print(s)
-    #print(p[0])
-    #print(s[0])
-    #print(p[0],s[0])
-    #print(p[1],s[1])
-    #print(p[2],s[2])
-    #print(p[3],s[3])
-    #print(p[4],s[4])
-    #print(p[5],s[5])
-    #print(p[6],s[6])
-    #print(p[7],s[7])
-    #print(p[8],s[8])
-    #print(p[9],s[9])
-    #print(p[10],s[10])
-    #print(p[11],s[11])
-    #print(p[12],s[12])
-    #print(p[13],s[13])
-    #print(p[14],s[14])
-    #print(p[15],s[15])
-    #print(p[16],s[16])
-    #print(p[17],s[17])
-    #print(p[18],s[18])
-    #print(p[19],s[19])
-    #print(p[20],s[20])
-    #print(p[21],s[21])
-    #print(p[22],s[22])
-    #print(p[23],s[23])
-    #print(p[24],s[24])
-    #print(p[25],s[25])
-    #print(p[26],s[26])
-    #print(p[27],s[27])
-    #print(p[28],s[28])
-    #print(p[29],s[29])
-    #print(p[30],s[30])
-    #print(p[31],s[31])
-    #print(p[32],s[32])
-    #print(p[33],s[33])
-    #print(p[34],s[34])
-    #print(p[35],s[35])
-    #print(p[36],s[36])
-    #print(p[37],s[37])
-    #print(p[38],s[
+def dfs(x, y):
+    global ans
+    ans = max(ans, dist[x][y])
+    for dx, dy in d:
+        nx, ny = x + dx, y + dy
+        if not(0 <= nx < h and 0 <= ny < w): continue
+        if a[nx][ny] == "#": continue
+        if dist[nx][ny] != -1: continue
+        dist[nx][ny] = dist[x][y] + 1
+        dfs(nx, ny)
+        dist[nx][ny] = -1
+h, w = map(int, input().split())
+a = [input() for _ in range(h)]
+d = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+ans = 0
+for i in range(h):
+    for j in range(w):
+        if a[i][j] == "#": continue
+        dist = [[-1] * w for _ in range(h)]
+        dist[i][j] = 0
+        dfs(i, j)
+print(ans)

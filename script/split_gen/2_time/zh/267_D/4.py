@@ -1,15 +1,10 @@
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    s = [0] * (n + 1)
-    for i in range(n):
-        s[i + 1] = s[i] + a[i]
-    ans = -10**18
-    for i in range(m + 1):
-        for j in range(m + 1 - i):
-            if i + 2 * j > m:
-                continue
-            t = s[i] + (s[n] - s[n - j]) + (s[n - j] - s[n - j - i])
-            ans = max(ans, t)
-    print(ans)
-main()
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    dp = [[-float('inf') for _ in range(n+1)] for _ in range(m+1)]
+    dp[0][0] = 0
+    for i in range(m):
+        for j in range(n):
+            dp[i+1][j+1] = max(dp[i+1][j+1],dp[i][j]+(i+1)*a[j])
+            dp[i+1][j+1] = max(dp[i+1][j+1],dp[i+1][j])
+    print(dp[m][n])

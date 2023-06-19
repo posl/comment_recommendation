@@ -1,10 +1,16 @@
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    for z in range(x+1, y+1):
-        if max(x_list) < z and min(y_list) >= z:
-            print("No War")
+    S = input()
+    T = input()
+    if len(S) != len(T):
+        print('No')
+        return
+    alphabets = [0] * 26
+    for i in range(len(S)):
+        alphabets[ord(S[i]) - ord('a')] += 1
+        alphabets[ord(T[i]) - ord('a')] -= 1
+    for i in range(26):
+        if alphabets[i] != 0:
+            print('No')
             return
-    print("War")
-main()
+    print('Yes')
+    return

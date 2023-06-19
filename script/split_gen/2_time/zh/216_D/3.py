@@ -1,8 +1,11 @@
-def f(n):
-    if n==0:
-        return ''
-    if n%2==0:
-        return f(n//2)+'B'
-    else:
-        return f(n-1)+'A'
-print(f(int(input())))
+def main():
+    N,M = map(int,input().split())
+    k = [0]*M
+    a = [0]*M
+    for i in range(M):
+        k[i] = int(input())
+        a[i] = list(map(int,input().split()))
+    print(N,M)
+    print(k)
+    print(a)
+    return 0

@@ -1,17 +1,15 @@
-def solve():
-    #input
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    #init
-    ans = 0
-    #solve
-    for i in range(10):
-        for j in range(N):
-            if S[j][i] != str(i):
-                ans += 1
-                break
-    #output
+def main():
+    N=int(input())
+    A=list(map(int,input().split()))
+    A.sort()
+    #print(A)
+    ans=0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            if A[i]==A[j]:
+                continue
+            for k in range(j+1,N):
+                if A[i]==A[k] or A[j]==A[k]:
+                    continue
+                ans+=1
     print(ans)
-    return 0

@@ -1,9 +1,13 @@
 def main():
     # 读取输入
-    line = input()
-    # 用空格分隔输入
-    A, B, C, D, E, F = map(int, line.split())
-    # 计算结果
-    result = A * B * C - D * E * F
-    # 打印结果
-    print(result % 998244353)
+    S = []
+    for i in range(9):
+        S.append(input())
+    # 统计
+    count = 0
+    for r in range(9):
+        for c in range(9):
+            if S[r][c] == "#":
+                count += 1
+    # 输出
+    print(count)

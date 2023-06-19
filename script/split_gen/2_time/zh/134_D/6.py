@@ -1,14 +1,11 @@
-def main():
-    n = int(input())
-    a = [int(input()) for _ in range(n)]
-    a_max = max(a)
-    a_max_count = a.count(a_max)
-    if a_max_count == 1:
-        for i in range(n):
-            if a[i] == a_max:
-                print(max(a[:i] + a[i+1:]))
-            else:
-                print(a_max)
-    else:
-        for i in range(n):
-            print(a_max)
+def solve():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N, 0, -1):
+        if sum(b[i-1::i]) % 2 != a[i-1]:
+            b[i-1] = 1
+    M = sum(b)
+    print(M)
+    if M != 0:
+        print(' '.join(map(str, [i+1 for i in range(N) if b[i]])))

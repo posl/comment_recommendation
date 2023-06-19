@@ -1,6 +1,7 @@
-def process():
+def main():
     n = int(input())
     if n < 1000:
-        print('ABC')
+        print("ABC")
     else:
-        print('ABD')
+        print("ABD")
+main()

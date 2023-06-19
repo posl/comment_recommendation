@@ -1,11 +1,12 @@
-def get_complementary_base(base):
-    if base == 'A':
-        return 'T'
-    if base == 'T':
-        return 'A'
-    if base == 'C':
-        return 'G'
-    if base == 'G':
-        return 'C'
-base = input()
-print(get_complementary_base(base))
+def main():
+    s = input()
+    ans = 0
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            ok = True
+            for k in range(i, j + 1):
+                if s[k] != 'A' and s[k] != 'C' and s[k] != 'G' and s[k] != 'T':
+                    ok = False
+            if ok:
+                ans = max(ans, j - i + 1)
+    print(ans)

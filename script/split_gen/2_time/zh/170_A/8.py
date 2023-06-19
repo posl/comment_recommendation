@@ -1,14 +1,7 @@
-def prime_factors(n):
-    i = 2
-    factors = []
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            factors.append(i)
-    if n > 1:
-        factors.append(n)
-    return factors
-import sys
-N = int(sys.stdin.readline())
+def main():
+    x = input()
+    x = x.split()
+    for i in range(0, len(x)):
+        if x[i] == '0':
+            print(i+1)
+            break

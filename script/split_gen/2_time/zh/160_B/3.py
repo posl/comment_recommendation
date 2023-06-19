@@ -1,6 +1,5 @@
-def is_coffee(s):
-    if s[2] == s[3] and s[4] == s[5]:
-        return True
-    else:
-        return False
-s = input()
+def main():
+    x = int(input())
+    a = x // 500
+    b = (x - a * 500) // 5
+    print(a * 1000 + b * 5)

@@ -1,9 +1,9 @@
 def main():
-    s = input()
+    S = input()
     num = 0
-    for i in s:
-        if i == '+':
+    for i in range(4):
+        if S[i] == '+':
             num += 1
-        elif i == '-':
+        else:
             num -= 1
     print(num)

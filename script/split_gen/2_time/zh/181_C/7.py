@@ -1,7 +1,7 @@
-def main():
-    n = int(input())
-    sum = 0
-    for i in range(n):
-        a, b = map(int, input().split())
-        sum += (a + b) * (b - a + 1) / 2
-    print(int(sum))
+def check_line(x1, y1, x2, y2, x3, y3):
+    if x1 == x2 and x2 == x3:
+        return True
+    elif y1 == y2 and y2 == y3:
+        return True
+    else:
+        return False

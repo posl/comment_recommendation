@@ -1,10 +1,10 @@
-def main():
-    # 读取数据
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    # 执行操作
-    for i in range(k):
-        a.pop(0)
-        a.append(0)
-    # 打印结果
-    print(' '.join(map(str, a)))
+def get_next_time(h, m):
+    if m < 59:
+        m += 1
+    else:
+        m = 0
+        if h < 23:
+            h += 1
+        else:
+            h = 0
+    return h, m

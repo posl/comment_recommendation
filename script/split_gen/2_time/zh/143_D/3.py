@@ -1,13 +1,11 @@
 def main():
-    # 读取输入
-    N = int(input())
-    S = input()
-    # print('N=', N)
-    # print('S=', S)
-    # 统计粘液数量
-    slime_count = 1
-    for i in range(1, N):
-        if S[i] != S[i-1]:
-            slime_count += 1
-    # 输出结果
-    print(slime_count)
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    cnt += 1
+    print(cnt)

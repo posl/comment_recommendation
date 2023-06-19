@@ -1,14 +1,18 @@
-def main():
-    N = int(input())
-    if N < 1000:
-        print(0)
-    elif N < 1000000:
-        print(N-999)
-    elif N < 1000000000:
-        print(2*(N-999999)+999000)
-    elif N < 1000000000000:
-        print(3*(N-999999999)+1998000000)
-    elif N < 1000000000000000:
-        print(4*(N-999999999999)+2999700000000)
-    else:
-        print(5*(N-999999999999999)+3999960000000000)
+def solve(n, m, q, w, v, x, query):
+    # dp[i][j][k]表示前i件物品中，放入j个箱子，且第j个箱子放入第k件物品的最大价值
+    dp = [[[0 for k in range(n + 1)] for j in range(m + 1)] for i in range(n + 1)]
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            for k in range(1, n + 1):
+                if k == i and x[j - 1] >= w[i - 1]:
+                    dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j - 1][k - 1] + v[i - 1])
+                else:
+                    dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j][k])
+    res = []
+    for i in range(q):
+        l, r = query[i]
+        tmp = 0
+        for j in range(1, n + 1):
+            tmp = max(tmp, dp[j][r][j])
+        res.append(tmp)
+    return res

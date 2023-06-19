@@ -1,2 +1,9 @@
-def get_distance(x, y):
-    return sum([(x[i]-y[i])**2 for i in range(len(x))])**0.5
+def main():
+    L,R = map(int, input().split())
+    min = 2019
+    for i in range(L,R):
+        for j in range(i+1,R+1):
+            tmp = (i*j)%2019
+            if tmp < min:
+                min = tmp
+    print(min)

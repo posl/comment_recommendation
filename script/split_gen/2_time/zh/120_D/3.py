@@ -1,11 +1,9 @@
 def main():
-    s = input()
-    s = list(s)
-    s.reverse()
-    count = 0
-    for i in range(0,len(s)-1):
-        if s[i] == '0':
-            count += 1
-        elif s[i] == '1' and s[i+1] == '0':
-            count += 1
-    print(count)
+    n,m = map(int,input().split())
+    a=[]
+    b=[]
+    for i in range(m):
+        a1,b1 = map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    print(a,b)

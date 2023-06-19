@@ -1,5 +1,15 @@
 def main():
-    k, x = map(int, input().split())
-    for i in range(x-k+1, x+k):
-        print(i, end=' ')
-    print()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    count = 0
+    i = 0
+    while i < n-1:
+        j = i + 1
+        while j < n and s[i] == s[j]:
+            count += 1
+            j += 1
+        i = j
+    print(count)

@@ -1,21 +1,21 @@
-def main():
-    n,q = map(int,input().split())
-    x = []
-    for i in range(q):
-        x.append(int(input()))
-    #print(x)
-    #print(n,q)
-    l = [i+1 for i in range(n)]
-    #print(l)
-    for i in range(q):
-        #print('i',i)
-        #print('x[i]-1',x[i]-1)
-        if x[i] != 1:
-            l[x[i]-2],l[x[i]-1] = l[x[i]-1],l[x[i]-2]
-            #print(l)
-        else:
-            l[0],l[1] = l[1],l[0]
-            #print(l)
-    for i in range(n):
-        print(l[i],end=' ')
-    print('')
+def isPrime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    for i in range(3, int(n**0.5)+1, 2):
+        if n%i == 0:
+            return False
+    return True
+n = int(input())
+ans = 0
+for i in range(1, int(n**0.25)+1):
+    if isPrime(i):
+        for j in range(int(n**(1/3))+1, int(n**0.5)+1):
+            if i*j**3 <= n:
+                ans += 1
+            else:
+                break
+print(ans)

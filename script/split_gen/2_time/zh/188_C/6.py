@@ -1,11 +1,11 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    result = 0
-    for i in range(n):
-        result += a[i] * b[i]
-    if result == 0:
-        print("Yes")
+def find_second_player(players):
+    if len(players) == 2:
+        return players[0] if players[0] < players[1] else players[1]
     else:
-        print("No")
+        winners = []
+        for i in range(0, len(players), 2):
+            if players[i] < players[i + 1]:
+                winners.append(players[i + 1])
+            else:
+                winners.append(players[i])
+        return find_second_player(winners)

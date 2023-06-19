@@ -1,8 +1,10 @@
-def main():
-    n, k = map(int, input().split())
-    h = [int(input()) for _ in range(n)]
-    h.sort()
-    ans = h[-1] - h[0]
-    for i in range(n-k+1):
-        ans = min(ans, h[i+k-1] - h[i])
-    print(ans)
+def burger(n,x):
+    if x == 1:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        if x <= 2**n-2**(n-1)+1:
+            return burger(n-1,x-1)
+        else:
+            return 2**(n-1)+burger(n-1,x-2**(n-1))+1

@@ -1,9 +1,5 @@
-def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    if s.count('For') > s.count('Against'):
-        print('Yes')
-    else:
-        print('No')
+def input():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    return N, M, S, T

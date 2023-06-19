@@ -1,7 +1,11 @@
-def main():
-    n = int(input())
-    a = [0]*n
-    b = [0]*n
+def solve(n, m, a):
+    a.sort()
+    a.append(m+a[0])
+    d = []
     for i in range(n):
-        a[i], b[i] = map(int, input().split())
-    print(min(b) - max(a) + 1 if min(b) - max(a) + 1 > 0 else 0)
+        d.append(a[i+1]-a[i]-1)
+    d.sort()
+    ans = 0
+    for i in range(n-1):
+        ans += d[i]
+    return ans

@@ -1,18 +1,17 @@
-def solve(n, a):
-    # 从左到右遍历，记录目前为止最高的人的高度
-    # 只有当当前人的高度小于目前为止最高的人的高度时，才需要站在目前为止最高的人的头上
-    # 因为如果当前人的高度大于目前为止最高的人的高度，那么当前人就可以站在地上了
-    # 这样就不需要站在目前为止最高的人的头上了
-    # 这样就可以保证站在目前为止最高的人的头上的人的高度是非递减的
-    # 这样就可以保证每个人的高度都不小于前面的人的高度
-    max_height = 0
-    ans = 0
-    for i in range(n):
-        if a[i] < max_height:
-            ans += max_height - a[i]
-        else:
-            max_height = a[i]
-    return ans
-n = int(input())
-a = list(map(int, input().split()))
-print(solve(n, a))
+def main():
+    H, W = map(int, input().split())
+    C_h, C_w = map(int, input().split())
+    D_h, D_w = map(int, input().split())
+    S = [input() for i in range(H)]
+    C_h, C_w, D_h, D_w = C_h - 1, C_w - 1, D_h - 1, D_w - 1
+    D = [[-1] * W for i in range(H)]
+    D[C_h][C_w] = 0
+    Q = [(C_h, C_w)]
+    while len(Q) > 0:
+        i, j = Q.pop(0)
+        for i2 in range(max(0, i - 2), min(H, i + 3)):
+            for j2 in range(max(0, j - 2), min(W, j + 3)):
+                if S[i2][j2] == '.' and D[i2][j2] == -1:
+                    D[i2][j2] = D[i][j] + 1
+                    Q.append((i2, j2))
+    print(D[D_h][D_w])

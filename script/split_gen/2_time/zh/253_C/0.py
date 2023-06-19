@@ -1,7 +1,5 @@
 def main():
-    h, w = map(int, input().split())
-    s = []
-    for i in range(h):
-        s.append(input())
-    print(s)
-    print(h, w)
+    n = int(input())
+    data = []
+    for i in range(n):
+        data.append(list(map(int, inpu

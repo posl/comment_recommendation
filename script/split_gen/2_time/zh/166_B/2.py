@@ -1,6 +1,31 @@
 def main():
-    S = input()
-    if S == "ABC":
-        print("ARC")
-    else:
-        print("ABC")
+    n, k = map(int, input().split())
+    d = []
+    a = []
+    for i in range(k):
+        d.append(int(input()))
+        a.append(list(map(int, input().split())))
+    #print(n, k, d, a)
+    #print(len(d), len(a))
+    #print(d[0], a[0][0])
+    #print(d[1], a[1][0])
+    #print(d[2], a[2][0])
+    #print(a[0][0], a[1][0], a[2][0])
+    #print(a[0][1], a[1][1], a[2][1])
+    #print(a[0][2], a[1][2], a[2][2])
+    #print(a[0][0], a[0][1], a[0][2])
+    #print(a[1][0], a[1][1], a[1][2])
+    #print(a[2][0], a[2][1], a[2][2])
+    #print(a[0][0], a[1][0], a[2][0])
+    #print(a[0][1], a[1][1], a[2][1])
+    #print(a[0][2], a[1][2], a[2][2])
+    #print(a[0][0], a[0][1], a[0][2])
+    #print(a[1][0], a[1][1], a[1][2])
+    #print(a[2][0], a[2][1], a[2][2])
+    #print(a[0][0], a[1][0], a[2][0])
+    #print(a[0][1], a[1][1], a[2][1])
+    #print(a[0][2], a[1][2], a[2][2])
+    #print(a[0][0], a[0][1], a[0][2])
+    #print(a[1][0], a[1][1], a[1][2])
+    #print(a[2][0], a[2][1], a[2][2])
+    #print(a[0][0], a[1][0], a[

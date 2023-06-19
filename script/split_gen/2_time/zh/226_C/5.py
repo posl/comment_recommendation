@@ -1,11 +1,13 @@
 def main():
-    N = int(input())
-    A = []
-    for i in range(N):
-        A.append(list(map(int, input().split()[1:])))
-    A.sort()
-    ans = 1
-    for i in range(N - 1):
-        if A[i] != A[i + 1]:
-            ans += 1
-    print(ans)
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append([int(x) for x in input().split()])
+    t = [0] * n
+    for i in range(n):
+        if s[i][1] == 0:
+            t[i] = s[i][0]
+        else:
+            for j in range(s[i][1]):
+                t[i] = max(t[i], t[s[i][2 + j] - 1] + s[i][0])
+    print(max(t))

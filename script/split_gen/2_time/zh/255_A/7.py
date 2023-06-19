@@ -1,9 +1,7 @@
-def main():
-    from math import sqrt
-    n = int(input())
-    res = 0
-    for i in range(1, int(sqrt(n))+1):
-        for j in range(i, n//i+1):
-            if i * j <= n:
-                res += 1
-    print(res)
+def problems255_a():
+    r,c = map(int,input().split())
+    a = []
+    for i in range(2):
+        a.append(list(map(int,input().split())))
+    print(a[r-1][c-1])
+problems255_a()

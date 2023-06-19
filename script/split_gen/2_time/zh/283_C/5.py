@@ -1,14 +1,10 @@
 def main():
-    # 读取输入
-    n = int(input())
-    a = list(map(int, input().split()))
-    q = int(input())
-    # 依次处理查询
-    for _ in range(q):
-        query = list(map(int, input().split()))
-        # 查询类型1
-        if query[0] == 1:
-            a[query[1] - 1] = query[2]
-        # 查询类型2
-        else:
-            print(a[query[1] - 1])
+    S = input()
+    l = len(S)
+    dp = [[0 for _ in range(2)] for _ in range(l+1)]
+    dp[0][0] = 0
+    dp[0][1] = 1
+    for i in range(l):
+        dp[i+1][0] = min(dp[i][0] + int(S[i]), dp[i][1] + (10 - int(S[i])))
+        dp[i+1][1] = min(dp[i][0] + int(S[i]) + 1, dp[i][1] + (10 - int(S[i]) - 1))
+    print(dp[l][0])

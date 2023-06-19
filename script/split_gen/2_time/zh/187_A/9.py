@@ -1,8 +1,3 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    sum = 0
-    for i in range(N):
-        sum += A[i] * i - A[i] * (N - 1 - i)
-    print(sum)
+    a, b = map(int, input().split())
+    print(max(sum([int(x) for x in str(a)]), sum([int(x) for x in str(b)])))

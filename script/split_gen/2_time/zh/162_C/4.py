@@ -1,10 +1,9 @@
-def FizzBuzz(n):
-    s = 0
-    for i in range(1,n+1):
-        if i % 15 == 0:
-            s += i
-        elif i % 3 == 0:
-            s += i
-        elif i % 5 == 0:
-            s += i
-    return s
+def gcd(a,b):
+    return gcd(b,a%b) if b else a
+K = int(input())
+ans = 0
+for a in range(1,K+1):
+    for b in range(1,K+1):
+        for c in range(1,K+1):
+            ans += gcd(a,gcd(b,c))
+print(ans)

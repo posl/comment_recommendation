@@ -1,5 +1,13 @@
-def main():
-    print("请输入正常价格和折扣价格：")
-    a,b = map(int,input().split())
-    print("折扣率为：{:.2f}".format((a-b)/a*100))
-main()
+def solve():
+    N = int(input())
+    stores = []
+    for i in range(N):
+        A, P, X = map(int, input().split())
+        stores.append((A, P, X))
+    min_cost = -1
+    for i in range(N):
+        A, P, X = stores[i]
+        if X > 0:
+            if min_cost == -1 or min_cost > P:
+                min_cost = P
+    print(min_cost)

@@ -1,8 +1,8 @@
-def printAnswer(N):
-    price = int(N * 1.08)
-    if price < 206:
-        print("Yay!")
-    elif price == 206:
-        print("so-so")
-    else:
-        print(":(")
+def problem206_b():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        ans += i
+        if ans >= n:
+            print(i)
+            break

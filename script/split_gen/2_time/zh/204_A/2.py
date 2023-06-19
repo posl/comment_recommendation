@@ -1,3 +1,3 @@
-def get_median(a):
-    a.sort()
-    return a[len(a) // 2]
+def main():
+    x, y = map(int, input().split())
+    print((x - y) % 3)

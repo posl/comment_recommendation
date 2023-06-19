@@ -1,3 +1,14 @@
-def solve():
-    a,b,c = map(int,input().split())
-    print(min(b//a,c))
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+a,b,k=map(int,input().split())
+c=gcd(a,b)
+count=0
+for i in range(c,0,-1):
+    if a%i==0 and b%i==0:
+        count+=1
+    if count==k:
+        print(i)
+        break

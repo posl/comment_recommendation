@@ -1,4 +1,2 @@
-def main():
-    n = int(input())
-    s = input()
-    print("Yes" if s[0:n//2] == s[n//2:] else "No")
+def distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)

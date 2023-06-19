@@ -1,8 +1,20 @@
 def main():
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    day = input()
-    index = days.index(day)
-    if index < 5:
-        print(5 - index)
-    else:
-        print(7 - index + 5)
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    count = 0
+    for i in range(1, 10):
+        if s[i] == '1':
+            count += 1
+    if count == 0:
+        print('No')
+        return
+    if count == 1:
+        print('Yes')
+        return
+    for i in range(1, 10):
+        if s[i] == '1' and s[i+1] == '0':
+            print('Yes')
+            return
+    print('No')

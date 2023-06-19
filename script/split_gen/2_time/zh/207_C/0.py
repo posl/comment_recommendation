@@ -1,10 +1,13 @@
 def main():
-    a,b,c,d = map(int,input().split())
-    if a <= b*d:
-        print(-1)
-        return
-    else:
-        if a % (b*d-c) == 0:
-            print(a//(b*d-c))
-        else:
-            print(a//(b*d-c)+1)
+    n = int(input())
+    tlr = []
+    for _ in range(n):
+        tlr.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if tlr[i][1] <= tlr[j][1] and tlr[i][2] >= tlr[j][1]:
+                ans += 1
+            elif tlr[i][1] >= tlr[j][1] and tlr[i][1] <= tlr[j][2]:
+                ans += 1
+    print(ans)

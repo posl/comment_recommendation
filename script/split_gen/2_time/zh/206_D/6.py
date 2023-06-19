@@ -1,13 +1,16 @@
-def problem206_c():
+def main():
     n = int(input())
     a = list(map(int, input().split()))
-    d = {}
-    for i in a:
-        if i in d:
-            d[i] += 1
-        else:
-            d[i] = 1
+    a.sort()
     ans = 0
-    for i in d:
-        ans += d[i] * (d[i] - 1) // 2
-    print(n * (n - 1) // 2 - ans)
+    i = 0
+    while i < n:
+        if i == n - 1:
+            ans += 1
+            i += 1
+        elif a[i] == a[i + 1]:
+            i += 2
+        else:
+            ans += 1
+            i += 1
+    print(ans)

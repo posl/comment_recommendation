@@ -1,6 +1,10 @@
-def solve():
-    MOD = 10**9+7
-    N = int(input())
-    ans = pow(10,N,MOD) - 2*pow(9,N,MOD) + pow(8,N,MOD)
-    ans %= MOD
-    print(ans)
+def solve(n):
+    dp = [0 for i in range(2001)]
+    dp[0] = 1
+    for i in range(3,n+1):
+        for j in range(i,2001):
+            dp[j] += dp[j-i]
+            dp[j] %= 1000000007
+    return dp[n]
+n = int(input())
+print(solve(n))

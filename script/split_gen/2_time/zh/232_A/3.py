@@ -1,14 +1,6 @@
 def main():
-    n,m = map(int,input().split())
-    a = []
-    b = []
-    for i in range(m):
-        a_i,b_i = map(int,input().split())
-        a.append(a_i)
-        b.append(b_i)
-    a.sort()
-    b.sort()
-    if a[m-1] < b[0]:
-        print('Yes')
-    else:
-        print('No')
+    S = input()
+    a = int(S[0])
+    b = int(S[2])
+    print(a*b)
+main()

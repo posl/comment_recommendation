@@ -1,9 +1,16 @@
-def get_min_diff():
-    N = int(input())
-    W = list(map(int, input().split()))
-    min_diff = 10000
-    for t in range(1, N):
-        S1 = sum(W[:t])
-        S2 = sum(W[t:])
-        min_diff = min(min_diff, abs(S1 - S2))
-    return min_diff
+def main():
+    N,M = list(map(int,input().split()))
+    a = []
+    for i in range(M):
+        a.append(int(input()))
+    a.append(N+1)
+    dp = [0 for i in range(N+1)]
+    dp[0] = 1
+    for i in range(1,N+1):
+        if i in a:
+            continue
+        if i == 1:
+            dp[i] = dp[i-1]
+        else:
+            dp[i] = (dp[i-2] + dp[i-1]) % 1000000007
+    print(dp[N])

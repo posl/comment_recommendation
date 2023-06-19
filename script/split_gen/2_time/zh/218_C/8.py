@@ -1,6 +1,14 @@
 def main():
-    p = list(map(int, input().split()))
-    ans = []
-    for i in range(26):
-        ans.append(chr(ord('a') + p[i] - 1))
-    print(''.join(ans))
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(input()))
+    for i in range(n):
+        t.append(list(input()))
+    for i in range(4):
+        t = rotate(t)
+        if s == t:
+            print('Yes')
+            exit()
+    print('No')

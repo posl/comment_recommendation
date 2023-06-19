@@ -1,9 +1,12 @@
-def problem247_a(s):
-    # print(s)
-    s = s.replace('1','2')
-    s = s.replace('0','1')
-    s = s.replace('2','0')
-    print(s)
-problem247_a('1011')
-problem247_a('0000')
-problem247_a('1111')
+def check_name(name_list):
+    for i in range(len(name_list)):
+        for j in range(i+1,len(name_list)):
+            if name_list[i][0] == name_list[j][0] or name_list[i][0] == name_list[j][1] or name_list[i][1] == name_list[j][0] or name_list[i][1] == name_list[j][1]:
+                return 'Yes'
+    return 'No'
+N = int(input())
+name_list = []
+for i in range(N):
+    name = input().split(' ')
+    name_list.append(name)
+print(check_name(name_list))

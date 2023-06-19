@@ -1,41 +1,14 @@
-def main():
-    #读入数据
-    n,m=map(int,input().split())
-    #print(n,m)
-    #print(type(n))
-    #print(type(m))
-    #print(type(input()))
-    #print(type(input().split()))
-    #print(type(map(int,input().split())))
-    #print(type(list(map(int,input().split()))))
-    #print(list(map(int,input().split())))
-    #print(type(list(map(int,input().split()))[0]))
-    #print(type(list(map(int,input().split()))[1]))
-    #print(type(list(map(int,input().split()))[2]))
-    #print(type(list(map(int,input().split()))[3]))
-    #print(type(list(map(int,input().split()))[4]))
-    #print(type(list(map(int,input().split()))[5]))
-    #print(type(list(map(int,input().split()))[6]))
-    #print(type(list(map(int,input().split()))[7]))
-    #print(type(list(map(int,input().split()))[8]))
-    #print(type(list(map(int,input().split()))[9]))
-    #print(type(list(map(int,input().split()))[10]))
-    #print(type(list(map(int,input().split()))[11]))
-    #print(type(list(map(int,input().split()))[12]))
-    #print(type(list(map(int,input().split()))[13]))
-    #print(type(list(map(int,input().split()))[14]))
-    #print(type(list(map(int,input().split()))[15]))
-    #print(type(list(map(int,input().split()))[16]))
-    #print(type(list(map(int,input().split()))[17]))
-    #print(type(list(map(int,input().split()))[18]))
-    #print(type(list(map(int,input().split()))[19]))
-    #print(type(list(map(int,input().split()))[20]))
-    #print(type(list(map(int,input().split()))[21]))
-    #print(type(list(map(int,input().split()))[22]))
-    #print(type(list(map(int,input().split()))[23]))
-    #print(type(list(map(int,input().split()))[24]))
-    #print(type(list(map(int,input().split()))[25]))
-    #print(type(list(map(int,input().split()))[26]))
-    #print(type(list(map(int,input().split()))[27]))
-    #print(type(list(map(int,input().split()))[28]))
-    #print(type(list(map(int,input().split()))[
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[-1] % 2 == 0:
+        print(A[-1])
+        return
+    for i in range(N-1, 0, -1):
+        for j in range(i-1, -1, -1):
+            if (A[i] + A[j]) % 2 == 0:
+                print(A[i] + A[j])
+                return
+    print(-1)
+    return

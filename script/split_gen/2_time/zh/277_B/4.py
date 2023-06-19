@@ -1,8 +1,17 @@
-def get_input():
-    input1 = input("请输入两个数，以空格分开：")
-    input2 = input("请输入一个数，以空格分开：")
-    input1 = input1.split(" ")
-    input2 = input2.split(" ")
-    # print(input1)
-    # print(input2)
-    return input1, input2
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if len(cards) != len(set(cards)):
+        print('No')
+    else:
+        for card in cards:
+            if card[0] not in ['H','D','C','S']:
+                print('No')
+                break
+            if card[1] not in ['A','2','3','4','5','6','7','8','9','T','J','Q','K']:
+                print('No')
+                break
+        else:
+            print('Yes')

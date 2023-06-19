@@ -1,5 +1,5 @@
-def factorial(n):
-    if n == 1:
-        return 1
+def gcd(x, y):
+    if y == 0:
+        return x
     else:
-        return n * factorial(n-1)
+        return gcd(y, x%y)

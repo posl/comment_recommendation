@@ -1,14 +1,57 @@
-def solve(h, w, a):
-    rows = [False] * h
-    cols = [False] * w
-    for i in range(h):
-        for j in range(w):
-            if a[i][j] == '#':
-                rows[i] = True
-                cols[j] = True
-    for i in range(h):
-        if rows[i]:
-            for j in range(w):
-                if cols[j]:
-                    print(a[i][j], end='')
-            print('')
+def main():
+    H, W = map(int, input().split())
+    a = [list(input()) for _ in range(H)]
+    #print(a)
+    #print(a[0])
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[0][3])
+    #print(a[0][4])
+    #print(a[0][5])
+    #print(a[1][0])
+    #print(a[1][1])
+    #print(a[1][2])
+    #print(a[1][3])
+    #print(a[1][4])
+    #print(a[1][5])
+    #print(a[2][0])
+    #print(a[2][1])
+    #print(a[2][2])
+    #print(a[2][3])
+    #print(a[2][4])
+    #print(a[2][5])
+    #print(a[3][0])
+    #print(a[3][1])
+    #print(a[3][2])
+    #print(a[3][3])
+    #print(a[3][4])
+    #print(a[3][5])
+    #print(a[4][0])
+    #print(a[4][1])
+    #print(a[4][2])
+    #print(a[4][3])
+    #print(a[4][4])
+    #print(a[4][5])
+    #print(a[5][0])
+    #print(a[5][1])
+    #print(a[5][2])
+    #print(a[5][3])
+    #print(a[5][4])
+    #print(a[5][5])
+    #print(a[6][0])
+    #print(a[6][1])
+    #print(a[6][2])
+    #print(a[6][3])
+    #print(a[6][4])
+    #print(a[6][5])
+    #print(a[7][0])
+    #print(a[7][1])
+    #print(a[7][2])
+    #print(a[7][3])
+    #print(a[7][4])
+    #print(a[7][5])
+    #print(a[8][0])
+    #print(a[8][1])
+    #print(a[8][2])
+    #

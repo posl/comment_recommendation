@@ -1,2 +1,2 @@
-def problems256_d():
-    pass
+def getChar(n,x):
+    return chr(ord('A')+x//n)

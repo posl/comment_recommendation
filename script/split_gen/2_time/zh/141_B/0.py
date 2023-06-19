@@ -1,9 +1,12 @@
-def weather(S):
-    if S == "晴天":
-        return "阴天"
-    elif S == "阴天":
-        return "雨天"
-    elif S == "雨天":
-        return "晴天"
-    else:
-        return "输入错误"
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')

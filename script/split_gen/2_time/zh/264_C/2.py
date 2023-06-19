@@ -1,6 +1,21 @@
 def main():
-    R, C = map(int, input().split())
-    if (R + C) % 2 == 0:
-        print("黑色")
-    else:
-        print("白色")
+    h1, w1 = map(int, input().split())
+    a = [list(map(int, input().split())) for i in range(h1)]
+    h2, w2 = map(int, input().split())
+    b = [list(map(int, input().split())) for i in range(h2)]
+    if h1 < h2 or w1 < w2:
+        print('No')
+        return
+    for i in range(h1 - h2 + 1):
+        for j in range(w1 - w2 + 1):
+            for k in range(h2):
+                for l in range(w2):
+                    if a[i + k][j + l] != b[k][l]:
+                        break
+                else:
+                    continue
+                break
+            else:
+                print('Yes')
+                return
+    print('No')

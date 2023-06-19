@@ -1,4 +1,5 @@
 def main():
-    A,B = map(int,input().split())
-    C = A ^ B
-    print(C)
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = sorted(A)
+    print(A.index(B[1]) + 1)

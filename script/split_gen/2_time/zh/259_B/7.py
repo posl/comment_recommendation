@@ -1,10 +1,5 @@
-def main():
-    N,M,X,T,D = map(int,input().split())
-    height = T
-    for i in range(1,M):
-        height += D
-    for i in range(M,N):
-        height += D
-        if i == X:
-            height -= D
-    print(height)
+def rotate(x, y, d):
+    import math
+    x2 = x * math.cos(math.radians(d)) - y * math.sin(math.radians(d))
+    y2 = x * math.sin(math.radians(d)) + y * math.cos(math.radians(d))
+    return x2, y2

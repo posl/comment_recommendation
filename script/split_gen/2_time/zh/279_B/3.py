@@ -1,3 +1,7 @@
 def main():
-    S = input()
-    print(S.count("wv"))
+    s = input()
+    t = input()
+    if t in s:
+        print("Yes")
+    else:
+        print("No")

@@ -1,59 +1,12 @@
 def main():
-    a,b = map(int,input().split())
-    if a == 1 and b == 3:
-        print("Yes")
-    elif a == 1 and b == 2:
-        print("No")
-    elif a == 1 and b == 4:
-        print("No")
-    elif a == 1 and b == 5:
-        print("No")
-    elif a == 1 and b == 6:
-        print("Yes")
-    elif a == 1 and b == 7:
-        print("Yes")
-    elif a == 1 and b == 8:
-        print("Yes")
-    elif a == 1 and b == 9:
-        print("Yes")
-    elif a == 1 and b == 10:
-        print("Yes")
-    elif a == 2 and b == 3:
-        print("Yes")
-    elif a == 2 and b == 4:
-        print("No")
-    elif a == 2 and b == 5:
-        print("No")
-    elif a == 2 and b == 6:
-        print("Yes")
-    elif a == 2 and b == 7:
-        print("Yes")
-    elif a == 2 and b == 8:
-        print("Yes")
-    elif a == 2 and b == 9:
-        print("Yes")
-    elif a == 2 and b == 10:
-        print("Yes")
-    elif a == 3 and b == 4:
-        print("Yes")
-    elif a == 3 and b == 5:
-        print("No")
-    elif a == 3 and b == 6:
-        print("Yes")
-    elif a == 3 and b == 7:
-        print("Yes")
-    elif a == 3 and b == 8:
-        print("Yes")
-    elif a == 3 and b == 9:
-        print("Yes")
-    elif a == 3 and b == 10:
-        print("Yes")
-    elif a == 4 and b == 5:
-        print("Yes")
-    elif a == 4 and b == 6:
-        print("Yes")
-    elif a == 4 and b == 7:
-        print("Yes")
-    elif a == 4 and b == 8:
-        print("Yes")
-    elif a == 4 and b == 9:
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    count = 0
+    i = 0
+    while i < n:
+        count += 1
+        while i + 1 < n and a[i] == a[i + 1]:
+            i += 1
+        i += 1
+    print(count)

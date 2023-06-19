@@ -1,15 +1,18 @@
 def main():
-    S = input()
-    Q = S.count('?')
-    MOD = 10 ** 9 + 7
-    S = S.replace('?', '0')
-    ans = 0
-    for i in range(len(S)):
-        if S[i] == 'A':
-            ans += pow(3, Q, MOD)
-        elif S[i] == 'B':
-            ans += pow(3, Q, MOD) * pow(2, i, MOD)
-        elif S[i] == 'C':
-            ans += pow(3, Q, MOD) * pow(2, i, MOD) * pow(2, len(S) - i - 1, MOD)
-        ans %= MOD
+    s = input()
+    q = s.count('?')
+    # calculate a, b, c
+    a = s.count('A')
+    b = s.count('B')
+    c = s.count('C')
+    # calculate 3^q
+    ans = pow(3, q, 10**9+7)
+    # calculate ans
+    for i in range(q+1):
+        for j in range(q+1-i):
+            k = q - i - j
+            tmp = pow(3, i, 10**9+7) * pow(3, j, 10**9+7) * pow(3, k, 10**9+7)
+            tmp = tmp * a * b * c
+            ans += tmp
+            ans %= 10**9+7
     print(ans)

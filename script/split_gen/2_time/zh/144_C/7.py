@@ -1,7 +1,9 @@
 def main():
     n = int(input())
-    for i in range(1,10):
-        if n % i == 0 and 1 <= n / i < 10:
-            print("Yes")
-            return
-    print("No")
+    count = 0
+    for i in range(1, n+1):
+        if i*i > n:
+            break
+        if n % i == 0:
+            count += 1
+    print(count*2)

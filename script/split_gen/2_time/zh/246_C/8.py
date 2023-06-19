@@ -1,3 +1,7 @@
-def main():
-    a,b = map(int,input().split())
-    print(a/(a**2+b**2)**0.5,b/(a**2+b**2)**0.5)
+def buy(n, k, x, a):
+    cost = 0
+    for i in range(n):
+        if a[i] > x:
+            cost += a[i] - x
+    cost = min(cost, k)
+    return cost

@@ -1,9 +1,16 @@
 def main():
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.append(K+A[0])
-    max = 0
-    for i in range(N):
-        if A[i+1] - A[i] > max:
-            max = A[i+1] - A[i]
-    print(K - max)
+    # n, x, y = map(int, input().split())
+    # print(n, x, y)
+    # print(type(n), type(x), type(y))
+    # print(n + x + y)
+    n = 10
+    x = 4
+    y = 8
+    for k in range(1, n):
+        if k < x:
+            print(n - k)
+        elif k < y:
+            print(n - x + k - x)
+        else:
+            print(n - x + y - x - (k - y))
+    return 0

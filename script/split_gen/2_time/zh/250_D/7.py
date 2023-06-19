@@ -1,11 +1,9 @@
-def main():
-    n, q = map(int, input().split())
-    x = []
-    for i in range(q):
-        x.append(int(input()))
-    a = list(range(1, n+1))
-    for i in range(q-1, -1, -1):
-        a[i], a[i+1] = a[i+1], a[i]
-        if a[i] == x[i]:
-            a[i], a[i+1] = a[i+1], a[i]
-    print(*a)
+def isPrime(n):
+    if n <= 1:
+        return False
+    i = 2
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True

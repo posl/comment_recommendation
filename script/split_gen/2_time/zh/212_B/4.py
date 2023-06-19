@@ -1,8 +1,8 @@
 def main():
-    a, b = map(int, input().split())
-    if a > 0 and b == 0:
-        print('黄金')
-    elif a == 0 and b > 0:
-        print('银')
+    pin = input()
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print("Weak")
+    elif (int(pin[1]) + 1) % 10 == int(pin[0]) and (int(pin[2]) + 1) % 10 == int(pin[1]) and (int(pin[3]) + 1) % 10 == int(pin[2]):
+        print("Weak")
     else:
-        print('合金')
+        print("Strong")

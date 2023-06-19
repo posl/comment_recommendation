@@ -1,13 +1,2 @@
 def main():
-    h, m = map(int, input().split())
-    while True:
-        m += 1
-        if m == 60:
-            m = 0
-            h += 1
-        if h == 24:
-            h = 0
-        if h // 10 == m % 10 and h % 10 == m // 10:
-            break
-    print('%02d:%02d' % (h, m))
-main()
+    n,q = map(int,input().spli

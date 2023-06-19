@@ -1,11 +1,8 @@
 def main():
-    #input
-    N = int(input())
-    #calculation
-    #output
-    if N * 1.08 < 206:
-        print("Yay!")
-    elif N * 1.08 > 206:
-        print(":(")
-    else:
-        print("so-so")
+    n = int(input())
+    i = 1
+    sum = 0
+    while sum < n:
+        sum += i
+        i += 1
+    print(i-1)

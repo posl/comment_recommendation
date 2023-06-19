@@ -1,10 +1,9 @@
-def find_lost_card(N, A):
-    cards = {}
-    for a in A:
-        if a in cards:
-            cards[a] += 1
+def main():
+    n, m = map(int, input().split())
+    s = list(input().split())
+    t = list(input().split())
+    for i in range(n):
+        if s[i] in t:
+            print('Yes')
         else:
-            cards[a] = 1
-    for i in range(1, N+1):
-        if i not in cards or cards[i] < 4:
-            return i
+            print('No')

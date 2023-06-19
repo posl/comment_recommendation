@@ -1,3 +1,3 @@
-def median(a):
-    a.sort()
-    return a[len(a)//2]
+def getMedian(arr):
+    arr.sort()
+    return arr[len(arr)//2]

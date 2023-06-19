@@ -1,11 +1,10 @@
-def problem152_b(a,b):
-    a = int(a)
-    b = int(b)
-    a_str = str(a)
-    b_str = str(b)
-    a_str = a_str * b
-    b_str = b_str * a
-    if a_str < b_str:
-        print(a_str)
-    else:
-        print(b_str)
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min_num = P[0]
+    count = 1
+    for i in range(1, N):
+        if P[i] <= min_num:
+            count += 1
+            min_num = P[i]
+    print(count)

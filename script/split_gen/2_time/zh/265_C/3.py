@@ -1,2 +1,2 @@
-def main():
+def problem265_c():
     pass

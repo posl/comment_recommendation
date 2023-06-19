@@ -1,6 +1,12 @@
 def main():
-    a, b = map(int, input().split())
-    if (a + b) % 2 == 0:
-        print((a + b) // 2)
+    n = int(input())
+    p = list(map(int, input().split()))
+    p_sorted = sorted(p)
+    count = 0
+    for i in range(len(p)):
+        if p[i] != p_sorted[i]:
+            count += 1
+    if count <= 2:
+        print("YES")
     else:
-        print("IMPOSIBLE")
+        print("NO")

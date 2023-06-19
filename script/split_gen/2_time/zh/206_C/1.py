@@ -1,8 +1,12 @@
 def main():
-    n = int(input())
-    sum = 0
-    for i in range(1, 100000):
-        sum += i
-        if sum >= n:
-            print(i)
-            break
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if A[i] == A[j]:
+                continue
+            else:
+                count += 1
+    print(count)

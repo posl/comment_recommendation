@@ -1,15 +1,9 @@
-def f(s):
-    if len(s) == 1:
-        return 1
-    if len(s) == 2:
-        if s[0] == s[1]:
-            return 1
-        else:
-            return 2
-    if len(s) == 3:
-        if s[0] == s[1] and s[0] == s[2]:
-            return 1
-        elif s[0] == s[1] or s[0] == s[2] or s[1] == s[2]:
-            return 3
-        else:
-            return 6
+def solve():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    AB = sorted(AB, key=lambda x: x[0])
+    # print(AB)
+    if AB[0][1] == N:
+        print("Yes")
+    else:
+        print("No")

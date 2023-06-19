@@ -1,5 +1,5 @@
-def f(x):
-    if x < 10:
-        return x
+def check(x, y, a, s):
+    if x & y == a and x + y == s:
+        return True
     else:
-        return 1 + f(x // 10)
+        return False

@@ -1,8 +1,9 @@
 def solve():
-    N = int(input())
-    cards = list(map(int, input().split()))
-    cards.sort()
-    for i in range(0, len(cards), 4):
-        if len(set(cards[i:i+4])) != 1:
-            print(cards[i])
-            break
+    n,m = map(int,input().split())
+    s = list(input().split())
+    t = list(input().split())
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")

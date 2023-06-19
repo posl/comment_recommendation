@@ -1,12 +1,15 @@
-def is_palindrome(s):
-    if s == s[::-1]:
-        return True
-    else:
-        return False
-s = input()
-count = 0
-for i in range(len(s)):
-    if is_palindrome(s[i:]):
-        print("Yes")
-        exit()
-print("No")
+def solve():
+    N=int(input())
+    S=input()
+    ans=[]
+    left=0
+    right=0
+    for i in range(N):
+        if S[i]=='L':
+            ans.insert(left+1,i+1)
+            left+=1
+        else:
+            ans.append(i+1)
+            right+=1
+    for i in ans:
+        print(i,end=' ')

@@ -1,9 +1,13 @@
 def main():
-    N = input()
-    sum = 0
-    for i in N:
-        sum += int(i)
-    if sum % 9 == 0:
-        print('Yes')
-    else:
-        print('No')
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n - 1, -1, -1):
+        if a[i] - a[i - 1] > 1:
+            print(-1)
+            return
+        elif a[i] - a[i - 1] == 1:
+            ans += 1
+        else:
+            ans += a[i]
+    print(ans)

@@ -1,7 +1,5 @@
-def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    for i in range(K):
-        A.pop(0)
-        A.append(0)
-    print(' '.join(map(str, A)))
+def check_time(h, m):
+    if h > 23 or h < 0 or m > 59 or m < 0:
+        return False
+    else:
+        return True

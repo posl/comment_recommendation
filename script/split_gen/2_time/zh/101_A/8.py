@@ -1,9 +1,9 @@
 def main():
-    S = input()
-    count = 0
-    for i in S:
+    s = input()
+    sum = 0
+    for i in s:
         if i == '+':
-            count += 1
+            sum += 1
         else:
-            count -= 1
-    print(count)
+            sum -= 1
+    print(sum)

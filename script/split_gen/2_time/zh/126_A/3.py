@@ -1,10 +1,10 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[0] >= 0:
-        print(sum(A) - 2 * A[0])
-    elif A[-1] <= 0:
-        print(-sum(A) + 2 * A[-1])
-    else:
-        print(sum(map(abs, A)))
+def underline():
+    n,k=input().split()
+    n=int(n)
+    k=int(k)
+    s=input()
+    s=list(s)
+    s[k-1]=s[k-1].lower()
+    s=''.join(s)
+    print(s)
+underline()

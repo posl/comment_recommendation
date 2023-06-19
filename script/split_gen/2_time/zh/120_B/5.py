@@ -1,3 +1,6 @@
-def main():
-    a, b, c = map(int, input().split())
-    print(min(b//a, c))
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a

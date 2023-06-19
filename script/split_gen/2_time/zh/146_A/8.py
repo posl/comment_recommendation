@@ -1,7 +1,4 @@
-def knight(x,y):
-    if x==0 and y==0:
-        return 1
-    elif x<0 or y<0:
-        return 0
-    else:
-        return (knight(x-2,y-1)+knight(x-1,y-2))%1000000007
+def main():
+    week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+    s = input()
+    print(7 - week.index(s))

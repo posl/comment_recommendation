@@ -1,22 +1,8 @@
-def get_num(n):
-    if n < 11:
-        return 0
-    else:
-        n = str(n)
-        n_len = len(n)
-        if n_len % 2 == 0:
-            half_len = int(n_len / 2)
-            half_n = n[0:half_len]
-            half_n2 = n[half_len:n_len]
-            if half_n <= half_n2:
-                return int(half_n) - 1
-            else:
-                return int(half_n) - 2
-        else:
-            half_len = int((n_len + 1) / 2)
-            half_n = n[0:half_len]
-            half_n2 = n[half_len:n_len]
-            if half_n <= half_n2:
-                return int(half_n) - 1
-            else:
-                return int(half_n) - 2
+def f(h, w, a, b):
+    if a == 0 or b == 0:
+        return 1
+    if h == 1:
+        return f(w, h, b, a)
+    return f(h-1, w, a-1, b) + f(h-1, w, a, b-1)
+h, w, a, b = map(int, input().split())
+print(f(h, w, a, b))

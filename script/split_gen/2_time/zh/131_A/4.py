@@ -1,19 +1,17 @@
 def main():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    ans = 0
-    r = 0
-    sum = 0
-    for l in range(N):
-        while r < N and sum < K:
-            sum += A[r]
-            r += 1
-        if sum < K:
-            break
-        ans += N - r + 1
-        if r == l:
-            r += 1
-        else:
-            sum -= A[l]
-    print(ans)
-main()
+    # 读取输入
+    S = input()
+    # print(S)
+    # print(S[0])
+    # print(S[1])
+    # print(S[2])
+    # print(S[3])
+    # print(S[0] == S[1])
+    # print(S[1] == S[2])
+    # print(S[2] == S[3])
+    # print(S[0] == S[1] or S[1] == S[2] or S[2] == S[3])
+    # print(S[0] == S[1] and S[1] == S[2] and S[2] == S[3])
+    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")

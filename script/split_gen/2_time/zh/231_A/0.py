@@ -1,2 +1,3 @@
 def main():
-    pass
+    D = int(input())
+    print(D/100)

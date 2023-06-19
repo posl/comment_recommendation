@@ -1,6 +1,6 @@
 def main():
-    n = int(input())
-    if n <= 999:
+    N = int(input())
+    if N < 1000:
         print("ABC")
     else:
         print("ABD")

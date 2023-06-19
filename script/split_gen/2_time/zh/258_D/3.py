@@ -1,9 +1,12 @@
-def problem258_c():
-    n,q = map(int,input().split())
-    s = input()
-    for _ in range(q):
-        t,x = map(int,input().split())
-        if t==1:
-            s = s[-x:]+s[:-x]
-        else:
-            print(s[x-1])
+def solve():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0] + x[1])
+    ans = 0
+    for a, b in AB:
+        ans += a
+        if ans > X:
+            print(-1)
+            return
+        ans += b
+    print(ans)

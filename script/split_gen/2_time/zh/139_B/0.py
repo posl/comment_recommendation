@@ -1,8 +1,6 @@
 def main():
-    S = input()
-    T = input()
-    count = 0
-    for i in range(3):
-        if S[i] == T[i]:
-            count += 1
-    print(count)
+    a,b = map(int, input().split())
+    if b%a == 0:
+        print(int(b/a))
+    else:
+        print(int(b/a)+1)

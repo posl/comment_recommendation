@@ -1,21 +1,25 @@
 def main():
-    n = int(input())
-    x = []
-    y = []
-    for i in range(n):
-        a, b = map(int, input().split())
-        x.append(a)
-        y.append(b)
-    ans = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            a = x[i] - x[j]
-            b = y[i] - y[j]
-            cnt = 0
-            for k in range(n):
-                for l in range(k+1, n):
-                    if x[k] - x[l] == a and y[k] - y[l] == b:
-                        cnt += 1
-            ans = max(ans, n - cnt)
-    print(ans)
-main()
+    n,k,a = map(int,input().split())
+    # n,k,a = map(int, "3 3 2".split())
+    # n,k,a = map(int, "1 100 1".split())
+    # n,k,a = map(int, "3 14 2".split())
+    # print(n,k,a)
+    # print(type(n),type(k),type(a))
+    # for i in range(1,k+1):
+    #     print("i:",i)
+    #     if a < n:
+    #         a += 1
+    #     else:
+    #         a = 1
+    #     print("a:",a)
+    # print(a)
+    # for i in range(1,k+1):
+    #     print("i:",i)
+    #     a = (a + 1) if a < n else 1
+    #     print("a:",a)
+    # print(a)
+    # print((a + k - 1) % n)
+    # print(a + k - 1)
+    # print((a + k - 1) % n)
+    # print(((a + k - 1) % n) + 1)
+    print((a + k - 1) % n + 1)

@@ -1,28 +1,11 @@
 def main():
-    n = int(input())
-    a = []
-    b = []
-    for i in range(n):
-        x, y = map(int, input().split())
-        a.append(x)
-        b.append(y)
-    #print(a)
-    #print(b)
-    if n == 1:
-        print(a[0])
-        return
-    if n == 2:
-        print(a[0] + a[1])
-        return
-    total = 0
-    for i in range(n):
-        total += a[i] / b[i]
-    #print(total)
-    half = total / 2
-    #print(half)
-    for i in range(n):
-        if half < a[i] / b[i]:
-            print(half * b[i])
-            return
-        half -= a[i] / b[i]
-    print(total - half)
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+    print("Hello World!")

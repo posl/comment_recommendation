@@ -1,13 +1,14 @@
-def main():
-    n,m,k = map(int,input().split())
-    dp = [[[0 for i in range(k+1)] for j in range(m+1)] for l in range(n+1)]
-    dp[0][0][0] = 1
-    for i in range(n):
-        for j in range(m+1):
-            for l in range(k+1):
-                dp[i+1][j][l] += dp[i][j][l]
-                dp[i+1][j][l] %= 998244353
-                if l+j <= k:
-                    dp[i+1][j][l+j] += dp[i][j][l]
-                    dp[i+1][j][l+j] %= 998244353
-    print(dp[n][m][k])
+def countx(lst, x):
+    count = 0
+    for ele in lst:
+        if ele == x:
+            count = count + 1
+    return count
+N = int(input())
+A = list(map(int, input().split()))
+Q = int(input())
+Query = []
+for i in range(Q):
+    Query.append(list(map(int, input().split())))
+for i in range(Q):
+    print(countx(A[Query[i][0]-1:Query[i][1]], Query[i][2]))

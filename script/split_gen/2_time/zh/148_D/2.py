@@ -1,8 +1,16 @@
-def gcd(a, b):
-    if b == 0:
-        return a
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # print(N)
+    # print(A)
+    ans = 0
+    for i in range(N):
+        if A[i] == i + 1:
+            ans += 1
+    if ans == N:
+        ans = 0
+    elif ans == N - 1:
+        ans = 1
     else:
-        return gcd(b, a % b)
-a, b = map(int, input().split())
-c = gcd(a, b)
-print(a * b // c)
+        ans = N - ans
+    print(ans)

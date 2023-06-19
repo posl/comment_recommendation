@@ -1,9 +1,10 @@
 def main():
-    n, t = map(int, input().split())
-    a = list(map(int, input().split()))
-    t = t % (sum(a))
-    for i in range(n):
-        if t < a[i]:
-            print(i+1, t)
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T = T % sum(A)
+    for i in range(N):
+        if T <= A[i]:
+            print(i + 1, T)
             break
-        t -= a[i]
+        else:
+            T -= A[i]

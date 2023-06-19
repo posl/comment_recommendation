@@ -1,5 +1,11 @@
-def round_up(x, i):
-    if x % (10 ** i) >= 5 * 10 ** (i - 1):
-        return x - x % (10 ** i) + 10 ** i
-    else:
-        return x - x % (10 ** i)
+def count(K, A):
+    A.sort()
+    count = 0
+    for i in range(len(A)):
+        if A[i] > A[K]:
+            count += 1
+    return count
+N = int(input())
+A = [int(i) for i in input().split()]
+for i in range(N):
+    print(count(i, A))

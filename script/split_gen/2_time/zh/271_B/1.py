@@ -1,11 +1,9 @@
-def hexa(n):
-    if n == 0:
-        return '00'
-    elif n <= 9:
-        return '0' + str(n)
-    elif n <= 15:
-        return '0' + chr(n + 55)
-    elif n <= 255:
-        return chr(n // 16 + 55) + chr(n % 16 + 55)
-n = int(input())
-print(hexa(n))
+def main():
+    n, q = map(int, input().split())
+    a = []
+    for i in range(n):
+        tmp = list(map(int, input().split()))
+        a.append(tmp[1:])
+    for i in range(q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])

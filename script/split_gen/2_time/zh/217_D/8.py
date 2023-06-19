@@ -1,7 +1,14 @@
 def main():
-    n = int(input())
-    p = [int(x) for x in input().split()]
-    q = [0] * n
-    for i in range(n):
-        q[p[i] - 1] = i + 1
-    print(" ".join(map(str, q)))
+    L,Q = map(int,input().split())
+    a = []
+    for i in range(Q):
+        c,x = map(int,input().split())
+        if c == 1:
+            a.append(x)
+        else:
+            a.append(x)
+            a.sort()
+            b = []
+            for j in range(len(a)-1):
+                b.append(a[j+1]-a[j])
+            print(min(b))

@@ -1,2 +1,3 @@
-def problems197_d():
-    pass
+def main():
+    N = int(input())
+    print(N-1)

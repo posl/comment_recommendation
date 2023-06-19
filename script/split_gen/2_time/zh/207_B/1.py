@@ -1,10 +1,8 @@
-def main():
-    # 读取输入
-    a,b,c = map(int,input().split())
-    # 判断
-    if a>b and a>c:
-        print(a+b)
-    elif b>a and b>c:
-        print(b+c)
+def solve(a,b,c,d):
+    if a < b:
+        return -1
     else:
-        print(c+a)
+        if d * c - b > 0:
+            return int((a - b) / (d * c - b)) + 1
+        else:
+            return -1

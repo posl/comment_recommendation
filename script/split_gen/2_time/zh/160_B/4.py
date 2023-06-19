@@ -1,6 +1,5 @@
-def main():
-    S = input()
-    if S[2] == S[3] and S[4] == S[5]:
-        print("Yes")
-    else:
-        print("No")
+def get_max_happiness_point(money):
+    happiness = 0
+    happiness += money // 500 * 1000
+    happiness += (money % 500) // 5 * 5
+    return happiness

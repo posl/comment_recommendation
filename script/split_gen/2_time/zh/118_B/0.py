@@ -1,4 +1,11 @@
-def get_input():
-    input_str = input("请输入两个数，以空格分隔:")
-    input_list = input_str.split(" ")
-    return input_list
+def main():
+    # N, M = list(map(int, input().split()))
+    # A = []
+    # for i in range(N):
+    #     A.append(list(map(int, input().split()))[1:])
+    # print(len(set.intersection(*map(set, A))))
+    N, M = list(map(int, input().split()))
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split()))[1:])
+    print(len(set.intersection(*map(set, A))))

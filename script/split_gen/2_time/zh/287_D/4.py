@@ -1,21 +1,20 @@
-def check_path_graph(n,m,edges):
-    if m != n-1:
-        return False
-    if n == 2:
-        return True
-    if n == 3:
-        if edges[0][0] == 1 and edges[0][1] == 3:
-            return True
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    for i in range(0, t_len + 1):
+        s_new = s[0:i] + t_len * "?" + s[i + t_len:s_len]
+        flag = True
+        for j in range(0, s_len):
+            if s_new[j] == "?":
+                continue
+            elif s_new[j] == t[j]:
+                continue
+            else:
+                flag = False
+                break
+        if flag:
+            print("Yes")
         else:
-            return False
-    if n == 4:
-        if edges[0][0] == 1 and edges[0][1] == 3 and edges[1][0] == 3 and edges[1][1] == 2 and edges[2][0] == 2 and edges[2][1] == 4:
-            return True
-        else:
-            return False
-    if n == 5:
-        if edges[0][0] == 1 and edges[0][1] == 2 and edges[1][0] == 2 and edges[1][1] == 3 and edges[2][0] == 3 and edges[2][1] == 4 and edges[3][0] == 4 and edges[3][1] == 5 and edges[4][0] == 5 and edges[4][1] == 1:
-            return True
-        else:
-            return False
-    return False
+            print("No")

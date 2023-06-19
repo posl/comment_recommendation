@@ -1,8 +1,11 @@
 def main():
-    n, q = map(int, input().split())
-    seq = []
+    n = int(input())
+    a = list(map(int,input().split()))
+    a.sort()
+    ans = 0
     for i in range(n):
-        seq.append(list(map(int, input().split())))
-    for i in range(q):
-        s, t = map(int, input().split())
-        print(seq[s-1][t-1])
+        if a[i] <= ans + 1:
+            ans += a[i]
+        else:
+            break
+    print(ans + 1)

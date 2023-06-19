@@ -1,16 +1,24 @@
-def main():
-    x = input()
+def solve():
     n = int(input())
-    s = []
+    x, y = map(int, input().split())
+    a = []
+    b = []
     for i in range(n):
-        s.append(input())
-    #print(x)
-    #print(n)
-    #print(s)
-    d = {}
-    for i in range(len(x)):
-        d[x[i]] = i
-    #print(d)
-    s.sort(key = lambda x: [d[c] for c in x])
-    for i in s:
-        print(i)
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    dp = [[[False for _ in range(301)] for _ in range(301)] for _ in range(n+1)]
+    dp[0][0][0] = True
+    for i in range(n):
+        for j in range(x+1):
+            for k in range(y+1):
+                if dp[i][j][k]:
+                    dp[i+1][j][k] = True
+                    if j + a[i] <= x and k + b[i] <= y:
+                        dp[i+1][j+a[i]][k+b[i]] = True
+    ans = -1
+    for i in range(1, n+1):
+        if dp[i][x][y]:
+            ans = i
+            break
+    print(ans)

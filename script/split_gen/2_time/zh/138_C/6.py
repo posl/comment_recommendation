@@ -1,7 +1,8 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    sum = 0
-    for i in range(N):
-        sum += 1 / A[i]
-    print(1 / sum)
+    n = int(input())
+    v = [int(i) for i in input().split()]
+    v.sort()
+    result = v[0]
+    for i in range(1, n):
+        result = (result + v[i]) / 2
+    print(result)

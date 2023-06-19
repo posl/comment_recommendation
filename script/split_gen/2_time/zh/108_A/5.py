@@ -1,7 +1,3 @@
-def median(a):
-    a.sort()
-    n = len(a)
-    if n % 2 == 1:
-        return a[n//2]
-    else:
-        return a[n//2-1]
+def problems108_a():
+    K = int(input())
+    print(int(K/2)*(K-int(K/2)))

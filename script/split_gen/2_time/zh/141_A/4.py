@@ -1,10 +1,9 @@
-def main():
-    N, K = map(int, input().split())
-    S = input()
-    #print(N, K, S)
-    ans = 0
-    for i in range(1, N):
-        if S[i - 1] == S[i]:
-            ans += 1
-    ans += 2 * K
-    print(min(ans, N - 1))
+def weather(s):
+    if s == "晴天":
+        return "阴天"
+    elif s == "阴天":
+        return "雨天"
+    elif s == "雨天":
+        return "晴天"
+    else:
+        return "error"

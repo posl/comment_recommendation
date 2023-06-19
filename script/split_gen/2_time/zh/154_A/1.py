@@ -1,5 +1,9 @@
-def get_answer(h):
-    if h == 1:
-        return 1
+def main():
+    s,t = input().split()
+    a,b = map(int, input().split())
+    u = input()
+    if s == u:
+        a -= 1
     else:
-        return 2*get_answer(h//2) + 1
+        b -= 1
+    print(a,b)

@@ -1,12 +1,15 @@
 def main():
     s = input()
-    s = s[::-1]
-    ans = 0
+    stack = []
     for i in range(len(s)):
-        if i == 0:
-            ans += int(s[i])
-        elif i == 1:
-            ans += int(s[i]) * 2
-        else:
-            ans += int(s[i]) * (i + 1)
-    print(ans)
+        if s[i] == '(':
+            stack.append(s[i])
+        elif s[i] == ')':
+            if len(stack) == 0:
+                print('否')
+                exit()
+            stack.pop()
+    if len(stack) == 0:
+        print('是')
+    else:
+        print('否')

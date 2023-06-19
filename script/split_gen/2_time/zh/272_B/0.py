@@ -1,4 +1,5 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    print(sum(a))
+    # 读取输入
+    n, m = map(int, input().split())
+    # print(n, m)
+    # prin

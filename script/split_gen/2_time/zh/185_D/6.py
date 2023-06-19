@@ -1,11 +1,28 @@
-def cutbar(m,n,current):
-    if current >= n: #如果当前长度大于等于n，返回0
-        return 0
-    elif current < m: #如果当前长度小于m，返回1+cutbar(m,n,current*2)，因为当前长度小于m，所以剩下的长度大于m，所以需要再切一刀，长度变为原来的两倍
-        return 1+cutbar(m,n,current*2)
-    else: #如果当前长度大于等于m，返回1+cutbar(m,n,current+m)，因为当前长度大于等于m，所以剩下的长度大于等于m，所以需要再切一刀，长度变为原来的m
-        return 1+cutbar(m,n,current+m)
-    
-print(cutbar(3,20,1))
-print(cutbar(5,100,1))
-print(cutbar(12,200,1))
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if m == 0:
+        print(1)
+        return
+    a.sort()
+    # print(a)
+    # print(n, m)
+    # print(a)
+    if a[0] != 1:
+        a.insert(0, 0)
+    if a[-1] != n:
+        a.append(n+1)
+    # print(a)
+    b = []
+    for i in range(len(a)-1):
+        if a[i+1] - a[i] > 1:
+            b.append(a[i+1] - a[i] - 1)
+    # print(b)
+    if len(b) == 0:
+        print(0)
+        return
+    k = min(b)
+    ans = 0
+    for i in b:
+        ans += (i+k-1)//k
+    print(ans)

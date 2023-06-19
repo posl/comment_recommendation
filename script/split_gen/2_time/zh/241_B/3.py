@@ -1,6 +1,14 @@
 def main():
+    n, m = map(int, input().split())
     a = list(map(int, input().split()))
-    k = 0
-    for i in range(3):
-        k = a[k]
-    print(k)
+    b = list(map(int, input().split()))
+    a.sort()
+    b.sort()
+    if n < m:
+        print("No")
+    else:
+        for i in range(m):
+            if a[i] < b[i]:
+                print("No")
+                exit()
+        print("Yes")

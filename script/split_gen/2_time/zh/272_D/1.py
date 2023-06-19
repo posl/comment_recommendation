@@ -1,8 +1,6 @@
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    if A[0] == 0:
-        print(-1)
-    else:
-        print(A[-1] + A[-2])
+def main():
+    N, M = map(int, input().split())
+    for i in range(N):
+        for j in range(N):
+            print(min(abs(i - k) + abs(j - l) for k in range(N) for l in range(N) if (k - i) * (k - i) + (l - j) * (l - j) == M), end=" ")
+        print()

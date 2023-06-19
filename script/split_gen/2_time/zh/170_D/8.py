@@ -1,7 +1,11 @@
-def findClosestNumber(x, n, p):
-    if n == 0:
-        return x
-    if x in p:
-        return findClosestNumber(x + 1, n, p)
-    else:
-        return x
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if(A[j]%A[i]==0):
+                count += 1
+                break
+    print(N-count)

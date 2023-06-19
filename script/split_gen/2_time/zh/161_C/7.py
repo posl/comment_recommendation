@@ -1,7 +1,5 @@
-def get_input():
-    n,m = input().split()
-    n = int(n)
-    m = int(m)
-    A = input().split()
-    A = [int(i) for i in A]
-    return n,m,A
+def solve(n,k):
+    if n == 0:
+        return 0
+    else:
+        return min(n%k,k-n%k)

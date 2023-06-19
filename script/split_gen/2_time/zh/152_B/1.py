@@ -1,6 +1,7 @@
 def main():
-    n, m = map(int, input().split())
-    if n == m:
-        print("Yes")
+    a,b = map(int,input().split())
+    if a <= b:
+        print(str(a)*b)
     else:
-        print("No")
+        print(str(b)*a)
+main()

@@ -1,8 +1,6 @@
-def weather():
-    n=int(input())
-    s=input()
-    if s[n-1]=='o':
-        print('Yes')
-    else:
-        print('No')
-weather()
+def main():
+    p = list(map(int, input().split()))
+    s = [None] * 26
+    for i in range(26):
+        s[i] = chr(ord('a') + p[i] - 1)
+    print("".join(s))

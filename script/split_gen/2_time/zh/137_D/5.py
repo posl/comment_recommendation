@@ -1,13 +1,11 @@
-def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort()
-    #print(s)
-    count = 0
-    for i in range(n-1):
-        if s[i] == s[i+1]:
-            count += 1
-    print(count)
-main()
+def getMaxReward(N,M,work):
+    work.sort(key=lambda x:x[0])
+    work.sort(key=lambda x:x[1],reverse=True)
+    #print(work)
+    reward = [0 for i in range(M)]
+    for i in range(N):
+        for j in range(work[i][0]-1,M):
+            if reward[j] == 0:
+                reward[j] = work[i][1]
+                break
+    return sum(reward)

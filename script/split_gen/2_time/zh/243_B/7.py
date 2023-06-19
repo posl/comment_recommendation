@@ -1,18 +1,15 @@
-def problems243_a():
-    v, a, b, c = map(int, input().split())
-    while True:
-        if v >= a:
-            v -= a
-        else:
-            print("F")
-            break
-        if v >= b:
-            v -= b
-        else:
-            print("M")
-            break
-        if v >= c:
-            v -= c
-        else:
-            print("T")
-            break
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if a[i] == b[j] and i != j:
+                count2 += 1
+    print(count1)
+    print(int(count2/2))

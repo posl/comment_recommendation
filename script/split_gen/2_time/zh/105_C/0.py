@@ -1,13 +1,12 @@
-def base2_m2(n):
-    if n == 0:
-        return '0'
-    else:
-        ans = ''
-        while n != 0:
-            if n % (-2) == 0:
-                ans = '0' + ans
-                n = n // (-2)
-            else:
-                ans = '1' + ans
-                n = (n - 1) // (-2)
-        return ans
+def base2(num):
+    if num == 0:
+        return 0
+    res = ""
+    while num != 0:
+        if num % (-2) == 0:
+            res = "0" + res
+        else:
+            res = "1" + res
+            num -= 1
+        num //= -2
+    return res

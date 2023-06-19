@@ -1,6 +1,6 @@
-def find(x):
-    if x == par[x]:
-        return x
+def main():
+    N,A,X,Y = map(int,input().split())
+    if N <= A:
+        print(N*X)
     else:
-        par[x] = find(par[x])
-        return par[x]
+        print(A*X+(N-A)*Y)

@@ -1,9 +1,9 @@
-def square():
-    A, B, C = input().split()
-    A = int(A)
-    B = int(B)
-    C = int(C)
-    if A ** 2 + B ** 2 < C ** 2:
-        print('Yes')
-    else:
-        print('No')
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    count = 0
+    for x in range(1, 1001):
+        if all(a[i] <= x <= b[i] for i in range(n)):
+            count += 1
+    print(count)

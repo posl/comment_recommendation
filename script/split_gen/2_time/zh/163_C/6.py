@@ -1,8 +1,8 @@
 def main():
-    n, m = map(int, input().split())
+    n = int(input())
     a = list(map(int, input().split()))
-    total = sum(a)
-    if total > n:
-        print(-1)
-    else:
-        print(n - total)
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i-1]-1] += 1
+    for i in range(n):
+        print(b[i])

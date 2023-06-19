@@ -1,19 +1,22 @@
 def main():
     n = int(input())
-    s = input()
-    x = 0
-    y = 0
-    d = 0
-    for i in range(n):
-        if s[i] == 'S':
-            if d == 0:
-                x += 1
-            elif d == 1:
-                y -= 1
-            elif d == 2:
-                x -= 1
-            else:
-                y += 1
-        else:
-            d = (d + 1) % 4
-    print(x, y)
+    # 1
+    print(1)
+    # 3
+    num = int(input())
+    if num == 2:
+        print(3)
+    else:
+        print(2)
+    # 5
+    num = int(input())
+    if num == 4:
+        print(5)
+    else:
+        print(4)
+    # 7
+    num = int(input())
+    if num == 6:
+        print(7)
+    else:
+        print(6)

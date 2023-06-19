@@ -1,8 +1,27 @@
-def cutbar(m, n, current):
-    if current >= n:    #如果当前长度大于等于目标长度，返回0
-        return 0
-    elif current < m:   #如果当前长度小于初始长度，返回1+递归
-        return 1 + cutbar(m, n, current * 2)
-    else:               #如果当前长度大于等于初始长度，返回1+递归
-        return 1 + cutbar(m, n, current + m)
-print(cutbar(3, 20, 1))
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if M == 0:
+        print(1)
+        return
+    if N == M:
+        print(0)
+        return
+    B = []
+    for i in range(M):
+        if i == 0:
+            B.append(A[i] - 1)
+        else:
+            B.append(A[i] - A[i-1] - 1)
+        if i == M - 1:
+            B.append(N - A[i])
+    B.sort()
+    k = B[0]
+    ans = 0
+    for i in range(M + 1):
+        if B[i] % k == 0:
+            ans += B[i] // k
+        else:
+            ans += B[i] // k + 1
+    print(ans)

@@ -1,11 +1,10 @@
 def main():
-    n = int(input())
-    dice = [list(map(int, input().split())) for i in range(n)]
-    cnt = 0
-    for i in range(n-2):
-        if dice[i][0] == dice[i][1] and dice[i+1][0] == dice[i+1][1] and dice[i+2][0] == dice[i+2][1]:
-            cnt += 1
-    if cnt > 0:
-        print("Yes")
-    else:
-        print("No")
+    N = int(input())
+    count = 0
+    for i in range(1, N):
+        for j in range(1, N):
+            if i*j > N:
+                break
+            if (N-i*j)%j == 0:
+                count += 1
+    print(count)

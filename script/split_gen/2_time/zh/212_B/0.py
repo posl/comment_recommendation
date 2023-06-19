@@ -1,8 +1,19 @@
 def main():
-    A, B = map(int, input().split())
-    if A != 0 and B == 0:
-        print("黄金")
-    elif A == 0 and B != 0:
-        print("银")
+    # input
+    pin = input()
+    # check
+    if pin[0] == pin[1] == pin[2] == pin[3]:
+        print('Weak')
+        return
     else:
-        print("合金")
+        for i in range(3):
+            if pin[i] == '9':
+                if pin[i+1] != '0':
+                    print('Strong')
+                    return
+            else:
+                if pin[i+1] != str(int(pin[i])+1):
+                    print('Strong')
+                    return
+    print('Weak')
+    return

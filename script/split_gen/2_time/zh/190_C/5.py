@@ -1,13 +1,19 @@
-def solve():
-    N, S, D = map(int, input().split())
-    X = []
-    Y = []
-    for i in range(N):
-        x, y = map(int, input().split())
-        X.append(x)
-        Y.append(y)
-    for i in range(N):
-        if X[i] < S and Y[i] > D:
-            print('Yes')
-            exit()
-    print('No')
+def main():
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(M)]
+    K = int(input())
+    CD = [tuple(map(int, input().split())) for _ in range(K)]
+    ans = 0
+    for i in range(2**K):
+        balls = [0] * (N + 1)
+        for j in range(K):
+            if (i >> j) & 1:
+                balls[CD[j][0]] += 1
+            else:
+                balls[CD[j][1]] += 1
+        cnt = 0
+        for a, b in AB:
+            if balls[a] and balls[b]:
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)

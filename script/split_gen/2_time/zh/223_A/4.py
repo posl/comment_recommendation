@@ -1,5 +1,6 @@
-def func(n,a,b):
-    result = 1
-    for i in range(n):
-        result *= (b[i]-a[i]+1)
-    print(result%998244353)
+def solve():
+    X = int(input())
+    if X % 100 == 0 and X != 0:
+        print("Yes")
+    else:
+        print("No")

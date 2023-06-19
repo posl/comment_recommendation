@@ -1,16 +1,11 @@
 def main():
-    # 读入数据
-    N, K = map(int, input().split())
-    A = []
-    for i in range(K):
-        d = int(input())
-        A.append(list(map(int, input().split())))
-    # 算法
-    # 1. 初始化
-    snuke = [0] * N
-    # 2. 遍历
-    for i in range(K):
-        for j in range(len(A[i])):
-            snuke[A[i][j] - 1] += 1
-    # 3. 输出
-    print(snuke.count(0))
+    N,M = map(int,input().split())
+    H = list(map(int,input().split()))
+    path = [list(map(int,input().split())) for _ in range(M)]
+    good = [True] * N
+    for i in range(M):
+        if H[path[i][0]-1] <= H[path[i][1]-1]:
+            good[path[i][0]-1] = False
+        if H[path[i][1]-1] <= H[path[i][0]-1]:
+            good[path[i][1]-1] = False
+    print(good.count(True))

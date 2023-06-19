@@ -1,12 +1,8 @@
-def main():
-    n, w = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    ans = 0
-    for i in range(n):
-        for j in range(i, n):
-            for k in range(j, n):
-                if a[i] + a[j] + a[k] <= w:
-                    ans += 1
-    print(ans)
-main()
+def max_score_index(score_list):
+    max_index = 0
+    max_score = 0
+    for i in range(len(score_list)):
+        if score_list[i] > max_score:
+            max_score = score_list[i]
+            max_index = i
+    return max_index

@@ -1,3 +1,7 @@
-def main():
-    x = [int(i) for i in input().split()]
-    print(x.index(0)+1)
+def problem170_b():
+    x,y = map(int, input().split())
+    for i in range(x+1):
+        if i*2 + (x-i)*4 == y:
+            print("Yes")
+            return
+    print("No")

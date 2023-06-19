@@ -1,6 +1,5 @@
-def main():
-    x = input()
-    if x == 0:
-        print 1
+def maxProduct(a,b,c,d):
+    if b < c or d < a:
+        return -1
     else:
-        print 0
+        return max(a*c, a*d, b*c, b*d)

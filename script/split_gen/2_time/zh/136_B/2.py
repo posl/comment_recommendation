@@ -1,14 +1,20 @@
 def main():
-    # 从标准输入读取
-    a,b,c = map(int, input().split())
-    # 从瓶子2转移到瓶子1
-    b = b + c
-    # 2号瓶中还有多少水
-    c = 0
-    # 1号瓶中还可以装多少水
-    a = a - b
-    # 1号瓶中装满
-    if a < 0:
-        c = abs(a)
-        a = 0
-    print(c)
+    n = int(input())
+    count = 0
+    for i in range(1, n+1):
+        if i < 10:
+            if i % 2 == 1:
+                count += 1
+        elif i < 100:
+            if i % 2 == 1:
+                count += 1
+        elif i < 1000:
+            if i % 2 == 1:
+                count += 2
+        elif i < 10000:
+            if i % 2 == 1:
+                count += 2
+        elif i < 100000:
+            if i % 2 == 1:
+                count += 3
+    print(count)

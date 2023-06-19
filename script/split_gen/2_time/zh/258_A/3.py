@@ -1,2 +1,5 @@
-def get_distance(x1,y1,x2,y2):
-    return abs(x1-x2)+abs(y1-y2)
+def main():
+    k = int(input())
+    h = k // 60
+    m = k % 60
+    print("{:02d}:{:02d}".format(21+h, m))

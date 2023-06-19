@@ -1,5 +1,4 @@
-def is_even(num):
-    if num % 2 == 0:
-        return True
-    else:
-        return False
+def main():
+    H, W, A, B = map(int, input().split())
+    print(H, W, A, B)
+    print(calc(H, W, A, B))

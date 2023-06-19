@@ -1,8 +1,12 @@
-def isLight(s, t, x):
-    if s < t:
-        return s <= x and x < t
-    elif s > t:
-        return s <= x or x < t
-    else:
-        return False
-s, t, x = map(int, input().split())
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    c = 1
+    for i in range(n):
+        if a[i] == 0:
+            continue
+        else:
+            c += 1
+            a[a[i]-1] = 0
+    print(c)

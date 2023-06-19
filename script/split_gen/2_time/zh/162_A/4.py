@@ -1,9 +1,8 @@
-def isLLSK(n):
-    #print(n)
-    if n < 10:
-        return True
-    n = str(n)
-    for i in range(len(n)-1):
-        if abs(int(n[i])-int(n[i+1])) > 1:
+def is_contain_7(num):
+    while True:
+        if num % 10 == 7:
+            return True
+        num = num // 10
+        if num == 0:
             return False
-    return True
+print('是' if is_contain_7(int(input())) else '否')

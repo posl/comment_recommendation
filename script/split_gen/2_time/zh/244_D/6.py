@@ -1,20 +1,9 @@
 def main():
-    n = int(input())
-    print(1)
-    i = int(input())
-    if i == 2:
-        print(3)
+    # 读入数据
+    s = input()
+    t = input()
+    # 判断是否可以
+    if s == t:
+        print('Yes')
     else:
-        print(2)
-    while True:
-        i = int(input())
-        if i == 0:
-            break
-        print(i+1)
-        i = int(input())
-        if i == 2:
-            print(3)
-        else:
-            print(2)
-    return
-main()
+        print('No')

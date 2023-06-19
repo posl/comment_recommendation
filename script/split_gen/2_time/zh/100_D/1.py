@@ -1,19 +1,14 @@
-def get_max_value():
-    n, m = map(int, input().split(" "))
-    x = []
-    y = []
-    z = []
-    for i in range(n):
-        x_i, y_i, z_i = map(int, input().split(" "))
-        x.append(x_i)
-        y.append(y_i)
-        z.append(z_i)
-    value = []
-    for i in range(n):
-        value.append(x[i] + y[i] + z[i])
-    value.sort(reverse=True)
+def cal():
+    N,M = map(int,input().split())
+    cakes = []
+    for i in range(N):
+        cakes.append(list(map(int,input().split())))
     ans = 0
-    for i in range(m):
-        ans += value[i]
+    for sign in range(8):
+        cakes.sort(key=lambda x: (sign&1)*x[0]-(sign&2)*x[0]-(sign&4)*x[0],reverse=True)
+        sum = [0,0,0]
+        for i in range(M):
+            for j in range(3):
+                sum[j] += cakes[i][j]
+        ans = max(ans,abs(sum[0])+abs(sum[1])+abs(sum[2]))
     print(ans)
-get_max_value()

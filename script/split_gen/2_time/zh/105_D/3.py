@@ -1,17 +1,21 @@
-def main():
-    # 读入数据
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
     # 从左到右累积和
-    s = [0] * (n + 1)
-    for i in range(n):
-        s[i + 1] = s[i] + a[i]
-    # 计算每个余数的个数
-    cnt = [0] * m
-    for i in range(n + 1):
-        cnt[s[i] % m] += 1
-    # 计算答案
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = S[i] + A[i]
+    # 从左到右的累积和对M取余数
+    for i in range(N + 1):
+        S[i] %= M
+    # 求每个余数的个数
+    from collections import defaultdict
+    dic = defaultdict(int)
+    for i in range(N + 1):
+        dic[S[i]] += 1
+    # 求组合数
     ans = 0
-    for i in range(m):
-        ans += cnt[i] * (cnt[i] - 1) // 2
+    for v in dic.values():
+        ans += v * (v - 1) // 2
     print(ans)
+solve()

@@ -1,7 +1,5 @@
 def main():
-    N = int(input())
-    S = input()
-    if S[N-1] == 'o':
-        print('是')
-    else:
-        print('否')
+    str = input()
+    num = str.split(' ')
+    for i in range(26):
+        print(chr(int(num[i])+96), end='')

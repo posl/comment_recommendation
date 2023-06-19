@@ -1,8 +1,10 @@
-def check_permutation(N, A):
-    if N != len(A):
-        return False
+def pow(a,b):
+    if a > 0:
+        return a**b
+    elif a < 0:
+        if b%2 == 0:
+            return abs(a**b)
+        else:
+            return -abs(a**b)
     else:
-        for i in range(N):
-            if i+1 not in A:
-                return False
-        return True
+        return 0

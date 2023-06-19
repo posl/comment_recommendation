@@ -1,3 +1,4 @@
-def main():
-    N,M = map(int,input().split())
-    print(N*(N-1)//2+M*(M-1)//2)
+def is_palindrome(s):
+    return s == s[::-1]
+S = input()
+N = len(S)

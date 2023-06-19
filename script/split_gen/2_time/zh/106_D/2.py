@@ -1,11 +1,15 @@
-def get_input():
-    N, M, Q = map(int, input().split())
-    trains = []
+def get_data():
+    N,M,Q = map(int,input().split())
+    L = []
+    R = []
     for i in range(M):
-        L, R = map(int, input().split())
-        trains.append((L, R))
-    queries = []
+        l,r = map(int,input().split())
+        L.append(l)
+        R.append(r)
+    P = []
+    Q = []
     for i in range(Q):
-        p, q = map(int, input().split())
-        queries.append((p, q))
-    return N, M, Q, trains, queries
+        p,q = map(int,input().split())
+        P.append(p)
+        Q.append(q)
+    return N,M,Q,L,R,P,Q

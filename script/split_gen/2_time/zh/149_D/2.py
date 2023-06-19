@@ -1,14 +1,36 @@
-def is_prime(n):
-    if n == 1:
-        return False
-    else:
-        for i in range(2,int(n**0.5)+1):
-            if n % i == 0:
-                return False
-        return True
-x = int(input())
-while True:
-    if is_prime(x):
-        print(x)
-        break
-    x += 1
+def get_max_score(n, k, r, s, p, t):
+    max_score = 0
+    for i in range(n):
+        if t[i] == 'r':
+            max_score += p
+        elif t[i] == 's':
+            max_score += r
+        else:
+            max_score += s
+    for i in range(n-k):
+        if t[i] == 'r':
+            if t[i+k] == 'r':
+                max_score -= p
+            elif t[i+k] == 's':
+                max_score -= r
+            else:
+                max_score -= s
+        elif t[i] == 's':
+            if t[i+k] == 'r':
+                max_score -= p
+            elif t[i+k] == 's':
+                max_score -= r
+            else:
+                max_score -= s
+        else:
+            if t[i+k] == 'r':
+                max_score -= p
+            elif t[i+k] == 's':
+                max_score -= r
+            else:
+                max_score -= s
+    return max_score
+n, k = map(int, input().split())
+r, s, p = map(int, input().split())
+t = input()
+print(get_max_score(n, k, r, s, p, t))

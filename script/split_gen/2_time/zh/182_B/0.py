@@ -1,6 +1,18 @@
-def main():
-    a,b = map(int, input().split())
-    if a >= b:
-        print(2*a+100-b)
+def gcd(a, b):
+    if b == 0:
+        return a
     else:
-        print(2*a+100)
+        return gcd(b, a%b)
+N = int(input())
+A = list(map(int, input().split()))
+ans = 0
+max_gcd = 0
+for i in range(2, 1001):
+    cnt = 0
+    for j in range(N):
+        if A[j]%i == 0:
+            cnt += 1
+    if cnt > max_gcd:
+        max_gcd = cnt
+        ans = i
+print(ans)

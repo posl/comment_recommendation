@@ -1,9 +1,6 @@
-def problem220_a():
-    a, b, c = map(int, input().split())
-    for i in range(a, b + 1):
-        if i % c == 0:
-            print(i)
-            break
-    else:
-        print(-1)
-problem220_a()
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    a = int(a, k)
+    b = int(b, k)
+    print(a * b)

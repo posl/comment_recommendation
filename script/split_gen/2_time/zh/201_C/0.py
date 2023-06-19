@@ -1,7 +1,4 @@
 def main():
-    n = int(input())
-    mountains = []
-    for i in range(n):
-        mountains.append(input().split())
-    mountains.sort(key=lambda x: int(x[1]), reverse=True)
-    print(mountains[1][0])
+    s = input()
+    s = s.replace('o','1')
+    s = s.replace('x','0')

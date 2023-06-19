@@ -1,6 +1,3 @@
-def isBitwiseSum(a, s):
-    if a > s:
-        return False
-    if (s - a) & a == 0:
-        return True
-    return False
+def main():
+    h = int(input())
+    print(((h * (12800000 + h)) ** 0.5))

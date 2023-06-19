@@ -1,7 +1,7 @@
 def main():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += 1/a[i]
+    print(1/sum)

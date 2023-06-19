@@ -1,10 +1,10 @@
-def get_index(A, x, k):
-    i = 0
+def main():
+    a, n = map(int, input().split())
     count = 0
-    for a in A:
-        if a == x:
-            count += 1
-            if count == k:
-                return i + 1
-        i += 1
-    return -1
+    while n > 1:
+        if n % a == 0:
+            n /= a
+        else:
+            n -= 1
+        count += 1
+    print(count)

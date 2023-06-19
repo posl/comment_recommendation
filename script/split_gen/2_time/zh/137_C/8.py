@@ -1,6 +1,14 @@
-def main():
-    k, x = map(int, input().split())
-    list = []
-    for i in range(x-k+1,x+k):
-        list.append(i)
-    print(*list)
+def solve():
+    n = int(input())
+    s = [input() for i in range(n)]
+    s.sort()
+    ans = 0
+    cnt = 0
+    for i in range(1,n):
+        if s[i] == s[i-1]:
+            cnt += 1
+        else:
+            ans += cnt*(cnt+1)//2
+            cnt = 0
+    ans += cnt*(cnt+1)//2
+    print(ans)

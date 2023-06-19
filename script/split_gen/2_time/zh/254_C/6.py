@@ -1,10 +1,13 @@
-def pascal_triangle(n):
-    l = []
-    for i in range(n):
-        l.append([])
-        for j in range(i+1):
-            if j == 0 or j == i:
-                l[i].append(1)
-            else:
-                l[i].append(l[i-1][j-1] + l[i-1][j])
-    return l
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    if K == 1:
+        print('Yes')
+        return
+    for i in range(N-K):
+        if a[i] > a[i+K]:
+            print('No')
+            return
+    print('Yes')
+    return
+main()

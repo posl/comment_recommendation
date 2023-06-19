@@ -1,16 +1,11 @@
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    # print(n, k)
-    # print(a)
-    a.sort()
-    # print(a)
-    ans = k // n
-    b = k % n
-    # print(ans)
-    # print(b)
-    for i in range(n):
-        if a[i] <= b:
-            print(ans+1)
-        else:
-            print(ans)
+def floyd_warshall(n, m, edges):
+    dist = [[float("inf") for _ in range(n + 1)] for _ in range(n + 1)]
+    for i in range(1, n + 1):
+        dist[i][i] = 0
+    for a, b, c in edges:
+        dist[a][b] = c
+    for k in range(1, n + 1):
+        for i in range(1, n + 1):
+            for j in range(1, n + 1):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    return dist

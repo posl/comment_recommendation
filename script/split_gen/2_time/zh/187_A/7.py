@@ -1,9 +1,8 @@
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    ans = 0
-    for i in range(n):
-        ans += a[i] * (2 * i - n + 1)
-    print(ans)
-solve()
+def main():
+    num1, num2 = map(int, input().split())
+    sum1 = sum([int(i) for i in str(num1)])
+    sum2 = sum([int(i) for i in str(num2)])
+    if sum1 >= sum2:
+        print(sum1)
+    else:
+        print(sum2)

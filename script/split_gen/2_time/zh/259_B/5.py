@@ -1,11 +1,7 @@
 def main():
-    n,m,x,t,d = map(int,input().split())
-    height = t
-    for i in range(1,n):
-        if i < x:
-            height += d
-        elif i == x:
-            height += d
-        else:
-            height += d
-    print(height)
+    a, b, d = map(int, input().split())
+    import math
+    rad = math.radians(d)
+    x = a * math.cos(rad) - b * math.sin(rad)
+    y = a * math.sin(rad) + b * math.cos(rad)
+    print(x, y)

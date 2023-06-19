@@ -1,6 +1,6 @@
 def main():
-    v,t,s,d = map(int, input().split())
-    if d < v*t or v*s < d:
-        print("Yes")
-    else:
-        print("No")
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in a:
+        if i != x:
+            print(i,end=' ')

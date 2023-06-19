@@ -1,10 +1,14 @@
 def main():
-    # 输入
-    N = int(input())
-    # 输出
-    if N == 1:
-        print("Hello World")
-    elif N == 2:
-        A = int(input())
-        B = int(input())
-        print(A+B)
+    n,t = map(int,input().split())
+    c_t = []
+    for i in range(n):
+        c_t.append(list(map(int,input().split())))
+    c_t.sort(key=lambda x:x[1])
+    for i in range(n):
+        if c_t[i][1] > t:
+            c_t.pop(i)
+            n -= 1
+    if n == 0:
+        print('TLE')
+    else:
+        print(min(c_t,key=lambda x:x[0])[0])

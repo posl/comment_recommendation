@@ -1,9 +1,13 @@
-def main():
-    Ax,Ay = map(int,input().split())
-    Bx,By = map(int,input().split())
-    Cx,Cy = map(int,input().split())
-    Dx,Dy = map(int,input().split())
-    if ((Bx-Ax)*(Cy-By)-(By-Ay)*(Cx-Bx))*((Cx-Bx)*(Dy-Cy)-(Cy-By)*(Dx-Cx))<0:
-        print("Yes")
-    else:
-        print("No")
+def getMaxSize(n, txa):
+    max_size = 0
+    x = 0
+    for i in range(n):
+        if txa[i][0] < txa[i][1] - x:
+            x = txa[i][1]
+            max_size += txa[i][2]
+    return max_size
+n = int(input())
+txa = []
+for i in range(n):
+    txa.append(list(map(int, input().split())))
+print(getMaxSize(n, txa))

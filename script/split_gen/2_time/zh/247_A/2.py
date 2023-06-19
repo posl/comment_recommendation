@@ -1,6 +1,3 @@
-def check(x):
-    for a in range(100):
-        for b in range(100):
-            if x == a**3 + a**2*b + a*b**2 + b**3:
-                return True
-    return False
+def main():
+    S = input()
+    print(S[1:]+S[0])

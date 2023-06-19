@@ -1,8 +1,8 @@
-def min_time(n,a,b):
-    min_time = 0
-    for i in range(n):
-        if a[i] > b[i]:
-            min_time += b[i]
-        else:
-            min_time += a[i]
-    return min_time
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)

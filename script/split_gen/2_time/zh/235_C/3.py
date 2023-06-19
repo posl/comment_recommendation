@@ -1,10 +1,11 @@
-def main():
-    # 读取输入
-    n = int(input())
-    h = list(map(int, input().split()))
-    # 从左到右，找到最后一个比左边高的平台
-    ans = 0
-    for i in range(n - 1):
-        if h[i] < h[i + 1]:
-            ans = h[i + 1]
-    print(ans)
+def find_kth_number_in_array(arr, x, k):
+    if arr.count(x) < k:
+        return -1
+    else:
+        count = 0
+        for i in range(0, len(arr)):
+            if arr[i] == x:
+                count += 1
+                if count == k:
+                    return i+1
+        return -1

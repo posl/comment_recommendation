@@ -1,13 +1,32 @@
 def main():
-    n = int(input())
-    p = [int(x) for x in input().split()]
-    p = [x-1 for x in p]
-    ans = 0
-    for i in range(n):
-        if p[i] == i:
-            ans += 1
-            if i < n-1:
-                p[i], p[i+1] = p[i+1], p[i]
-            else:
-                p[0], p[i] = p[i], p[0]
-    print(ans)
+    N,M = list(map(int, input().split()))
+    S = []
+    for i in range(N):
+        S.append(input())
+    T = []
+    for i in range(M):
+        T.append(input())
+    #print(N,M,S,T)
+    def check(s):
+        for t in T:
+            if t in s:
+                return False
+        return True
+    def dfs(s):
+        if len(s) == N:
+            return s
+        for i in range(N):
+            if S[i] in s:
+                continue
+            s.append(S[i])
+            if check(s):
+                res = dfs(s)
+                if res:
+                    return res
+            s.pop()
+        return None
+    res = dfs([])
+    if res:
+        print("_".join(res))
+    else:
+        print(-1)

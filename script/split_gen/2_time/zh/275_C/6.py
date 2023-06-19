@@ -1,8 +1,18 @@
 def main():
-    A, B, C, D, E, F = map(int, input().split())
-    #print(A, B, C, D, E, F)
-    #print(A*B*C, D*E*F)
-    if A*B*C >= D*E*F:
-        print((A*B*C - D*E*F) % 998244353)
-    else:
-        print(0)
+    board = []
+    for i in range(9):
+        board.append(input())
+    count = 0
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == '#':
+                if i-1 >= 0 and j-1 >= 0:
+                    if board[i-1][j-1] == '#':
+                        if i-1 >= 0 and j+1 < 9:
+                            if board[i-1][j+1] == '#':
+                                if i+1 < 9 and j+1 < 9:
+                                    if board[i+1][j+1] == '#':
+                                        if i+1 < 9 and j-1 >= 0:
+                                            if board[i+1][j-1] == '#':
+                                                count += 1
+    print(count)

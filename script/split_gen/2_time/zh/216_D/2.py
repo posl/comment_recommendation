@@ -1,72 +1,22 @@
-def main():
-    n = int(input())
-    if n == 1:
-        print("A")
+def solve():
+    n,m = map(int,input().split())
+    k = [int(input()) for _ in range(m)]
+    a = [list(map(int,input().split())) for _ in range(m)]
+    if m%2!=0:
+        print("No")
         return
-    if n == 2:
-        print("AA")
-        return
-    if n == 3:
-        print("AAA")
-        return
-    if n == 4:
-        print("AABA")
-        return
-    # 2, 4, 8, 16, 32, 64
-    # 3, 6, 12, 24, 48, 96
-    # 5, 10, 20, 40, 80
-    # 7, 14, 28, 56
-    # 9, 18, 36, 72
-    # 11, 22, 44, 88
-    # 13, 26, 52
-    # 15, 30, 60
-    # 17, 34, 68
-    # 19, 38, 76
-    # 21, 42, 84
-    # 23, 46, 92
-    # 25, 50
-    # 27, 54
-    # 29, 58
-    # 31, 62
-    # 33, 66
-    # 35, 70
-    # 37, 74
-    # 39, 78
-    # 41, 82
-    # 43, 86
-    # 45, 90
-    # 47, 94
-    # 49
-    # 51
-    # 53
-    # 55
-    # 57
-    # 59
-    # 61
-    # 63
-    # 65
-    # 67
-    # 69
-    # 71
-    # 73
-    # 75
-    # 77
-    # 79
-    # 81
-    # 83
-    # 85
-    # 87
-    # 89
-    # 91
-    # 93
-    # 95
-    # 97
-    # 99
-    # 101
-    # 103
-    # 105
-    # 107
-    # 109
-    # 111
-    # 113
-    # 115
+    for i in range(m):
+        for j in range(k[i]-1):
+            if a[i][j]==a[i][j+1]:
+                print("No")
+                return
+    for i in range(1,m,2):
+        if k[i]!=k[i-1]:
+            print("No")
+            return
+        for j in range(k[i]):
+            if a[i][j]!=a[i-1][j]:
+                print("No")
+                return
+    print("Yes")
+    return

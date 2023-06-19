@@ -1,14 +1,45 @@
-def problems273_c():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    A.append(10**9+1)
-    ans = [0] * N
-    cnt = 0
-    for i in range(N):
-        if A[i] != A[i+1]:
-            for j in range(cnt, i+1):
-                ans[j] = i - cnt + 1
-            cnt = i + 1
-    print('\n'.join(map(str, ans)))
-    return 0
+def main():
+    h,w,r,c = map(int,input().split())
+    n = int(input())
+    wall = set()
+    for i in range(n):
+        r_i,c_i = map(int,input().split())
+        wall.add((r_i,c_i))
+    q = int(input())
+    move = []
+    for i in range(q):
+        d_i,l_i = input().split()
+        move.append((d_i,int(l_i)))
+    ans = []
+    #print(move)
+    for i in range(q):
+        d_i,l_i = move[i]
+        #print(d_i,l_i)
+        if d_i == 'L':
+            for j in range(l_i):
+                if (r,c-1) not in wall:
+                    c -= 1
+                else:
+                    break
+        elif d_i == 'R':
+            for j in range(l_i):
+                if (r,c+1) not in wall:
+                    c += 1
+                else:
+                    break
+        elif d_i == 'U':
+            for j in range(l_i):
+                if (r-1,c) not in wall:
+                    r -= 1
+                else:
+                    break
+        elif d_i == 'D':
+            for j in range(l_i):
+                if (r+1,c) not in wall:
+                    r += 1
+                else:
+                    break
+        ans.append((r,c))
+    #print(ans)
+    for i in range(q):
+        print(ans[i][0],ans[i][1])

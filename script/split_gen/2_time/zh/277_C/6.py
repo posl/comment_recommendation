@@ -1,8 +1,20 @@
-def check_card(card):
-    if len(card) != 2:
-        return False
-    if card[0] not in ['H', 'D', 'C', 'S']:
-        return False
-    if card[1] not in ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T','J', 'Q', 'K']:
-        return False
-    return True
+def main():
+    N = int(input())
+    #print(N)
+    #print(type(N))
+    A = []
+    B = []
+    for i in range(N):
+        A_i, B_i = map(int, input().split())
+        A.append(A_i)
+        B.append(B_i)
+    #print(A)
+    #print(B)
+    #print(type(A))
+    #print(type(B))
+    #print(max(A))
+    #print(min(B))
+    if max(A) <= min(B):
+        print(min(B) - 1)
+    else:
+        print(-1)

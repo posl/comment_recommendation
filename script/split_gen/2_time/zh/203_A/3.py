@@ -1,7 +1,11 @@
-def permutation(s, prefix):
-    if len(s) == 0:
-        print(prefix)
+def main():
+    a,b,c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif c == a:
+        print(b)
     else:
-        for i in range(len(s)):
-            rem = s[0:i] + s[i+1:]
-            permutation(rem, prefix+s[i])
+        print(0)
+main()

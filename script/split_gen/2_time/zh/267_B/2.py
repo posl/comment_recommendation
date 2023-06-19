@@ -1,12 +1,34 @@
 def main():
-    day = input()
-    week = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-    count = 0
-    for i in range(7):
-        if day == week[i]:
-            count = i
-            break
-    if count < 5:
-        print(5-count)
-    else:
-        print(7-count+5)
+    S = input()
+    if S[0] == '0':
+        print("No")
+        return
+    if S[1] == '0':
+        print("No")
+        return
+    if S[2] == '0':
+        print("No")
+        return
+    if S[3] == '0':
+        print("No")
+        return
+    if S[4] == '0':
+        print("No")
+        return
+    if S[5] == '0':
+        print("No")
+        return
+    if S[6] == '0':
+        print("No")
+        return
+    if S[7] == '0':
+        print("No")
+        return
+    if S[8] == '0':
+        print("No")
+        return
+    if S[9] == '0':
+        print("No")
+        return
+    print("Yes")
+main()

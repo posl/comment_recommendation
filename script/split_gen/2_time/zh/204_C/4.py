@@ -1,8 +1,7 @@
 def main():
-    N = int(input())
-    A = [int(a) for a in input().split()]
-    ans = 0
-    for i in range(N):
-        if A[i] > 10:
-            ans += A[i] - 10
-    print(ans)
+    n,m = map(int,input().split())
+    a = [0]*m
+    b = [0]*m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    print(n*(n-1)//2-m)

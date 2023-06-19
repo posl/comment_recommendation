@@ -1,11 +1,11 @@
 def main():
-    n, w = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    ans = 0
+    n = int(input())
+    d = {}
     for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                if a[i] + a[j] + a[k] <= w:
-                    ans += 1
-    print(ans)
+        s, t = input().split()
+        if s not in d:
+            d[s] = [int(t), i]
+        elif d[s][0] < int(t):
+            d[s] = [int(t), i]
+    ans = sorted(d.items(), key=lambda x: x[1], reverse=True)
+    print(ans[0][1][1] + 1)

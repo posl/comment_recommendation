@@ -1,11 +1,15 @@
 def main():
-    n, t = map(int, input().split())
-    a = list(map(int, input().split()))
-    while t > 0:
-        for i in range(n):
-            if t >= a[i]:
-                t -= a[i]
-            else:
-                print(i+1, t)
-                exit()
-    print(1, 0)
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    sum = 0
+    for i in range(k):
+        sum += a[i]
+    if sum%d == 0:
+        print(sum)
+        return
+    for i in range(k,n):
+        sum = sum - a[i-k] + a[i]
+        if sum%d == 0:
+            print(sum)
+            return
+    print(-1)

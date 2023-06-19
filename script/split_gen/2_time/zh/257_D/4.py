@@ -1,8 +1,6 @@
-def get_max_f(x, n, s, w):
-    f = 0
+def readinput():
+    n=int(input())
+    xyplist=[]
     for i in range(n):
-        if s[i] == '0' and w[i] < x:
-            f += 1
-        elif s[i] == '1' and w[i] >= x:
-            f += 1
-    return f
+        xyplist.append(list(map(int,input().split())))
+    return n,xyplist

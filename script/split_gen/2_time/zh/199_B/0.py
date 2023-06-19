@@ -1,6 +1,14 @@
 def main():
-    a,b,c = map(int, input().split())
-    if a**2 + b**2 < c**2:
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for x in range(1, 1001):
+        for i in range(N):
+            if A[i] <= x <= B[i]:
+                continue
+            else:
+                break
+        else:
+            ans += 1
+    print(ans)

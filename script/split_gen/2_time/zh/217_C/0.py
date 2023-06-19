@@ -1,19 +1,7 @@
 def main():
-    S1 = input()
-    S2 = input()
-    S3 = input()
-    if S1 == 'ABC':
-        if S2 == 'ARC':
-            print('AGC')
-        else:
-            print('ARC')
-    elif S1 == 'AGC':
-        if S2 == 'ABC':
-            print('ARC')
-        else:
-            print('ABC')
-    else:
-        if S2 == 'ABC':
-            print('AGC')
-        else:
-            print('ABC')
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    q = [0] * n
+    for i in range(n):
+        q[p[i] - 1] = i + 1
+    print(' '.join([str(i) for i in q]))

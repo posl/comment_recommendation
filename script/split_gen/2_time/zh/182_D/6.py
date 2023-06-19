@@ -1,13 +1,10 @@
 def main():
-    n = input()
-    k = len(n)
-    n = int(n)
-    if n % 3 == 0:
-        print(0)
-        return
-    for i in range(1, k):
-        for j in range(k - i):
-            if int(n / 10 ** j) % 3 == 0:
-                print(i)
-                return
-    print(-1)
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    x = 0
+    for i in range(n):
+        x += a[i]
+        ans = max(ans, x)
+    print(ans)
+main()

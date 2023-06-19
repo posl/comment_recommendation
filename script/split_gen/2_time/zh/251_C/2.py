@@ -1,37 +1,24 @@
 def main():
-    N, W = map(int, input().split())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for n in range(1, W+1):
-        if n < A[0]:
-            continue
-        elif n == A[0]:
-            ans += 1
-        elif n < A[1]:
-            ans += 2
-        elif n == A[1]:
-            ans += 3
-        elif n < A[2]:
-            ans += 4
-        elif n == A[2]:
-            ans += 5
-        elif n < A[3]:
-            ans += 6
-        elif n == A[3]:
-            ans += 7
-        elif n < A[4]:
-            ans += 8
-        elif n == A[4]:
-            ans += 9
-        elif n < A[5]:
-            ans += 10
-        elif n == A[5]:
-            ans += 11
-        elif n < A[6]:
-            ans += 12
-        elif n == A[6]:
-            ans += 13
+    n = int(input())
+    dic = {}
+    for i in range(n):
+        s, t = input().split()
+        t = int(t)
+        if s in dic:
+            dic[s].append((t, i))
         else:
-            pass
-    print(ans)
+            dic[s] = [(t, i)]
+    for s in dic:
+        dic[s].sort(reverse=True)
+    max_score = 0
+    max_score_idx = 0
+    max_score_first_idx = n
+    for s in dic:
+        if dic[s][0][0] > max_score:
+            max_score = dic[s][0][0]
+            max_score_idx = dic[s][0][1]
+            max_score_first_idx = dic[s][0][1]
+        elif dic[s][0][0] == max_score and dic[s][0][1] < max_score_first_idx:
+            max_score_first_idx = dic[s][0][1]
+            max_score_idx = dic[s][0][1]
+    print(max_score_idx + 1)

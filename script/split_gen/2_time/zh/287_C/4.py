@@ -1,10 +1,12 @@
 def main():
-    n, m = map(int, input().split())
-    s = [input() for i in range(n)]
-    t = [input() for i in range(m)]
-    ans = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                ans += 1
-    print(ans)
+    N, M = map(int, input().split())
+    G = [[] for i in range(N+1)]
+    for i in range(M):
+        u, v = map(int, input().split())
+        G[u].append(v)
+        G[v].append(u)
+    for i in range(1, N+1):
+        if len(G[i]) > 2:
+            print("No")
+            return
+    print("Yes")

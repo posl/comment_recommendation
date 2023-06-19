@@ -1,10 +1,9 @@
 def main():
-    S = input()
-    S = S[::-1]
-    S = S.replace('6','x')
-    S = S.replace('9','6')
-    S = S.replace('x','9')
-    S = S.replace('0','x')
-    S = S.replace('1','0')
-    S = S.replace('x','1')
-    print(S)
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda x: int(x) - 1, input().split()))
+    count = 0
+    for i in range(n):
+        count += b[c[a[i] - 1]]
+    print(count)

@@ -1,7 +1,9 @@
-def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if a % b == 0:
-        return b
+def main():
+    N,K,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    if N*K-sum(A)<0:
+        print(0)
+    elif N*K-sum(A)>M:
+        print(-1)
     else:
-        return gcd(b, a % b)
+        print(N*K-sum(A))

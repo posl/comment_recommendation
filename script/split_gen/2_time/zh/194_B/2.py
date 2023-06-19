@@ -1,9 +1,18 @@
-def icecream(a,b):
-    if a+b >= 15 and b >= 8:
-        return 1
-    elif a+b >= 10 and b >= 3:
-        return 2
-    elif a+b >= 3:
-        return 3
-    else:
-        return 4
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_time = 10**10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                time = A[i] + B[j]
+            else:
+                time = max(A[i], B[j])
+            if time < min_time:
+                min_time = time
+    print(min_time)

@@ -1,12 +1,11 @@
-def main():
-    n, k, x = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    res = 0
-    for i in range(n):
-        if k > 0:
-            res += max(a[i] - x, 0)
-            k -= 1
-        else:
-            res += a[i]
-    print(res)
+def solve(n):
+    a = 0
+    b = 0
+    while True:
+        if a**3 + a**2*b + a*b**2 + b**3 >= n:
+            break
+        b += 1
+        if a**3 + a**2*b + a*b**2 + b**3 >= n:
+            break
+        a += 1
+    return a**3 + a**2*b + a*b**2 + b**3

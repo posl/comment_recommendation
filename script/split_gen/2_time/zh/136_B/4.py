@@ -1,7 +1,8 @@
-def main():
-    a,b,c = map(int,input().split())
-    if a > b + c:
-        print(0)
-    else:
-        print(c - (a - b))
-main()
+def solution(N):
+    count = 0
+    for i in range(1, N+1):
+        if i % 2 == 1:
+            count += 1
+    return count
+N = int(input())
+print(solution(N))

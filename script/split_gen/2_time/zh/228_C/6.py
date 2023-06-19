@@ -1,12 +1,11 @@
 def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.insert(0,0)
-    b = [0 for i in range(n+1)]
-    b[x] = 1
-    cnt = 1
-    for i in range(1,n+1):
-        if b[a[i]] == 0:
-            b[a[i]] = 1
-            cnt += 1
-    print(cnt)
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+    p.sort(key=lambda x: sum(x))
+    p = list(map(sum, p))
+    p.sort(reverse=True)
+    for i in range(n):
+        if p[i] > p[k - 1]:
+            print("No")
+        else:
+            print("Yes")

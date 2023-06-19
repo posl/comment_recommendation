@@ -1,7 +1,5 @@
-def find_sum_200(A, x, y):
-    sum_x = sum([A[i] for i in x])
-    sum_y = sum([A[i] for i in y])
-    if sum_x % 200 == sum_y % 200 == 0:
-        return 0
+def is_arithmetic_sequence(a1, a2, a3):
+    if a3 - a2 == a2 - a1:
+        return True
     else:
-        return 1
+        return False

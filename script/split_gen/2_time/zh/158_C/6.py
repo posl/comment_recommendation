@@ -1,8 +1,9 @@
-def cal_balls(n, a, b):
-    if n == 0:
-        return 0
-    if n == 1:
-        return a
-    if n == 2:
-        return a + b
-    return cal_balls(n - 1, a, b) + cal_balls(n - 2, a, b)
+def main():
+    import sys
+    A, B = map(int, sys.stdin.readline().split())
+    for i in range(1, 101):
+        if int(i * 0.08) == A and int(i * 0.1) == B:
+            print(i)
+            exit()
+    print(-1)
+main()

@@ -1,11 +1,11 @@
 def main():
-    h,w,n = map(int,input().split())
-    cards = []
-    for i in range(n):
-        cards.append(list(map(int,input().split())))
-    for i in range(n):
-        cards[i].append(i+1)
-    cards.sort(key=lambda x:x[1])
-    cards.sort(key=lambda x:x[0])
-    for i in range(n):
-        print(cards[i][2],cards[i][0],cards[i][1])
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N-1):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(N-1):
+        print(A[i],B[i])
+    print(N)

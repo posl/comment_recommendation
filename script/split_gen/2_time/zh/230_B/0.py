@@ -1,4 +1,3 @@
 def main():
-    n = int(input())
-    print("AGC{:03d}".format(n))
-    return 0
+    s = input()
+    print("Yes" if "o" in s else "No")

@@ -1,9 +1,9 @@
-def main():
+def func():
     N = int(input())
-    a = list(map(int, input().split()))
-    cnt = 0
+    a = [int(i) for i in input().split()]
+    count = 0
     for i in range(N):
         while a[i] % 2 == 0:
             a[i] /= 2
-            cnt += 1
-    print(cnt)
+            count += 1
+    print(count)

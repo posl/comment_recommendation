@@ -1,13 +1,9 @@
-def main():
-    N,M,X,T,D = map(int,input().split())
-    if M == 0:
-        print(T)
-    else:
-        for i in range(M):
-            if i < X-1:
-                T += D
-            elif i == X-1:
-                T += 0
-            elif i >= X:
-                T += D
-        print(T)
+def rotate(x, y, d):
+    import math
+    d = math.radians(d)
+    x2 = x * math.cos(d) - y * math.sin(d)
+    y2 = x * math.sin(d) + y * math.cos(d)
+    return x2, y2
+a, b, d = map(int, input().split())
+x, y = rotate(a, b, d)
+print(x, y)

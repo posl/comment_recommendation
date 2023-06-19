@@ -1,6 +1,8 @@
-def main():
-    A, B = map(int, input().split())
-    if 1 <= A <= 20 and 1 <= B <= 20:
-        print(A * B)
-    else:
-        print(-1)
+def solve():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0 and N / i < 10:
+            print("Yes")
+            return
+    print("No")
+solve()

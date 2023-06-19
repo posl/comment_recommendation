@@ -1,18 +1,13 @@
 def solve():
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    # A = [int(input()) for i in range(N)]
-    ans = 0
-    right = 0
-    total = 0
-    for left in range(N):
-        while right < N and total + A[right] < K:
-            total += A[right]
-            right += 1
-        ans += N - right
-        if right == left:
-            right += 1
-        else:
-            total -= A[left]
-    print(ans)
+    s = input()
+    if s[0] == s[1] and s[1] == s[2] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[1] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[2] and s[1] == s[3]:
+        print("Bad")
+    elif s[0] == s[3] and s[1] == s[2]:
+        print("Bad")
+    else:
+        print("Good")
 solve()

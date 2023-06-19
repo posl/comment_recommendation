@@ -1,7 +1,8 @@
 def main():
-    a = int(input())
-    s = input()
-    if a < 3200:
-        print("red")
-    else:
-        print(s)
+    N = int(input())
+    A = input().split()
+    A = [int(i) for i in A]
+    result = 0
+    for i in range(N):
+        result += 1/A[i]
+    print(1/result)

@@ -1,6 +1,8 @@
 def main():
-    a,b = map(int,input().split())
-    if b-a == 1:
-        print("Yes")
-    else:
-        print("No")
+    # 读取输入
+    input()
+    num_list = input().split(" ")
+    # 用集合去重
+    num_set = set(num_list)
+    # 输出集合元素个数
+    print(len(num_set))

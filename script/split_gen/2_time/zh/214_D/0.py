@@ -1,2 +1,2 @@
-def main():
-    return
+def solve():
+    pass

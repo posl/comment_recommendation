@@ -1,7 +1,19 @@
-def problem100_b(D,N):
-    if D == 0:
-        print(N)
-    elif D == 1:
-        print(100*N)
-    elif D == 2:
-        print(10000*N)
+def main():
+    #读取输入
+    d,n = map(int, input().split())
+    #计算
+    if d == 0:
+        if n == 100:
+            print(101)
+        else:
+            print(n)
+    elif d == 1:
+        if n == 100:
+            print(10100)
+        else:
+            print(n*100)
+    else:
+        if n == 100:
+            print(1010000)
+        else:
+            print(n*10000)

@@ -1,7 +1,6 @@
-def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    for i in range(N):
-        print(S[N-1-i])
+def get_input():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        yield (N, A)

@@ -1,3 +1,10 @@
 def main():
-    n, k, a = map(int, input().split())
-    print((k - n + a - 1) % n + 1)
+    n = int(input())
+    s = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if s[i] == s[j]:
+                ans += 1
+    print(ans)
+main()

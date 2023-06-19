@@ -1,6 +1,12 @@
-def max_index(list):
-    max = 0
-    for i in range(1,len(list)):
-        if list[i] > list[max]:
-            max = i
-    return max
+def problems275_b():
+    a,b,c,d,e,f = input().split()
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    d = int(d)
+    e = int(e)
+    f = int(f)
+    if a*b*c >= d*e*f:
+        print((a*b*c - d*e*f)%998244353)
+    else:
+        print(0)

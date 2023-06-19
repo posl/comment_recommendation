@@ -1,8 +1,12 @@
-def find_sea(h):
-    cnt = 1
-    max_h = h[0]
-    for i in range(1, len(h)):
-        if h[i] > max_h:
-            cnt += 1
-            max_h = h[i]
-    return cnt
+def main():
+    s = input()
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if i % 2 == 0:
+            if s[i] == '1':
+                count += 1
+        else:
+            if s[i] == '0':
+                count += 1
+    print(min(count, n - count))

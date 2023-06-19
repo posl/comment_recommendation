@@ -1,9 +1,14 @@
 def main():
-    N = int(input())
-    for i in range(N):
-        d1, d2 = input().split()
-        if i >= 2 and d1 == d2 and d0 == d1:
-            print("Yes")
-            return
-        d0 = d1
-    print("No")
+    n = int(input())
+    count = 0
+    for c in range(1, n):
+        for a in range(1, n):
+            if n >= a * c:
+                b = n - a * c
+                if b <= a:
+                    count += 1
+                else:
+                    break
+            else:
+                break
+    print(count)

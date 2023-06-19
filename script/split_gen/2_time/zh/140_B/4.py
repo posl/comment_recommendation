@@ -1,6 +1,12 @@
 def main():
-    # 1. 读入数据
     n = int(input())
-    # 2. 处理数据
-    # 3. 写出结果
-    print(n**3)
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += b[a[i]-1]
+        if i != n-1:
+            if a[i+1] - a[i] == 1:
+                sum += c[a[i]-1]
+    print(sum)

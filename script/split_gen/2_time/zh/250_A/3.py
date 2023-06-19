@@ -1,15 +1,24 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [0] + a
-    b = [0] * (n+1)
-    c = [0] * (n+1)
-    for i in range(1, n+1):
-        b[a[i]] += 1
-    for i in range(1, n+1):
-        for j in range(1, n+1):
-            c[i * a[j]] += b[i]
-    ans = 0
-    for i in range(1, n+1):
-        ans += c[i]
-    print(ans)
+def getcount(h,w,r,c):
+    count = 0
+    if r == 1:
+        if c == 1:
+            count = 2
+        elif c == w:
+            count = 2
+        else:
+            count = 3
+    elif r == h:
+        if c == 1:
+            count = 2
+        elif c == w:
+            count = 2
+        else:
+            count = 3
+    else:
+        if c == 1:
+            count = 3
+        elif c == w:
+            count = 3
+        else:
+            count = 4
+    return count

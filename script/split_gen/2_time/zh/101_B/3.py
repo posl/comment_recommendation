@@ -1,6 +1,7 @@
-def S(n):
-    if n < 10:
-        return n
+def problem101_b():
+    n = int(input())
+    s = sum([int(i) for i in str(n)])
+    if n%s == 0:
+        print("Yes")
     else:
-        return n % 10 + S(n // 10)
-N = int(input())
+        print("No")

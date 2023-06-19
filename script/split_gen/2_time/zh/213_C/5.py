@@ -1,12 +1,15 @@
-def get_second_min(list):
-    if len(list) < 2:
-        return None
-    min = list[0]
-    second_min = None
-    for i in range(1, len(list)):
-        if list[i] < min:
-            second_min = min
-            min = list[i]
-        elif list[i] != min and (second_min == None or list[i] < second_min):
-            second_min = list[i]
-    return second_min
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    rows = [i for i in range(1, H + 1)]
+    cols = [i for i in range(1, W + 1)]
+    for i in range(N):
+        rows.remove(A[i])
+        cols.remove(B[i])
+    for i in range(N):
+        print(rows[i], cols[i])

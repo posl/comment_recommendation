@@ -1,10 +1,6 @@
-def main():
-    n = int(input())
-    for i in range(n):
-        m = int(input())
-        a = list(map(int,input().split()))
-        cnt = 0
-        for j in range(m):
-            if a[j] % 2 != 0:
-                cnt += 1
-        print(cnt)
+def dfs(v, color, G):
+    color[v] = 1
+    for i in G[v]:
+        if color[i] == 0:
+            dfs(i, color, G)
+    color[v] = 2

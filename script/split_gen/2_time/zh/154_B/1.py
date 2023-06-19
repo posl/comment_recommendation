@@ -1,9 +1,5 @@
-def main():
-    S,T = input().split()
-    A,B = input().split()
-    U = input()
-    if S == U:
-        A = int(A) - 1
-    elif T == U:
-        B = int(B) - 1
-    print(A,B)
+def replace_char(str):
+    result = ''
+    for i in range(len(str)):
+        result += 'x'
+    return result

@@ -1,3 +1,4 @@
 def main():
-    k = int(input())
-    print(k)
+    n = int(input())
+    for i in range(n+1):
+        print(n-i)

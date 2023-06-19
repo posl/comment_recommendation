@@ -1,8 +1,15 @@
-def solve():
-    a,b,k = map(int,input().split())
-    if k <= a:
-        print(a-k,b)
-    elif k <= a+b:
-        print(0,b-(k-a))
+def is_prime(n):
+    if n < 2:
+        return False
     else:
-        print(0,0)
+        for i in range(2, int(n**(1/2))+1):
+            if n % i == 0:
+                return False
+        return True
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    else:
+        x += 1

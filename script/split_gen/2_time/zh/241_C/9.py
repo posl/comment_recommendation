@@ -1,15 +1,20 @@
-def main():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
-    a.sort()
-    b.sort()
-    if n < m:
-        print("No")
-    else:
-        for i in range(m):
-            if a[i] >= b[i]:
-                print("No")
-                break
-            elif i == m-1:
-                print("Yes")
+def check_6x6(grid):
+    # check horizontal
+    for i in range(0, len(grid)):
+        for j in range(0, len(grid) - 5):
+            if grid[i][j] == '#' and grid[i][j + 1] == '#' and grid[i][j + 2] == '#' and grid[i][j + 3] == '#' and \
+                    grid[i][j + 4] == '#' and grid[i][j + 5] == '#':
+                return True
+    # check vertical
+    for i in range(0, len(grid) - 5):
+        for j in range(0, len(grid)):
+            if grid[i][j] == '#' and grid[i + 1][j] == '#' and grid[i + 2][j] == '#' and grid[i + 3][j] == '#' and \
+                    grid[i + 4][j] == '#' and grid[i + 5][j] == '#':
+                return True
+    # check diagonal
+    for i in range(0, len(grid) - 5):
+        for j in range(0, len(grid) - 5):
+            if grid[i][j] == '#' and grid[i + 1][j + 1] == '#' and grid[i + 2][j + 2] == '#' and grid[i + 3][
+                j + 3] == '#' and grid[i + 4][j + 4] == '#' and grid[i + 5][j + 5] == '#':
+                return True
+    return False

@@ -1,7 +1,11 @@
 def main():
-    s = input()
-    t = input()
-    if s + 'z' == t:
-        print('Yes')
-    else:
-        print('No')
+    a,b,c,k = map(int,input().split())
+    if a >= k:
+        print(k)
+        return
+    k = k - a
+    if b >= k:
+        print(a)
+        return
+    k = k - b
+    print(a-k)

@@ -1,6 +1,5 @@
-def main():
-    a,b=map(int,input().split())
-    if b<=2*a+100:
-        print(2*a+100-b)
+def gcd(a, b):
+    if b == 0:
+        return a
     else:
-        print(0)
+        return gcd(b, a%b)

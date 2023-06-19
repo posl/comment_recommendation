@@ -1,10 +1,20 @@
-def count_comma(n):
-    if n <= 999:
-        return 0
-    else:
-        s = str(n)
-        l = len(s)
-        if l % 3 == 0:
-            return (l // 3 - 1) * 2 + count_comma(int(s[3:]))
-        else:
-            return (l // 3) * 2 + count_comma(int(s[l % 3:]))
+def main():
+    n,m,q = map(int,input().split())
+    wv = [list(map(int,input().split())) for _ in range(n)]
+    x = list(map(int,input().split()))
+    query = [list(map(int,input().split())) for _ in range(q)]
+    ans = []
+    for L,R in query:
+        box = x[:L-1]+x[R:]
+        box.sort()
+        wv.sort(key=lambda x: x[1],reverse=True)
+        res = 0
+        for i in range(n):
+            for j in range(len(box)):
+                if wv[i][0]<=box[j]:
+                    res += wv[i][1]
+                    box.pop(j)
+                    break
+        ans.append(res)
+    for i in ans:
+        print(i)

@@ -1,8 +1,12 @@
-def rotate(s, t):
-    if len(s) != len(t):
-        return False
-    for i in range(len(s)):
-        s = s[-1] + s[0:-1]
-        if s == t:
-            return True
-    return False
+def main():
+    S = input()
+    T = input()
+    if len(S) == len(T):
+        for i in range(len(S)):
+            S = S[1:] + S[0]
+            if S == T:
+                print("Yes")
+                exit()
+        print("No")
+    else:
+        print("No")

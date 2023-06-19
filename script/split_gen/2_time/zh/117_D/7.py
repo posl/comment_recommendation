@@ -1,10 +1,18 @@
 def main():
-    # input
-    n,m = map(int,input().split())
-    x = list(map(int,input().split()))
-    # solve
-    x.sort()
-    if n == 1:
-        print(min(abs(x[0]-x[m-1]),abs(x[0]-x[1])))
-    else:
-        print(min(abs(x[0]-x[m-1]),abs(x[1]-x[m-1]),abs(x[0]-x[m-2]),abs(x[1]-x[m-2])))
+    N, K = map(int, input().split())
+    A = map(int, input().split())
+    A = list(A)
+    A.sort()
+    ans = 0
+    for i in range(40, -1, -1):
+        count = 0
+        for j in range(N):
+            if (A[j] >> i) & 1:
+                count += 1
+        if count <= N//2:
+            if ans + (1 << i) <= K:
+                ans += (1 << i)
+    sum = 0
+    for i in range(N):
+        sum += ans ^ A[i]
+    print(sum)

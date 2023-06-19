@@ -1,2 +1,17 @@
-def is_slope_in_1_to_minus1(x1,y1,x2,y2):
-    return abs((y2-y1)/(x2-x1))<=1
+def solve():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = set(S)
+    for s in S:
+        if s[0] == '!':
+            if s[1:] in S:
+                print(s[1:])
+                return
+        else:
+            if '!' + s in S:
+                print(s)
+                return
+    print('satisfiable')
+solve()

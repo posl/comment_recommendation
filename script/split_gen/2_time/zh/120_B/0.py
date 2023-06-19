@@ -1,3 +1,4 @@
-def problems120_a():
-    A, B, C = map(int, input().split())
-    print(min(B // A, C))
+def gcd(a,b):
+    while b:
+        a,b = b,a%b
+    return a

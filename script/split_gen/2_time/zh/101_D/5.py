@@ -1,13 +1,9 @@
-def S(n):
-    sum = 0
-    while n > 0:
-        sum += n % 10
-        n = n // 10
-    return sum
+def s(n):
+    return sum([int(i) for i in str(n)])
 K = int(input())
-n = 0
-while K > 0:
-    n += 1
-    if n % S(n) == 0:
-        K -= 1
-print(n)
+ans = []
+for i in range(1, 200):
+    for j in range(1, 200):
+        ans.append(int(str(i) + '9' * j))
+ans = sorted(ans)
+print(*ans[:K], sep='\n')

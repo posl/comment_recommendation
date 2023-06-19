@@ -1,19 +1,10 @@
 def main():
-    N, X = map(int, input().split())
-    a = []
+    n = int(input())
+    a = [int(x) for x in input().split()]
     b = []
-    for i in range(N):
-        a_i, b_i = map(int, input().split())
-        a.append(a_i)
-        b.append(b_i)
-    sum = 0
-    for i in range(N):
-        sum += a[i]
-        if sum > X:
-            print("No")
-            return
-        sum += b[i]
-    if sum == X:
-        print("Yes")
-    else:
-        print("No")
+    for i in range(n):
+        b.append(a[i])
+        while len(b) >= 2 and b[-1] == b[-2]:
+            b.pop()
+            b.pop()
+    print(len(b))

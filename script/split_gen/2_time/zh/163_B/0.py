@@ -1,3 +1,7 @@
 def main():
-    r = input()
-    print(2*3.141592653589793*r)
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) <= n:
+        print(n - sum(a))
+    else:
+        print(-1)

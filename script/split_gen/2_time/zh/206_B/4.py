@@ -1,14 +1,8 @@
 def main():
-    import sys
-    import math
-    N = int(input())
-    if N < 1 or N > 300:
-        sys.exit()
-    else:
-        result = math.floor(1.08 * N)
-        if result < 206:
-            print("Yay!")
-        elif result == 206:
-            print("so-so")
-        else:
-            print(":(")
+    n = int(input())
+    s = 0
+    for i in range(1, n+1):
+        s += i
+        if s >= n:
+            print(i)
+            break

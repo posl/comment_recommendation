@@ -1,14 +1,13 @@
 def main():
     n = int(input())
-    s = []
+    ab = [list(map(int, input().split())) for i in range(n)]
+    ab.sort(key=lambda x: 2*x[0]+x[1], reverse=True)
+    #print(ab)
+    x = 0
     for i in range(n):
-        s.append(input())
-    for i in range(n):
-        if s[i][0] == '!':
-            s[i] = s[i][1:]
-    s.sort()
-    for i in range(n-1):
-        if s[i] == s[i+1]:
-            print(s[i])
-            exit()
-    print('satisfiable')
+        x += ab[i][0]
+        if x > sum([ab[j][1] for j in range(i+1)]):
+            print(i+1)
+            break
+    else:
+        print(n)

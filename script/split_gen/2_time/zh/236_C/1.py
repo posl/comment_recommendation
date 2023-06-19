@@ -1,13 +1,10 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    d = dict()
-    for i in a:
-        if i in d:
-            d[i] += 1
+def solve():
+    N,M = map(int,input().split())
+    S = input().split()
+    T = input().split()
+    for i in range(N):
+        if S[i] in T:
+            print("Yes")
         else:
-            d[i] = 1
-    for i in d.keys():
-        if d[i] % 2 == 1:
-            print(i)
-            break
+            print("No")
+solve()

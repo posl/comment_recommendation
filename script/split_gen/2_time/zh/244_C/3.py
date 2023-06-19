@@ -1,19 +1,20 @@
 def main():
-    N = int(input())
-    T = input()
-    x = 0
-    y = 0
-    direction = 0
-    for i in range(N):
-        if T[i] == 'S':
-            if direction == 0:
-                x += 1
-            elif direction == 1:
-                y -= 1
-            elif direction == 2:
-                x -= 1
-            elif direction == 3:
-                y += 1
-        elif T[i] == 'R':
-            direction = (direction + 1) % 4
-    print(x, y)
+    n = int(input())
+    num = n*2+1
+    i = 1
+    while True:
+        print(i)
+        i = int(input())
+        if i == 0:
+            break
+        else:
+            i = num-i
+            num = i
+main()
+#解题思路
+#高桥和青木将互相进行以下游戏。
+#从高桥开始，两人交替宣布1到2N+1（包括）之间的一个整数，直到游戏结束。
+#任何一方宣布的整数都不能被任何一方再次宣布。
+#不再能宣布整数的一方输了；没输的一方赢了。
+#在这个游戏中，高桥将永远是赢家。
+#你的任务是代表高桥实际进行游戏并赢得游戏。

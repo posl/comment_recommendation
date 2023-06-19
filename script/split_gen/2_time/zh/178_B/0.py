@@ -1,6 +1,3 @@
 def main():
-    x = input()
-    if x == '0':
-        print('1')
-    else:
-        print('0')
+    a,b,c,d = map(int,input().split())
+    print(max(a*c,a*d,b*c,b*d))

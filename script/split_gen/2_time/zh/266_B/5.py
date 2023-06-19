@@ -1,4 +1,3 @@
 def main():
-    s = input()
-    l = len(s)
-    print(s[int(l/2)])
+    n = int(input())
+    print((-n)%998244353)

@@ -1,8 +1,9 @@
-def get_min_diff(N, W):
-    min_diff = 10000
-    for i in range(1, N):
-        sum1 = sum(W[:i])
-        sum2 = sum(W[i:])
-        if abs(sum1 - sum2) < min_diff:
-            min_diff = abs(sum1 - sum2)
-    return min_diff
+def climb_stairs(n, m, a):
+    if m == 0:
+        return 1
+    a.append(n)
+    a.insert(0, 0)
+    result = 1
+    for i in range(1, m + 2):
+        result *= (a[i] - a[i - 1])
+    return result % 1000000007

@@ -1,8 +1,5 @@
-def main():
-    n,k = map(int,input().split())
-    h = [int(input()) for _ in range(n)]
-    h.sort()
-    ans = h[k-1] - h[0]
-    for i in range(n-k+1):
-        ans = min(ans,h[i+k-1]-h[i])
-    print(ans)
+def num_of_patty(n):
+    if n==0:
+        return 0
+    else:
+        return 2*num_of_patty(n-1)+1

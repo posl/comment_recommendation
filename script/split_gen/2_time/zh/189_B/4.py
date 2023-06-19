@@ -1,8 +1,11 @@
-def problem189_a():
-    #读取输入
-    C = input()
-    #判断是否胜利
-    if C[0] == C[1] == C[2]:
-        print("Won")
-    else:
-        print("Lost")
+def main():
+    n, x = map(int, input().split())
+    x *= 100
+    cnt = 0
+    for i in range(n):
+        v, p = map(int, input().split())
+        cnt += v * p
+        if cnt > x:
+            print(i + 1)
+            return
+    print(-1)

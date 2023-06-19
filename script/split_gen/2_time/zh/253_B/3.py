@@ -1,5 +1,9 @@
-def is_middle(a,b,c):
-    if a<b<c or c<b<a:
-        return True
-    else:
-        return False
+def main():
+    h, w = map(int, input().split())
+    s = [list(input()) for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                ans = max(ans, dfs(i, j, s, h, w))
+    print(ans)

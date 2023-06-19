@@ -1,2 +1,13 @@
-def get_same_edge_num(h,w,r,c):
-    return 2*(h-1)*(w-1)-2*(h-1)-2*(w-1)+4
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + j) % 2 == 0:
+                        print("#", end="")
+                    else:
+                        print(".", end="")
+                print("", end="")
+            print("")
+        print("")

@@ -1,18 +1,9 @@
 def main():
-    N = int(input())
-    A = []
-    P = []
-    X = []
-    for i in range(N):
-        a, p, x = map(int, input().split())
-        A.append(a)
-        P.append(p)
-        X.append(x)
-    min_price = -1
-    for i in range(N):
-        if X[i] > 0:
-            if min_price == -1:
-                min_price = P[i]
-            elif P[i] < min_price:
-                min_price = P[i]
-    print(min_price)
+    n = int(input())
+    a = set()
+    for i in range(2, int(n**0.5)+1):
+        x = i*i
+        while x <= n:
+            a.add(x)
+            x *= i
+    print(n-len(a))

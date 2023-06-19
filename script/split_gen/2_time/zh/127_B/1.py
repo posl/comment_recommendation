@@ -1,8 +1,6 @@
-def main():
-    A, B = map(int, input().split())
-    if A >= 13:
-        print(B)
-    elif A >= 6:
-        print(B // 2)
-    else:
-        print(0)
+def f(r, D, x):
+    for i in range(10):
+        x = r * x - D
+        print(x)
+r, D, x = map(int, input().split())
+f(r, D, x)

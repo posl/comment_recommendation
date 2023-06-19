@@ -1,5 +1,10 @@
-def f(a, b):
-    if a == b:
-        return a
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
     else:
-        return f(a, b - 1) ^ b
+        print('C')

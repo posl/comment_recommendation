@@ -1,6 +1,7 @@
-def readinput():
-    H,W=list(map(int,input().split()))
-    A=[]
-    for i in range(H):
-        A.append(list(map(int,input().split())))
-    return H,W,A
+def main():
+    n = int(input())
+    result = 0
+    for i in range(1, n+1):
+        if '7' not in str(i) and '7' not in oct(i):
+            result += 1
+    print(result)

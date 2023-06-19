@@ -1,6 +1,7 @@
-def solve(n,k,h):
-    ans = 0
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [0] * n
     for i in range(n):
-        if h[i] >= k:
-            ans += 1
-    return ans
+        b[a[i]-1] = i+1
+    print(' '.join(map(str, b)))

@@ -1,14 +1,14 @@
 def main():
-    N, Q = map(int, input().split())
-    A = [int(_) for _ in input().split()]
-    for _ in range(Q):
-        x, k = map(int, input().split())
-        count = 0
-        for i in range(N):
-            if A[i] == x:
-                count += 1
-                if count == k:
-                    print(i+1)
-                    break
+    a, n = map(int, input().split())
+    if n % a != 0:
+        print(-1)
+        return
+    ans = 0
+    while n > 1:
+        if n % a != 0:
+            n -= 1
+            ans += 1
         else:
-            print(-1)
+            n //= a
+            ans += 1
+    print(ans)

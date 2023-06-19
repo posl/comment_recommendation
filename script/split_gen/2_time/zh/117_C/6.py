@@ -1,8 +1,13 @@
-def main():
-    n = int(input())
-    L = list(map(int, input().split()))
-    L.sort()
-    if L[-1] < sum(L[:-1]):
-        print("是")
+def solve():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    if N >= M:
+        return 0
     else:
-        print("否")
+        Y = []
+        for i in range(M-1):
+            Y.append(X[i+1]-X[i])
+        Y.sort()
+        return sum(Y[:M-N])
+print(solve())

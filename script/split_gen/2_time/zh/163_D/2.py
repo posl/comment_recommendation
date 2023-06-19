@@ -1,9 +1,16 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a = [0] + a
-    b = [0] * (n + 1)
-    for i in range(1, n + 1):
-        b[a[i]] += 1
-    for i in range(1, n + 1):
-        print(b[i])
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    if k>n:
+        print(0)
+        return
+    if k==n:
+        print(1)
+        return
+    if k==n-1:
+        print(n)
+        return
+    ans = 0
+    for i in range(k,n+1):
+        ans += i*(n-i+1)+1
+    print(ans%mod)

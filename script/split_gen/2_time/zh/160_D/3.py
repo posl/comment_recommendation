@@ -1,12 +1,8 @@
 def main():
-    # 读入数据
-    K, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    # 计算最短距离
-    max_len = 0
-    for i in range(N):
-        if i == N - 1:
-            max_len = max(max_len, K - A[i] + A[0])
-        else:
-            max_len = max(max_len, A[i + 1] - A[i])
-    print(K - max_len)
+    N, X, Y = map(int, input().split())
+    ans = [0]*N
+    for i in range(1, N):
+        for j in range(i+1, N+1):
+            ans[min(abs(i-j), abs(X-i)+1+abs(Y-j), abs(Y-i)+1+abs(X-j))] += 1
+    for i in range(1, N):
+        print(ans[i])

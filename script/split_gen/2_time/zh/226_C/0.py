@@ -1,21 +1,22 @@
 def main():
     n = int(input())
-    #序列长度为key,序列为value
-    seq_dict = {}
-    #序列长度为key,序列数量为value
-    seq_len_dict = {}
+    t = []
+    k = []
+    a = []
     for i in range(n):
-        seq = list(map(int, input().split()))[1:]
-        seq_len = len(seq)
-        if seq_len in seq_dict:
-            if seq not in seq_dict[seq_len]:
-                seq_dict[seq_len].append(seq)
-                seq_len_dict[seq_len] += 1
+        a.append([])
+        t1, k1, *a1 = map(int, input().split())
+        t.append(t1)
+        k.append(k1)
+        for j in range(k1):
+            a[i].append(a1[j])
+    print(a)
+    print(t)
+    print(k)
+    ans = 0
+    for i in range(n):
+        if k[i] == 0:
+            ans = max(ans, t[i])
         else:
-            seq_dict[seq_len] = []
-            seq_dict[seq_len].append(seq)
-            seq_len_dict[seq_len] = 1
-    result = 0
-    for value in seq_len_dict.values():
-        result += value
-    print(result)
+            ans = max(ans, t[i]+t[a[i][0]-1])
+    print(ans)

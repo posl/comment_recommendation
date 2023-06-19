@@ -1,5 +1,10 @@
-def is_bigger(n):
-    if 2**n > n**2:
-        return True
-    else:
-        return False
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(a[0]+360)
+    a.append(a[1]+360)
+    ans = 0
+    for i in range(n):
+        ans = max(ans, a[i+2]-a[i])
+    print(360-ans)

@@ -1,5 +1,9 @@
-def get_num(num):
-    a = num // 100
-    b = num // 10 % 10
-    c = num % 10
-    return a, b, c
+def solution():
+    n = int(input())
+    h = list(map(int, input().split()))
+    last = h[0]
+    for i in range(1, n):
+        if h[i] > last:
+            last = h[i]
+    print(last)
+solution()

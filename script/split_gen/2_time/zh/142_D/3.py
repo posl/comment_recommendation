@@ -1,7 +1,15 @@
-def main():
-    n = int(input())
-    a = [int(x) for x in input().split()]
-    b = [0] * n
-    for i in range(n):
-        b[a[i] - 1] = i + 1
-    print(' '.join([str(x) for x in b]))
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
+a, b = map(int, input().split())
+c = gcd(a, b)
+ans = 1
+i = 2
+while i * i <= c:
+    if c % i == 0:
+        ans += 1
+        while c % i == 0:
+            c //= i
+    i += 1

@@ -1,11 +1,13 @@
-def exam_grade(n):
-    if n < 40:
-        return 40 - n
-    elif n < 70:
-        return 70 - n
-    elif n < 90:
-        return 90 - n
-    else:
-        return 'expert'
-n = int(input())
-print(exam_grade(n))
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    for i in t:
+        if i == "1":
+            print(s1, end="")
+        elif i == "2":
+            print(s2, end="")
+        else:
+            print(s3, end="")
+    print()

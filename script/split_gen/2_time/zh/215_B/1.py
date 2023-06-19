@@ -1,6 +1,6 @@
 def main():
-    s = input()
-    if s == "Hello,World":
-        print("AC")
-    else:
-        print("WA")
+    n = int(input())
+    k = 0
+    while 2 ** k <= n:
+        k += 1
+    print(k - 1)

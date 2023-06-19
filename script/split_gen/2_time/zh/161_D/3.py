@@ -1,6 +1,18 @@
-def main():
-    n,k = map(int,input().split())
-    if n==0:
-        print(0)
+def lllsk(K):
+    if K<10:
+        return K
     else:
-        print(min(n%k,k-n%k))
+        K-=10
+        a=1
+        while K>0:
+            a+=1
+            if a<10:
+                K-=1
+            else:
+                K-=2
+        if K==0:
+            return a
+        else:
+            return int(str(a)+str(a+1))
+K=int(input())
+print(lllsk(K))

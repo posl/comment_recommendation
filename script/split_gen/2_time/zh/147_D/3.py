@@ -1,9 +1,13 @@
-def check_honesty(honesty, N, A, x, y):
-    for i in range(N):
-        if honesty[i] == 1:
-            for j in range(A[i]):
-                if y[i][j] == 1 and honesty[x[i][j]-1] == 0:
-                    return False
-                if y[i][j] == 0 and honesty[x[i][j]-1] == 1:
-                    return False
-    return True
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j] & (1 << i):
+                cnt += 1
+        ans += (1 << i) * (cnt * (n - cnt))
+        ans %= (10 ** 9 + 7)
+    print(ans)
+main()

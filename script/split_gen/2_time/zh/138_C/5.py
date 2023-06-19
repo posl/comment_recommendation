@@ -1,5 +1,7 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(lambda x: 1/x, a))
-    print(1/sum(b))
+    v = [int(i) for i in input().split()]
+    v.sort()
+    for i in range(n-1):
+        v[i+1] = (v[i] + v[i+1])/2
+    print(v[-1])

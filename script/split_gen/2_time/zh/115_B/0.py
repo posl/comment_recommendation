@@ -1,12 +1,7 @@
 def main():
-    d = int(input())
-    if d == 25:
-        print("圣诞节")
-    elif d == 24:
-        print("平安夜")
-    elif d == 23:
-        print("平安夜的前夜")
-    elif d == 22:
-        print("平安夜的前夜")
-    else:
-        print("输入错误")
+    n = int(input())
+    p = []
+    for i in range(n):
+        p.append(int(input()))
+    p.sort()
+    print(sum(p[0:n-1]) + p[n-1] // 2)

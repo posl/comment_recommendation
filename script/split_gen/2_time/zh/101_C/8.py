@@ -1,24 +1,41 @@
 def main():
-    # 读入输入
-    N, K = map(int, input().split())
-    A = list(map(int, input().split()))
-    # A.sort()
-    # print(A)
-    # A = [1, 2, 3, 4]
-    # N = 4
-    # K = 3
-    # print(A)
-    # print(N, K)
-    # print(A[0:K])
-    # print(A[K-1:N])
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换每个所选元素的值。
-    # 选择k个连续的元素，然后用所选元素中的最小值替换
+    # 读取输入
+    line = input()
+    n, k = line.split()
+    n = int(n)
+    k = int(k)
+    line = input()
+    a = line.split()
+    # 将输入转换为int
+    for i in range(len(a)):
+        a[i] = int(a[i])
+    # 从1开始遍历
+    count = 0
+    for i in range(1, n + 1):
+        # 找到i的位置
+        index = a.index(i)
+        # 判断index是否在k-1的范围内
+        if index >= k - 1:
+            # 如果在k-1的范围内，就将index之前的元素全部替换为i
+            for j in range(index - k + 1, index + 1):
+                a[j] = i
+            # 计数+1
+            count += 1
+        # 如果不在k-1的范围内
+        else:
+            # 如果index不为0
+            if index != 0:
+                # 将index之前的元素全部替换为i
+                for j in range(0, index + 1):
+                    a[j] = i
+                # 计数+1
+                count += 1
+            # 如果index为0
+            else:
+                # 将index之后的元素全部替换为i
+                for j in range(0, k):
+                    a[j] = i
+                # 计数+1
+                count += 1
+    # 输出结果
+    print(count)

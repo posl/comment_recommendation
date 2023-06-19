@@ -1,8 +1,5 @@
-def get_hight(a, b):
-    hight = 0
-    for i in range(1, 1000):
-        hight += i
-        if hight == a:
-            hight = i
-            break
-    return hight
+def solution(a,b):
+    #计算雪覆盖的深度
+    #两座塔的高度分别为10米和15米。
+    #因此，我们可以看到，雪覆盖的深度是2米。
+    return b-a-1

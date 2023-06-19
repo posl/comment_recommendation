@@ -1,8 +1,12 @@
 def main():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    ans = 1
-    for i in range(n-1, -1, -1):
-        if s[i] == "OR":
-            ans += 2**(i+1)
-    print(ans)
+    a, b, c = map(int, input().split())
+    if c == 0:
+        if a > b:
+            print('Takahashi')
+        else:
+            print('Aoki')
+    else:
+        if b > a:
+            print('Aoki')
+        else:
+            print('Takahashi')

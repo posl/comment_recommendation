@@ -1,5 +1,7 @@
-def solve(a, n):
-    if a == 2:
-        return solve2(a, n)
-    else:
-        return solve3(a, n)
+def swap(s,a,b):
+    s1 = s[:a-1]
+    s2 = s[a-1]
+    s3 = s[a:b-1]
+    s4 = s[b-1]
+    s5 = s[b:]
+    return s1 + s4 + s3 + s2 + s5

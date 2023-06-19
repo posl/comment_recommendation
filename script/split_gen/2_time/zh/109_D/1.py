@@ -1,14 +1,19 @@
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-n,x=map(int,input().split())
-a=list(map(int,input().split()))
-a.append(x)
-a.sort()
-b=[a[i+1]-a[i] for i in range(n)]
-ans=b[0]
-for i in range(1,n):
-    ans=gcd(ans,b[i])
-print(ans)
+def solution(H,W,coins):
+    N = 0
+    operation = []
+    for i in range(H):
+        for j in range(W):
+            if coins[i][j] % 2 == 1:
+                if j < W - 1:
+                    coins[i][j] -= 1
+                    coins[i][j+1] += 1
+                    N += 1
+                    operation.append([i+1,j+1,i+1,j+2])
+                elif i < H - 1:
+                    coins[i][j] -= 1
+                    coins[i+1][j] += 1
+                    N += 1
+                    operation.append([i+1,j+1,i+2,j+1])
+    print(N)
+    for i in range(N):
+        print(operation[i][0], operation[i][1], operation[i][2], operation[i][3])

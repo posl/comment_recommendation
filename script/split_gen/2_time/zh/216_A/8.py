@@ -1,7 +1,7 @@
-def gcd(m,n):
-    if m<n:
-        m,n=n,m
-    if n==0:
-        return m
-    else:
-        return gcd(n,m%n)
+def printX(Y):
+    if Y >= 0 and Y <= 2:
+        print('X-')
+    elif Y >= 3 and Y <= 6:
+        print('X')
+    elif Y >= 7 and Y <= 9:
+        print('X+')

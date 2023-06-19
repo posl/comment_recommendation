@@ -1,5 +1,4 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    print(a[-1]-a[0])
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    print(max(A)-min(A))

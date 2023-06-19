@@ -1,4 +1,12 @@
-def swap(l, i, j):
-    temp = l[i]
-    l[i] = l[j]
-    l[j] = temp
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i :
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors

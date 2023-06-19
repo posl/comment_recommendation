@@ -1,10 +1,15 @@
-def main():
-    L,R = map(int,input().split())
-    if R-L>=2019:
-        print(0)
-    else:
-        ans = 2018
-        for i in range(L,R+1):
-            for j in range(i+1,R+1):
-                ans = min(ans,(i*j)%2019)
-        print(ans)
+def solve(n, a):
+    #n = int(input())
+    #a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            b[0] += a[i]
+        else:
+            b[0] -= a[i]
+    for i in range(1, n):
+        b[i] = 2 * a[i-1] - b[i-1]
+    print(*b)
+n = int(input())
+a = list(map(int, input().split()))
+solve(n, a)

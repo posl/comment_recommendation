@@ -1,15 +1,7 @@
 def main():
-    n = int(input())
-    words = []
-    for i in range(n):
-        words.append(input())
-    for i in range(n):
-        if i == 0:
-            continue
-        if words[i][0] != words[i-1][-1]:
-            print("No")
-            return
-        if words.count(words[i]) > 1:
-            print("No")
-            return
-    print("Yes")
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    diff_list = [abs(x_list[i] - x_list[i+1]) for i in range(n)]
+    print(gcd_list(diff_list))

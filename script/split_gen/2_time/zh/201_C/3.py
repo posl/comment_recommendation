@@ -1,12 +1,7 @@
-def second_height():
-    N = int(input())
-    S = []
-    T = []
-    for i in range(N):
-        S.append(input().split()[0])
-        T.append(int(input().split()[1]))
-    T_sort = sorted(T)
-    for i in range(N):
-        if T[i] == T_sort[-2]:
-            print(S[i])
-            break
+def main():
+    s = input()
+    n = 0
+    for i in range(10):
+        if s[i] == 'o':
+            n += 1
+    print(1000*n + 100*(s.count('?')-n))

@@ -1,14 +1,13 @@
 def main():
     S = input()
     K = int(input())
-    n = len(S)
-    i = 0
-    while i < n and int(S[i]) == 1:
-        i += 1
-    if i == n:
-        print(1)
-    elif K <= i:
+    cnt = 0
+    for i in range(len(S)):
+        if S[i] == '1':
+            cnt += 1
+        else:
+            break
+    if K <= cnt:
         print(1)
     else:
-        print(S[i])
-main()
+        print(S[cnt-1])

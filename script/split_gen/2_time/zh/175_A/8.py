@@ -1,12 +1,15 @@
-def main():
-    n = int(input())
-    c = input()
-    r = 0
-    w = 0
-    for i in range(n):
-        if c[i] == "R":
-            r += 1
-    for i in range(r):
-        if c[i] == "W":
-            w += 1
-    print(w)
+def get_max_rainy_days(str):
+    max_rainy_days = 0
+    rainy_days = 0
+    for s in str:
+        if s == 'R':
+            rainy_days += 1
+        else:
+            if rainy_days > max_rainy_days:
+                max_rainy_days = rainy_days
+            rainy_days = 0
+    if rainy_days > max_rainy_days:
+        max_rainy_days = rainy_days
+    return max_rainy_days
+str = input()
+print(get_max_rainy_days(str))

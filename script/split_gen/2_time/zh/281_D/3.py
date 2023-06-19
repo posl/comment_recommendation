@@ -1,10 +1,17 @@
 def main():
-    N, T = map(int, input().split())
-    A = list(map(int, input().split()))
-    T = T - 1
-    T = T % sum(A)
-    for i in range(N):
-        T = T - A[i]
-        if T < 0:
-            print(i + 1, -T)
-            break
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    if k == 1:
+        if a[0] % d == 0:
+            print(0)
+        else:
+            print(-1)
+    else:
+        ans = 0
+        for i in range(n-k+1):
+            if sum(a[i:i+k]) % d == 0:
+                ans += 1
+        if ans == 0:
+            print(-1)
+        else:
+            print(ans)

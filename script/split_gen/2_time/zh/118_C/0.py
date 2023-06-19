@@ -1,10 +1,6 @@
-def solve(n, m, a):
-    ans = 0
-    for i in range(1, m + 1):
-        flag = True
-        for j in range(n):
-            if i not in a[j]:
-                flag = False
-        if flag:
-            ans += 1
-    return ans
+def min_health(monster):
+    monster.sort()
+    for i in range(len(monster)-1):
+        if monster[i+1] % monster[i] == 0:
+            monster[i+1] = monster[i]
+    return monster[-1]

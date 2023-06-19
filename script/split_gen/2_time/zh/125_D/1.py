@@ -1,5 +1,14 @@
-def gcd(a,b):
-    if b == 0:
-        return a
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    for a in A:
+        if a < 0:
+            cnt += 1
+            a = -a
+        ans += a
+    if cnt % 2 == 0:
+        print(ans)
     else:
-        return gcd(b,a%b)
+        print(ans - min(A) * 2)

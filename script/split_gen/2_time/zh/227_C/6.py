@@ -1,9 +1,9 @@
 def main():
-    n = int(input())
-    s = list(map(int,input().split()))
-    result = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            if s[i] == s[j]:
-                result += 1
-    print(result)
+    N = int(input())
+    cnt = 0
+    for i in range(1, N + 1):
+        if i ** 3 <= N:
+            cnt += 1
+        else:
+            break
+    print(cnt)

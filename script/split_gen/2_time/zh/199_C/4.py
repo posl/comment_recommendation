@@ -1,6 +1,18 @@
-def solve():
-    n = int(input())
-    a = [int(i) for i in input().split()]
-    b = [int(i) for i in input().split()]
-    print(max(0, min(b) - max(a) + 1))
-solve()
+def main():
+    N = int(input())
+    S = input()
+    Q = int(input())
+    #print(N)
+    #print(S)
+    #print(Q)
+    #print("S[:N] = ", S[:N])
+    #print("S[N:] = ", S[N:])
+    for i in range(Q):
+        T, A, B = map(int, input().split())
+        #print("T = ", T, "A = ", A, "B = ", B)
+        if T == 1:
+            S = S[:A-1] + S[B-1] + S[A:B-1] + S[A-1] + S[B:]
+        else:
+            S = S[N:] + S[:N]
+        #print("S = ", S)
+    print(S)

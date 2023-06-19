@@ -1,9 +1,21 @@
 def main():
-    x, y, n = map(int, input().split())
-    if n % 3 == 0:
-        print(n // 3 * y)
-    else:
-        if n % 3 == 1:
-            print((n // 3 * y) + x)
-        else:
-            print((n // 3 * y) + y)
+    n,m,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = []
+    y = []
+    for i in range(m):
+        x1,y1 = map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+    a.append(0)
+    a.append(0)
+    x.append(n)
+    y.append(0)
+    for i in range(m):
+        a[x[i]-1] = a[x[i]-1] + y[i]
+    for i in range(n-1):
+        t = t - a[i]
+        if t <= 0:
+            print("No")
+            exit()
+    print("Yes")

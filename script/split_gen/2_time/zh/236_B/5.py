@@ -1,5 +1,8 @@
 def main():
-    s = raw_input()
-    a, b = map(int, raw_input().split())
-    s = s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
-    print s
+	n = int(input())
+	ai = list(map(int, input().split()))
+	ai.sort()
+	for i in range(0, len(ai), 2):
+		if ai[i] != ai[i+1]:
+			print(ai[i])
+			break

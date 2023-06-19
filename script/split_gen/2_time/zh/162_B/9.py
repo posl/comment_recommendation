@@ -1,8 +1,13 @@
 def main():
-    # 读取输入
-    n = int(input())
-    # 计算
-    if n % 10 == 7:
-        print("是")
-    else:
-        print("否")
+    N = int(input())
+    sum = 0
+    for i in range(1, N+1):
+        if i % 3 == 0 and i % 5 == 0:
+            sum += 0
+        elif i % 3 == 0:
+            sum += 0
+        elif i % 5 == 0:
+            sum += 0
+        else:
+            sum += i
+    print(sum)

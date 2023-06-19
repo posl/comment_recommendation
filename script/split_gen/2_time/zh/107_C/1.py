@@ -1,14 +1,13 @@
-def main():
-    N,K = map(int, input().split())
+def solve():
+    n, k = map(int, input().split())
     x = list(map(int, input().split()))
-    #print(N,K,x)
-    if K == 1:
-        print(0)
-    else:
-        #print(x)
-        #print(x[K-1])
-        #print(x[0])
-        #print(x[K-1] - x[0])
-        #print(x[N-1] - x[K])
-        print(min(x[K-1] - x[0], x[N-1] - x[K]))
-main()
+    ans = 10 ** 9
+    for i in range(n - k + 1):
+        l = x[i]
+        r = x[i + k - 1]
+        if l * r <= 0:
+            ans = min(ans, min(abs(l), abs(r)) + r - l)
+        else:
+            ans = min(ans, max(abs(l), abs(r)))
+    print(ans)
+solve()

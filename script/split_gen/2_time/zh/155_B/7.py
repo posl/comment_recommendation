@@ -1,10 +1,10 @@
 def main():
-    a,b,c = map(int,input().split())
-    if a==b and a!=c:
-        print("是")
-    elif a==c and a!=b:
-        print("是")
-    elif b==c and b!=a:
-        print("是")
-    else:
-        print("否")
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if i % 2 == 0:
+            if i % 3 != 0 and i % 5 != 0:
+                print('DENIED')
+                exit()
+    print('APPROVED')
+main()

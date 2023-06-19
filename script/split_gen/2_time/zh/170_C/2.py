@@ -1,10 +1,14 @@
-def cal(X,Y):
-    if (Y-2*X)%2 == 0:
-        A = (Y-2*X)/2
-        B = X-A
-        if A >= 0 and B >= 0:
-            print("Yes")
-        else:
-            print("No")
-    else:
-        print("No")
+def main():
+    x, n = map(int, input().split())
+    if n == 0:
+        print(x)
+        return
+    p = list(map(int, input().split()))
+    p.sort()
+    for i in range(100):
+        if x - i not in p:
+            print(x - i)
+            return
+        if x + i not in p:
+            print(x + i)
+            return

@@ -1,8 +1,9 @@
-def problem174_b():
-    n, d = map(int, input().split())
-    cnt = 0
-    for i in range(n):
-        x, y = map(int, input().split())
-        if x**2 + y**2 <= d**2:
-            cnt += 1
-    print(cnt)
+def main():
+    k = int(input())
+    a = 7
+    for i in range(1, k+1):
+        if a % k == 0:
+            print(i)
+            return
+        a = a * 10 + 7
+    print(-1)

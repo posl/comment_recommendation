@@ -1,12 +1,12 @@
-def main():
-    n = int(input())
-    name_list = []
-    for i in range(n):
-        name_list.append(input())
-    name_list.sort()
-    for i in range(n-1):
-        if name_list[i] == name_list[i+1]:
-            print('Yes')
-            return
-    print('No')
-main()
+def solve(n):
+    ans = ''
+    while n > 0:
+        if n % 2 == 0:
+            ans += 'B'
+            n //= 2
+        else:
+            ans += 'A'
+            n -= 1
+    return ans[::-1]
+n = int(input())
+print(solve(n))

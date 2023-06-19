@@ -1,17 +1,13 @@
-def main():
-    N = int(input())
-    S = input()
-    if N == 1:
-        print(1)
-        return
-    slime = []
-    for i in range(N):
-        slime.append(S[i])
-    i = 0
-    while i < len(slime)-1:
-        if slime[i] == slime[i+1]:
-            del slime[i+1]
-        else:
-            i += 1
-    print(len(slime))
-main()
+def triangle_num(num_list):
+    num_list.sort()
+    num_list.reverse()
+    #print(num_list)
+    count = 0
+    for i in range(len(num_list)):
+        for j in range(i+1, len(num_list)):
+            for k in range(j+1, len(num_list)):
+                if num_list[i] < num_list[j] + num_list[k]:
+                    count += 1
+                else:
+                    break
+    return count

@@ -1,3 +1,10 @@
 def main():
-    N,i = map(int,input().split())
-    print(N-i+1)
+    N = 0
+    i = 0
+    j = 0
+    print("请输入N i：")
+    N = int(input())
+    i = int(input())
+    j = N - i + 1
+    print(j)
+    return 0

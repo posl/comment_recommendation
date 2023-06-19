@@ -1,23 +1,5 @@
-def solve():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort()
-    b = []
-    c = []
-    for i in range(m):
-        bi,ci = map(int,input().split())
-        b.append(bi)
-        c.append(ci)
-    b = b[::-1]
-    c = c[::-1]
-    index = 0
-    ans = 0
-    for i in range(n):
-        if index < m and a[i] < c[index]:
-            ans += c[index]
-            b[index] -= 1
-            if b[index] == 0:
-                index += 1
-        else:
-            ans += a[i]
-    print(ans)
+def make_pie(apples, pieces):
+    return (apples * 3 + pieces) // 2
+print('请输入苹果的个数和苹果的块数，用空格分开')
+apples, pieces = map(int, input().split())
+print(make_pie(apples, pieces))

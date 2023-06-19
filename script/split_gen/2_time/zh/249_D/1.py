@@ -1,15 +1,12 @@
-def solve():
-    n, k = map(int, input().split())
-    s = [input() for _ in range(n)]
-    ans = 0
-    for i in range(1 << n):
-        if bin(i).count('1') != k:
-            continue
-        t = set()
-        for j in range(n):
-            if i >> j & 1:
-                t |= set(s[j])
-        if len(t) == k:
-            ans = max(ans, bin(i).count('1'))
-    print(ans)
-solve()
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    count = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if A[i] * A[j] > A[N - 1]:
+                break
+            elif A[i] * A[j] in A:
+                count += 1
+    print(count)

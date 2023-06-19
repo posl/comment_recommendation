@@ -1,4 +1,10 @@
-def main():
-    a, b = map(int, input().split())
-    print(100 - b * 100 / a)
-    return
+def get_min_money(N, shops):
+    min_money = -1
+    for i in range(N):
+        if shops[i][2] > 0:
+            if min_money == -1:
+                min_money = shops[i][1]
+            else:
+                if shops[i][1] < min_money:
+                    min_money = shops[i][1]
+    return min_money

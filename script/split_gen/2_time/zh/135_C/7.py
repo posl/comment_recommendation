@@ -1,13 +1,15 @@
-def main():
-    N = int(input())
-    p = list(map(int,input().split()))
-    #print(N)
-    #print(p)
+def max_monster(N, A, B):
     count = 0
     for i in range(N):
-        if p[i] != i + 1:
-            count += 1
-    if count <= 2:
-        print("YES")
-    else:
-        print("NO")
+        if A[i] >= B[i]:
+            count += B[i]
+        else:
+            count += A[i]
+            B[i] -= A[i]
+            if A[i + 1] >= B[i]:
+                count += B[i]
+                A[i + 1] -= B[i]
+            else:
+                count += A[i + 1]
+                A[i + 1] = 0
+    return count

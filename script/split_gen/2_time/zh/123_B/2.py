@@ -1,11 +1,16 @@
 def main():
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    k = int(input())
-    if e - a <= k:
-        print('Yay!')
-    else:
-        print(':(')
+    # input
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    # compute
+    # 1. 10的倍数的时间下单
+    # 2. 每次只能点一道菜
+    # 3. 当一个订单已经下了，而菜品仍未送达时，不能再下新的订单，但可以在菜品送达的确切时间下新的订单
+    # 4. E869120在时间0到达这家餐厅，他将订购全部五道菜。找出最后一道菜的最早送达时间。
+    # 5. 在这里，他可以按他喜欢的任何顺序点菜，而且他可以在时间0时已经下单。
+    # 6. A，B，C，D和E是1到123之间的整数（包括在内）。
+    # output
+    print(10 * ((A + 9) // 10) + 10 * ((B + 9) // 10) + 10 * ((C + 9) // 10) + 10 * ((D + 9) // 10) + 10 * ((E + 9) // 10) - 10)

@@ -1,8 +1,4 @@
-def main():
-    n = int(input())
-    s, t = input().split()
-    result = ''
-    for i in range(n):
-        result += s[i]
-        result += t[i]
-    print(result)
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)

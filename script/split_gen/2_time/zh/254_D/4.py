@@ -1,8 +1,16 @@
-def solve():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    for i in range(n - k):
-        if a[i] > a[i + k]:
-            print("Yes")
-            return
-    print("No")
+def isSquare(n):
+    if n < 0:
+        return False
+    if n == 1:
+        return True
+    low = 0
+    high = n
+    while low < high:
+        mid = (low + high) // 2
+        if mid * mid == n:
+            return True
+        if mid * mid < n:
+            low = mid + 1
+        else:
+            high = mid
+    return False

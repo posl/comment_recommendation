@@ -1,18 +1,20 @@
-def solve(n,m,a):
-    c=[0]
+def main():
+    #读取输入
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    #计算前缀和
+    s = [0] * (n + 1)
     for i in range(n):
-        c.append(c[-1]+a[i])
-    d={}
-    for i in range(n+1):
-        c[i]%=m
-        if c[i] in d:
-            d[c[i]]+=1
-        else:
-            d[c[i]]=1
-    ans=0
-    for i in d:
-        ans+=d[i]*(d[i]-1)//2
-    return ans
-n,m=map(int,input().split())
-a=list(map(int,input().split()))
-print(solve(n,m,a))
+        s[i + 1] = s[i] + a[i]
+    #计算余数的个数
+    cnt = {}
+    for i in range(n + 1):
+        r = s[i] % m
+        if r not in cnt:
+            cnt[r] = 0
+        cnt[r] += 1
+    #计算答案
+    ans = 0
+    for v in cnt.values():
+        ans += v * (v - 1) // 2
+    print(ans)

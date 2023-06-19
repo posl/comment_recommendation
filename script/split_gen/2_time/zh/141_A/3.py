@@ -1,5 +1,7 @@
-def reverse(s, l, r):
-    s = list(s)
-    for i in range((r-l+1)//2):
-        s[l+i], s[r-i] = s[r-i], s[l+i]
-    return ''.join(s)
+def get_next_weather(weather):
+    if weather == '晴天':
+        return '阴天'
+    elif weather == '阴天':
+        return '雨天'
+    else:
+        return '晴天'

@@ -1,16 +1,16 @@
-def problem223_b():
-    s = input()
-    if len(s) == 1:
-        print(s)
-        print(s)
-        return
-    min_s = s
-    max_s = s
-    for i in range(0,len(s)):
-        s = s[1:] + s[0]
-        if s < min_s:
-            min_s = s
-        if s > max_s:
-            max_s = s
-    print(min_s)
-    print(max_s)
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i]/B[i]
+    ans = 0
+    for i in range(N):
+        ans += A[i]*sum/B[i]
+    print(ans/2)
+solve()

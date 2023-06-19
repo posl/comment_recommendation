@@ -1,8 +1,6 @@
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort()
-    for i in range(m):
-        a[-1] = a[-1]//2
-        a.sort()
-    print(sum(a))
+    N = int(input())
+    if N%2 == 0:
+        print(0.5)
+    else:
+        print(round((N//2+1)/N, 10))

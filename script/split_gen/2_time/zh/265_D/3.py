@@ -1,39 +1,37 @@
-def main():
-    h, w = map(int, input().split())
-    grid = []
-    for i in range(h):
-        grid.append(input())
-    visited = [[0 for i in range(w)] for j in range(h)]
-    curx, cury = 0, 0
-    while True:
-        if visited[curx][cury] == 1:
-            print(-1)
+def solve():
+    # 读取数据
+    N, p, q, r = map(int, input().split())
+    A = list(map(int, input().split()))
+    # 逆序累积和
+    R = [0] * (N + 1)
+    for i in range(N - 1, -1, -1):
+        R[i] = max(R[i + 1], A[i])
+    # 正序累积和
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = S[i] + A[i]
+    # 二分查找
+    ans = 'No'
+    for i in range(1, N - 1):
+        if p * i > q:
             break
-        visited[curx][cury] = 1
-        if grid[curx][cury] == 'U':
-            if curx == 0:
-                print(curx + 1, cury + 1)
+        while True:
+            j = N - 1
+            while j > i and (S[j] - S[i]) * p > r:
+                j -= 1
+            if j <= i:
                 break
-            else:
-                curx -= 1
-        elif grid[curx][cury] == 'D':
-            if curx == h - 1:
-                print(curx + 1, cury + 1)
+            if (S[j] - S[i]) * p == r:
+                if (S[j] - S[i]) * q == (S[i] - S[0]) * r:
+                    ans = 'Yes'
                 break
-            else:
-                curx += 1
-        elif grid[curx][cury] == 'L':
-            if cury == 0:
-                print(curx + 1, cury + 1)
+            if (S[j] - S[i]) * q > (S[i] - S[0]) * r:
                 break
-            else:
-                cury -= 1
-        elif grid[curx][cury] == 'R':
-            if cury == w - 1:
-                print(curx + 1, cury + 1)
+            if (S[j] - S[i]) * q == (S[i] - S[0]) * r:
+                ans = 'Yes'
+            if R[j] * q > (S[i] - S[0]) * r:
                 break
-            else:
-                cury += 1
-        else:
-            print(curx + 1, cury + 1)
+            if R[j] * q == (S[i] - S[0]) * r:
+                ans = 'Yes'
             break
+    print(ans)

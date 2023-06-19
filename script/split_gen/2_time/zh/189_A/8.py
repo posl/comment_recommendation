@@ -1,15 +1,10 @@
 def main():
-    n,c = map(int, input().split())
-    a = []
-    b = []
-    cost = []
-    for i in range(n):
-        a_i, b_i, c_i = map(int, input().split())
-        a.append(a_i)
-        b.append(b_i)
-        cost.append(c_i)
-    print(n,c)
-    print(a)
-    print(b)
-    print(cost)
-    print("end")
+    #输入
+    C_1, C_2, C_3 = input().split()
+    #处理
+    if C_1 == C_2 == C_3:
+        result = "Won"
+    else:
+        result = "Lost"
+    #输出
+    print(result)

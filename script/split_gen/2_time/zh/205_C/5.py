@@ -1,8 +1,21 @@
-def is_permutation(n, a):
-    if len(a) != n:
-        return False
-    a.sort()
-    for i in range(n):
-        if a[i] != i + 1:
-            return False
-    return True
+def main():
+    a,b,c = map(int,input().split())
+    if a == b:
+        print('=')
+        return
+    if c % 2 == 0:
+        if abs(a) == abs(b):
+            print('=')
+            return
+        else:
+            if abs(a) > abs(b):
+                print('>')
+            else:
+                print('<')
+            return
+    else:
+        if a > b:
+            print('>')
+        else:
+            print('<')
+        return

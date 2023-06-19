@@ -1,6 +1,5 @@
-def main():
-    n = int(input())
+def get_problem_code(n):
     if n < 1000:
-        print("ABC")
+        return 'ABC'
     else:
-        print("ABD")
+        return 'ABD'

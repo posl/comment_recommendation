@@ -1,8 +1,11 @@
-def problem216_a():
-    x, y = map(int, input().split('.'))
-    if 0 <= y <= 2:
-        print(x, '-')
-    elif 3 <= y <= 6:
-        print(x)
-    elif 7 <= y <= 9:
-        print(x, '+')
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input())
+    names.sort()
+    for i in range(n-1):
+        if names[i] == names[i+1]:
+            print('Yes')
+            return
+    print('No')

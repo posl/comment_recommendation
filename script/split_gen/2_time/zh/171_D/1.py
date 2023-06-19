@@ -1,7 +1,14 @@
-def dogName(N):
-    dogName = ""
-    while N > 0:
-        N -= 1
-        dogName = chr(ord('a') + N % 26) + dogName
-        N /= 26
-    return dogName
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = []
+    c = []
+    for i in range(q):
+        b1, c1 = map(int, input().split())
+        b.append(b1)
+        c.append(c1)
+    s = sum(a)
+    for i in range(q):
+        s = s + (c[i] - b[i]) * a.count(b[i])
+        print(s)

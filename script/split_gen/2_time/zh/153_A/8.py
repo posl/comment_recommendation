@@ -1,7 +1,3 @@
-def f(n):
-    ans = 0
-    for i in range(1, n+1):
-        s = str(i)
-        if s[0] == s[-1]:
-            ans += 1
-    return ans
+def get_input():
+    input_str = input().split(' ')
+    return int(input_str[0]), int(input_str[1])

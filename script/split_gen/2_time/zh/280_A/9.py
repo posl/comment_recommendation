@@ -1,3 +1,9 @@
 def main():
-    A, B = map(int, input().split())
-    print(1 + (A - 1) * B / (A ** 2 + 1) ** 0.5)
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                ans += 1
+    print(ans)

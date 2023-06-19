@@ -1,11 +1,10 @@
-def solve():
-    n = int(input())
-    t, a = map(int, input().split())
-    h = list(map(int, input().split()))
-    min = 100000
-    res = 0
-    for i in range(len(h)):
-        if abs(t - h[i] * 0.006 - a) < min:
-            min = abs(t - h[i] * 0.006 - a)
-            res = i + 1
-    print(res)
+def main():
+    n,m = map(int,input().split())
+    pm = []
+    for i in range(m):
+        p,y = map(int,input().split())
+        pm.append([p,y])
+    pm.sort(key=lambda x:x[1])
+    print(pm)
+    for i in range(m):
+        print("{:06}{:06}".format(pm[i][0],i+1))

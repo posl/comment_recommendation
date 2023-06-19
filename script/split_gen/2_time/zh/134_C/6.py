@@ -1,3 +1,10 @@
 def main():
-    n, d = map(int, input().split())
-    print(n // (2 * d + 1) + (1 if n % (2 * d + 1) else 0))
+    N = int(input())
+    A = []
+    for i in range(N):
+        a = int(input())
+        A.append(a)
+    for i in range(N):
+        A.pop(i)
+        print(max(A))
+        A.insert(i, A.pop(i))

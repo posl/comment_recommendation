@@ -1,6 +1,8 @@
 def main():
-    v,t,s,d = map(int,input().split())
-    if d < t * v or d > s * v:
-        print('Yes')
-    else:
-        print('No')
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] != x:
+            ans.append(a[i])
+    print(*ans)

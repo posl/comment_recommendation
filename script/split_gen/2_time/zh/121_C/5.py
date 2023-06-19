@@ -1,12 +1,18 @@
 def main():
-    n, m, c = map(int, input().split())
-    b = list(map(int, input().split()))
-    a = [list(map(int, input().split())) for _ in range(n)]
-    ans = 0
+    n, m = map(int, input().split())
+    shops = []
     for i in range(n):
-        tmp = 0
-        for j in range(m):
-            tmp += a[i][j] * b[j]
-        if tmp + c > 0:
-            ans += 1
-    print(ans)
+        a, b = map(int, input().split())
+        shops.append((a, b))
+    shops.sort(key=lambda x: x[0])
+    count = 0
+    money = 0
+    for i in range(n):
+        if count + shops[i][1] < m:
+            money += shops[i][0] * shops[i][1]
+            count += shops[i][1]
+        else:
+            money += shops[i][0] * (m - count)
+            count = m
+            break
+    print(money)

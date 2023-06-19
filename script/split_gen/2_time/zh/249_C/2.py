@@ -1,10 +1,17 @@
-def check(s):
-    if(s.islower() or s.isupper() or len(s)%2!=0):
-        return False
-    else:
-        return True
-s=input()
-if(check(s)):
-    print("Yes")
-else:
-    print("No")
+def main():
+    N,K = map(int,input().split())
+    S = []
+    for i in range(N):
+        S.append(input())
+    ans = 0
+    for i in range(2**N):
+        cnt = 0
+        tmp = []
+        for j in range(N):
+            if i&(1<<j):
+                tmp.append(S[j])
+                cnt += 1
+        if cnt != K:
+            continue
+        ans = max(ans,len(set("".join(tmp))))
+    print(ans)

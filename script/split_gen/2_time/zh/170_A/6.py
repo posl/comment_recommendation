@@ -1,10 +1,4 @@
-def prime_factors(n):
-    i = 2
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            yield i
-    if n > 1:
-        yield n
+def problems170_a(x):
+    for i in range(len(x)):
+        if x[i] == 0:
+            return i+1

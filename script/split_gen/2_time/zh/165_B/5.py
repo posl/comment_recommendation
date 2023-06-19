@@ -1,7 +1,8 @@
 def main():
-    k = int(input())
-    a, b = map(int, input().split())
-    if a % k == 0 or b % k == 0 or (a // k) != (b // k):
-        print('OK')
-    else:
-        print('NG')
+    x = int(input())
+    y = 100
+    i = 0
+    while y < x:
+        i += 1
+        y += y // 100
+    print(i)

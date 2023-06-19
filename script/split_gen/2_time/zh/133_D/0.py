@@ -1,10 +1,15 @@
-def problem133_c():
-    L,R = map(int,input().split())
-    if R-L>=2019:
-        print(0)
-    else:
-        ans = 2019
-        for i in range(L,R):
-            for j in range(i+1,R+1):
-                ans = min(ans,(i*j)%2019)
-        print(ans)
+def solve():
+    n = int(input())
+    nums = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            ans[0] += nums[i]
+            ans[1] += nums[i]
+        else:
+            ans[0] -= nums[i]
+            ans[1] -= nums[i]
+    for i in range(1, n - 1):
+        ans[i] = 2 * nums[i - 1] - ans[i - 1]
+    print(' '.join(map(str, ans)))
+solve()

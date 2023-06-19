@@ -1,12 +1,8 @@
-def gcd(x, y):
-    if x < y:
-        x, y = y, x
-    while y != 0:
-        r = x % y
-        x = y
-        y = r
-    return x
-N, M = map(int, input().split())
-A = list(map(int, input().split()))
-max_A = max(A)
-max_M = max(M, max_A)
+def main():
+    x,y=map(float,input().split("."))
+    if 0<=y<=2:
+        print(int(x),end="-")
+    elif 3<=y<=6:
+        print(int(x),end="")
+    else:
+        print(int(x),end="+")

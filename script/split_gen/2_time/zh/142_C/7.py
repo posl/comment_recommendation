@@ -1,12 +1,11 @@
-def main():
-    # 读取输入
-    n,k = map(int, input().split())
-    h = list(map(int, input().split()))
-    # 初始化
-    ans = 0
-    # 遍历
-    for i in h:
-        if i >= k:
-            ans += 1
-    # 输出结果
-    print(ans)
+def solve(n, a):
+    ans = []
+    for i in range(n):
+        ans.append(0)
+    for i in range(n):
+        ans[a[i]-1] = i+1
+    return ans
+n = int(input())
+a = list(map(int, input().split()))
+ans = solve(n, a)
+print(*ans)

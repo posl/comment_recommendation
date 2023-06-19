@@ -1,14 +1,22 @@
 def main():
-    n, k, q = map(int, input().split())
-    a = list(map(int, input().split()))
-    l = list(map(int, input().split()))
-    for i in range(q):
-        if a[l[i]-1] == n:
-            continue
-        elif a[l[i]-1] < n:
-            if a[l[i]-1] + 1 in a:
-                continue
-            else:
-                a[l[i]-1] += 1
-    for i in range(k):
-        print(a[i], end=' ')
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if S[i] == '1':
+            ans += W[i]
+    # print(ans)
+    c = 0
+    for i in range(N):
+        if S[i] == '1':
+            c += W[i]
+    # print(c)
+    ans = max(ans, c)
+    c = 0
+    for i in range(N):
+        if S[i] == '0':
+            c += W[i]
+    # print(c)
+    ans = max(ans, c)
+    print(ans)

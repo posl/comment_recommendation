@@ -1,5 +1,9 @@
-def max_pie(a, p):
-    if a == 0:
-        return 0
-    else:
-        return int((a * 3 + p) / 2)
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        s, p = input().split()
+        restaurants.append([s, int(p), i+1])
+    restaurants.sort(key=lambda x:(x[0],-x[1]))
+    for r in restaurants:
+        print(r[2])

@@ -1,13 +1,18 @@
 def main():
-    n = int(input())
-    p = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if p[i] == i + 1:
-            count += 1
-    if count == n:
-        print("YES")
-    elif count == n - 2:
-        print("YES")
-    else:
-        print("NO")
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)

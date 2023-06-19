@@ -1,14 +1,7 @@
-def process():
-    N = 1048576
-    A = [-1] * (N + 1)
-    Q = int(input())
-    for i in range(Q):
-        t, x = map(int, input().split())
-        if t == 1:
-            h = x
-            while A[h % N] != -1:
-                h += 1
-            A[h % N] = x
-        else:
-            print(A[x % N])
-process()
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == "#" and s1[1] == "#" and s2[0] == "#" and s2[1] == "#":
+        print("Yes")
+    else:
+        print("No")

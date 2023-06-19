@@ -1,11 +1,7 @@
 def main():
-    s = input()
-    s = s.replace("()", "")
-    while True:
-        if s.find("()") == -1:
-            break
-        s = s.replace("()", "")
-    if len(s) == 0:
-        print("是")
-    else:
-        print("否")
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-1-i])

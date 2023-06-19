@@ -1,10 +1,4 @@
-def main():
-    s = input()
-    if len(s) != 4:
-        return
-    if len(set(s)) != 2:
-        return
-    for c in set(s):
-        if s.count(c) != 2:
-            return
-    print("Yes")
+def get_input():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    return n, p

@@ -1,1 +1,8 @@
-def solve(N, A):
+def is_median(a,b,c):
+    if a<b and b<c:
+        return True
+    elif c<b and b<a:
+        return True
+    else:
+        return False
+a,b,c = map(int,input().split())

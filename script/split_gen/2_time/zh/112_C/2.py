@@ -1,9 +1,25 @@
-def find_best_route(N, T, c_list, t_list):
-    best_cost = 1001
-    for i in range(N):
-        if t_list[i] <= T and c_list[i] < best_cost:
-            best_cost = c_list[i]
-    if best_cost == 1001:
-        print("TLE")
-    else:
-        print(best_cost)
+def main():
+    n = int(input())
+    x = []
+    y = []
+    h = []
+    for i in range(n):
+        x1, y1, h1 = map(int, input().split())
+        x.append(x1)
+        y.append(y1)
+        h.append(h1)
+    for cx in range(101):
+        for cy in range(101):
+            H = 0
+            for i in range(n):
+                if h[i] > 0:
+                    H = h[i] + abs(x[i] - cx) + abs(y[i] - cy)
+                    break
+            flag = True
+            for i in range(n):
+                if max(H - abs(x[i] - cx) - abs(y[i] - cy), 0) != h[i]:
+                    flag = False
+                    break
+            if flag:
+                print(cx, cy, H)
+                return

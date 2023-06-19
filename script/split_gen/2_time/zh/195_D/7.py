@@ -1,7 +1,13 @@
-def main():
-    n = int(input())
-    count = 0
-    for i in range(1, len(str(n))+1):
-        if i % 3 == 0:
-            count += 1
-    print(count)
+def isok(baggage,box):
+    baggage.sort(key=lambda x:x[1],reverse=True)
+    box.sort(reverse=True)
+    for i in box:
+        for j in range(len(baggage)):
+            if i>=baggage[j][0]:
+                box.remove(i)
+                baggage.remove(baggage[j])
+                break
+    if len(baggage)==0:
+        return True
+    else:
+        return False

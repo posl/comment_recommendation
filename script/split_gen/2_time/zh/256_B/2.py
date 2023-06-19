@@ -1,3 +1,14 @@
 def main():
-    n = input()
-    print(2**int(n))
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if A[i] == 1:
+            P += 0
+        elif A[i] == 2:
+            P += 1
+        elif A[i] == 3:
+            P += 2
+        elif A[i] == 4:
+            P += 3
+    print(P)

@@ -1,4 +1,8 @@
-def main():
-    week = ['SUN','MON','TUE','WED','THU','FRI','SAT']
-    s = input()
-    print(6 - week.index(s))
+def split_pin(s):
+    if s[0] == '0':
+        return 'No'
+    for i in range(1, 10):
+        if s[i] == '0':
+            if s[i - 1] == '1':
+                return 'No'
+    return 'Yes'

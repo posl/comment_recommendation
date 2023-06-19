@@ -1,5 +1,6 @@
-def main():
-    s = input()
-    r = s.count("0")
-    b = s.count("1")
-    print(min(r, b) * 2)
+def findRoot(roots, i):
+    if roots[i] == i:
+        return i
+    else:
+        roots[i] = findRoot(roots, roots[i])
+        return roots[i]

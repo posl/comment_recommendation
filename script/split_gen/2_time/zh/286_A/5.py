@@ -1,20 +1,7 @@
-def dfs(i):
-    global flag
-    if i == n:
-        flag = True
-        return
-    if not flag:
-        if used[s[i]] == 0 and used[t[i]] == 0:
-            used[s[i]] = 1
-            used[t[i]] = 1
-            dfs(i+1)
-            used[s[i]] = 0
-            used[t[i]] = 0
-        if used[s[i]] == 1 and used[t[i]] == 0:
-            used[t[i]] = 1
-            dfs(i+1)
-            used[t[i]] = 0
-        if used[s[i]] == 0 and used[t[i]] == 1:
-            used[s[i]] = 1
-            dfs(i+1)
-            used[s[i]] = 0
+def swap(a, p, q, r, s):
+    b = a.copy()
+    for i in range(q-p+1):
+        b[p+i-1] = a[s+i-1]
+    for i in range(s-r+1):
+        b[r+i-1] = a[q+i-1]
+    return b

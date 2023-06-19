@@ -1,6 +1,8 @@
 def main():
-    A,B = map(int,input().split())
-    if A<=B:
-        print(0)
-    else:
-        print(A-B*2)
+    N = int(input())
+    d = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            sum += d[i] * d[j]
+    print(sum)

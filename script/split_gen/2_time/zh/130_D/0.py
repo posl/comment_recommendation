@@ -1,6 +1,13 @@
-def main():
-    W, H, x, y = map(int, input().split())
-    if x == W / 2 and y == H / 2:
-        print(W * H / 2, 1)
-    else:
-        print(W * H / 2, 0)
+def solve():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    sumA = [0]*(N+1)
+    for i in range(N):
+        sumA[i+1] = sumA[i]+A[i]
+    ans = 0
+    right = 0
+    for left in range(N):
+        while right < N+1 and sumA[right]-sumA[left] < K:
+            right += 1
+        ans += N+1-right
+    print(ans)

@@ -1,7 +1,9 @@
-def main():
-    N, M = map(int, input().split())
-    A = [0] * M
-    B = [0] * M
-    for i in range(M):
-        A[i], B[i] = map(int, input().split())
-    print(N, M, A, B)
+def solution():
+    A, B = map(int, input().split())
+    if A > 0 and B == 0:
+        print("黄金")
+    elif A == 0 and B > 0:
+        print("白银")
+    else:
+        print("合金")
+solution()

@@ -1,10 +1,7 @@
 def main():
-    n,x = map(int, input().split())
-    a = list(map(int, input().split()))
-    a = [i-1 for i in a]
-    b = [0]*n
-    b[x-1] = 1
+    n, k = map(int, input().split())
+    s = []
     for i in range(n):
-        if b[i] == 1:
-            b[a[i]] = 1
-    print(sum(b))
+        s.append(sum(map(int, input().split())))
+    s.sort(reverse=True)
+    print("Yes" if s[k-1] > s[k] else "No")

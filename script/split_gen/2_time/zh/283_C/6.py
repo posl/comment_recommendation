@@ -1,10 +1,25 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    q = int(input())
-    for i in range(q):
-        s = input().split()
-        if s[0] == '1':
-            a[int(s[1]) - 1] = int(s[2])
+    S = input()
+    S_len = len(S)
+    #print(S_len)
+    S = int(S)
+    count = 0
+    if S == 0:
+        print(1)
+        return
+    for i in range(1, S_len):
+        if i == 1:
+            count += 10
         else:
-            print(a[int(s[1]) - 1])
+            count += 9 * (10 ** (i - 2)) * (i - 1)
+    #print(count)
+    if S_len == 1:
+        print(S)
+        return
+    for i in range(1, S_len):
+        if i == 1:
+            count += S - (10 ** (i - 1)) + 1
+        else:
+            count += (S - (10 ** (i - 1))) * (i - 1)
+    print(count)
+    return

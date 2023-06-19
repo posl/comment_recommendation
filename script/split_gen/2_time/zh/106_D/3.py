@@ -1,6 +1,12 @@
-def get_num_of_train(start,end,train_list):
-    num_of_train = 0
-    for train in train_list:
-        if train[0] >= start and train[1] <= end:
-            num_of_train += 1
-    return num_of_train
+def main():
+    N,M,Q = map(int,input().split())
+    trains = []
+    for i in range(M):
+        trains.append(list(map(int,input().split())))
+    for i in range(Q):
+        p,q = map(int,input().split())
+        count = 0
+        for j in range(M):
+            if trains[j][0] >= p and trains[j][1] <= q:
+                count += 1
+        print(count)

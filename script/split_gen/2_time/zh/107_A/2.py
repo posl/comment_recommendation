@@ -1,3 +1,3 @@
 def main():
-    n,i = map(int,input().split())
-    print(n+1-i)
+    N, i = map(int, input().split())
+    print(N+1-i)

@@ -1,8 +1,8 @@
-def solve():
+def main():
     N = int(input())
-    d = list(map(int, input().split()))
-    ans = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            ans += d[i] * d[j]
+    S = input()
+    ans = 1
+    for i in range(1, N):
+        if S[i-1] != S[i]:
+            ans += 1
     print(ans)

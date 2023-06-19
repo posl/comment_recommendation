@@ -1,7 +1,4 @@
-def sort_check(N, K, A):
-    for i in range(N - K):
-        if A[i] > A[i + K]:
-            return False
-    return True
-N, K = map(int, input().split())
-A = list(map(int, input().split()))
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)

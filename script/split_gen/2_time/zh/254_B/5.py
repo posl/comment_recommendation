@@ -1,3 +1,5 @@
-def main():
-    n = int(input())
-    print("{:02d}".format(n % 100))
+def print_list(list):
+    for i in range(len(list)):
+        print(list[i], end=' ')
+    print()
+    return

@@ -1,7 +1,6 @@
 def main():
-    s1 = input()
-    s2 = input()
-    if(s1[0] == "#" and s1[1] == "#" and s2[0] == "#" and s2[1] == "#"):
-        print("Yes")
+    a, b = map(int, input().split())
+    if a+b >= 10**10:
+        print("Hard")
     else:
-        print("No")
+        print("Easy")

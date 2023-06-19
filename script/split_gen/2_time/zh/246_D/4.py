@@ -1,5 +1,11 @@
-def solve(n, k, x, a):
-    sum = 0
-    for i in range(n):
-        sum += max(a[i] - x, 0)
-    return sum
+def check(x):
+    a = 0
+    b = x
+    while a <= b:
+        if a**3 + a**2*b + a*b**2 + b**3 == x:
+            return True
+        elif a**3 + a**2*b + a*b**2 + b**3 < x:
+            a += 1
+        else:
+            b -= 1
+    return False

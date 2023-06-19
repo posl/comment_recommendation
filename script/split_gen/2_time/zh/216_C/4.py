@@ -1,11 +1,12 @@
-def get_input():
-    input_data = []
-    while True:
-        try:
-            line = input()
-            if line == '':
-                break
-            input_data.append(line)
-        except EOFError:
-            break
-    return input_data
+def solve(n):
+    s=""
+    while n>0:
+        if n%2==0:
+            s="B"+s
+            n=n//2
+        else:
+            s="A"+s
+            n-=1
+    return s
+n=int(input())
+print(solve(n))

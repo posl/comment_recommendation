@@ -1,5 +1,3 @@
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a%b)
+def main():
+    num = int(input())
+    print(num % 100)

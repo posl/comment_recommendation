@@ -1,11 +1,8 @@
 def main():
-    s = input()
-    t = input()
-    ans = len(t)
-    for i in range(len(s)-len(t)+1):
-        cnt = 0
-        for j in range(len(t)):
-            if s[i+j] != t[j]:
-                cnt += 1
-        ans = min(ans, cnt)
-    print(ans)
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    s = sum(a)**2
+    t = sum([i**2 for i in a])
+    print((s-t)//2%mod)
+main()

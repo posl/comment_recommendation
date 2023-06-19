@@ -1,7 +1,7 @@
-def is_hard_to_read(s):
-    for i in range(len(s)):
-        if i % 2 == 0 and s[i].islower():
-            return False
-        if i % 2 == 1 and s[i].isupper():
-            return False
-    return True
+def g1(x):
+    x = str(x)
+    x = list(x)
+    x.sort(reverse=True)
+    x = ''.join(x)
+    x = int(x)
+    return x

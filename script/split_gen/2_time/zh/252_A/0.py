@@ -1,2 +1,6 @@
 def main():
-    pass
+    #输入
+    N = int(input())
+    #输出
+    print(chr(N))
+    return

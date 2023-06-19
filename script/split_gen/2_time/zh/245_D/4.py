@@ -1,11 +1,8 @@
-def solve(n, k, a, b):
-    res = True
-    for i in range(n):
-        if abs(a[i] - b[i]) > k:
-            res = False
-            break
-    return "Yes" if res else "No"
-n, k = map(int, input().split())
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
-print(solve(n, k, a, b))
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(M + 1):
+        B[i] = C[i] // A[N]
+    print(*B)

@@ -1,5 +1,7 @@
-def gcd(a,b):
-    if b == 0:
-        return a
+def main():
+    n, k, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if m * n - sum(a) > k:
+        print(-1)
     else:
-        return gcd(b,a%b)
+        print(max(m * n - sum(a), 0))

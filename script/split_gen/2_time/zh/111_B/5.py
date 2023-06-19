@@ -1,8 +1,6 @@
 def main():
-    n = input()
-    for i in range(len(n)):
-        if n[i] == '1':
-            print('9', end='')
-        else:
-            print('1', end='')
-main()
+    N = int(input())
+    n = N//111
+    if N%111 != 0:
+        n += 1
+    print(n*111)

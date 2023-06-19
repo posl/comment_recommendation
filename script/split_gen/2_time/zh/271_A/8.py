@@ -1,11 +1,9 @@
-def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] * (n + 1)
-    for i in range(n + 1):
-        B[i] = i
-    for i in range(1, n + 1):
-        for j in range(k):
-            if i - A[j] >= 0:
-                B[i] = min(B[i], B[i - A[j]] + 1)
-    print(B[n])
+def hex(n):
+    if n < 0 or n > 255:
+        return None
+    if n < 16:
+        return "0" + hex(n)
+    elif n < 256:
+        return hex(n // 16) + hex(n % 16)
+    else:
+        return None

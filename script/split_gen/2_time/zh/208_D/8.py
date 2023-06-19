@@ -1,25 +1,15 @@
-def solve(n,k,a):
-    # 二分探索
-    def is_ok(arg):
-        # 条件を満たすかどうか？問題ごとに定義
-        # ngとokの中点midをargとして受け取る
-        # ここで条件式を書く
-        # return mid >= 0
-        # ここで条件式を書く
-        return sum(max(0, a_i - arg) for a_i in a) <= k
-    # 二分探索
-    def meguru_bisect(ng, ok):
-        # okとngのどちらが大きいかわからないことを考慮
-        while (abs(ok - ng) > 1):
-            mid = (ok + ng) // 2
-            if is_ok(mid):
-                ok = mid
-            else:
-                ng = mid
-        return ok
-    # 解の存在範囲を初期化
-    ok = max(a)
-    ng = 0
-    # 二分探索
-    ans = meguru_bisect(ng, ok)
-    return ans
+def floyd_warshall(n, edges):
+    # n: number of vertices
+    # edges: list of edges, each edge is a tuple (u, v, w)
+    # w is the weight of the edge (u, v)
+    # return the minimum distance matrix
+    dist = [[float('inf')] * n for _ in range(n)]
+    for i in range(n):
+        dist[i][i] = 0
+    for u, v, w in edges:
+        dist[u][v] = w
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    return dist

@@ -1,7 +1,11 @@
-def solve(n,k):
-    for _ in range(k):
-        if n%200==0:
-            n=n//200
-        else:
-            n=int(str(n)+'200')
-    return n
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [a % 200 for a in A]
+    C = [0] * 200
+    for b in B:
+        C[b] += 1
+    ans = 0
+    for c in C:
+        ans += c * (c - 1) // 2
+    print(ans)

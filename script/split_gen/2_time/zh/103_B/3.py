@@ -5,8 +5,9 @@ def main():
         print("No")
         return
     for i in range(len(S)):
+        S = S[1:] + S[0]
         if S == T:
             print("Yes")
             return
-        S = S[-1] + S[0:-1]
     print("No")
+    return

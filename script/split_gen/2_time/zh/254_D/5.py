@@ -1,8 +1,12 @@
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    for i in range(n-k):
-        if a[i] > a[i+k]:
-            print("Yes")
-            return
-    print("No")
+def is_square(n):
+    return n == int(n**.5)**2
+N = int(input())
+ans = 0
+for i in range(1, N + 1):
+    for j in range(i, N + 1):
+        if is_square(i * j):
+            if i == j:
+                ans += 1
+            else:
+                ans += 2
+print(ans)

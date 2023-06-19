@@ -1,6 +1,5 @@
 def main():
-    x, y = map(int, input().split())
-    if x > y:
-        print('Yes')
-    else:
-        print('No')
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    print('Yes' if sum([a[i]*b[i] for i in range(n)]) == 0 else 'No')

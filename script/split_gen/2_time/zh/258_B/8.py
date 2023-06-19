@@ -1,5 +1,6 @@
-def main():
-    k = int(input())
-    h = k // 60
-    m = k % 60
-    print("{:02d}:{:02d}".format(h + 21, m))
+def readinput():
+    n=int(input())
+    a=[]
+    for i in range(n):
+        a.append(list(map(int,input().split())))
+    return n,a

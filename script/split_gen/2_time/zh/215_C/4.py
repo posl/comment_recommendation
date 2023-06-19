@@ -1,9 +1,8 @@
-def main():
-    # 读取输入
-    n = int(input())
-    # 计算结果
-    k = 0
-    while 2 ** k <= n:
-        k += 1
-    # 输出结果
-    print(k - 1)
+def permutation(s):
+    if len(s) <= 1:
+        return [s]
+    result = []
+    for i in range(len(s)):
+        for j in permutation(s[:i] + s[i + 1:]):
+            result.append(s[i] + j)
+    return result

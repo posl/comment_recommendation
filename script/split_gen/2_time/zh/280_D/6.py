@@ -1,8 +1,17 @@
 def main():
-    s = input()
-    t = input()
-    for i in range(len(s)):
-        if s[i] != t[i]:
-            print(i+1)
-            return
-    print(len(s)+1)
+    k = int(input())
+    if k % 2 != 0:
+        print(k)
+        return
+    else:
+        i = 2
+        while True:
+            if k % (i ** 2) == 0:
+                i += 1
+                continue
+            elif k % i == 0:
+                print(i)
+                return
+            else:
+                print(k)
+                return

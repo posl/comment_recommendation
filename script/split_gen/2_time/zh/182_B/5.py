@@ -1,6 +1,19 @@
-def main():
-    a,b = map(int, input().split())
-    if b > 2*a+100:
-        print(0)
-    else:
-        print(2*a+100-b)
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+n = int(input())
+a = list(map(int, input().split()))
+ans = 0
+max_gcdness = 0
+for i in range(2, 1001):
+    gcdness = 0
+    for j in range(n):
+        if a[j] % i == 0:
+            gcdness += 1
+    if max_gcdness < gcdness:
+        max_gcdness = gcdness
+        ans = i
+print(ans)

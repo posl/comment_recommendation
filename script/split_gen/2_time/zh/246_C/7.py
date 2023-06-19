@@ -1,5 +1,15 @@
-def problems246_b():
-    a,b = [int(i) for i in input().split()]
-    x = a * 1.0 / (a * a + b * b) ** 0.5
-    y = b * 1.0 / (a * a + b * b) ** 0.5
-    print(x,y)
+def main():
+    N,K,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if K > 0:
+            if A[i] > X:
+                ans += A[i] - X
+                K -= 1
+            else:
+                ans += A[i]
+        else:
+            ans += A[i]
+    print(ans)

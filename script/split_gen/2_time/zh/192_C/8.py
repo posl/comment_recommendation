@@ -1,6 +1,4 @@
-def main():
-    S = input()
-    if S[0::2].islower() and S[1::2].isupper():
-        print("Yes")
-    else:
-        print("No")
+def g1(x):
+    l = list(str(x))
+    l.sort(reverse=True)
+    return int(''.join(l))

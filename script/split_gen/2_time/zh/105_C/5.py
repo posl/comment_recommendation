@@ -1,14 +1,8 @@
-def main():
-    n = int(input())
+def base_neg2(n):
     if n == 0:
-        print(0)
-        return
-    s = ''
+        return "0"
+    res = ""
     while n != 0:
-        if n % 2 == 0:
-            s = '0' + s
-            n = n // 2
-        else:
-            s = '1' + s
-            n = (n - 1) // (-2)
-    print(s)
+        res = str(n & 1) + res
+        n = -(n >> 1)
+    return res

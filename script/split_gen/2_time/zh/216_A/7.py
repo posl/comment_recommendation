@@ -1,5 +1,8 @@
-def gcd(x,y):
-    if x % y == 0:
-        return y
+def main():
+    x,y = map(float, input().split('.'))
+    if y <= 2:
+        print('%d-'%x)
+    elif y <= 6:
+        print('%d'%x)
     else:
-        return gcd(y,x%y)
+        print('%d+'%x)

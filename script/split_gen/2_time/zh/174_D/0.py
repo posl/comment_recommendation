@@ -1,15 +1,13 @@
-def main():
-    k = int(input())
-    if k % 2 == 0:
-        print(-1)
-        return
-    else:
-        x = 7
-        for i in range(1, k + 1):
-            if x % k == 0:
-                print(i)
-                return
-            else:
-                x = 10 * x + 7
-        print(-1)
-        return
+def solve():
+    n = int(input())
+    c = input()
+    ans = 0
+    w = 0
+    for i in range(n):
+        if c[i] == 'W':
+            w += 1
+    for i in range(n):
+        if i < w and c[i] == 'R':
+            ans += 1
+    print(ans)
+solve()

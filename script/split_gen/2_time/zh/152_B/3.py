@@ -1,7 +1,9 @@
-def main():
-    n, m = map(int, input().split())
-    if n == m:
-        print("Yes")
+def solve():
+    a,b = map(int, input().split())
+    if a == b:
+        print(str(a)*a)
+    elif a > b:
+        print(str(b)*a)
     else:
-        print("No")
-main()
+        print(str(a)*b)
+solve()

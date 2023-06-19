@@ -1,8 +1,14 @@
-def problems285_c():
-    s = input()
-    sum = 0
-    for i in range(1,len(s)):
-        sum += 26 ** i
-    sum += (ord(s[0]) - 64) * 26 ** (len(s) - 1)
-    print(sum)
-problems285_c()
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = input().split()
+        s.append(a)
+        t.append(b)
+    for i in range(n):
+        for j in range(n):
+            if i != j and s[i] == t[j]:
+                print('No')
+                return
+    print('Yes')

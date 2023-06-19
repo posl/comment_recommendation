@@ -1,8 +1,17 @@
 def main():
-    x, y = map(int, input().split())
-    if x == y == 2:
-        print('Yes')
-    elif x * 2 <= y <= x * 4 and y % 2 == 0:
-        print('Yes')
-    else:
-        print('No')
+    x, n = map(int, raw_input().split())
+    p = map(int, raw_input().split())
+    if n == 0:
+        print x
+        return
+    p.sort()
+    if x not in p:
+        print x
+        return
+    for i in range(100):
+        if x - i not in p:
+            print x - i
+            return
+        if x + i not in p:
+            print x + i
+            return

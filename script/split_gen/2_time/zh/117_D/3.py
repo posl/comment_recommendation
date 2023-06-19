@@ -1,12 +1,16 @@
-def main():
-    n,m=map(int,input().split())
-    x=list(map(int,input().split()))
-    x.sort()
-    if(n>=m):
-        print(0)
-        return
-    l=[]
-    for i in range(m-1):
-        l.append(x[i+1]-x[i])
-    l.sort()
-    print(sum(l[:m-n]))
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(40, -1, -1):
+        cnt = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                cnt += 1
+        if cnt <= n//2:
+            if ans + (1 << i) <= k:
+                ans += 1 << i
+    s = 0
+    for i in range(n):
+        s += ans ^ a[i]
+    print(s)

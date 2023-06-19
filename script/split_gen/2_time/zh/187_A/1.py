@@ -1,9 +1,8 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
+def s(n):
+    n = str(n)
     sum = 0
-    for i in range(n):
-        sum += (a[i] - a[0]) + (a[n-1] - a[i])
-    print(sum)
-main()
+    for i in range(len(n)):
+        sum += int(n[i])
+    return sum
+a, b = map(int, input().split())
+print(s(a) if s(a) > s(b) else s(b))

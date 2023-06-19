@@ -1,7 +1,6 @@
-def solve():
-    H, N = map(int, input().split())
-    A = list(map(int, input().split()))
-    if sum(A) >= H:
-        print('Yes')
-    else:
-        print('No')
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort(reverse=True)
+    print(sum(h[k:]))
+main()

@@ -1,11 +1,8 @@
 def main():
-    h, w = map(int,input().split())
-    s = []
-    for i in range(h):
-        s.append(input())
-    count = 0
-    for i in range(h):
-        for j in range(w):
-            if s[i][j] == "#":
-                count += 1
-    print(count)
+    n = int(input())
+    s = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = s[0]
+    for i in range(1, n):
+        a[i] = s[i] - s[i-1]
+    print(' '.join(map(str, a)))

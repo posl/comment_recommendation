@@ -1,7 +1,13 @@
-def problem200_b(n, k):
-    for i in range(k):
-        if n % 200 == 0:
-            n = n // 200
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] % 200 in d:
+            d[a[i] % 200] += 1
         else:
-            n = int(str(n) + "200")
-    return n
+            d[a[i] % 200] = 1
+    ans = 0
+    for i in d:
+        ans += d[i] * (d[i] - 1) // 2
+    print(ans)

@@ -1,13 +1,15 @@
-def main():
-    import sys
-    from math import sqrt
-    N = int(sys.stdin.readline())
-    ans = []
-    for i in range(1, int(sqrt(N))+1):
-        if N % i == 0:
-            ans.append(i)
-            if i != N // i:
-                ans.append(N // i)
-    ans.sort()
-    for i in ans:
-        print(i)
+def train(x, y, a, b):
+    exp = 0
+    while True:
+        if x * a < x + b:
+            if x * a >= y:
+                return exp
+            else:
+                x *= a
+                exp += 1
+        else:
+            if x + b >= y:
+                return exp
+            else:
+                x += b
+                exp += 1

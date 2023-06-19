@@ -1,2 +1,11 @@
-def distance(x1,y1,x2,y2):
-    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    for i in range(3, n, 2):
+        if n%i == 0:
+            return False
+    return True

@@ -1,3 +1,10 @@
-def main():
-    K, X = map(int, input().split())
-    print(*[X - K + 1 + i for i in range(2 * K - 1)])
+def count(s):
+    # s is a string
+    # return a dictionary
+    d = {}
+    for c in s:
+        if c in d:
+            d[c] += 1
+        else:
+            d[c] = 1
+    return d

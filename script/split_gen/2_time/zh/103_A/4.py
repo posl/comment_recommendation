@@ -1,3 +1,7 @@
-def solve(a):
-    a.sort()
-    return a[2]-a[0]
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(1, 3):
+        ans += A[i] - A[i-1]
+    print(ans)

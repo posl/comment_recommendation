@@ -1,11 +1,12 @@
 def main():
     n = int(input())
-    a = []
+    t = [0] * n
+    k = [0] * n
+    a = [0] * n
     for i in range(n):
-        a.append(list(map(int, input().split()))[1:])
-    a.sort()
-    ans = 0
+        t[i], k[i], *a[i] = map(int, input().split())
+    dp = [0] * n
     for i in range(n):
-        if i == 0 or a[i] != a[i - 1]:
-            ans += 1
-    print(ans)
+        for j in range(k[i]):
+            dp[a[i][j]-1] = max(dp[a[i][j]-1], dp[i] + t[i])
+    print(max(dp) + t[-1])

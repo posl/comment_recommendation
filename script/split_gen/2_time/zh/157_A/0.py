@@ -1,7 +1,5 @@
-def gcd(a,b):
-    if b == 0:
-        return a
+def calc_print_pages(n):
+    if n % 2 == 0:
+        return n // 2
     else:
-        return gcd(b,a%b)
-n,a,b = map(int,input().split())
-g = gcd(a,b)
+        return n // 2 + 1

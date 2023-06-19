@@ -1,10 +1,14 @@
 def main():
-    s1 = input()
-    s2 = input()
-    s3 = input()
-    s4 = input()
-    list = [s1,s2,s3,s4]
-    if "H" in list and "2B" in list and "3B" in list and "HR" in list:
-        print("Yes")
-    else:
-        print("No")
+    s = input()
+    chokudai = 'chokudai'
+    mod = 10**9+7
+    dp = [[0 for _ in range(len(chokudai))] for _ in range(len(s)+1)]
+    for i in range(len(s)+1):
+        dp[i][0] = 1
+    for i in range(1, len(s)+1):
+        for j in range(1, len(chokudai)):
+            if s[i-1] == chokudai[j-1]:
+                dp[i][j] = (dp[i-1][j] + dp[i-1][j-1]) % mod
+            else:
+                dp[i][j] = dp[i-1][j]
+    print(dp[len(s)][len(chokudai)-1])

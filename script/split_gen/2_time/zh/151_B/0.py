@@ -1,5 +1,4 @@
-def gcd(x, y):
-    if y == 0:
-        return x
-    else:
-        return gcd(y, x%y)
+def get_input():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    return N, K, M, A

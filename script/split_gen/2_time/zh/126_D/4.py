@@ -1,11 +1,18 @@
-def solve(n, k):
-    ans = 0
-    for i in range(1, n + 1):
-        p = 1
-        while i < k:
-            i *= 2
-            p /= 2
-        ans += p
-    return ans / n
-n, k = map(int, input().split())
-print(solve(n, k))
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(G[v])):
+        if color[G[v][i]] == -1:
+            dfs(G[v][i], 1 - c)
+N = int(input())
+G = [[] for i in range(N)]
+color = [-1 for i in range(N)]
+for i in range(N - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    if w % 2 == 0:
+        G[u].append(v)
+        G[v].append(u)
+dfs(0, 0)
+for i in range(N):
+    print(color[i])

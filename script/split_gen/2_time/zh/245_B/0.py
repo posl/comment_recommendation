@@ -1,13 +1,13 @@
 def main():
-    A,B,C,D = map(int, input().split())
-    if A > C:
-        print("高桥")
-    elif A < C:
-        print("青木")
-    else:
-        if B > D:
-            print("高桥")
-        elif B < D:
-            print("青木")
-        else:
-            print("高桥")
+    n = int(input())
+    a = list(map(int,input().split()))
+    a.sort()
+    if a[0] != 0:
+        print(0)
+        return
+    for i in range(n-1):
+        if a[i+1] - a[i] > 1:
+            print(a[i]+1)
+            return
+    print(a[-1]+1)
+    return

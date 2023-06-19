@@ -1,13 +1,8 @@
-def bfs(start, end, graph):
-    visited = [0] * (len(graph) + 1)
-    queue = []
-    queue.append(start)
-    while queue:
-        node = queue.pop(0)
-        if node == end:
-            return True
-        visited[node] = 1
-        for i in graph[node]:
-            if visited[i] == 0:
-                queue.append(i)
-    return False
+def main():
+    s = input()
+    if s.count('A') == 1 and s.count('B') == 2:
+        print("Yes")
+    elif s.count('B') == 1 and s.count('A') == 2:
+        print("Yes")
+    else:
+        print("No")

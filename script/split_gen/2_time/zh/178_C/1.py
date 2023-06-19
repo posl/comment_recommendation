@@ -1,3 +1,3 @@
 def main():
-    a,b,c,d = map(int, input().split())
-    print(max(a*c,a*d,b*c,b*d))
+    n = int(input())
+    print((10**n - 2*9**n + 8**n) % (10**9 + 7))

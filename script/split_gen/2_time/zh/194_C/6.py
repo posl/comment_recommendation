@@ -1,8 +1,8 @@
 def main():
-    n = int(input())
-    min_time = 10**5*2
-    for i in range(n):
-        a,b = map(int,input().split())
-        if a+b < min_time:
-            min_time = a+b
-    print(min_time)
+    N = int(input())
+    A = list(map(int,input().split()))
+    sum = 0
+    for i in range(N-1):
+        for j in range(i+1,N):
+            sum += (A[i]-A[j])**2
+    print(sum)

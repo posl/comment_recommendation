@@ -1,12 +1,15 @@
-def main():
-    n = int(input())
-    s = []
-    for _ in range(n):
-        s.append(input())
-    s = set(s)
-    for i in s:
-        if '!' + i in s:
-            print(i)
-            break
-    else:
-        print('satisfiable')
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N-1, -1, -1):
+        A[i] += ans
+        if A[i] % B[i] != 0:
+            ans += B[i] - A[i] % B[i]
+    print(ans)
+solve()

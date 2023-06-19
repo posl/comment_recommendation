@@ -1,3 +1,6 @@
-def main():
-    A,B = map(int,input().split())
-    print((A+B)/B)
+def get_input():
+    h, w = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    return h, w, s

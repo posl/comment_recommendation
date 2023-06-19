@@ -1,8 +1,7 @@
-def find_missing_number(s):
-    s = list(s)
-    s = [int(i) for i in s]
-    s.sort()
-    for i in range(10):
-        if i not in s:
-            return i
-    return -1
+def main():
+    a,b,k = map(int,input().split())
+    count = 0
+    while a < b:
+        a *= k
+        count += 1
+    print(count)

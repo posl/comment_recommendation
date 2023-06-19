@@ -1,21 +1,25 @@
 def solve():
-    N = int(input())
-    A = []
-    B = []
-    for i in range(N):
-        a,b = map(int,input().split())
-        A.append(a)
-        B.append(b)
-    #print(A)
-    #print(B)
-    left = 0
-    right = 0
-    for i in range(N):
-        left += A[i]/B[i]
-        right += A[N-1-i]/B[N-1-i]
-    ans = 0
-    for i in range(N):
-        ans += A[i]*(left-right)/2
-        left -= A[i]/B[i]
-        right += A[N-1-i]/B[N-1-i]
-    print(ans)
+    n, m = map(int, input().split())
+    g = [[] for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        g[a-1].append(b-1)
+    ans = []
+    from collections import deque
+    q = deque()
+    for i in range(n):
+        if not g[i]:
+            q.append(i)
+    while q:
+        v = q.popleft()
+        ans.append(v)
+        for i in range(n):
+            if v in g[i]:
+                g[i].remove(v)
+                if not g[i]:
+                    q.append(i)
+    if len(ans) != n:
+        print(-1)
+    else:
+        print(*[x+1 for x in ans])
+solve()

@@ -1,10 +1,9 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    c = [0 for _ in range(10 ** 9 + 1)]
-    for i in range(n):
-        c[a[i]] += 1
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_ = set(A)
     ans = 0
-    for i in range(10 ** 9 + 1):
-        ans += c[i] * (c[i] - 1) // 2
+    for a in A_:
+        if A.count(a) % 2 == 1:
+            ans += 1
     print(ans)

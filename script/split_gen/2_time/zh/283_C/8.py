@@ -1,12 +1,12 @@
 def main():
-    #输入
-    n = int(input())
-    a = list(map(int, input().split()))
-    q = int(input())
-    #处理
-    for _ in range(q):
-        query = list(map(int, input().split()))
-        if query[0] == 1:
-            a[query[1]-1] = query[2]
-        elif query[0] == 2:
-            print(a[query[1]-1])
+    s = input()
+    n = len(s)
+    dp = [0] * (n + 1)
+    dp[n] = 0
+    dp[n - 1] = 0
+    for i in range(n - 2, -1, -1):
+        dp[i] = min(dp[i + 1] + int(s[i + 1]), dp[i + 2] + int(s[i + 2]) * 10)
+        if i <= n - 3:
+            dp[i] = min(dp[i], dp[i + 3] + int(s[i + 3]) * 100)
+        dp[i] += 1
+    print(dp[0])

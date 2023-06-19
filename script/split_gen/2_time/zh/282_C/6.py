@@ -1,16 +1,13 @@
-def solve(n, m, s):
-    ans = 0
+def main():
+    n = int(input())
+    s = input()
+    ans = ''
     for i in range(n):
-        for j in range(i+1, n):
-            for k in range(m):
-                if s[i][k] == 'o' or s[j][k] == 'o':
-                    if k == m-1:
-                        ans += 1
-                else:
-                    break
-    return ans
-n, m = map(int, input().split())
-s = []
-for i in range(n):
-    s.append(input())
-print(solve(n, m, s))
+        if i % 2 == 0:
+            ans += s[i]
+        else:
+            if s[i] == '"':
+                ans += '"'
+            else:
+                ans += '.'
+    print(ans)

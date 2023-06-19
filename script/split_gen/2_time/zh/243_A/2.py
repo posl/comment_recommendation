@@ -1,10 +1,18 @@
-def main():
-    s = input()
-    q = int(input())
-    t_k = []
-    for i in range(q):
-        t_k.append(list(map(int, input().split())))
-    # print(t_k)
-    for i in range(q):
-        s = S(s, t_k[i][0])
-        print(s[t_k[i][1]-1])
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    while v > 0:
+        if v >= a:
+            v -= a
+        else:
+            print('F')
+            return
+        if v >= b:
+            v -= b
+        else:
+            print('M')
+            return
+        if v >= c:
+            v -= c
+        else:
+            print('T')
+            return

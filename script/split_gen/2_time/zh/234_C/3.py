@@ -1,8 +1,8 @@
-def get_max_length(points):
-    max_length = 0
-    for i in range(0, len(points)):
-        for j in range(i+1, len(points)):
-            length = ((points[i][0] - points[j][0])**2 + (points[i][1] - points[j][1])**2)**0.5
-            if length > max_length:
-                max_length = length
-    return max_length
+def findKthNumber(k):
+    if k <= 0:
+        return -1
+    result = 0
+    while k > 0:
+        result = result * 10 + 2
+        k -= 1
+    return result

@@ -1,5 +1,20 @@
-def get_index_of_problem(problem_id):
-    index = 0
-    for i in range(len(problem_id)):
-        index += (ord(problem_id[i]) - ord('A') + 1) * 26 ** (len(problem_id) - 1 - i)
-    return index
+def check(s,t):
+    if len(s) != len(t):
+        return False
+    if s == t:
+        return False
+    if s == t[::-1]:
+        return False
+    return True
+n = int(input())
+s = []
+t = []
+for i in range(n):
+    s1,t1 = input().split()
+    s.append(s1)
+    t.append(t1)
+flag = True
+for i in range(n):
+    if check(s[i],t[i]) == False:
+        flag = False
+        break

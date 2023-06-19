@@ -1,27 +1,17 @@
-def fight_monsters(N, A, B):
-    if N == 1:
-        return min(A[0], B[0])
-    else:
-        res = 0
-        for i in range(N):
-            if A[i] <= B[i]:
-                res += A[i]
-                A[i] = 0
-                B[i] -= A[i]
-            else:
-                res += B[i]
-                A[i] -= B[i]
-                B[i] = 0
-            if A[i+1] <= B[i]:
-                res += A[i+1]
-                A[i+1] = 0
-                B[i] -= A[i+1]
-            else:
-                res += B[i]
-                A[i+1] -= B[i]
-                B[i] = 0
-        return res
-N = int(input())
-A = list(map(int, input().split()))
-B = list(map(int, input().split()))
-print(fight_monsters(N, A, B))
+def main():
+    s = input()
+    n = len(s)
+    mod = 10**9+7
+    dp = [[0 for _ in range(13)] for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(n):
+        if s[i] == "?":
+            for j in range(10):
+                for k in range(13):
+                    dp[i+1][(k*10+j)%13] += dp[i][k]
+        else:
+            for k in range(13):
+                dp[i+1][(k*10+int(s[i]))%13] += dp[i][k]
+        for j in range(13):
+            dp[i+1][j] %= mod
+    print(dp[n][5])

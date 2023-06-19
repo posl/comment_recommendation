@@ -1,7 +1,11 @@
-def solve():
-    N = int(input())
-    P = list(map(int, input().split()))
-    Q = [0] * N
-    for i in range(N):
-        Q[P[i] - 1] = i + 1
-    print(' '.join(map(str, Q)))
+def main():
+    l, q = map(int, input().split())
+    cuts = [0, l]
+    for _ in range(q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cuts.append(x)
+        else:
+            cuts.sort()
+            idx = cuts.index(x)
+            print(cuts[idx] - cuts[idx - 1])

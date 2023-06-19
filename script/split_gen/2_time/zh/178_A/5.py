@@ -1,3 +1,6 @@
-def init(n):
-    global parent
-    parent = [i for i in range(n + 1)]
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    else:
+        print(0)

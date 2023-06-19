@@ -1,8 +1,6 @@
-def AGC(n):
-    if n < 10:
-        return '00' + str(n)
-    elif n < 100:
-        return '0' + str(n)
+def main():
+    S = input()
+    if S.count('o') == 2:
+        print('Yes')
     else:
-        return str(n)
-n = int(input())
+        print('No')

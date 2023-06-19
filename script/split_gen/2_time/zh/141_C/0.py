@@ -1,12 +1,11 @@
 def main():
-    S = input()
-    for i in range(len(S)):
-        if i % 2 == 0:
-            if S[i] == 'L':
-                print('No')
-                exit()
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    score = [K - Q] * N
+    for i in A:
+        score[i - 1] += 1
+    for i in score:
+        if i > 0:
+            print('Yes')
         else:
-            if S[i] == 'R':
-                print('No')
-                exit()
-    print('Yes')
+            print('No')

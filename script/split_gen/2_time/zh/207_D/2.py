@@ -1,9 +1,13 @@
-def main():
-    n = int(input())
-    tlr = [list(map(int,input().split())) for _ in range(n)]
-    ans = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            if tlr[i][1]<=tlr[j][1]<=tlr[i][2] or tlr[i][1]<=tlr[j][2]<=tlr[i][2] or tlr[j][1]<=tlr[i][1]<=tlr[j][2] or tlr[j][1]<=tlr[i][2]<=tlr[j][2]:
-                ans += 1
-    print(ans)
+def isMatch(s,t):
+    s1 = []
+    t1 = []
+    for i in range(len(s)):
+        s1.append([s[i][0],s[i][1]])
+    for i in range(len(t)):
+        t1.append([t[i][0],t[i][1]])
+    s1.sort()
+    t1.sort()
+    for i in range(len(s1)):
+        if s1[i] != t1[i]:
+            return False
+    return True

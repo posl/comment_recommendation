@@ -1,8 +1,10 @@
 def main():
-    a, b = map(int, input().split())
-    if a>b:
-        print(str(b)*a)
-    elif a<b:
-        print(str(a)*b)
-    else:
-        print(str(a)*b)
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    min_p = p[0]
+    for i in range(n):
+        if min_p >= p[i]:
+            ans += 1
+            min_p = p[i]
+    print(ans)

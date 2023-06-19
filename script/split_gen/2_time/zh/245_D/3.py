@@ -1,16 +1,9 @@
-def solve():
-    N, K = map(int, input().split())
+def main():
+    N, M = map(int, input().split())
     A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    A_min = min(A)
-    A_max = max(A)
-    B_min = min(B)
-    B_max = max(B)
-    if abs(A_max - B_max) > K or abs(A_min - B_min) > K:
-        print("No")
-        return
-    for i in range(N - 1):
-        if abs(A[i] - A[i + 1]) > K and abs(B[i] - B[i + 1]) > K:
-            print("No")
-            return
-    print("Yes")
+    C = list(map(int, input().split()))
+    B = [0] * (M+1)
+    B[0] = C[0] // A[0]
+    for i in range(1, M+1):
+        B[i] = (C[i] - sum([A[j] * B[i-j] for j in range(i)])) // A[0]
+    print(' '.join(map(str, B)))

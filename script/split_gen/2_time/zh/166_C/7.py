@@ -1,8 +1,5 @@
-def readinput():
-    n,k=list(map(int,input().split()))
-    d=[]
-    a=[]
-    for i in range(k):
-        d.append(int(input()))
-        a.append(list(map(int,input().split())))
-    return n,k,d,a
+def is_higher(h, i):
+    for j in range(len(h)):
+        if h[j] > h[i]:
+            return False
+    return True

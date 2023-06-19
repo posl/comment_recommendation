@@ -1,8 +1,10 @@
-def isLuckyNum(n):
-    n = str(n)
-    if len(n) <= 1:
-        return True
-    for i in range(len(n) - 1):
-        if abs(int(n[i]) - int(n[i + 1])) > 1:
-            return False
-    return True
+def main():
+    n = input()
+    if n[2] == '7':
+        print('是')
+    elif n[1] == '7':
+        print('是')
+    elif n[0] == '7':
+        print('是')
+    else:
+        print('否')

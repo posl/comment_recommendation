@@ -1,12 +1,3 @@
-def isTriangle(a, b, c):
-    return a + b > c and a + c > b and b + c > a
-n = int(input())
-l = list(map(int, input().split()))
-l.sort()
-ans = 0
-for i in range(n):
-    for j in range(i + 1, n):
-        for k in range(j + 1, n):
-            if isTriangle(l[i], l[j], l[k]):
-                ans += 1
-print(ans)
+def input():
+    x,k,d = map(int, input().split())
+    return x,k,d

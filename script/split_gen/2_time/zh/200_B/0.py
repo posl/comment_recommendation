@@ -1,5 +1,7 @@
-def getCentury(year):
-    if year % 100 == 0:
-        return year // 100
-    else:
-        return year // 100 + 1
+def problem200_b(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + "200")
+    print(n)

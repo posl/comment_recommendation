@@ -1,2 +1,3 @@
-def cal_dis(x1,y1,x2,y2):
-    return ((x1-x2)**2+(y1-y2)**2)**0.5
+def main():
+    N, K, A = map(int, input().split())
+    print(K % N)

@@ -1,8 +1,7 @@
 def main():
-    n, a, x, y = map(int, input().split())
-    ans = 0
-    if n > a:
-        ans = a * x + (n - a) * y
+    N = int(input())
+    S = input()
+    if S.count('1') % 2 == 1:
+        print('高桥')
     else:
-        ans = n * x
-    print(ans)
+        print('青木')

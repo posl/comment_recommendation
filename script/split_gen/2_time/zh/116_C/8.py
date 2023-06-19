@@ -1,14 +1,13 @@
-def f(n):
-    if n%2==0:
-        return n//2
-    else:
-        return 3*n+1
-s=int(input())
-a=[s]
-i=1
-while True:
-    i+=1
-    a.append(f(a[i-2]))
-    if a[i-1] in a[:i-1]:
-        break
-print(i)
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    while True:
+        if max(h) == 0:
+            break
+        else:
+            for i in range(n):
+                if h[i] > 0:
+                    count += 1
+                    h[i] -= 1
+    print(count)

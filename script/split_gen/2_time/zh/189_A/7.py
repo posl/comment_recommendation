@@ -1,17 +1,19 @@
-def solve():
-    N, C = map(int, input().split())
-    events = []
-    for _ in range(N):
-        a, b, c = map(int, input().split())
-        events.append((a-1, c))
-        events.append((b, -c))
-    events.sort()
-    ans = 0
-    fee = 0
-    t = 0
-    for x, y in events:
-        if x != t:
-            ans += min(C, fee) * (x - t)
-            t = x
-        fee += y
-    print(ans)
+def main():
+    # 读入一行
+    line = input()
+    # 用空格分割
+    line = line.split()
+    # 取第一个元素
+    c1 = line[0]
+    # 取第二个元素
+    c2 = line[1]
+    # 取第三个元素
+    c3 = line[2]
+    # 如果这三个元素相同
+    if c1 == c2 and c2 == c3:
+        # 打印Won
+        print("Won")
+    # 否则
+    else:
+        # 打印Lost
+        print("Lost")

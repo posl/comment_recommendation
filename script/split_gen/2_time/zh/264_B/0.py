@@ -1,3 +1,6 @@
 def main():
-    l, r = map(int, input().split())
-    print("atcoder"[l - 1 : r])
+    R, C = map(int, input().split())
+    if (R + C) % 2 == 0:
+        print("黑色")
+    else:
+        print("白色")

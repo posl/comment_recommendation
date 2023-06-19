@@ -1,9 +1,3 @@
-def dice_game(a,b,c):
-    if a == b:
-        return c
-    elif a == c:
-        return b
-    elif b == c:
-        return a
-    else:
-        return 0
+def main():
+    n,k = map(int, input().split())
+    print(100 * n * (n+1) * k // 2)

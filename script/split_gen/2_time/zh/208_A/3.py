@@ -1,5 +1,6 @@
-def isMatch(point1,point2):
-    if point1[0]*point2[0]+point1[1]*point2[1] == 0:
-        return True
+def main():
+    a,b = map(int,input().split())
+    if a*6>=b and a<=b:
+        print("Yes")
     else:
-        return False
+        print("No")

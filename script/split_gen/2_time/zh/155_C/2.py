@@ -1,12 +1,16 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    flag = True
-    for i in a:
-        if i % 2 == 0 and (i % 3 != 0 and i % 5 != 0):
-            flag = False
-            break
-    if flag:
-        print("APPROVED")
-    else:
-        print("DENIED")
+    s = dict()
+    for i in range(n):
+        tmp = input()
+        if tmp not in s:
+            s[tmp] = 1
+        else:
+            s[tmp] += 1
+    max = 0
+    for key in s.keys():
+        if s[key] > max:
+            max = s[key]
+    for key in s.keys():
+        if s[key] == max:
+            print(key)

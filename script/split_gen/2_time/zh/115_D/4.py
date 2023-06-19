@@ -1,13 +1,22 @@
-def main():
-    n,k = map(int,input().split())
-    h_list = []
-    for i in range(n):
-        h_list.append(int(input()))
-    h_list.sort()
-    min = h_list[0]
-    max = h_list[k-1]
-    for i in range(n-k):
-        if h_list[i+k-1] - h_list[i] < max - min:
-            min = h_list[i]
-            max = h_list[i+k-1]
-    print(max-min)
+def f(n,x):
+    if n == 0:
+        return 0
+    elif x == 1:
+        return 0
+    elif x <= 1 + a[n-1]:
+        return f(n-1,x-1)
+    elif x == 2 + a[n-1]:
+        return p[n-1] + 1
+    elif x <= 2 + 2*a[n-1]:
+        return p[n-1] + 1 + f(n-1,x-2-a[n-1])
+    elif x == 3 + 2*a[n-1]:
+        return 2*p[n-1] + 1
+    else:
+        return 2*p[n-1] + 1 + f(n-1,x-3-2*a[n-1])
+n,x = map(int,input().split())
+a = [1]
+p = [1]
+for i in range(n):
+    a.append(2*a[i]+3)
+    p.append(2*p[i]+1)
+print(f(n,x))

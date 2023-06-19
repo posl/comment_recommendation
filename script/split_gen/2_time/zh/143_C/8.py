@@ -1,4 +1,8 @@
-def get_input():
+def main():
     n = int(input())
-    d = list(map(int, input().split()))
-    return n, d
+    s = input()
+    count = 1
+    for i in range(1, n):
+        if s[i] != s[i-1]:
+            count += 1
+    print(count)

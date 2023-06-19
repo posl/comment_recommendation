@@ -1,23 +1,6 @@
-def main():
-    H, W, X, Y = map(int, input().split())
-    S = [input() for _ in range(H)]
-    X -= 1
-    Y -= 1
-    ans = 1
-    for i in range(X - 1, -1, -1):
-        if S[i][Y] == '#':
-            break
-        ans += 1
-    for i in range(X + 1, H):
-        if S[i][Y] == '#':
-            break
-        ans += 1
-    for j in range(Y - 1, -1, -1):
-        if S[X][j] == '#':
-            break
-        ans += 1
-    for j in range(Y + 1, W):
-        if S[X][j] == '#':
-            break
-        ans += 1
-    print(ans)
+def get_min_xor(a):
+    min_xor = 2**30
+    for i in range(len(a)-1):
+        for j in range(i+1, len(a)):
+            min_xor = min(min_xor, a[i]^a[j])
+    return min_xor

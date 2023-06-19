@@ -1,6 +1,18 @@
-def main():
-    s = input()
-    s = s.replace("1", "2")
-    s = s.replace("0", "1")
-    s = s.replace("2", "0")
-    print(s)
+def solve():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    
+    for i in range(N):
+        for j in range(N):
+            if i != j and S[i] == S[j]:
+                print("No")
+                return
+            if i != j and T[i] == T[j]:
+                print("No")
+                return
+    print("Yes")

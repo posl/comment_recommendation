@@ -1,2 +1,2 @@
-def solve():
+def problem185_d():
     pass

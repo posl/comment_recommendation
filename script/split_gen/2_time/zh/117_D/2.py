@@ -1,12 +1,12 @@
-def main():
-    n, m = map(int, input().split())
-    x = list(map(int, input().split()))
-    x.sort()
-    if n >= m:
-        print(0)
-        return
-    dist = []
-    for i in range(1, m):
-        dist.append(x[i] - x[i-1])
-    dist.sort()
-    print(sum(dist[:m-n]))
+def f(x):
+    sum = 0
+    for a in A:
+        sum += (x^a)
+    return sum
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+max = 0
+for i in range(K+1):
+    if f(i) > max:
+        max = f(i)
+print(max)

@@ -1,17 +1,11 @@
-def solve(n,k,x):
-    ans = 10**9
-    for i in range(n-k+1):
-        lx = x[i]
-        rx = x[i+k-1]
-        time = rx-lx
-        if lx<0 and rx<0:
-            time -= lx
-        elif lx<0 and 0<=rx:
-            time += min(abs(lx),rx)
-        else:
-            time += rx
-        ans = min(ans,time)
-    return ans
-n,k = map(int,input().split())
-x = list(map(int,input().split()))
-print(solve(n,k,x))
+def solve(N, K, xs):
+    #print(N,K,xs)
+    if K == 1:
+        return 0
+    if K == N:
+        return xs[-1] - xs[0]
+    if K == 2:
+        return min(xs[-1] - xs[0], xs[-2] - xs[0], xs[-1] - xs[1])
+    if K == N - 1:
+        return min(xs[-1] - xs[0], xs[-1] - xs[1], xs[-2] - xs[0])
+    return min(xs[-1] - xs[0] + min(xs[-1] - xs[1], xs[-2] - xs[0]), xs[-2] - xs[0] + xs[-1] - xs[1], xs[-1] - xs[0] + xs[-1] - xs[2])

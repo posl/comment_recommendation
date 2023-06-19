@@ -1,13 +1,18 @@
-def solve():
-    N = int(input())
-    A = list(map(int, input().split()))
-    mod = 10**9+7
-    ans = 0
-    for i in range(60):
-        cnt = 0
-        for j in range(N):
-            if (A[j]>>i)&1:
-                cnt += 1
-        ans += cnt*(N-cnt)*(1<<i)
-        ans %= mod
-    print(ans)
+def main():
+    A = int(input())
+    B = int(input())
+    if A == 1:
+        if B == 2:
+            print(3)
+        else:
+            print(2)
+    elif A == 2:
+        if B == 1:
+            print(3)
+        else:
+            print(1)
+    else:
+        if B == 1:
+            print(2)
+        else:
+            print(1)

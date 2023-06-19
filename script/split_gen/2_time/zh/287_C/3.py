@@ -1,14 +1,18 @@
-def problem287_b():
-    n,m = map(int, input().split())
-    s_list = []
-    for i in range(n):
-        s_list.append(input())
-    t_list = []
-    for i in range(m):
-        t_list.append(input())
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if s_list[i][-3:] == t_list[j]:
-                count += 1
-    print(count)
+def main():
+    n,m = map(int,input().split())
+    if n == 1:
+        print('Yes')
+        return
+    if m == 0:
+        print('No')
+        return
+    # 有m条边，n个点，m>=n-1
+    if m < n-1:
+        print('No')
+        return
+    # 有m条边，n个点，m<=n(n-1)/2
+    if m > n*(n-1)/2:
+        print('No')
+        return
+    # 有m条边，n个点，m>=n-1, m<=n(n-1)/2
+    print('Yes')

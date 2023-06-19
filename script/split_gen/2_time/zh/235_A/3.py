@@ -1,5 +1,7 @@
-def main():
-    N, K = map(int, input().split())
-    P = list(map(int, input().split()))
-    for i in range(K-1, N):
-        print(sorted(P[:i+1], reverse=True)[K-1])
+def problem235_a():
+    abc = input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    result = a*100+b*10+c + b*100+c*10+a + c*100+a*10+b
+    print(result)

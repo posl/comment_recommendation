@@ -1,7 +1,12 @@
-def f(a, b):
-    if a == b:
-        return a
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
     else:
-        return a ^ f(a+1, b)
-a, b = map(int, input().split())
-print(f(a, b))
+        print('输入的字母不是A、C、G和T中的一个字母。')

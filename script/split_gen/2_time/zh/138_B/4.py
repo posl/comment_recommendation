@@ -1,7 +1,4 @@
-def problems138_a():
-    a = int(input())
-    s = input()
-    if a >= 3200:
-        print(s)
-    else:
-        print("red")
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(1 / sum([1 / a for a in A]))

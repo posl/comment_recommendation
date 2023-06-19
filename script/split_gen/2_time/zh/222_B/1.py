@@ -1,5 +1,8 @@
 def main():
-    # 读取输入
-    num = input()
-    # 处理输出
-    print('{:0>4}'.format(num))
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if a[i] < P:
+            count += 1
+    print(count)

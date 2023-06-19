@@ -1,14 +1,9 @@
 def main():
-    S_1 = input()
-    S_2 = input()
-    S_3 = input()
-    S = [S_1, S_2, S_3]
-    S.sort()
-    if S[0] == 'ABC':
-        print('AGC')
-    elif S[0] == 'ARC':
-        print('AHC')
-    elif S[0] == 'AGC':
-        print('ABC')
-    else:
-        print('ARC')
+    N = int(input())
+    p = list(map(int,input().split()))
+    q = [0]*N
+    for i in range(N):
+        q[p[i]-1] = i+1
+    for i in range(N):
+        print(q[i],end=" ")
+    print()

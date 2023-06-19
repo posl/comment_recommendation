@@ -1,11 +1,9 @@
-def func():
-    N = int(input())
-    A = list(map(int, input().split()))
-    # print(A)
-    # print(len(A))
-    count = 0
-    for i in range(N):
-        for j in range(i+1, N):
-            if (A[i] - A[j]) % 200 == 0:
-                count += 1
-    print(count)
+def check(s, a):
+    if len(s) == 0:
+        return True
+    if len(s) == 1 and s[0] == a:
+        return False
+    for i in range(1, len(s)):
+        if s[i] == a:
+            return False
+    return True

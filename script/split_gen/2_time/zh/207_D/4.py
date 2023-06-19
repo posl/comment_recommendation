@@ -1,11 +1,26 @@
 def main():
     n = int(input())
-    tlr = []
+    s = []
+    t = []
     for i in range(n):
-        tlr.append(list(map(int,input().split())))
-    ans = 0
+        s.append(list(map(int, input().split())))
     for i in range(n):
-        for j in range(i+1,n):
-            if (tlr[i][1] <= tlr[j][1] and tlr[j][1] <= tlr[i][2]) or (tlr[i][1] <= tlr[j][2] and tlr[j][2] <= tlr[i][2]) or (tlr[j][1] <= tlr[i][1] and tlr[i][1] <= tlr[j][2]) or (tlr[j][1] <= tlr[i][2] and tlr[i][2] <= tlr[j][2]):
-                ans += 1
-    print(ans)
+        t.append(list(map(int, input().split())))
+    s.sort()
+    t.sort()
+    sx = s[0][0]
+    sy = s[0][1]
+    tx = t[0][0]
+    ty = t[0][1]
+    for i in range(n):
+        s[i][0] -= sx
+        s[i][1] -= sy
+        t[i][0] -= tx
+        t[i][1] -= ty
+    s.sort(key=lambda x: x[1])
+    t.sort(key=lambda x: x[1])
+    for i in range(n):
+        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
+            print("No")
+            return
+    print("Yes")

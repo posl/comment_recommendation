@@ -1,12 +1,13 @@
-def gcd(a,b):
-    if b==0:
-        return a
-    else:
-        return gcd(b,a%b)
-K=int(input())
-ans=0
-for i in range(1,K+1):
-    for j in range(1,K+1):
-        for k in range(1,K+1):
-            ans+=gcd(gcd(i,j),k)
-print(ans)
+def solve(n, s):
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1, n):
+            k = 2 * j - i
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                ans -= 1
+    return ans

@@ -1,32 +1,26 @@
-def main():
-    # 读入数据
-    N, M = map(int, input().split())
-    # print(N, M)
-    # 读入数据
-    p = []
-    s = []
-    for i in range(M):
-        p_i, s_i = input().split()
-        p.append(int(p_i))
-        s.append(s_i)
-    # print(p)
-    # print(s)
-    # 处理数据
-    # 1.正确答案的数量
-    # 2.被罚的数量
-    # 3.在该问题上第一次收到AC之前收到的WA的数量
-    # 4.在该问题上第一次收到AC之前收到的WA的数量
-    # 5.在该问题上第一次收到AC之前收到的WA的数量
-    # 6.在该问题上第一次收到AC之前收到的WA的数量
-    # 7.在该问题上第一次收到AC之前收到的WA的数量
-    # 8.在该问题上第一次收到AC之前收到的WA的数量
-    # 9.在该问题上第一次收到AC之前收到的WA的数量
-    # 10.在该问题上第一次收到AC之前收到的WA的数量
-    # 11.在该问题上第一次收到AC之前收到的WA的数量
-    # 12.在该问题上第一次收到AC之前收到的WA的数量
-    # 13.在该问题上第一次收到AC之前收到的WA的数量
-    # 14.在该问题上第一次收到AC之前收到的WA的数量
-    # 15.在该问题上第一次收到AC之前收到的WA的数量
-    # 16.在该问题上第一次收到AC之前收到的WA的数量
-    # 17.在该问题上第一次收到AC之前收到的WA的数量
-    # 18.在该问题上第一次收到AC之前收到的WA的数量
+def dfs(x, y, dist):
+    global max_dist
+    max_dist = max(max_dist, dist)
+    for dx, dy in dxdy:
+        nx, ny = x + dx, y + dy
+        if not (0 <= nx < H and 0 <= ny < W):
+            continue
+        if maze[nx][ny] == '#':
+            continue
+        if visited[nx][ny]:
+            continue
+        visited[nx][ny] = True
+        dfs(nx, ny, dist + 1)
+        visited[nx][ny] = False
+H, W = map(int, input().split())
+maze = [input() for _ in range(H)]
+dxdy = ((0, 1), (1, 0), (0, -1), (-1, 0))
+max_dist = 0
+for i in range(H):
+    for j in range(W):
+        if maze[i][j] == '#':
+            continue
+        visited = [[False]*W for _ in range(H)]
+        visited[i][j] = True
+        dfs(i, j, 0)
+print(max_dist)

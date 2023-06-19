@@ -1,11 +1,14 @@
 def main():
-    n = int(input())
-    t, a = map(int, input().split())
-    h = list(map(int, input().split()))
-    ans = 0
-    min = 100000
-    for i in range(n):
-        if abs(min - a) > abs(t - h[i] * 0.006 - a):
-            min = t - h[i] * 0.006
-            ans = i + 1
-    print(ans)
+    n,m = map(int,input().split())
+    p_y = [list(map(int,input().split())) for _ in range(m)]
+    p_y.sort(key=lambda x: x[1])
+    p = {}
+    for i in range(m):
+        if p_y[i][0] not in p:
+            p[p_y[i][0]] = 1
+        else:
+            p[p_y[i][0]] += 1
+        p_y[i].append(p[p_y[i][0]])
+    p_y.sort(key=lambda x: x[2])
+    for i in range(m):
+        print(str(p_y[i][0]).zfill(6) + str(p_y[i][3]).zfill(6))

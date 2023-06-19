@@ -1,13 +1,12 @@
 def main():
-    k = int(input())
-    if k % 2 == 0 or k % 5 == 0:
-        print(-1)
-        return
-    num = 7
-    for i in range(1, k + 1):
-        if num % k == 0:
-            print(i)
-            return
-        num = num * 10 + 7
-        num %= k
-    print(-1)
+    n = int(input())
+    s = input()
+    r = 0
+    w = 0
+    for i in range(n):
+        if s[i] == 'R':
+            r += 1
+    for i in range(r):
+        if s[i] == 'W':
+            w += 1
+    print(w)

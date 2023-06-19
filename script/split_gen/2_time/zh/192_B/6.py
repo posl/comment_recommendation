@@ -1,4 +1,14 @@
-def problem192_a():
-    x = int(input())
-    print(100 - x % 100)
-problem192_a()
+def main():
+    S = input()
+    i = 0
+    for c in S:
+        if i % 2 == 0:
+            if c.isupper():
+                print('No')
+                return
+        else:
+            if c.islower():
+                print('No')
+                return
+        i += 1
+    print('Yes')

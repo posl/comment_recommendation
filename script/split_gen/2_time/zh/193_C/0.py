@@ -1,16 +1,9 @@
-def solve():
-    N = int(input())
-    A, P, X = [], [], []
-    for i in range(N):
-        a, p, x = map(int, input().split())
-        A.append(a)
-        P.append(p)
-        X.append(x)
-    ans = 10 ** 9 + 1
-    for i in range(N):
-        if X[i] > 0 and ans > P[i]:
-            ans = P[i]
-    if ans == 10 ** 9 + 1:
-        print(-1)
-    else:
-        print(ans)
+def main():
+    n = int(input())
+    ans = n
+    for i in range(2, int(n**0.5)+1):
+        x = i*i
+        while x <= n:
+            ans -= 1
+            x *= i
+    print(ans)

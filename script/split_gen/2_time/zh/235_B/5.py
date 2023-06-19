@@ -1,5 +1,8 @@
 def main():
-    abc = int(input())
-    bca = abc * 10 % 1000 + abc // 100
-    cab = abc * 100 % 1000 + abc // 10
-    print(abc + bca + cab)
+    n = int(input())
+    h = list(map(int, input().split()))
+    last = h[0]
+    for i in range(1, n):
+        if last < h[i]:
+            last = h[i]
+    print(last)

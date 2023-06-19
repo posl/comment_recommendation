@@ -1,4 +1,4 @@
-def get_input():
-    a = int(input())
-    s = input()
-    return a, s
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1/sum([1/x for x in a]))

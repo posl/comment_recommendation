@@ -1,17 +1,10 @@
-def solve():
-    N = int(input())
-    A = [int(i) for i in input().split()]
-    B = [int(i) for i in input().split()]
-    C = [int(i) for i in input().split()]
-    C = [i-1 for i in C]
-    D = {}
-    for i in C:
-        if i in D:
-            D[i] += 1
-        else:
-            D[i] = 1
-    ans = 0
-    for i in range(N):
-        if B[i] in D:
-            ans += D[B[i]]
-    print(ans)
+def dfs(a, b, k):
+    if a == 0:
+        return 'b' * b
+    if b == 0:
+        return 'a' * a
+    num = comb[a + b - 1][b]
+    if k <= num:
+        return 'a' + dfs(a - 1, b, k)
+    else:
+        return 'b' + dfs(a, b - 1, k - num)

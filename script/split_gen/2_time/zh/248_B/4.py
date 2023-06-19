@@ -1,9 +1,8 @@
-def main():
-    s = input()
-    s = list(s)
-    s = list(map(int, s))
-    s.sort()
-    for i in range(1,10):
-        if i not in s:
-            print(i)
-            break
+def count_scream_times(a, b, k):
+    if a >= b:
+        return 0
+    count = 0
+    while a < b:
+        a = a * k
+        count += 1
+    return count

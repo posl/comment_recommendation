@@ -1,9 +1,7 @@
-def main():
-    input = raw_input()
-    input = input.split()
-    for i in range(26):
-        input[i] = int(input[i])
-    result = ''
-    for i in range(26):
-        result += chr(input[i]+96)
-    print result
+def rotate90(S):
+    N = len(S)
+    T = [[0 for i in range(N)] for j in range(N)]
+    for i in range(N):
+        for j in range(N):
+            T[i][j] = S[N-1-j][i]
+    return T

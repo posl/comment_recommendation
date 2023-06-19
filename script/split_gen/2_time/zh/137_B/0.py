@@ -1,3 +1,3 @@
 def main():
-    a,b = map(int,input().split())
-    print(max(a+b,a-b,a*b))
+    k, x = map(int, input().split())
+    print(' '.join(map(str, [x - k + 1, x + k - 1])))

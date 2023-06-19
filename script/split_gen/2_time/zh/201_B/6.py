@@ -1,9 +1,7 @@
 def main():
-    a = input()
-    a = a.split()
-    a = [int(i) for i in a]
-    a.sort()
-    if (a[1]-a[0])==(a[2]-a[1]):
-        print('Yes')
-    else:
-        print('No')
+    N = int(input())
+    mountain = []
+    for i in range(N):
+        mountain.append(input().split())
+    mountain.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountain[1][0])

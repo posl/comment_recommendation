@@ -1,6 +1,11 @@
 def main():
-    k = int(input())
-    a,b = map(int,input().split())
-    a = int(str(a),k)
-    b = int(str(b),k)
-    print(a*b)
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    b = a * 10 ** 100
+    s = 0
+    for i in range(len(b)):
+        s += b[i]
+        if s > x:
+            print(i + 1)
+            break

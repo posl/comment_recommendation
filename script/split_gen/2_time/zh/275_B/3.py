@@ -1,4 +1,7 @@
-def main():
-    N = int(input())
-    H = list(map(int, input().split()))
-    print(H.index(max(H))+1)
+def problem275_b():
+    a,b,c,d,e,f = map(int,input().split())
+    #print(a,b,c,d,e,f)
+    if a*b*c >= d*e*f:
+        print((a*b*c - d*e*f)%998244353)
+    else:
+        print((d*e*f - a*b*c)%998244353)

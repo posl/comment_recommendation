@@ -1,11 +1,8 @@
-def solve():
-    N = int(input())
-    AB = [list(map(int, input().split())) for _ in range(N)]
-    AB.sort(key=lambda x: x[1])
-    time = 0
-    for a, b in AB:
-        time += a
-        if time > b:
-            print('No')
-            return
-    print('Yes')
+def main():
+    s = input()
+    s = list(s)
+    s.sort()
+    if s[0] == s[1] and s[2] == s[3] and s[0] != s[2]:
+        print('Yes')
+    else:
+        print('No')

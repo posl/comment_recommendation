@@ -1,13 +1,7 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    ans = 2**30
-    for i in range(n):
-        x = 0
-        for j in range(i, n):
-            x |= a[j]
-            y = 0
-            for k in range(j+1, n):
-                y ^= a[k]
-            ans = min(ans, x+y)
-    print(ans)
+    N = input()
+    x0, y0 = map(int, input().split())
+    xN, yN = map(int, input().split())
+    x1 = (x0 + xN + (yN - y0) * 3 ** 0.5) / 2
+    y1 = (y0 + yN + (x0 - xN) * 3 ** 0.5) / 2
+    print(x1, y1)

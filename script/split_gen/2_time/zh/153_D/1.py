@@ -1,11 +1,7 @@
-def main():
-    n,k = map(int,input().split())
-    h = list(map(int,input().split()))
-    h.sort(reverse=True)
-    ans = 0
-    if k >= n:
-        print(ans)
+def func(h):
+    if h == 1:
+        return 1
     else:
-        for i in range(k,n):
-            ans += h[i]
-        print(ans)
+        return 2*func(h//2) + 1
+h = int(input())
+print(func(h))

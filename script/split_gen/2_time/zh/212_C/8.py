@@ -1,10 +1,16 @@
 def main():
-    s = input()
-    if s[0] == s[1] == s[2] == s[3]:
-        print('Weak')
-        return
-    for i in range(3):
-        if (int(s[i]) + 1) % 10 != int(s[i+1]):
-            print('Strong')
-            return
-    print('Weak')
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    a.sort()
+    b.sort()
+    ans = 10**9
+    i = 0
+    j = 0
+    while i < n and j < m:
+        ans = min(ans, abs(a[i] - b[j]))
+        if a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+    print(ans)

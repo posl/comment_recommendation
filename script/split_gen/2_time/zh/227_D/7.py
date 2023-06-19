@@ -1,9 +1,9 @@
 def main():
-    N = int(input())
-    count = 0
-    for a in range(1, N+1):
-        for b in range(a, N+1):
-            for c in range(b, N+1):
-                if a*b*c <= N:
-                    count += 1
-    print(count)
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n-k+1):
+        if (a[i+k-1] - a[i]) < ans or ans == 0:
+            ans = a[i+k-1] - a[i]
+    print(ans)

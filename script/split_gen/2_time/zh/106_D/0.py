@@ -1,16 +1,21 @@
-def get_input():
-    #获取输入
-    N,M,Q = map(int,input().split())
+def main():
+    N, M, Q = map(int, input().split())
     L = []
     R = []
     for i in range(M):
-        l,r = map(int,input().split())
+        l, r = map(int, input().split())
         L.append(l)
         R.append(r)
     P = []
     Q = []
     for i in range(Q):
-        p,q = map(int,input().split())
+        p, q = map(int, input().split())
         P.append(p)
         Q.append(q)
-    return N,M,Q,L,R,P,Q
+    for i in range(Q):
+        count = 0
+        for j in range(M):
+            if L[j] >= P[i] and R[j] <= Q[i]:
+                count += 1
+        print(count)
+main()

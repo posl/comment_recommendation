@@ -1,3 +1,10 @@
 def main():
-    nums = [int(x) for x in input().split()]
-    print(len(set(nums)))
+    s = input()
+    t = input()
+    if len(s) > len(t):
+        print("No")
+    else:
+        if s == t[:len(s)]:
+            print("Yes")
+        else:
+            print("No")

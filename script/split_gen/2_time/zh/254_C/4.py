@@ -1,14 +1,19 @@
-def func254_b(n):
-    a = []
-    for i in range(n):
-        if i == 0:
-            a.append([1])
-        elif i == 1:
-            a.append([1, 1])
+def solve(N, K, A):
+    # Kを大きい順にソートする
+    K.sort(reverse=True)
+    # Kの最大値がAの長さの半分以上の場合、必ずNo
+    if K[0] >= N // 2:
+        return 'No'
+    # Kの最大値がAの最大値以下の場合、必ずYes
+    if K[0] >= max(A):
+        return 'Yes'
+    # Kの最大値がAの最大値より大きい場合、可能性があるか調べる
+    for i in range(len(K)):
+        # Kの値がAの最大値以下であれば、可能性がある
+        if K[i] <= max(A):
+            return 'Yes'
+        # Kの値がAの最大値より大きければ、Kの値を減らして再チャレンジ
         else:
-            b = [1]
-            for j in range(1, i):
-                b.append(a[i-1][j-1] + a[i-1][j])
-            b.append(1)
-            a.append(b)
-    return a
+            K[i] -= 1
+    # 結局、可能性がない場合はNo
+    return 'No'

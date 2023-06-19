@@ -1,9 +1,7 @@
-def main():
-    s = input()
-    t = input()
+def check(s, t):
+    if len(s) != len(t):
+        return False
     for i in range(len(s)):
-        if s == t:
-            print("Yes")
-            return
-        s = s[1:] + s[0]
-    print("No")
+        if s[i:] + s[:i] == t:
+            return True
+    return False

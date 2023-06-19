@@ -1,6 +1,8 @@
-def main():
-    a,b,c=map(int,input().split())
-    if b-a==c-b:
-        print("Yes")
-    else:
-        print("No")
+def getSecondMaxMountainName():
+    mountains = []
+    N = int(input())
+    for i in range(N):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+getSecondMaxMountainName()

@@ -1,5 +1,7 @@
-def is_contain_seven(n):
-    if '7' in str(n):
-        return True
-    else:
-        return False
+def solve(n, a):
+    # Write your code here
+    a.sort()
+    sum = 0
+    for i in range(n):
+        sum += (2*i-n+1)*a[i]
+    return sum

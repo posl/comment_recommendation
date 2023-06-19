@@ -1,7 +1,6 @@
 def main():
-    s = input()
-    t = input()
-    if s == t:
-        print("Yes")
+    A,B,C,D = map(int,input().split())
+    if A*60+B < C*60+D:
+        print("高桥")
     else:
-        print("No")
+        print("青木")

@@ -1,3 +1,5 @@
-def problems105_a():
-    n,k = map(int,input().split())
-    print(0 if n%k==0 else 1)
+def get_min_diff(n, k):
+    if n <= k:
+        return 0
+    else:
+        return 1

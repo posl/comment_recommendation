@@ -1,10 +1,10 @@
-def problems124_b():
-    n = int(input())
-    h = list(map(int,input().split()))
-    max_h = 0
-    count = 0
+def main():
+    s = input()
+    n = len(s)
+    cnt = 0
     for i in range(n):
-        if max_h <= h[i]:
-            max_h = h[i]
-            count += 1
-    print(count)
+        if i % 2 == 0 and s[i] == '1':
+            cnt += 1
+        elif i % 2 == 1 and s[i] == '0':
+            cnt += 1
+    print(min(cnt, n-cnt))

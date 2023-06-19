@@ -1,5 +1,3 @@
-def relu(x):
-    if x < 0:
-        return 0
-    else:
-        return x
+def main():
+    sx, sy, gx, gy = map(int, input().split())
+    print((sx * gy + sy * gx) / (sy + gy))

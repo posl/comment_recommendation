@@ -1,5 +1,7 @@
-def main():
-    x = input().split()
-    for i in range(5):
-        if x[i] == '0':
-            print(i+1)
+def solve():
+    x, y = map(int, input().split())
+    for i in range(x + 1):
+        if i * 4 + (x - i) * 2 == y:
+            print('Yes')
+            return
+    print('No')

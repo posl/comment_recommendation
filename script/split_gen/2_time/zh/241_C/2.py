@@ -1,15 +1,60 @@
-def solve():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    a.sort()
-    b.sort()
-    if n < m:
-        print("No")
-        return
-    for i in range(m):
-        if a[i] > b[i]:
-            print("No")
-            return
-    print("Yes")
-solve()
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        S[i] = S[i].replace(".", "0")
+        S[i] = S[i].replace("#", "1")
+        S[i] = list(map(int, S[i]))
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == 1:
+                S[i][j] = 0
+            else:
+                S[i][j] = 1
+    for i in range(N):
+        S[i] = S[i][::-1]
+    for

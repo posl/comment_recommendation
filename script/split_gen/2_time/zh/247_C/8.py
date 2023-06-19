@@ -1,9 +1,8 @@
-def get_nickname(s,t):
-    if len(s) < len(t):
-        min_len = len(s)
+def recursion(n):
+    if n == 1:
+        return [1]
     else:
-        min_len = len(t)
-    for i in range(min_len):
-        if s[i] != t[i]:
-            return s[0:i+1]
-    return s[0:min_len+1]
+        l = recursion(n-1)
+        return l + [n] + l
+n = int(input())
+print(*recursion(n))

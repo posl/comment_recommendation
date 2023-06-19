@@ -1,16 +1,16 @@
 def main():
-    n, m = map(int, input().split())
-    a = [0] * m
-    for i in range(m):
-        a[i] = list(map(int, input().split()))
-    ans = 0
-    for i in range(1, n + 1):
-        for j in range(i + 1, n + 1):
-            for k in range(m):
-                if i in a[k] and j in a[k]:
-                    ans += 1
-                    break
-    if ans == n * (n - 1) // 2:
-        print("Yes")
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[-1] % 2 == 0:
+        print(a[-1])
     else:
-        print("No")
+        for i in range(n-1, 0, -1):
+            if a[i] % 2 == 0:
+                print(a[i])
+                break
+            elif (a[i] + a[i-1]) % 2 == 0:
+                print(a[i] + a[i-1])
+                break
+            elif i == 1:
+                print(-1)

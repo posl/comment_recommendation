@@ -1,9 +1,24 @@
 def main():
-    n, m, x, y = map(int, input().split())
-    x_list = list(map(int, input().split()))
-    y_list = list(map(int, input().split()))
-    for z in range(x + 1, y + 1):
-        if max(x_list) < z and min(y_list) >= z:
-            print("No War")
-            return
-    print("War")
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    
+    s_dict = {}
+    t_dict = {}
+    for s, t in zip(S, T):
+        if s not in s_dict:
+            s_dict[s] = t
+        else:
+            if s_dict[s] != t:
+                print("No")
+                return
+        if t not in t_dict:
+            t_dict[t] = s
+        else:
+            if t_dict[t] != s:
+                print("No")
+                return
+    print("Yes")
+    return

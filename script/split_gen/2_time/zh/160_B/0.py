@@ -1,6 +1,10 @@
 def main():
-    str = input()
-    if str[2] == str[3] and str[4] == str[5]:
-        print('Yes')
-    else:
-        print('No')
+    X = int(input())
+    count = 0
+    while X >= 500:
+        count += 1000
+        X -= 500
+    while X >= 5:
+        count += 5
+        X -= 5
+    print(count)

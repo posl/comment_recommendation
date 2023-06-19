@@ -1,9 +1,2 @@
-def get_input():
-    n = int(input())
-    x = []
-    u = []
-    for i in range(n):
-        x_i,u_i = input().split()
-        x.append(float(x_i))
-        u.append(u_i)
-    return n,x,u
+def cal_mp(s1,s2,s3):
+    return abs(s1-s2)+abs(s2-s3)+abs(s3-s1)

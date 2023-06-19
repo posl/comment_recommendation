@@ -1,15 +1,17 @@
-def main():
-    # 读取数据
-    t = int(input())
-    n = []
-    a = []
-    for i in range(t):
-        n.append(int(input()))
-        a.append(list(map(int, input().split())))
-    # 处理数据
-    for i in range(t):
-        count = 0
-        for j in range(n[i]):
-            if a[i][j] % 2 == 1:
-                count += 1
-        print(count)
+def dfs(v):
+    visited[v] = True
+    for i in range(1, n+1):
+        if not visited[i] and g[v][i]:
+            dfs(i)
+n, m = map(int, input().split())
+g = [[False]*(n+1) for _ in range(n+1)]
+for _ in range(m):
+    u, v = map(int, input().split())
+    g[u][v] = g[v][u] = True
+visited = [False]*(n+1)
+ans = 0
+for i in range(1, n+1):
+    if not visited[i]:
+        dfs(i)
+        ans += 1
+print(ans)

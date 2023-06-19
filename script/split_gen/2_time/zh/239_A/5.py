@@ -1,11 +1,3 @@
-def main():
-    T = int(input())
-    for i in range(T):
-        a, s = map(int, input().split())
-        if a > s:
-            print('No')
-            continue
-        if (s - a) % 2 == 0:
-            print('Yes')
-        else:
-            print('No')
+def solution():
+    H = int(input())
+    print((H*(12800000+H))**(1/2))

@@ -1,9 +1,12 @@
-def input_data():
-    input_data = []
-    N = int(input())
-    for i in range(N):
-        A = int(input())
-        input_data.append(A)
-        for j in range(A):
-            input_data.append(list(map(int,input().split())))
-    return input_data
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                cnt += 1
+        ans += cnt * (n - cnt) * (1 << i)
+        ans %= 10**9 + 7
+    print(ans)

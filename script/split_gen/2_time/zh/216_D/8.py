@@ -1,12 +1,8 @@
-def solve(n):
-    ans = ''
-    while n > 0:
-        if n % 2 == 0:
-            n //= 2
-            ans += 'B'
-        else:
-            n -= 1
-            ans += 'A'
-    return ans[::-1]
-n = int(input())
-print(solve(n))
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(N, M, k, a)

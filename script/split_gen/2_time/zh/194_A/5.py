@@ -1,36 +1,10 @@
 def main():
-    K = int(input())
-    S = input()
-    T = input()
-    S = S[:4]
-    T = T[:4]
-    #print(S, T)
-    #print(S.count('1'))
-    #print(T.count('1'))
-    #print(S.count('2'))
-    #print(T.count('2'))
-    #print(S.count('3'))
-    #print(T.count('3'))
-    #print(S.count('4'))
-    #print(T.count('4'))
-    #print(S.count('5'))
-    #print(T.count('5'))
-    #print(S.count('6'))
-    #print(T.count('6'))
-    #print(S.count('7'))
-    #print(T.count('7'))
-    #print(S.count('8'))
-    #print(T.count('8'))
-    #print(S.count('9'))
-    #print(T.count('9'))
-    #print(S.count('1') + T.count('1'))
-    #print(S.count('2') + T.count('2'))
-    #print(S.count('3') + T.count('3'))
-    #print(S.count('4') + T.count('4'))
-    #print(S.count('5') + T.count('5'))
-    #print(S.count('6') + T.count('6'))
-    #print(S.count('7') + T.count('7'))
-    #print(S.count('8') + T.count('8'))
-    #print(S.count('9') + T.count('9'))
-    #print(K * 9 * 2 - (S.count('1') + T.count('1')) * 2 - (S.count('2') + T.count('2')) * 2 - (S.count('3') + T.count('3')) * 2 - (S.count('4') + T.count('4')) * 2 - (S.count('5') + T.count('5')) * 2 - (S.count('6') + T.count('6')) * 2 - (S.count('7') + T.count('7')) * 2 - (S.count('8') + T.count('8')) * 2 - (S.count('9') + T.count('9')) * 2)
-    #print(K * 9 * 2 - (S.count('1') + T.count('1')) * 2 - (S.count('2') + T.count
+    a,b = map(int,input().split())
+    if a+b < 15:
+        print(4)
+    elif a+b >= 15 and b >= 8:
+        print(1)
+    elif a+b >= 10 and b >= 3:
+        print(2)
+    else:
+        print(3)

@@ -1,8 +1,10 @@
 def main():
-    N = int(input())
-    if N <= 125:
-        print(4)
-    elif N <= 211:
-        print(6)
-    else:
-        print(8)
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S + 1):
+        for b in range(S + 1):
+            for c in range(S + 1):
+                if a + b + c <= S and a * b * c <= T:
+                    ans += 1
+    print(ans)
+main()

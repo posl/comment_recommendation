@@ -1,6 +1,8 @@
-def is_permutation(n, a):
-    a.sort()
-    for i in range(n):
-        if a[i] != i+1:
-            return False
-    return True
+def main():
+    a,b,c = map(int,input().split())
+    if pow(a,c) < pow(b,c):
+        print("<")
+    elif pow(a,c) > pow(b,c):
+        print(">")
+    else:
+        print("=")

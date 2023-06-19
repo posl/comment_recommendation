@@ -1,7 +1,7 @@
 def main():
-    s1 = input()
-    s2 = input()
-    if s1[0] == '#' and s1[2] == '#' and s2[0] == '#' and s2[2] == '#':
-        print('Yes')
+    A, B = map(int, input().split())
+    sum = A + B
+    if sum >= 10**18:
+        print("Hard")
     else:
-        print('No')
+        print("Easy")

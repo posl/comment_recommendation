@@ -1,8 +1,8 @@
-def solve():
-    n = int(input())
-    s = list(map(int, input().split()))
-    a = [0]*n
-    for i in range(n-1):
-        a[i] = s[i] + a[i-1]
-    a[n-1] = s[n-1] + a[n-2]
-    print(' '.join(map(str, a)))
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            exit()
+    print(len(s)+1)

@@ -1,10 +1,17 @@
-def min_power(arr):
-    arr.sort()
-    if len(arr) % 2 == 0:
-        mid = (arr[len(arr) / 2] + arr[len(arr) / 2 - 1]) / 2
+def main():
+    n,a,b = map(int,input().split())
+    if a%2==0 and b%2==0:
+        print(0)
+        return
+    if a%2==0:
+        a,b = b,a
+    if a==1:
+        print(0)
+        return
+    if b%a==0:
+        print(0)
+        return
+    if n > 2*a-1:
+        print((n-2*a+1)*(n-a+1)-(n-b+1)*(n-b+1))
     else:
-        mid = arr[len(arr) / 2]
-    power = 0
-    for i in arr:
-        power += (i - mid) ** 2
-    return power
+        print(n-a+1)

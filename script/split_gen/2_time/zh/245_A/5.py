@@ -1,8 +1,12 @@
-def solve():
-    s1, s2, s3 = input().split()
-    t1, t2, t3 = input().split()
-    if s1 == t1 and s2 == t2 and s3 == t3:
-        print("Yes")
+def main():
+    a,b,c,d = map(int,input().split())
+    if a > c:
+        print('高桥')
+    elif a < c:
+        print('青木')
+    elif b > d:
+        print('高桥')
+    elif b < d:
+        print('青木')
     else:
-        print("No")
-solve()
+        print('同時')

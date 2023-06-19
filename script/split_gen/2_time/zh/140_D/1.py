@@ -1,8 +1,9 @@
-def main():
-    N = int(input())
-    B = list(map(int, input().split()))
-    A = [0] * N
-    for i in range(N - 1):
-        A[i] = max(B[i], B[i + 1])
-    A[N - 1] = B[N - 2]
-    print(sum(A))
+def solve():
+    n, k = map(int, input().split())
+    s = input()
+    cnt = 0
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            cnt += 1
+    print(min(cnt + 2*k, n-1))
+solve()

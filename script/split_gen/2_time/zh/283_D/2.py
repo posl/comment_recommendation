@@ -1,10 +1,11 @@
-def solve():
-    s = input()
-    ans = 0
-    for i in range(len(s)):
-        if s[i] != '0':
-            ans += 1
-    if s[-1] != '0':
-        print(ans)
-    else:
-        print(ans-1)
+def is_good_string(s):
+    stack = []
+    for c in s:
+        if c == '(':
+            stack.append(c)
+        elif c == ')':
+            if len(stack) == 0:
+                return False
+            else:
+                stack.pop()
+    return True if len(stack) == 0 else False

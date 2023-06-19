@@ -1,9 +1,10 @@
-def triangle(n,l):
-    l.sort()
-    count = 0
-    for i in range(n):
-        for j in range(i+1,n):
-            for k in range(j+1,n):
-                if l[i] + l[j] > l[k]:
-                    count += 1
-    return count
+def main():
+    # 读取输入
+    s = input().split(" ")
+    a = int(s[0])
+    b = int(s[1])
+    # 输出结果
+    if a <= 9 and b <= 9:
+        print(a * b)
+    else:
+        print(-1)

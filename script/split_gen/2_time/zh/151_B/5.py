@@ -1,7 +1,7 @@
-def gcd(x,y):
-    if x < y:
-        x,y = y,x
-    if y == 0:
-        return x
+def main():
+    n,k,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if n*m-sum(a) > k:
+        print(-1)
     else:
-        return gcd(y,x % y)
+        print(max(0,n*m-sum(a)))

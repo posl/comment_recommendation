@@ -1,3 +1,8 @@
-def main():
-    A, B = map(int, input().split())
-    print(B-A+1 if B-A>=0 else 0)
+def isAllCanBuy(n, x, a):
+    for i in range(n):
+        if i % 2 == 1:
+            a[i] -= 1
+    if sum(a) <= x:
+        return True
+    else:
+        return False

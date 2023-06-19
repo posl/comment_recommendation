@@ -1,10 +1,6 @@
 def main():
-    N = int(input())
-    ans = 0
-    for i in range(2, int(N ** 0.5) + 1):
-        if N % i == 0:
-            ans = i
-            break
-    if ans == 0:
-        ans = N
-    print(ans - 1)
+    a,b,x = map(int,input().split())
+    if x <= a*a*b/2:
+        print(90 - (x*2)/(a*b*b))
+    else:
+        print((x*2)/(a*a*a) - 90)

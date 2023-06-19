@@ -1,13 +1,16 @@
-def main():
-    n, w = map(int, input().split())
-    cheese = [list(map(int, input().split())) for _ in range(n)]
-    cheese.sort(key=lambda x: x[0]/x[1], reverse=True)
-    ans = 0
-    for i in range(n):
-        if w >= cheese[i][1]:
-            ans += cheese[i][0]
-            w -= cheese[i][1]
-        else:
-            ans += cheese[i][0] * w / cheese[i][1]
-            break
-    print(int(ans))
+def solve():
+    N, W = [int(x) for x in input().split()]
+    A = []
+    B = []
+    for i in range(N):
+        a, b = [int(x) for x in input().split()]
+        A.append(a)
+        B.append(b)
+    dp = [[0 for _ in range(W + 1)] for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(W + 1):
+            if j >= B[i]:
+                dp[i + 1][j] = max(dp[i][j], dp[i][j - B[i]] + A[i])
+            else:
+                dp[i + 1][j] = dp[i][j]
+    print(dp[N][W])

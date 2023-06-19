@@ -1,8 +1,7 @@
-def main():
-    n = int(input())
-    s = input()
-    for i in range(1, n):
-        ans = 0
-        while i + ans < n and s[ans] != s[i + ans]:
-            ans += 1
-        print(ans)
+def find_index(s):
+    def find_index(s, i):
+        if len(s) == 1:
+            return ord(s) - 64
+        else:
+            return 26 ** (len(s) - 1) * (ord(s[0]) - 64) + find_index(s[1:], i + 1)
+    return find_index(s, 1)

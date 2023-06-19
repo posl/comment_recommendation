@@ -1,12 +1,9 @@
 def main():
-    a,b = map(int,input().split())
-    if a < b:
-        if b - a == 1 or b - a == 4 or b - a == 3:
-            print("Yes")
-        else:
-            print("No")
-    else:
-        if a - b == 1 or a - b == 4 or a - b == 3:
-            print("Yes")
-        else:
-            print("No")
+    n=int(input())
+    s=input()
+    for i in range(1,n):
+        l=0
+        while i+l<n and s[l]!=s[i+l]:
+            l+=1
+        print(l)
+main()

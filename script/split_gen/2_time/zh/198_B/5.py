@@ -1,3 +1,5 @@
-def get_input():
-    n = int(input())
-    return n
+def isPalindrome(str):
+    if str == str[::-1]:
+        return True
+    else:
+        return False

@@ -1,6 +1,10 @@
 def main():
-    N,X = map(int,input().split())
-    A = list(map(int,input().split()))
-    for i in range(N):
-        if A[i] != X:
-            print(A[i],end=" ")
+    h,w = map(int,input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h-1):
+        for j in range(w-1):
+            if s[i][j] == '#':
+                ans += 1
+                s[i][j],s[i][j+1],s[i+1][j],s[i+1][j+1] = '.','.','.','.'
+    print(ans)

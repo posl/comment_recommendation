@@ -1,11 +1,7 @@
-def solve():
-    n, k, q = map(int, input().split())
-    score = [k for _ in range(n)]
-    for _ in range(q):
-        a = int(input())
-        score[a - 1] += 1
-    for i in range(n):
-        if score[i] <= q:
-            print("No")
-        else:
-            print("Yes")
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[i] = a[i] // 2
+    print(sum(a))

@@ -1,17 +1,19 @@
-def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s = list(set(s))
-    for i in range(len(s)):
-        if s[i][0] == '!':
-            if s[i][1:] in s:
-                print(s[i][1:])
-                exit()
-        else:
-            if '!' + s[i] in s:
-                print(s[i])
-                exit()
-    print('satisfiable')
-main()
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        ans -= B[i]
+        if ans < 0:
+            print(i+1)
+            return
+    print(N)
+    return

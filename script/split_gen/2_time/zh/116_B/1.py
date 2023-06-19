@@ -1,7 +1,5 @@
-def main():
-    # 读取输入
-    a,b,c = map(int,input().split())
-    # 计算面积
-    s = (a*b)/2
-    # 打印输出
-    print(int(s))
+def calc(n):
+    if n % 2 == 0:
+        return int(n / 2)
+    else:
+        return int(3 * n + 1)

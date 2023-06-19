@@ -1,9 +1,7 @@
-def main():
-    n = int(input())
-    if n == 1:
-        print("Hello World")
-    else:
-        a = int(input())
-        b = int(input())
-        print(a+b)
-    return 0
+def get_input():
+    N,T = map(int,input().split())
+    routes = []
+    for i in range(N):
+        c,t = map(int,input().split())
+        routes.append((c,t))
+    return N,T,routes

@@ -1,3 +1,12 @@
 def main():
-    a,b,c = map(int,input().split())
-    print(max(a+b+c,a*10+b+c,a+b*10+c,a+b+c*10))
+    n,m,x,y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] < y_list[0]:
+        print('No War')
+    else:
+        print('War')

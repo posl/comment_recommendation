@@ -1,5 +1,16 @@
 def main():
-    r, D, x = map(int, input().split())
-    for i in range(1, 11):
-        x = r * x - D
-        print(x)
+    # 输入
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    # 計算
+    l_max = max(l)
+    r_min = min(r)
+    if r_min - l_max >= 0:
+        print(r_min - l_max + 1)
+    else:
+        print(0)

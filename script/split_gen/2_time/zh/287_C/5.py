@@ -1,10 +1,11 @@
 def main():
-    n,m = map(int,input().split())
-    s = [input() for i in range(n)]
-    t = [input() for i in range(m)]
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if s[i][-3:] == t[j]:
-                count += 1
-    print(count)
+    n, m = map(int, input().split())
+    a = []
+    for i in range(m):
+        a.append(list(map(int, input().split())))
+    a.sort(key=lambda x: x[0])
+    for i in range(n - 1):
+        if a[i][0] != a[i + 1][0] - 1:
+            print("No")
+            return
+    print("Yes")

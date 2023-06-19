@@ -1,15 +1,13 @@
 def main():
-    n = int(input())
-    words = []
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    diff_list = []
     for i in range(n):
-        words.append(input())
-    for i in range(n-1):
-        if words[i][-1] != words[i+1][0]:
-            print("No")
-            return
-    for i in range(n-1):
-        for j in range(i+1, n):
-            if words[i] == words[j]:
-                print("No")
-                return
-    print("Yes")
+        diff_list.append(x_list[i + 1] - x_list[i])
+    diff_list.sort()
+    if n == 1:
+        print(diff_list[0])
+    else:
+        print(gcd(diff_list[0], diff_list[1]))

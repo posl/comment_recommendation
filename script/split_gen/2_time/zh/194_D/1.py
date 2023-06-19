@@ -1,8 +1,7 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
+def solve():
+    N = int(input())
     ans = 0
-    for i in range(n):
-        for j in range(i):
-            ans += (a[i] - a[j]) ** 2
+    for i in range(1, N):
+        ans += N / i
     print(ans)
+solve()

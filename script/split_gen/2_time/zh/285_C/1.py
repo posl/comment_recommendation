@@ -1,11 +1,9 @@
-def main():
-    n = int(input())
-    s = input()
-    for i in range(1,n):
-        l = 0
-        while i+l < n:
-            if s[l] != s[i+l]:
-                l += 1
-            else:
-                break
-        print(l)
+def get_index(s):
+    length = len(s)
+    if length == 1:
+        return ord(s) - 64
+    else:
+        index = 0
+        for i in range(length):
+            index += (ord(s[i]) - 64) * (26 ** (length - i - 1))
+        return index

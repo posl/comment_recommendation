@@ -1,9 +1,4 @@
-def permutation(string):
-    if len(string) <= 1:
-        return [string]
-    else:
-        result = []
-        for i in range(len(string)):
-            for j in permutation(string[:i] + string[i+1:]):
-                result.append(string[i] + j)
-    return result
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a

@@ -1,5 +1,15 @@
-def add_or_sub(a,b):
-    if b%a == 0:
-        print(a+b)
-    else:
-        print(b-a)
+def main():
+    n,m = map(int,input().split())
+    k = []
+    for i in range(n):
+        k.append(list(map(int,input().split())))
+    result = 0
+    for i in range(1,m+1):
+        flag = True
+        for j in range(n):
+            if i not in k[j][1:]:
+                flag = False
+                break
+        if flag:
+            result += 1
+    print(result)

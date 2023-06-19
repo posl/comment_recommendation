@@ -1,18 +1,11 @@
 def main():
-    n = int(input())
-    a = [int(i) for i in input().split()]
-    b = [int(i) for i in input().split()]
-    ans = 0
-    for i in range(n):
-        if a[i] <= b[i]:
-            ans += a[i]
-            b[i] -= a[i]
-            if a[i + 1] <= b[i]:
-                ans += a[i + 1]
-                a[i + 1] = 0
-            else:
-                ans += b[i]
-                a[i + 1] -= b[i]
+    s = input()
+    mod = 10**9+7
+    dp = [0]*13
+    dp[0] = 1
+    for c in s:
+        if c == '?':
+            dp = [sum(dp[4*i+j] for j in range(10)) for i in range(13)]
         else:
-            ans += b[i]
-    print(ans)
+            dp = [dp[(4*i+int(c))%13] for i in range(13)]
+    print(dp[5]%mod)

@@ -1,7 +1,7 @@
-def S(n):
-    sum=0
-    while n!=0:
-        sum+=n%10
-        n=n//10
+def s(n):
+    sum = 0
+    while n > 0:
+        sum = sum + n % 10
+        n = n // 10
     return sum
-N=int(input())
+n = int(input())

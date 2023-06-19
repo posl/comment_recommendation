@@ -1,9 +1,6 @@
-def get_height(n, m, x, t, d):
-    height = t
-    if m <= x:
-        for i in range(m, x):
-            height += d
-    else:
-        for i in range(x, m):
-            height -= d
-    return height
+def rotate(a, b, d):
+    import math
+    theta = math.radians(d)
+    a_ = a * math.cos(theta) - b * math.sin(theta)
+    b_ = a * math.sin(theta) + b * math.cos(theta)
+    return a_, b_

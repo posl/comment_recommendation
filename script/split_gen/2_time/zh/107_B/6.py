@@ -1,29 +1,22 @@
 def main():
-    # 读入数据
-    h, w = map(int, input().split())
-    a = [input() for _ in range(h)]
-    # 检查是否有黑色方块
-    exist_black = False
+    h,w = map(int,input().split())
+    a = []
     for i in range(h):
-        for j in range(w):
-            if a[i][j] == '#':
-                exist_black = True
-    # 压缩网格
-    ans = []
+        a.append(input())
+    b = []
     for i in range(h):
-        if '#' in a[i]:
-            ans.append(a[i].replace('.', ''))
-    # 转置
-    ans = list(map(list, zip(*ans)))
-    # 再次压缩
-    ans2 = []
+        if not a[i] == "."*w:
+            b.append(a[i])
+    c = []
     for i in range(w):
-        if '#' in ans[i]:
-            ans2.append(ans[i])
-    # 转置
-    ans2 = list(map(list, zip(*ans2)))
-    # 输出结果
-    if exist_black:
-        print('\n'.join([''.join(ans2[i]) for i in range(len(ans2))]))
-    else:
-        print('')
+        flag = True
+        for j in range(len(b)):
+            if b[j][i] == "#":
+                flag = False
+                break
+        if flag:
+            c.append(i)
+    for i in range(len(b)):
+        for j in range(len(c)):
+            print(b[i][c[j]],end="")
+        print()

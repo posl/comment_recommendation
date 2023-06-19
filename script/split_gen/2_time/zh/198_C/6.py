@@ -1,2 +1,2 @@
-def isPalindrome(s):
-    return s == s[::-1]
+def problems198_c():
+    pass

@@ -1,7 +1,27 @@
 def main():
-    a, b = map(int, input().split())
-    for i in range(1, 100):
-        if int(i * 0.08) == a and int(i * 0.1) == b:
-            print(i)
-            exit()
-    print(-1)
+    s = input()
+    q = int(input())
+    t = []
+    f = []
+    c = []
+    for i in range(q):
+        t1 = input().split()
+        t.append(int(t1[0]))
+        if t1[0] == '2':
+            f.append(int(t1[1]))
+            c.append(t1[2])
+    #print(s)
+    #print(q)
+    #print(t)
+    #print(f)
+    #print(c)
+    for i in range(q):
+        if t[i] == 1:
+            s = s[::-1]
+        else:
+            if f[i] == 1:
+                s = c[i] + s
+            else:
+                s = s + c[i]
+        #print(s)
+    print(s)

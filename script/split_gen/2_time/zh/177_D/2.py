@@ -1,10 +1,21 @@
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    mod = 10 ** 9 + 7
-    sum = 0
-    for i in range(N - 1):
-        for j in range(i + 1, N):
-            sum += A[i] * A[j]
-            sum %= mod
-    print(sum)
+    n,m = map(int,input().split())
+    friend = [[] for _ in range(n)]
+    for _ in range(m):
+        a,b = map(int,input().split())
+        friend[a-1].append(b-1)
+        friend[b-1].append(a-1)
+    group = [-1]*n
+    group[0] = 0
+    stack = [0]
+    while stack:
+        i = stack.pop()
+        for j in friend[i]:
+            if group[j] == -1:
+                group[j] = 1-group[i]
+                stack.append(j)
+            elif group[j] == group[i]:
+                print(0)
+                return
+    print(group.count(0)*group.count(1)-m)
+    return

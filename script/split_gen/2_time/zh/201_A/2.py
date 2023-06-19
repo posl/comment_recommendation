@@ -1,6 +1,9 @@
-def find_subset(N, A):
-    for i in range(N):
-        for j in range(i+1, N):
-            if (A[i] + A[j]) % 200 == 0:
-                return True
-    return False
+def main():
+    A = input()
+    A = A.split()
+    A = list(map(int, A))
+    A.sort()
+    if A[2] - A[1] == A[1] - A[0]:
+        print("Yes")
+    else:
+        print("No")

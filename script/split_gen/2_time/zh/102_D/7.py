@@ -1,23 +1,27 @@
-def solve(n, a):
-    # write your code here
-    # return the correct answer
-    # 1. 二分法，找到最大值和最小值的中间值，然后从数组中找到最接近这个中间值的两个数，计算差值，然后比较差值和中间值的大小，如果差值小于中间值，那么中间值就是最大和最小值的绝对差值
-    # 2. 从数组中找到最大值和最小值，然后从数组中找到最接近这个最大值和最小值的两个数，计算差值，然后比较差值和最大值和最小值的大小，如果差值小于最大值和最小值，那么最大值和最小值就是最大和最小值的绝对差值
-    a.sort()
-    min = a[0]
-    max = a[n-1]
-    mid = int((min + max) / 2)
-    min_diff = max - min
-    for i in range(n):
-        if a[i] < mid:
-            diff = mid - a[i]
-            if min_diff > diff:
-                min_diff = diff
-        else:
-            diff = a[i] - mid
-            if min_diff > diff:
-                min_diff = diff
-    return min_diff
-n = int(input())
-a = list(map(int, input().split()))
-print(solve(n, a))
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*(N+1)
+    for i in range(N):
+        B[i+1] = B[i]+A[i]
+    C = [0]*(N+1)
+    for i in range(N):
+        C[i+1] = C[i]+A[i]
+    D = [0]*(N+1)
+    for i in range(N):
+        D[i+1] = D[i]+A[i]
+    E = [0]*(N+1)
+    for i in range(N):
+        E[i+1] = E[i]+A[i]
+    for i in range(1,N+1):
+        C[i] = max(C[i], C[i-1])
+    for i in range(N-1,-1,-1):
+        D[i] = min(D[i], D[i+1])
+    ans = 10**18
+    j = N
+    for i in range(N+1):
+        while j > 0 and B[i] + D[j] < B[N]//2:
+            j -= 1
+        if j > 0:
+            ans = min(ans, max(B[i], B[N]-B[i]) - max(C[i], D[j]))
+    print(ans)

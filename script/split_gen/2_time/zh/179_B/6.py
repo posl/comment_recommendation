@@ -1,10 +1,16 @@
 def main():
-    # 读取输入
-    s = input()
-    # 根据题意，判断单词s是否以s结尾
-    if s[-1] == 's':
-        # 如果是，则在单数形式的末尾加上es
-        print(s + 'es')
+    n = int(input())
+    flag = False
+    count = 0
+    for i in range(n):
+        d1, d2 = map(int, input().split())
+        if d1 == d2:
+            count += 1
+        else:
+            count = 0
+        if count >= 3:
+            flag = True
+    if flag:
+        print("Yes")
     else:
-        # 如果不是，则在单数形式的后面加上s
-        print(s + 's')
+        print("No")

@@ -1,11 +1,9 @@
-def main():
-    N, M = map(int, input().split())
-    A = [list(map(int, input().split()))[1:] for i in range(M)]
-    ans = 'Yes'
-    for i in range(N):
-        for j in range(i+1, N):
-            for k in range(M):
-                if i+1 not in A[k] or j+1 not in A[k]:
-                    ans = 'No'
-                    break
-    print(ans)
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    max_even = -1
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            max_even = A[i]*2
+    print(max_even)

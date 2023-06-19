@@ -1,23 +1,29 @@
-def solve():
-    n = int(input())
-    points = []
-    for i in range(n):
-        x, y = map(int, input().split())
-        points.append((x, y))
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                x1, y1 = points[i]
-                x2, y2 = points[j]
-                x3, y3 = points[k]
-                if x1 == x2 and x2 == x3:
-                    print('Yes')
-                    return
-                elif x1 == x2 or x2 == x3:
-                    continue
-                else:
-                    if (y2 - y1) / (x2 - x1) == (y3 - y2) / (x3 - x2):
-                        print('Yes')
-                        return
-    print('No')
-solve()
+def main():
+    S = input()
+    S = list(S)
+    #print(S)
+    for i in range(len(S)):
+        S[i] = int(S[i])
+    #print(S)
+    S.sort()
+    #print(S)
+    if len(S) == 1:
+        if S[0] == 8:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if len(S) == 2:
+        if (S[0]*10 + S[1]) % 8 == 0 or (S[1]*10 + S[0]) % 8 == 0:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if len(S) == 3:
+        if (S[0]*100 + S[1]*10 + S[2]) % 8 == 0 or (S[0]*100 + S[2]*10 + S[1]) % 8 == 0 or (S[1]*100 + S[0]*10 + S[2]) % 8 == 0 or (S[1]*100 + S[2]*10 + S[0]) % 8 == 0 or (S[2]*100 + S[0]*10 + S[1]) % 8 == 0 or (S[2]*100 + S[1]*10 + S[0]) % 8 == 0:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if len(S) == 4:
+        if (S[0]*1000 + S[1]*100 + S[2]*10 + S[3]) % 8 == 0 or (S[0]*1000 + S[1]*100 + S[3]*10 + S[2]) % 8 == 0 or (S[0]*1000 + S[2]*100 + S[1]*10 + S[3]) % 8 == 0 or (S[0]*1000 + S[2]*100 + S[3]*10 + S[1]) % 8 == 0 or (S[0]*1000 + S[3]*100 + S[1]*10 + S[2]) % 8 == 0 or (S[0]*1000 + S[3]*100 + S[

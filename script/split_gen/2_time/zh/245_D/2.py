@@ -1,18 +1,14 @@
-def solve():
-    N, K = map(int, input().split())
+def getB():
     A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
-    A_max = max(A)
-    B_max = max(B)
-    if abs(A_max - B_max) > K:
-        print('No')
-        return
-    if A_max > B_max:
-        A, B = B, A
-    A.sort()
-    B.sort(reverse=True)
-    for i in range(N):
-        if A[i] + B[i] > K:
-            print('No')
-            return
-    print('Yes')
+    C = list(map(int, input().split()))
+    N = len(A) - 1
+    M = len(C) - 1
+    B = [0 for _ in range(M+1)]
+    for i in range(M, N-1, -1):
+        B[i-N] = C[i] // A[N]
+        for j in range(N, -1, -1):
+            C[i-N+j] -= A[j] * B[i-N]
+    for i in range(M, N-1, -1):
+        if C[i] != 0:
+            return False
+    return B

@@ -1,8 +1,9 @@
-def reverse_string(string, start, end):
-    """Reverse string from start to end."""
-    string = list(string)
-    while start < end:
-        string[start], string[end] = string[end], string[start]
-        start += 1
-        end -= 1
-    return ''.join(string)
+def main():
+    N,X = map(int, input().split())
+    L = []
+    a = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+        a.append(L[i][1:])
+    print(L)
+    print(a)

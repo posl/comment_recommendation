@@ -1,13 +1,12 @@
-def main():
-    n = int(input())
-    sum = 0
-    for i in range(1, n+1):
-        if i % 3 == 0 and i % 5 == 0:
-            continue
-        elif i % 3 == 0:
-            continue
-        elif i % 5 == 0:
-            continue
-        else:
-            sum += i
-    print(sum)
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+K = int(input())
+ans = 0
+for i in range(1,K+1):
+    for j in range(1,K+1):
+        for k in range(1,K+1):
+            ans += gcd(i,gcd(j,k))
+print(ans)

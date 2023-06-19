@@ -1,12 +1,6 @@
-def count_dividers(n):
+def countDivisors(num):
     count = 0
-    for i in range(1, n+1):
-        if n % i == 0:
-            count += 1
+    for i in range(1, int(num**0.5)+1):
+        if num % i == 0:
+            count += 2
     return count
-n = int(input())
-count = 0
-for i in range(1, n+1, 2):
-    if count_dividers(i) == 8:
-        count += 1
-print(count)

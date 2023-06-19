@@ -1,29 +1,32 @@
 def main():
-    N, Q = map(int, input().split())
-    S = input()
-    #print(N, Q, S)
-    A = [0] * (N+1)
-    C = [0] * (N+1)
-    G = [0] * (N+1)
-    T = [0] * (N+1)
-    for i in range(N):
-        A[i+1] = A[i]
-        C[i+1] = C[i]
-        G[i+1] = G[i]
-        T[i+1] = T[i]
-        if S[i] == 'A':
-            A[i+1] += 1
-        elif S[i] == 'C':
-            C[i+1] += 1
-        elif S[i] == 'G':
-            G[i+1] += 1
-        else:
-            T[i+1] += 1
-    #print(A)
-    #print(C)
-    #print(G)
-    #print(T)
-    for i in range(Q):
-        l, r = map(int, input().split())
-        #print(l, r)
-        print(A[r] - A[l-1], C[r] - C[l-1], G[r] - G[l-1], T[r] - T[l-1])
+    N = int(input())
+    mod = 10**9 + 7
+    dp = [[[[0] * 4 for i in range(4)] for j in range(4)] for k in range(N+1)]
+    # dp[i][j][k][l] := i文字目までで最後の3文字がjklとなる文字列の数
+    # j, k, l = 0, 1, 2, 3 は A, C, G, T に対応
+    for j in range(4):
+        for k in range(4):
+            for l in range(4):
+                if j == 0 and k == 1 and l == 2: continue
+                if j == 0 and k == 2 and l == 1: continue
+                if j == 1 and k == 0 and l == 2: continue
+                dp[3][j][k][l] = 1
+    for i in range(4, N+1):
+        for j in range(4):
+            for k in range(4):
+                for l in range(4):
+                    for m in range(4):
+                        if k == 0 and l == 1 and m == 2: continue
+                        if k == 0 and j == 1 and m == 2: continue
+                        if j == 0 and k == 1 and m == 2: continue
+                        if k == 0 and l == 2 and m == 1: continue
+                        if k == 0 and l == 1 and m == 2: continue
+                        dp[i][j][k][l] += dp[i-1][k][l][m]
+                        dp[i][j][k][l] %= mod
+    ans = 0
+    for j in range(4):
+        for k in range(4):
+            for l in range(4):
+                ans += dp[N][j][k][l]
+                ans %= mod
+    print(ans)

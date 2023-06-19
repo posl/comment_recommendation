@@ -1,4 +1,4 @@
-def swap(L, i, j):
-    temp = L[i:j+1]
-    temp.reverse()
-    L[i:j+1] = temp
+def main():
+    n = int(input())
+    s = input()
+    print(s.replace("na", "nya"))

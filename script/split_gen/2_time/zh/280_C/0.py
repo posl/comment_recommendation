@@ -1,9 +1,9 @@
-def main():
-    n = int(input())
-    s = list(map(int, input().split()))
-    a = [0] * n
-    a[0] = s[0]
-    for i in range(1, n):
-        a[i] = s[i] - s[i - 1]
-    print(*a)
-main()
+def solve():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)

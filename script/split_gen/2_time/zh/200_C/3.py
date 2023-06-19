@@ -1,9 +1,11 @@
 def main():
-    #输入
-    N,K = map(int,input().split())
-    for i in range(K):
-        if N%200 == 0:
-            N = N//200
-        else:
-            N = int(str(N)+'200')
-    print(N)
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * 200
+    for i in range(N):
+        B[A[i] % 200] += 1
+    ans = 0
+    for i in range(200):
+        ans += B[i] * (B[i] - 1) // 2
+    print(ans)
+main()

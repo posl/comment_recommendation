@@ -1,7 +1,7 @@
-def main():
-    n = int(input())
-    a_list = list(map(int, input().split()))
-    order = [0 for _ in range(n)]
-    for i in range(n):
-        order[a_list[i] - 1] = i + 1
-    print(' '.join(map(str, order)))
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)

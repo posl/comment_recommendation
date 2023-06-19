@@ -1,14 +1,18 @@
-def main():
-    n = int(input())
-    d = []
-    for i in range(n):
-        d.append(list(map(int, input().split())))
-    flag = False
-    for i in range(n-2):
-        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
-            flag = True
-            break
-    if flag:
-        print("Yes")
-    else:
-        print("No")
+def get_divisors(n):
+    """nの約数を全て求める"""
+    divisors = []
+    for i in range(1, int(n ** 0.5) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n // i)
+    return divisors
+n = int(input())
+divisors = get_divisors(n)
+ans = 0
+for i in divisors:
+    if i == 1:
+        continue
+    if (n - i) % i == 0:
+        ans += (n - i) // i
+print(ans)

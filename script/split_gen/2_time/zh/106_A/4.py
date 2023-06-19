@@ -1,2 +1,3 @@
-def get_area(a,b):
-    return a*b-1
+def main():
+    a, b = input().split()
+    print(int(a) * int(b) - int(a) - int(b) + 1)

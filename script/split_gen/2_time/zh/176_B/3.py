@@ -1,6 +1,9 @@
-def solve():
-    n,x,t = map(int,input().split())
-    if n%x == 0:
-        print(n//x*t)
+def main():
+    n = input()
+    total = 0
+    for i in range(len(n)):
+        total += int(n[i])
+    if total % 9 == 0:
+        print("Yes")
     else:
-        print((n//x+1)*t)
+        print("No")

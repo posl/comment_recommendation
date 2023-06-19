@@ -1,5 +1,5 @@
-def main():
-    n = int(input())
-    for i in range(n):
-        s = input()
-        print(s[::-1])
+def is_odd(x):
+    if x % 2 == 0:
+        return False
+    else:
+        return True

@@ -1,18 +1,59 @@
-def isPrime(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i ==0:
-            return False
-    return True
-a, b, c, d = map(int, input().split())
-for i in range(a, b+1):
-    if isPrime(i):
-        for j in range(c, d+1):
-            if isPrime(j):
-                if i+j == 9:
-                    print("高桥")
-                    exit()
-                else:
-                    print("青木")
-                    exit()
+def main():
+    a,b = map(int,input().split())
+    if a == 1 and b == 3:
+        print("Yes")
+    elif a == 1 and b == 2:
+        print("Yes")
+    elif a == 1 and b == 4:
+        print("Yes")
+    elif a == 1 and b == 5:
+        print("Yes")
+    elif a == 1 and b == 6:
+        print("Yes")
+    elif a == 1 and b == 7:
+        print("Yes")
+    elif a == 1 and b == 8:
+        print("Yes")
+    elif a == 1 and b == 9:
+        print("Yes")
+    elif a == 1 and b == 10:
+        print("Yes")
+    elif a == 2 and b == 3:
+        print("Yes")
+    elif a == 2 and b == 4:
+        print("Yes")
+    elif a == 2 and b == 5:
+        print("Yes")
+    elif a == 2 and b == 6:
+        print("Yes")
+    elif a == 2 and b == 7:
+        print("Yes")
+    elif a == 2 and b == 8:
+        print("Yes")
+    elif a == 2 and b == 9:
+        print("Yes")
+    elif a == 2 and b == 10:
+        print("Yes")
+    elif a == 3 and b == 4:
+        print("Yes")
+    elif a == 3 and b == 5:
+        print("Yes")
+    elif a == 3 and b == 6:
+        print("Yes")
+    elif a == 3 and b == 7:
+        print("Yes")
+    elif a == 3 and b == 8:
+        print("Yes")
+    elif a == 3 and b == 9:
+        print("Yes")
+    elif a == 3 and b == 10:
+        print("Yes")
+    elif a == 4 and b == 5:
+        print("Yes")
+    elif a == 4 and b == 6:
+        print("Yes")
+    elif a == 4 and b == 7:
+        print("Yes")
+    elif a == 4 and b == 8:
+        print("Yes")
+    elif a == 4 and b == 9:

@@ -1,7 +1,8 @@
 def main():
-    s=input()
-    t=input()
-    if s==t[:-1]:
-        print("Yes")
+    a,b,c,k = map(int,input().split())
+    if k <= a:
+        print(k)
+    elif k <= a + b:
+        print(a)
     else:
-        print("No")
+        print(a - (k - a - b))

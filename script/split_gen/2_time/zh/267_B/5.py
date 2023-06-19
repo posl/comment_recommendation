@@ -1,12 +1,42 @@
-def main():
-    week = input()
-    if week == "星期一":
-        print(5)
-    elif week == "星期二":
-        print(4)
-    elif week == "星期三":
-        print(3)
-    elif week == "星期四":
-        print(2)
-    elif week == "星期五":
-        print(1)
+def solve():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    if s[1] == '0':
+        print('No')
+        return
+    if s[2] == '0':
+        print('No')
+        return
+    if s[3] == '0':
+        print('No')
+        return
+    if s[4] == '0':
+        print('No')
+        return
+    if s[5] == '0':
+        print('No')
+        return
+    if s[6] == '0':
+        print('No')
+        return
+    if s[7] == '0':
+        print('No')
+        return
+    if s[8] == '0':
+        print('No')
+        return
+    if s[9] == '0':
+        print('No')
+        return
+    if s[0] == '1':
+        if s[5] == '1':
+            print('Yes')
+            return
+        else:
+            print('No')
+            return
+    else:
+        print('No')
+        return

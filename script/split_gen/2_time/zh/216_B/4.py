@@ -1,12 +1,11 @@
 def main():
-    x,y=input().split(".")
-    y=int(y)
-    x=int(x)
-    if 0<=y<=2:
-        print(x,end="")
-        print("-")
-    elif 3<=y<=6:
-        print(x,end="")
-    elif 7<=y<=9:
-        print(x,end="")
-        print("+")
+    n = int(input())
+    name_list = []
+    for i in range(n):
+        name_list.append(input())
+    for i in range(n):
+        for j in range(i+1, n):
+            if name_list[i] == name_list[j]:
+                print('Yes')
+                return
+    print('No')

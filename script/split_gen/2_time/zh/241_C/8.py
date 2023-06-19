@@ -1,9 +1,7 @@
-def solve(n, m, a, b):
-    if m > n:
+def is_black(i,j):
+    if i < 0 or i >= n or j < 0 or j >= n:
         return False
-    a.sort()
-    b.sort()
-    for i in range(m):
-        if a[-1-i] < b[-1-i]:
-            return False
-    return True
+    if S[i][j] == '#':
+        return True
+    else:
+        return False

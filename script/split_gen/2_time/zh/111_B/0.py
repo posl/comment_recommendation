@@ -1,2 +1,6 @@
-def replace1with9(n):
-    return int(str(n).replace('1','x').replace('9','1').replace('x','9'))
+def main():
+    N = int(input())
+    if N%111 == 0:
+        print(N)
+    else:
+        print((N//111+1)*111)

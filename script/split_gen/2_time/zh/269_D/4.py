@@ -1,10 +1,20 @@
-def isSubset(arr1, arr2, m, n): 
-	i = 0; 
-	j = 0; 
-	for i in range(n): 
-		for j in range(m): 
-			if(arr2[i] == arr1[j]): 
-				break; 
-		if (j == m): 
-			return 0; 
-	return 1;
+def dfs(x, y):
+    if (x, y) in black:
+        black.remove((x, y))
+        dfs(x - 1, y - 1)
+        dfs(x - 1, y)
+        dfs(x, y - 1)
+        dfs(x, y + 1)
+        dfs(x + 1, y)
+        dfs(x + 1, y + 1)
+n = int(input())
+black = set()
+for i in range(n):
+    x, y = map(int, input().split())
+    black.add((x, y))
+ans = 0
+while black:
+    x, y = black.pop()
+    ans += 1
+    dfs(x, y)
+print(ans)

@@ -1,10 +1,10 @@
-def split_pin(s):
-    for i in range(1, 10):
-        if s[i] == "0":
-            if s[i + 1] == "0":
-                return "Yes"
-            else:
-                return "No"
-    return "No"
-s = input()
-print(split_pin(s))
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = [0]
+    for i in range(n):
+        b.append(b[i]+a[i])
+    maxv = -float('inf')
+    for i in range(n-m+1):
+        maxv = max(maxv,b[i+m]-b[i])
+    print(maxv)

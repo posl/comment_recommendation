@@ -1,3 +1,2 @@
-def print_descending_numbers(n):
-    for i in range(n+1):
-        print(n-i)
+def is_upper_letter(c):
+    return ord('A') <= ord(c) <= ord('Z')

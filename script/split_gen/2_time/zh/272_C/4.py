@@ -1,15 +1,14 @@
 def main():
-    N, M = map(int, input().split())
-    x = []
-    for i in range(M):
-        x.append(list(map(int, input().split()))[1:])
-    for i in range(N):
-        for j in range(i+1, N):
-            flag = False
-            for k in range(M):
-                if i+1 in x[k] and j+1 in x[k]:
-                    flag = True
-            if not flag:
-                print("No")
-                return
-    print("Yes")
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n == 2:
+        if a[0] % 2 == 0:
+            print(a[0] + a[1])
+        else:
+            print(-1)
+    else:
+        if a[0] % 2 == 0:
+            print(a[0] + a[1])
+        else:
+            print(a[-1] + a[-2])

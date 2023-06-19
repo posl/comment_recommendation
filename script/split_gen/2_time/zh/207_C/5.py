@@ -1,5 +1,7 @@
-def solve(a,b,c,d):
-    if a <= b * d:
-        return -1
-    else:
-        return (a + b - 1) // b
+def get_list():
+    N = int(input())
+    list = []
+    for i in range(N):
+        t,l,r = map(int,input().split())
+        list.append([t,l,r])
+    return list

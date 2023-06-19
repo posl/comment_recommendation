@@ -1,8 +1,8 @@
 def main():
-    n = int(input())
-    d = list(map(int,input().split()))
-    sum = 0
-    for i in range(n-1):
-        for j in range(i+1,n):
-            sum += d[i]*d[j]
-    print(sum)
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(N - 1):
+        if S[i] != S[i + 1]:
+            count += 1
+    print(count)

@@ -1,6 +1,5 @@
-def main():
-    N = int(input())
-    if N % 2 == 0:
-        print(int(N/2-1))
+def isPalindrome(n):
+    if n == n[::-1]:
+        return True
     else:
-        print(int(N/2))
+        return False

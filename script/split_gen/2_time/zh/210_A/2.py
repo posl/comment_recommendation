@@ -1,4 +1,5 @@
-def find_parent(parent,x):
-    if parent[x] != x:
-        parent[x] = find_parent(parent,parent[x])
-    return parent[x]
+def problem210_a(n, a, x, y):
+    if n <= a:
+        return n*x
+    else:
+        return a*x + (n-a)*y

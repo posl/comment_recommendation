@@ -1,7 +1,9 @@
-def problem148_b():
-    n = int(input())
-    s, t = input().split()
-    res = ""
-    for i in range(n):
-        res += s[i] + t[i]
-    print(res)
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while a % b != 0:
+        a, b = b, a % b
+    return b
+a, b = map(int, input().split())
+g = gcd(a, b)
+print(a * b // g)

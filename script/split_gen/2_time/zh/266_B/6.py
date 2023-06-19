@@ -1,7 +1,9 @@
 def main():
-    # 读入数据
-    s = input()
-    # 计算中心字符的位置
-    pos = (len(s) + 1) // 2
-    # 打印中心字符
-    print(s[pos - 1])
+    n = int(input())
+    if n < 0:
+        n = -n
+        n = n % 998244353
+        n = 998244353 - n
+    else:
+        n = n % 998244353
+    print(n)

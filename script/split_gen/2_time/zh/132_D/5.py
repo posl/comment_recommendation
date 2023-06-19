@@ -1,4 +1,6 @@
-def get_input():
-    n = int(input())
-    ds = list(map(int, input().split()))
-    return n, ds
+def main():
+    #N,K = map(int,input().split())
+    N,K = 5,3
+    print(N,K)
+    #arrange(N,K)
+    print(arrange(N,K))

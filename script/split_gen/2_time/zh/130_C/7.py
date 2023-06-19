@@ -1,7 +1,3 @@
-def problem130_b():
-    N,X = map(int,input().split())
-    L = list(map(int,input().split()))
-    D = [0]
-    for i in range(N):
-        D.append(D[i]+L[i])
-    print(len([i for i in D if i<=X]))
+def main():
+    W,H,x,y = map(int,input().split())
+    print(W*H/2,1 if W==x*2 and H==y*2 else 0)

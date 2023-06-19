@@ -1,8 +1,6 @@
 def main():
-    s = input()
-    t = input()
-    cnt = 0
-    for i in range(3):
-        if s[i] == t[i]:
-            cnt += 1
-    print(cnt)
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(b // a)
+    else:
+        print(b // a + 1)

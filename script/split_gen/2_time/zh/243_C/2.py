@@ -1,15 +1,18 @@
 def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-    cnt1 = 0
-    cnt2 = 0
-    for i in range(n):
-        if a[i] == b[i]:
-            cnt1 += 1
-    for i in range(n):
-        for j in range(n):
-            if i != j and a[i] == b[j]:
-                cnt2 += 1
-    print(cnt1)
-    print(cnt2)
+    N = int(input())
+    people = []
+    for i in range(N):
+        people.append(list(map(int,input().split())))
+    S = input()
+    for i in range(N):
+        if S[i] == 'R':
+            people[i][0] += 1
+        elif S[i] == 'L':
+            people[i][0] -= 1
+    print(people)
+    for i in range(N):
+        for j in range(i+1,N):
+            if people[i][0] == people[j][0] and people[i][1] == people[j][1]:
+                print('Yes')
+                return
+    print('No')

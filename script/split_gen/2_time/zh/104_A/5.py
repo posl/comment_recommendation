@@ -1,7 +1,9 @@
-def next_contest(R):
-    if R < 1200:
-        return "ABC"
-    elif R < 2800:
-        return "ARC"
+def main():
+    r = int(input())
+    if r < 1200:
+        print("ABC")
+    elif r < 2800:
+        print("ARC")
     else:
-        return "AGC"
+        print("AGC")
+main()

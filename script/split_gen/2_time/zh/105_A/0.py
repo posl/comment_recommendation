@@ -1,6 +1,6 @@
 def main():
-    n, k = map(int, input().split())
-    if n % k == 0:
+    N, K = map(int, input().split())
+    if N <= K:
         print(0)
     else:
-        print(1)
+        print(N - K)

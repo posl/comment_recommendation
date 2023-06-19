@@ -1,5 +1,11 @@
-def reverse(s, l, r):
-    return s[:l] + s[l:r+1][::-1] + s[r+1:]
-l, r = map(int, input().split())
-s = input()
-print(reverse(s, l-1, r-1))
+def get_divisors(n):
+    divisors = []
+    i = 1
+    while i*i <= n:
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+        i += 1
+    divisors.sort()
+    return divisors

@@ -1,31 +1,11 @@
-def solve():
-    S = input()
-    T = input()
-    if len(S) != len(T):
-        print("No")
-        return
-    for i in range(len(S)):
-        if S[i] == T[i]:
-            continue
-        else:
-            for j in range(i+1, len(S)):
-                if S[j] == S[i]:
-                    if T[j] == T[i]:
-                        S = S[:i] + T[j] + S[i+1:]
-                        T = T[:i] + S[j] + T[i+1:]
-                        break
-                    else:
-                        print("No")
-                        return
-                elif T[j] == T[i]:
-                    if S[j] == S[i]:
-                        S = S[:i] + T[j] + S[i+1:]
-                        T = T[:i] + S[j] + T[i+1:]
-                        break
-                    else:
-                        print("No")
-                        return
-            if S[i] != T[i]:
-                print("No")
-                return
-    print("Yes")
+def getPrimeList(n):
+    primeList = []
+    isPrime = [True] * (n + 1)
+    isPrime[0] = False
+    isPrime[1] = False
+    for i in range(2, n + 1):
+        if isPrime[i]:
+            primeList.append(i)
+            for j in range(i * 2, n + 1, i):
+                isPrime[j] = False
+    return primeList

@@ -1,2 +1,3 @@
-def solve():
-    print("hello")
+def main():
+    s = input()
+    print(len(set(s)))

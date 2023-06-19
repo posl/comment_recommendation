@@ -1,6 +1,9 @@
-def main():
-    x = int(input())
-    if x % 100 == 0:
-        print(100)
-    else:
-        print(100 - x % 100)
+def isDifficult(s):
+    for i in range(0, len(s)):
+        if i % 2 == 0 and s[i].islower():
+            return False
+        if i % 2 == 1 and s[i].isupper():
+            return False
+    return True
+s = input()
+print("Yes" if isDifficult(s) else "No")

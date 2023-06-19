@@ -1,12 +1,7 @@
-def main():
-    # input
-    R = int(input())
-    # compute
+def get_ABC_ARC_AGC(R):
     if R < 1200:
-        ans = "ABC"
+        return "ABC"
     elif R < 2800:
-        ans = "ARC"
+        return "ARC"
     else:
-        ans = "AGC"
-    # output
-    print(ans)
+        return "AGC"

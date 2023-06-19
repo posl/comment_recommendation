@@ -1,3 +1,3 @@
-def main():
-    n = int(input())
-    print(n-1)
+def is_palindrome(n):
+    n = str(n)
+    return n == n[::-1]

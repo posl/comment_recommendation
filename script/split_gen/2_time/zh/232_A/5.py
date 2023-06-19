@@ -1,14 +1,4 @@
 def main():
-    N, M = map(int, input().split())
-    A = []
-    B = []
-    for i in range(M):
-        a, b = map(int, input().split())
-        A.append(a)
-        B.append(b)
-    A.sort()
-    B.sort()
-    if A[0] == 1 and B[-1] == N:
-        print("Yes")
-    else:
-        print("No")
+    S = input()
+    a, b = S.split('x')
+    print(int(a) * int(b))

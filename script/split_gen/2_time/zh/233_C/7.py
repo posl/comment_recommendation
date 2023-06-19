@@ -1,2 +1,35 @@
-def reverse_string(s, l, r):
-    return s[:l-1] + s[l-1:r][::-1] + s[r:]
+def main():
+    N,X = map(int,input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int,input().split())))
+    #print(N,X)
+    #print(L)
+    #print(L[0][0])
+    #print(L[0][1])
+    #print(L[0][2])
+    #print(L[1][0])
+    #print(L[1][1])
+    #print(L[1][2])
+    #print(L[0][0]*L[1][0])
+    #print(L[0][0]*L[1][1])
+    #print(L[0][0]*L[1][2])
+    #print(L[0][1]*L[1][0])
+    #print(L[0][1]*L[1][1])
+    #print(L[0][1]*L[1][2])
+    #print(L[0][2]*L[1][0])
+    #print(L[0][2]*L[1][1])
+    #print(L[0][2]*L[1][2])
+    #print(L[0][0]*L[1][0]*L[2][0])
+    #print(L[0][0]*L[1][0]*L[2][1])
+    #print(L[0][0]*L[1][0]*L[2][2])
+    #print(L[0][0]*L[1][1]*L[2][0])
+    #print(L[0][0]*L[1][1]*L[2][1])
+    #print(L[0][0]*L[1][1]*L[2][2])
+    #print(L[0][0]*L[1][2]*L[2][0])
+    #print(L[0][0]*L[1][2]*L[2][1])
+    #print(L[0][0]*L[1][2]*L[2][2])
+    #print(L[0][1]*L[1][0]*L[2][0])
+    #print(L[0][1]*L[1][0]*L[2][1])
+    #print(L[0][1]*L[1][0]*L[2][2])
+    #print(L[0][1]*L[1][1

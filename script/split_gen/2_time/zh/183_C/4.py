@@ -1,3 +1,6 @@
-def solve():
-    S_x, S_y, G_x, G_y = map(int, input().split())
-    print((S_x * G_y + S_y * G_x) / (S_y + G_y))
+def get_data():
+    n, k = map(int, input().split())
+    time = []
+    for i in range(n):
+        time.append(list(map(int, input().split())))
+    return n, k, time

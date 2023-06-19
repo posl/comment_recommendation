@@ -1,14 +1,9 @@
-def main():
-    N, X = map(int, input().split())
-    a = []
-    b = []
-    for i in range(N):
-        ai, bi = map(int, input().split())
-        a.append(ai)
-        b.append(bi)
-    result = "No"
-    for i in range(N):
-        if a[i] <= X <= b[i]:
-            result = "Yes"
-            break
-    print(result)
+def solve(n, a):
+    # write code here
+    nums = []
+    for i in range(n):
+        nums.append(a[i])
+        while len(nums) >= 2 and nums[-1] == nums[-2]:
+            nums.pop()
+            nums.pop()
+    return nums

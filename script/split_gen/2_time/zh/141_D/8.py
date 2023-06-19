@@ -1,11 +1,14 @@
 def main():
-    N, K, Q = map(int, input().split())
-    A = [int(input()) for _ in range(Q)]
-    score = [K-Q for _ in range(N)]
-    for i in range(Q):
-        score[A[i]-1] += 1
-    for i in range(N):
-        if score[i] > 0:
-            print("Yes")
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    a.append(0)
+    count = 0
+    for i in range(n):
+        if a[i] > a[i+1]:
+            count += 1
         else:
-            print("No")
+            count += 1
+            break
+    print(count)
+    return 0

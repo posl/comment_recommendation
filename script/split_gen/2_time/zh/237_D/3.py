@@ -1,8 +1,12 @@
-def solve():
+def main():
+    n = int(input())
     s = input()
-    n = len(s)
+    # 0のリストを作成
+    a = [0]
     for i in range(n):
-        if s[i] != s[n-i-1]:
-            print('Yes')
-            return
-    print('No')
+        if s[i] == 'L':
+            a.insert(0, i + 1)
+        else:
+            a.append(i + 1)
+    # 結果を出力
+    print(*a)

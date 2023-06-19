@@ -1,3 +1,11 @@
 def main():
-    a,b,c,d = map(int,input().split())
-    print(a*d-b*c)
+    n, x = map(int, input().split())
+    s = input()
+    score = x
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        else:
+            if score > 0:
+                score -= 1
+    print(score)

@@ -1,6 +1,6 @@
-def solve(n, m, a):
-    a.sort()
-    for i in range(m):
-        a[-1] = a[-1] // 2
-        a.sort()
-    return sum(a)
+def problems142_a():
+    N = int(input())
+    if N % 2 == 0:
+        print(0.5)
+    else:
+        print((N + 1) / (2 * N))

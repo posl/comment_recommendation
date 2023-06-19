@@ -1,15 +1,8 @@
-def main():
-    n,x,y = map(int,input().split())
-    a = list(map(int,input().split()))
-    x1 = a[0]
-    y1 = 0
-    for i in range(1,n):
-        r = (x1-x)**2 + (y1-y)**2
-        if r == a[i]**2:
-            x1 = x
-            y1 = y
-            continue
-        else:
-            print("No")
-            exit()
-    print("Yes")
+def get_max_bridge(bridge_heights):
+    max_height = 0
+    max_index = 0
+    for i in range(0, len(bridge_heights)):
+        if bridge_heights[i] > max_height:
+            max_height = bridge_heights[i]
+            max_index = i + 1
+    return max_index

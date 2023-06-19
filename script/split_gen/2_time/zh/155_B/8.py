@@ -1,10 +1,9 @@
-def problem155_a():
-    a,b,c = map(int,input().split())
-    if a == b and a != c:
-        print("Yes")
-    elif a == c and a != b:
-        print("Yes")
-    elif b == c and b != a:
-        print("Yes")
-    else:
-        print("No")
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0 and a[i] % 3 != 0 and a[i] % 5 != 0:
+            print("DENIED")
+            exit()
+    print("APPROVED")
+main()

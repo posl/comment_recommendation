@@ -1,14 +1,7 @@
-def input():
-    return list(map(int, input().split()))
-N, M, K = input()
-dp = [[[0 for i in range(K+1)] for j in range(M+1)] for k in range(N+1)]
-dp[0][0][0] = 1
-for i in range(N):
-    for j in range(M+1):
-        for k in range(K+1):
-            dp[i+1][j][k] += dp[i][j][k]
-            dp[i+1][j][k] %= 998244353
-            if j+1 <= M and k+i+1 <= K:
-                dp[i+1][j+1][k+i+1] += dp[i][j][k]
-                dp[i+1][j+1][k+i+1] %= 998244353
-print(dp[N][M][K])
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    q = int(input())
+    for i in range(q):
+        l, r, x = [int(x) for x in input().split()]
+        print(a[l-1:r].count(x))

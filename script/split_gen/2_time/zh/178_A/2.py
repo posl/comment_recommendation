@@ -1,6 +1,6 @@
-def find(x):
-  if x == parents[x]:
-    return x
-  else:
-    parents[x] = find(parents[x])
-    return parents[x]
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)

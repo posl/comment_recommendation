@@ -1,11 +1,13 @@
 def main():
-    h, w = map(int, input().split())
-    a = []
-    for i in range(h):
-        a.append(input())
-    for i in range(w):
-        c = 0
-        for j in range(h):
-            if a[j][i] == "#":
-                c += 1
-        print(c)
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0]*(2*n+1)
+    for i in range(n):
+        b[a[i]] = i+1
+    for i in range(1, 2*n+1):
+        j = i
+        while True:
+            print(b[j])
+            if j == 1:
+                break
+            j = j//2

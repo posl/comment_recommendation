@@ -1,4 +1,2 @@
-def get_input():
-    # 读取输入
-    k, x = map(int, input().split())
-    return k, x
+def get_num(string):
+    return sum([ord(i) for i in string])

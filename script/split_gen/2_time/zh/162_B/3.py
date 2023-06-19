@@ -1,10 +1,13 @@
-def is_contain_seven(n):
-    if n % 10 == 7:
-        return True
-    elif n // 10 % 10 == 7:
-        return True
-    elif n // 100 % 10 == 7:
-        return True
-    else:
-        return False
-n = int(input())
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(1,N+1):
+        if i%15 == 0:
+            pass
+        elif i%3 == 0:
+            sum = sum + i
+        elif i%5 == 0:
+            sum = sum + i
+        else:
+            sum = sum + i
+    print(sum)

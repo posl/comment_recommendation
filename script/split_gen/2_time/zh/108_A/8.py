@@ -1,6 +1,4 @@
-def median(a):
-    a.sort()
-    if len(a)%2 == 1:
-        return a[len(a)/2]
-    else:
-        return a[len(a)/2-1]
+def main():
+    k = int(input())
+    print((k//2)*((k+1)//2))
+    return

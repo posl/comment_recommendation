@@ -1,3 +1,6 @@
 def main():
-    N = int(input())
-    print(N*(N-1)/2/(N-1)+1)
+    M, H = map(int, input().split())
+    if H % M == 0:
+        print('Yes')
+    else:
+        print('No')

@@ -1,23 +1,14 @@
-def do():
+def main():
     n = int(input())
-    s = []
-    t = []
+    x = []
+    y = []
     for i in range(n):
-        s.append(input())
+        x.append(int(input().split()[0]))
+        y.append(int(input().split()[1]))
+    count = 0
     for i in range(n):
-        t.append(input())
-    for i in range(n):
-        for j in range(n):
-            if s[i][j] == '#':
-                s[i] = s[i][j:] + s[i][:j]
-                break
-    for i in range(n):
-        for j in range(n):
-            if t[i][j] == '#':
-                t[i] = t[i][j:] + t[i][:j]
-                break
-    for i in range(n):
-        if s[i] != t[i]:
-            print('No')
-            return
-    print('Yes')
+        for j in range(i+1,n):
+            if x[i] != x[j] and y[i] != y[j]:
+                if x[i] in x and y[j] in y:
+                    count += 1
+    print(count)

@@ -1,6 +1,11 @@
 def main():
-    N, X, T = map(int, input().split())
-    num = N // X
-    if N % X != 0:
-        num += 1
-    print(num * T)
+    n = input()
+    n = list(n)
+    n = list(map(int, n))
+    sum = 0
+    for i in n:
+        sum += i
+    if sum % 9 == 0:
+        print("Yes")
+    else:
+        print("No")

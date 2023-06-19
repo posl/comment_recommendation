@@ -1,6 +1,10 @@
 def main():
-    S = input()
-    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
-        print('Bad')
+    n, l = map(int, input().split())
+    if n == 2:
+        print(l)
+    elif l >= 0:
+        print(sum(range(l+1, l+n)))
+    elif l+n-1 <= 0:
+        print(sum(range(l, l+n-1)))
     else:
-        print('Good')
+        print(sum(range(l, 0)) + sum(range(1, l+n-1)))

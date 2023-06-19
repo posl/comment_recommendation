@@ -1,4 +1,7 @@
-def main():
-    a,b,c,d = map(int,input().split())
-    print((a+b)*(c-d))
-    print('Takahashi')
+def is_same(str1, str2):
+    if len(str1) != len(str2):
+        return False
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            return False
+    return True

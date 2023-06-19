@@ -1,20 +1,29 @@
 def main():
-    N,M = map(int,input().split())
-    B = [list(map(int,input().split())) for _ in range(N)]
-    if N > 10:
-        print("No")
-        return
-    if M > 7:
-        print("No")
-        return
-    for i in range(1,100):
-        for j in range(1,8):
-            if B[0][0] == (i-1)*7+j:
-                if B[0][1] == (i-1)*7+j+1:
-                    if B[0][2] == (i-1)*7+j+2:
-                        if B[1][0] == (i)*7+j:
-                            if B[1][1] == (i)*7+j+1:
-                                if B[1][2] == (i)*7+j+2:
-                                    print("Yes")
-                                    return
-    print("No")
+    n,q = map(int,input().split())
+    p = list(range(n+1))
+    def find(x):
+        if p[x] != x:
+            p[x] = find(p[x])
+        return p[x]
+    def union(x,y):
+        px,py = find(x),find(y)
+        if px != py:
+            p[px] = py
+    def same(x,y):
+        return find(x) == find(y)
+    ans = []
+    for _ in range(q):
+        c,*q = map(int,input().split())
+        if c == 1:
+            x,y = q
+            union(x,y)
+        elif c == 2:
+            x,y = q
+            if same(x,y):
+                union(x,y-1)
+                union(x+1,y)
+        else:
+            x = q[0]
+            ans.append([i for i in range(1,n+1) if same(x,i)])
+    for i in ans:
+        print(len(i),*i)

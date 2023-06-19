@@ -1,9 +1,11 @@
-def rotate(a,b,d):
-    import math
-    d = math.radians(d)
-    a_ = a * math.cos(d) - b * math.sin(d)
-    b_ = a * math.sin(d) + b * math.cos(d)
-    return a_,b_
-a,b,d = map(float,input().split())
-a_,b_ = rotate(a,b,d)
-print(a_,b_)
+def solve():
+    s = input()
+    t = input()
+    if len(s) + 1 != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")

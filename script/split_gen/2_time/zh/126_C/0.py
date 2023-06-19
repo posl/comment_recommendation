@@ -1,11 +1,9 @@
 def main():
-    s = input()
-    if 1<=int(s[0:2])<=12 and 1<=int(s[2:4])<=12:
-        print("AMBIGUOUS")
-    elif 1<=int(s[0:2])<=12:
-        print("MMYY")
-    elif 1<=int(s[2:4])<=12:
-        print("YYMM")
-    else:
-        print("NA")
-main()
+    n, k = map(int, input().split())
+    prob = 0
+    for i in range(1, n+1):
+        if i >= k:
+            prob += 1/n
+        else:
+            prob += (1/n)*(0.5**len(bin(k-i))-2)
+    print(prob)

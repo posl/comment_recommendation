@@ -1,12 +1,10 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    B = [0] * N
-    for i in range(N):
-        B[i] = A[i] - (i + 1)
-    B.sort()
-    b = B[N // 2]
-    ans = 0
-    for i in range(N):
-        ans += abs(A[i] - (b + i + 1))
-    print(ans)
+def calculate(A, b):
+    sum = 0
+    for i in range(0, len(A)):
+        sum += abs(A[i] - (b + i + 1))
+    return sum
+N = int(input())
+A = list(map(int, input().split()))
+A.sort()
+b = A[N//2]
+print(calculate(A, b))

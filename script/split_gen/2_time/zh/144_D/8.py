@@ -1,11 +1,8 @@
-def solve():
-    n = int(input())
-    ans = 0
-    for i in range(2, int(n ** 0.5) + 1):
-        while n % i == 0:
-            n //= i
-            ans += 1
-    if n > 1:
-        ans += 1
-    print(ans)
-solve()
+def solve(a, b, x):
+    if x > a*a*b/2:
+        return 90 - solve(a, b, a*a*b-x)
+    else:
+        return 90 - math.degrees(math.atan(2*x/(a*b*b)))
+import math
+a, b, x = map(int, input().split())
+print(solve(a, b, x))

@@ -1,8 +1,6 @@
-def main():
-    n, k = map(int, input().split())
-    while n >= k:
-        n = n % k
-        if n == 0:
-            print(0)
-            return
-    print(min(n, abs(k - n)))
+def isGood(n):
+    n = str(n)
+    for i in range(len(n)-1):
+        if abs(int(n[i])-int(n[i+1])) > 1:
+            return False
+    return True

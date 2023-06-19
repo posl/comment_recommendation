@@ -1,17 +1,12 @@
 def main():
-    n,m = map(int,input().split())
-    x = list(map(int,input().split()))
-    x.sort()
-    # print(x)
-    if n >= m:
-        print(0)
-        return
-    if n == 1:
-        print(x[m-1]-x[0])
-        return
-    # print(x)
-    # print(x[n-1]-x[0])
-    # print(x[m-1]-x[n])
-    # print(min(x[m-1]-x[0],x[n-1]-x[0],x[m-1]-x[n]))
-    print(min(x[m-1]-x[0],x[n-1]-x[0],x[m-1]-x[n]))
-main()
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    res = 0
+    for i in range(40,-1,-1):
+        s = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                s += 1
+        if s <= n//2 and res + (1 << i) <= k:
+            res += (1 << i)
+    print(sum(a)^res)

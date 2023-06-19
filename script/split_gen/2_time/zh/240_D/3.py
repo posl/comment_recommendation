@@ -1,16 +1,8 @@
-def solve():
-    n, x = map(int, input().split())
-    a = []
-    b = []
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
     for i in range(n):
-        ai, bi = map(int, input().split())
-        a.append(ai)
-        b.append(bi)
-    a.sort()
-    b.sort()
-    for i in range(n):
-        if a[i] > x:
-            print('No')
-            return
-        x += b[i] - a[i]
-    print('Yes')
+        if a[i] % 2 == 0:
+            ans += 1
+    print(ans)

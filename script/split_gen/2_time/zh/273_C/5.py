@@ -1,9 +1,14 @@
 def main():
-    X,K = map(int, input().split())
-    for i in range(1,K+1):
-        if X%(10**i) < 5*(10**(i-1)):
-            print((X//(10**i))*(10**i))
-            break
-        else:
-            print((X//(10**i)+1)*(10**i))
-            break
+    n = int(input())
+    A = list(map(int, input().split()))
+    A_set = set(A)
+    A.sort()
+    A_dict = {}
+    for i in range(n):
+        A_dict[A[i]] = i
+    for i in range(n):
+        cnt = 0
+        for j in range(A_dict[A[i]]):
+            if A[j] > A[i]:
+                cnt += 1
+        print(cnt)

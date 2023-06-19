@@ -1,14 +1,21 @@
-def f(n):
-    if n % 2 == 0:
-        return n / 2
-    else:
-        return 3 * n + 1
-s = int(input())
-a = [s]
-i = 1
-while True:
-    a.append(f(a[i - 1]))
-    if a[i] in a[:i]:
-        break
-    i += 1
-print(i + 1)
+def solve():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    while sum(h) > 0:
+        l = 0
+        r = 0
+        for i in range(n):
+            if h[i] > 0:
+                l = i
+                break
+        for i in range(l, n):
+            if h[i] == 0:
+                r = i - 1
+                break
+            elif i == n - 1:
+                r = i
+        for i in range(l, r + 1):
+            h[i] -= 1
+        ans += 1
+    print(ans)

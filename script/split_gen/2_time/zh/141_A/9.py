@@ -1,10 +1,7 @@
-def main():
-    N,K = map(int,input().split())
-    S = input()
-    happy = 0
-    for i in range(N-1):
-        if S[i] == S[i+1]:
-            happy += 1
-    happy += 2*K
-    print(min(happy,N-1))
-main()
+def weather_tomorrow(weather_today):
+    if weather_today == "晴天":
+        return "阴天"
+    elif weather_today == "阴天":
+        return "雨天"
+    elif weather_today == "雨天":
+        return "晴天"

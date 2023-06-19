@@ -1,5 +1,11 @@
-def judge(n):
-    if n < 0:
-        return 1
-    else:
-        return 0
+def solve():
+    s = input().split()
+    t = input().split()
+    for i in range(3):
+        if s[i] == t[i]:
+            continue
+        else:
+            print('No')
+            return
+    print('Yes')
+    return

@@ -1,20 +1,20 @@
-def odd_num():
-    #输入测试案例数
-    T = int(input())
-    #定义一个列表用来存储奇数
-    odd_list = []
-    #循环输入测试案例
-    for i in range(T):
-        #输入正整数个数
-        N = int(input())
-        #输入正整数
-        A = input().split()
-        #循环判断是否为奇数
-        for j in range(N):
-            if int(A[j])%2 != 0:
-                odd_list.append(A[j])
-        #输出奇数个数
-        print(len(odd_list))
-        #清空列表
-        odd_list = []
-odd_num()
+def dfs(v):
+    global cnt
+    global visited
+    visited[v] = True
+    for i in range(1, n+1):
+        if visited[i] == False and G[v][i] == 1:
+            dfs(i)
+n, m = map(int, input().split())
+G = [[0] * (n+1) for i in range(n+1)]
+for i in range(m):
+    a, b = map(int, input().split())
+    G[a][b] = 1
+    G[b][a] = 1
+cnt = 0
+visited = [False] * (n+1)
+for i in range(1, n+1):
+    if visited[i] == False:
+        dfs(i)
+        cnt += 1
+print(cnt)

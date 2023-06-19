@@ -1,8 +1,8 @@
-def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    ans = 0
-    for i in range(N):
-        ans += A[i] * (2 * i - N + 1)
-    print(ans)
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+A, B = map(int, input().split())
+print(max(sum_digits(A), sum_digits(B)))

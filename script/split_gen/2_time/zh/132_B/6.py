@@ -1,15 +1,8 @@
 def main():
-    S = input()
-    if len(S) != 4:
-        print("No")
-        return
-    if S[0] == S[1] and S[2] == S[3] and S[0] != S[2]:
-        print("Yes")
-        return
-    if S[0] == S[2] and S[1] == S[3] and S[0] != S[1]:
-        print("Yes")
-        return
-    if S[0] == S[3] and S[1] == S[2] and S[0] != S[1]:
-        print("Yes")
-        return
-    print("No")
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n-1):
+        if p[i-1] < p[i] < p[i+1] or p[i-1] > p[i] > p[i+1]:
+            count += 1
+    print(count)

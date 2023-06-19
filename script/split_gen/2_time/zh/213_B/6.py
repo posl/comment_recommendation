@@ -1,5 +1,8 @@
-def problem213_a():
-    # 输入
-    A,B = map(int,input().split())
-    # 输出
-    print(A^B)
+def main():
+    # 读入输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 排序
+    a.sort()
+    # 打印答案
+    print(a[1])

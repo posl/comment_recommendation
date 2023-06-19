@@ -1,13 +1,12 @@
-def main():
-    n = int(input())
-    s = []
-    t = []
+def problems286_a():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [0] * n
     for i in range(n):
-        s.append(input())
-        t.append(input())
-    for i in range(n):
-        for j in range(n):
-            if i != j and s[i] == t[j]:
-                print('No')
-                return
-    print('Yes')
+        if i < p - 1:
+            b[i + s - q] = a[i]
+        elif i < r - 1:
+            b[i - p + q] = a[i]
+        else:
+            b[i + s - r] = a[i]
+    print(*b)

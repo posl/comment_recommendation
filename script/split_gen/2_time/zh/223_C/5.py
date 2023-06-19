@@ -1,13 +1,20 @@
 def main():
-    print("请输入字符串：")
-    s = input()
-    s_min = s
-    s_max = s
-    for i in range(len(s)):
-        s = s[1:] + s[0]
-        if s < s_min:
-            s_min = s
-        if s > s_max:
-            s_max = s
-    print(s_min)
-    print(s_max)
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    left = 0
+    right = 0
+    for i in range(N):
+        left += A[i] / B[i]
+    for i in range(N - 1, -1, -1):
+        right += A[i] / B[i]
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    ans -= left
+    ans -= right
+    print(ans)

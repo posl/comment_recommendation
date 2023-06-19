@@ -1,7 +1,7 @@
-def century_from_year(year):
-    century = 0
-    if year % 100 == 0:
-        century = year // 100
+def calculate(N, K):
+    if K == 0:
+        return N
+    if N % 200 == 0:
+        return calculate(N // 200, K - 1)
     else:
-        century = year // 100 + 1
-    return century
+        return calculate(N * 1000 + 200, K - 1)

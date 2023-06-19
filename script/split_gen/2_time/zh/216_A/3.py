@@ -1,6 +1,2 @@
-def gcd(a,b):
-    if a < b:
-        a,b = b,a
-    while b != 0:
-        a,b = b,a%b
-    return a
+def get_input():
+    return input("请输入X.Y，其中Y是一个数字：")

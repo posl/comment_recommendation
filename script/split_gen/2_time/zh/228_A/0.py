@@ -1,9 +1,12 @@
 def main():
-    N,K = map(int,input().split())
-    A = list(map(int,input().split()))
-    A.sort()
-    #print(A)
-    if N <= K:
-        print(0)
+    S,T,X = map(int,input().split())
+    if S < T:
+        if S < X < T:
+            print("Yes")
+        else:
+            print("No")
     else:
-        print(N-K)
+        if S < X or X < T:
+            print("Yes")
+        else:
+            print("No")

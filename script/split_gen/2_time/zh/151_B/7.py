@@ -1,6 +1,10 @@
-def gcd(a,b):
-    if a<b:
-        a,b = b,a
-    while b!=0:
-        a,b = b,a%b
-    return a
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N-1):
+        sum += A[i]
+    if N * M - sum > K:
+        print(-1)
+    else:
+        print(N * M - sum)

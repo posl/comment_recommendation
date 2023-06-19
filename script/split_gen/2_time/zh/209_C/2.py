@@ -1,13 +1,9 @@
-def main():
-    n,x = map(int,input().split())
-    a = list(map(int,input().split()))
-    sum = 0
-    for i in range(n):
-        if i%2 == 0:
-            sum += a[i]
-        else:
-            sum += a[i] - 1
-    if sum <= x:
-        print("Yes")
-    else:
-        print("No")
+def solve():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= (C[i] - i)
+        ans %= (10 ** 9 + 7)
+    print(ans)

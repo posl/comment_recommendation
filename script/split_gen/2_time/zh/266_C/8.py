@@ -1,8 +1,5 @@
-def solve(n):
-    if n < 0:
-        n = -n
-        n = n % 998244353
-        n = 998244353 - n
+def get_angle(x1,y1,x2,y2):
+    if x1==x2:
+        return 90
     else:
-        n = n % 998244353
-    return n
+        return (y2-y1)/(x2-x1)
