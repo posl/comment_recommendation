@@ -17,6 +17,3 @@ def solve():
             sum -= A[left]
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

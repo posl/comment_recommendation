@@ -8,6 +8,3 @@ def makeSeqs(N, M, i, seq):
             makeSeqs(N, M, i+1, seq)
 N, M = map(int, input().split())
 makeSeqs(N, M, 0, [0]*N)
-
-if __name__ == '__main__':
-    makeSeqs()

@@ -14,6 +14,3 @@ def main():
     for i in range(n-1):
         print(i%(max_adj+1)+1)
 main()
-
-if __name__ == '__main__':
-    main()

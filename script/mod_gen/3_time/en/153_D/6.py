@@ -8,6 +8,3 @@ def main():
             A.append(A[-1]//2)
     print(sum(A))
 main()
-
-if __name__ == '__main__':
-    main()

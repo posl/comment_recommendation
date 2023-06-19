@@ -4,6 +4,3 @@ def pluralForm(s):
     else:
         return s + "s"
 print(pluralForm(input()))
-
-if __name__ == '__main__':
-    pluralForm()

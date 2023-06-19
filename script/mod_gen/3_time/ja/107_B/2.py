@@ -20,6 +20,3 @@ def main():
     for i in range(len(B)):
         print("".join(B[i]))
 main()
-
-if __name__ == '__main__':
-    main()

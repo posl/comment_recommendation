@@ -7,6 +7,3 @@ def main():
         P += int((P + A[i]) / 4)
     print(P)
 main()
-
-if __name__ == '__main__':
-    main()

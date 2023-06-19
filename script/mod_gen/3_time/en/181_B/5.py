@@ -6,6 +6,3 @@ def main():
         total += (B - A + 1) * (A + B) // 2
     print(total % 1000000007)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -12,6 +12,3 @@ def problem():
             ans = max(ans, sum(jewels))
     print(ans)
 problem()
-
-if __name__ == '__main__':
-    problem()

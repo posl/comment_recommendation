@@ -8,6 +8,3 @@ def problem280_c():
     print(len(S)+1)
     return
 problem280_c()
-
-if __name__ == '__main__':
-    problem280_c()

@@ -12,6 +12,3 @@ def oven():
     # 一番時間がかかる料理の時間と残りの料理の時間の合計を出力する
     print(total_time)
 oven()
-
-if __name__ == '__main__':
-    oven()

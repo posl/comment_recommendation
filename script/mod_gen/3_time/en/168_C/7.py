@@ -5,6 +5,3 @@ def solve():
     print(math.sqrt(A**2+B**2-2*A*B*math.cos(theta-phi)))
 import math
 solve()
-
-if __name__ == '__main__':
-    solve()

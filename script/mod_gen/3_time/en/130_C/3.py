@@ -5,6 +5,3 @@ def main():
     else:
         print(W*H/2,0)
 main()
-
-if __name__ == '__main__':
-    main()

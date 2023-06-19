@@ -9,6 +9,3 @@ def solve():
             dp[i + j - 1][j] += dp[i][j] * (i + 1)
     print(dp[N][1] * X + dp[N][0] * Y)
 solve()
-
-if __name__ == '__main__':
-    solve()

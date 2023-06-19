@@ -6,6 +6,3 @@ def calc_happy(x):
     return happy
 x = int(input())
 print(calc_happy(x))
-
-if __name__ == '__main__':
-    calc_happy()

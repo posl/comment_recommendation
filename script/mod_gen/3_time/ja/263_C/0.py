@@ -8,6 +8,3 @@ def dfs(i, n, m, a):
 n, m = map(int, input().split())
 a = [0] * n
 dfs(0, n, m, a)
-
-if __name__ == '__main__':
-    dfs()

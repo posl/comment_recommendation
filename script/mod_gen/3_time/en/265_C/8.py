@@ -36,6 +36,3 @@ def main():
                 y += 1
         count += 1
 main()
-
-if __name__ == '__main__':
-    main()

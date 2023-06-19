@@ -11,6 +11,3 @@ def main():
             ans += 1
     print(M - ans)
 main()
-
-if __name__ == '__main__':
-    main()

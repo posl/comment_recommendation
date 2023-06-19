@@ -14,6 +14,3 @@ def jog(A, B, C, D, E, F, X):
         print("Draw")
 A, B, C, D, E, F, X = map(int, input().split())
 jog(A, B, C, D, E, F, X)
-
-if __name__ == '__main__':
-    jog()

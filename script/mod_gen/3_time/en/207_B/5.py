@@ -7,6 +7,3 @@ def solve(a, b, c, d):
 a, b, c, d = map(int, input().split())
 print(solve(a, b, c, d))
 I don't know why but I could not solve this problem by myself. I had to look at the editorial first. I think I should try to solve more problems by myself before I start to look at the editorial.
-
-if __name__ == '__main__':
-    solve()

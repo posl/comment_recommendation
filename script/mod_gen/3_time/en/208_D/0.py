@@ -31,6 +31,3 @@ def solve():
 solve()
 I’m not sure if this is the best solution, but it works. The solution is based on floyd-warshall algorithm. The time complexity is O(N^3) and the space complexity is O(N^2).
 I also tried to solve this problem using Dijkstra’s algorithm, but it didn’t work. Here is my solution.
-
-if __name__ == '__main__':
-    solve()

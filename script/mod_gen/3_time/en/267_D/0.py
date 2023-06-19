@@ -9,6 +9,3 @@ def main():
         ans = max(ans, B[i + M] - B[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

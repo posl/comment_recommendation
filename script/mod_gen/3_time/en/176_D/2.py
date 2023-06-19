@@ -28,6 +28,3 @@ def main():
         return -1
     print(bfs())
 main()
-
-if __name__ == '__main__':
-    main()

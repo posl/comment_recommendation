@@ -9,6 +9,3 @@ def dice(n,k,p):
 n, k = map(int, input().split())
 p = list(map(int, input().split()))
 print(dice(n,k,p))
-
-if __name__ == '__main__':
-    dice()

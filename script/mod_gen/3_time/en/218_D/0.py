@@ -14,6 +14,3 @@ def main():
             ans += (X[j] - X[i]) * (Y[j] - Y[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

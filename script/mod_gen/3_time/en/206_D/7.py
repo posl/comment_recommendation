@@ -26,6 +26,3 @@ def main():
     #Aの要素の個数が奇数のものの個数が2以上のときはN-odd
     print(N-odd)
 main()
-
-if __name__ == '__main__':
-    main()

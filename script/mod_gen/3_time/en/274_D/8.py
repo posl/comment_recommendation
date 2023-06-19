@@ -7,6 +7,3 @@ def solve(n, x, y, a):
 n, x, y = map(int, input().split())
 a = list(map(int, input().split()))
 print(solve(n, x, y, a))
-
-if __name__ == '__main__':
-    solve()

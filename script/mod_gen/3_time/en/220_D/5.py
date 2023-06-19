@@ -17,6 +17,3 @@ N = int(input())
 A = list(map(int, input().split()))
 print('
 '.join(map(str, solve(N, A))))
-
-if __name__ == '__main__':
-    solve()

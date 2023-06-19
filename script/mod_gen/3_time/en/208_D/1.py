@@ -17,6 +17,3 @@ def solve():
                 ans += G[i][k] if G[i][k] < float('inf') and G[i][k] == G[i][j] else 0
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

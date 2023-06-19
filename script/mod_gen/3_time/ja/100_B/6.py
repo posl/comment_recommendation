@@ -4,6 +4,3 @@ def main():
         n += 1
     print(100**d*n)
 main()
-
-if __name__ == '__main__':
-    main()

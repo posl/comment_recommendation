@@ -24,6 +24,3 @@ def main():
                 stack.append(nv)
     print(*[v + 1 for v in ans])
 main()
-
-if __name__ == '__main__':
-    main()

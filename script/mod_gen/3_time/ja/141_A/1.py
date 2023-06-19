@@ -7,6 +7,3 @@ def main():
     elif S == "Rainy":
         print("Sunny")
 main()
-
-if __name__ == '__main__':
-    main()

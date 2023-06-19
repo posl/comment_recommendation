@@ -12,6 +12,3 @@ for i in range(n):
     a, b = map(int, input().split())
     jobs.append([a, b])
 print(solve(n, m, jobs))
-
-if __name__ == '__main__':
-    solve()

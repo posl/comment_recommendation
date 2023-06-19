@@ -8,6 +8,3 @@ def solve():
         ans = (ans * (C[i] - i)) % mod
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

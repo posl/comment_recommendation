@@ -6,6 +6,3 @@ def main():
         b[a[i] - 1] = i + 1
     print(*b)
 main()
-
-if __name__ == '__main__':
-    main()

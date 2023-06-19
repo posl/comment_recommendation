@@ -7,6 +7,3 @@ a = list(map(int, input().split()))
 g = a[0]
 for i in range(1, n):
     g = gcd(g, a[i])
-
-if __name__ == '__main__':
-    gcd()

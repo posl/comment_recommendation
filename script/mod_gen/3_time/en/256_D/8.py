@@ -14,6 +14,3 @@ def solve():
     for i in range(len(ans)):
         print(ans[i][0], ans[i][1])
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -19,6 +19,3 @@ def main():
     for i in range(N):
         print(N - B[i + 1] - C[i] - 1)
 main()
-
-if __name__ == '__main__':
-    main()

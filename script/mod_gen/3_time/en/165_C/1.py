@@ -11,6 +11,3 @@ def   main ():
      for   i   in   range ( 1 ,   m   +   1 ): 
          ans   =   max ( ans ,   dfs ([ i ],   n ,   m ,   q ,   a ,   b ,   c ,   d )) 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

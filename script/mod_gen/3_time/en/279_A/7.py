@@ -12,6 +12,3 @@ def getBottoms(s):
     return bottoms
 S = input()
 print(getBottoms(S))
-
-if __name__ == '__main__':
-    getBottoms()

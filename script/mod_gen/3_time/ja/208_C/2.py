@@ -15,6 +15,3 @@ def main():
             else:
                 print(a[i] + (K - N) // N + (K - N) % N)
 main()
-
-if __name__ == '__main__':
-    main()

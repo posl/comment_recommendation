@@ -9,6 +9,3 @@ def main():
             ans = ans * 2 + 2 ** (i + 1)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

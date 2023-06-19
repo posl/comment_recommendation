@@ -6,6 +6,3 @@ def main():
         ans = min(ans, abs(sum(W[:i]) - sum(W[i:])))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def calc_cut(n):
         return calc_cut(n-1) + (n-1)
 n = int(input())
 print(calc_cut(n))
-
-if __name__ == '__main__':
-    calc_cut()

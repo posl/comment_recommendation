@@ -18,6 +18,3 @@ def   main ():
      ABC . sort ( reverse = True ) 
      for   abc   in   ABC [: K ]: 
          print ( abc )
-
-if __name__ == '__main__':
-    ()

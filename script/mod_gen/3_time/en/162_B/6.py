@@ -17,6 +17,3 @@ def main():
     sum15 = 15 * n15 * (n15 + 1) // 2
     print(sum3 + sum5 - sum15)
 main()
-
-if __name__ == '__main__':
-    main()

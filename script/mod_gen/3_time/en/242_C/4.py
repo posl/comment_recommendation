@@ -15,6 +15,3 @@ def solve():
             dp[i][j] %= MOD
     print(sum(dp[N-1]) % MOD)
 solve()
-
-if __name__ == '__main__':
-    solve()

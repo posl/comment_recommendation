@@ -5,6 +5,3 @@ def main():
     S[a-1],S[b-1] = S[b-1],S[a-1]
     print("".join(S))
 main()
-
-if __name__ == '__main__':
-    main()

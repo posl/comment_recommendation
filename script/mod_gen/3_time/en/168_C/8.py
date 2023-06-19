@@ -5,6 +5,3 @@ def  main():
      d1  =  ( h  -  m )  *   360   /   720 
      d2  =   360   -  d1
      d  =  min(d1, d2)
-
-if __name__ == '__main__':
-    ()

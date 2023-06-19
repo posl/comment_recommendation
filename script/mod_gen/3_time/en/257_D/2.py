@@ -15,6 +15,3 @@ def main():
                 ans = (abs(x[i] - x[j]) + abs(y[i] - y[j])) // p[i]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

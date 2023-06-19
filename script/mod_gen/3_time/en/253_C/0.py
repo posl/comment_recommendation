@@ -16,6 +16,3 @@ def main():
         else:
             print(max(s)-min(s))
 main()
-
-if __name__ == '__main__':
-    main()

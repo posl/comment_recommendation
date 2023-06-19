@@ -24,6 +24,3 @@ points = []
 for i in range(4):
     points.append(tuple(map(int, input().split())))
 print("Yes" if isConvex(points) else "No")
-
-if __name__ == '__main__':
-    isConvex()

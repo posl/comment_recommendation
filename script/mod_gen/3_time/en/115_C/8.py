@@ -8,6 +8,3 @@ def   main ():
          ans   =   min ( ans ,   H [ i   +   K   -   1 ]   -   H [ i ]) 
      # Output 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

@@ -13,6 +13,3 @@ def main():
             count += 1
     print(N - 1 - count)
 main()
-
-if __name__ == '__main__':
-    main()

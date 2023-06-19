@@ -28,6 +28,3 @@ for i in range(m):
     a.append(a_i)
     b.append(b_i)
 ans = find_smallest_permutation(n, m, a, b)
-
-if __name__ == '__main__':
-    find_smallest_permutation()

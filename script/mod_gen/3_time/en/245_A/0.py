@@ -5,6 +5,3 @@ def main():
     else:
         print("Aoki")
 main()
-
-if __name__ == '__main__':
-    main()

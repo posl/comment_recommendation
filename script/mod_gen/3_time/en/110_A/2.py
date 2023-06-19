@@ -16,6 +16,3 @@ def getAllowance(a, b, c):
     return result
 a, b, c = map(int, input().split())
 print(getAllowance(a, b, c))
-
-if __name__ == '__main__':
-    getAllowance()

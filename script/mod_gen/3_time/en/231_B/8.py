@@ -15,6 +15,3 @@ def   main () :
      for   k ,   v   in   d . items (): 
          if   v   ==   max_votes : 
              print ( k )
-
-if __name__ == '__main__':
-    ()

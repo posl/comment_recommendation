@@ -19,6 +19,3 @@ broken_steps = set()
 for _ in range(M):
     broken_steps.add(int(input()))
 print(count_ways(N, M, broken_steps))
-
-if __name__ == '__main__':
-    count_ways()

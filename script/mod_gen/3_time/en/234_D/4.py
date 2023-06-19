@@ -4,6 +4,3 @@ def main():
     for i in range(K, N):
         print(max(P[i-K:i+1]))
 main()
-
-if __name__ == '__main__':
-    main()

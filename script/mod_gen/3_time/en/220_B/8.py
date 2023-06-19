@@ -4,6 +4,3 @@ def base_k_to_10(num, k):
 k = int(input())
 a, b = input().split()
 print(base_k_to_10(a, k) * base_k_to_10(b, k))
-
-if __name__ == '__main__':
-    base_k_to_10()

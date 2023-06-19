@@ -11,6 +11,3 @@ def main():
             dp[i + 1] %= mod
     print(dp[N])
 main()
-
-if __name__ == '__main__':
-    main()

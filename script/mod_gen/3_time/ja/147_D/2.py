@@ -12,6 +12,3 @@ def main():
         ans %= mod
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

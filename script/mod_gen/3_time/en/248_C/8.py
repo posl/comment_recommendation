@@ -11,6 +11,3 @@ def   main ():
                  dp [ i   +   1 ][ j   +   k ]   +=   dp [ i ][ j ] 
                  dp [ i   +   1 ][ j   +   k ]   %=   MOD 
      print ( dp [ N ][ K ])
-
-if __name__ == '__main__':
-    ()

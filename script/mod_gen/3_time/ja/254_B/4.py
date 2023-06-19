@@ -8,6 +8,3 @@ def Pascal(n):
 n=int(input())
 for i in range(n):
     print(*Pascal(i))
-
-if __name__ == '__main__':
-    Pascal()

@@ -19,6 +19,3 @@ def solve():
         )
     print(*map(f,x),sep="\n")
 solve()
-
-if __name__ == '__main__':
-    solve()

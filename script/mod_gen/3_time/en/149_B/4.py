@@ -5,6 +5,3 @@ def main():
     else:
         print(0, max(0, b - (k - a)))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -4,6 +4,3 @@ def function(x):
     else:
         return x * function(x - 1)
 print(function(int(input())))
-
-if __name__ == '__main__':
-    function()

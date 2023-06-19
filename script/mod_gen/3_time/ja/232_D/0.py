@@ -13,6 +13,3 @@ def main():
                 dp[i][j] += dp[i][j - 1]
     print(dp[H - 1][W - 1] % (10**9 + 7))
 main()
-
-if __name__ == '__main__':
-    main()

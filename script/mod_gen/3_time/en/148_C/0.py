@@ -6,6 +6,3 @@ def gcd(a, b):
     return a
 A, B = map(int, input().split())
 print(int(A/gcd(A, B))*B)
-
-if __name__ == '__main__':
-    gcd()

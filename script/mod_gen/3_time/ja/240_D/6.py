@@ -35,6 +35,3 @@ def   main ():
                      print ( ans [ i ] - 1 ) 
                  else : 
                      print ( ans [ i ])
-
-if __name__ == '__main__':
-    ()

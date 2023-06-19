@@ -13,6 +13,3 @@ def problems169_b():
     print(ans)
     return
 problems169_b()
-
-if __name__ == '__main__':
-    problems169_b()

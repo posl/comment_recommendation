@@ -9,6 +9,3 @@ def  main():
         print('YES')
     else:
         print('NO')
-
-if __name__ == '__main__':
-    ()

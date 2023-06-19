@@ -6,6 +6,3 @@ def main():
         B[A[i]-1] = i+1
     print(' '.join(map(str, B)))
 main()
-
-if __name__ == '__main__':
-    main()

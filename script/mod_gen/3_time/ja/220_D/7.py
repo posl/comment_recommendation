@@ -23,6 +23,3 @@ def main():
             res = res * pow(2, n, mod) % mod
         print(res)
 main()
-
-if __name__ == '__main__':
-    main()

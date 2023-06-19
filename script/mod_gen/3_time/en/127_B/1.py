@@ -4,6 +4,3 @@ def main():
         x = r * x - D
         print(x)
 main()
-
-if __name__ == '__main__':
-    main()

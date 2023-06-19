@@ -12,6 +12,3 @@ def rotate(string):
     return string
 string = input()
 print(rotate(string))
-
-if __name__ == '__main__':
-    rotate()

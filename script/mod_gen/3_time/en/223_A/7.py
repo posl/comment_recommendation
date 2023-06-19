@@ -5,6 +5,3 @@ def purse(x):
         return "No"
 x = int(input())
 print(purse(x))
-
-if __name__ == '__main__':
-    purse()

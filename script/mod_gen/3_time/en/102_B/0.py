@@ -5,6 +5,3 @@ def main():
     minA = min(A)
     print(maxA - minA)
 main()
-
-if __name__ == '__main__':
-    main()

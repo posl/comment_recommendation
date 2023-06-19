@@ -10,6 +10,3 @@ def main():
         dp[A[i]] -= 1
     print(dp[0])
 main()
-
-if __name__ == '__main__':
-    main()

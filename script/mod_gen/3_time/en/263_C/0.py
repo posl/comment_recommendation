@@ -5,6 +5,3 @@ def main():
             for k in range(j + 1, M - N + 4):
                 print(i, j, k)
 main()
-
-if __name__ == '__main__':
-    main()

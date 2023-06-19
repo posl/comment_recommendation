@@ -3,6 +3,3 @@ def main():
     R, C = map(int, input().split())
     print((H - R) * (W - C))
 main()
-
-if __name__ == '__main__':
-    main()

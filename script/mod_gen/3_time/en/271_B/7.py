@@ -19,6 +19,3 @@ def main():
         print(A[S[i]-1][T[i]-1])
     return
 main()
-
-if __name__ == '__main__':
-    main()

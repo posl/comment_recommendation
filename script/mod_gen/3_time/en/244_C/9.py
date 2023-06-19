@@ -9,6 +9,3 @@ def main():
             return 0
         a[c] = 1
 main()
-
-if __name__ == '__main__':
-    main()

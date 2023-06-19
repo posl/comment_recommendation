@@ -14,6 +14,3 @@ def   main ():
                      l [ j ]   -=   1 
          return   ans 
      print ( abs ( lex ( p )   -   lex ( q )))
-
-if __name__ == '__main__':
-    ()

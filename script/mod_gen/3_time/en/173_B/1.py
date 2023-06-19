@@ -19,6 +19,3 @@ def main():
     print("TLE x " + str(TLE))
     print("RE x " + str(RE))
 main()
-
-if __name__ == '__main__':
-    main()

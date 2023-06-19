@@ -26,6 +26,3 @@ def main():
         print(i,i+2,10**6-3)
         L -= 1
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def main():
         return
     print(1 + A / (A + B + C) * (1 + B / (A + B + C - 1) * (1 + C / (A + B + C - 2))) + B / (A + B + C) * (1 + A / (A + B + C - 1) * (1 + C / (A + B + C - 2))) + C / (A + B + C) * (1 + A / (A + B + C - 1) * (1 + B / (A + B + C - 2))))
 main()
-
-if __name__ == '__main__':
-    main()

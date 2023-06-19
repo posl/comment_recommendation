@@ -9,6 +9,3 @@ def countSquares():
                 count += 1
     print(count)
 countSquares()
-
-if __name__ == '__main__':
-    countSquares()

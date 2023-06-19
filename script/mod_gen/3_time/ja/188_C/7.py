@@ -10,6 +10,3 @@ def binary_search(l, r, A):
 N = int(input())
 A = list(map(int, input().split()))
 print(binary_search(0, 2**N - 1, A))
-
-if __name__ == '__main__':
-    binary_search()

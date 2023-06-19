@@ -10,6 +10,3 @@ def main():
             bridge = ab[i][1]
     print(m - count)
 main()
-
-if __name__ == '__main__':
-    main()

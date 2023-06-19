@@ -7,6 +7,3 @@ def rounding(x):
         x = int(x / 10)
     return x
 print(rounding(float(input())))
-
-if __name__ == '__main__':
-    rounding()

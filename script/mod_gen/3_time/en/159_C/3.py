@@ -9,6 +9,3 @@ def get_max_volume(L):
     return max_volume
 L = int(input())
 print(get_max_volume(L))
-
-if __name__ == '__main__':
-    get_max_volume()

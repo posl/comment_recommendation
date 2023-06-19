@@ -6,6 +6,3 @@ def comb(n, r):
     return over/under
 l = input()
 print comb(l-1, 11)
-
-if __name__ == '__main__':
-    comb()

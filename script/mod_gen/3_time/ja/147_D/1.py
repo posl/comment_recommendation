@@ -10,6 +10,3 @@ def main():
         ans += (cnt*(N-cnt)*(1<<i))
     print(ans%1000000007)
 main()
-
-if __name__ == '__main__':
-    main()

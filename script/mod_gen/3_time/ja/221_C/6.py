@@ -13,6 +13,3 @@ def main():
             N2 = N2*10 + N[i]
     print(N1*N2)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -8,6 +8,3 @@ def main():
             n[i] = '1'
     print(''.join(n))
 main()
-
-if __name__ == '__main__':
-    main()

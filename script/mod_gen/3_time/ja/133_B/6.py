@@ -11,6 +11,3 @@ def solve():
                 cnt += 1
     print(cnt)
 solve()
-
-if __name__ == '__main__':
-    solve()

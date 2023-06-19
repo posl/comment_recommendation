@@ -16,6 +16,3 @@ def main():
                 x += 1 << one_pos[j]
         print(x)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -17,6 +17,3 @@ def main():
         sol += 400000
     print(sol)
 main()
-
-if __name__ == '__main__':
-    main()

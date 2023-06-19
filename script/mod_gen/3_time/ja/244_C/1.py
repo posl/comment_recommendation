@@ -12,6 +12,3 @@ def main():
     print(n+1)
     int(input())
 main()
-
-if __name__ == '__main__':
-    main()

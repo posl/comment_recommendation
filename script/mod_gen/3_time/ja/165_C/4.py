@@ -29,6 +29,3 @@ for i in range(Q):
 ans = 0
 A = []
 print(dfs(A, N, M, Q, a, b, c, d, ans))
-
-if __name__ == '__main__':
-    dfs()

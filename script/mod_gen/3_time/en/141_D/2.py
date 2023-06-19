@@ -7,6 +7,3 @@ def solve():
     A.sort(reverse=True)
     return sum(A)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

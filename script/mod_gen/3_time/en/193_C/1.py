@@ -8,6 +8,3 @@ def main():
             j += 1
     print(N - ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -20,6 +20,3 @@ def solve():
     print(*ans, sep='
 ')
 solve()
-
-if __name__ == '__main__':
-    solve()

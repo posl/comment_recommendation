@@ -14,6 +14,3 @@ def main():
         print(1 + main(S[1:]))
     else:
         print(2 + main(S[2:]))
-
-if __name__ == '__main__':
-    main()

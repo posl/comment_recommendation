@@ -11,6 +11,3 @@ def f(a, b):
             return (b-a)//2%2^a^b
 a, b = map(int, input().split())
 print(f(a, b))
-
-if __name__ == '__main__':
-    f()

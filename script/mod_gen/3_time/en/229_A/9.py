@@ -10,6 +10,3 @@ def dfs(grid, x, y):
         dfs(grid, x+1, y)
     if y < 1:
         dfs(grid, x, y+1)
-
-if __name__ == '__main__':
-    dfs()

@@ -25,6 +25,3 @@ def solve():
                 aoki += cards[i] * cards[j]
     return takahashi / (takahashi + aoki)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

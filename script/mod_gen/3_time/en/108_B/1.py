@@ -6,6 +6,3 @@ def main():
     y4 = y1 + (x2 - x1)
     print(x3, y3, x4, y4)
 main()
-
-if __name__ == '__main__':
-    main()

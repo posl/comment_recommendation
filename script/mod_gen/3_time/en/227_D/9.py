@@ -5,6 +5,3 @@ def main():
     A.reverse()
     print(A[K-1])
 main()
-
-if __name__ == '__main__':
-    main()

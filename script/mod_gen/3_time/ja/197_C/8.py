@@ -10,6 +10,3 @@ def main():
             ans = min(ans,ors)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

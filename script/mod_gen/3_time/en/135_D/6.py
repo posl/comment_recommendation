@@ -16,6 +16,3 @@ def main():
                 dp[i+1][(k*10+int(S[i]))%13] %= MOD
     print(dp[n][5])
 main()
-
-if __name__ == '__main__':
-    main()

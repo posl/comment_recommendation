@@ -8,6 +8,3 @@ def check(S1, S2):
 S1 = input()
 S2 = input()
 print(check(S1, S2))
-
-if __name__ == '__main__':
-    check()

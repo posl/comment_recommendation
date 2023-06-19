@@ -7,6 +7,3 @@ def findKthChar(s, k):
 s = input()
 k = int(input())
 print(findKthChar(s, k))
-
-if __name__ == '__main__':
-    findKthChar()

@@ -5,6 +5,3 @@ def calc_attack_times(h):
         return 2 * calc_attack_times(h // 2) + 1
 h = int(input())
 print(calc_attack_times(h))
-
-if __name__ == '__main__':
-    calc_attack_times()

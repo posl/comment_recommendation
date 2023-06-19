@@ -10,6 +10,3 @@ def   main ():
              continue 
          break 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

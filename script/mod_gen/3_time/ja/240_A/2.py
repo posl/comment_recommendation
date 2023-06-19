@@ -48,6 +48,3 @@ def main():
     elif a == 10:
         print("Yes")
 main()
-
-if __name__ == '__main__':
-    main()

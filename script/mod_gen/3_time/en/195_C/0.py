@@ -11,6 +11,3 @@ def main():
     else:
         print(999000000000 + (N-999999999999)*4)
 main()
-
-if __name__ == '__main__':
-    main()

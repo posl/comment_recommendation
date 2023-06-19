@@ -10,6 +10,3 @@ def main():
     print(sum([min(c[i], d[i]) for i in range(len(c))]))
     print(sum([min(c[i], d[i]) for i in range(len(c))]) - sum([1 for i in range(n) if a[i] == b[i]]))
 main()
-
-if __name__ == '__main__':
-    main()

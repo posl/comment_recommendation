@@ -5,6 +5,3 @@ def main():
     else:
         print((S_x * G_y + G_x * S_y) / (S_y + G_y))
 main()
-
-if __name__ == '__main__':
-    main()

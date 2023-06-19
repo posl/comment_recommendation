@@ -16,6 +16,3 @@ def main():
                 dp[i+1][j] = dp[i][j]
     print(dp[N][W])
 main()
-
-if __name__ == '__main__':
-    main()

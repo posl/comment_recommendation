@@ -8,6 +8,3 @@ def main():
         a[i] = min(b[i-1], b[i])
     print(sum(a))
 main()
-
-if __name__ == '__main__':
-    main()

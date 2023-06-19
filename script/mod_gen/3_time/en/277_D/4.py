@@ -7,6 +7,3 @@ def main():
         b[i] = b[i-1] + 1
     print(n - max(b))
 main()
-
-if __name__ == '__main__':
-    main()

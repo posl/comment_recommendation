@@ -11,6 +11,3 @@ def cmb(n, r, mod):
 mod = 10**9+7
 n, k = map(int, input().split())
 print(cmb(n+k, k, mod))
-
-if __name__ == '__main__':
-    cmb()

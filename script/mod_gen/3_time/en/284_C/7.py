@@ -3,6 +3,3 @@ def dfs(G, v, visited):
     for next_v in G[v]:
         if visited[next_v] == False:
             dfs(G, next_v, visited)
-
-if __name__ == '__main__':
-    dfs()

@@ -10,6 +10,3 @@ def main():
         ans += abs(P.index(i) - Q.index(i))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

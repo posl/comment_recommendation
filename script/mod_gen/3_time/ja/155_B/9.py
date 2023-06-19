@@ -6,6 +6,3 @@ def check():
             return False
     return True
 print("APPROVED" if check() else "DENIED")
-
-if __name__ == '__main__':
-    check()

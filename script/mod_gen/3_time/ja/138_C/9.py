@@ -7,6 +7,3 @@ def get_max_value(n, v):
 n = int(input())
 v = list(map(int, input().split()))
 print(get_max_value(n, v))
-
-if __name__ == '__main__':
-    get_max_value()

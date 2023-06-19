@@ -8,6 +8,3 @@ def  main():
         ans += (r - l + 1) * i
         ans %= MOD
     print(ans)
-
-if __name__ == '__main__':
-    ()

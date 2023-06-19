@@ -11,6 +11,3 @@ a_min = a[0]
 a_gcd = a[0]
 for i in range(1, n):
     a_gcd = gcd(a_gcd, a[i])
-
-if __name__ == '__main__':
-    gcd()

@@ -33,6 +33,3 @@ def main():
     else:
         print(dist[dh][dw])
 main()
-
-if __name__ == '__main__':
-    main()

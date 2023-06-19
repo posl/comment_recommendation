@@ -9,6 +9,3 @@ def main():
         d += L[i]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

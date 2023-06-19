@@ -25,6 +25,3 @@ def solve():
                     count += len(C_dict[C[b_i]])
     return count
 print(solve())
-
-if __name__ == '__main__':
-    solve()

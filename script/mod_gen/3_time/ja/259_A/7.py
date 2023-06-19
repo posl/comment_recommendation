@@ -7,6 +7,3 @@ def main():
         a += d
     print(a)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -16,6 +16,3 @@ def main():
         print(2 ** (N + 1) - 1)
         return
     main(X - 2 ** (N + 2) + 2)
-
-if __name__ == '__main__':
-    main()

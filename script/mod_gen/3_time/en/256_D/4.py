@@ -11,6 +11,3 @@ def main():
     for l, r in ans:
         print(l, r)
 main()
-
-if __name__ == '__main__':
-    main()

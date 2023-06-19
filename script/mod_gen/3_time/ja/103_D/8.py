@@ -27,6 +27,3 @@ def main():
     #print("")
     print(len(set(a + b)) - len(set(a)) - len(set(b)))
 main()
-
-if __name__ == '__main__':
-    main()

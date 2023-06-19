@@ -14,6 +14,3 @@ for i in range(2, N + 1):
     g2.append((g2[-1] * inverse[-1]) % mod)
 n, a, b = map(int, input().split())
 print((pow(2, n, mod) + mod - 1 - cmb(n, a, mod) - cmb(n, b, mod)) % mod)
-
-if __name__ == '__main__':
-    cmb()

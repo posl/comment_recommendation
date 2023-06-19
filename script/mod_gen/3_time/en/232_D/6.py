@@ -13,6 +13,3 @@ def count():
                 dp[i][j] += dp[i][j-1]
     return dp[H-1][W-1]
 print(count())
-
-if __name__ == '__main__':
-    count()

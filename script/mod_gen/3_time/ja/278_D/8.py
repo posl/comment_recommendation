@@ -18,6 +18,3 @@ def main():
     for i in query3:
         print(a[i[1]-1])
 main()
-
-if __name__ == '__main__':
-    main()

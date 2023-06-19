@@ -14,6 +14,3 @@ def main():
             return
     print(pow(3, n - m))
 main()
-
-if __name__ == '__main__':
-    main()

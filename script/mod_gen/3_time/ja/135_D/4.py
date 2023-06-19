@@ -15,6 +15,3 @@ def solve(s):
     return dp[len(s)][5]
 s = input()
 print(solve(s))
-
-if __name__ == '__main__':
-    solve()

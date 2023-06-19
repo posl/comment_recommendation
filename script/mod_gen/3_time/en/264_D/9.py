@@ -15,6 +15,3 @@ def count_swaps(s):
         return 1 + count_swaps(s[1:])
 s = input()
 print(count_swaps(s))
-
-if __name__ == '__main__':
-    count_swaps()

@@ -34,6 +34,3 @@ def solve():
                 break
         print(min(n, r+l+k*2-1))
 solve()
-
-if __name__ == '__main__':
-    solve()

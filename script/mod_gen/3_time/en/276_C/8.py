@@ -18,6 +18,3 @@ k = 1
 for i in range(n):
     k += (p[i] - 1) * math.factorial(n - i - 1)
 print(*get_permutation(n, k))
-
-if __name__ == '__main__':
-    get_permutation()

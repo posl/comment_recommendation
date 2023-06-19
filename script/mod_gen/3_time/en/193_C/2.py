@@ -9,6 +9,3 @@ def main():
     print(N - ans)
     return
 main()
-
-if __name__ == '__main__':
-    main()

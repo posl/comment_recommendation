@@ -6,6 +6,3 @@ def  main():
     for  i  in  range(1, N + 2):
         ans +=  max (A[i - 1], A[i])
     print(ans)
-
-if __name__ == '__main__':
-    ()

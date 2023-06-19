@@ -10,6 +10,3 @@ def   main ():
              dp [ i   +   1 ]   +=   dp [ i ] 
              dp [ i   +   1 ]   %=   MOD 
      print ( dp [ N ])
-
-if __name__ == '__main__':
-    ()

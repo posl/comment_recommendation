@@ -6,6 +6,3 @@ def num_of_arithmetic_progressions(n):
     return result
 n = int(input())
 print(num_of_arithmetic_progressions(n))
-
-if __name__ == '__main__':
-    num_of_arithmetic_progressions()

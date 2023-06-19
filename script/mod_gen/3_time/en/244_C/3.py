@@ -10,6 +10,3 @@ def main():
         if sum(A) == 2 * N:
             break
 main()
-
-if __name__ == '__main__':
-    main()

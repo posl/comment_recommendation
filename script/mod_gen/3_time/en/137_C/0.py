@@ -13,6 +13,3 @@ def solve():
         ans += d[k] * (d[k] - 1) // 2
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -19,6 +19,3 @@ def main():
     else:
         print(max(a_min, b_min))
 main()
-
-if __name__ == '__main__':
-    main()

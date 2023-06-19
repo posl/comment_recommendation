@@ -12,6 +12,3 @@ def main():
     print(A[-1]+1)
     return
 main()
-
-if __name__ == '__main__':
-    main()

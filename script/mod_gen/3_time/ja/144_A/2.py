@@ -5,6 +5,3 @@ def calc(a, b):
         return -1
 a, b = map(int, input().split())
 print(calc(a, b))
-
-if __name__ == '__main__':
-    calc()

@@ -16,6 +16,3 @@ def main():
             max_len = len
     print(max_len)
 main()
-
-if __name__ == '__main__':
-    main()

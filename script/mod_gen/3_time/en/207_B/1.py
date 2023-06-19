@@ -16,6 +16,3 @@ def main():
         print(1 + (A - B * C - 1) // ((B - C) * D))
         return
 main()
-
-if __name__ == '__main__':
-    main()

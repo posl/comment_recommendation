@@ -15,6 +15,3 @@ for i in range(2, max(A) + 1):
         max_gcd = gcd_num
         max_gcd_num = i
 print(max_gcd_num)
-
-if __name__ == '__main__':
-    gcd()

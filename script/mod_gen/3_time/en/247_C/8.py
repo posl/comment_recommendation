@@ -5,6 +5,3 @@ def make_seq(n):
         return make_seq(n-1) + [n] + make_seq(n-1)
 N = int(input())
 print(*make_seq(N))
-
-if __name__ == '__main__':
-    make_seq()

@@ -10,6 +10,3 @@ def solution():
     else:
         print(1+abs(red-white)//2)
 solution()
-
-if __name__ == '__main__':
-    solution()

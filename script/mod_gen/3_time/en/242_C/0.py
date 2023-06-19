@@ -15,6 +15,3 @@ def main():
             dp[i][j] %= MOD
     print(sum(dp[N]) % MOD)
 main()
-
-if __name__ == '__main__':
-    main()

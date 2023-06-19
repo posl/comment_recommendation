@@ -11,6 +11,3 @@ def   main ():
          ans [ i ]   =   pow ( 2 ,   cnt ,   MOD )   -   1 
      print ( "
 " . join ( map ( str ,   ans )))
-
-if __name__ == '__main__':
-    ()

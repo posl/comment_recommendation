@@ -6,6 +6,3 @@ def f(x, s):
 n, x = map(int, input().split())
 s = input()
 print(f(x, s))
-
-if __name__ == '__main__':
-    f()

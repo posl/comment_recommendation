@@ -10,6 +10,3 @@ def solve():
         return sum(d[N-1:])
     
 print(solve())
-
-if __name__ == '__main__':
-    solve()

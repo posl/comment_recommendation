@@ -6,6 +6,3 @@ def calc_inverse_sum(n, list):
 n = int(input())
 list = list(map(int, input().split()))
 print(calc_inverse_sum(n, list))
-
-if __name__ == '__main__':
-    calc_inverse_sum()

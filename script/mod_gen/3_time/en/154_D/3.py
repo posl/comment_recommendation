@@ -10,6 +10,3 @@ def dice():
         ans = max(ans, tmp)
     print((ans+K)/2)
 dice()
-
-if __name__ == '__main__':
-    dice()

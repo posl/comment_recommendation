@@ -4,6 +4,3 @@ def main():
     b = int(s[2])
     print(a*b)
 main()
-
-if __name__ == '__main__':
-    main()

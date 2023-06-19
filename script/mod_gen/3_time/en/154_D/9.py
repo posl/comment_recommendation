@@ -6,6 +6,3 @@ def dice(dice, k):
 n, k = map(int, input().split())
 dice = list(map(int, input().split()))
 print(dice(dice, k)/2)
-
-if __name__ == '__main__':
-    dice()

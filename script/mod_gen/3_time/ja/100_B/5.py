@@ -7,6 +7,3 @@ def cal_100(d, n):
         return 10000 * n
 d, n = map(int, input().split())
 print(cal_100(d, n))
-
-if __name__ == '__main__':
-    cal_100()

@@ -7,6 +7,3 @@ def main():
             min = abs(X-753)
     print(min)
 main()
-
-if __name__ == '__main__':
-    main()

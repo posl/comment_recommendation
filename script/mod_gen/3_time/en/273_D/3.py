@@ -38,6 +38,3 @@ def main():
                     r_s += 1
         print(r_s, c_s)
 main()
-
-if __name__ == '__main__':
-    main()

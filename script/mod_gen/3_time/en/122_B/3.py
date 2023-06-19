@@ -11,6 +11,3 @@ def main():
             count = 0
     print(max_count)
 main()
-
-if __name__ == '__main__':
-    main()

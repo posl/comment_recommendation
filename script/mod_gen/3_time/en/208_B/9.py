@@ -13,6 +13,3 @@ def coin(P):
     return count
 P = int(input())
 print(coin(P))
-
-if __name__ == '__main__':
-    coin()

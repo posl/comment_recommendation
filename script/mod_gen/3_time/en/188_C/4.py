@@ -8,6 +8,3 @@ def main():
                 A[2*j-1], A[2*j] = A[2*j], A[2*j-1]
     print(A.index(2))
 main()
-
-if __name__ == '__main__':
-    main()

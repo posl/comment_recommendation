@@ -7,6 +7,3 @@ def main():
     
     print((A + B * (C * D - B) - 1) // (C * D - B))
 main()
-
-if __name__ == '__main__':
-    main()

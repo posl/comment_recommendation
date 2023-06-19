@@ -17,6 +17,3 @@ def   main ():
              dp [ i + L [ j ]]   %=   998244353 
          sum_dp [ i + 1 ]   =   ( sum_dp [ i ] + dp [ i + 1 ]) %  998244353 
      print ( dp [ N ])
-
-if __name__ == '__main__':
-    ()

@@ -16,6 +16,3 @@ def main():
         ans = max(ans, sum(tmp[:M]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

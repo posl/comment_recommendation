@@ -16,6 +16,3 @@ def main():
             min = abs(S1 - S2)
     print(min)
 main()
-
-if __name__ == '__main__':
-    main()

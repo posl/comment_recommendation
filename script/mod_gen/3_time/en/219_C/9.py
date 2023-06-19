@@ -25,6 +25,3 @@ def main():
     for name in S_sorted:
         print(name)
 main()
-
-if __name__ == '__main__':
-    main()

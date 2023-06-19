@@ -11,6 +11,3 @@ def   main ():
      else : 
          m1 ,   m2   =   c1 . most_common ( 2 )[ 1 ][ 0 ],   c2 . most_common ( 2 )[ 1 ][ 0 ] 
          print ( min ( n   -   c1 [ m1 ]   -   c2 [ m2 ],   n   -   c1 [ m2 ]   -   c2 [ m1 ]))
-
-if __name__ == '__main__':
-    ()

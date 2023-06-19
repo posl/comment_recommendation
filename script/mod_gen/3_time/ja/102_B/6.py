@@ -4,6 +4,3 @@ def main():
     a.sort()
     print(a[n-1] - a[0])
 main()
-
-if __name__ == '__main__':
-    main()

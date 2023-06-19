@@ -8,6 +8,3 @@ def main():
         print("Error: x must be 0 or 1")
         exit()
 main()
-
-if __name__ == '__main__':
-    main()

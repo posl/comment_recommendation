@@ -14,6 +14,3 @@ def main():
         print(sum(A) - 2*min(A))
         return
 main()
-
-if __name__ == '__main__':
-    main()

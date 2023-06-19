@@ -5,6 +5,3 @@ def check(S):
         return "Good"
 S = input()
 print(check(S))
-
-if __name__ == '__main__':
-    check()

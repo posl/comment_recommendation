@@ -8,6 +8,3 @@ def main():
                 print(card[i])
                 break
 main()
-
-if __name__ == '__main__':
-    main()

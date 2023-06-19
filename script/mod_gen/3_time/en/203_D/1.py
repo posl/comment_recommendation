@@ -20,6 +20,3 @@ for i in range(N-K+1):
             min = med
 print(int(min))
 I have an array of arrays of integers, and I want to find the median of each array. This is my code:
-
-if __name__ == '__main__':
-    median()

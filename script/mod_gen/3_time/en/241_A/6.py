@@ -4,6 +4,3 @@ def problem():
         a = [a[x] for x in a]
     print a[0]
 problem()
-
-if __name__ == '__main__':
-    problem()

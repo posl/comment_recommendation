@@ -4,6 +4,3 @@ def is_weak(pin):
         (pin[1] == pin[2] == pin[3] and pin[0] == str((int(pin[3]) + 1) % 10))
 pin = input()
 print('Weak' if is_weak(pin) else 'Strong')
-
-if __name__ == '__main__':
-    is_weak()

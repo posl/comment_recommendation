@@ -9,6 +9,3 @@ def poor(a,b,c):
         return "No"
 a,b,c=map(int,input().split())
 print(poor(a,b,c))
-
-if __name__ == '__main__':
-    poor()

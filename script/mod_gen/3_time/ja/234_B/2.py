@@ -7,6 +7,3 @@ def main():
             ans = max(ans, (xy[i][0]-xy[j][0])**2 + (xy[i][1]-xy[j][1])**2)
     print(ans**0.5)
 main()
-
-if __name__ == '__main__':
-    main()

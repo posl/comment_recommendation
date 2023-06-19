@@ -5,6 +5,3 @@ def main():
     else:
         print(str(b) * a)
 main()
-
-if __name__ == '__main__':
-    main()

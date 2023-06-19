@@ -25,6 +25,3 @@ def main():
     print(cnt1)
     print(cnt2)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def main():
     else:
         print(T - (M - X) * D)
 main()
-
-if __name__ == '__main__':
-    main()

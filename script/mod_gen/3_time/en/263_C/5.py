@@ -8,6 +8,3 @@ def f(N, M, L):
         f(N-1, M, L+[i])
 N, M = map(int, input().split())
 f(N, M, [])
-
-if __name__ == '__main__':
-    f()

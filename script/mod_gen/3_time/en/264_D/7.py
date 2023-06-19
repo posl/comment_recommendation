@@ -7,6 +7,3 @@ def main():
             res += 1
     print(res)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def  main ( ) :
      # by using binary search
      for  j  in  range ( q ) :
         print ( bisect . bisect_left ( a ,  x [ j ] ) )
-
-if __name__ == '__main__':
-    ()

@@ -7,6 +7,3 @@ def main():
     E = int(input())
     print((N-1)//min(A, B, C, D, E) + 5)
 main()
-
-if __name__ == '__main__':
-    main()

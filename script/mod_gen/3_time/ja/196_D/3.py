@@ -15,6 +15,3 @@ def main():
         ans = (ans + comb(H-A-1+B+i, i) * comb(A-1+W-B-i, A-1)) % mod
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

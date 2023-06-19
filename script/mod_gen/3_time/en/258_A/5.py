@@ -14,6 +14,3 @@ def main():
         hour = 0
     print(f'{hour:02d}:{minute:02d}')
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def main():
         s += chr(ord('a') + p[i] - 1)
     print(s)
 main()
-
-if __name__ == '__main__':
-    main()

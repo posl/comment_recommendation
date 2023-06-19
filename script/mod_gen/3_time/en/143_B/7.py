@@ -7,6 +7,3 @@ def takoyaki():
             sum += d[i] * d[j]
     return sum
 print(takoyaki())
-
-if __name__ == '__main__':
-    takoyaki()

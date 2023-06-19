@@ -15,6 +15,3 @@ def main():
                 ans += B[i] * B[j]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

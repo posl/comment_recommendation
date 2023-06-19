@@ -14,6 +14,3 @@ def solve(n):
     return sum(dp[n])%mod
 n = int(input())
 print(solve(n))
-
-if __name__ == '__main__':
-    solve()

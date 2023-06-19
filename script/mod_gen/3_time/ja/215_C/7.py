@@ -3,6 +3,3 @@ def main():
     K = int(K)
     print("".join(sorted(S)[K-1]))
 main()
-
-if __name__ == '__main__':
-    main()

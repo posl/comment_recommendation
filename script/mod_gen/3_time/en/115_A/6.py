@@ -9,6 +9,3 @@ def main():
     else:
         print("Christmas Eve Eve Eve")
 main()
-
-if __name__ == '__main__':
-    main()

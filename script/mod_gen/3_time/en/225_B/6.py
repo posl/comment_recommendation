@@ -18,6 +18,3 @@ def star_graph():
     print("No")
     return
 star_graph()
-
-if __name__ == '__main__':
-    star_graph()

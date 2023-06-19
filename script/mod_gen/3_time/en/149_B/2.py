@@ -7,6 +7,3 @@ def main():
     else:
         print(0, A + B - K)
 main()
-
-if __name__ == '__main__':
-    main()

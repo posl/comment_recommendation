@@ -17,6 +17,3 @@ def  solve():
                 r_s -= d[di][ 0 ]
                 c_s -= d[di][ 1 ]
         print(r_s, c_s)
-
-if __name__ == '__main__':
-    ()

@@ -5,6 +5,3 @@ def f(n):
     return ans
 n = int(input())
 print(f(n))
-
-if __name__ == '__main__':
-    f()

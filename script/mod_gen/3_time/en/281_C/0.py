@@ -9,6 +9,3 @@ def main():
             print(i+1, -T)
             return
 main()
-
-if __name__ == '__main__':
-    main()

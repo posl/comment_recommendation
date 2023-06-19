@@ -8,6 +8,3 @@ def shiritori():
             break
     print(ans)
 shiritori()
-
-if __name__ == '__main__':
-    shiritori()

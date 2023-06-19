@@ -14,6 +14,3 @@ def main():
         total -= a[left]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

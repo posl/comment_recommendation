@@ -22,6 +22,3 @@ while stack:
         stack.append([v2,v,c2%2])
 for i in range(n):
     print(path(i))
-
-if __name__ == '__main__':
-    path()

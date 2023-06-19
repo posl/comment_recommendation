@@ -16,6 +16,3 @@ def find_other_vertex():
         y4 = y1
     print(x4, y4)
 find_other_vertex()
-
-if __name__ == '__main__':
-    find_other_vertex()

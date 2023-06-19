@@ -19,6 +19,3 @@ while ok - ng > 1:
         ng = mid
 print(ok)
 The first half of the code is the same as the previous one. The second half is to perform binary search on the answer. In the binary search, we can check if the median is ok or not by the following function.
-
-if __name__ == '__main__':
-    check()

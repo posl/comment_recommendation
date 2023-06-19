@@ -14,6 +14,3 @@ def main():
     for i in range(1, K + 1):
         print(S[i])
 main()
-
-if __name__ == '__main__':
-    main()

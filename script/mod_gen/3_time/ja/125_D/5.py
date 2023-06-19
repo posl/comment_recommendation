@@ -35,6 +35,3 @@ def solve():
             -2 * max(A)
         )
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -15,6 +15,3 @@ def   main ():
          print ( n   -   max ( odd . count ( odd1 ),   even . count ( even1 ),   even . count ( even2 ))) 
      else : 
          print ( n   -   max ( odd . count ( odd1 ),   odd . count ( odd2 ),   even . count ( even1 )))
-
-if __name__ == '__main__':
-    ()

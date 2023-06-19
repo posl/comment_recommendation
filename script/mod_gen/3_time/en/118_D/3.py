@@ -13,6 +13,3 @@ def solve():
     print(dp[N])
 match = [0, 2, 5, 5, 4, 5, 6, 3, 7, 6]
 solve()
-
-if __name__ == '__main__':
-    solve()

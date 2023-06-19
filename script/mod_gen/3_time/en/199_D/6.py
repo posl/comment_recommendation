@@ -28,6 +28,3 @@ for i in range(M):
 dp = [[-1] * 3 for i in range(N)]
 color = [-1] * N
 print(dfs(0, -1))
-
-if __name__ == '__main__':
-    dfs()

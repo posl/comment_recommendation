@@ -53,6 +53,3 @@ def main():
     else:
         print('Z')
 main()
-
-if __name__ == '__main__':
-    main()

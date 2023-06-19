@@ -10,6 +10,3 @@ def triangle():
                     count += 1
     print(count)
 triangle()
-
-if __name__ == '__main__':
-    triangle()

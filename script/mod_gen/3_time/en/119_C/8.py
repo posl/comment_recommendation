@@ -10,6 +10,3 @@ def solve(N,A,B,C,l):
 N,A,B,C = map(int,input().split())
 l = [int(input()) for _ in range(N)]
 print(solve(N,A,B,C,l))
-
-if __name__ == '__main__':
-    solve()

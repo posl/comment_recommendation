@@ -5,6 +5,3 @@ def main():
     c = abc[2]
     print(int(a) + int(b) + int(c) + int(b) + int(c) + int(a) + int(c) + int(a) + int(b))
 main()
-
-if __name__ == '__main__':
-    main()

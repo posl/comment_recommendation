@@ -29,6 +29,3 @@ def main():
         if ans[i] > 0:
             print(i, ans[i])
 main()
-
-if __name__ == '__main__':
-    main()

@@ -12,6 +12,3 @@ def main():
             print(a[i])
             break
 main()
-
-if __name__ == '__main__':
-    main()

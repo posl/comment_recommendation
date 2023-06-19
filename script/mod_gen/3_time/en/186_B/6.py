@@ -4,6 +4,3 @@ def main():
     A = [a for b in A for a in b]
     print(sum(A) - max(A) * H * W)
 main()
-
-if __name__ == '__main__':
-    main()

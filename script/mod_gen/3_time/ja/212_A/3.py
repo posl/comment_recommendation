@@ -7,6 +7,3 @@ def main():
     else:
         print('Alloy')
 main()
-
-if __name__ == '__main__':
-    main()

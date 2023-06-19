@@ -9,6 +9,3 @@ def f(n):
         return 0
 A,B=map(int,input().split())
 print(f(B)^f(A-1))
-
-if __name__ == '__main__':
-    f()

@@ -9,6 +9,3 @@ def  main():
         elif A[i] != A[i-1]:
             ans += 1
     print(ans)
-
-if __name__ == '__main__':
-    ()

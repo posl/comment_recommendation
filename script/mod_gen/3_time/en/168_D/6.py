@@ -44,6 +44,3 @@ def solve():
             continue
         print(signpost[i] + 1)
 solve()
-
-if __name__ == '__main__':
-    solve()

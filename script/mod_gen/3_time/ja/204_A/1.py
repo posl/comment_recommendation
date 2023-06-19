@@ -15,6 +15,3 @@ def main():
     elif x == y:
         print(x)
 main()
-
-if __name__ == '__main__':
-    main()

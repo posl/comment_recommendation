@@ -25,6 +25,3 @@ for i in range(m):
         s[i].append(a[j+1])
 p = list(map(int, input().split()))
 print(solve(n,m,k,s,p))
-
-if __name__ == '__main__':
-    solve()

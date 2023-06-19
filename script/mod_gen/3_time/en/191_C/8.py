@@ -19,6 +19,3 @@ def main():
             break
     print(side)
 main()
-
-if __name__ == '__main__':
-    main()

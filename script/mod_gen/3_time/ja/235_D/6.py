@@ -9,6 +9,3 @@ def count(a, n, count):
         return -1
 a, n = map(int, input().split())
 print(count(a, n, 0))
-
-if __name__ == '__main__':
-    count()

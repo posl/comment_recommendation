@@ -25,6 +25,3 @@ def   main ():
                  C . append ( i   +   1 ) 
          print ( len ( B ),   ' ' . join ( map ( str ,   B ))) 
          print ( len ( C ),   ' ' . join ( map ( str ,   C )))
-
-if __name__ == '__main__':
-    ()

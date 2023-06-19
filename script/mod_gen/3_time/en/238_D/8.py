@@ -16,6 +16,3 @@ T = int(input())
 for i in range(T):
     a,s = [int(x) for x in input().split()]
     print(solve(a,s))
-
-if __name__ == '__main__':
-    solve()

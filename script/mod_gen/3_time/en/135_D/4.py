@@ -15,6 +15,3 @@ def main():
                 dp[i+1][(k*10+int(s[i]))%13] %= 1000000007
     print(dp[n][5])
 main()
-
-if __name__ == '__main__':
-    main()

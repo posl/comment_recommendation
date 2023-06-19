@@ -8,6 +8,3 @@ def main():
             ans += N//(a*b)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

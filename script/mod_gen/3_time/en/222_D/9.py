@@ -16,6 +16,3 @@ def   main ():
       # dp[i+1][j] = 2 * sum_{k=0}^{j} dp[i][k]
       # dp[i+1][j] = 2 * (dp[i][j] + dp[i][j-1] + dp[i][j-2] + ... + dp[i][0])
       # dp[i+1][j] = 2 * dp[i][j] + 2 * dp[i][j-1] + 2 * dp[i][j-2] + ... +
-
-if __name__ == '__main__':
-    ()

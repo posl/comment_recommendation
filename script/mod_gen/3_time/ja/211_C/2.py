@@ -15,6 +15,3 @@ def main():
                     dp[i+1][j] = dp[i][j]
     print(dp[n][8] % mod)
 main()
-
-if __name__ == '__main__':
-    main()

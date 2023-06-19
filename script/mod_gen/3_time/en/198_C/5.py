@@ -6,6 +6,3 @@ def main():
         return
     print(int(D // R + (D % R > 0)))
 main()
-
-if __name__ == '__main__':
-    main()

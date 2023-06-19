@@ -28,6 +28,3 @@ def solve():
                         dp[i][j] += dp[i-1][j-1]
     print(dp[N-1][0]+dp[N-1][1]+dp[N-1][2])
 solve()
-
-if __name__ == '__main__':
-    solve()

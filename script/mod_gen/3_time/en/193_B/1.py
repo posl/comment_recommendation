@@ -14,6 +14,3 @@ def main():
                 min_price = min(min_price, P[i])
     print(min_price)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -10,6 +10,3 @@ def solve():
     for x in dist:
         print(x)
 solve()
-
-if __name__ == '__main__':
-    solve()

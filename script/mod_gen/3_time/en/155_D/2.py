@@ -36,6 +36,3 @@ def main():
             ok = mid
     print(ok)
 main()
-
-if __name__ == '__main__':
-    main()

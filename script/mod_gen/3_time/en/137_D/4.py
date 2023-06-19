@@ -16,6 +16,3 @@ def main():
         AB[i][0] -= _ + 1
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

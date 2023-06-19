@@ -7,6 +7,3 @@ def main():
             ans += abs(ord(s[i]) - ord(t[i]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

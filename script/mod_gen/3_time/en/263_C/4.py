@@ -6,6 +6,3 @@ def dfs(A, N, M, i):
         if i == 0 or A[i-1] < j:
             A[i] = j
             dfs(A, N, M, i+1)
-
-if __name__ == '__main__':
-    dfs()

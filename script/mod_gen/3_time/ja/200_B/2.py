@@ -7,6 +7,3 @@ def main():
             N = int(str(N) + "200")
     print(N)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -6,6 +6,3 @@ def   main ():
          if   d [ i ][ 0 ]   ==   d [ i ][ 1 ]   ==   d [ i + 1 ][ 0 ]   ==   d [ i + 1 ][ 1 ]   ==   d [ i + 2 ][ 0 ]   ==   d [ i + 2 ][ 1 ]: 
              ans   =   'Yes' 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

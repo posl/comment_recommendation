@@ -10,6 +10,3 @@ def main():
             print(n - n % a[i])
             return
 main()
-
-if __name__ == '__main__':
-    main()

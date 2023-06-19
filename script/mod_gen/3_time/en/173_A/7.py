@@ -3,6 +3,3 @@ def main():
     print(N % 1000)
     return
 main()
-
-if __name__ == '__main__':
-    main()

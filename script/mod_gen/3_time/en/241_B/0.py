@@ -14,6 +14,3 @@ def main():
         i += 1
     print("Yes")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -13,6 +13,3 @@ def solve(h, w, k):
     return dp[h][k] % mod
 h, w, k = map(int, input().split())
 print(solve(h, w, k))
-
-if __name__ == '__main__':
-    solve()

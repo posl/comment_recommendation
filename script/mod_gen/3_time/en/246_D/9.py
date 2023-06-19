@@ -8,6 +8,3 @@ def main():
             print(i**3)
             return
 main()
-
-if __name__ == '__main__':
-    main()

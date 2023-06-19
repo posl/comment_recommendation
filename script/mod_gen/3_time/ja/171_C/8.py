@@ -10,6 +10,3 @@ def calc(n):
             return calc(n//26) + chr(96+n%26)
 n = int(input())
 print(calc(n))
-
-if __name__ == '__main__':
-    calc()

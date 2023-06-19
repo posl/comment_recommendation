@@ -6,6 +6,3 @@ def main():
     else:
         print(int(dist/r + 1))
 main()
-
-if __name__ == '__main__':
-    main()

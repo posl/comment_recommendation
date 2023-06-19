@@ -7,6 +7,3 @@ def main():
         ans += (i + 1) * b[i][0]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

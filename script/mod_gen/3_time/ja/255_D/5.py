@@ -12,6 +12,3 @@ def main():
             ans += min(D[i + 1] - D[i],x - D[i])
         print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

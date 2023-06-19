@@ -25,6 +25,3 @@ def main():
 1 8
         """)
         unittest.main()
-
-if __name__ == '__main__':
-    main()

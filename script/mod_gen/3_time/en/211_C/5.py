@@ -21,6 +21,3 @@ def main():
             dp[7] = (dp[7] + dp[6]) % mod
     print(dp[7])
 main()
-
-if __name__ == '__main__':
-    main()

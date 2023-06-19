@@ -6,6 +6,3 @@ def pluralize(noun):
 print(pluralize('apple'))
 print(pluralize('bus'))
 print(pluralize('box'))
-
-if __name__ == '__main__':
-    pluralize()

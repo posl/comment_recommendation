@@ -6,6 +6,3 @@ def solve():
     print(a+b+c+(b+c)*10+(c+a)*100)
     return
 solve()
-
-if __name__ == '__main__':
-    solve()

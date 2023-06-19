@@ -20,6 +20,3 @@ def   main ( ) :
          else : 
              ng   =   mid 
      print ( ok )
-
-if __name__ == '__main__':
-    ()

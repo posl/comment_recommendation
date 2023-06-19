@@ -3,6 +3,3 @@ def main():
     d = (a**2 + b**2)**0.5
     print(a/d, b/d)
 main()
-
-if __name__ == '__main__':
-    main()

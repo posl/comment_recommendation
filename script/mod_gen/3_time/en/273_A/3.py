@@ -4,6 +4,3 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 print(factorial(int(input())))
-
-if __name__ == '__main__':
-    factorial()

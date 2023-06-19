@@ -6,6 +6,3 @@ def nine_multiple(n):
         return 'No'
 n = int(input())
 print(nine_multiple(n))
-
-if __name__ == '__main__':
-    nine_multiple()

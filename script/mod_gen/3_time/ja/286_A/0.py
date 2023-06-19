@@ -4,6 +4,3 @@ def main():
     B = A[:P-1] + A[R-1:S] + A[Q-1:R-1] + A[S:]
     print(*B)
 main()
-
-if __name__ == '__main__':
-    main()

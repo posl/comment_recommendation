@@ -8,6 +8,3 @@ def main():
     else:
         print(len(S)+1)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -12,6 +12,3 @@ def main():
     else:
         print(min_oranges, max_oranges)
 main()
-
-if __name__ == '__main__':
-    main()

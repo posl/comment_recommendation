@@ -26,6 +26,3 @@ def main():
             dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
     print(dp[-1][-1])
 main()
-
-if __name__ == '__main__':
-    main()

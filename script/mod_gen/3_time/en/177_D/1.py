@@ -22,6 +22,3 @@ def main():
             group += 1
     print(group - 1)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -21,6 +21,3 @@ def getMinDiff(arr, n):
 n = int(input())
 arr = list(map(int, input().split()))
 print(getMinDiff(arr, n))
-
-if __name__ == '__main__':
-    getMinDiff()

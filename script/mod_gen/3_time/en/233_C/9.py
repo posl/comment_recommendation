@@ -24,6 +24,3 @@ def solve():
 solve()
 I solved this problem using the Chinese Remainder Theorem. The solution is here.
 I solved this problem using a DP. Th
-
-if __name__ == '__main__':
-    solve()

@@ -12,6 +12,3 @@ def solve():
     d.sort()
     return sum(d[:m-n])
 print(solve())
-
-if __name__ == '__main__':
-    solve()

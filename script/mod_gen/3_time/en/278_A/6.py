@@ -5,6 +5,3 @@ def problem():
         a.append(a.pop(0))
     print(' '.join(map(str, a)))
 problem()
-
-if __name__ == '__main__':
-    problem()

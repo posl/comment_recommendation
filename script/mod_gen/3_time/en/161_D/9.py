@@ -13,6 +13,3 @@ def lunlun(k):
     return a[0]
 k = int(input())
 print(lunlun(k))
-
-if __name__ == '__main__':
-    lunlun()

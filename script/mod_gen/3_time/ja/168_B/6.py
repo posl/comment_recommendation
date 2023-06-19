@@ -6,6 +6,3 @@ def main():
     else:
         print(S)
 main()
-
-if __name__ == '__main__':
-    main()

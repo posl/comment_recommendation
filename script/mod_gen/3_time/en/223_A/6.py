@@ -6,6 +6,3 @@ def purse(x):
 print purse(500)
 print purse(40)
 print purse(0)
-
-if __name__ == '__main__':
-    purse()

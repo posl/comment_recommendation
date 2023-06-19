@@ -6,6 +6,3 @@ def solve():
         B[A[i]-1] = i+1
     print(*B)
 solve()
-
-if __name__ == '__main__':
-    solve()

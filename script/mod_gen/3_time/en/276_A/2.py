@@ -5,6 +5,3 @@ def last_index(str, c):
     return -1
 s = input()
 print(last_index(s, 'a'))
-
-if __name__ == '__main__':
-    last_index()

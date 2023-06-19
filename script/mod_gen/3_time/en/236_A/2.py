@@ -3,6 +3,3 @@ def swap(s, a, b):
 S = input()
 a, b = map(int, input().split())
 print(swap(S, a, b))
-
-if __name__ == '__main__':
-    swap()

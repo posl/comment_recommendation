@@ -23,6 +23,3 @@ def solve():
         print(ans)
         return
 solve()
-
-if __name__ == '__main__':
-    solve()

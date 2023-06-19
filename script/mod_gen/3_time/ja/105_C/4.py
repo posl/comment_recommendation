@@ -14,6 +14,3 @@ def main():
     ans.reverse()
     print(''.join([str(a) for a in ans]))
 main()
-
-if __name__ == '__main__':
-    main()

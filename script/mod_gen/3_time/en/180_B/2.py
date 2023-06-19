@@ -5,6 +5,3 @@ def main():
     print((sum(x**2 for x in X))**0.5)
     print(max(abs(x) for x in X))
 main()
-
-if __name__ == '__main__':
-    main()

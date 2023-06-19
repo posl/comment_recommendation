@@ -15,6 +15,3 @@ def solve():
                                             n += 1
     print(n)
 solve()
-
-if __name__ == '__main__':
-    solve()

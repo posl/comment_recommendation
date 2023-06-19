@@ -13,6 +13,3 @@ def main():
             result += S3
     print(result)
 main()
-
-if __name__ == '__main__':
-    main()

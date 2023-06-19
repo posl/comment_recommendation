@@ -36,6 +36,3 @@ def  main():
                         takahashi_win += (k - takahashi[i]) * (k - aoki[j])
     #print(takahashi_win)
     print(takahashi_win / ((k *  9 ) * (k *  9  -  1 )))
-
-if __name__ == '__main__':
-    ()

@@ -4,6 +4,3 @@ def main():
     # Find the maximum of the sum of two cards
     print(max(A+B,A+C,B+C))
 main()
-
-if __name__ == '__main__':
-    main()

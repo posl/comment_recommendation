@@ -17,6 +17,3 @@ def main():
         print(T[i] * 2, end = " ")
     print()
 main()
-
-if __name__ == '__main__':
-    main()

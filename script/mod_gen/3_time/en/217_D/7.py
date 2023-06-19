@@ -10,6 +10,3 @@ def main():
             index = cut.index(x)
             print(cut[index+1]-cut[index])
 main()
-
-if __name__ == '__main__':
-    main()

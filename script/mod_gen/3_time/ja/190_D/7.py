@@ -8,6 +8,3 @@ def calc(n):
     return ans*2
 n = int(input())
 print(calc(n))
-
-if __name__ == '__main__':
-    calc()

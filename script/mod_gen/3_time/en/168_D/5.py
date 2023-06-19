@@ -21,6 +21,3 @@ def solve():
         for s in sign[1:]:
             print(s)
 solve()
-
-if __name__ == '__main__':
-    solve()

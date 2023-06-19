@@ -17,6 +17,3 @@ def abc(s):
     return c%mod
 S = input()
 print(abc(S))
-
-if __name__ == '__main__':
-    abc()

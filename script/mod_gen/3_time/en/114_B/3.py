@@ -9,6 +9,3 @@ def lunlun(n):
     else:
         return lunlun(n - 1) if last_digit > n // 10 % 10 else lunlun(n + 1)
 print(lunlun(int(input())))
-
-if __name__ == '__main__':
-    lunlun()
