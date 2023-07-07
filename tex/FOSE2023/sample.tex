@@ -1,0 +1,390 @@
+% 英文で執筆する場合はクラスファイルへのオプションを[T,E]としてください．
+% If you want to write your paper in English, pass to [T,E] options to document class.
+\documentclass[T,J]{fose} % 「コンピュータソフトウェア」用のクラスファイルは compsoft です．
+\taikai{2023} % 固定です．出版委員長が毎年変更してAuthor Kitを配布してください．
+
+\usepackage [dvipdfmx] {graphicx}
+
+% ユーザが定義したマクロなどはここに置く．ただし学会誌のスタイルの
+% 再定義は原則として避けること．
+
+% 以下は説明のために使用したパッケージであるため，削除可能．
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{fancyvrb}
+\usepackage{xurl}
+\usepackage{cite}
+
+% 以下のマクロはサンプルファイル作成用のマクロです．不要であれば削除してください．
+\newcommand{\foseclassfile}{\MakeLowercase{\foseabbrev}.cls}
+\newcommand{\fosestylefile}{\MakeLowercase{\foseabbrev}.sty}
+
+
+\begin{document}
+
+% 論文のタイトル
+\title{\foseclassfile 使用サンプル}
+% 以下の \etitle（と\@etitle）はFOSE論文フォーマット独自のマクロです．
+% FOSEに投稿した論文を発展させてコンピュータソフトウェアに投稿される場合はコメントアウトしてください．
+% \setetitleは奇数ページのヘッダに表示する文字列（\etitle）を設定するためのマクロです．
+% タイトルが2行に渡る場合は "\\" を 使用することで任意の位置で改行をすることができます．
+\setetitle{Foundation of Software Engineering}
+%\setetitle{Long Long Long Long Long Long \\ Long Long Long Long Long \\ Long Long Long Long Long Long Long Long Long Long Long Long Paper Title}
+
+% タイトル，著者などが複数行にわたり，論文冒頭の著者名が日本語アブストと重複して描画された場合に以下のコメントアウトを外してください．
+%\longtitle
+
+% 著者
+% 和文論文の場合，姓と名の間には半角スペースを入れ，
+% 複数の著者の間は全角スペースで区切る
+%
+\author{徳川 家康　源 頼朝　源 頼家
+%
+% ここにタイトル英訳 (英文の場合は和訳) を書く．
+% 英語タイトルは論文1ページ目左下，著者らの名前・所属一覧の一番上に表示される
+%
+% 上記\setetitle中で改行した場合は "\etitle" を削除し，改行(\\)を入れていないタイトルを記載してください．
+% \ejtitleは1ページ目左下に挿入されるタイトルとして使用されます．
+% また，"\etitle"はFOSE論文フォーマット独自のマクロです．
+\ejtitle{\etitle}
+%
+% ここに著者英文表記 および
+% 所属 (和文および英文) を書く．
+% 複数著者の所属はまとめてよい．
+%
+\shozoku{Ieyasu Tokugawa}{江戸幕府}
+{Edo Bakufu}
+% 複数著者の所属は以下のようにまとめてよい．
+\shozoku{Yoritomo Minamoto, Yoriie Minamoto}{鎌倉幕府}
+{Kamakura Bakufu}
+}
+
+%
+% 和文アブストラクト
+% In English paper, content of Jabstract will be ignored. 
+\Jabstract{%
+本稿はソフトウェア工学の基礎ワークショップのために，実践的IT教育シンポジウム rePiTの論文執筆キットおよび第29回ソフトウェア工学の基礎ワークショップの論文執筆キットを基に作成したものです．
+rePiTの論文執筆キットはそもそもソフトウェア科学会の論文執筆キットを基に作成したものです．
+具体的な変更箇所は\ref{sec:PaperStyle}章をご参照ください．}
+%
+% 英文アブストラクト（本サンプルの原論文にはなし）
+\Eabstract{
+This document has been prepared as a sample for FOSE(Foundation of Software Engineering) based on the Author Kit for rePiT and FOSE2022.
+The author kit for rePiT was originally based on author kit of JSSST Computer Software.
+The detail changes are written in Sec.\ref{sec:PaperStyle}
+}
+%
+\maketitle \thispagestyle {empty}
+\section{はじめに}
+本稿は{\tt \MakeLowercase{\foseabbrev}.cls}スタイルファイルを利用し，\LaTeX でフォーマットした \foseabbrev の論文サンプルです．
+論文執筆の基本的な注意事項を以下に示します．
+\begin{itemize}
+\item 論文本文が和文の場合，和文・英文のいずれかでアブストラクトを
+書いて下さい．両方併記することもできます．英文アブストラクトを書かない場合は
+場合は{\tt eabstract}環境(\verb|\Eabstract|)を空にして使って下さい．
+\item 本文が英文の場合は，クラスファイルのオプションを{\verb|[T,E]|}として下さい．
+また，和文タイトル・和文著者名・和文アブストラクトを併記する必要はありません．
+\item カラーの図を使うことは可能ですが，論文集はJ-STAGEへの掲載（フルカラー）だけでなく近代科学社Digitalのプリントオンデマンド書籍（白黒印刷）として印刷されることも考慮して作成してください．
+白黒印刷時に図が認識可能か，文章中でフルカラー前提の図に関する特定の色を指す表現がないかなど注意してください．
+\item カラーの図を使用する場合は色モードをCMYKではなくRGBで画像を作成するようにしてください．
+\item 画像の解像度は300dpi以上で作成するようにしてください．
+\end{itemize}
+その他細かな論文執筆時の注意点については\ref{sec:PaperStyle}章を参照してください．
+
+
+\section{FOSE: ソフトウェア工学の基礎研究会}
+情報技術の普及がソフトウェアの適用範囲をますます広げていく今，ソフトウェアを社会基盤となる知的資産として活用するため，ソフトウェア工学はさらに格段の進歩をとげなければなりません．
+FOSE\footnote{https://fose.jssst.or.jp}はこの挑戦に向けてさまざまな基礎技術を確立することをめざし，研究者・技術者の議論の場を提供します．
+
+主な活動として，FOSEでは毎年ソフトウェア工学の基礎ワークショップを開催し，開発に携わっている実務者と大学・研究機関の研究者の間でソフトウェア工学に関する活発な議論を行っています．
+第1回のワークショップが1994年に穂高で催されて以来，第2回は浜松，第3回は会津若松，第4回は越後湯沢と回数を重ね，2013年には第20回を記念したワークショップを盛大に行ないました．
+今年は第30回を迎えます．
+参加者も最近では，2012年度は103名，2013度は112名，2014年度と2015年度は108名，2016年度は119名，2017年度は106名，2020年度は100名と，ここ数年は100人を超えるまでに成長しました．日本におけるソフトウェア工学研究の活性化に大きく貢献しています．
+
+
+\section{ソフトウェア工学の基礎ワークショップ（FOSE）}
+\subsection{目的}
+情報技術の普及がソフトウェアの適用範囲をますます広げていく今，ソフトウェアを社会基盤となる知的資産として活用するため，ソフトウェア工学はさらに格段の進歩をとげなければなりません．
+FOSEはこの挑戦に向けてさまざまな基礎技術を確立することをめざし，研究者・技術者の議論の場を提供するものです．
+
+FOSEではソフトウェア工学の基礎技術に関連する発表を募集します．基礎技術の応用方策や実践からの基礎技術の抽出に関するものも含みます．
+積極的なご投稿を期待しております．また，投稿された論文のうち優れた論文は，研究会推薦論文としてコンピュータソフトウェア誌に推薦されます．
+
+
+\subsection{開催概要}
+% FIXME
+\foseabbrev\cite{fose2023}は以下の要領で開催する予定です.
+\begin{description}
+\item[日程] 2023年11月9日(木) -- 11日(土)
+\item[場所] 伊勢志摩国立公園/鳥羽温泉郷 戸田家\\
+{\footnotesize
+   〒517--0011 三重県鳥羽市鳥羽1丁目24-26
+}
+\item[主催] 日本ソフトウェア科学会 ソフトウェア工学の基礎研究会
+\item[共催（予定）] IEEE Computer Society Japan Chapter
+\item[協賛（予定）] 情報処理学会 ソフトウェア工学研究会，%\\
+	電子情報通信学会 ソフトウェアサイエンス研究会，%\\
+	電子情報通信学会 知能ソフトウェア工学研究会
+\end{description}
+
+
+\subsection{特集号の企画}
+日本ソフトウェア科学会 学会誌「コンピュータソフトウェア」において{\foseabbrev}と連動した「ソフトウェア工学の基礎」特集 を企画しています.
+{\foseabbrev}で推薦された論文は，特集号にご投稿いただけます．また，推薦論文以外でも，FOSEワークショップへご投稿いただいた論文を特集号へも投稿いただける連携投稿制度があります．
+FOSEワークショップへご投稿いただいた論文を特集号へも投稿（連携投稿）していただくと，推薦論文と同様の投稿締め切りの設定と，{\foseabbrev}の論文ならびに査読結果を参考とした迅速な査読が期待できます．
+{\foseabbrev}の査読情報をソフトウェア工学の基礎特集号編集委員に開示する場合がありますので，その旨ご了承ください．
+
+
+\section{書式について} \label{sec:PaperStyle}
+本稿は \foseabbrev 用のスタイルファイルを使用したサンプルファイルです．
+論文執筆の際は \foseabbrev のWebサイトで配布されている論文執筆キットの使用を推奨します．
+
+句読点，図表や数式の記述・表示等，論文執筆のルールにつきましては，
+日本ソフトウェア科学会が用意した「新しいスタイルファイルによる論文作成ガイド(本論文作成キットに含まれるcompsoft-guide.pdf)」をご参照下さい．
+
+これまで，FOSEワークショップは長きにわたりシングルカラムフォーマットのクラスファイルを採用してきました．
+旧クラスファイルは現行の日本ソフトウェア科学会 学会誌「コンピュータソフトウェア」との乖離が大きく
+\footnote{歴史を辿るとfose2022.clsは1994年にコンピュータソフトウェアのクラスファイル（compsoft.cls）から派生したようです．}
+，FOSEワークショップと連動する「ソフトウェア工学の基礎」特集号への投稿を行う際に投稿者による手間が多く発生していました．
+そこで，FOSE2023では「コンピュータソフトウェア」の体裁に近づけたフォーマットを新たに作成しました．
+新フォーマットへの移行に伴い，これまで配布していたMicrosoft Wordフォーマットについては廃止となります．
+これまでWordフォーマットを用いて作成されていた方はお手数ですが \LaTeX での執筆をお願い致します．
+また， \LaTeX の執筆環境を用意することの負担軽減を目的としてOverleaf\footnote{\url{https://www.overleaf.com}}で利用可能なテンプレートを用意しました．
+
+\subsection{論文執筆者向けの変更点解説}\label{subsec:forauthors}
+論文執筆者にとって必要な情報については，配布している {\texttt sample.tex} 内にコメントとして要点を記載しています．
+本節ではその内容を詳細に示します．
+
+\foseclassfile は「コンピュータソフトウェア」の compsoft.clsに対して以下に示す変更を加えています．
+\begin{itemize}
+	\item 1ページ目上部に表示される罫線を単純な黒線に変更（従来のFOSE（ {\texttt fose2022.cls}）のスタイルを採用））
+	\item 奇数ページのヘッダ中央に {\textbf \foseabbrev } と表示するように変更．
+	\item 偶数ページのヘッダ中央に論文の英語タイトルを表示できるように変更．
+	\item タイトルおよび著者の表示が合計4行以上になった場合にレイアウトが崩れる問題に対応．
+\end{itemize}
+
+一つ目と二つ目の変更についてはそれぞれ自動で表示されるように設定しているため論文執筆の際に注意すべきことはありません．
+
+
+\subsubsection{奇数ページのヘッダ}
+奇数ページのヘッダ中央に表示される {\textbf \foseabbrev } は {\texttt sample.tex } 冒頭で呼び出している \verb|\taikai|\footnote{この名称はソフトウェア科学会の大会用の設定を流用した名残です} に渡す引数によって変化します．
+配布している論文執筆キットには適切な西暦があらかじめ記載されています．
+
+
+\subsubsection{偶数ページのヘッダ}
+偶数ページのヘッダ中央には論文の英語タイトルを表示するようにしてください．
+そのためには \foseclassfile に独自に追加した \verb|\setetitle| マクロを使用してください．
+英語タイトルが長い場合は2行に分けることを検討してください．改行は \verb|\\| を使用することで任意の位置に挿入可能です．
+英語タイトルが2行に収まらない場合はヘッダ部分のタイトル表記に略称を使用するなどして2行に納めるように努めて下さい．
+具体的には，ComputerをComp.，SoftwareをSoft.とするなどして縮めてください．
+{\texttt sample.tex}では1ページ目に \verb|\maketitle| で表示される英語タイトル（ \verb|\ejtitle| にヘッダ用の英語タイトルを参照するように設定しています．
+そのため，ヘッダ用英語タイトルで改行を使用したり，タイトルに略称を使用した場合は \verb|\ejtitle| に改行を使用しない本来のタイトルを別途記載してください．
+
+偶数ページに表示する英語タイトルが2行になることを許容するために奇数，偶数ページのヘッダを「コンピュータソフトウェア」から一行分上にずらして表示するように変更しています．
+なお，この変更により本文に使用できる文字数等が変化することはありません．一方でページ全体としては1行分縦幅が長くなってしまっています．
+
+
+\subsubsection{ページ冒頭のレイアウトが崩れる問題}
+四つ目の変更については，実際にレイアウトが崩れた際に{\texttt sample.tex}の31行目に記載している \verb|\longtitle| のコメントアウトを外してください．
+\verb|\longtitle| は \foseclassfile で独自に追加したマクロなので必要とならない限りは使用しないことを推奨します．
+この問題については「コンピュータソフトウェア」も同様の問題があるはずですがどのように対応しているのか詳細を把握していません．
+
+
+\subsection{クラスファイル管理者向けの変更点解説} \label{sec:differences}
+本節では，本クラスファイルを保守するFOSEワークショップ出版委員長並びに， {\texttt compsoft.cls} に具体的にどのような変更を加えたのかを理解したい方向けの説明をします．
+FOSEワークショップ用論文執筆キットは，日本ソフトウェア科学会「コンピュータソフトウェア」のスタイルファイル付属の「大会用論文」サンプルsample-TJ.texを基に作成しました．
+
+修正したファイルは以下の3つです．
+\begin{itemize}
+	\item compsoft.cls （\MakeLowercase{\foseabbrev}.clsにリネームしただけ）
+	\item compsoft.sty （\MakeLowercase{\foseabbrev}.styにリネーム後修正）
+	\item sample-TJ.tex（sample.texにリネーム後修正）
+\end{itemize}
+
+\ref{subsec:forauthors}に示した変更を行うために各ファイル（リネーム前のファイル名で表記）を以下のとおり修正しました．
+
+
+\subsubsection*{compsoft.sty}
+\begin{table*}[t]
+\caption{compsoft.sty変更箇所}
+\label{table:change1}
+ 	\begin{tabular}{c}
+		\begin{tabularx}{47zw}{X}
+		\hline
+		\verb|1196: \def\leaderfilll{\leaders\hbox{\rule{0.2mm}{1mm}}\hfill}| \\
+		\verb|1198: \addtolength{\voffset}{-1\baselineskip}| \\
+		\verb|1199: \addtolength{\headsep}{1\baselineskip}| \\
+		\verb|1200: \newcommand{\setetitle}[1]{\def\etitle{#1}}| \\
+		\verb|1209: \global\xdef\foseabbrev{FOSE{\number\currentYear}}| \\
+		\verb|1211: \def\leaderfilll{\leaders\hbox{\rule{0.2mm}{1mm}}\hfill}| \\
+		\verb|1214: \gdef\@oddheadcontents{\foseabbrev}| \\
+		\verb|1215: \gdef\@evenheadcontents{\parbox[t]{.9\textwidth}{\centering\etitle}}| \\
+		\verb|1864: \phantom{\thepage}\phantom{\thevolpage}\hfil\@evenheadcontents| \\
+		\hline
+		\end{tabularx}
+	\end{tabular}
+\end{table*}
+
+論文1ページ目上部に表示される罫線を単純な黒線に変更するために1196行目と1211行目を表\ref{table:change1}のように変更しました．
+\verb|\rule|の第二引数を1mmとすることで従来のFOSEワークショップの体裁と同じ太さの線にしています．
+元々は罫線に加えてソフトウェア科学会大会の名称が表示されるようになっていましたが，1211行目を変更して文字の表示を消しました．
+
+奇数ページのヘッダ中央に{\textbf \foseabbrev}と表示するために1214行目を表\ref{table:change1}のように変更しました．
+また，この変更で使用している \verb|\foseabbrev| を1209行目で定義しています．
+このマクロは {\texttt sample.tex} 中でも使用しています．
+
+偶数ページのヘッダ中央に英語タイトルを表示するために1215行目を表\ref{table:change1}のように変更しました．
+\verb|\parbox|を使用することで改行を許容していますが，この設定はFOSEワークショップの旧スタイル（{\texttt fose2022.cls}）を参考に作成しました．
+また，この変更のためにヘッダの位置を1行分縦方向に上にずらしました．
+そのために，1198行目と1199行目の変更を追加しています．
+加えて，ヘッダ用の英語タイトル（ \verb|\etitle| ）を設定するためのマクロ \verb|\setetitle| を1200行目で定義しています．
+\verb|\etitle| は {\texttt sample.tex} でも \verb|\ejtitle|の規定値として使用しています．
+
+タイトルおよび著者名が合計で4行以上になる場合に \verb|\maketitle|の表示が崩れる問題についての修正については変更が多岐に渡るため表\ref{table:change1}での変更の提示は行いません．
+表示の問題を解決するために884行目の内の数値を {\texttt compsoft.sty}の値から変更しています．
+この変更を {\texttt sample.tex} 中で \verb|\longtitle| を呼び出すだけで適用できるように856行目から893行目にかけて大幅な変更を行っています．
+具体的な流れとしては\verb|\longtitle|を呼び出すとフラグがオンになり，フラグのオンオフで \verb|\maketitle| での表示方法を変更しているだけです．
+
+\subsubsection*{sample.tex}
+年度の指定のために，4行目を以下のように変更しています（2023年度の例です）．
+
+\begin{tabularx}{23zw}{|X|}
+	\hline
+	\verb|4: \taikai{2023}|
+	\\
+	\hline
+\end{tabularx}
+
+ヘッダからページ番号を非表示にするために1864行目を表\ref{table:change1}のように変更しました．
+また，1868行目も同様に \verb|\phantom{\thepage}|として，ページ番号を非表示にしています．
+加えて，各論文の1ページ目にページ番号とヘッダを表示させないように77行目(タイトル表示部分，セクションの開始直前を指します．
+アブストラクトの行数や著者数によって変動します)を以下のように変更しています．\\
+
+\begin{tabularx}{23zw}{|X|}
+	\hline
+	\verb|77: \maketitle \thispagestyle {empty}|
+	\\
+	\hline
+\end{tabularx}
+
+
+\section{各種書式の例}
+\subsection{図・表}
+図の例を図\ref{fig:figExample}に，表の例を表\ref{table:tableExample}に示します．
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=7.0cm]{image/sampleFig.png}
+	\caption{図の例}
+	\label{fig:figExample}
+\end{figure}
+
+\begin{table}[tb]
+	\centering
+	\caption{表の例}
+	\label{table:tableExample}
+	\begin{tabular}{rcl}
+		\hline %
+		見出し1 & 見出し2& 見出し3 \\ \hline
+		\hline %
+		セル11 & セル12 & セル13 \\ \hline
+		セル21 & セル22 & セル23 \\ \hline
+		セル31 & セル32 & セル33 \\ \hline
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\subsection{リスト}
+
+リスト表記の例を以下に示します．
+
+\begin{itemize}
+	\item アイテム1
+	\item アイテム2
+	\item アイテム3
+	\begin{itemize}
+		\item アイテム3-1
+		\begin{itemize}
+			\item アイテム3-1-1
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\newpage
+
+\begin{enumerate}
+	\item 番号付きアイテム1
+	\begin{enumerate}
+		\item 番号付きアイテム1-1
+		\begin{enumerate}
+			\item 番号付きアイテム1-1-1
+		\end{enumerate}
+	\end{enumerate}
+	\item 番号付きアイテム2
+\end{enumerate}
+
+\begin{description}
+	\item[見出し] 箇条書き1
+	\item[見出し] 箇条書き2
+		\begin{itemize}
+			\item kajougaki
+		\end{itemize}
+	\item[見出し] 箇条書き3
+\end{description}
+
+
+\subsection{引用}
+文献を引用する際はBibTeXの使用を推奨します．
+また， 文献の並び順は{\texttt compsoft-guide.pdf} に記載されているように第一著者の苗字のアルファベット順に可能な限りしてください．
+{\texttt bib}ファイルの各エントリに {\texttt yomi} フィールドを追加することで自動でソートされます．
+BibTeXを使用しない場合は {\texttt thebibliography} 環境を使用してください．
+例として，過去7年分と今年度のFOSEワークショップを引用します
+\cite{fose2015}
+\cite{fose2016}
+\cite{fose2017}
+\cite{fose2018}
+\cite{fose2019}
+\cite{fose2020}
+\cite{fose2021}
+\cite{fose2022}
+\cite{fose2023}
+．
+これは{\texttt cite}パッケージを使用した場合の例です\cite{fose2015,fose2016,fose2017,fose2018,fose2019,fose2020,fose2021,fose2022,fose2023}．
+論文フォーマットとしてはどちらの形式も許容します．
+また，2020年と2021年の開催報告を引用します\cite{fose2020report}\cite{fose2021report}．
+
+
+\textbf{謝辞}\
+本フォーマットの基になったスタイルファイルを作成してくださった方々に感謝します．
+
+%\begin{adjustvboxheight} % needed only when Appendix follows
+\bibliographystyle{jssst}
+\bibliography{sample}
+%\end{adjustvboxheight} % needed only when Appendix follows
+
+% 以下はbibtexを使用しない場合の例です．
+% 332行目と333行目をコメントアウトしてから使用してください．
+% なお，この例では年数順に文献が並んでいるので適切な並び順ではありません．
+%\begin{adjustvboxheight} % needed only when Appendix follows
+%\begin{thebibliography}{9}
+%\bibitem{fose2015} 青木 利晃，豊島 真澄 編:ソフトウェア工学の基礎XXII,日本ソフトウェア科学会{\em FOSE2015}, 近代科学社, 2015.
+%\bibitem{fose2016} 阿萬 裕久，横川 智教 編：ソフトウェア工学の基礎XXIII,日本ソフトウェア科学会{\em FOSE2016}, 近代科学社, 2016.
+%\bibitem{fose2017} 吉田 敦，福安 直樹 編：ソフトウェア工学の基礎XXIV,日本ソフトウェア科学会{\em FOSE2017}, 近代科学社, 2017.
+%\bibitem{fose2018} 伊藤 恵，神谷 年洋 編：ソフトウェア工学の基礎XXV,日本ソフトウェア科学会{\em FOSE2019}, 近代科学社, 2018. 
+%\bibitem{fose2019} 森崎修司，大平雅雄 編：ソフトウェア工学の基礎XXVI,日本ソフトウェア科学会{\em FOSE2019}, 近代科学社, 2019. 
+%\bibitem{fose2020} 石尾 隆，天嵜 聡介 編：ソフトウェア工学の基礎XXVII,日本ソフトウェア科学会{\em FOSE2020}, 近代科学社, 2020. 
+%\bibitem{fose2021} 名倉 正剛，関澤 俊弦 編：ソフトウェア工学の基礎28,日本ソフトウェア科学会{\em FOSE2021}, 近代科学社, 2021.
+%\bibitem{fose2022} 角田 雅照，まつ本 真佑 編：ソフトウェア工学の基礎29,日本ソフトウェア科学会{\em FOSE2022}, 近代科学社, 2022.
+%\bibitem{fose2023} 吉田 則裕，槇原 絵里奈 編：ソフトウェア工学の基礎30,日本ソフトウェア科学会{\em FOSE2023}, 近代科学社, 2023. （to appear）
+%\end{thebibliography}
+%\end{adjustvboxheight} % needed only when Appendix follows
+
+%以下は付録の例です．必要ならコメントアウトして使用してください．
+%なお，その際には参考文献の前後にある adjustvboxheight 環境のコメントアウトを解除してください．
+%\appendix
+%\section{付録A} 
+%これは付録の例です．
+
+\end{document}
+

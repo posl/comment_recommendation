@@ -1,0 +1,48 @@
+This is pBibTeX, Version 0.99d-j0.33 (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: out/paper.aux
+The style file: jssst.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: references.bib
+You've used 2 entries,
+            2588 wiz_defined-function locations,
+            586 strings with 5061 characters,
+and the built_in function-call counts, 1006 in all, are:
+= -- 82
+> -- 53
+< -- 4
++ -- 17
+- -- 14
+* -- 66
+:= -- 135
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 12
+cite$ -- 2
+duplicate$ -- 38
+empty$ -- 82
+format.name$ -- 21
+if$ -- 224
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 9
+num.names$ -- 4
+pop$ -- 15
+preamble$ -- 1
+purify$ -- 23
+quote$ -- 0
+skip$ -- 52
+stack$ -- 0
+substring$ -- 63
+swap$ -- 18
+text.length$ -- 2
+text.prefix$ -- 12
+top$ -- 0
+type$ -- 8
+warning$ -- 0
+while$ -- 9
+width$ -- 3
+write$ -- 18
+is.kanji.str$ -- 0

@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{Yao2022ACL}
+Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.: Fantastically
+  Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order
+  Sensitivity,  {\it Proceedings of the 60th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, May 2022, pp.~
+  8086--8098.
+
+\bibitem{Nguyen2022MSR}
+Nguyen, N. and Nadi, S.: An Empirical Evaluation of GitHub Copilot's Code
+  Suggestions,  {\it Proceedings of the IEEE/ACM 19th International Conference
+  on Mining Software Repositories (MSR)}, 2022, pp.~ 1--5.
+
+\end{thebibliography}

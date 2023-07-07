@@ -1,0 +1,91 @@
+\documentclass[T,J]{fose} % 「コンピュータソフトウェア」用のクラスファイルは compsoft です．
+\taikai{2023} % 固定です．出版委員長が毎年変更してAuthor Kitを配布してください．
+
+\usepackage [dvipdfmx] {graphicx}
+
+% ユーザが定義したマクロなどはここに置く．ただし学会誌のスタイルの
+% 再定義は原則として避けること．
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{latexsym}
+\usepackage{paralist}
+\usepackage{listings, jvlisting}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{xurl}
+\usepackage{cite}
+\usepackage{subcaption}
+
+% 以下のマクロはサンプルファイル作成用のマクロです．不要であれば削除してください．
+
+\begin{document}
+
+% 論文のタイトル
+\title{GitHub Copilotを用いたコード推薦における\\入力言語の影響調査}
+\setetitle{Foundation of Software Engineering}
+\author{小柳 慶　野口 広太郎　近藤 将成　亀井 靖高　鵜林 尚靖
+%
+% ここにタイトル英訳 (英文の場合は和訳) を書く．
+% 英語タイトルは論文1ページ目左下，著者らの名前・所属一覧の一番上に表示される
+%
+% 上記\setetitle中で改行した場合は "\etitle" を削除し，改行(\\)を入れていないタイトルを記載してください．
+% \ejtitleは1ページ目左下に挿入されるタイトルとして使用されます．
+% また，"\etitle"はFOSE論文フォーマット独自のマクロです．
+\ejtitle{\etitle}
+%
+% ここに著者英文表記 および
+% 所属 (和文および英文) を書く．
+% 複数著者の所属はまとめてよい．
+%
+\shozoku{Kei Koyanagi}{九州大学}
+{Kyushu University}
+% 複数著者の所属は以下のようにまとめてよい．
+\shozoku{Kotaro Noguchi, Masanari Kondo, Yasutaka Kamei, Naoyasu Ubayashi}{九州大学}
+{Kyushu University}
+}
+
+%
+% 和文アブストラクト
+% In English paper, content of Jabstract will be ignored. 
+\Jabstract{%
+本稿はソフトウェア工学の基礎ワークショップのために，実践的IT教育シンポジウム rePiTの論文執筆キットおよび第29回ソフトウェア工学の基礎ワークショップの論文執筆キットを基に作成したものです．
+rePiTの論文執筆キットはそもそもソフトウェア科学会の論文執筆キットを基に作成したものです．
+具体的な変更箇所は\ref{sec:PaperStyle}章をご参照ください．}
+%
+% 英文アブストラクト（本サンプルの原論文にはなし）
+\Eabstract{
+This document has been prepared as a sample for FOSE(Foundation of Software Engineering) based on the Author Kit for rePiT and FOSE2022.
+The author kit for rePiT was originally based on author kit of JSSST Computer Software.
+The detail changes are written in Sec.\ref{sec:PaperStyle}
+}
+%
+\maketitle \thispagestyle {empty}
+{
+\input{section/intro.tex}
+\input{section/related_research.tex}
+\input{section/approach.tex}
+\input{section/result.tex}
+\input{section/discussion.tex}
+\input{section/threats.tex}
+\input{section/conclusion.tex}
+}
+
+\textbf{謝辞}
+本研究の一部は JSPS 科研費JP18H04097，JP20H04167，JP21H04877，JP22K17874，JP22K18630の助成を受けた.
+
+
+\bibliographystyle{jssst}
+\bibliography{references}
+
+\end{document}
+
