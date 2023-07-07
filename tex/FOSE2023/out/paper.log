@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  8 JUL 2023 00:12
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  8 JUL 2023 01:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -385,7 +385,12 @@ Overfull \hbox (6.67468pt too wide) in paragraph at lines 33--58
 [][]
  []
 
-) (./section/result.tex) (./section/discussion.tex) (./section/threats.tex) (./section/conclusion.tex [3])
+) (./section/result.tex
+Overfull \hbox (30.5326pt too wide) in paragraph at lines 14--15
+ [][] 
+ []
+
+) (./section/discussion.tex) (./section/threats.tex [3]) (./section/conclusion.tex)
 Overfull \hbox (17.23581pt too wide) in paragraph at lines 83--85
 \OT1/cmr/m/n/9 JP20H04167\JY1/mc/m/n/9 ， \OT1/cmr/m/n/9 JP21H04877\JY1/mc/m/n/9 ， \OT1/cmr/m/n/9 JP22K17874\JY1/mc/m/n/9 ， \OT1/cmr/m/n/9 JP22K18630
  []
@@ -397,12 +402,12 @@ LaTeX Font Info:    Font shape `JY1/mc/m/it' in size <8> not available
 (Font)              Font shape `JY1/mc/m/n' tried instead on input line 6.
 ) [4] (out/paper.aux) ) 
 Here is how much of TeX's memory you used:
- 5502 strings out of 479466
- 83594 string characters out of 5870549
- 404227 words of memory out of 5000000
- 23092 multiletter control sequences out of 15000+600000
+ 5504 strings out of 479466
+ 83619 string characters out of 5870549
+ 406227 words of memory out of 5000000
+ 23094 multiletter control sequences out of 15000+600000
  421552 words of font info for 102 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  69i,18n,77p,344b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/paper.dvi (4 pages, 32152 bytes).
+Output written on out/paper.dvi (4 pages, 32916 bytes).

@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex out/paper"] 1688742752 "out/paper.aux" "out/paper.bbl" "out/paper" 1688742797
+["bibtex out/paper"] 1688748052 "out/paper.aux" "out/paper.bbl" "out/paper" 1688748091
   "./jssst.bst" 1688709467 22413 877b0caef49902776cb5dc38fde8ee06 ""
-  "out/paper.aux" 1688742753 2311 7e005605da566572c51450827c736220 "latex"
+  "out/paper.aux" 1688748090 2463 1d686fe9f90c51e0d6afeb6c7e943185 "latex"
   "references.bib" 1688732405 948 facc0eb68bc6c27070cd9e8bcae6b965 ""
   (generated)
   "out/paper.bbl"
   "out/paper.blg"
-["dvipdf"] 1688742753 "out/paper.dvi" "out/paper.pdf" "out/paper" 1688742797
-  "out/paper.dvi" 1688742753 32152 ad441652f38e97700e1ec5b92a529265 "latex"
+["dvipdf"] 1688748090 "out/paper.dvi" "out/paper.pdf" "out/paper" 1688748091
+  "out/paper.dvi" 1688748090 32916 3a7691ea189b4a48ef125cd8a425c411 "latex"
   (generated)
   "out/paper.pdf"
-["latex"] 1688742752 "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/paper.tex" "out/paper.dvi" "paper" 1688742797
+["latex"] 1688748090 "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/paper.tex" "out/paper.dvi" "paper" 1688748091
   "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/paper.tex" 1688732749 3550 70b7da2fb4982d18aa875c20d4e5db24 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -97,17 +97,17 @@
   "fose.cls" 1688709467 155 56751d0d3820eeab5ea9ae2bbc3caf3d ""
   "fose.sty" 1688709467 83047 a73fffef5bb97ae3f94d9d153832123a ""
   "image/system.pdf" 1688742733 283750 a21cb5312cd688cdd4f20f6568d233c6 ""
-  "out/paper.aux" 1688742753 2311 7e005605da566572c51450827c736220 "latex"
-  "out/paper.bbl" 1688742752 627 a71128205fdec5e2eec22a2d941e41e8 "bibtex out/paper"
+  "out/paper.aux" 1688748090 2463 1d686fe9f90c51e0d6afeb6c7e943185 "latex"
+  "out/paper.bbl" 1688748052 627 a71128205fdec5e2eec22a2d941e41e8 "bibtex out/paper"
   "paper.tex" 1688732749 3550 70b7da2fb4982d18aa875c20d4e5db24 ""
-  "section/approach.tex" 1688742506 4964 70f8635d5189e9cbbc392ad0e2945a6d ""
+  "section/approach.tex" 1688743704 4997 2d5aba5be6471bf9cc0a49813afdf57d ""
   "section/conclusion.tex" 1688719489 574 56b1189b697ea12c7305a2f7584a4158 ""
   "section/discussion.tex" 1688732486 50 91518b6a406d904f594e2128c59afc23 ""
   "section/intro.tex" 1688728707 1871 f4062148c99ddd4806d7f715e34a9917 ""
   "section/related_research.tex" 1688732411 3657 01244230f33a1685b165d9d8a2ce2854 ""
-  "section/result.tex" 1688732501 117 cb972d4491094bd12308dbe96356fb1b ""
+  "section/result.tex" 1688748089 701 7789c4b76c0f99f94c871cc4ee467657 ""
   "section/threats.tex" 1688719489 1085 4dcb9024092dba6c45d4c05cf51ccc6a ""
   (generated)
-  "out/paper.aux"
   "out/paper.log"
   "out/paper.dvi"
+  "out/paper.aux"
