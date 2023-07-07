@@ -4,45 +4,49 @@ The top-level auxiliary file: out/paper.aux
 The style file: jssst.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
-You've used 2 entries,
+Warning--entry type for "AtCoder" isn't style-file defined
+--line 29 of file references.bib
+Warning--Missing required argument title in AtCoder
+You've used 3 entries,
             2588 wiz_defined-function locations,
-            586 strings with 5061 characters,
-and the built_in function-call counts, 1006 in all, are:
-= -- 82
-> -- 53
+            590 strings with 5181 characters,
+and the built_in function-call counts, 1193 in all, are:
+= -- 95
+> -- 61
 < -- 4
-+ -- 17
-- -- 14
-* -- 66
-:= -- 135
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 11
-chr.to.int$ -- 12
-cite$ -- 2
-duplicate$ -- 38
-empty$ -- 82
-format.name$ -- 21
-if$ -- 224
++ -- 20
+- -- 16
+* -- 75
+:= -- 164
+add.period$ -- 3
+call.type$ -- 3
+change.case$ -- 14
+chr.to.int$ -- 13
+cite$ -- 4
+duplicate$ -- 44
+empty$ -- 102
+format.name$ -- 24
+if$ -- 262
 int.to.chr$ -- 0
-int.to.str$ -- 2
+int.to.str$ -- 3
 missing$ -- 2
-newline$ -- 9
-num.names$ -- 4
-pop$ -- 15
+newline$ -- 12
+num.names$ -- 6
+pop$ -- 27
 preamble$ -- 1
-purify$ -- 23
+purify$ -- 27
 quote$ -- 0
-skip$ -- 52
+skip$ -- 59
 stack$ -- 0
-substring$ -- 63
+substring$ -- 68
 swap$ -- 18
 text.length$ -- 2
-text.prefix$ -- 12
+text.prefix$ -- 13
 top$ -- 0
-type$ -- 8
-warning$ -- 0
-while$ -- 9
-width$ -- 3
-write$ -- 18
+type$ -- 12
+warning$ -- 1
+while$ -- 11
+width$ -- 4
+write$ -- 23
 is.kanji.str$ -- 0
+(There were 2 warnings)

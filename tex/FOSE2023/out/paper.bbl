@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{AtCoder}
+{AtCoder}:
+  {https://atcoder.jp/contests/archive?ratedType=1&category=0&keyword=}{(Last
+  accessed 8 Jul 2023)}.
+
 \bibitem{Yao2022ACL}
 Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.: Fantastically
   Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order

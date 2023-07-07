@@ -32,7 +32,7 @@
 
 % 論文のタイトル
 \title{GitHub Copilotを用いたコード推薦における\\入力言語の影響調査}
-\setetitle{Foundation of Software Engineering}
+\setetitle{Investigation of the effect of input languages on code recommendation using GitHub Copilot}
 \author{小柳 慶　野口 広太郎　近藤 将成　亀井 靖高　鵜林 尚靖
 %
 % ここにタイトル英訳 (英文の場合は和訳) を書く．
@@ -57,16 +57,19 @@
 %
 % 和文アブストラクト
 % In English paper, content of Jabstract will be ignored. 
-\Jabstract{%
-本稿はソフトウェア工学の基礎ワークショップのために，実践的IT教育シンポジウム rePiTの論文執筆キットおよび第29回ソフトウェア工学の基礎ワークショップの論文執筆キットを基に作成したものです．
-rePiTの論文執筆キットはそもそもソフトウェア科学会の論文執筆キットを基に作成したものです．
-具体的な変更箇所は\ref{sec:PaperStyle}章をご参照ください．}
+\Jabstract{
+  近年，IT需要の拡大に伴って，開発効率の向上のために開発支援ツールを活用して開発が行われている．
+  その中の一つとして，2022年にGitHubが公開したGitHub Copilotがある．
+  GitHub Copilotは大規模言語モデルをベースとしたコード推薦ツールの一種であり，
+  使用を記述したコメントや，記述中のプログラムをもとに開発者に対してコードやライブラリを推薦する．
+  一方，大規模な事前学習済み言語モデルは，入力によって出力が大きく異なることが知られている．
+  そこで，本稿では，言語間のニュアンスの違いに着目し，入力言語の違いがCopilotの性能にどのような影響を与えるのか調査を行った．
+  調査の結果，入力言語の違いによってGitHub Copilotの性能に差が生じることが明らかになった．
+}
 %
 % 英文アブストラクト（本サンプルの原論文にはなし）
 \Eabstract{
-This document has been prepared as a sample for FOSE(Foundation of Software Engineering) based on the Author Kit for rePiT and FOSE2022.
-The author kit for rePiT was originally based on author kit of JSSST Computer Software.
-The detail changes are written in Sec.\ref{sec:PaperStyle}
+I will write English abstract here after the review of Japanese abstract.
 }
 %
 \maketitle \thispagestyle {empty}

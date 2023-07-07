@@ -113,6 +113,12 @@ if __name__ == '__main__':
             #problem_l = problem_l[544:]
         #print(problem_l)
         #problem_l = ['099_A', '099_B', '099_C', '099_D', '100_A', '100_B']
+        new = []
+        for problem in problem_l:
+            if 'A' in problem:
+                new.append(problem)
+        problem_l = new
+        
         for each_problem in problem_l:
             base_each_suggestion_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem)))
          

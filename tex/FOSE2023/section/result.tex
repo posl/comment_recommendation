@@ -1,15 +1,69 @@
 \section{結果\label{result}}
   \begin{table}[t]
     \centering
-    \caption{英語における正解率}
+    \caption{英語における$Accuracy$}
     \label{En_accuracy}
-    \scalebox{0.7}{
-    \begin{tabular}{c|c|c|c|c|c|c|c|c}
-      {} & \multicolumn{2}{c|}{A} & \multicolumn{2}{c|}{B} & \multicolumn{2}{c|}{C} & \multicolumn{2}{c}{D} \\
+    \scalebox{0.6}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+      \hline
+      {} & \multicolumn{2}{c|}{A} & \multicolumn{2}{c|}{B} & \multicolumn{2}{c|}{C} & \multicolumn{2}{c|}{D} \\
       \hline
       1 & 63.7 & 864/1357 & 51.0 & 860/1686 & 28.3 & 482/1702 & 10.4 & 172/1657 \\
       \hline
+      2 & 65.4 & 878/1343 & 50.5 & 858/1698 & 26.7 & 471/1761 & 10.0 & 182/1813 \\
+      \hline
+      3 & 63.6 & 856/1346 & 50.9 & 811/1594 & 26.6 & 438/1648 & 9.31 & 151/1622 \\
+      \hline
+      4 & 60.4 & 819/1355 & 51.6 & 842/1631 & 31.3 & 499/1596 & 11.0 & 167/1524 \\
+      \hline
+      5 & 60.4 & 831/1375 & 50.5 & 857/1698 & 31.1 & 552/1774 & 12.0 & 217/1812 \\
+      \hline
+      \end{tabular}
+    }
+  \end{table}
 
+  \begin{table}[t]
+    \centering
+    \caption{日本語における$Accuracy$}
+    \label{Ja_accuracy}
+    \scalebox{0.6}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+      \hline
+      {} & \multicolumn{2}{c|}{A} & \multicolumn{2}{c|}{B} & \multicolumn{2}{c|}{C} & \multicolumn{2}{c|}{D} \\
+      \hline
+      1 & 68.7 & 857/1248 & 52.8 & 872/1651 & 28.9 & 482/1668 & 10.0 & 170/1697 \\
+      \hline
+      2 & 67.4 & 840/1246 & 52.9 & 824/1559 & 28.4 & 454/1597 & 10.2 & 155/1526 \\
+      \hline
+      3 & 68.1 & 842/1237 & 54.3 & 879/1619 & 28.5 & 449/1577 & 11.0 & 153/1391 \\
+      \hline
+      4 & 68.4 & 860/1258 & 57.6 & 872/1515 & 33.1 & 439/1328 & 12.8 & 125/974 \\
+      \hline
+      5 & 68.0 & 849/1249 & 54.5 & 922/1693 & 32.7 & 592/1813 & 11.4 & 208/1832 \\
+      \hline
+      \end{tabular}
+    }
+  \end{table}
+  
+  \begin{table}[t]
+    \centering
+    \caption{中国語における$Accuracy$}
+    \label{Zh_accuracy}
+    \scalebox{0.6}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+      \hline
+      {} & \multicolumn{2}{c|}{A} & \multicolumn{2}{c|}{B} & \multicolumn{2}{c|}{C} & \multicolumn{2}{c|}{D} \\
+      \hline
+      1 & 52.8 & 758/1435 & 41.2 & 724/1756 & 23.2 & 415/1792 & 8.11 & 144/1775 \\
+      \hline
+      2 & 52.5 & 737/1403 & 44.0 & 749/1704 & 22.5 & 388/1724 & 8.00 & 138/1727 \\
+      \hline
+      3 & 52.1 & 747/1433 & 40.4 & 701/1734 & 23.4 & 420/1793 & 8.44 & 150/1777 \\
+      \hline
+      4 & 52.1 & 743/1426 & 42.3 & 736/1738 & 23.9 & 427/1789 & 8.99 & 158/1758 \\
+      \hline
+      5 & 52.2 & 756/1447 & 43.1 & 751/1744 & 22.6 & 406/1800 & 7.84 & 137/1748 \\
+      \hline
       \end{tabular}
     }
   \end{table}
@@ -18,6 +72,15 @@
   \begin{description}
     \item[\textbf{RQ}] \textbf{入力する言語の違いによって，Copilotの性能にどのような影響を与えるのか}
       \item[結果]
+      表\ref{En_accuracy}，表\ref{Ja_accuracy}，および表\ref{Zh_accuracy}は
+      それぞれ英語，日本語，および中国語における$Accuracy$を示したものである．
+      これらの表から，生成毎に$Accuracy$にばらつきが生じているため，Copilotが毎回異なるスクリプトを推薦していることがわかる．
+      また，推薦回数を重ねるほど$Accuracy$の値が単調に増加したり，減少したりすることはなかった．
+      表\ref{En_accuracy}より，英語のデータセットにおいて，A, C問題では最大5.0\%，B, D問題では最大2.7\%の差が生じている．
+      A, C問題の$Accuracy$の最大値に着目すると，推薦された全スクリプト数が5回のうち最も少なく，
+      A問題に関しては，全てのテストケースを通過したスクリプト数が5回のうち最も多かった．
+      このことから，推薦スクリプトを最大10個取得することで，かえって$Accuracy$が低下する可能性があることが考えられる．
+      
       
       
   \end{description}
