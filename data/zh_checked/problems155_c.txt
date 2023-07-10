@@ -19,45 +19,45 @@ S_N
 
 输入样本1
 7
-打
-兽医
-甜菜
-床
-兽医
-赌注
-甜菜
+beat
+vet
+beet
+bed
+vet
+bet
+beet
 
 样本输出1
-甜菜
-兽医
+beet
+vet
 beet和vet分别写在两张纸上，而beat、bed和bet则分别写在一张纸上。因此，我们应该打印beet和vet这两个字符串。
 
 输入样本2
 8
-水牛
-水牛
-水牛
-水牛
-水牛
-水牛
-水牛
-水牛
+buffalo
+buffalo
+buffalo
+buffalo
+buffalo
+buffalo
+buffalo
+buffalo
 
 样本输出2
-水牛
+buffalo
 
 样本输入3
 7
-低音
-低音
-踢球
-踢球
-低音
-踢球
-踢球
+bass
+bass
+kick
+kick
+bass
+kick
+kick
 
 样本输出3
-踢球
+kick
 
 采样输入4
 4
@@ -67,7 +67,7 @@ nichia
 kun
 
 样本输出4
-ushi
-tapu
-nichia
 kun
+nichia
+tapu
+ushi

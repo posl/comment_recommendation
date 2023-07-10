@@ -27,7 +27,7 @@ nyaan
 near
 
 样本输出2
-Near
+near
 S可能不包含一个连续的na。
 
 样本输入3

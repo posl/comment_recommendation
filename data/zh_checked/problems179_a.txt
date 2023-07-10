@@ -21,18 +21,18 @@ S
 apple
 
 样本输出 1
-apple
+apples
 apple以e结尾，所以它的复数形式是apples。
 
 样本输入2
 bus
 
 样本输出2
-bus
+buses
 bus以s结尾，所以它的复数形式是bus。
 
 样本输入3
-Box
+box
 
 样本输出3
-Box
+boxs
