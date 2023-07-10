@@ -4,12 +4,10 @@ The top-level auxiliary file: out/paper.aux
 The style file: jssst.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
-Warning--entry type for "AtCoder" isn't style-file defined
---line 29 of file references.bib
 Warning--Missing required argument title in AtCoder
 You've used 3 entries,
             2588 wiz_defined-function locations,
-            590 strings with 5181 characters,
+            589 strings with 5169 characters,
 and the built_in function-call counts, 1193 in all, are:
 = -- 95
 > -- 61
@@ -49,4 +47,4 @@ while$ -- 11
 width$ -- 4
 write$ -- 23
 is.kanji.str$ -- 0
-(There were 2 warnings)
+(There was 1 warning)

@@ -1,9 +1,9 @@
 \begin{thebibliography}{1}
 
 \bibitem{AtCoder}
-{AtCoder}:
-  {https://atcoder.jp/contests/archive?ratedType=1&category=0&keyword=}{(Last
-  accessed 8 Jul 2023)}.
+AtCoder:
+  \url{https://atcoder.jp/contests/archive?ratedType=1&category=0&keyword=}
+  [Accessed: 2023-7-8].
 
 \bibitem{Yao2022ACL}
 Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.: Fantastically
