@@ -79,7 +79,7 @@ if __name__ == '__main__':
     times = input() + '_time'
     language_l = []
     while True:
-        print('input language (en, ja, zh, or end)')
+        print('input language (en, ja, zh, zh_mod, or end)')
         language = input()
         if language == 'end':
             break
@@ -113,11 +113,23 @@ if __name__ == '__main__':
             #problem_l = problem_l[544:]
         #print(problem_l)
         #problem_l = ['099_A', '099_B', '099_C', '099_D', '100_A', '100_B']
+        if language == 'zh_mod':
+            problem_l = ['112_a', '115_a', '117_b', '119_a', '123_a', '141_a', '147_a', '150_a', '154_a', '154_c',  
+                         '155_a', '155_c', '159_b', '161_b', '162_a', '162_d', '164_a', '164_b', '164_c', '179_a', 
+                         '181_a', '181_d', '187_c', '190_a', '200_d', '201_d', '210_b', '212_a', '215_a', '218_a', 
+                         '219_a', '237_a', '238_a', '239_c', '239_d', '245_a', '249_a', '253_a', '261_b', '264_b', 
+                         '267_a', '283_d', '284_b', '284_d', '286_b']
+            for i in range(len(problem_l)):
+                problem_l[i] = problem_l[i].upper()
+        
+        '''
         new = []
         for problem in problem_l:
             if 'A' in problem:
                 new.append(problem)
         problem_l = new
+        '''
+    
         
         for each_problem in problem_l:
             base_each_suggestion_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem)))
