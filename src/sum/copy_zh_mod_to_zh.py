@@ -2,6 +2,7 @@ import shutil
 import os
 
 if __name__ == '__main__':
+    print('input times')
     times = input() + '_time'
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     path = '/result/accuracy/each/{0}/zh_mod/'.format(times)
