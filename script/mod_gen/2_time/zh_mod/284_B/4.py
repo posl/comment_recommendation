@@ -1,0 +1,8 @@
+def solution1():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+
+if __name__ == '__main__':
+    solution1()

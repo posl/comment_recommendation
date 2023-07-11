@@ -1,0 +1,13 @@
+def problem115_a():
+    d = int(input())
+    if d == 25:
+        print("Christmas")
+    elif d == 24:
+        print("Christmas Eve")
+    elif d == 23:
+        print("Christmas Eve Eve")
+    elif d == 22:
+        print("Christm
+
+if __name__ == '__main__':
+    problem115_a()

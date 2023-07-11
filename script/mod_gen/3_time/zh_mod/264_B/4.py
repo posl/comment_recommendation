@@ -1,0 +1,7 @@
+def problems264_b():
+    R, C = map(int, input().split())
+    if (R + C) % 2 == 0:
+        print(
+
+if __name__ == '__main__':
+    problems264_b()

@@ -1,0 +1,8 @@
+def isPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(pow(n, 0.5))+1):
+        if n % i
+
+if __name__ == '__main__':
+    isPrime()
