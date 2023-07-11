@@ -24,8 +24,15 @@ def main(read_path, write_path):
 if __name__ == '__main__':
     print('input times')
     time = input() + '_time'
+    language_l = []
+    while True:
+        print('input language (en, ja, zh, zh_mod or end)')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
 
-    for language in ['en', 'ja', 'zh']:
+    for language in language_l:
     #for language in ['zh']:
         base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)
         result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/'.format(time, language)

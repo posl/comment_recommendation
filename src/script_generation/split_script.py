@@ -21,15 +21,23 @@ if __name__ == '__main__':
     #which_close = 'test_close_app'
     print('input times')
     time = input() + '_time'
+    language_l = []
+    while True:
+        print('input language (en, ja, zh, zh_mod or end)')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
 
-    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/post_gen/{0}/'.format(time)
-    files_l = os.listdir(base_path + 'en')
-    files_l = sorted(files_l)
+    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
 
-    for language in ['en', 'ja', 'zh']:
+    for language in language_l:
         
-        base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/post_gen/{0}/{1}/'.format(time, language)
-        result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)
+        base_path = '{0}/script/post_gen/{1}/{2}/'.format(base_path, time, language)
+        result_path = '{0}/script/split_gen/{1}/{2}/'.format(base_path, time, language)
+
+        files_l = os.listdir(base_path)
+        files_l = sorted(files_l)
 
         if os.path.exists(result_path + language + '_errors.txt'):
             os.remove(result_path + language + '_errors.txt')
