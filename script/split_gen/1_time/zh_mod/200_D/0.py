@@ -1,0 +1,2 @@
+def judge(A):
+    for

@@ -1,0 +1,2 @@
+def getSum(a):
+    sum =

@@ -33,10 +33,10 @@ if __name__ == '__main__':
 
     for language in language_l:
         
-        base_path = '{0}/script/post_gen/{1}/{2}/'.format(base_path, time, language)
+        script_path = '{0}/script/post_gen/{1}/{2}/'.format(base_path, time, language)
         result_path = '{0}/script/split_gen/{1}/{2}/'.format(base_path, time, language)
 
-        files_l = os.listdir(base_path)
+        files_l = os.listdir(script_path)
         files_l = sorted(files_l)
 
         if os.path.exists(result_path + language + '_errors.txt'):
@@ -54,7 +54,7 @@ if __name__ == '__main__':
             difficulty = (file.split('problems')[1].split('.py')[0]).upper()
             new_dir_path = result_path + difficulty + '/'
             os.mkdir(new_dir_path)
-            with open(base_path + file, 'r') as f:
+            with open(script_path + file, 'r') as f:
                 try:
                     for i in range(4):
                         next(f)
