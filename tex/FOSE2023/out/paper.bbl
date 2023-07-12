@@ -5,6 +5,11 @@ AtCoder:
   \url{https://atcoder.jp/contests/archive?ratedType=1&category=0&keyword=}
   [Accessed: 2023-7-8].
 
+\bibitem{Dakhel2022arXiv}
+Dakhel, A.~M., Majdinasab, V., Nikanjam, A., Khomh, F., Desmarais, M.~C., Ming,
+  Z., and Jiang: GitHub Copilot AI pair programmer: Asset or Liability?, {\it
+  arXiv e-prints}, (2022).
+
 \bibitem{Yao2022ACL}
 Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.: Fantastically
   Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order
@@ -16,5 +21,18 @@ Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.: Fantastically
 Nguyen, N. and Nadi, S.: An Empirical Evaluation of GitHub Copilot's Code
   Suggestions,  {\it Proceedings of the IEEE/ACM 19th International Conference
   on Mining Software Repositories (MSR)}, 2022, pp.~ 1--5.
+
+\bibitem{Sobania2022GECCO}
+Sobania, D., Briesch, M., and Rothlauf, F.: Choose Your Programming Copilot: A
+  Comparison of the Program Synthesis Performance of Github Copilot and Genetic
+  Programming,  {\it Proceedings of the Genetic and Evolutionary Computation
+  Conference}, New York, NY, USA, Association for Computing Machinery, 2022,
+  pp.~ 1019^^e2^^80^^931027.
+
+\bibitem{Vaithilingam2022CHI}
+Vaithilingam, P., Zhang, T., and Glassman, E.~L.: Expectation vs. Experience:
+  Evaluating the Usability of Code Generation Tools Powered by Large Language
+  Models,  {\it Extended Abstracts of the 2022 CHI Conference on Human Factors
+  in Computing Systems}, Association for Computing Machinery, 2022.
 
 \end{thebibliography}

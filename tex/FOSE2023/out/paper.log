@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  12 JUL 2023 10:54
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  12 JUL 2023 20:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -430,10 +430,10 @@ File: image/system.pdf Graphic file (type pdf)
 <image/system.pdf>
 [2]
 
-LaTeX Warning: \verb may be unreliable inside tabularx on input line 55.
+LaTeX Warning: \verb may be unreliable inside tabularx on input line 64.
 
 
-Overfull \hbox (6.67538pt too wide) in paragraph at lines 33--58
+Overfull \hbox (6.67538pt too wide) in paragraph at lines 33--67
 [][]
  []
 
@@ -444,17 +444,32 @@ Overfull \hbox (10.43166pt too wide) in paragraph at lines 90--91
 
 (out/paper.bbl
 LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
-(Font)              No change on input line 11.
+(Font)              No change on input line 10.
 LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
-(Font)              No change on input line 17.
-) [5] (out/paper.aux) ) 
+(Font)              No change on input line 16.
+LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
+(Font)              No change on input line 22.
+LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
+(Font)              No change on input line 28.
+LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
+(Font)              No change on input line 35.
+[5])
+Overfull \vbox (2.48956pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (1.48956pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (0.48956pt too high) has occurred while \output is active []
+
+[6] (out/paper.aux) ) 
 Here is how much of TeX's memory you used:
- 7242 strings out of 479466
- 104530 string characters out of 5870549
- 443903 words of memory out of 5000000
- 24824 multiletter control sequences out of 15000+600000
+ 7245 strings out of 479466
+ 104586 string characters out of 5870549
+ 439912 words of memory out of 5000000
+ 24827 multiletter control sequences out of 15000+600000
  420285 words of font info for 108 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  69i,18n,77p,366b,1023s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/paper.dvi (5 pages, 45968 bytes).
+Output written on out/paper.dvi (6 pages, 50156 bytes).

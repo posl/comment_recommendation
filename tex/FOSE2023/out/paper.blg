@@ -5,46 +5,48 @@ The style file: jssst.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
 Warning--Missing required argument title in AtCoder
-You've used 3 entries,
+Warning--there's no number and/or volumeDakhel2022arXiv
+Warning--Missing required argument pages in Dakhel2022arXiv
+You've used 6 entries,
             2588 wiz_defined-function locations,
-            589 strings with 5169 characters,
-and the built_in function-call counts, 1193 in all, are:
-= -- 95
-> -- 61
-< -- 4
-+ -- 20
-- -- 16
-* -- 75
-:= -- 164
-add.period$ -- 3
-call.type$ -- 3
-change.case$ -- 14
-chr.to.int$ -- 13
-cite$ -- 4
-duplicate$ -- 44
-empty$ -- 102
-format.name$ -- 24
-if$ -- 262
+            607 strings with 6041 characters,
+and the built_in function-call counts, 2702 in all, are:
+= -- 227
+> -- 153
+< -- 8
++ -- 49
+- -- 42
+* -- 165
+:= -- 355
+add.period$ -- 6
+call.type$ -- 6
+change.case$ -- 33
+chr.to.int$ -- 31
+cite$ -- 9
+duplicate$ -- 114
+empty$ -- 202
+format.name$ -- 63
+if$ -- 604
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 2
-newline$ -- 12
-num.names$ -- 6
-pop$ -- 27
+int.to.str$ -- 6
+missing$ -- 5
+newline$ -- 21
+num.names$ -- 12
+pop$ -- 48
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 64
 quote$ -- 0
-skip$ -- 59
+skip$ -- 159
 stack$ -- 0
-substring$ -- 68
-swap$ -- 18
-text.length$ -- 2
-text.prefix$ -- 13
+substring$ -- 123
+swap$ -- 62
+text.length$ -- 3
+text.prefix$ -- 31
 top$ -- 0
-type$ -- 12
-warning$ -- 1
-while$ -- 11
-width$ -- 4
-write$ -- 23
+type$ -- 24
+warning$ -- 3
+while$ -- 18
+width$ -- 7
+write$ -- 48
 is.kanji.str$ -- 0
-(There was 1 warning)
+(There were 3 warnings)
