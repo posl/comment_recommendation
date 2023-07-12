@@ -20,7 +20,12 @@ class Sum_each_accuracy:
                 df = main_df[main_df['difficulty'] == difficulty]
                 pass_num = len(df[df['accuracy'] == 1])
                 total_num = len(df)
-                each_result_l = [problem_number, pass_num, total_num]
+                if (pass_num == total_num) and (pass_num != 0):
+                    each_result_l = [problem_number, pass_num, total_num, 1]
+                elif pass_num == 0:
+                    each_result_l = [problem_number, pass_num, total_num, 0]
+                else:
+                    each_result_l = [problem_number, pass_num, total_num]
                 all_result_l[i].append(each_result_l)
             print(each_result) 
         return all_result_l
