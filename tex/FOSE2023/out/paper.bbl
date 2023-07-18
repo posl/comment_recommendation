@@ -10,6 +10,10 @@ Dakhel, A.~M., Majdinasab, V., Nikanjam, A., Khomh, F., Desmarais, M.~C., Ming,
   Z., and Jiang: GitHub Copilot AI pair programmer: Asset or Liability?, {\it
   arXiv e-prints}, (2022).
 
+\bibitem{Ethnologue}
+Ethnologue: \url{https://www.ethnologue.com/browse/names/} [Accessed:
+  2023-7-8].
+
 \bibitem{Yao2022ACL}
 Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.: Fantastically
   Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order
@@ -32,7 +36,7 @@ Sobania, D., Briesch, M., and Rothlauf, F.: Choose Your Programming Copilot: A
 \bibitem{Vaithilingam2022CHI}
 Vaithilingam, P., Zhang, T., and Glassman, E.~L.: Expectation vs. Experience:
   Evaluating the Usability of Code Generation Tools Powered by Large Language
-  Models,  {\it Extended Abstracts of the 2022 CHI Conference on Human Factors
-  in Computing Systems}, Association for Computing Machinery, 2022.
+  Models,  {\it Proceedings of the 2022 CHI Conference on Human Factors in
+  Computing Systems}, Association for Computing Machinery, 2022.
 
 \end{thebibliography}
