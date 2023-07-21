@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  18 JUL 2023 18:33
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  21 JUL 2023 15:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -379,6 +379,11 @@ LaTeX Font Info:    Font shape `JT1/utfj/m/6' will be
 (Font)              scaled to size 13.85594pt on input line 78.
 LaTeX Font Info:    Font shape `JY1/utfj/m/6' will be
 (Font)              scaled to size 13.85594pt on input line 78.
+
+Overfull \hbox (6.54707pt too wide) in paragraph at lines 78--78
+ [][]  
+ []
+
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
 (Font)              scaled to size 7.69775pt on input line 78.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
@@ -442,22 +447,7 @@ Overfull \hbox (6.67538pt too wide) in paragraph at lines 33--69
 [][] 
  []
 
-) (./section/result.tex [3]) (./section/discussion.tex [4]
-
-Package caption Warning: \label without proper reference on input line 33.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `recommend_212_A_en' on page 5 undefined on input line 71.
-
-
-Package caption Warning: \label without proper reference on input line 33.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `recommend_212_A_en' on page 5 undefined on input line 72.
-
-) (./section/threats.tex [5]) (./section/conclusion.tex) (out/paper.bbl
+) (./section/result.tex [3]) (./section/discussion.tex [4] [5]) (./section/threats.tex) (./section/conclusion.tex) (out/paper.bbl
 LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
 (Font)              No change on input line 10.
 LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
@@ -470,12 +460,12 @@ LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
 (Font)              No change on input line 39.
 ) [6] (out/paper.aux) ) 
 Here is how much of TeX's memory you used:
- 7248 strings out of 479466
- 104628 string characters out of 5870549
- 442962 words of memory out of 5000000
- 24830 multiletter control sequences out of 15000+600000
+ 7250 strings out of 479466
+ 104653 string characters out of 5870549
+ 444945 words of memory out of 5000000
+ 24832 multiletter control sequences out of 15000+600000
  420285 words of font info for 108 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  69i,16n,77p,366b,1023s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/paper.dvi (6 pages, 54096 bytes).
+Output written on out/paper.dvi (6 pages, 56116 bytes).
