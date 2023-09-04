@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  21 JUL 2023 15:30
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  1 SEP 2023 15:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -462,10 +462,10 @@ LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
 Here is how much of TeX's memory you used:
  7250 strings out of 479466
  104653 string characters out of 5870549
- 444945 words of memory out of 5000000
+ 445945 words of memory out of 5000000
  24832 multiletter control sequences out of 15000+600000
  420285 words of font info for 108 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  69i,16n,77p,366b,1023s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/paper.dvi (6 pages, 56116 bytes).
+Output written on out/paper.dvi (6 pages, 56128 bytes).
