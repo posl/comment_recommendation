@@ -493,10 +493,10 @@ INPUT ./section/approach.tex
 INPUT section/approach.tex
 INPUT ./section/approach.tex
 INPUT section/approach.tex
-INPUT ./image/system.pdf
-INPUT ./image/system.pdf
-INPUT image/system.pdf
-INPUT extractbb -B cropbox -O image/system.pdf
+INPUT ./image/system.jpg
+INPUT ./image/system.jpg
+INPUT image/system.jpg
+INPUT extractbb -B cropbox -O image/system.jpg
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
