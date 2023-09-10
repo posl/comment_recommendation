@@ -1,0 +1,31 @@
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.4.7)  5 SEP 2023 08:04
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/pre_section/pre_paper.tex
+(/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/pre_section/pre_paper.tex
+pLaTeX2e <2020-10-01>+2 (based on LaTeX2e <2020-10-01> patch level 4)
+L3 programming layer <2021-02-18>
+
+! LaTeX Error: File `fose.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/pre_section/pre_paper.tex:2: Emergency stop.
+<read *> 
+         
+l.2 \taikai
+           {2023} % 固定です．出版委員長が毎年変更してAuthor Kitを配布してく... 
+Here is how much of TeX's memory you used:
+ 24 strings out of 479466
+ 591 string characters out of 5870549
+ 289230 words of memory out of 5000000
+ 17816 multiletter control sequences out of 15000+600000
+ 407301 words of font info for 44 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 32i,0n,39p,215b,13s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+No pages of output.
