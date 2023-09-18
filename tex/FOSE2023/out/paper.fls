@@ -505,10 +505,6 @@ INPUT ./section/result.tex
 INPUT section/result.tex
 INPUT ./section/result.tex
 INPUT section/result.tex
-INPUT ./section/problem.tex
-INPUT section/problem.tex
-INPUT ./section/problem.tex
-INPUT section/problem.tex
 INPUT ./section/discussion.tex
 INPUT section/discussion.tex
 INPUT ./section/discussion.tex
