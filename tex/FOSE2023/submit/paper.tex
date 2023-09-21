@@ -1,0 +1,97 @@
+\documentclass[T,J]{fose} % 「コンピュータソフトウェア」用のクラスファイルは compsoft です．
+\taikai{2023} % 固定です．出版委員長が毎年変更してAuthor Kitを配布してください．
+
+\usepackage [dvipdfmx] {graphicx}
+
+% ユーザが定義したマクロなどはここに置く．ただし学会誌のスタイルの
+% 再定義は原則として避けること．
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{latexsym}
+\usepackage{paralist}
+\usepackage{listings, jvlisting}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{xurl}
+\usepackage{cite}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{otf}
+
+% 以下のマクロはサンプルファイル作成用のマクロです．不要であれば削除してください．
+
+\begin{document}
+
+% 論文のタイトル
+\title{GitHub Copilotを用いたコード推薦における\\入力言語の影響調査}
+\setetitle{Investigation of the effect of input languages on code recommendation using GitHub Copilot}
+\author{小\UTF{6801} 慶　野口 広太郎　王 棟　近藤 将成　亀井 靖高　鵜林 尚靖
+%
+% ここにタイトル英訳 (英文の場合は和訳) を書く．
+% 英語タイトルは論文1ページ目左下，著者らの名前・所属一覧の一番上に表示される
+%
+% 上記\setetitle中で改行した場合は "\etitle" を削除し，改行(\\)を入れていないタイトルを記載してください．
+% \ejtitleは1ページ目左下に挿入されるタイトルとして使用されます．
+% また，"\etitle"はFOSE論文フォーマット独自のマクロです．
+\ejtitle{\etitle}
+%
+% ここに著者英文表記 および
+% 所属 (和文および英文) を書く．
+% 複数著者の所属はまとめてよい．
+%
+\shozoku{Kei Koyanagi}{九州大学}
+{Kyushu University}
+% 複数著者の所属は以下のようにまとめてよい．
+\shozoku{Kotaro Noguchi, Dong Wang, Masanari Kondo, Yasutaka Kamei, Naoyasu Ubayashi}{九州大学}
+{Kyushu University}
+}
+
+%
+% 和文アブストラクト
+% In English paper, content of Jabstract will be ignored. 
+\Jabstract{
+  近年，IT需要の拡大に伴って，開発効率向上のため，開発支援ツールを活用して開発が行われている．
+  その中の一つとして，2022年にGitHubが公開したGitHub Copilotがある．
+  GitHub Copilotは大規模言語モデルをベースとしたコード推薦ツールの一種であり，
+  仕様を記述したコメントや，記述中のプログラムをもとに開発者に対してコードやライブラリを推薦する．
+  一方，大規模な事前学習済み言語モデルは，入力によって出力が大きく異なることが知られている．
+  そこで，本稿では，言語間の学習データ量の違いに着目し，入力言語の違いがCopilotの性能にどのような影響を与えるのか調査を行った．
+  調査の結果，入力言語の違いによってGitHub Copilotの性能に差が生じることが明らかになった．
+  また，調査結果によって明らかとなった大規模言語モデルに対する問題点を示す．
+}
+%
+% 英文アブストラクト（本サンプルの原論文にはなし）
+%\Eabstract{
+%I will write English abstract here after the review of Japanese abstract.
+%}
+%
+\maketitle \thispagestyle {empty}
+{
+\input{section/intro.tex}
+\input{section/related_research.tex}
+\input{section/approach.tex}
+\input{section/result.tex}
+\input{section/discussion.tex}
+\input{section/conclusion.tex}
+}
+
+\textbf{謝辞}
+
+本研究の一部は JSPS 科研費JP20H04167，JP21H04877，JP22K17874，JP22K18630の助成を受けた.
+
+
+\bibliographystyle{jssst}
+\bibliography{references}
+
+\end{document}
+

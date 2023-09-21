@@ -1,0 +1,2286 @@
+% fose.sty     2023-03-22 by Kenji Fujiwara 
+% compsoft.sty 2017-01-07 bug fixed
+% compsoft.sty 2011-12-15 bug fixed by Hideya IWASAKI 
+% compsoft.sty 2011-11-15 bug fixed by Hideya IWASAKI 
+% compsoft.sty 2011-09-12 by Hideya IWASAKI
+% compsoft.sty 2009-06-27 by Hideya IWASAKI
+% compsoft.sty last updated 2007-08-17 by Kazunori UEDA
+% compsoft.sty ASCII-version modified 25-March-92 by N. YAMANOUCHI
+% compsoft.sty 22-April-92 by Yasuki SAITO
+% compsoft.sty 18-July-90 by Hideki ISOZAKI 
+% j-article.sty 10-Feb-89 from report.sty 16-Mar-88
+
+\newif\ifASCII \ASCIIfalse
+\ifx\jintercharskip\undefined\ASCIItrue\fi
+\newif\if@LaTeX@e \@LaTeX@efalse                                % 1.06(1)
+\newif\if@LaTeX@eN \@LaTeX@eNfalse                              % 2.00(1)
+\def\@tempa{LaTeX2e}                                            % 1.06(1)
+\ifx\fmtname\@tempa \@LaTeX@etrue                               % 1.06(1)
+\ifx\xpt\undefined \@LaTeX@eNtrue \fi\fi                        % 2.00(1)
+
+\newif\if@hissha \@hisshafalse
+
+\expandafter\ifx\csname ver@jssst.cls\endcsname\relax
+\typeout{Document Style `compsoft' ascii version <23 Mar 92>.}
+\fi
+
+\if@LaTeX@e
+\newdimen\@maxsep
+\newdimen\@dblmaxsep
+\fi
+
+\def\ds@twoside{\@twosidetrue \@mparswitchtrue}
+\def\ds@draft{\overfullrule5pt} 
+
+%\@options
+% you must do this at the end, at least after def's of \ds@... for
+% various \@maketitle
+
+\ds@twoside
+
+\if@LaTeX@e                                                     % 2.00(8)>>
+\if@LaTeX@eN
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\DeclareRobustCommand*{\cal}{\@fontswitch{\relax}{\mathcal}}
+\DeclareRobustCommand*{\mit}{\@fontswitch{\relax}{\mathnormal}}
+\ifASCII
+\DeclareOldFontCommand{\mc}{\normalfont\mcfamily}{\mathmc}
+\DeclareOldFontCommand{\gt}{\normalfont\gtfamily}{\mathgt}
+\fi\fi
+\ifASCII
+\def\dm{\mc}
+\def\dg{\gt}
+\fi\fi                                                          % 2.00(8)<<
+
+\ifASCII
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ascii-jtex.sty  modified on 2/6/92 by N. Yamanouchi 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ascii-jtex.sty        prepared by N. Yamanouchi (IBM/TRL) 12/04/91
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This style file is intended to absorb the difference between NTT
+% JTex and ASCII JTeX for JSSST journal style files ``compsoft.sty''
+% and ``compsoft9.sty''.  The original information comes from the
+% work of S. Tomura in ETL (marked as ST).
+%
+
+%
+%dskfonts.sty begins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% dskfonts.sty modified on 6 Feb 92 by N. Yamanouchi
+% dskfonts.sty prepared by N. Yamanouchi
+%
+%% dskfonts.sty is based on skfonts.sty.
+%% skfonts.sty is for adjusting NTT-version of JSSST style file to
+%% ASCII JTeX environment.  skfonts.sty defines all CTS fonts, while
+%% dskfonts.sty substitutes the fonts by regular fonts like min10/goth10.
+
+%% Ｑ数系のためのふたつのユニット
+\newdimen \JQ	\JQ .259817mm	%%%	\JQ/\Q = 10pt/9.62216pt
+\newdimen \Q	\Q  .25mm	%%%	Quarter of 1mm
+
+%% ベースラインスキップの値．
+%% デフォルト値は21.5Q，Eronbun, Etokushuronbunでは17.5Q
+%% に切り替える．
+\newdimen\@Baseline
+\@Baseline=21.5\Q
+
+
+% フォントの再定義
+% まず和文：
+%\font\sevmin	skhmnlaa at 8.5\JQ 	% 8.5Q 本蘭明朝 LHM
+\font\sevmin	min10 at 8.5\JQ 	% 8.5Q min10で仮想的に出力
+%\font\sevgt	skgotoaa at 8.5\JQ	% 8.5Q 中太ゴシック DG-KL
+\font\sevgt	goth10 at 8.5\JQ	% 8.5Q goth10で仮想的に出力
+% \font\egtmin	skhmnlaa at 10\JQ 	% 10Q 本蘭明朝 LHM
+\font\egtmin	min10 at 10\JQ	 	% 10Q min10で仮想的に出力
+% \font\egtgt	skgotoaa at 10\JQ	% 10Q 中太ゴシック DG-KL
+\font\egtgt	goth10 at 10\JQ		% 10Q goth10で仮想的に出力
+%\font\ninmin	skhmnlaa at 11.5\JQ	% 11.5Q 本蘭明朝 LHM
+\font\ninmin	min10 at 11.5\JQ	% 11.5Q min10で仮想的に出力
+%\font\ningt	skgotoaa at 11.5\JQ	% 11.5Q 中太ゴシック DG-KL
+\font\ningt	goth10 at 11.5\JQ	% 11.5Q goth10で仮想的に出力
+%\font\tenmin	skhmnlaa at 13\JQ	% 13Q 本蘭明朝 LHM
+\font\tenmin	min10 at 13\JQ		% 13Q min10で仮想的に出力
+%\font\tengt	skgotoaa at 13\JQ	% 13Q 中太ゴシック DG-KL
+\font\tengt	goth10 at 13\JQ		% 13Q goth10で仮想的に出力
+
+%\font\twlvgona	sknagoaa at 16\JQ	% 16Q ゴナＤ for 「チュートリアル」
+\font\twlvgona	goth10 at 16\JQ	% 20Q min10で仮想的に出力 for「チュートリアル」
+
+% \font\svtnmin	skminsaa at 20\JQ	% 20Q 太明朝 for author
+\font\svtnmin	min10 at 20\JQ	% 20Q min10で仮想的に出力 for author
+
+% \font\twtygt	skgotsaa at 28\JQ	% 28Q 太ゴシック for title
+\font\twtygt	goth10 at 28\JQ	% 28Q goth10で仮想的に出力 for title
+
+% 続いて欧文：
+%   プレロードされてるローマンフォントは数式の \textfont0 としても
+%   使われるため、別名称でロードしてサイズ環境を操作するのが無難か？
+%%\font\egtrm	secntmm	at 10\Q
+%%\font\ninrm	secntmm	at 11.5\Q
+%%\font\tenrm	secntmm at 13\Q
+
+%%\font\egtit	secntmmi at 10\Q
+%%\font\ninit	secntmmi at 11.5\Q
+%%\font\tenit	secntmmi at 13\Q
+
+%%\font\egtbf	secntqm	at 10\Q
+%%\font\ninbf	secntqm	at 11.5\Q
+%%\font\tenbf	secntqm	at 13\Q
+
+%%\font\titleb	sebdnqm at 28\Q		% タイトル用ボドニボールド
+\font\titleb	min10 at 28\Q		% タイトル用ボドニボールド
+
+% 版面天地とパラメータの設定
+%
+% \textheight
+%    = \topskip + \baselineskip * 39 lines
+%    = 12Q      + 21.5Q         * 39 lines
+%    = 850.5Q
+
+\headsep	15\Q		% 正確な値ではない
+\topskip	12\Q		% 12Q より高い行はベースラインがずれる
+\baselineskip	\@Baseline		% 11.5Q 行間 10Q
+\lineskip	0pt
+\lineskiplimit	0pt
+
+\textheight	850.89\Q	% 850.5Q (21.5Q * 39line + \topskip) の
+				% はずだが 40 行入らないため、すこしずつ
+				% 増やしてこの値になった
+
+\maxdepth	5\Q		%
+
+%TI%% We don't need foot* because we don't use footer
+%TI%\footskip	0pt
+%TI%\footheight	0pt
+
+\parindent1zw
+
+%\parskip	0pt plus.001\Q	% すべてのパラメータが決定できたら
+				% パラグラフ間にわずかの自由度を置きたい。
+				% テスト中は自由度はないほうがいい。
+
+\kanjiskip 0pt plus .1zw minus 0.05zw
+				% 和文文字間は比較的自由度が大きい
+
+%\overfullrule	10pt		% 悪い部分は目立たせて直す
+
+%
+% 一部のマクロの再定義
+%
+
+% \def\@maketitle{\newpage \null
+%  \vbox to 235.2\Q{		%% 計算では 236.5Q のはずだが、、、
+%  \begin{flushleft}
+%   \rule{\textwidth}{1mm}%
+%   \vskip.7cm
+%   {\titleb\hskip 6.5mm
+%   \twtygt\@title\kanjiskip -3mm plus0mm minus0mm % 詰めたいのに詰らない、、、
+%   }
+%   \vskip.7cm
+%   \huge\hskip 6.5mm
+%   \begin{tabular}[t]{@{}l}\@author\end{tabular}
+%  \end{flushleft}
+%  \par
+%  \vss
+%  \hrule	% height0pt		%% 体裁が決まったら 0pt にする
+%  }}
+
+% \long\def\@makecaption#1#2{  %% \vskip 10pt
+% \setbox\@tempboxa\hbox{\small\bf\egtbf\egtgt~~#1~~#2~~}
+%   \ifdim \wd\@tempboxa >\hsize 
+%     {\small\bf\egtbf\egtgt\setlength{\baselineskip}{12pt}
+%        \newbox\@tempboxb \setbox\@tempboxb\hbox{#1~~}
+%        \leftskip=15pt \hangindent=\wd\@tempboxb #1~~#2\par}
+%   \else \hbox to\hsize{\hfil\box\@tempboxa\hfil} 
+%  \fi}
+
+% \def\section{\@startsection{section}{1}{0\jspaceskip}
+%  {8\Q plus.1\Q minus.1\Q}	% 上部グルー (経験値)
+%  {1.6\Q plus.1\Q minus.1\Q}	% 下部グルー
+%  {\vrule width	.4pt		%% 体裁が決まったら 0pt にする。
+% 	 height	30\Q		%% ページ頭で \topskip に届くように。
+% 	 depth	14\Q		%% 本文の 1 行目に接するように。
+%   \font@s}}
+% 
+% \def\subsection{\@startsection{subsection}{2}{\jspaceskip}
+%  {1\baselineskip plus.1\Q minus.1\Q}
+%  {0.1\Q plus.1\Q minus.1\Q}
+%  {\font@ss}}
+
+%TI%\pagestyle{headings}
+\flushbottom			% ページ下端をそろえる
+%dskfonts.sty ends %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------
+% ``dskfonts.sty' uses CM and min** fonts for preminary printing.
+% For production-run, use ``skfonts.sty'' instead of ``dskfonts.sty''.
+%---------------------------
+
+\let\sevendm=\sevmin                                    %ST
+\let\sevendg=\sevgt                                     %ST
+\let\eightdm=\egtmin                                    %ST
+\let\eightdg=\egtgt                                     %ST
+\let\ninedm=\ninmin                                     %ST
+\let\ninedg=\ningt                                      %ST
+\let\gona=\twlvgona             % N. Yamanouchi for 「チュートリアル」
+
+\if@LaTeX@e\else
+\def\dm{\mc}\def\pdm{\pmc}                                      %ST
+\def\dg{\gt}\def\pdg{\pgt}                                      %ST
+\fi
+
+\let\setjglues=\relax
+\let\jintercharskip=\kanjiskip
+\let\jasciikanjiskip=\xkanjiskip
+
+\if@LaTeX@e\else
+\def\dm{\mc}\def\pdm{\pmc}                                      %ST
+\def\dg{\gt}\def\pdg{\pgt}                                      %ST
+\fi
+
+\def\defjintercharskip#1#2#3#4{
+\fontdimen2#1=#2                                                %ST
+\fontdimen3#1=#3                                                %ST
+\fontdimen4#1=#4}                                               %ST
+\def\defjasciikanjiskip#1#2#3#4{%                               %ST
+\fontdimen7#1=#2                                                %ST
+\fontdimen7#1=#3                                                %ST
+\fontdimen7#1=#4}                                               %ST
+\def\defmathkanjiskip#1#2#3#4{}                                 %ST
+\def\defjspaceskip#1#2#3#4{%                                    %ST
+\fontdimen6#1=#1}                                               %ST
+\let\setjglues=\relax                                           %ST
+\let\jintercharskip=\kanjiskip                                  %ST
+\let\jasciikanjiskip=\xkanjiskip                                %ST
+\newdimen\jspaceskip                                            %ST
+\jspaceskip=2.875mm             %yamanouchi%                    %ST
+%%\jspaceskip=1zw                                               %ST
+
+\newdimen\jmathkanjiskip        %yamanouchi 3/25/92%
+\jmathkanjiskip=\kanjiskip      %yamanouchi 3/25/92%            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% compsoft9.sty ASCII version modified 25 March 1992 by N. YAMANOUCHI
+% compsoft9.sty 23 March 1992 By Yasuki SAITO
+% compsoft9.sty Apr. 24 '91 By Hideki ISOZAKI
+% j-art10.sty 10-Feb-89 from art10.sty 22-Dec-87
+
+% 1mm = 2.8452755905pt, 1pt = .3514598035mm, 1Q = 0.25mm = .7113188976pt
+%
+% For footnotesize
+% depth_of_8pt_kanji = 1.4454pt
+% height_of_8pt_kanji = 5.781592pt
+% line = height_plus_depth_of_8pt_kanji = 7.226992pt = 2.53999mm ~= 10Q
+% baselineskip = line + gap = 15Q = 3.75mm = 10.6697834645pt
+% gap = baselineskip - line = 10.66978 - 7.226992 = 3.4427914645pt
+
+% For references
+% baselineskip = line + gap = 14.5Q = 3.625mm = 10.314124pt
+% gap = baselineskip - line = 10.314124pt - 7.226992pt = 3.087132pt
+%                                    ~= 4.5Q = 1.125mm = 3.2009350393pt
+% gap + depth = 3.087132 + 1.4454 = 4.532532pt
+
+% For normalsize
+% depth_of_9pt_kanji = 1.44539pt
+% line = height_plus_depth_of_9pt_kanji = 8.1906pt
+%                              ~= 11.5Q = 8.1801673228pt
+% 212.5mm = 212.5mm * 72.27pt / 25.4mm = 604.62106299212598425196pt
+% baselineskip = line + gap = 11.5Q + 10Q = 21.5Q = 15.2933562992pt
+% gap = 21.5Q - line(8.1906pt) = 7.1027562992pt ~= 10Q = 7.1131889763pt
+% gap + depth = 8.54815pt
+
+\ifASCII\else
+\newlength{\Q} \setlength{\Q}{0.25mm} % commented out for ASCII version
+                                         % by N. Yamanouchi
+\let\kanjiskip=\jintercharskip
+\let\xkanjiskip\jasciikanjiskip
+\fi
+
+\lineskip\z@ \normallineskip\z@ \jot\z@ \lineskiplimit\z@
+\def\baselinestretch{1}
+
+\if@LaTeX@e
+\def\normalsize{\@setsize\normalsize{\@Baseline}\ixpt\@ixpt
+%\renewcommand{\normalsize}{%
+%\@setfontsize\normalsize{12\JQ}{21.5\Q}
+\abovedisplayskip \z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\let\@listi\@listI} 
+\else
+\def\@normalsize{\@setsize\normalsize{\@Baseline}\ixpt\@ixpt
+\abovedisplayskip \z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\let\@listi\@listI} 
+\fi
+
+\def\small{\@setsize\small{15\Q}\viiipt\@viiipt
+%\newcommand{\small}{%
+%\@setfontsize\normalsize{11\JQ}{15\Q}
+\abovedisplayskip \z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\let\@listi\@listI}
+
+\def\footnotesize{\@setsize\footnotesize{15\Q}\viiipt\@viiipt
+%\newcommand{\footnotesize}{%
+%\@setfontsize\normalsize{11\JQ}{15\Q}
+\abovedisplayskip\z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\let\@listi\@listI}
+
+\def\scriptsize{\@setsize\scriptsize{11pt}\vipt\@vipt}
+\def\tiny{\@setsize\tiny{6pt}\vpt\@vpt}
+\def\large{\@setsize\large{21.5\Q}\xpt\@xpt}% baselineskip=>normalsize
+\def\Large{\@setsize\Large{20pt}\xiipt\@xiipt}
+\def\LARGE{\@setsize\LARGE{25pt}\xivpt\@xivpt}
+\def\huge{\@setsize\huge{30pt}\xviipt\@xviipt}
+\def\Huge{\@setsize\Huge{35pt}\xxpt\@xxpt}
+
+\@ifundefined{normalsize}{\let\normalsize\@Normalsize}
+
+\normalsize 
+\oddsidemargin 0pt \evensidemargin 0pt
+\advance\oddsidemargin-.5in
+\advance\evensidemargin-.5in
+\topmargin -25pt
+
+\headheight 12.5\Q
+\addtolength{\headheight}{0.1087pt}
+% headheight was increased a little bit to avoid annoying overful vbox
+% in sample.tex, but this also shifts entire headline upward a little bit.
+% So, \headsep is decreased a little to compensate this.
+
+\headsep 17\Q
+\addtolength{\headsep}{-0.1087pt}
+
+%\footskip 2\baselineskip % This isn't necessary, no foot in this style
+
+\newdimen\@mojihaba
+\settowidth{\@mojihaba}{あ}
+
+\textheight = 212.5mm % for simple twocolumn setup
+
+% topskip = line - depth_of_9pt_kanji
+\topskip = 6.74521pt
+
+% columnsep = 2\@mojihaba = 2*11.5Q = 23Q = 5.75mm = 16.3603346456pt
+%          ~= 8.1906pt * 2 = 16.3812pt
+\columnsep 16.3812pt 
+
+\textwidth 50\jspaceskip
+\advance\textwidth by \columnsep
+\columnseprule 0pt 
+
+%% 15 Jul 2009  Iwasaki & Matsuzaki
+\def\adjustAfour{%
+\oddsidemargin210mm
+\advance\oddsidemargin-\textwidth
+\oddsidemargin.5\oddsidemargin
+\advance\oddsidemargin-1in
+\evensidemargin\oddsidemargin
+\topmargin297mm
+\advance\topmargin-\headheight
+\advance\topmargin-\headsep
+\advance\topmargin-\textheight
+\topmargin.5\topmargin
+\advance\topmargin-1in
+}
+
+
+
+%\footnotesep must be \baselineskip-\depth = 10.6697835pt-1.4454pt
+% = 9.2243835pt, but this is too wide
+%\footnotesep 9.2243835pt
+%\footnotesep 7.226992pt % = line height
+\footnotesep 8.672392pt % = line height + depth = 7.226992pt + 1.4454pt
+% you want to make a gap between footnoterule and first footnote 2Q, but...
+%\footnotesep 2\Q % This does not work! you must do something in \@makecol
+
+%\skip\footins 10\Q plus 21.5\Q
+\skip\footins 10\Q plus 11.5\Q minus 1\Q
+
+\floatsep \baselineskip \textfloatsep \baselineskip 
+\intextsep \baselineskip \@maxsep \baselineskip
+\dblfloatsep \baselineskip \dbltextfloatsep \baselineskip
+\@dblmaxsep \baselineskip
+\@fptop 0pt plus 1fil \@fpsep 0pt plus 2fil \@fpbot 0pt plus 1fil 
+\@dblfptop 0pt plus 1fil \@dblfpsep 0pt plus 2fil \@dblfpbot 0pt plus 1fil
+
+\parskip\z@ \parindent \@mojihaba \partopsep\z@
+\@lowpenalty 51 \@medpenalty 151 \@highpenalty 301 
+\@beginparpenalty -\@lowpenalty \@endparpenalty -\@lowpenalty \@itempenalty
+-\@lowpenalty 
+
+
+
+\def\section{\@startsection {section}{1}{\jspaceskip}{17.5\Q}{4\Q}{\font@s}}
+\def\subsection
+ {\@startsection{subsection}{2}{\jspaceskip}{\baselineskip}{0.001pt}{\font@ss}}
+\def\subsubsection
+ {\@startsection{subsubsection}{3}{\jspaceskip}{0.001pt}{0.001pt}{\font@sss}}
+\def\paragraph{\@startsection
+ {paragraph}{4}{\jspaceskip}{0.001pt}{0.001pt}{\normalsize\bf}}
+\def\subparagraph{\@startsection
+ {subparagraph}{5}{\jspaceskip}{\baselineskip}{0.001pt}{\normalsize\bf}}
+
+\setcounter{secnumdepth}{5}
+
+\def\appendix{\par
+ \setcounter{section}{0}
+ \setcounter{subsection}{0}
+ \def\thesection{\Alph{section}}}
+
+\def\sectionfont#1#2#3{\gdef\font@s{#1}\gdef\font@ss{#2}\gdef\font@sss{#3}}
+\sectionfont{\large\bf}{\normalsize\bf}{\normalsize\bf}
+
+
+
+\leftmargini2\@mojihaba
+\leftmarginii2\@mojihaba
+\leftmarginiii2\@mojihaba
+\leftmarginiv2\@mojihaba
+\leftmarginv2\@mojihaba
+\leftmarginvi2\@mojihaba
+\leftmargin\leftmargini
+
+\def\@listI{\leftmargin\leftmargini\parsep\z@\topsep\z@\itemsep\z@
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+\labelwidth=0.25\@mojihaba
+%\itemindent=\@mojihaba
+}
+\let\@listi\@listI
+%\@listi 
+
+\def\@listii{\leftmargin\leftmarginii
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+\labelwidth=0.25\@mojihaba
+%\itemindent=\@mojihaba
+ \topsep\z@ \parsep\z@ \itemsep\parsep}
+
+\def\@listiii{\leftmargin\leftmarginiii
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+\labelwidth=0.25\@mojihaba
+%\itemindent=\@mojihaba
+ \topsep\z@ \parsep\z@ \itemsep\topsep}
+
+\def\@listiv{\leftmargin\leftmarginiv
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+\labelwidth=0.25\@mojihaba
+%\itemindent=\@mojihaba
+}
+
+\def\@listv{\leftmargin\leftmarginv
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+\labelwidth=0pt%
+%\itemindent=\@mojihaba
+}
+
+\def\@listvi{\leftmargin\leftmarginvi
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+\labelwidth=0pt%
+%\itemindent=\@mojihaba
+}
+
+% 2009/12/03 Iwasaki
+% It seems that the \labelsep parameter has to be set as a moderate
+% positive dimension value to make environments defined by \newtheorem
+% correctly work.
+% Without the following line, \labelsep's value is 0.0pt, which causes
+% no space between a theorem number and the first word of the theorem.
+\labelsep 5.0pt
+
+
+
+%% JTeX glues
+
+\ifASCII
+\defjintercharskip{\ninedm}{0pt}{1.8pt}{0.18pt}
+\defjintercharskip{\ninedg}{0pt}{1.8pt}{0.18pt}
+\defjintercharskip{\eightdm}{0pt}{1.5pt}{0.15pt}
+\defjintercharskip{\eightdg}{0pt}{1.5pt}{0.15pt}
+\defjintercharskip{\sevendm}{0pt}{1.4pt}{0.14pt}
+\defjintercharskip{\sevendg}{0pt}{1.4pt}{0.14pt}
+
+\setjglues
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\def\labelenumi{\theenumi.} 
+\def\theenumi{\arabic{enumi}} 
+\def\labelenumii{(\theenumii)}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi}
+\def\labelenumiii{\theenumiii.}
+\def\theenumiii{\roman{enumiii}}
+\def\p@enumiii{\theenumi(\theenumii)}
+\def\labelenumiv{\theenumiv.}
+\def\theenumiv{\Alph{enumiv}} 
+\def\p@enumiv{\p@enumiii\theenumiii}
+
+\def\labelitemi{$\bullet$}
+\def\labelitemii{\bf --}
+\def\labelitemiii{$\ast$}
+\def\labelitemiv{$\cdot$}
+
+\def\verse{\let\\=\@centercr 
+ \list{}{\itemsep\z@ \itemindent -1.5em\listparindent \itemindent 
+ \rightmargin\leftmargin\advance\leftmargin 1.5em}\item[]}
+\let\endverse\endlist
+\def\quotation{\list{}{\listparindent 1.5em
+ \itemindent\listparindent
+ \rightmargin\leftmargin \parsep 0pt plus 1pt}\item[]}
+\let\endquotation=\endlist
+\def\quote{\list{}{\rightmargin\leftmargin}\item[]}
+\let\endquote=\endlist
+\def\abstquotation{\list{}{\listparindent 1.5em
+ \itemindent\listparindent
+ \leftmargin 5mm
+ \rightmargin\leftmargin \parsep 0pt plus 1pt}\item[]}
+\let\endabstquotation=\endlist
+\def\quote{\list{}{\rightmargin\leftmargin}\item[]}
+\let\endquote=\endlist
+
+
+%\def\descriptionlabel#1{\hspace\labelsep \bf #1}
+\def\descriptionlabel#1{\bf #1}
+\def\description{\list{}{\labelwidth\z@ %\itemindent-\leftmargin
+ %\itemindent=\@mojihaba
+ \labelsep=0.75\@mojihaba %
+ \let\makelabel\descriptionlabel}}
+\let\enddescription\endlist
+
+\def\enumerate{\ifnum \@enumdepth >3 \@toodeep\else
+      \advance\@enumdepth \@ne 
+      \edef\@enumctr{enum\romannumeral\the\@enumdepth}\list
+      {\csname label\@enumctr\endcsname}{\usecounter
+        {\@enumctr}\def\makelabel##1{##1\hss}}\fi}
+
+\let\endenumerate =\endlist
+
+\def\itemize{\ifnum \@itemdepth >3 \@toodeep\else \advance\@itemdepth \@ne
+\edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+\list{\csname\@itemitem\endcsname}{\def\makelabel##1{##1\hss}}\fi}
+
+\let\enditemize =\endlist
+
+
+
+
+
+\def\theequation{\arabic{equation}}
+
+\arraycolsep 5pt \tabcolsep 6pt \arrayrulewidth .4pt \doublerulesep 2pt 
+\tabbingsep \labelsep 
+
+\skip\@mpfootins = \skip\footins
+\fboxsep = 3pt \fboxrule = .4pt 
+
+
+
+\newcounter{part}
+\newcounter{section}
+\newcounter{subsection}[section]
+\newcounter{subsubsection}[subsection]
+\newcounter{paragraph}[subsubsection]
+\newcounter{subparagraph}[paragraph]
+
+\def\thepart{\Roman{part}} \def\thesection {\arabic{section}}
+\def\thesubsection {\thesection.\,\arabic{subsection}}
+\def\thesubsubsection {\thesubsection.\,\arabic{subsubsection}}
+\def\theparagraph {\thesubsubsection.\,\arabic{paragraph}}
+\def\thesubparagraph {\theparagraph.\,\arabic{subparagraph}}
+
+
+
+% Do not delete BEFORESKIP even if \section is on top of page
+% Is this functioning?
+% \@startsection {NAME}{LEVEL}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE}
+\def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
+   \par \@tempskipa #4\relax
+   \@afterindenttrue
+   \ifdim \@tempskipa <\z@ \@tempskipa -\@tempskipa \@afterindentfalse\fi
+   \@minipagefalse % this line is added by Hiroshi Nakashima
+   \if@nobreak \everypar{}\else
+     \addpenalty{\@secpenalty}%
+        \ifnum#2=\@ne%\message{topskip=\the\topskip,beforeskip=\the\@tempskipa}
+%\message{prevdepth=\the\prevdepth}%
+\ifdim\prevdepth=0pt\vspace*{-21.5\Q}\else\vskip-\prevdepth\fi
+%\vspace{-\prevdepth} % seems to be the same as above, but does not work!!
+%       \advance\@tempskipa-17.5\Q \addvspace{17.5\Q}
+% 13.89347pt = 17.5Q + depth(1.44539pt)
+        \advance\@tempskipa-13.89347pt \addvspace{13.89347pt}
+        \vspace*{\@tempskipa}%
+        \else\addvspace{\@tempskipa}\fi\fi \@ifstar
+     {\@ssect{#3}{#4}{#5}{#6}}{\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+
+% to include section/subsection title modification
+\def\@sect#1#2#3#4#5#6[#7]#8{\ifnum #2>\c@secnumdepth
+     \def\@svsec{}\else 
+%     \refstepcounter{#1}\edef\@svsec{\csname the#1\endcsname\hskip 1em }\fi
+     \refstepcounter{#1}\edef\@svsec{\csname the#1\endcsname\hskip\@mojihaba}\fi
+     \@tempskipa #5\relax
+      \ifdim \@tempskipa>\z@ 
+        \begingroup #6\relax
+          \@hangfrom{\hskip #3\relax\@svsec}{\interlinepenalty \@M\@mojidori{#8}\par}%
+        \endgroup
+       \csname #1mark\endcsname{#7}\addcontentsline
+         {toc}{#1}{\ifnum #2>\c@secnumdepth \else
+                      \protect\numberline{\csname the#1\endcsname}\fi
+                    #7}\else
+        \def\@svsechd{#6\hskip #3\@svsec #8\csname #1mark\endcsname
+                      {#7}\addcontentsline
+                           {toc}{#1}{\ifnum #2>\c@secnumdepth \else
+                             \protect\numberline{\csname the#1\endcsname}\fi
+                       #7}}\fi
+     \@xsect{#5}}
+
+\def\@ssect#1#2#3#4#5{\@tempskipa #3\relax
+   \ifdim \@tempskipa>\z@
+     \begingroup #4\@hangfrom{\hskip #1}{\interlinepenalty \@M\@mojidori{#5}\par}\endgroup
+   \else \def\@svsechd{#4\hskip #1\relax #5}\fi
+    \@xsect{#3}}
+
+\newlength\@currentmojihaba
+
+\def\@mojidori#1{\setbox0\hbox{#1}\settowidth{\@currentmojihaba}{あ}%
+ \ifdim\wd0>5\@currentmojihaba #1\else%
+  \ifdim\wd0=2\@currentmojihaba {\jasciikanjiskip=2\@currentmojihaba%
+     \jmathkanjiskip=2\@currentmojihaba%
+     \jintercharskip=2\@currentmojihaba #1}\else%
+   {\jasciikanjiskip=0.2\@currentmojihaba%
+     \jmathkanjiskip=0.2\@currentmojihaba%
+     \jintercharskip=0.2\@currentmojihaba #1}\fi\fi}
+
+
+\newlength\twodigits
+
+\newbox\bibbox
+\setbox\bibbox=\hbox{{999}}{\relax}
+\def\@biblabel#1{\hbox to\wd\bibbox{{[\hss#1\hss]}}}
+
+\def\thebibliography#1{\subsection*{\refname\@mkboth{\refname}{\refname}}%
+\vskip7\Q % = 21.5\Q - 14.5\Q (the difference in two baselineskips)
+\settowidth\twodigits{#1}\list
+ {~~[\hbox to \twodigits{\hss\arabic{enumi}\hss}]}
+ {\setlength\labelwidth{10\Q}\leftmargin\labelwidth\labelsep\labelwidth
+ \advance\leftmargin\labelsep
+ \itemindent=0pt
+ \usecounter{enumi}\footnotesize\baselineskip=14.5\Q}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+\def\refname{参 考 文 献}  % will be changed in English articles
+
+
+
+\newif\if@restonecol
+\def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
+\columnseprule \z@
+\columnsep 35pt\twocolumn[\section*{\indexname}]
+ \@mkboth{\indexname}{\indexname}\thispagestyle{plain}\parindent\z@
+ \parskip\z@ plus .3pt\relax\let\item\@idxitem}
+\def\@idxitem{\par\hangindent 40pt}
+\def\subitem{\par\hangindent 40pt \hspace*{20pt}}
+\def\subsubitem{\par\hangindent 40pt \hspace*{30pt}}
+\def\endtheindex{\if@restonecol\onecolumn\else\clearpage\fi}
+\def\indexspace{\par \vskip 10pt plus 5pt minus 3pt\relax}
+
+
+
+% You may need to change following parameters
+\setcounter{topnumber}{4} \def\topfraction{.9}
+\setcounter{bottomnumber}{4} \def\bottomfraction{.9}
+\setcounter{totalnumber}{8}
+\def\textfraction{.1}
+\def\floatpagefraction{.9}
+\setcounter{dbltopnumber}{4} \def\dbltopfraction{.9}
+\def\dblfloatpagefraction{.9}
+
+% You cannot handle double column bottom figures yet!!!
+
+\newskip\@beforecaptionskip
+\newskip\@aftercaptionskip
+% initial default values for under caption
+\@beforecaptionskip=10\Q \@aftercaptionskip=0pt
+
+% addcontentsline is omitted to allow `\\' containing argument
+\long\def\@caption#1[#2]#3{\par\begingroup
+    \@parboxrestore
+%    \normalsize
+    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+  \endgroup}
+
+\newbox\@tempboxb
+% following makecaption is for under caption.
+% you may need to define another makecaption for over caption!!
+\long\def\@makecaption#1#2{\vskip\@beforecaptionskip
+ \setbox\@tempboxa\hbox{\footnotesize\bf #1\hskip\jspaceskip #2}
+ \ifdim \wd\@tempboxa >\hsize
+ \begin{center}
+%  \setbox\@tempboxb\hbox{\footnotesize\bf #1\hskip\jspaceskip}
+%  \hangindent=\wd\@tempboxb \hangafter=1
+  {\footnotesize\bf #1\hskip\jspaceskip #2}\par
+ \end{center}
+ \else
+  \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+%  \center{\footnotesize\bf #1\hskip\jspaceskip #2}
+  \fi\vskip\@aftercaptionskip}
+
+\newcounter{figure}
+\def\thefigure{\@arabic\c@figure}
+\def\fps@figure{tbp}
+\def\ftype@figure{1}
+\def\ext@figure{lof}
+\def\fnum@figure{\figurename \thefigure}
+\def\figure{\bgroup\@beforecaptionskip=10\Q\@aftercaptionskip=0pt\@float{figure}}
+\def\endfigure{\end@float\egroup}
+\@namedef{figure*}{\bgroup\@beforecaptionskip=10\Q\@aftercaptionskip=0pt\@dblfloat{figure}}
+\@namedef{endfigure*}{\end@dblfloat\egroup}
+
+\newcounter{table}
+\def\thetable{\@arabic\c@table}
+\def\fps@table{tbp}
+\def\ftype@table{2}
+\def\ext@table{lot}
+\def\fnum@table{\tablename \thetable}
+\def\table{\bgroup\@beforecaptionskip=0pt\@aftercaptionskip=7\Q\@float{table}}
+\def\endtable{\end@float\egroup}
+\@namedef{table*}{\bgroup\@beforecaptionskip=0pt\@aftercaptionskip=7\Q\@dblfloat{table}}
+\@namedef{endtable*}{\end@dblfloat\egroup}
+
+% height adjustment code insertion into float ending routines
+\newdimen\@floatheight
+\newcount\@floatlinecount
+
+\def\end@float{\par\vskip\z@\egroup %% \par\vskip\z@ added 15 Dec 87
+\color@endbox
+\@floatheight=\ht\@currbox
+\advance\@floatheight \dp\@currbox
+\divide\@floatheight\baselineskip \@floatlinecount=\@floatheight
+\advance\@floatlinecount\@ne
+\@floatheight=\@floatlinecount\baselineskip
+%\fboxrule=0.01pt\fboxsep=0pt% for debugging
+%\global\setbox\@currbox=\hbox{\fbox{\vbox to\@floatheight{\vfil\copy\@currbox\vfil}}}%
+\global\setbox\@currbox=\vbox to\@floatheight{\vfil\copy\@currbox\vfil}%
+   \ifnum\@floatpenalty <\z@
+     \@cons\@currlist\@currbox
+     \ifdim \ht\@currbox >\textheight 
+        \ht\@currbox\textheight \fi
+     \ifnum\@floatpenalty < -\@Mii 
+        \penalty -\@Miv 
+        \@tempdima\prevdepth    %% saving and restoring \prevdepth added
+        \vbox{}                 %% 26 May 87 to prevent extra vertical
+        \prevdepth \@tempdima   %% space when used in vertical mode
+        \penalty\@floatpenalty
+      \else \vadjust{\penalty -\@Miv \vbox{}\penalty\@floatpenalty}\@esphack
+     \fi\fi}
+
+%%%%
+%  \end@dblfloat was removed by K. Maruyama August 6th, 2015
+%  This is an emergency response, thus might cause any side effect
+%%%%
+%\def\end@dblfloat{\if@twocolumn
+%     \par\vskip\z@\egroup %% \par\vskip\z@ added 15 Dec 87\egroup
+%\color@endbox
+%\@floatheight=\ht\@currbox
+%\advance\@floatheight \dp\@currbox
+%\divide\@floatheight\baselineskip \@floatlinecount=\@floatheight
+%\advance\@floatlinecount\@ne
+%\@floatheight=\@floatlinecount\baselineskip
+%%\fboxrule=0.01pt\fboxsep=0pt% for debugging
+%%\global\setbox\@currbox=\hbox{\fbox{\vbox to\@floatheight{\vfil\copy\@currbox\vfil}}}%
+%\global\setbox\@currbox=\vbox to\@floatheight{\vfil\copy\@currbox\vfil}%
+%     \ifnum\@floatpenalty <\z@ \@cons\@dbldeferlist\@currbox\fi
+%      \ifnum \@floatpenalty =-\@Mii \@esphack\fi\else\end@float\fi}
+
+
+
+\def\maketitle{\par
+ \begingroup
+ \def\thefootnote{}%
+ \def\@makefnmark{}%
+ \if@twocolumn 
+ \twocolumn[\@maketitle] 
+ \else \newpage
+ \global\@topnum\z@ \@maketitle \fi\thispagestyle{plain}\@thanks
+ \endgroup
+ \setcounter{footnote}{0}
+
+ \thispagestyle{myheadings} % to avoid running head on title page
+ \if@hissha
+ \thispagestyle{hisshatop}
+ \fi
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\newbox\@temptitlebox
+
+% abstract
+
+\long\def\Jabstract#1{\global\long\def\Jabstcontent{\noindent\ignorespaces #1}}
+\long\def\Eabstract#1{\global\long\def\Eabstcontent{\noindent\ignorespaces #1}}
+\def\Jabstcontent{\relax}
+\def\Eabstcontent{\relax}
+\def\JEabstInsert{%
+  \begin{adjustvboxheight}\vfill
+  \begin{small}
+    \begin{abstquotation}
+      \Jabstcontent
+      \par\hbox{ }\par
+      \Eabstcontent
+    \end{abstquotation}
+  \end{small}\vskip8mm
+  \end{adjustvboxheight}}
+\def\EabstInsert{%
+  \begin{adjustvboxheight}\vfill
+  \begin{small}
+    \begin{abstquotation}
+      \Eabstcontent
+    \end{abstquotation}
+  \end{small}\vskip8mm
+  \end{adjustvboxheight}}
+
+%% 2023/03/17 Kenji Fujiwra
+%% 2016/12/05 Erina Makihara を基に改良
+%% タイトルと著者がいずれも2行に渡る場合に著者名が和文アブストと重複して描画される問題に対処．
+%% Erina Makiharaによる対応から本質的な変更はしていないが， \longtitle 命令を本文中で呼び出すことで対応できるようにした．
+%% （元々はこのstyファイルを変更するような仕組みになっていた）
+\newif\iflongtitle
+\longtitlefalse
+
+\def\longtitle{\longtitletrue}
+
+\def\taikaimaketitlemain{
+  \begin{flushleft}
+    \JarticleHeader
+    % following extra vskip together with baselineskip(10mm) will produce
+    % appropriate 10mm/6mm gap between the rule and title
+    % This assumes that title is typeset with 28Q(7mm) font, and baseline
+    % is set 1mm above the bottom of the font.
+    \setbox\@temptitlebox\hbox{JarticleTitle}\ifdim\wd\@temptitlebox>\textwidth\vskip2mm\else\vskip6mm\fi
+    \leftskip=5mm
+    \JarticleTitle
+    \vskip6mm % to leave 10mm gap between title and author
+    \JarticleAuthor
+    \end{flushleft}\vfil
+}
+
+\def\Jarticle{%
+\global\def\@maketitle{\newpage \null
+\iflongtitle
+\hbox{\vbox to233.5\Q{\baselineskip=10mm
+\taikaimaketitlemain
+}}
+\else
+\hbox{\vbox to193.5\Q{\baselineskip=10mm % 193.5\Q = 9*\baselineskip
+\taikaimaketitlemain
+}}
+\fi
+\JEabstInsert
+}}
+
+\def\Earticle{%
+\def\refname{References}%
+\def\tablename{Table~}
+\def\figurename{Fig.~}
+\global\def\@maketitle{\newpage \null
+\hbox{\vbox to193\Q{\baselineskip=8mm % 193.5\Q = 9*\baselineskip
+\begin{flushleft}
+\EarticleHeader
+% following extra vskip together with baselineskip(8mm) will produce
+% appropriate 10mm/6mm gap between the rule and title
+% This assumes that title is typeset with 28Q(7mm) font, and baseline
+% is set 1mm above the bottom of the font.
+\setbox\@temptitlebox\hbox{EarticleTitle}\ifdim\wd\@temptitlebox>\textwidth\vskip4mm\else\vskip8mm\fi
+\leftskip=5mm
+\EarticleTitle
+\vskip6mm % to leave 10mm gap between title and author
+\EarticleAuthor
+\end{flushleft}\vfil}}
+\EabstInsert
+}
+\@Baseline=17.5\Q}
+
+\def\JarticleWithoutAbst{%
+\global\def\@maketitle{\newpage \null
+\hbox{\vbox to193.5\Q{\baselineskip=10mm % 193.5\Q = 9*\baselineskip
+\begin{flushleft}
+\JarticleHeader
+\setbox\@temptitlebox\hbox{JarticleTitle}\ifdim\wd\@temptitlebox>\textwidth\vskip2mm\else\vskip6mm\fi
+\leftskip=5mm
+\JarticleTitle
+\vskip6mm % to leave 10mm gap between title and author
+\JarticleAuthor
+\end{flushleft}\vfil}}}}
+
+\def\leaderfill{\leaders\hbox{\rule{1mm}{1mm}}\hfill}
+\def\leaderfillB{\leaders\hbox to1mm{%
+ \vbox{\rule{1mm}{0.1mm}\vskip0.4mm
+       \rule{1mm}{0.1mm}\vskip0.4mm
+       \rule{1mm}{0.1mm}\vskip0.4mm
+       \rule{1mm}{0.1mm}}}\hfill}
+
+\newdimen\strokeinterval \newdimen\strokewidth
+\newdimen\rightstrokewidth
+\strokeinterval=\textwidth \advance\strokeinterval by-0.1mm
+\divide\strokeinterval by150
+\strokewidth=\strokeinterval
+\multiply\strokewidth by150 \advance\strokewidth by0.1mm
+\rightstrokewidth=\strokeinterval
+\multiply\rightstrokewidth by9
+\def\leaderfillstrokeL{\leaders\hbox to\strokeinterval{%
+ \rule{0.1mm}{1.6mm}\hfil}\hfill}
+
+\newdimen\boxinterval \newdimen\boxwidth
+\newdimen\leftboxwidth
+\boxinterval=\textwidth \advance\boxinterval by-1mm
+\divide\boxinterval by99
+\boxwidth=\boxinterval
+\multiply\boxwidth by99 \advance\boxwidth by1mm
+\leftboxwidth=\boxinterval
+\multiply\leftboxwidth by6
+\def\leaderfillboxL{\leaders\hbox to\boxinterval{%
+ \rule{0.9mm}{1mm}\hfil}\hfill}
+
+\ifASCII\else
+\jfont\gona=dg12      % in ASCII, moved to (d)skfonts.
+\fi
+
+% default title header
+% you must devise various headers for topics, tokushu, shohyo etc.
+%
+% 2009/04/22  H.Iwasaki
+% ==========================================================
+% スタイルファイルの変更，その目的は以下の二つ
+%   ・2009年6月より論文投稿規定が改訂されるのに合わせる
+%   ・2009年度の大会論文フォーマットも共用するようにする
+%
+
+%%%
+% 論文種別
+%   コンピュータソフトウェア誌に掲載される論文は
+%       研究論文/ソフトウェア論文/解説論文
+%   の3通りであるが，大会予稿もこのスタイルファイルを使うことにしたので，
+%   便宜的に，大会予稿も論文種別の一種とする．
+%   
+%   結局論文種別は，
+%     研究論文/ソフトウェア論文/解説論文/大会予稿
+%   の4通りのいずれか．そのそれぞれについて和文と英文があり得るが，
+%   英文解説論文はあまり想定していない．
+%   また，チュートリアルは解説論文の一種だが，1ページ目の頭書きが
+%   異なるので，普通の解説論文とば別の種別文字を用意した．
+%
+% \documentclass[..]{compsoft} の [...] の中に論文種別，査読種別，言語
+% を指定する．
+%
+% 論文種別
+%   P   研究論文 (デフォルト)
+%   S   ソフトウェア論文
+%   K   普通の解説論文
+%   U   チュートリアル
+%   T   大会論文 (大会論文は便宜的に論文種別の一種として扱う)
+%
+% 査読種別 (大会論文の時には指定しない)
+%   R   通常論文 (デフォルト)
+%   L   レター論文
+%
+% 言語
+%   J   和文 (デフォルト)
+%   E   英文
+%
+% \ronbunShubetsu は，論文種別を表す一文字 (P, S, K, U, T のいずれか)
+% \sadokuShubets  は，査読種別を表す一文字 (R，L のいずれか)
+% \ronbunLang     は，言語を表す一文字 (J, E のいずれか)
+
+\let\ronbunShubetsu=P     % 論文種別のデフォルト値は研究論文
+\let\sadokuShubetsu=R     % 査読種別のデフォルト値は通常論文
+\let\ronbunLang=J         % デフォルトは和文論文
+\def\JarticleHeader{\rule{\textwidth}{1mm}}
+\def\JarticleTitle{{\huge\bf\@title}}
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}
+
+%
+% 論文種別
+%
+
+\def\ifRonbun#1{\ifx\ronbunShubetsu P{#1}\else\relax\fi}
+\def\ifSoftRonbun#1{\ifx\ronbunShubetsu S{#1}\else\relax\fi}
+\def\ifKaisetsu#1{\ifx\ronbunShubetsu K{#1}\else\relax\fi}
+\def\ifTutorial#1{\ifx\ronbunShubetsu U{#1}\else\relax\fi}
+\def\ifTaikai#1{\ifx\ronbunShubetsu T{#1}\else\relax\fi}
+\long\def\ifNotTaikai#1{\ifx\ronbunShubetsu T\relax\else{#1}\fi}
+
+% ◆P （研究論文）
+\def\ds@P{
+\let\ronbunShubetsu=P%
+\def\JarticleHeader{\rule{\textwidth}{1mm}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆S （ソフトウェア論文）
+\def\ds@S{
+\let\ronbunShubetsu=S%
+\def\JarticleHeader{%
+\hbox to \strokewidth{\leaderfillboxL\rule{0.9mm}{1mm}}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆K （普通の解説論文）
+\def\ds@K{
+\let\ronbunShubetsu=K%
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}\vskip0.4mm
+\rule{\textwidth}{0.1mm}\vskip0.4mm
+\rule{\textwidth}{0.1mm}\vskip0.4mm
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 解　説}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆U （チュートリアル --- 解説論文の一種）
+\def\ds@U{
+\let\ronbunShubetsu=U%
+\def\JarticleHeader{{\offinterlineskip
+\hbox to \strokewidth{\leaderfillstrokeL\rule{0.1mm}{1.6mm}}
+\hbox to\strokewidth{\hbox to0.1mm{{\vbox to8mm{\vss\rule{0.1mm}{9.5mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona チュートリアル}}\vfil}\hfil%
+\hbox to0.1mm{\vbox to8mm{\vss\rule{0.1mm}{9mm}}}}
+\rule{\strokewidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆T （大会論文）
+\def\ds@T{
+\let\ronbunShubetsu=T%
+\def\JarticleHeader{\rule{\textwidth}{1mm}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle\adjustAfour}
+
+%
+% 査読種別 --- 通常論文/レター論文 の2通り
+%
+
+\def\ifRegular#1{\ifx\sadokuShubetsu R{#1}\else\relax\fi}
+\def\ifLetter#1{\ifx\sadokuShubetsu L{#1}\else\relax\fi}
+
+% ◆R （通常論文）
+\def\ds@R{
+\let\sadokuShubetsu=R
+}
+
+% ◆L （レター論文）
+\def\ds@L{
+\let\sadokuShubetsu=L
+}
+
+%
+% 言語
+%
+
+% ◆J （和文）
+\def\ds@J{
+\let\ronbunLang=J%
+\Jarticle}
+
+% ◆E （英文）
+\def\ds@E{
+\let\ronbunLang=E%
+\def\EarticleHeader{\JarticleHeader}
+\def\EarticleTitle{\JarticleTitle}
+\def\EarticleAuthor{\JarticleAuthor}
+\Earticle}
+
+%%%
+% 特集の場合
+%   \tokushu{特集のタイトル}
+% とする．このタイトルは，1ページ目の上の方に出力される．
+
+\def\tokushu#1{%
+\def\tokushutitle{#1}%
+\ifRonbun{%
+\gdef\articleHeader{\hbox to\textwidth{\rule{3\@mojihaba}{1mm}%
+\hbox{\small\bf\hskip1mm 特集●\tokushutitle}\leaderfill}}}%
+\ifSoftRonbun{%
+\gdef\articleHeader{\hbox to\textwidth{%
+\hbox to \leftboxwidth{\leaderfillboxL}%
+\hbox{\small\bf\hskip1mm 特集●\tokushutitle}\leaderfillboxL
+\rule{0.9mm}{1mm}}}}%
+\ifKaisetsu{%
+\gdef\articleHeader{{\offinterlineskip
+\hbox to \textwidth{\leaderfillB\hbox{\small\bf\hskip1mm 特集●\tokushutitle
+\hskip1mm}%
+\hbox to3\@mojihaba{%
+ \vbox{\rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 解　説}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}}%
+\ifTutorial{%
+\gdef\articleHeader{{\offinterlineskip
+\hbox to \strokewidth{\leaderfillstrokeL
+\hbox{\small\bf\hskip1mm 特集●\tokushutitle\hskip2mm}%
+\hbox to\rightstrokewidth{\leaderfillstrokeL}\rule{0.1mm}{1.6mm}}%
+\hbox to\strokewidth{\hbox to0.1mm{{\vbox to8mm{\vss\rule{0.1mm}{9mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona チュートリアル}}\vfil}\hfil%
+\hbox to0.1mm{\vbox to8mm{\vss\rule{0.1mm}{9mm}}}}
+\rule{\strokewidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}}%
+\gdef\JarticleHeader{\articleHeader}%
+\gdef\EarticleHeader{\articleHeader}}
+
+%%%
+% 推薦の場合
+%   \suisen{タイトル}
+% とする．このタイトルは，1ページ目の上の方に出力される．
+
+\def\suisen#1{%
+\def\suisentitle{#1}%
+\ifRonbun{%
+\gdef\articleHeader{\hbox to\textwidth{\rule{3\@mojihaba}{1mm}%
+\hbox{\small\bf\hskip1mm 推薦論文●\suisentitle}\leaderfill}}}%
+\ifSoftRonbun{%
+\gdef\articleHeader{\hbox to\textwidth{%
+\hbox to \leftboxwidth{\leaderfillboxL}%
+\hbox{\small\bf\hskip1mm 推薦論文●\suisentitle}\leaderfillboxL
+\rule{0.9mm}{1mm}}}}%
+\ifKaisetsu{%
+\gdef\articleHeader{{\offinterlineskip
+\hbox to \textwidth{\leaderfillB\hbox{\small\bf\hskip1mm 推薦論文●\suisentitle
+\hskip1mm}%
+\hbox to3\@mojihaba{%
+ \vbox{\rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 解　説}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}}%
+\gdef\JarticleHeader{\articleHeader}%
+\gdef\EarticleHeader{\articleHeader}}
+
+%%%
+% 大会予稿の場合
+%   \taikai{年度}
+% を入れなければならない．回数は年度から自動的に計算される．
+% 回数 = 年度 - 1993
+% このタイトルは，1ページ目の上の方に出力される．
+
+\def\leaderfilll{\leaders\hbox{\rule{0.2mm}{1mm}}\hfill}
+
+\addtolength{\voffset}{-1\baselineskip}
+\addtolength{\headsep}{1\baselineskip}
+\newcommand{\setetitle}[1]{\def\etitle{#1}}
+
+\def\taikai#1{%
+\ifTaikai{%
+\newcount\currentYear%
+\newcount\currentKai%
+\newcount\conferenceYear%
+\currentYear=#1%
+\currentKai=\currentYear\advance\currentKai by - 1993%
+\global\xdef\foseabbrev{FOSE{\number\currentYear}}%
+\global\xdef\taikaititle{第 \number\currentKai 回ソフトウェア工学の基礎ワークショップ}% 使用しないので不要 by Kenji Fujiwara
+\gdef\articleHeader{\hbox to\textwidth{\leaderfilll}}
+\gdef\JarticleHeader{\articleHeader}%
+\gdef\EarticleHeader{\articleHeader}%
+\gdef\@oddheadcontents{\foseabbrev}%
+\gdef\@evenheadcontents{\parbox[t]{.9\textwidth}{\centering\etitle}}%
+}}
+
+%%%
+% 1ページ目の左下に出力されるもの
+\def\ejtitle#1{\thanks{#1}}
+
+\def\shozoku#1#2#3{\thanks{#1, #2, #3.}}
+
+%%
+% 2011/11/15  H. Iwasaki
+% ページ数が3桁になると，従来のマクロでは2行にわたってしまうので，
+% 最後のページが3桁になってしまう場合には，時間を詰めて1行におさまる
+% ようにした．(さすがに4桁のページ数はないであろう．)
+
+\def\shutten{%
+\ifNotTaikai{%
+  \thanks{\kanjiskip 0pt minus 0.15zw %
+  \ifnum\value{lastpage}<100%
+  コンピュータソフトウェア, \kern-0.75pt Vol.\arabic{巻数}, %
+  \kern-0.75pt No.\arabic{号数} \kern-1.25pt(\arabic{年数}), %
+  \kern-0.75pt pp.\arabic{firstpage}--\arabic{lastpage}.%
+  \else%
+  コンピュータソ\kern-0.75pt フ\kern-1pt ト%
+  \kern-1pt ウ\kern-0.7pt ェ\kern-0.7pt ア\kern-1.5pt,\,%
+  \kern-0.5pt Vol.\arabic{巻数}\kern-0.5pt,\,%
+  No.\arabic{号数}\,(\arabic{年数}),\,%
+  \kern-0.75pt pp.\arabic{firstpage}--\arabic{lastpage}.\fi}}}
+
+\def\ronbunKind{%
+  \ifRonbun{研究}\ifSoftRonbun{ソフトウェア}%
+  \ifKaisetsu{解説}\ifTutorial{解説}論文%
+  \ifRegular{\relax}\ifLetter{(レター)}}
+
+\def\uketsuke#1#2#3{\ifNotTaikai{\thanks{[\ronbunKind] #1年#2月#3日受付.}}}
+
+\def\note#1{\thanks{#1}}
+
+%%%
+%
+% 2011l/11/15   H. Iwasaki
+% 筆者紹介を各論文ページに入れるための処理．
+%
+% 論文著者は \chosha を使う．すると写真部分は外枠だけが表示される．
+% 印刷所において写真を入れる場合には \ChoshaPictureTrue とする．
+% すると，\chosha の中で \chshapicture が使われるようになり，今までと
+% 同様にして写真を入れることができる．
+%
+% 論文の最後のページは，左右カラムがほぼ均等になるような処理を行って
+% いる．(この処理を行う実際のマクロは，このファイルの後の方で先人が
+% 定義している．なお，均等処理を禁止する場合には \@lastpagebalancingfalse
+% とすればよいようだ．)
+% その処理の関係上，複数の著者紹介の切れ目が，均等処理を行う前にちょうど
+% 左右カラムの境界に来た場合，すなわち，第二著者以降のだれかの紹介が
+% 右カラムの一番上から開始する場合には，その著者と直前の著者の紹介の間
+% のスペースがなくなり詰まってしまう，という現象が起こる．
+% これを回避するようにマクロを作成するのは手間が大きいので，そのような
+% ことが発生した場合には手動で回避することにした．具体的には
+%
+%   \choshax{○山×男\choshaspace}{○山×男}{紹介文}
+%
+% というように，間が詰まっている後側の著者の名前部分に \choshaspace
+% というマクロを手動で挿入する．こうすることで，半ば強引に空白を
+% 挿入することができる．
+% ただしこうすると，著者名の後に \choshaspace % が入るので，
+% \ChoshaPictureTrue として画像を入れようとすると，
+%「○山×男\choshaspace」のようなファイルを探すことになり都合が悪い．
+% そこで，この場合には下で定義した \choshax を使う必要がある．
+% (下のコメントも参照のこと．)
+
+\newenvironment{choshashoukai}%
+  {\ifNotTaikai{\vskip30pt\baselineskip14pt\raggedbottom}}{\relax}
+
+\newif\ifChoshaPicture \ChoshaPicturefalse
+\newbox\choshaspacebox
+\setbox\choshaspacebox=\hbox{\vrule height21pt depth0pt width0pt}
+\newcommand{\choshaspace}{\relax\unhcopy\choshaspacebox}
+
+\def\choshawaku{%
+  \vbox to 25mm{\hrule\hbox to 20mm{\vrule height24.75mm\hss\vrule}\hrule}}
+
+\def\choshapicture#1{%
+  \vbox to 25mm{\hbox to 20mm{\includegraphics{#1}}}}
+
+%%
+% 2011/11/15   H.Iwasaki
+% 著者名がアルファベット表記である等の理由で著者名と画像ファイル名を
+% 一致させることができない場合への対処．
+% 引数でファイル名を指定できる \choshax を作成し，従来の \chosha は
+% \choshax を呼ぶだけにした．
+% \choshax の利用法は
+%  \choshax{Donald E.Kunth}{Knuth}{紹介文}
+%
+\def\choshax#1#2#3{%
+  \ifNotTaikai{%
+  \noindent\lower20.5mm\ifChoshaPicture\choshapicture{#2}\else\choshawaku\fi%
+  \quad\hbox to15mm{\dg\bf #1}\par\nobreak\vskip-17.5mm%
+  % written by S.Hakuta 2011/09/13
+  \setbox0=\vbox{\hangindent=22mm\hangafter=-4\noindent#3}%
+  \flushbox0\vskip14pt}}
+
+\def\chosha#1#2{\choshax{#1}{#1}{#2}}
+
+\def\choshanopic#1#2{%
+  \ifNotTaikai{%
+  \noindent\quad\hbox to15mm{\dg\bf #1}\par\nobreak\noindent#2\par\vskip14pt}}
+
+% written by S. Hakuta 2011/09/13
+\newbox\tempsplitbox
+\newcount\nobreakcount
+\def\flushbox#1{\nobreakcount=3\splittopskip\topskip\@flushbox#1}
+\def\@flushbox#1{%
+  \vfuzz=\maxdimen\relax%
+  \setbox\tempsplitbox=\vsplit#1 to 0pt% get a line content
+  \ifnum\nobreakcount<0\allowbreak\vbox{\unvbox\tempsplitbox}%
+  \else\nobreak\vbox{\unvbox\tempsplitbox}\fi%
+  \ifvoid#1\def\next{}%
+  \else\def\next{\advance\nobreakcount-1\@flushbox#1}\fi%
+  \next}%
+
+% ここから先は互換性のために，手を入れていない
+%
+% ==========================================================
+% ◆ronbun （論文）
+\def\ds@ronbun{
+\def\JarticleHeader{\rule{\textwidth}{1mm}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆Eronbun （英文論文）
+\def\ds@Eronbun{
+\def\EarticleHeader{\rule{\textwidth}{1mm}}%
+\def\EarticleTitle{{\huge\bf\@title}}%
+\def\EarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Earticle}
+
+% ==========================================================
+% ◆ronbungaiyou （論文概要）
+\def\ds@ronbungaiyou{
+\def\pages##1{\long\def\pp{##1}}
+\let\Jabstcontent\relax
+\let\Eabstcontent\relax
+\def\maketitle{\par
+ \@lastpagebalancingfalse
+ \begingroup
+ \def\thefootnote{}%
+ \def\@makefnmark{}%
+ \@maketitle
+ \thispagestyle{plain}\@thanks
+ \endgroup
+ \setcounter{footnote}{0}
+ \thispagestyle{myheadings} % to avoid running head on title page
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+\let\Jabstcontent\relax
+\let\Eabstcontent\relax
+% \let\thanks\relax
+}%
+%
+\def\JarticleHeader{\hbox to25\jspaceskip{\rule{2\@mojihaba}{1mm}\hbox{\small\bf\hskip1mm サイバーページ論文概要\hskip1mm}\leaderfill}}%
+\def\JarticleTitle{{\Large\bf\@title}}%
+\def\JarticleAuthor{\large\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\global\def\@maketitle{\newpage \null 
+\hbox{\vbox to193.5\Q{\baselineskip=6mm % 193.5\Q = 9*\baselineskip
+\begin{flushleft}
+\JarticleHeader
+\vskip5mm
+\leftskip=0mm
+\JarticleTitle
+\vskip3mm % to leave 7mm gap between title and author
+\JarticleAuthor
+\end{flushleft}\vfil}}
+% \begin{small}
+\begingroup
+\ifx\Jabstcontent\relax
+\baselineskip=19.5Q
+\Eabstcontent\par
+\else
+\baselineskip=19.5Q
+\Jabstcontent\par
+\fi
+\leavevmode\null\hfill 
+[\kern1pt pp.~\pp\kern1pt]\par
+\endgroup
+% \end{small}
+}}
+
+% ==========================================================
+% ◆softwareronbun （ソフトウェア論文）
+\def\ds@softwareronbun{
+\def\JarticleHeader{%
+\hbox to \strokewidth{\leaderfillboxL\rule{0.9mm}{1mm}}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ==========================================================
+% ◆tutorial （チュートリアル）
+\def\ds@tutorial{
+\def\JarticleHeader{{\offinterlineskip
+\hbox to \strokewidth{\leaderfillstrokeL\rule{0.1mm}{1.6mm}}
+\hbox to\strokewidth{\hbox to0.1mm{{\vbox to8mm{\vss\rule{0.1mm}{9.5mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona チュートリアル}}\vfil}\hfil%
+\hbox to0.1mm{\vbox to8mm{\vss\rule{0.1mm}{9mm}}}}
+\rule{\strokewidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ==========================================================
+% ◆kaisetsu （解説）
+\def\ds@kaisetsu{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}\vskip0.4mm
+\rule{\textwidth}{0.1mm}\vskip0.4mm
+\rule{\textwidth}{0.1mm}\vskip0.4mm
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 解　説}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ==========================================================
+% ◆topics （トピックス）
+\def\ds@topics{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona トピックス}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆software （ソフトウェア紹介）
+\def\ds@softwareshokai{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona ソフトウェア紹介}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆forum （フォーラム）
+\def\ds@forum{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona フォーラム}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆zadankai （座談会）
+\def\ds@zadankai{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 座談会}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆column （コラム）
+\def\ds@column{
+\global\advance\textheight by-3mm
+\global\advance\leftskip by3mm
+\global\advance\rightskip by3mm
+\global\def\@maketitle{\newpage \null
+\hbox{\vbox to165\Q{% 172\Q = 7*\baselineskip
+\begin{flushleft}
+\null\vskip11.2mm
+\leftskip=8mm \baselineskip10mm
+{\huge\bf\@title}
+\vskip1.5mm % to leave hmode and start a new paragraph
+\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}%
+\end{flushleft}\vfil}}}% 
+\columnsep 0pt     % ueda
+}
+
+% ◆review （書評）
+\def\ds@bookreview{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 書　評}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆pioneer （パイオニア）
+\def\ds@pioneer{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona パイオニア}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆memoriam （追悼記事）
+\def\ds@memoriam{
+\def\JarticleHeader{{\offinterlineskip
+\rule{\textwidth}{0.1mm}
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona }\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ==========================================================
+% 特集や推薦の名前を入れるためのマクロ。ユーザに定義してもらう。
+\def\tokushutitle{}
+\def\suisentitle{}
+
+% ◆tokushuronbun （特集論文）
+\def\ds@tokushuronbun{
+\def\JarticleHeader{\hbox to\textwidth{\rule{3\@mojihaba}{1mm}\hbox{\small\bf\hskip1mm 特集●\tokushutitle}\leaderfill}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆Etokushuronbun （英文特集論文）
+\def\ds@Etokushuronbun{
+\def\EarticleHeader{\hbox to\textwidth{\rule{3\@mojihaba}{1mm}\hbox{\small\bf\hskip1mm 特集●\tokushutitle}\leaderfill}}%
+\def\EarticleTitle{{\huge\bf\@title}}%
+\def\EarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Earticle}
+
+% ◆tokushusoftwareronbun （特集ソフトウェア論文）
+\def\ds@tokushusoftwareronbun{
+\def\JarticleHeader{\hbox to\textwidth{%
+\hbox to \leftboxwidth{\leaderfillboxL}%
+\hbox{\small\bf\hskip1mm 特集●\tokushutitle}\leaderfillboxL
+\rule{0.9mm}{1mm}}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆tokushututorial （特集チュートリアル）
+\def\ds@tokushututorial{
+\def\JarticleHeader{{\offinterlineskip
+\hbox to \strokewidth{\leaderfillstrokeL
+\hbox{\small\bf\hskip1mm 特集●\tokushutitle\hskip2mm}%
+\hbox to\rightstrokewidth{\leaderfillstrokeL}\rule{0.1mm}{1.6mm}}%
+\hbox to\strokewidth{\hbox to0.1mm{{\vbox to8mm{\vss\rule{0.1mm}{9mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona チュートリアル}}\vfil}\hfil%
+\hbox to0.1mm{\vbox to8mm{\vss\rule{0.1mm}{9mm}}}}
+\rule{\strokewidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆tokushukaisetsu （特集解説）
+\def\ds@tokushukaisetsu{
+\def\JarticleHeader{{\offinterlineskip
+\hbox to \textwidth{\leaderfillB\hbox{\small\bf\hskip1mm 特集●\tokushutitle
+\hskip1mm}%
+\hbox to3\@mojihaba{%
+ \vbox{\rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}\vskip0.4mm
+       \rule{3\@mojihaba}{0.1mm}}}}%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona 解　説}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆topics （特集トピックス）
+\def\ds@tokushutopics{
+\def\JarticleHeader{{\offinterlineskip
+%
+\hbox to\textwidth{%
+\setbox0=\hbox{\small\bf\hskip1mm 特集●\tokushutitle\hskip1mm}%
+\leaders\hbox{\rule{1mm}{0.1mm}}\hfill
+\vbox to0pt{\hsize\wd0\vss\box0\vss}\hbox{\rule{3\@mojihaba}{0.1mm}}}
+% \hbox{\rule{3\@mojihaba}{0.1mm}}}
+%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona トピックス}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆topics （特集ソフトウェア紹介）
+\def\ds@tokushusoftwareshokai{
+\def\JarticleHeader{{\offinterlineskip
+%
+\hbox to\textwidth{%
+\setbox0=\hbox{\small\bf\hskip1mm 小特集●\tokushutitle\hskip1mm}%
+\leaders\hbox{\rule{1mm}{0.1mm}}\hfill
+\vbox to0pt{\hsize\wd0\vss\box0\vss}\hbox{\rule{3\@mojihaba}{0.1mm}}}
+% \hbox{\rule{3\@mojihaba}{0.1mm}}}
+%
+\vbox to8mm{\vfil\hbox{\hskip5mm{\gona ソフトウェア紹介}\hfil}\vfil}
+\rule{\textwidth}{0.1mm}
+\vskip0pt}% to end the paragraph and use new baselineskip
+}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\JarticleWithoutAbst}
+
+% ◆suisenronbun （推薦論文）
+\def\ds@suisenronbun{
+\def\JarticleHeader{\hbox to\textwidth{\rule{3\@mojihaba}{1mm}\hbox{\small\bf\hskip1mm 推薦論文●\suisentitle}\leaderfill}}%
+\def\JarticleTitle{{\huge\bf\@title}}%
+\def\JarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Jarticle}
+
+% ◆Esuisenronbun （英文推薦論文）
+\def\ds@Esuisenronbun{
+\def\EarticleHeader{\hbox to\textwidth{\rule{3\@mojihaba}{1mm}\hbox{\small\bf\hskip1mm 推薦論文●\suisentitle}\leaderfill}}%
+\def\EarticleTitle{{\huge\bf\@title}}%
+\def\EarticleAuthor{\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}}%
+\Earticle}
+% ==========================================================
+
+% ==========================================================
+% ◆kantogen （巻頭言）
+\def\ds@kantogen{
+\global\def\@maketitle{\newpage \null
+\hbox{\vbox{
+\begin{flushleft}
+\offinterlineskip
+\vspace*{-\topskip}
+\rule{\textwidth}{0.1mm}
+\vskip6mm{\gona 巻頭言}\hskip15mm{\huge\@title}\vskip5mm\hskip27mm%
+\Large\begin{tabular}[t]{@{}l}\@author\end{tabular}%
+\vskip10mm plus10mm minus10mm% you must adjust this size
+\vskip22.5\Q
+\end{flushleft}
+\vfil}}}
+\leftskip=27mm
+\@totalleftmargin=27mm
+\@rightskip=27mm
+\onecolumn
+\baselineskip=22.5\Q
+\global\tendm\global\rm % This does not work, I don't know why!
+}
+% ==========================================================
+
+% ==========================================================
+% ◆tokushutobira （特集の編集にあたって）
+\def\ds@tokushutobira{
+\global\def\@maketitle{\newpage \null
+\vspace*{-\baselineskip}
+\begin{flushleft}
+\hbox to\textwidth
+{\rule{3\@mojihaba}{1mm}\hbox{\small\bf\hskip1mm 特集●\tokushutitle}\leaderfill}%
+\vskip12mm\hskip5mm{\huge\bf\@title}\vskip1mm\hskip5mm%
+\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}%
+\vskip10mm%
+\end{flushleft}%\vfil
+}
+% tokushutobira must be flush left on even page, and flush right on
+% odd page.
+\ifodd\c@page
+\leftskip=7\@mojihaba \rightskip=0pt
+\@totalleftmargin=7\@mojihaba % for list environment such as itemize
+\@rightskip=7\@mojihaba % for list environment such as itemize
+\else
+\leftskip=0pt \rightskip=7\@mojihaba
+\@totalleftmargin=0pt
+\@rightskip=7\@mojihaba
+\fi
+\onecolumn
+}
+% ==========================================================
+
+% ==========================================================
+% ◆tobira （巻頭）
+\def\ds@tobira{
+\global\def\@maketitle{\newpage \null
+\vspace*{-\baselineskip}
+\begin{flushleft}
+\rule{\textwidth}{1mm}
+\vskip12mm\hskip5mm{\huge\bf\@title}\vskip1mm\hskip5mm%
+\LARGE\begin{tabular}[t]{@{}l}\@author\end{tabular}%
+\vskip10mm%
+\end{flushleft}%\vfil
+}
+% tokushutobira must be flush left on even page, and flush right on
+% odd page.
+\ifodd\c@page
+\leftskip=7\@mojihaba \rightskip=0pt
+\@totalleftmargin=7\@mojihaba % for list environment such as itemize
+\@rightskip=7\@mojihaba % for list environment such as itemize
+\else
+\leftskip=0pt \rightskip=7\@mojihaba
+\@totalleftmargin=0pt
+\@rightskip=7\@mojihaba
+\fi
+\onecolumn
+}
+% ==========================================================
+
+% ==========================================================
+% ◆gakkaikiji （学会記事）
+% Gakkai-Kiji header added by yaski
+\def\ds@gakkaikiji{
+\global\def\@maketitle{\newpage \null
+\hbox{\vbox to64.5\Q{% 43\Q=3*21.5\Q
+\begin{flushleft}
+{\offinterlineskip
+\noindent
+\hbox to \hsize{{\LARGE 日本ソフトウェア科学会} \leaders\hrule height 2mm\hfill}
+\vspace{2mm}
+\hbox to \hsize{\footnotesize\bf 
+Japan Society for Software Science and Technology \hfil}}
+\end{flushleft}\vfil}}}
+}
+% ==========================================================
+
+% ==========================================================
+% ◆ henshu header added by yaski (編集だより)
+\def\ds@henshu{
+\global\def\@maketitle{\newpage \null
+\hbox{\vbox to64.5\Q{% 43\Q=3*21.5\Q
+\begin{flushleft}
+{\offinterlineskip
+\noindent
+\hbox to \hsize{{\LARGE 日本ソフトウェア科学会} \leaders\hrule height 2mm\hfill}
+\vspace{2mm}
+\hbox to \hsize{\footnotesize\bf 
+Japan Society for Software Science and Technology \hfil}}
+\end{flushleft}\vfil}}}
+}
+% ==========================================================
+
+% ==========================================================
+% <13> hissha header added by ohno (筆者紹介)
+\def\ds@hissha{
+\setlength\headsep{47.5mm}
+\setlength\textheight{160mm}
+\pagestyle{hissha}
+\@hisshatrue
+% ----------------
+\raggedbottom
+\global\def\@maketitle{\newpage \null
+%\thispagestyle{hisshatop}
+%\vskip-45mm % added by iwamoto 92.10.15
+%\vskip-55mm % added by iwamoto 92.10.15
+\vskip-53mm
+%\hbox to \textwidth{\hrulefillx}
+\vskip 10mm
+\hbox{\vbox to40mm{%
+\noindent
+\vskip8mm
+\begin{tabular}{l}
+{\LARGE\bf 筆\hspace{2mm}者\hspace{2mm}紹\hspace{2mm}介}
+\end{tabular}
+\vfil}}}
+}
+\def\ds@newsletr{
+\input{newsletr.sty}
+}
+
+% ==========================================================
+% 総目次
+\def\ds@somokuji{
+\setlength\headsep{30mm}
+\setlength\textheight{190mm}
+\pagestyle{hissha}
+\@hisshatrue
+% ----------------
+\raggedbottom
+\global\def\@maketitle{\newpage \null
+%\thispagestyle{hisshatop}
+%\vskip-45mm % added by iwamoto 92.10.15
+%\vskip-55mm % added by iwamoto 92.10.15
+%\vskip-30mm
+%\hbox to \textwidth{\hrulefillx}
+\vskip -20mm
+\hbox{\vbox to21mm{%
+\noindent
+\vskip1mm
+\begin{tabular}{l}
+{\LARGE\bf \@title}
+\end{tabular}
+\vfil}}}
+}
+
+% You must define 書評用 header here!
+
+
+\mark{{}{}} 
+
+% volpage（ボリューム通しページ）has been abolished as of Vol.22 (2005),
+% but the counter volpageoffset is kept alive for backward compatibility
+% because many papers still say \setcounter{volpageoffset}{...} .
+%
+% \newcounter{volpage}
+\newcounter{volpageoffset} % You must set this to appropriate value
+% \setcounter{volpageoffset}{0} % for each issue!
+
+% \def\thevolpage{\setcounter{volpage}{\value{page}}%
+%  \addtocounter{volpage}{\value{volpageoffset}}%
+%   \hbox to21pt{(\hfil\arabic{volpage}\hfil)}}
+\let\thevolpage=\null
+
+\newcounter{巻数} \newcounter{号数}
+\newcounter{年数}
+\newcounter{firstpage}
+\newcounter{lastpage}
+
+\def\volNoPp#1#2#3#4{%
+  \ifNotTaikai{%
+  \setcounter{巻数}{#1}\setcounter{号数}{#2}%
+  \setcounter{年数}{1983}\addtocounter{年数}{\value{巻数}}%
+  \setcounter{firstpage}{#3}\setcounter{lastpage}{#4}\setcounter{page}{#3}}}
+
+\def\@oddheadcontents
+ {Vol.~\arabic{巻数}\hskip\@mojihaba No.~\arabic{号数}\hskip\@mojihaba
+  \ifcase\value{号数}\or Feb.\or May\or Aug.\or Nov.\else\fi
+  \hskip.5\@mojihaba \setcounter{年数}{1983}\addtocounter{年数}{\value{巻数}}
+  \arabic{年数}}
+
+\def\@evenheadcontents{コンピュータソフトウェア}
+
+\def\ps@headings{\let\@mkboth\markboth
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\@evenhead{\normalsize
+ \phantom{\thepage}\phantom{\thevolpage}\hfil\@evenheadcontents
+  \hfil\phantom{\thepage}\thevolpage}
+\def\@oddhead{\normalsize
+ \thevolpage\phantom{\thepage}\hfil\@oddheadcontents
+  \hfil\phantom{\thevolpage}\phantom{\thepage}}
+\def\sectionmark##1{\markboth {\uppercase{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}}{}}
+\def\subsectionmark##1{\markright{\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}}}
+
+\def\ps@hissha{\let\@mkboth\markboth
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\@evenhead{\vbox to221.5mm{\hbox to\textwidth{\normalsize
+ \thepage\phantom{\thevolpage}\hfil{コンピュータソフトウェア}
+  \hfil\phantom{\thepage}\thevolpage}\vskip3.5mm\rule{\textwidth}{0.1mm}\vfill\rule{\textwidth}{0.1mm}}}
+\def\@oddhead{\vbox to221.5mm{\hbox to\textwidth{\normalsize
+ \thevolpage\phantom{\thepage}\hfil\@oddheadcontents
+  \hfil\phantom{\thevolpage}\thepage}\vskip3.5mm\rule{\textwidth}{0.1mm}\vfill\rule{\textwidth}{0.1mm}}}
+\def\sectionmark##1{\markboth {\uppercase{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}}{}}
+\def\subsectionmark##1{\markright{\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}}}
+
+\def\ps@hisshatop{\let\@mkboth\markboth
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\@evenhead{\vbox to221.5mm{\vskip.7mm\hbox to\textwidth{\normalsize
+ \thepage\phantom{\thevolpage}\hfil\phantom{コンピュータソフトウェア}
+  \hfil\phantom{\thepage}\thevolpage}\vskip3.5mm\rule{\textwidth}{0.1mm}\vfill\rule{\textwidth}{0.1mm}}}
+\def\@oddhead{\vbox to221.5mm{\vskip.7mm\hbox to\textwidth{\normalsize
+ \thevolpage\phantom{\thepage}\hfil\phantom{\@oddheadcontents}
+  \hfil\phantom{\thevolpage}\thepage}\vskip3.5mm\rule{\textwidth}{0.1mm}\vfill\rule{\textwidth}{0.1mm}}}
+\def\sectionmark##1{\markboth {\uppercase{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}}{}}
+\def\subsectionmark##1{\markright{\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}}}
+
+\def\ps@newsheadings{\let\@mkboth\markboth
+%\newfont{\cmssi}{cmssi10 scaled \magstep1}
+%\def\cmssi{\usefont{OT1}{cmss}{m}{it}}
+\font\cmssi=cmssi10 scaled \magstep1
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\@evenhead{\vbox to20mm{\vskip.7mm\hbox to\textwidth{\normalsize
+ \thepage\phantom{\thevolpage}\hfil{　　　　}
+  \hfil\phantom{\thepage}\thevolpage}\vskip2mm\hbox to\textwidth{%\hskip2mm
+\rule{29mm}{0.1mm}\hss\raisebox{-.5mm}{\cmssi NewsLetter}\hss\rule{97mm}{0.1mm}%\hskip2mm
+}\vfill}}
+\def\@oddhead{\vbox to20mm{\vskip.7mm\hbox to\textwidth{\normalsize
+ \thevolpage\phantom{\thepage}\hfil{　　　　}
+  \hfil\phantom{\thevolpage}\thepage}\vskip2mm\hbox to\textwidth{%\hskip2mm
+\rule{29mm}{0.1mm}\hss\raisebox{-.5mm}{\cmssi NewsLetter}\hss\rule{97mm}{0.1mm}%\hskip2mm
+}\vfill}}
+\def\sectionmark##1{\markboth {\uppercase{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}}{}}
+\def\subsectionmark##1{\markright{\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}}}
+
+\def\ps@myindexheadings{\let\@mkboth\markboth
+%\newfont{\cmssi}{cmssi10 scaled \magstep1}
+%\def\cmssi{\usefont{OT1}{cmss}{m}{it}}
+\font\cmssi=cmssi10 scaled \magstep1
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\@evenhead{\vbox to20mm{\vskip.7mm\hbox to\textwidth{\normalsize
+ \thepage\phantom{\thevolpage}\hfil{　　　　}
+  \hfil\phantom{\thepage}\thevolpage}\vskip2mm\hbox to\textwidth{\hskip2mm\rule{27mm}{0.1mm}\hss\raisebox{-.5mm}{\cmssi NewsLetter}\hss\rule{95mm}{0.1mm}\hskip2mm}\vfill}}
+\def\@oddhead{\vbox to20mm{\vskip.7mm\hbox to\textwidth{\normalsize
+ \thevolpage\phantom{\thepage}\hfil{　　　　}
+  \hfil\phantom{\thevolpage}\thepage}\vskip2mm\hbox to\textwidth{\hskip2mm\rule{27mm}{0.1mm}\hss\raisebox{-.5mm}{\cmssi NewsLetter}\hss\rule{95mm}{0.1mm}\hskip2mm}\vfill}}
+\def\sectionmark##1{\markboth {\uppercase{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}}{}}
+\def\subsectionmark##1{\markright{\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}}}
+
+\def\ps@myheadings{\let\@mkboth\@gobbletwo
+\def\@oddhead{\normalsize \thevolpage\hfil\thepage}
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\@evenhead{\normalsize \thepage\hfil\thevolpage}
+\def\sectionmark##1{}\def\subsectionmark##1{}}
+
+\pagestyle{headings}
+\pagenumbering{arabic}
+
+\def\tablename{表}
+\def\figurename{図}
+
+\if@LaTeX@e
+\ifASCII
+\def\bf{\normalfont\gtfamily\bfseries}
+\fi
+\else
+\def\bf{\protect\pdg\protect\pbf}
+\fi
+
+\def\today{\the\year 年 \the\month 月 \the\day 日}
+
+\def\sloppy{\tolerance 9000 \hfuzz .5\p@ \vfuzz .5\p@}
+
+\flushbottom
+
+
+
+% To balance the final page,
+% following code is borrowed from nicetwocolumn style
+\newdimen\dimen@@
+
+\def\balancecolumns{\setbox0\vbox{\unvbox\@outputbox} \dimen@@=\ht0
+   \advance\dimen@@ by\topskip \advance\dimen@@ by-\baselineskip
+   \divide\dimen@@ by2 \splittopskip=\topskip
+   {\vbadness=10000 \loop \global\setbox3=\copy0
+     \global\setbox1=\vsplit3 to\dimen@@
+     \ifdim\ht3>\dimen@@ \global\advance\dimen@@ by1pt\repeat}
+   \ifdim\dimen@@>\textheight \dimen@@=\textheight\fi
+   \setbox0=\vbox to \dimen@@{\unvbox1} \setbox2=\vbox to \dimen@@{\unvbox3}
+   \if\ht0>\ht2 \setbox2=\vbox to\ht0{\unvbox2}\dimen@@=\ht0\else
+   \if\ht2>\ht0 \setbox0=\vbox to\ht2{\unvbox0}\dimen@@=\ht2\fi\fi
+  \wd0=\hsize \wd2=\hsize
+%\message{in balancecolumns dimen@@=\the\dimen@@, dp0=\the\dp0, dp2=\the\dp2}
+\ifdim\dp0>\dp2\advance\dimen@@ by\dp0\else\advance\dimen@@ by\dp2\fi
+\setbox\@outputbox\vbox to\dimen@@{\hbox to\textwidth{\box0\hfil\box2}\vfill}}
+
+
+% you can refrain from balancing by falsifying following switch!
+\newif\if@lastpagebalancing \@lastpagebalancingtrue % default is to balance
+
+% incorporate balanced output to \enddocument
+\def\enddocument{\if@lastpagebalancing \global\let\@outputdblcol=\balancing@outputdblcol\fi%
+\@checkend{document}\clearpage
+\begingroup  
+\if@filesw \immediate\closeout\@mainaux 
+\def\global\@namedef##1##2{}\def\newlabel{\@testdef r}%
+\def\bibcite{\@testdef b}\@tempswafalse \makeatletter\input \jobname.aux
+\if@tempswa \@warning{Label(s) may have changed.  Rerun to get
+cross-references right}\fi\fi\endgroup
+\deadcycles\z@\@@end}
+
+\newlength{\@interlinegap}
+
+% to change \interlinegap appropriately at appropriate time
+\def\@outputdblcol{\if@firstcolumn \global\@firstcolumnfalse
+    \global\setbox\@leftcolumn\box\@outputbox
+% Following interlinegap value may be wrong!!
+% It is set to gap+depth for normalsize, and depth(2.031999Q) for footnotesize.
+% This setting is inconsistent, but seems to work properly now.
+%\ifx \@currsize\normalsize \global\@interlinegap 8.54815pt\else% setup
+% reset to 10Q after final page footnote hack!
+\ifx \@currsize\normalsize \global\@interlinegap 10\Q\else% setup
+ \ifx \@currsize\footnotesize \global\@interlinegap 2.03199\Q\else% appropriate
+  \ifx \@currsize\small \global\@interlinegap 3.08713pt\fi\fi\fi% gap here!
+  \else \global\@firstcolumntrue
+\if@leftfootnoteexist\setbox\@leftcolumn\vbox to\@colht{\boxmaxdepth\maxdepth
+\@texttop\dimen128=\dp\@leftcolumn
+\unvbox\@leftcolumn\vskip\skip\footins\footnoterule%
+%\message{in outputdblcol leftcolumnfootnote=ht:\the\ht\@leftcolumnfootnote, dp:\the\dp\@leftcolumnfootnote, wd:\the\wd\@leftcolumnfootnote}
+\unvbox\@leftcolumnfootnote
+\vskip-\dimen128\@textbottom}
+\global\maxdepth\@maxdepth\else
+\setbox\@leftcolumn\vbox to\@colht{\boxmaxdepth\maxdepth
+\@texttop\dimen128=\dp\@leftcolumn
+\unvbox\@leftcolumn\vfill%
+\vskip-\dimen128\@textbottom}
+\global\maxdepth\@maxdepth\fi
+\if@rightfootnoteexist\setbox\@outputbox\vbox to\@colht{\boxmaxdepth\maxdepth
+\@texttop\dimen128=\dp\@outputbox
+\unvbox\@outputbox\vskip\skip\footins\footnoterule%
+%\message{in outputdblcol rightcolumnfootnote=ht:\the\ht\@rightcolumnfootnote, dp:\the\dp\@rightcolumnfootnote, wd:\the\wd\@rightcolumnfootnote}
+\unvbox\@rightcolumnfootnote
+\vskip-\dimen128\@textbottom}
+\global\maxdepth\@maxdepth\else
+\setbox\@outputbox\vbox to\@colht{\boxmaxdepth\maxdepth
+\@texttop\dimen128=\dp\@outputbox
+\unvbox\@outputbox\vfill%
+\vskip-\dimen128\@textbottom}
+\global\maxdepth\@maxdepth\fi
+    \setbox\@outputbox\vbox{\hbox to\textwidth{\hbox to\columnwidth
+      {\box\@leftcolumn \hss}\hfil \vrule width\columnseprule\hfil
+       \hbox to\columnwidth{\box\@outputbox \hss}}}\@combinedblfloats
+       \@outputpage \begingroup \@dblfloatplacement \@startdblcolumn
+       \@whilesw\if@fcolmade \fi{\@outputpage\@startdblcolumn}\endgroup
+    \fi}
+
+\def\balancing@outputdblcol{\if@firstcolumn %\global\@firstcolumnfalse
+ \else \global\@firstcolumntrue
+  \setbox\@outputbox\vbox{\unvbox\@leftcolumn\vskip\@interlinegap%
+   \penalty\interlinepenalty\unvbox\@outputbox}
+ \fi
+ \balancecolumns \@combinedblfloats
+\if@leftfootnoteexist\setbox\@outputbox\vbox to\@colht{\boxmaxdepth\maxdepth
+\@texttop\dimen128=\dp\@outputbox
+\unvbox\@outputbox\vfill\vskip\skip\footins\footnoterule%
+%\message{in balancing@outputdblcol leftcolumnfootnote=ht:\the\ht\@leftcolumnfootnote, dp:\the\dp\@leftcolumnfootnote, wd:\the\wd\@leftcolumnfootnote}
+\unvbox\@leftcolumnfootnote
+\if@rightfootnoteexist
+%\message{in balancing@outputdblcol rightcolumnfootnote=ht:\the\ht\@rightcolumnfootnote, dp:\the\dp\@rightcolumnfootnote, wd:\the\wd\@rightcolumnfootnote}
+\unvbox\@rightcolumnfootnote\fi
+\vskip-\dimen128
+\@textbottom}
+\global\maxdepth\@maxdepth\fi
+ \@outputpage \begingroup \@dblfloatplacement \@startdblcolumn
+ \@whilesw\if@fcolmade \fi{\@outputpage\@startdblcolumn}\endgroup}
+
+\newbox\@leftcolumnfootnote \newbox\@rightcolumnfootnote
+\newif\if@leftfootnoteexist \newif\if@rightfootnoteexist
+
+% Extra \@texttop somehow found its way into \@makecol.  Deleted
+% 1 Dec 86.  (Found by Mike Harrison)
+
+\def\@makecol{\if@twocolumn
+\if@firstcolumn
+\ifvoid\footins \setbox\@outputbox\box\@cclv
+%\message{in makecol @outputbox=(\the\ht\@outputbox, \the\dp\@outputbox, \the\wd\@outputbox)}
+\global\@leftfootnoteexistfalse
+   \else\global\@leftfootnoteexisttrue
+\setbox\@outputbox\box\@cclv
+%\message{in makecol with foot @outputbox=(\the\ht\@outputbox, \the\dp\@outputbox, \the\wd\@outputbox)}
+\global\setbox\@leftcolumnfootnote\box\footins
+%\message{in makecol leftcolumnfootnote=ht:\the\ht\@leftcolumnfootnote, dp:\the\dp\@leftcolumnfootnote, wd:\the\wd\@leftcolumnfootnote}
+\fi
+     \xdef\@freelist{\@freelist\@midlist}\gdef\@midlist{}\@combinefloats
+\else %if@firstcolumn
+\ifvoid\footins \setbox\@outputbox\box\@cclv
+%\message{in makecol right @outputbox=(\the\ht\@outputbox, \the\dp\@outputbox, \the\wd\@outputbox)}
+\global\@rightfootnoteexistfalse
+   \else\global\@rightfootnoteexisttrue
+\setbox\@outputbox\box\@cclv
+%\message{in makecol right with foot @outputbox=(\the\ht\@outputbox, \the\dp\@outputbox, \the\wd\@outputbox)}
+\global\setbox\@rightcolumnfootnote\box\footins
+%\message{in makecol rightcolumnfootnote=ht:\the\ht\@rightcolumnfootnote, dp:\the\dp\@rightcolumnfootnote, wd:\the\wd\@rightcolumnfootnote}
+\fi
+     \xdef\@freelist{\@freelist\@midlist}\gdef\@midlist{}\@combinefloats
+\fi %if@firstcolumn
+\else % if@twocolumn
+\ifvoid\footins \setbox\@outputbox\box\@cclv
+   \else\setbox\@outputbox
+     \vbox{\boxmaxdepth \maxdepth
+     \unvbox\@cclv\vskip\skip\footins\footnoterule\unvbox\footins}\fi
+     \xdef\@freelist{\@freelist\@midlist}\gdef\@midlist{}\@combinefloats
+     \setbox\@outputbox\vbox to\@colht{\boxmaxdepth\maxdepth
+        \@texttop\dimen128=\dp\@outputbox\unvbox\@outputbox
+        \vskip-\dimen128\@textbottom}%
+     \global\maxdepth\@maxdepth
+\fi}
+
+
+
+\if@LaTeX@e
+\long\def\@footnotetext#1{\insert\footins{%
+    \reset@font\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore\leftskip10\Q
+        \ifnum\value{footnote}>9\hangindent=20\Q\advance\hangindent by 5.2pt
+        \else\hangindent=20\Q\fi \hangafter=1
+    \protected@edef\@currentlabel{%
+       \csname p@footnote\endcsname\@thefnmark
+    }%
+    \color@begingroup
+      \@makefntext{%
+        \rule\z@\footnotesep\ignorespaces#1\@finalstrut\strutbox}%
+    \color@endgroup}}%
+\else
+\long\def\@footnotetext#1{\insert\footins{\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore\leftskip10\Q
+% extra indent of 5.2pt is decided empirically, roughly the width of a digit
+        \ifnum\value{footnote}>9\hangindent=20\Q\advance\hangindent by 5.2pt
+        \else\hangindent=20\Q\fi \hangafter=1
+%    \hangindent=20\Q \hangafter=1
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces#1\strut}}}
+\fi
+
+\long\def\@makefntext#1{\noindent$\@thefnmark$\hskip10\Q #1}
+
+\def\@makefnmark{\smash{\hbox{$^{\@thefnmark}$}}} % smashed to make it
+                                                  % zero height
+
+\def\thefootnote{\mbox{\dag}\arabic{footnote}}
+
+% Following \footnoterule is changed to make a gap between footnoterule
+% and first footnote text about 2Q.
+%\def\footnoterule{\kern-3\p@ \hrule width 35mm \kern 2.6\p@} 
+\def\footnoterule{\kern0\p@ \hrule width 35mm \kern-0.4\p@}
+
+
+\def\thanks#1{\footnotemark\begingroup
+\def\protect{\noexpand\protect\noexpand}\xdef\@thanks{\@thanks
+  \protect\specialfootnotetext[\the\c@footnote]{\noindent #1}}\endgroup}
+
+\def\specialfootnotetext{\@ifnextchar
+    [{\@specialxfootnotenext}{\xdef\@thefnmark{\thempfn}\@specialfootnotetext}}
+
+\def\@specialxfootnotenext[#1]{\begingroup \csname c@\@mpfn\endcsname #1\relax
+   \xdef\@thefnmark{\thempfn}\endgroup \@specialfootnotetext}
+
+\def\@mpfn{footnote}
+\def\thempfn{\thefootnote}
+
+\long\def\@specialfootnotetext#1{\insert\footins{\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore\leftskip10\Q
+    \hangindent=10\Q \hangafter=1
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@specialmakefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces#1\strut}}}
+
+\long\def\@specialmakefntext#1{\noindent\llap{$\@thefnmark$ }#1}
+
+
+
+% to add extra space before citation by yamanouchi
+\def\cite{{\hskip 1pt}\@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+        \def\@citea{}%
+        {\footnotesize\@for\@citeb:=#2\do
+%               {\@citea\def\@citea{\penalty\@m\ }%
+                {\@citea\def\@citea{\penalty\@m{\hskip 1pt}}%
+                 \@ifundefined{b@\@citeb}%
+                        {{\bf ?}\@warning{Citation 
+                                `\@citeb' on page \thepage \space undefined}}%
+                \hbox{[\csname b@\@citeb\endcsname]}}}}
+
+% to make citations within sentences 11.5Q (same as other characters)
+% new command \Cite similar to \cite is defined as follows.
+% (normally citation numbers are typeset using \footnotesize)
+\def\Cite{{\hskip 1pt}\@ifnextchar [{\@tempswatrue\@Citex}{\@tempswafalse\@Citex[]}}
+
+\def\@Citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+        \def\@citea{}%
+        {\@for\@citeb:=#2\do
+%               {\@citea\def\@citea{\penalty\@m\ }%
+                {\@citea\def\@citea{\penalty\@m{\hskip 1pt}}%
+                 \@ifundefined{b@\@citeb}%
+                        {{\bf ?}\@warning{Citation 
+                                `\@citeb' on page \thepage \space undefined}}%
+                \hbox{[\csname b@\@citeb\endcsname]}}}}
+
+% you must place 1-moji space just right of eqation number
+\def\@eqnnum{{\rm (\theequation)\hskip\@mojihaba}} 
+
+
+
+% height adjusting environment
+% you must use this as separate paragraph
+
+\newbox\adjustbox
+\newdimen\adjustheight
+\newcount\adjustlinecount
+
+\newenvironment{adjustvboxheight}{%\message{prevdepth=\the\prevdepth}
+\vskip-\prevdepth\vskip1.4454pt % to cancel out various depth and set
+                               % it to normal 1.445pt.  For this to
+                               % work properly, it is necessary to use
+                               % this environment as a separate paragraph!!
+\global\setbox\adjustbox=\vbox\bgroup%
+\hsize\columnwidth }{\egroup%
+\adjustheight=\ht\adjustbox%
+\advance\adjustheight \dp\adjustbox%
+\divide\adjustheight\baselineskip \adjustlinecount=\adjustheight%
+\advance\adjustlinecount by 1 %
+\adjustheight=\adjustlinecount\baselineskip%
+% you must ajust the position of top box somehow!!!
+\vskip-.5\Q\vskip-1.445pt\vspace*{.5\Q}\vspace*{1.445pt}%
+%\fboxrule=0.01pt\fboxsep=0pt% for debugging
+\vskip5\Q % = 1/2 gap
+%\noindent\fbox{\vbox to\adjustheight{\vfil\box\adjustbox\vfil}}%
+\noindent\vbox to\adjustheight{\vfil\box\adjustbox\vfil}%
+\vskip-5\Q % = 1/2 gap
+\vskip-1.445pt\noindent}
+
+\clubpenalty=-1000 \widowpenalty=-1000 % we allow club and widow lines ?
+\displaywidowpenalty=-1000
+
+% The following redefinition influences \linebreak etc.
+\def\sloppy{\tolerance 9999 \hfuzz .5\p@ \vfuzz .5\p@}
+
+% use twocolumn instead of multicol
+\twocolumn
+
+\vbadness10001 \hbadness5000
+\tolerance 9999 \pretolerance\m@ne
+
+\@options
+
+\@ifundefined{@maketitle}{\ds@ronbun}{} % to setup default title style
+
+
+\if@LaTeX@e
+\ifASCII
+\DeclareFontShape{JY1}{mc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT1}{mc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+
+\DeclareFontShape{JY1}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{gt}{m}{sc}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{gt}{m}{sc}{<->ssub*gt/m/n}{}
+
+\DeclareFontShape{JY1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{mc}{bx}{sc}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{mc}{bx}{sc}{<->ssub*gt/m/n}{}
+\fi
+\fi
+
+\newcommand{\：}{\hbox to1zw{\hss:\hss}}
+
+\endinput

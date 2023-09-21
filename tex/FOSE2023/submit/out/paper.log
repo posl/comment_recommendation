@@ -3,8 +3,8 @@ entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/paper.tex
-(/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/paper.tex
+**/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/submit/paper.tex
+(/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/submit/paper.tex
 pLaTeX2e <2020-10-01>+2 (based on LaTeX2e <2020-10-01> patch level 4)
 L3 programming layer <2021-02-18> (./fose.cls
 Document Class: fose 2023/03/22 ver 0.10
@@ -476,11 +476,11 @@ LaTeX Font Info:    Kanji font shape `JY1/hmc/m/it' undefined
 ) [6] (out/paper.aux) ) 
 Here is how much of TeX's memory you used:
  7244 strings out of 479466
- 104563 string characters out of 5870549
+ 104584 string characters out of 5870549
  440926 words of memory out of 5000000
  24829 multiletter control sequences out of 15000+600000
  420285 words of font info for 108 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 69i,16n,77p,366b,1023s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,16n,77p,373b,1023s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on out/paper.dvi (6 pages, 55460 bytes).
