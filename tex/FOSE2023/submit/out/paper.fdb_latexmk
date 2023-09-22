@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex out/paper"] 1695314828 "out/paper.aux" "out/paper.bbl" "out/paper" 1695337798
+["bibtex out/paper"] 1695314828 "out/paper.aux" "out/paper.bbl" "out/paper" 1695355262
   "./jssst.bst" 1695314192 22413 877b0caef49902776cb5dc38fde8ee06 ""
-  "out/paper.aux" 1695337797 3937 ad63bbe07356dbf3f9f94e1b5fc75693 "latex"
+  "out/paper.aux" 1695355261 3937 ad63bbe07356dbf3f9f94e1b5fc75693 "latex"
   "references.bib" 1695314134 2842 fee2f0cd2e75f8ab072d6547abc59db3 ""
   (generated)
-  "out/paper.blg"
   "out/paper.bbl"
-["dvipdf"] 1695337798 "out/paper.dvi" "out/paper.pdf" "out/paper" 1695337798
-  "out/paper.dvi" 1695337797 55460 3c4a136e9ad818be93360c7ff147b0f0 "latex"
+  "out/paper.blg"
+["dvipdf"] 1695355261 "out/paper.dvi" "out/paper.pdf" "out/paper" 1695355262
+  "out/paper.dvi" 1695355261 55592 c309466a2265de25efd7cc981ea8d19d "latex"
   (generated)
   "out/paper.pdf"
-["latex"] 1695337797 "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/submit/paper.tex" "out/paper.dvi" "paper" 1695337798
-  "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/submit/paper.tex" 1695166302 3990 76cd1da10a0cd2398bbf4a4357883a84 ""
+["latex"] 1695355261 "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/submit/paper.tex" "out/paper.dvi" "paper" 1695355262
+  "/Users/keikoyanagi/Desktop/comment_recommendation/tex/FOSE2023/submit/paper.tex" 1695355260 4092 c4bf520485a13b5a3b30d18ee9ee6826 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm" 1463434352 1196 1be730212205a270378fba11a44765dc ""
@@ -97,9 +97,9 @@
   "fose.cls" 1695314159 155 56751d0d3820eeab5ea9ae2bbc3caf3d ""
   "fose.sty" 1695314176 83047 a73fffef5bb97ae3f94d9d153832123a ""
   "image/system.jpg" 1695166330 1346650 3a9cb6431af9537b3303093b2defbccc ""
-  "out/paper.aux" 1695337797 3937 ad63bbe07356dbf3f9f94e1b5fc75693 "latex"
+  "out/paper.aux" 1695355261 3937 ad63bbe07356dbf3f9f94e1b5fc75693 "latex"
   "out/paper.bbl" 1695314828 1769 edac298021d8d882a374c2ca07e98060 "bibtex out/paper"
-  "paper.tex" 1695166302 3990 76cd1da10a0cd2398bbf4a4357883a84 ""
+  "paper.tex" 1695355260 4092 c4bf520485a13b5a3b30d18ee9ee6826 ""
   "section/approach.tex" 1695166289 6193 d143e6f62d6aad7a27c03cf8fad6867c ""
   "section/conclusion.tex" 1695166289 665 4185e6c2ab74a8e081612474edd344e6 ""
   "section/discussion.tex" 1695166289 5435 f4afe6e0591e0d9b5f2d5e563e9c0db9 ""
@@ -107,6 +107,6 @@
   "section/related_research.tex" 1695337797 4546 c2ad26a56c90d2ec0631ca3f89a0d17d ""
   "section/result.tex" 1695166289 7278 65b4415a88e1e046c89ce4814c589ed1 ""
   (generated)
-  "out/paper.dvi"
-  "out/paper.aux"
   "out/paper.log"
+  "out/paper.aux"
+  "out/paper.dvi"
