@@ -1,10 +1,10 @@
 \section{実験設計\label{approach}}
-  \begin{figure}[t]
+  \begin{figure*}[t]
     \centering
-    \includegraphics[width=\linewidth]{image/system.jpg}
+    \includegraphics[scale=0.35]{image/system.jpg}
     \caption{実験設計の概要}
     \label{experiment_design}
-  \end{figure}
+  \end{figure*}
   
   \subsection{データセット構築\label{build_dataset}}
     本研究では日本国内において最大の競技プログラミングコンテストであるAtCoder\cite{AtCoder}の問題を使用する．
@@ -30,6 +30,7 @@
     最終的に，開催番号が99${\sim}$287，各問題の難易度がA,B,C,D，問題の言語が英語，日本語，中国語の3つのデータセットを取得し，
     これらを本実験のデータセットとする．
 
+\vspace{-1zh}
   \subsection{コード推薦\label{recommend_program}}
     \ref{build_dataset}節で作成したデータセットに対して，Copilotでコード推薦を行う．
     \ref{build_dataset}節で作成した各言語のデータセットの中には，開催番号が99${\sim}$287，各問題の難易度がA,B,C,D存在するため，
@@ -87,9 +88,11 @@
     その理由としては，Copilotの推薦コードが毎回変化するため，
     このランダム性を考慮して，評価を行うためである．
     
+\vspace{-1zh}
   \subsection{取得コードのテストと評価\label{test_and_evaluation}}
     \ref{recommend_program}節で取得したコードに対して，テストを行う．
     このテストは，各問題に対してテストケースの入力を標準入力として与え，取得したコードを実行し，テストケースの出力と一致するかを確認する．
     そして，各推薦コードが全てのテストケースを通過したか否かで評価を行う．
     使用した評価指標は，$Accuracy$(正答率)で，推薦された全コードの内，全てのテストケースを通過したコードの割合を示す．
     ただし，Copilotが推薦したコードの順番は考慮せずに評価を行う．
+\vspace*{-1zh}

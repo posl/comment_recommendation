@@ -21,7 +21,6 @@
       \end{tabular}
     }
   \end{table}
-
   \begin{table}[t]
     \centering
     \caption{日本語における$Accuracy$}
@@ -44,7 +43,6 @@
       \end{tabular}
     }
   \end{table}
-  
   \begin{table}[t]
     \centering
     \caption{中国語における$Accuracy$}
@@ -67,7 +65,6 @@
       \end{tabular}
     }
   \end{table}
-
   \begin{table}[t]
     \centering
     \caption{各言語の$Accuracy$の中央値}
@@ -86,10 +83,9 @@
       \end{tabular}
     }
   \end{table}
-
   本章では，RQと結果，および本実験で得られた結果に対する追加実験の必要性を示す．
   なお，本実験は2023/4${\sim}$2023/7に実施した．
-
+\vspace{-1zh}
   \subsection{RQへの回答}
   \noindent\textbf{RQ：入力する言語の違いによって，Copilotの性能にどのような影響を与えるのか}
 
@@ -108,14 +104,15 @@
   中国語のデータセットでは，A問題が1410個，B問題が1731個，C問題が1774個，D問題が1747個であった．
   これらの結果から，日本語のデータセットでは，英語のデータセットと中国語のデータセットに比べて，推薦された全コード数が少なかった．
   加えて，全難易度で日本語のデータセットの$Accuracy$が最も高かった．
-  さらに，表\ref{Med_accuracy}は，各言語の難易度別の$Accuracy$の中央値を示したものである．   
-  表\ref{Med_accuracy}より，中国語のデータセットは，英語のデータセットに比べて，日本語のデータセットとの$Accuracy$の差が大きかった．
+  さらに，表\ref{Med_accuracy}は，各言語の難易度別の$Accuracy$の中央値を示している．   
+  表\ref{Med_accuracy}より，中国語のデータセットは英語のデータセットに比べ，日本語のデータセットとの$Accuracy$の差が大きかった．
 
   \begin{screen}
     GitHub Copilotの推薦コードの正答率は，入力言語によって変化し，
     日本語，英語，中国語の順に$Accuraccy$が高かった．
   \end{screen}
 
+\vspace{-1zh}
   \subsection{追加実験の必要性\label{future_work}}
     本研究では，AtCoder\cite{AtCoder}の開催番号99${\sim}$287，
     各問題の難易度A, B, C, D，各問題の言語を日本語，英語，中国語を対象として調査を行った．
@@ -130,4 +127,3 @@
     また中国語圏で行われているプログラミングコンテストの問題を英語および日本語に翻訳した
     データセットを使用して今後調査を行う所存である．
 
-  \vskip\baselineskip
