@@ -1,6 +1,3 @@
-def main():
-    a = list(map(int, input().split()))
-    if sum(a) >= 22:
-        print('bust')
-    else:
-        print('win')
+def problem147_a():
+    A = input().split()
+    if int(A[0])+int(A[1])+int(A[2])>=22:

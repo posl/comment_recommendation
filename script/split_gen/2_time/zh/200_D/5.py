@@ -1,2 +1,2 @@
-def solution():
-    pass
+def solve():
+    N = int

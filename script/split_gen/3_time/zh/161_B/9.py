@@ -1,13 +1,8 @@
-def main():
+def problems161_b():
     n,m = map(int,input().split())
     a = list(map(int,input().split()))
     a.sort(reverse=True)
-    total = sum(a)
-    count = 0
-    for i in range(m):
-        if a[i]*4*m >= total:
-            count += 1
-    if count == m:
-        print("是")
-    else:
-        print("否")
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    for i in r

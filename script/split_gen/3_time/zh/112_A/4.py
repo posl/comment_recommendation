@@ -1,8 +1,2 @@
-def solution1():
-    N = int(input())
-    if N == 1:
-        print("Hello World")
-    elif N == 2:
-        A = int(input())
-        B = int(input())
-        print(A + B)
+def main():
+    # 读取输

@@ -1,2 +1,2 @@
-def replace_na(s):
-    return s.replace('na', 'nya')
+def solve(n, s):
+    return s.replace("na", "nya")

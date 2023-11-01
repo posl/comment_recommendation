@@ -1,20 +1,16 @@
 def main():
-    A, B, C, D, E, F, X = map(int, input().split())
-    time = 0
+    a,b,c,d,e,f,x = map(int,input().split())
+    taka = 0
+    aoki = 0
     while True:
-        if time % (A + B) < A:
-            X -= E
-        else:
-            X -= F
-        if X <= 0:
-            print("青木")
+        if taka + a > x:
+            print("Takahashi")
             break
-        if time % (D + E) < D:
-            X -= C
-        else:
-            X -= F
-        if X <= 0:
-            print("高桥")
+        taka += a
+        if aoki + d > x:
+            print("Aoki")
             break
-        time += 1
-main()
+        aoki += d
+        if taka > aoki:
+            aoki += e
+        elif taka <

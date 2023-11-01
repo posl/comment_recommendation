@@ -1,16 +1,7 @@
-def check():
-    n = int(raw_input())
-    data = []
+def main():
+    n = int(input())
+    A = []
     for i in range(n):
-        data.append(raw_input())
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                continue
-            if data[i][j] == 'W' and data[j][i] != 'L':
-                return False
-            if data[i][j] == 'L' and data[j][i] != 'W':
-                return False
-            if data[i][j] == 'D' and data[j][i] != 'D':
-                return False
-    return True
+        A.append(input())
+    flag = True
+    for i in

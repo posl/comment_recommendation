@@ -1,7 +1,7 @@
 def main():
     N = int(input())
     S = input()
-    if '1' in S[::2]:
-        print('高桥')
+    if S.find('1')%2 == 0:
+        print('Takahashi')
     else:
-        print('青木')
+        print('Aoki')

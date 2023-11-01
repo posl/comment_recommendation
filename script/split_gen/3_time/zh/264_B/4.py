@@ -1,8 +1,4 @@
-def main():
-    # 读取输入
+def problems264_b():
     R, C = map(int, input().split())
-    # 逻辑处理
     if (R + C) % 2 == 0:
-        print('黑色')
-    else:
-        print('白色')
+        print(

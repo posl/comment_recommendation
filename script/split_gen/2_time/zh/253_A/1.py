@@ -1,6 +1,6 @@
 def main():
     a,b,c = map(int,input().split())
     if a <= b <= c or c <= b <= a:
-        print("是")
+        print("Yes")
     else:
-        print("没有")
+        print("No")

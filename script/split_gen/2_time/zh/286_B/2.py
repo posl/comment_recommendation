@@ -1,7 +1,3 @@
-def replace_na(s):
-    i = 0
-    while i < len(s) - 1:
-        if s[i] == 'n' and s[i+1] == 'a':
-            s = s[:i] + 'ny' + s[i+2:]
-        i += 1
-    return s
+def main():
+    n = int(raw_input())
+    s = raw_inpu

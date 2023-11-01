@@ -1,18 +1,15 @@
-def main():
-    A, B, C, D, E, F, X = map(int, input().split())
-    distance_takahashi = 0
-    distance_aoki = 0
-    for i in range(1000):
-        if i % (A + B + C) < A:
-            distance_takahashi += 1
-        if i % (D + E + F) < D:
-            distance_aoki += 1
-        if distance_takahashi == distance_aoki:
-            print("draw")
-            return
-        if distance_takahashi > distance_aoki:
+def run():
+    A,B,C,D,E,F,X = map(int,input().split())
+    takahashi = 0
+    aoki = 0
+    while True:
+        takahashi += A * B
+        if takahashi >= X:
             print("Takahashi")
-            return
-        if distance_takahashi < distance_aoki:
+            break
+        aoki += D * E
+        if aoki >= X:
             print("Aoki")
-            return
+            break
+        takahashi += C * B
+        aoki += F * E

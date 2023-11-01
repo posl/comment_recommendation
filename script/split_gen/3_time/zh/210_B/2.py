@@ -1,7 +1,9 @@
 def main():
+    # 读取输入
     n = int(input())
     s = input()
-    if s.count('1') % 2 == 0:
+    # 判断输赢
+    if s[0] == '1':
         print('Takahashi')
     else:
-        print('Aoki')
+        pr

@@ -1,8 +1,8 @@
-def is_median(a,b,c):
-    if a<b and b<c:
-        return True
-    elif c<b and b<a:
-        return True
+def main():
+    # 读入a, b, c
+    a, b, c = map(int, input().split())
+    # 判断b是否是中位数
+    if a <= b <= c or c <= b <= a:
+        print("Yes")
     else:
-        return False
-a,b,c = map(int,input().split())
+        print("No")

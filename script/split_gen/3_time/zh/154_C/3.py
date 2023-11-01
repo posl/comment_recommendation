@@ -1,7 +1,4 @@
 def main():
     n = int(input())
     a = list(map(int, input().split()))
-    if len(a) == len(set(a)):
-        print('Yes')
-    else:
-        print('No')
+    if len(set(

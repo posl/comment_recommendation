@@ -1,10 +1,7 @@
-def main():
-    score = int(input())
-    if score >= 90:
-        print('expert')
-    elif score >= 70:
-        print(90 - score)
-    elif score >= 40:
-        print(70 - score)
-    else:
-        print(40 - score)
+def get_next_level_score(score):
+    if score < 40:
+        return 40 - score
+    elif score < 70:
+        return 70 - score
+    elif score < 90:
+        return 90 - score

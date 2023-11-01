@@ -1,5 +1,6 @@
-def is_middle(a,b,c):
-    if (a <= b and a >= c) or (a >= b and a <= c):
-        return True
+def main():
+    a,b,c = map(int,input().split())
+    if (a <= b <= c) or (c <= b <= a):
+        print("Yes")
     else:
-        return False
+        print("No")

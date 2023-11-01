@@ -1,2 +1,2 @@
-def is_palindrome(s):
+def check_palindrome(s):
     return s == s[::-1]

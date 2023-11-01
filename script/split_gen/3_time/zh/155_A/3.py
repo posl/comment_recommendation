@@ -1,8 +1,8 @@
-def main():
-    a,b,c = map(int,input().split())
-    if a == b and b == c:
-        print("No")
-    elif a == b or a == c or b == c:
+def problem155a():
+    a, b, c = map(int, input().split())
+    if a == b and b != c:
         print("Yes")
-    else:
-        print("No")
+    elif a == c and b != c:
+        print("Yes")
+    elif b == c and a != b:
+        prin

@@ -1,9 +1,7 @@
-def getGrade(n):
-    if n >= 0 and n < 40:
-        return 40 - n
-    elif n >= 40 and n < 70:
-        return 70 - n
-    elif n >= 70 and n < 90:
-        return 90 - n
-    else:
-        return "expert"
+def get_next_grade_score(score):
+    if score < 40:
+        return 40 - score
+    elif score < 70:
+        return 70 - score
+    elif score < 90:
+        return 90 - score

@@ -1,6 +1,5 @@
-def is_polygon(n, l):
-    l.sort()
-    if l[-1] >= sum(l[:-1]):
-        return False
-    else:
-        return True
+def problems117_b():
+    n = int(input())
+    L = list(map(int, input().split()))
+    L.sort(reverse=True)
+    if

@@ -1,13 +1,6 @@
-def main():
-    # 读取输入
-    inputs = input()
-    # 分割字符串
-    inputs = inputs.split()
-    # 转换为整数
-    k = int(inputs[0])
-    x = int(inputs[1])
-    # 判断
-    if k * 500 >= x:
-        print("是")
+def problem150_a():
+    K, X = map(int, input().split())
+    if K * 500 >= X:
+        print("Yes")
     else:
-        print("否")
+        print("No")

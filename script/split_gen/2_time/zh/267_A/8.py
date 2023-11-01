@@ -1,14 +1,7 @@
-def main():
-    day = raw_input()
-    if day == "Monday":
-        print 5
-    elif day == "Tuesday":
-        print 4
-    elif day == "Wednesday":
-        print 3
-    elif day == "Thursday":
-        print 2
-    elif day == "Friday":
-        print 1
-    else:
-        print 0
+def get_days(s):
+    days = 0
+    if s == "Monday":
+        days = 5
+    elif s == "Tuesday":
+        days = 4
+    elif s == "Wednesday":

@@ -5,7 +5,4 @@ def main():
     d = int(input())
     e = int(input())
     k = int(input())
-    if e-a <= k:
-        print("Yay!")
-    else:
-        print(":(")
+    print(":(" if (e - a > k) else "Yay!")

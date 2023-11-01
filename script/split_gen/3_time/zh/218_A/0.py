@@ -1,7 +1,5 @@
-def main():
-    N = int(input())
-    S = input()
-    if S[N-1] == 'o':
+def solve():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
         print('Yes')
-    else:
-        print('No')

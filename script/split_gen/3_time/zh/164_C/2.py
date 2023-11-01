@@ -1,5 +1,5 @@
-def solve():
-    N = int(input())
-    S = [input() for _ in range(N)]
-    print(len(set(S)))
-solve()
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())

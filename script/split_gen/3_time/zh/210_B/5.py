@@ -1,7 +1,6 @@
 def main():
-    N = int(input())
-    S = input()
-    if S.find('1')%2 == 0:
-        print('Takahashi')
-    else:
-        print('Aoki')
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if s[i] == '1':
+            if i % 2 == 0:

@@ -1,7 +1,8 @@
 def main():
+    # 读取输入
     n = int(input())
     s = input()
-    if s.count('1') % 2 == 1:
-        print('高桥')
-    else:
-        print('青木')
+    # 检查输入是否正确
+    if n != len(s):
+        print("输入错误！")
+        return

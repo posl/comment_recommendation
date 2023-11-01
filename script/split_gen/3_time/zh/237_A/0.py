@@ -1,6 +1,6 @@
-def check(n):
-    if n >= -2**31 and n <= 2**31-1:
-        return True
+def main():
+    n = int(input())
+    if -2**31 <= n and n <= 2**31-1:
+        print("Yes")
     else:
-        return False
-n = int(input())
+        print("No")

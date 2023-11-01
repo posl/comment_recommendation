@@ -1,11 +1,9 @@
 def main():
     n = int(input())
     s = [input() for i in range(n)]
-    # print(s)
-    s = set(s)
-    # print(s)
-    for i in s:
-        if '!' + i in s:
-            print(i)
-            return
-    print('satisfiable')
+    t = set()
+    for i in range(n):
+        if s[i][0] == '!':
+            t.add(s[i][1:])
+        else:
+            t.a

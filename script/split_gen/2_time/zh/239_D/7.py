@@ -1,7 +1,8 @@
-def is_prime(n):
-    if n == 1:
+def isPrime(num):
+    if num == 2:
+        return True
+    if num == 1 or num % 2 == 0:
         return False
-    for i in range(2, int(n**0.5)+1): # 从2开始到n的平方根+1
-        if n % i == 0:
-            return False
-    return True
+    i = 3
+    while i <= num ** 0.5:
+        if num %

@@ -1,7 +1,5 @@
 def main():
-    # 你的代码写在这里
-    n = int(input())
-    if -2 ** 31 <= n <= 2 ** 31 - 1:
-        print('是')
+    N = int(input())
+    if -2**31 <= N and N <= 2**31-1:
+        print('Yes')
     else:
-        print('否')

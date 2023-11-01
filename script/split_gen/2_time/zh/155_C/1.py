@@ -1,13 +1,6 @@
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort()
-    max = 0
-    for i in range(n):
-        if s.count(s[i]) > max:
-            max = s.count(s[i])
-    for i in range(n):
-        if s.count(s[i]) == max:
-            print(s[i])
+    n = int(raw_input())
+    d = {}
+    for i in xrange(n):
+        s = raw_input()
+        if s in d

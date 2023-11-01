@@ -1,2 +1,4 @@
-def replace_na(s):
-    return s.replace('na','nya')
+def solve():
+    n = int(input())
+    s = input()
+    print

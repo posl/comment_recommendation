@@ -1,6 +1,5 @@
-def main():
-    n = input()
-    if n % 2 == 0:
-        print "white"
+def solve():
+    N = int(input())
+    if N % 2 == 0:
+        print('White')
     else:
-        print "black"

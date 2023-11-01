@@ -1,10 +1,10 @@
-def main():
+def christmas():
     D = int(input())
     if D == 25:
-        print('圣诞节')
+        print("Christmas")
     elif D == 24:
-        print('平安夜')
+        print("Christmas Eve")
     elif D == 23:
-        print('平安夜')
-    else:
-        print('平安夜的前夜')
+        print("Christmas Eve Eve")
+    elif D == 22:
+        print("Christmas

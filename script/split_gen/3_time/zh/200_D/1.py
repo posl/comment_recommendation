@@ -1,8 +1,2 @@
-def find_seq(n, A):
+def f(n, a):
     for i in range(n):
-        for j in range(n):
-            if i == j:
-                continue
-            if (A[i] + A[j]) % 200 == 0:
-                return [i + 1], [j + 1]
-    return [], []

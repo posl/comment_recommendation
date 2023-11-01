@@ -1,5 +1,6 @@
-def print_result(n):
-    if pow(2,n) > pow(n,2):
-        print("是")
+def main():
+    n = int(input())
+    if 2**n > n**2:
+        print('Yes')
     else:
-        print("否")
+        print('No')

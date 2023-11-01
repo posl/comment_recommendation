@@ -1,15 +1,10 @@
-def solve():
-    n = int(input())
-    s = input()
-    r = s.count('R')
-    g = s.count('G')
-    b = s.count('B')
-    ans = r * g * b
-    for i in range(n):
-        for j in range(i + 1, n):
-            k = 2 * j - i
-            if k < n:
-                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
-                    ans -= 1
-    print(ans)
-solve()
+def count_rgb(s):
+    r = 0
+    g = 0
+    b = 0
+    for c in s:
+        if c == 'R':
+            r += 1
+        elif c == 'G':
+            g += 1
+        els

@@ -1,10 +1,7 @@
 def main():
-    x = int(input())
-    if x < 40:
-        print(40-x)
-    elif x < 70:
-        print(70-x)
-    elif x < 90:
-        print(90-x)
-    else:
-        print("专家")
+    score = int(input())
+    if score >= 90:
+        print("expert")
+    elif score >= 70:
+        print(90 - score)
+    elif score >= 40:

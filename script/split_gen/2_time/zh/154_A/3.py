@@ -1,9 +1,9 @@
 def main():
-    S,T = input().split()
-    A,B = map(int,input().split())
-    U = input()
-    if U == S:
-        A -= 1
-    elif U == T:
-        B -= 1
-    print(A,B)
+    s,t = input().split()
+    a,b = map(int,input().split())
+    u = input()
+    if s == u:
+        a -= 1
+    elif t == u:
+        b -= 1
+    print(a,b)

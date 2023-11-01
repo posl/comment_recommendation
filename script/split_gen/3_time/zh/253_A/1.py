@@ -1,6 +1,5 @@
-def main():
-    a, b, c = map(int, input().split())
-    if ((a <= b and b <= c) or (c <= b and b <= a)):
-        print('是')
+def problems253_a(a,b,c):
+    if b == a or b == c:
+        return "Yes"
     else:
-        print('没有')
+        return "No"

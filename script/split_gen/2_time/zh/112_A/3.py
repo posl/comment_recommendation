@@ -1,10 +1,8 @@
 def main():
-    age = int(input())
-    if age == 1:
+    N = int(input())
+    if N == 1:
         print('Hello World')
-    elif age == 2:
-        a = int(input())
-        b = int(input())
-        print(a+b)
     else:
-        print('input error')
+        A = int(input())
+        B = int(input())
+        print(A+B)

@@ -1,6 +1,5 @@
-def judge(n, l):
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
     l.sort()
-    if l[n-1] < sum(l[:n-1]):
-        return "是"
-    else:
-        return "否"
+    if l[-1] < sum(l[:

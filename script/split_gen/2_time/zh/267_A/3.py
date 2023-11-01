@@ -1,4 +1,4 @@
 def main():
-    week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    day = input()
-    print(6 - week.index(day))
+    week = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+    day = int(input())
+    print(week.index(day))

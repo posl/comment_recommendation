@@ -1,15 +1,7 @@
-def isPrime(x):
-    if x == 1:
+def is_prime(n):
+    if n < 2:
         return False
-    else:
-        for i in range(2, x):
-            if x % i == 0:
-                return False
+    if n == 2:
         return True
-a, b, c, d = map(int, input().split())
-for i in range(a, b+1):
-    for j in range(c, d+1):
-        if isPrime(i+j):
-            print("青木")
-            exit()
-print("高桥")
+    for i in range(2,n):
+        if n % i == 0:

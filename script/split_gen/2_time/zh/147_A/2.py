@@ -1,10 +1,6 @@
 def main():
-    # 读取输入
-    a = [int(x) for x in input().split()]
-    # 计算
-    total = sum(a)
-    # 输出
-    if total >= 22:
+    a1,a2,a3 = map(int,input().split())
+    if a1+a2+a3 >= 22:
         print('bust')
     else:
-        print('win')
+        print('wi

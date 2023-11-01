@@ -1,7 +1,9 @@
-def solve():
-    n = int(input())
-    s = input()
-    if s[n-1] == '0':
-        print('Takahashi')
-    else:
-        print('Aoki')
+def main():
+    # 读入数据
+    N = int(input())
+    S = input()
+    # 初始化
+    # 0:高桥 1:青木
+    turn = 0
+    # 遍历
+    for i in range(N):

@@ -1,6 +1,6 @@
-def problem164_a():
-    s, w = map(int, input().split())
-    if s > w:
-        print('安全')
+def main():
+    s,w = map(int,input().split())
+    if s <= w:
+        print("unsafe")
     else:
-        print('不安全')
+        print("safe")

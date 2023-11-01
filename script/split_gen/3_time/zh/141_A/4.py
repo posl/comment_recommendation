@@ -1,8 +1,8 @@
 def main():
-    s = input()
-    if s == "晴天":
-        print("阴天")
-    elif s == "阴天":
-        print("雨天")
+    weather = input()
+    if weather == 'Sunny':
+        print('Cloudy')
+    elif weather == 'Cloudy':
+        print('Rainy')
     else:
-        print("晴天")
+        print('Sunny')

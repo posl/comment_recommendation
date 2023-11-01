@@ -1,8 +1,8 @@
 def main():
-    n = int(input())
-    if n == 1:
+    N = int(input())
+    if N == 1:
         print("Hello World")
-    else:
-        a = int(input())
-        b = int(input())
-        print(a + b)
+    elif N == 2:
+        A = int(input())
+        B = int(input())
+        print(A + B)

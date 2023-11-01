@@ -1,10 +1,5 @@
-def main():
-    n = int(input())
-    for i in range(n):
-        a = int(input())
-        b = list(map(int, input().split()))
-        count = 0
-        for j in b:
-            if j % 2 == 1:
-                count += 1
-        print(count)
+def get_num_of_odd_numbers(nums):
+    count = 0
+    for num in nums:
+        if num % 2 == 1:
+            count

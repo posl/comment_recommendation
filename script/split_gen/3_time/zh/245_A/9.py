@@ -1,12 +1,7 @@
 def main():
-    A,B,C,D = map(int,input().split())
-    if A < C:
-        print('高桥')
-    elif A > C:
-        print('青木')
-    elif B < D:
-        print('高桥')
-    elif B > D:
-        print('青木')
-    else:
-        print('高桥')
+    a,b,c,d = map(int,input().split())
+    if a > c:
+        print("Takahashi")
+    elif a < c:
+        print("Aoki")
+    elif a ==

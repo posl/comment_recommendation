@@ -1,3 +1,3 @@
 def get_days_to_saturday(day):
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    return 7 - days.index(day) if days.index(day) < 5 else 0
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    return (7 - days

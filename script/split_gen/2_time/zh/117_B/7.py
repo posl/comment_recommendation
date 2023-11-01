@@ -1,8 +1,5 @@
-def problem117_b():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort(reverse=True)
-    if l[0] < sum(l[1:]):
-        print("是")
+def triangle(a, b, c):
+    if a+b>c and b+c>a and c+a>b:
+        return True
     else:
-        print("否")
+        return False

@@ -1,6 +1,7 @@
 def main():
-    S = input()
-    if S[-1] == 's':
-        print(S + 'es')
+    # 读取输入
+    s = input()
+    # 判断最后一个字符是否为s
+    if s[-1] == 's':
+        print(s + 'es')
     else:
-        print(S + 's')

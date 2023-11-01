@@ -1,4 +1,7 @@
 def main():
-    n = int(input())
-    s = input()
-    print('Takahashi' if s[0] == '1' else 'Aoki')
+    N = int(input())
+    S = input()
+    if S.count('1') % 2 == 0:
+        print("Takahashi")
+    else:
+        print("Aoki")

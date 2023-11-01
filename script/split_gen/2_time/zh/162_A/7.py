@@ -1,10 +1,6 @@
-def judge(n):
+def main():
+    n = int(input())
     if n%10 == 7:
-        return True
-    elif n//10%10 == 7:
-        return True
-    elif n//100 == 7:
-        return True
+        print("Yes")
     else:
-        return False
-n = int(input())
+        print("No")

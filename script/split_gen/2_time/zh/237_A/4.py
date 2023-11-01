@@ -1,7 +1,5 @@
-def main():
-    N = int(input())
-    if -2**31 <= N and N <= 2**31 - 1:
-        print("是")
+def is_int32(n):
+    if -2**63 <= n and n < 2**63:
+        return True
     else:
-        print("否")
-main()
+        return False

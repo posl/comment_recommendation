@@ -1,6 +1,4 @@
 def main():
-    a,b,c = map(int,input().split())
-    if b >= min(a,c) and b <= max(a,c):
-        print('是')
-    else:
-        print('没有')
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[1] == a[0] + a[2]:

@@ -1,10 +1,6 @@
 def main():
-    date = list(map(int, input().split('/')))
-    if date[0] < 2019:
+    s = input()
+    y, m, d = map(int, s.split('/'))
+    if y < 2019:
         print('Heisei')
-    elif date[1] < 4:
-        print('Heisei')
-    elif date[2] <= 30:
-        print('Heisei')
-    else:
-        print('TBD')
+    elif

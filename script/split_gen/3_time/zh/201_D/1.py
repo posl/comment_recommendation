@@ -1,2 +1,2 @@
 def main():
-    print("hello world!")
+    H,W =

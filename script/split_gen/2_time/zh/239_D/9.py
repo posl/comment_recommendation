@@ -1,5 +1,7 @@
-def is_prime(n):
-    if n % 2 == 0 and n > 2:
+def isPrime(n):
+    if n <= 1:
         return False
-    return all(n % i for i in range(3, int(n**0.5)+1,2))
-a,b,c,d = map(int,input().split())
+    for i in range(2, int(n**0.5)+1):
+        if not n%i:
+            return False
+    return True

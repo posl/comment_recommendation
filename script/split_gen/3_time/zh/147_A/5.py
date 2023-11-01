@@ -1,9 +1,4 @@
 def main():
-    a = input().split()
-    sum = 0
-    for i in range(3):
-        sum += int(a[i])
-    if sum >= 22:
-        print("bust")
-    else:
-        print("win")
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print("bus

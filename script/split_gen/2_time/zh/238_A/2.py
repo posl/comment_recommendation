@@ -1,6 +1,5 @@
-def main():
-    n = int(input())
-    if 2**n > n**2:
-        print("是")
+def power2(n):
+    if n == 0:
+        return 1
     else:
-        print("否")
+        return 2 * power2(n-1)

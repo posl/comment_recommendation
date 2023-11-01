@@ -1,6 +1,3 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a <= b <= c or c <= b <= a:
-        print('是')
-    else:
-        print('否')
+    a,b,c = map(int,input().split())
+    if b == max(a,b,c) or b == min(a,b,c):

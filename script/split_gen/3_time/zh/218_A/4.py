@@ -1,7 +1,5 @@
-def problem218_a():
+def main():
     n = int(input())
     s = input()
-    if s[n-1] == 'o':
-        print('yes')
-    else:
-        print('no')
+    if s[n-1] == "o":
+        print("Yes")

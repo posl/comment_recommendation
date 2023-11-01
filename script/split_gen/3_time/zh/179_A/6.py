@@ -1,4 +1,4 @@
-def plural_form(S):
+def pluralize(S):
     if S[-1] == 's':
         return S + 'es'
     else:

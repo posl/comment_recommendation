@@ -1,8 +1,7 @@
-def isPrime(num):
-    if num==1:
+def isPrime(n):
+    if n <= 1:
         return False
-    for i in range(2,int(num**0.5)+1):
-        if num%i==0:
+    for i in range(2, n):
+        if n%i == 0:
             return False
     return True
-a,b,c,d=map(int,input().split())

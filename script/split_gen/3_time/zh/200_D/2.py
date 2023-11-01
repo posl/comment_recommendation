@@ -1,2 +1,3 @@
 def solve():
-    print('No')
+    n = int(input())
+    A

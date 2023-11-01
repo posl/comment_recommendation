@@ -1,5 +1,9 @@
-def middle(a, b, c):
-    if (b >= a and b <= c) or (b <= a and b >= c):
-        return True
+def findMedian(a,b,c):
+    if a>b:
+        if b>c:
+            return b
+        elif a>c:
+            return c
+        else:
+            return a
     else:
-        return False

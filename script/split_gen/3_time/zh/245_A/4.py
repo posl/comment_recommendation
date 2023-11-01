@@ -1,14 +1,7 @@
-def main():
-    a, b, c, d = map(int, input().split())
-    if a < c:
-        print('高桥')
+def main(a,b,c,d):
+    if a > c:
+        print("Takahashi")
     elif a == c:
-        if b < d:
-            print('高桥')
+        if b > d:
+            print("Takahashi")
         elif b == d:
-            print('同时')
-        else:
-            print('青木')
-    else:
-        print('青木')
-main()

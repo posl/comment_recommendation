@@ -1,12 +1,11 @@
-def main():
-    a,b,c = map(int,input().split())
-    if c == 0:
-        if a > b:
-            print("Takahashi")
+def Takahashi_or_Aoki(A,B,C):
+    if C == 0:
+        if A > B:
+            return 'Takahashi'
         else:
-            print("Aoki")
+            return 'Aoki'
     else:
-        if b > a:
-            print("Aoki")
+        if A > B:
+            return 'Aoki'
         else:
-            print("Takahashi")
+            return 'Takahashi'

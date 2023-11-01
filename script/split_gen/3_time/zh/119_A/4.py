@@ -1,6 +1,6 @@
-def main():
+def problem119_a():
     S = input()
-    if S <= '2019/04/30':
-        print('平成')
-    else:
-        print('TBD')
+    S = S.split('/')
+    if int(S[0]) < 2019:
+        print("Heisei")
+    elif int(S[0]) == 2

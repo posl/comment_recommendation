@@ -1,6 +1,5 @@
 def main():
     a,b,c = map(int, input().split())
-    if (a <= b and b <= c) or (c <= b and b <= a):
-        print("是")
-    else:
-        print("否")
+    if a > b:
+        tmp = a
+        a = b

@@ -1,8 +1,5 @@
-def main():
-    n = int(input())
-    l = [int(i) for i in input().split()]
-    l.sort()
-    if l[-1] < sum(l[:-1]):
-        print('是')
-    else:
-        print('否')
+def solution():
+    n = int(raw_input())
+    ls = map(int, raw_input().split())
+    ls.sort()
+    if ls[-1] < sum

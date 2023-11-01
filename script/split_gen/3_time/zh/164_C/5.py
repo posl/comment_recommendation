@@ -1,6 +1,4 @@
-def solve():
+def main():
     n = int(input())
-    s = set()
-    for i in range(n):
-        s.add(input())
-    print(len(s))
+    s = [input() for _ in range(n)]
+    print(len(set(s)))

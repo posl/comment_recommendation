@@ -1,9 +1,10 @@
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
+    n,m=input().split()
+    n=int(n)
+    m=int(m)
+    a=list(map(int,input().split()))
     a.sort(reverse=True)
-    total = sum(a)
-    if a[m-1] >= total / (4*m):
-        print('是')
-    else:
-        print('否')
+    sum=0
+    for i in range(m):
+        sum+=a[i]
+    for i in r

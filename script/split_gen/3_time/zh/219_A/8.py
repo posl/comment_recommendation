@@ -1,10 +1,10 @@
-def main():
-    score = int(input())
-    if score < 40:
-        print(40 - score)
-    elif score < 70:
-        print(70 - score)
-    elif score < 90:
-        print(90 - score)
+def solve():
+    X = int(input())
+    if X < 40:
+        print(40 - X)
+    elif X < 70:
+        print(70 - X)
+    elif X < 90:
+        print(90 - X)
     else:
-        print("专家")
+        print('expert')

@@ -1,21 +1,6 @@
-def is_prime(x):
-    if x == 1:
+def is_prime(n):
+    if n <= 1:
         return False
-    else:
-        for i in range(2, int(x**0.5)+1):
-            if x % i == 0:
-                return False
-        else:
-            return True
-a, b, c, d = map(int, input().split())
-for i in range(a, b+1):
-    if is_prime(i):
-        for j in range(c, d+1):
-            if is_prime(j):
-                print('Y')
-                break
-        else:
-            print('N')
-        break
-else:
-    print('N')
+    for i in range(2, int(n**0.5)+1): #int(n**0.5)+1 为了提高效率
+        if n % i == 0:
+            return False

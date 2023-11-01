@@ -1,11 +1,8 @@
 def main():
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    k = int(input())
-    if (e - a) > k:
-        print(":(")
-    else:
-        print("Yay!")
+    # 读入数据
+    antenna_a = int(input())
+    antenna_b = int(input())
+    antenna_c = int(input())
+    antenna_d = int(input())
+    antenna_e = int(input())
+    distance = int(input

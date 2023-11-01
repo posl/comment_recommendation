@@ -1,4 +1,4 @@
-def main():
-    n = int(input())
-    s = input()
-    print(s.replace('na', 'nya'))
+def replace_na(s):
+    result = ''
+    i = 0
+    whil

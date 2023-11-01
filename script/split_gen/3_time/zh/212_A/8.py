@@ -1,8 +1,7 @@
 def main():
-    a,b = map(int,input().split())
-    if a>0 and b==0:
-        print("黄金")
-    elif a==0 and b>0:
-        print("银")
-    elif a>0 and b>0:
-        print("合金")
+    a, b = map(int, input().split())
+    if a > 0 and b == 0:
+        print('Gold')
+    elif a == 0 and b > 0:
+        print('Silver')
+    elif a > 0 and b >

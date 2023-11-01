@@ -1,4 +1,7 @@
 def main():
-    week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     s = input()
-    print(week.index('SAT') - week.index(s))
+    if s == 'Monday':
+        print(5)
+    elif s == 'Tuesday':
+        print(4)
+    elif s == 'Wedne

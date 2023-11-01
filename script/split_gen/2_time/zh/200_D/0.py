@@ -1,2 +1,1 @@
-def main():
-    pass
+def find_two_seq(nums):

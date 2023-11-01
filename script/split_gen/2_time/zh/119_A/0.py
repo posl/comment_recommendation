@@ -1,6 +1,6 @@
 def main():
-    S = input()
-    if S <= '2019/04/30':
-        print('平成')
-    else:
-        print('TBD')
+    s = input()
+    s1 = s.split('/')
+    if int(s1[0]) < 2019:
+        print('Heisei')
+    elif int(s1

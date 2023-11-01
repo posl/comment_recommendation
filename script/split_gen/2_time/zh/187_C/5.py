@@ -1,11 +1,9 @@
 def main():
     N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
+    S = [input() for _ in range(N)]
     S = set(S)
     for s in S:
-        if "!" + s in S:
-            print(s)
-            return
-    print("satisfiable")
+        if s[0] == '!':
+            s = s[1:]
+            if s in S:
+                print(s)

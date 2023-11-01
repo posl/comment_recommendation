@@ -1,5 +1,5 @@
-def solve(n):
+def func(n):
     if 2**n > n**2:
-        return '是'
+        return "Yes"
     else:
-        return '否'
+        return "No"

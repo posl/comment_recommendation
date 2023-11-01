@@ -3,9 +3,6 @@ def main():
     A = list(map(int, input().split()))
     A.sort(reverse=True)
     sum = 0
-    for i in range(M):
+    for i in range(N):
         sum += A[i]
-    if sum >= sum(A) / (4 * M):
-        print("Yes")
-    else:
-        print("No")
+    if A[M-1] >= sum

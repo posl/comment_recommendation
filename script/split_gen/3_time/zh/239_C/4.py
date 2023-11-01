@@ -1,6 +1,3 @@
 def main():
-    x1,y1,x2,y2 = map(int,input().split())
-    if (x2 - x1)**2 + (y2 - y1)**2 == 5:
-        print("Yes")
-    else:
-        print("No")
+    x_1, y_1, x_2, y_2 = map(int, input().split())
+    if (x_1 - x

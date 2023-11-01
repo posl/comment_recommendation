@@ -1,11 +1,10 @@
 def main():
+    # 输入
     N = int(input())
-    S = []
-    for _ in range(N):
-        S.append(input())
-    S = set(S)
-    for s in S:
-        if '!' + s in S:
-            print(s)
+    S = [input() for i in range(N)]
+    # 判断
+    for i in S:
+        if '!' + i in S:
+            print(i)
             return
     print('satisfiable')

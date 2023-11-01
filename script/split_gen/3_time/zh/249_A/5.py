@@ -1,15 +1,15 @@
-def main():
-    A,B,C,D,E,F,X = map(int,input().split())
-    taka = 0
-    ao = 0
+def run():
+    A, B, C, D, E, F, X = map(int, input().split())
+    takahashi = 0
+    aoki = 0
     for i in range(X):
-        if i % (A + B + C) < A:
-            taka += 1
-        if i % (D + E + F) < D:
-            ao += 1
-    if taka > ao:
-        print("高桥")
-    elif taka < ao:
-        print("青木")
+        if i % (A + B) < A:
+            takahashi += 1
+        if i % (D + E) < D:
+            aoki += 1
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
     else:
-        print("画")
+        print("Draw")
