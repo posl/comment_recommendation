@@ -1,8 +1,10 @@
 def main():
-    weeks = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-    week = input()
-    week_index = weeks.index(week)
-    print(6 - week_index)
+    s = input()
+    if s == "Monday":
+        print(5)
+    elif s == "Tuesday":
+        print(4)
+    elif s ==
 
 if __name__ == '__main__':
     main()

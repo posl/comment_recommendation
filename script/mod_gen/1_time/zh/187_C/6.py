@@ -1,15 +1,12 @@
 def main():
-    n = int(input())
-    s = []
-    for _ in range(n):
-        s.append(input())
-    s = set(s)
-    for i in s:
-        if '!' + i in s:
-            print(i)
-            break
-    else:
-        print('satisfiable')
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    for i in range(N-1):
+        if S[i][0] == '!' and S[i+1] == S[i][1:]:
+            print(S[i][1:])
 
 if __name__ == '__main__':
     main()

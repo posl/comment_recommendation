@@ -1,7 +1,10 @@
 def main():
-    n = int(input())
-    cards = input()
-    print("Takahashi" if cards.index('1') % 2 == 0 else "Aoki")
+    N = int(input())
+    S = input()
+    if S.count('1') % 2 == 0:
+        print("Takahashi")
+    else:
+        print("Aoki")
 
 if __name__ == '__main__':
     main()

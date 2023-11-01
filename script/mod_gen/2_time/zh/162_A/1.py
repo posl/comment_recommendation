@@ -1,13 +1,9 @@
 def main():
-    n = input()
-    if n[2] == '7':
-        print('是')
-    elif n[1] == '7':
-        print('是')
-    elif n[0] == '7':
-        print('是')
+    N = input()
+    if '7' in N:
+        print("Yes")
     else:
-        print('否')
+        print("No")
 
 if __name__ == '__main__':
     main()

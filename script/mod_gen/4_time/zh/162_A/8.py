@@ -1,5 +1,9 @@
-def is_contain_seven(x):
-    return x % 10 == 7 or x // 10 % 10 == 7 or x // 100 % 10 == 7
+def main():
+    N = input()
+    if N[2] == '7':
+        print('Yes')
+    elif N[1] == '7':
+        p
 
 if __name__ == '__main__':
-    is_contain_seven()
+    main()

@@ -1,11 +1,10 @@
-def main():
-    N = int(input())
-    if N == 1:
+def problems112_a():
+    n = int(input())
+    if n == 1:
         print('Hello World')
-    elif N == 2:
-        A = int(input())
-        B = int(input())
-        print(A + B)
+    elif n == 2:
+        a = int(input())
+        b = int(input())
 
 if __name__ == '__main__':
-    main()
+    problems112_a()

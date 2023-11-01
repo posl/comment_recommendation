@@ -1,16 +1,12 @@
-def solve():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    
-    S2 = set(S)
-    for i in range(N):
-        if S[i][0] == '!':
-            if S[i][1:] in S2:
-                return S[i][1:]
-        else:
-            if '!'+S[i] in S2:
-                return S[i]
-    return 'satisfiable'
-print(solve())
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n):
+        if s[i][0] == "!":
+            if s[i][1:] in s:
+
+if __name__ == '__main__':
+    main()

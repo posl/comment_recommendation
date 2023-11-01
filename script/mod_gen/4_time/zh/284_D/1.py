@@ -1,15 +1,10 @@
-def is_prime(n):
-    if n <= 1:
-        return False
-    elif n == 2:
-        return True
-    elif n%2 == 0:
-        return False
-    else:
-        for i in range(3, int(n**0.5)+1, 2):
-            if n%i == 0:
-                return False
-        return True
+def getPrimeList(num):
+    primeList = []
+    for i in range(2,num+1):
+        for j in range(2,i):
+            if i%j == 0:
+                break
+        else:
 
 if __name__ == '__main__':
-    is_prime()
+    getPrimeList()

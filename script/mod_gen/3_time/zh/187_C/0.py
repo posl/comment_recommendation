@@ -1,14 +1,12 @@
 def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.sort()
-    for i in range(N - 1):
-        if S[i] == S[i + 1]:
-            print("存在")
-            return
-    print("可满足")
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n):
+        if s[i][0] == '!': 
+            if s[i][1:] in s:
 
 if __name__ == '__main__':
     main()

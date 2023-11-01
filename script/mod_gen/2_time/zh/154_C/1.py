@@ -1,12 +1,9 @@
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    for i in range(n-1):
-        if a[i] == a[i+1]:
-            print('No')
-            return
-    print('Yes')
+def is_pairwise_different(A):
+    A.sort()
+    for i in range(1, len(A)):
+        if A[i-1] == A[i]:
+            return False
+    return True
 
 if __name__ == '__main__':
-    solve()
+    is_pairwise_different()

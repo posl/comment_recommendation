@@ -1,7 +1,9 @@
-def problem119_a():
+def main():
     s = input()
-    if s <= '2019/04/30':
+    y, m, d = s.split('/')
+    if int(y) < 2019:
         print('Heisei')
-    else:
-        print('TBD')
-problem119_a()
+    elif int(m) < 4:
+
+if __name__ == '__main__':
+    main()

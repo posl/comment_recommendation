@@ -1,17 +1,10 @@
-def main():
-    #读取输入
-    s = input()
-    #计算输出
-    if s == '星期一':
+def problem267_a():
+    day = input()
+    if day == 'Monday':
         print(5)
-    elif s == '星期二':
+    elif day == 'Tuesday':
         print(4)
-    elif s == '星期三':
-        print(3)
-    elif s == '星期四':
-        print(2)
-    elif s == '星期五':
-        print(1)
+    el
 
 if __name__ == '__main__':
-    main()
+    problem267_a()

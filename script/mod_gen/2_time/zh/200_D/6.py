@@ -1,8 +1,5 @@
-def getSum(list):
-    sum = 0
-    for i in list:
-        sum += i
-    return sum
+def solve():
+    return
 
 if __name__ == '__main__':
-    getSum()
+    solve()

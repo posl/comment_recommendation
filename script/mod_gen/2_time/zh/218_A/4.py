@@ -1,7 +1,8 @@
-def solve():
-    n = int(input())
-    s = input()
-    print("是" if s[n-1] == "o" else "否")
+def main():
+    N = int(input())
+    S = input()
+    if S[N-1] == 'o':
+        print('Yes')
 
 if __name__ == '__main__':
-    solve()
+    main()

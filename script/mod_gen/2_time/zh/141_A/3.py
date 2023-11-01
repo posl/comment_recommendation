@@ -1,10 +1,11 @@
-def get_next_weather(weather):
-    if weather == '晴天':
-        return '阴天'
-    elif weather == '阴天':
-        return '雨天'
-    else:
-        return '晴天'
+def weather():
+    #输入天气
+    weather = input()
+    #设置天气列表
+    weather_list = ["Sunny", "Cloudy", "Rainy"]
+    #设置天气列表索引
+    weather_index = weather_list.index(weather)
+    #判断天气列表索引是否为最后一个元素
 
 if __name__ == '__main__':
-    get_next_weather()
+    weather()

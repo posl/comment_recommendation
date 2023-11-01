@@ -1,9 +1,8 @@
-def main():
-    s = input()
-    if s[-1] == 's':
-        print(s + 'es')
+def pluralize(word):
+    if word[-1] == 's':
+        return word + 'es'
     else:
-        print(s + 's')
+        return word + 's'
 
 if __name__ == '__main__':
-    main()
+    pluralize()

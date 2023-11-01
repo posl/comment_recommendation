@@ -1,12 +1,11 @@
-def get_score(score):
-    if score >= 90:
-        return "expert"
-    elif score >= 70:
-        return 90 - score
-    elif score >= 40:
-        return 70 - score
+def print_result(x):
+    if x < 40:
+        return 40 - x
+    elif x < 70:
+        return 70 - x
+    elif x < 90:
+        return 90 - x
     else:
-        return 40 - score
 
 if __name__ == '__main__':
-    get_score()
+    print_result()

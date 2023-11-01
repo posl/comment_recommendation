@@ -1,10 +1,9 @@
 def main():
     N = int(input())
     S = input()
-    if S[0] == '1':
-        print("高桥")
-    else:
-        print("青木")
+    for i in range(N):
+        if S[i] == "1":
+            if i % 2 == 0:
 
 if __name__ == '__main__':
     main()

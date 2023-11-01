@@ -1,9 +1,8 @@
-def main():
-    s = input()
-    if s.endswith('s'):
-        print(s + 'es')
+def plural_form(S):
+    if S[-1] == "s":
+        return S + "es"
     else:
-        print(s + 's')
+        return S + "s"
 
 if __name__ == '__main__':
-    main()
+    plural_form()

@@ -1,7 +1,10 @@
-def pluralize(s):
-    if s[-1] == "s":
-        return s + "es"
+def main():
+    # 读入数据
+    s = input()
+    # 处理数据
+    if s[-1] == 's':
+        s += 'es'
     else:
-        return s + "s"
-s = input()
-print(pluralize(s))
+
+if __name__ == '__main__':
+    main()

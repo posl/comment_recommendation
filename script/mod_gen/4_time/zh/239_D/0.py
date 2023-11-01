@@ -1,10 +1,10 @@
-def is_prime(n):
-    if n <= 1:
+def is_prime(x):
+    if x == 2:
+        return True
+    if x < 2 or x % 2 == 0:
         return False
-    for i in range(2, int(n**0.5)+2):
-        if n % i == 0:
-            return False
-    return True
+    i = 3
+    while i*i <= x:
 
 if __name__ == '__main__':
     is_prime()

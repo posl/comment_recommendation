@@ -1,10 +1,7 @@
 def main():
     n = int(input())
     s = input()
-    if s[n-1] == "o":
-        print("是")
-    else:
-        print("否")
+    print("Yes" if s[n-1] == "o" else "No")
 
 if __name__ == '__main__':
     main()

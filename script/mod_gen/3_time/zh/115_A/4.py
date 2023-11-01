@@ -1,12 +1,7 @@
-def printDate(d):
-    if d == 25:
-        print("圣诞节")
-    elif d == 24:
-        print("平安夜")
-    elif d == 23:
-        print("平安夜的前夜")
-    else:
-        print("平安夜的前夜的前夜")
+def main():
+    D = int(input())
+    if D == 25:
+        print('Christ
 
 if __name__ == '__main__':
-    printDate()
+    main()

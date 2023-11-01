@@ -1,10 +1,10 @@
-def main():
-    N = int(input())
-    S = input()
-    if S[N-1] == 'o':
-        print("Yes")
+def get_weather():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print('Yes')
     else:
-        print("No")
+        print('No')
 
 if __name__ == '__main__':
-    main()
+    get_weather()

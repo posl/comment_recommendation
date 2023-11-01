@@ -1,13 +1,12 @@
-def problem155_a():
-    a,b,c = map(int,input().split())
+def is_triple_double(a, b, c):
     if a == b and a != c:
-        print("Yes")
+        return True
     elif a == c and a != b:
-        print("Yes")
+        return True
     elif b == c and b != a:
-        print("Yes")
+        return True
     else:
-        print("No")
+        return False
 
 if __name__ == '__main__':
-    problem155_a()
+    is_triple_double()

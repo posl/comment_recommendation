@@ -1,10 +1,10 @@
-def main():
-    a,b,c,d = map(int,input().split())
-    while a>0 and c>0:
-        c-=b
-        a-=d
-    if a<=0:
-        print("否")
+def judge_win(a, b, c, d):
+    if a % d == 0:
+        return True
+    elif c % b == 0:
+        return False
     else:
-        print("是")
-main()
+        return False
+
+if __name__ == '__main__':
+    judge_win()

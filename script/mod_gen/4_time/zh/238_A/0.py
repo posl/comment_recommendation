@@ -1,5 +1,9 @@
-def is_bigger_than(n):
-    return n > 2 ** n
+def main():
+    n = int(input())
+    if 2 ** n > n ** 2:
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    is_bigger_than()
+    main()

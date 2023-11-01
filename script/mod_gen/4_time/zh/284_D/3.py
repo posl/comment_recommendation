@@ -1,12 +1,10 @@
-def isPrime(num):
-    if num == 2:
-        return True
-    if num % 2 == 0:
+def is_prime(n):
+    if n <= 1:
         return False
-    for i in range(2,int(num**0.5)+1):
-        if num % i == 0:
+    for i in range(2, int(n**(1/2))+1):
+        if n % i == 0:
             return False
     return True
 
 if __name__ == '__main__':
-    isPrime()
+    is_prime()

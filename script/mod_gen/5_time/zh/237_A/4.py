@@ -1,9 +1,8 @@
-def main():
-    N = int(input())
-    if N >= -2**31 and N <= 2**31-1:
-        print("是")
+def problem237_a(n):
+    if n >= -2**31 and n <= 2**31-1:
+        print("Yes")
     else:
-        print("否")
+        print("No")
 
 if __name__ == '__main__':
-    main()
+    problem237_a()

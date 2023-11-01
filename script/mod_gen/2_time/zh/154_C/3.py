@@ -1,8 +1,10 @@
-def judge_pair(a):
-    if len(a) == len(set(a)):
-        return True
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if len(set(a)) == n:
+        print("YES")
     else:
-        return False
+        print("NO")
 
 if __name__ == '__main__':
-    judge_pair()
+    main()

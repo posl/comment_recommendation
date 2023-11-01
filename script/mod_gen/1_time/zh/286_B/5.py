@@ -1,5 +1,7 @@
-def replace_na(s):
-    return s.replace('na', 'nya')
+def replace_str(s):
+    s = list(s)
+    i = 0
+    whil
 
 if __name__ == '__main__':
-    replace_na()
+    replace_str()

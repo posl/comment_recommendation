@@ -1,10 +1,8 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a == b and a != c:
-        print("Yes")
-    elif a == c and a != b:
-        print("Yes")
-    elif b == c and b != a:
+    A, B, C = map(int, input().split())
+    if A == B and B == C:
+        print("No")
+    elif A == B or B == C or A == C:
         print("Yes")
     else:
         print("No")

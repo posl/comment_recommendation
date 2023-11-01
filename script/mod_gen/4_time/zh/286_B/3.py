@@ -1,7 +1,5 @@
-def replace_na(s):
-    while 'na' in s:
-        s = s.replace('na','nya')
-    return s
+def replace_na_to_nya(s):
+    return s.replace('na', 'nya')
 
 if __name__ == '__main__':
-    replace_na()
+    replace_na_to_nya()

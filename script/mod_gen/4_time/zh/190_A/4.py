@@ -1,17 +1,10 @@
-def main():
-    # 读取输入
-    a, b, c = map(int, input().split())
-    # 判断
+def eat_candy(a, b, c):
+    # a: 高桥的糖果数
+    # b: 青木的糖果数
+    # c: 先手
+    # 0: 高桥先手
+    # 1: 青木先手
     if c == 0:
-        if a > b:
-            print("Takahashi")
-        else:
-            print("Aoki")
-    else:
-        if b > a:
-            print("Aoki")
-        else:
-            print("Takahashi")
 
 if __name__ == '__main__':
-    main()
+    eat_candy()

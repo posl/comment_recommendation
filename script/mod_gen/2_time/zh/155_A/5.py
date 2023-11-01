@@ -1,10 +1,8 @@
 def main():
-    # 读取输入
-    A, B, C = map(int, input().split())
-    # 逻辑处理
-    if A == B and B == C:
+    a, b, c = map(int, input().split())
+    if a == b and b == c:
         print("No")
-    elif A == B or B == C or A == C:
+    elif a == b or a == c or b == c:
         print("Yes")
     else:
         print("No")

@@ -1,11 +1,12 @@
 def main():
-    S, T = input().split()
-    A, B = input().split()
-    U = input()
-    if S == U:
-        print(int(A)-1, B)
+    s,t = input().split()
+    a,b = map(int,input().split())
+    u = input()
+    if s == u:
+        a -= 1
     else:
-        print(A, int(B)-1)
+        b -= 1
+    print(a,b)
 
 if __name__ == '__main__':
     main()

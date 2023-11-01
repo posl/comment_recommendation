@@ -1,6 +1,6 @@
 def main():
     n = int(input())
-    print('白色' if n % 2 == 0 else '黑色')
+    print("White" if n % 2 == 0 else "Black")
 
 if __name__ == '__main__':
     main()

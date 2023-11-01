@@ -1,7 +1,11 @@
-def get_input():
+def main():
     n,m = map(int,input().split())
     a = list(map(int,input().split()))
-    return n,m,a
+    a.sort(reverse=True)
+    total = sum(a)
+    if a[m-1] >= total/(4*m):
+        print("Yes")
+    else
 
 if __name__ == '__main__':
-    get_input()
+    main()

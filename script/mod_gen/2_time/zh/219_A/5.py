@@ -1,4 +1,4 @@
-def main():
+def test():
     x = int(input())
     if x < 40:
         print(40 - x)
@@ -6,8 +6,6 @@ def main():
         print(70 - x)
     elif x < 90:
         print(90 - x)
-    else:
-        print('expert')
 
 if __name__ == '__main__':
-    main()
+    test()

@@ -3,4 +3,6 @@ def plural(s):
         return s + 'es'
     else:
         return s + 's'
-print(plural(input()))
+
+if __name__ == '__main__':
+    plural()

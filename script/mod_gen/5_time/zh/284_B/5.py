@@ -1,7 +1,8 @@
-def test():
-    T = int(input())
-    for i in range(T):
-        N = int(input())
-        A = list(map(int, input().split()))
-        print(sum([1 for a in A if a % 2 != 0]))
-test()
+def is_odd(n):
+    if n % 2 == 0:
+        return False
+    else:
+        return True
+
+if __name__ == '__main__':
+    is_odd()

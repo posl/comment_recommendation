@@ -1,8 +1,11 @@
-def judge(a,b):
-    if a>0 and b==0:
-        print('黄金')
-    elif a==0 and b>0:
-        print('银')
+def main():
+    A, B = map(int, input().split())
+    if A == 0:
+        print('Silver')
+    elif B == 0:
+        print('Gold')
     else:
-        print('合金')
-judge(100,2)
+        print('Alloy')
+
+if __name__ == '__main__':
+    main()

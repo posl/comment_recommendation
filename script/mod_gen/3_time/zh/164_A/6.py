@@ -1,8 +1,9 @@
-def f(S,W):
-    if S<=W:
-        print('不安全')
+def main():
+    sheep, wolf = map(int, input().split())
+    if wolf >= sheep:
+        print("unsafe")
     else:
-        print('安全')
+        print("safe")
 
 if __name__ == '__main__':
-    f()
+    main()

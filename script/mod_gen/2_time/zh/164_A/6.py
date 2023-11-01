@@ -1,9 +1,9 @@
-def problem164_a():
-    s, w = map(int, input().split())
-    if s > w:
-        print('安全')
+def main():
+    s,w = map(int,input().split())
+    if s <= w:
+        print("unsafe")
     else:
-        print('不安全')
+        print("safe")
 
 if __name__ == '__main__':
-    problem164_a()
+    main()

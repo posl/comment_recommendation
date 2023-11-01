@@ -1,4 +1,4 @@
-def solve():
+def main():
     N = int(input())
     S = []
     for i in range(N):
@@ -7,13 +7,6 @@ def solve():
     for s in S:
         if s[0] == '!':
             if s[1:] in S:
-                print(s[1:])
-                return
-        else:
-            if '!' + s in S:
-                print(s)
-                return
-    print('satisfiable')
 
 if __name__ == '__main__':
-    solve()
+    main()

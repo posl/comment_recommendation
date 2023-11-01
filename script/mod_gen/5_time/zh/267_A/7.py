@@ -1,10 +1,10 @@
-def main():
-    week = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
-    s = input()
-    for i in range(7):
-        if s == week[i]:
-            break
-    print(7-i)
+def get_days_to_sat(s):
+    days = {
+        'Monday': 5,
+        'Tuesday': 4,
+        'Wednesday': 3,
+        'Thursday': 2,
+        'F
 
 if __name__ == '__main__':
-    main()
+    get_days_to_sat()

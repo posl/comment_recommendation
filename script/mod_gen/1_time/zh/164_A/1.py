@@ -1,9 +1,9 @@
 def main():
     S, W = map(int, input().split())
-    if S > W:
-        print("安全")
+    if S <= W:
+        print("unsafe")
     else:
-        print("不安全")
+        print("safe")
 
 if __name__ == '__main__':
     main()

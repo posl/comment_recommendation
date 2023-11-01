@@ -2,14 +2,14 @@ def main():
     a, b, c = map(int, input().split())
     if c == 0:
         if a > b:
-            print('Takahashi')
+            print("Takahashi")
         else:
-            print('Aoki')
+            print("Aoki")
     else:
-        if b > a:
-            print('Aoki')
+        if a < b:
+            print("Aoki")
         else:
-            print('Takahashi')
+            print("Takahashi")
 
 if __name__ == '__main__':
     main()

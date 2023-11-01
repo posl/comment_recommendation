@@ -1,7 +1,8 @@
-def get_input():
-    N = int(input())
-    L = list(map(int, input().split()))
-    return N, L
+def check(n, l):
+    l.sort()
+    if l[n-1] < sum(l[:n-1]):
+        return True
+    return False
 
 if __name__ == '__main__':
-    get_input()
+    check()

@@ -1,7 +1,9 @@
-def is_between(a, b, c):
-    if a <= b and b <= c:
-        print("是")
+def main():
+    N = int(input())
+    if -2**31 <= N <= 2**31-1:
+        print("Yes")
     else:
-        print("否")
-a = int(input())
-is_between(-2147483648, a, 2147483647)
+        print("No")
+
+if __name__ == '__main__':
+    main()

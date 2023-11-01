@@ -1,17 +1,13 @@
-def solve(n, s):
-    s1 = set()
-    s2 = set()
-    for i in range(n):
-        if s[i][0] == '!':
-            s1.add(s[i][1:])
-        else:
-            s2.add(s[i])
-    for i in s2:
-        if i in s1:
-            return i
-    return 'satisfiable'
-n = int(input())
-s = []
-for i in range(n):
-    s.append(input())
-print(solve(n, s))
+def main():
+    n = int(input())
+    s = []
+    for _ in range(n):
+        s.append(input())
+    s_set = set(s)
+    for s_i in s:
+        if s_i[0] == "!":
+            if s_i[1:] in s_set:
+                print(s
+
+if __name__ == '__main__':
+    main()

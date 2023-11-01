@@ -1,7 +1,11 @@
 def main():
     N = int(input())
     S = input()
-    print('Takahashi' if S.find('1') % 2 == 0 else 'Aoki')
+    #print(N,S)
+    #print(S[0])
+    for i in range(N):
+        #print(i)
+        if S[i
 
 if __name__ == '__main__':
     main()

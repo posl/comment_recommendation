@@ -1,8 +1,9 @@
-def func(n):
+def problems238_a():
+    n = int(input())
     if 2**n > n**2:
-        print("是")
+        print('Yes')
     else:
-        print("否")
+        print('No')
 
 if __name__ == '__main__':
-    func()
+    problems238_a()

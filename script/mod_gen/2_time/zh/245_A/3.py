@@ -1,6 +1,10 @@
-def get_time():
-    A, B, C, D = map(int, input().split())
-    return A, B, C, D
+def main():
+    a,b,c,d = map(int,input().split())
+    if a < c:
+        print("Takahashi")
+    elif a > c:
+        print("Aoki")
+    else:
 
 if __name__ == '__main__':
-    get_time()
+    main()

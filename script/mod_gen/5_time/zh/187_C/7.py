@@ -1,19 +1,13 @@
-def solve():
-    N = int(input())
-    S = []
-    for _ in range(N):
-        S.append(input())
-    S = set(S)
-    for s in S:
-        if s[0] == "!":
-            if s[1:] in S:
-                print(s[1:])
-                return
+def check(s):
+    if s[0] == "!":
+        if s[1:] in d:
+            return True
         else:
-            if "!" + s in S:
-                print(s)
-                return
-    print("satisfiable")
+            d.add(s)
+            return False
+    else:
+        if "!" + s in d:
+            return True
 
 if __name__ == '__main__':
-    solve()
+    check()

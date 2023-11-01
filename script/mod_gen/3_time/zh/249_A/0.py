@@ -1,35 +1,20 @@
 def main():
-    a, b, c, d, e, f, x = map(int, input().split())
-    taka = 0
-    aoki = 0
-    while True:
-        if taka >= x:
-            print("draw")
-            break
-        if a > 0:
-            taka += b
-            a -= 1
-        if taka >= x:
-            print("taka")
-            break
-        if c > 0:
-            taka += 0
-            c -= 1
-        if taka >= x:
-            print("taka")
-            break
-        if d > 0:
-            aoki += e
-            d -= 1
-        if aoki >= x:
-            print("aoki")
-            break
-        if f > 0:
-            aoki += 0
-            f -= 1
-        if aoki >= x:
-            print("aoki")
-            break
+    #输入
+    A,B,C,D,E,F,X = map(int,input().split())
+    #计算
+    #高桥
+    Takahashi = 0
+    Takahashi = (A+B)*C
+    #青木
+    Aoki = 0
+    Aoki = (D+E)*F
+    #比较
+    if Takahashi > Aoki:
+        print('Takahashi')
+    elif Takahashi < Aoki:
+        print('Aoki')
+    else:
+        print('Draw')
 
 if __name__ == '__main__':
     main()

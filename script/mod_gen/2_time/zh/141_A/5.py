@@ -1,10 +1,13 @@
-def weather(S):
-    if S == "晴天":
-        return "阴天"
-    elif S == "阴天":
-        return "雨天"
-    elif S == "雨天":
-        return "晴天"
+def main():
+    # 读入字符串
+    s = input()
+    # 输出字符串
+    if s == "Sunny":
+        print("Cloudy")
+    elif s == "Cloudy":
+        print("Rainy")
+    elif s == "Rainy":
+        print("Sunny")
 
 if __name__ == '__main__':
-    weather()
+    main()

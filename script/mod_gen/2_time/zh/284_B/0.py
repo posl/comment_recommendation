@@ -1,11 +1,9 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
+def odd_num(a):
     count = 0
     for i in a:
-        if i % 2 == 1:
+        if i%2 != 0:
             count += 1
-    print(count)
+    return count
 
 if __name__ == '__main__':
-    main()
+    odd_num()

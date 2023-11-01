@@ -1,7 +1,6 @@
-def solve():
-    N = int(input())
-    S = input()
-    print(S.replace('na', 'nya'))
+def main():
+    n = int(input())
+    s = input()
 
 if __name__ == '__main__':
-    solve()
+    main()

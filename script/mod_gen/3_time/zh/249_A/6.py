@@ -1,27 +1,23 @@
 def main():
-    A,B,C,D,E,F,X = map(int, input().split())
-    time = 0
-    while X > 0:
-        if A > 0:
-            X -= B
-            time += A
-        if X <= 0:
-            break
-        X -= C
-        if X <= 0:
-            break
-        if D > 0:
-            X -= E
-            time += D
-        if X <= 0:
-            break
-        X -= F
-    if time > 0:
-        print("高桥")
-    elif time < 0:
-        print("青木")
-    else:
-        print("画")
+    # 读取输入
+    line = input()
+    a,b,c,d,e,f,x = line.split()
+    # 转换为整数
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    d = int(d)
+    e = int(e)
+    f = int(f)
+    x = int(x)
+    # 计算高桥和青木的距离
+    taka = 0
+    aoki = 0
+    for i in range(x):
+        if i % (a+c) < a:
+            taka += b
+        if i % (d+f) < d:
+            aoki += e
 
 if __name__ == '__main__':
     main()

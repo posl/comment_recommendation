@@ -1,10 +1,9 @@
 def main():
-    S = input()
-    if S[-1] == "s":
-        S = S + "es"
+    s = input()
+    if s.endswith("s"):
+        print(s + "es")
     else:
-        S = S + "s"
-    print(S)
+        print(s + "s")
 
 if __name__ == '__main__':
     main()

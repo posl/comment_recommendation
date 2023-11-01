@@ -1,8 +1,7 @@
-def is_middle(a, b, c):
-    if (a <= b and b <= c) or (c <= b and b <= a):
-        return True
-    else:
-        return False
+def main():
+    a,b,c = map(int,input().split())
+    if a <= b <= c or c <= b <= a:
+        print("Yes
 
 if __name__ == '__main__':
-    is_middle()
+    main()

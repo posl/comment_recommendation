@@ -1,8 +1,10 @@
-def sheep_safe(s,w):
+def main():
+    # 读取输入
+    s, w = map(int, input().split())
+    # 判断
     if s > w:
-        print('safe')
+        print("safe")
     else:
-        print('unsafe')
 
 if __name__ == '__main__':
-    sheep_safe()
+    main()

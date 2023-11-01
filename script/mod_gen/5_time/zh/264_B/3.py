@@ -1,9 +1,9 @@
 def main():
     R, C = map(int, input().split())
     if (R + C) % 2 == 0:
-        print("黑色")
+        print("black")
     else:
-        print("白色")
+        print("white")
 
 if __name__ == '__main__':
     main()

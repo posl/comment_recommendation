@@ -1,13 +1,10 @@
-def is_diff(a, b, c):
+def main():
+    a,b,c = map(int,input().split())
     if a == b and a != c:
-        return True
+        print("Yes")
     elif a == c and a != b:
-        return True
+        print("Yes")
     elif b == c and b != a:
-        return True
-    else:
-        return False
-a, b, c = map(int, input().split())
 
 if __name__ == '__main__':
-    is_diff()
+    main()

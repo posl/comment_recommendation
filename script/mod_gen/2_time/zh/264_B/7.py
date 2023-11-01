@@ -1,19 +1,10 @@
 def main():
-    R,C = map(int,input().split())
-    for i in range(R):
-        if i%2 == 0:
-            for j in range(C):
-                if j%2 == 0:
-                    print('#',end='')
-                else:
-                    print('.',end='')
-        else:
-            for j in range(C):
-                if j%2 == 0:
-                    print('.',end='')
-                else:
-                    print('#',end='')
-        print()
+    R,C = input().split(" ")
+    R = int(R)
+    C = int(C)
+    if (R+C)%2 == 0:
+        print("black")
+    else:
 
 if __name__ == '__main__':
     main()

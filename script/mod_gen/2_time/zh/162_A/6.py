@@ -1,9 +1,9 @@
-def main():
-    n = int(input())
-    if n % 10 == 7 or n // 10 % 10 == 7 or n // 100 % 10 == 7:
-        print("是")
+def problem162_a():
+    n = input()
+    if '7' in n:
+        print("Yes")
     else:
-        print("否")
+        print("No")
 
 if __name__ == '__main__':
-    main()
+    problem162_a()

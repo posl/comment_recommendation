@@ -1,7 +1,10 @@
-def get_weather():
-    # weather = input("请输入今天的天气：")
+def main():
     weather = input()
-    return weather
+    if weather == 'Sunny':
+        print('Cloudy')
+    elif weather == 'Cloudy':
+        print('Rainy')
+    elif weather
 
 if __name__ == '__main__':
-    get_weather()
+    main()

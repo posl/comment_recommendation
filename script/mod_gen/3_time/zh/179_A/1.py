@@ -1,9 +1,13 @@
 def main():
+    # 读入
     S = input()
-    if S[-1] == "s":
-        print(S + "es")
+    # 处理
+    if S[-1] == 's':
+        S += 'es'
     else:
-        print(S + "s")
+        S += 's'
+    # 输出
+    print(S)
 
 if __name__ == '__main__':
     main()

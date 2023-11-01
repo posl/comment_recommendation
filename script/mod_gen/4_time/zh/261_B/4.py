@@ -1,20 +1,14 @@
 def main():
-    n = int(input())
-    a = []
-    for i in range(n):
-        a.append(input())
-    for i in range(n):
-        for j in range(n):
-            if a[i][j] == 'W' and a[j][i] != 'L':
-                print('No')
-                return
-            elif a[i][j] == 'L' and a[j][i] != 'W':
-                print('No')
-                return
-            elif a[i][j] == 'D' and a[j][i] != 'D':
-                print('No')
-                return
-    print('Yes')
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(input())
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if A[i][j] == 'W' and A[j][i] != 'L':
+                print('inco
 
 if __name__ == '__main__':
     main()

@@ -1,7 +1,8 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
-    print("YES" if len(set(a)) == len(a) else "NO")
+    num_list = list(map(int, input().split()))
+    num_set = set(num_list)
+    if len(num_list)
 
 if __name__ == '__main__':
     main()

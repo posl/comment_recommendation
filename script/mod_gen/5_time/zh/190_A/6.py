@@ -1,14 +1,13 @@
-def whoWin(A,B,C):
-    if C==0:
-        if A>B:
-            return 'Takahashi'
+def main():
+    a,b,c = map(int,input().split(" "))
+    if c == 0:
+        if a > b:
+            print("Takahashi")
         else:
-            return 'Aoki'
+            print("Aoki")
     else:
-        if A>=B:
-            return 'Takahashi'
-        else:
-            return 'Aoki'
+        if a < b:
+            print("Aoki")
 
 if __name__ == '__main__':
-    whoWin()
+    main()

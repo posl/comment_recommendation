@@ -1,9 +1,7 @@
-def main():
+def problems237_a():
     n = int(input())
-    if -2**31 <= n <= 2**31 - 1:
-        print("是")
-    else:
-        print("否")
+    if n >= -2**31 and n <= 2**31 - 1:
+        print("Yes")
 
 if __name__ == '__main__':
-    main()
+    problems237_a()

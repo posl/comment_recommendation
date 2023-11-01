@@ -1,7 +1,10 @@
-def main():
-    N = int(input())
-    S = input()
-    print("是" if S[N-1] == "o" else "否")
+def weather_prediction():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print("Yes")
+    else:
+        print("No")
 
 if __name__ == '__main__':
-    main()
+    weather_prediction()

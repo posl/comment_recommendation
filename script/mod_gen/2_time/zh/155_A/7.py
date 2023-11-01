@@ -1,13 +1,15 @@
 def main():
-    a,b,c = map(int,input().split())
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 逻辑处理
     if a == b and b != c:
-        print("是")
-    elif b == c and c != a:
-        print("是")
-    elif c == a and a != b:
-        print("是")
+        print('Yes')
+    elif a == c and b != c:
+        print('Yes')
+    elif b == c and a != b:
+        print('Yes')
     else:
-        print("否")
+        print('No')
 
 if __name__ == '__main__':
     main()

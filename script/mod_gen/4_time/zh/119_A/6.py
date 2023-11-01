@@ -1,5 +1,6 @@
-def get_year(s):
-    return int(s.split('/')[0])
+def main():
+    S = input()
+    if S
 
 if __name__ == '__main__':
-    get_year()
+    main()

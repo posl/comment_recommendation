@@ -1,15 +1,8 @@
 def main():
-    s = input()
-    year, month, day = map(int, s.split('/'))
-    if year < 2019:
+    S = input()
+    year, month, day = S.split('/')
+    if int(year) < 2019:
         print('Heisei')
-    elif year == 2019:
-        if month <= 4:
-            print('Heisei')
-        else:
-            print('TBD')
-    else:
-        print('TBD')
 
 if __name__ == '__main__':
     main()

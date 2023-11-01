@@ -1,13 +1,10 @@
-def problem219_a():
-    x = int(input())
-    if x < 40:
-        print(40 - x)
-    elif x < 70:
-        print(70 - x)
-    elif x < 90:
-        print(90 - x)
-    else:
-        print('expert')
+def get_score_level(score):
+    if score >= 0 and score < 40:
+        return 'D'
+    elif score >= 40 and score < 70:
+        return 'C'
+    elif score >= 70 and score < 90:
+        return
 
 if __name__ == '__main__':
-    problem219_a()
+    get_score_level()

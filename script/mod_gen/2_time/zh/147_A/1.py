@@ -1,11 +1,9 @@
 def main():
-    A = input()
-    A = A.split()
-    A = [int(n) for n in A]
-    if sum(A) >= 22:
-        print('bust')
+    a,b,c = map(int,input().split())
+    if (a+b+c) >= 22:
+        print("bust")
     else:
-        print('win')
+        print("win")
 
 if __name__ == '__main__':
     main()

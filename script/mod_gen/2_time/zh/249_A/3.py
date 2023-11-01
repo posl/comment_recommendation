@@ -1,21 +1,19 @@
 def main():
-    a,b,c,d,e,f,x=map(int,input().split())
-    t=0
-    while x>0:
-        if a>b:
-            t+=b
-            x-=1
+    a,b,c,d,e,f,x = map(int,input().split())
+    taka = 0
+    aoki = 0
+    while True:
+        if taka + a > x:
+            print("Takahashi")
+            break
         else:
-            t+=a
-            x-=1
-        if x==0:
-            print("高桥")
+            taka += a
+        if aoki + d > x:
+            print("Aoki")
             break
-        if c>d:
-            x-=1
-        if x==0:
-            print("青木")
-            break
+        else:
+            aoki += d
+        if taka + b > x:
 
 if __name__ == '__main__':
     main()

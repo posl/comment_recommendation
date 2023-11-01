@@ -1,9 +1,7 @@
-def count_odd(n, a):
-    count = 0
-    for i in range(n):
-        if a[i] % 2 == 1:
-            count += 1
-    return count
+def count_odd_number():
+    total = int(input())
+    for i in range(total):
+        n = int(input())
 
 if __name__ == '__main__':
-    count_odd()
+    count_odd_number()

@@ -1,14 +1,14 @@
-def game(a,b,c):
+def problem190_a():
+    a, b, c = map(int, input().split())
     if c == 0:
-        if a > b:
-            return 'Takahashi'
-        else:
-            return 'Aoki'
-    else:
+        a -= 1
         if a >= b:
-            return 'Takahashi'
+            print("Takahashi")
         else:
-            return 'Aoki'
+            print("Aoki")
+    else:
+        b -= 1
+        if b >= a
 
 if __name__ == '__main__':
-    game()
+    problem190_a()

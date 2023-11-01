@@ -1,5 +1,5 @@
-def problems201_d():
-    return None
+def main():
+    print("start")
 
 if __name__ == '__main__':
-    problems201_d()
+    main()

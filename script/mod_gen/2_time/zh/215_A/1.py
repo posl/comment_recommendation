@@ -1,9 +1,10 @@
 def main():
-    S = input()
-    if S == "Hello,World!":
+    # input
+    s = input()
+    # process
+    if s == "Hello,World!":
         print("AC")
-    else:
-        print("WA")
+    e
 
 if __name__ == '__main__':
     main()

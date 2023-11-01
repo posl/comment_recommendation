@@ -1,11 +1,10 @@
-def problem212_a():
-    a,b = map(int,input().split())
+def func(a, b):
     if a > 0 and b == 0:
-        print("黄金")
+        return "Gold"
     elif a == 0 and b > 0:
-        print("白银")
+        return "Silver"
     else:
-        print("合金")
+        return "Alloy"
 
 if __name__ == '__main__':
-    problem212_a()
+    func()

@@ -1,7 +1,8 @@
-def get_input():
-    N = int(input())
-    L = list(map(int,input().split()))
-    return N,L
+def test():
+    n = int(input())
+    lengths = list(map(int, input().split()))
+    max_length = max(lengths)
+    total_length =
 
 if __name__ == '__main__':
-    get_input()
+    test()

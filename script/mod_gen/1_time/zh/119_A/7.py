@@ -1,9 +1,9 @@
 def main():
-    S = input()
-    if S <= "2019/04/30":
-        print("平成")
+    s = input()
+    if s <= '2019/04/30':
+        print('Heisei')
     else:
-        print("TBD")
+        print('TBD')
 
 if __name__ == '__main__':
     main()

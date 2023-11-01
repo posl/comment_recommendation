@@ -1,11 +1,9 @@
-def sort(a, b, c):
-    if a > b:
-        a, b = b, a
-    if a > c:
-        a, c = c, a
-    if b > c:
-        b, c = c, b
-    return a, b, c
+def main():
+    a,b,c = map(int,input().split())
+    if b < a:
+        a,b = b,a
+    if c < b:
+        b,
 
 if __name__ == '__main__':
-    sort()
+    main()

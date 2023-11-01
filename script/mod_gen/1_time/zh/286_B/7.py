@@ -1,8 +1,7 @@
 def main():
     n = int(input())
     s = input()
-    s = s.replace("na", "nya")
-    print(s)
+    p
 
 if __name__ == '__main__':
     main()

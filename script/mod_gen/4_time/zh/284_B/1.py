@@ -1,11 +1,9 @@
-def count_odd_num(arr):
-    count = 0
-    for i in arr:
-        if i%2 == 1:
-            count += 1
-    return count
-T = int(input())
-for i in range(T):
-    N = int(input())
-    arr = list(map(int, input().split()))
-    print(count_odd_num(arr))
+def print_odd_num():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = [int(a) for a in input().split()]
+        print(sum([1
+
+if __name__ == '__main__':
+    print_odd_num()

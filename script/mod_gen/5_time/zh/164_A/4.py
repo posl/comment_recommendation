@@ -1,9 +1,5 @@
-def main():
-    s,w = map(int, input().split())
-    if s <= w:
-        print("不安全")
-    else:
-        print("安全")
+def get_input():
+    return map(int, input().split())
 
 if __name__ == '__main__':
-    main()
+    get_input()

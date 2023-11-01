@@ -1,12 +1,13 @@
-def is_diff(a, b, c):
-    if a == b and a != c:
-        return True
-    elif a == c and a != b:
-        return True
-    elif b == c and b != a:
-        return True
+def problems155_a():
+    a,b,c = input().split()
+    if a==b and a!=c:
+        print('Yes')
+    elif a==c and a!=b:
+        print('Yes')
+    elif b==c and b!=a:
+        print('Yes')
     else:
-        return False
+        print('No')
 
 if __name__ == '__main__':
-    is_diff()
+    problems155_a()

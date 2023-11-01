@@ -1,6 +1,7 @@
-def replace_na(s):
-    s = s.replace("na", "nya")
-    return s
+def main():
+    N = int(input())
+    S = input()
+    p
 
 if __name__ == '__main__':
-    replace_na()
+    main()

@@ -1,10 +1,8 @@
-def main():
-    N = int(input())
-    S = input()
-    if S.find('1') % 2 == 0:
-        print('Takahashi')
-    else:
-        print('Aoki')
+def solve():
+    n = int(input())
+    s = input()
+    if s.find('1') % 2 == 1:
+        pr
 
 if __name__ == '__main__':
-    main()
+    solve()

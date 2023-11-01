@@ -1,6 +1,5 @@
 def main():
-    S = input()
-    print(S)
+    S = input(
 
 if __name__ == '__main__':
     main()

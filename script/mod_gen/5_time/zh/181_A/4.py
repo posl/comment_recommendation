@@ -1,8 +1,8 @@
-def colorofclothes(n):
-    if n % 2 == 0:
-        return "white"
-    else:
-        return "black"
+def problem181_a():
+    n = input()
+    if int(n) % 2 == 0:
+        print('White')
+    el
 
 if __name__ == '__main__':
-    colorofclothes()
+    problem181_a()

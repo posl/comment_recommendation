@@ -1,13 +1,9 @@
 def main():
-    A,B = map(int,input().split())
-    if A>0 and B==0:
-        print("黄金")
-    elif A==0 and B>0:
-        print("银")
-    elif A>0 and B>0:
-        print("合金")
-    else:
-        print("输入错误")
+    # 读取输入
+    gold, silver = map(int, input().split())
+    # 判断
+    if gold == 0:
+        if silver == 0:
 
 if __name__ == '__main__':
     main()

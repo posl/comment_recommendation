@@ -1,16 +1,9 @@
 def main():
-    A,B,C,D = map(int, input().split())
-    if A > C:
-        print("高桥")
-    elif A < C:
-        print("青木")
+    a,b,c,d = map(int,input().split())
+    if (a*60+b) < (c*60+d):
+        print("Takahashi")
     else:
-        if B > D:
-            print("高桥")
-        elif B < D:
-            print("青木")
-        else:
-            print("高桥")
+        print("Aoki")
 
 if __name__ == '__main__':
     main()

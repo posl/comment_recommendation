@@ -1,14 +1,11 @@
 def main():
-    a, b, c, d = map(int, input().strip().split())
+    # 读取输入
+    a, b, c, d = map(int, input().split())
+    # 一直战斗直到有一方死亡
     while True:
+        # 高桥的怪物攻击青木的怪物
         c -= b
-        if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
+        #
 
 if __name__ == '__main__':
     main()

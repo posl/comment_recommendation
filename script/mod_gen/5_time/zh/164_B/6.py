@@ -1,11 +1,11 @@
-def battle(a, b, c, d):
+def main():
+    a,b,c,d = map(int,input().split())
     while True:
-        if c <= 0:
-            return True
-        elif a <= 0:
-            return False
         c -= b
-        a -= d
+        if c <= 0:
+            print("Yes")
+            exit()
+        a -=
 
 if __name__ == '__main__':
-    battle()
+    main()

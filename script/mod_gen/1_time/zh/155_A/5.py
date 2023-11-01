@@ -1,13 +1,12 @@
-def problem155_a():
-    a,b,c = map(int,input().split())
-    if a==b and b!=c:
-        print('是')
-    elif a==c and b!=c:
-        print('是')
-    elif b==c and a!=b:
-        print('是')
-    else:
-        print('否')
+def main():
+    a, b, c = map(int, input().split())
+    if a == b and b == c:
+        print("No")
+    elif a == b and b != c:
+        print("Yes")
+    elif b == c and c != a:
+        print("Yes")
+    elif
 
 if __name__ == '__main__':
-    problem155_a()
+    main()

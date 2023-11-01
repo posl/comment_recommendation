@@ -1,9 +1,8 @@
-def main():
-    n = int(input())
-    if n % 2 == 0:
-        print('白色')
+def get_color(n):
+    if n%2==0:
+        return "White"
     else:
-        print('黑色')
+        return "Black"
 
 if __name__ == '__main__':
-    main()
+    get_color()

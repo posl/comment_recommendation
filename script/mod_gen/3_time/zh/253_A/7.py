@@ -1,8 +1,8 @@
-def is_median(a,b,c):
-    if a<b<c or c<b<a:
-        return True
+def median(a,b,c):
+    if a<=b<=c or c<=b<=a:
+        print("Yes")
     else:
-        return False
+        print("No")
 
 if __name__ == '__main__':
-    is_median()
+    median()

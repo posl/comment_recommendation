@@ -5,11 +5,11 @@ def main():
             print('Takahashi')
         else:
             print('Aoki')
-    else:
-        if a >= b:
-            print('Takahashi')
-        else:
+    elif c == 1:
+        if a < b:
             print('Aoki')
+        else:
+            print('Takahashi')
 
 if __name__ == '__main__':
     main()

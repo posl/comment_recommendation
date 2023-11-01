@@ -1,11 +1,8 @@
-def main():
-    t = int(input())
-    for i in range(t):
-        n = int(input())
-        a = list(map(int, input().split()))
-        count = 0
-        for j in range(n):
-            if a[j] % 2 != 0:
-                count += 1
-        print(count)
-main()
+def problems284_b():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = [int(i) for i in
+
+if __name__ == '__main__':
+    problems284_b()

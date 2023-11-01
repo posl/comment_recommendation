@@ -1,9 +1,8 @@
-def judge(n, l):
-    l.sort()
-    if l[-1] < sum(l[:-1]):
-        return '是'
-    else:
-        return '否'
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort(reverse=True)
+    if L[0
 
 if __name__ == '__main__':
-    judge()
+    main()

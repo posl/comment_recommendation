@@ -1,12 +1,13 @@
-def print_level(X):
-    if X >= 0 and X < 40:
-        print(40 - X)
-    elif X >= 40 and X < 70:
-        print(70 - X)
-    elif X >= 70 and X < 90:
-        print(90 - X)
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
     else:
-        print('expert')
+        print("expert")
 
 if __name__ == '__main__':
-    print_level()
+    main()

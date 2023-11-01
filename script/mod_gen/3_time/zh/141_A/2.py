@@ -1,9 +1,7 @@
-def main():
-    weathers = ["晴天", "阴天", "雨天"]
-    today_weather = input()
-    today_index = weathers.index(today_weather)
-    tomorrow_index = (today_index + 1) % 3
-    print(weathers[tomorrow_index])
+def weather_tomorrow(weather_today):
+    weather_list = ['Sunny', 'Cloudy', 'Rainy']
+    index = weather_list.index(weather_today)
+    if index == 2:
 
 if __name__ == '__main__':
-    main()
+    weather_tomorrow()

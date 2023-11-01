@@ -1,8 +1,5 @@
-def replacestr(s):
-    if "na" not in s:
-        return s
-    else:
-        return replacestr(s.replace("na","nya",1))
+def replace_na(s):
+    return s.replace('na', 'nya')
 
 if __name__ == '__main__':
-    replacestr()
+    replace_na()

@@ -1,5 +1,10 @@
 def main():
-    pass
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    coun
 
 if __name__ == '__main__':
     main()

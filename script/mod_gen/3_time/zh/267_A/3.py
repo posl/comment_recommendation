@@ -1,7 +1,7 @@
 def main():
-    week = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-    s = input()
-    print(6-week.index(s))
+    day = input()
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    print(5 - days.index(day))
 
 if __name__ == '__main__':
     main()

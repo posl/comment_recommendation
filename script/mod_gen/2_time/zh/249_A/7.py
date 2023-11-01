@@ -1,30 +1,21 @@
 def main():
     A,B,C,D,E,F,X = map(int,input().split())
-    T = 0
+    # print(A,B,C,D,E,F,X)
+    Taka = 0
+    Aoki = 0
     while True:
-        if A > B:
-            T += B
-            A -= B
+        if X > 0:
+            X -= A
+            Taka += B
+            if X > 0:
+                X -= C
+            else:
+                break
         else:
-            T += A
-            A = 0
-        if T >= X:
-            print("高桥")
             break
-        T += C
-        if D > E:
-            T += E
-            D -= E
-        else:
-            T += D
-            D = 0
-        if T >= X:
-            print("青木")
-            break
-        T += F
-        if A == D:
-            print("画")
-            break
+        if X > 0:
+            X -= D
+            Aoki +=
 
 if __name__ == '__main__':
     main()

@@ -1,26 +1,11 @@
-def is_prime(x):
-    if x < 2:
+def is_prime(num):
+    if num == 1:
         return False
-    elif x == 2:
+    if num == 2:
         return True
-    else:
-        for i in range(2, x):
-            if x % i == 0:
-                return False
-        return True
-a, b, c, d = map(int, input().split())
-g = 0
-for i in range(a, b + 1):
-    if is_prime(i):
-        g = i
-        break
-for i in range(c, d + 1):
-    if is_prime(i):
-        if i - g > 0:
-            print("青木")
-        else:
-            print("高桥")
-        break
+    if num % 2 ==0:
+        return False
+    f
 
 if __name__ == '__main__':
     is_prime()

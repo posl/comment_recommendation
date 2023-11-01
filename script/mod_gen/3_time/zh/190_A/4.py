@@ -1,15 +1,14 @@
 def main():
-    A,B,C = map(int,input().split())
-    if C == 0:
-        if A > B:
+    A,B,C = input().split()
+    if int(C) == 0:
+        if int(A) > int(B):
             print("Takahashi")
         else:
             print("Aoki")
     else:
-        if B > A:
+        if int(B) > int(A):
             print("Aoki")
-        else:
-            print("Takahashi")
+        el
 
 if __name__ == '__main__':
     main()

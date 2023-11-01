@@ -1,15 +1,7 @@
-def main():
-    D = int(input())
-    if D == 25:
-        print('圣诞节')
-    elif D == 24:
-        print('平安夜')
-    elif D == 23:
-        print('平安夜')
-    elif D == 22:
-        print('平安夜的前夜')
-    else:
-        print('输入的数字不在范围内')
+def christmas():
+    d = int(input())
+    if d == 25:
+        print('Ch
 
 if __name__ == '__main__':
-    main()
+    christmas()

@@ -1,12 +1,13 @@
-def get_grade(score):
-    if score >= 90:
-        return 'expert'
-    elif score >= 70:
-        return 'high'
-    elif score >= 40:
-        return 'middle'
+def main():
+    X = int(input())
+    if X < 40:
+        print(40 - X)
+    elif X < 70:
+        print(70 - X)
+    elif X < 90:
+        print(90 - X)
     else:
-        return 'newbie'
+        print('expert')
 
 if __name__ == '__main__':
-    get_grade()
+    main()

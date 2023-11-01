@@ -1,9 +1,7 @@
-def is_contain_7(num):
-    if num % 10 == 7:
-        return True
-    else:
-        return False
-num = int(input())
+def main():
+    n = int(input())
+    if n % 10 == 7 or n // 10 % 10 == 7 or n // 100 == 7:
+        prin
 
 if __name__ == '__main__':
-    is_contain_7()
+    main()

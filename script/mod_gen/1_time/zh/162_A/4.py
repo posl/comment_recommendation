@@ -1,4 +1,11 @@
-def is_contain_seven(num):
-    return num % 10 == 7 or num // 10 % 10 == 7 or num // 100 == 7
-num = int(input())
-print("是" if is_contain_seven(num) else "否")
+def main():
+	n = int(input())
+	if n % 10 == 7:
+		print("Yes")
+	elif n // 10 % 10 == 7:
+		print("Yes")
+	elif n // 100 % 10 == 7:
+		print("Yes")
+
+if __name__ == '__main__':
+    main()

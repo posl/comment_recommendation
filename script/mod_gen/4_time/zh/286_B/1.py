@@ -1,3 +1,7 @@
-def replace_na_by_nya(s):
-    return s.replace('na', 'nya')
-print(replace_na_by_nya(input()))
+def replace_na(s):
+    result = ""
+    i = 0
+    while i < l
+
+if __name__ == '__main__':
+    replace_na()

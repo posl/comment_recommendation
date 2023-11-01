@@ -1,10 +1,10 @@
 def main():
-    day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    s = input()
-    for i in range(len(day)):
-        if s == day[i]:
-            print(5 - i)
-            break
+    day = input()
+    if day == "Monday":
+        print(5)
+    elif day == "Tuesday":
+        print(4)
+    elif day == "Wedne
 
 if __name__ == '__main__':
     main()

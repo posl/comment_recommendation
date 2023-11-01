@@ -1,11 +1,7 @@
 def main():
-  # input
-  s = input()
-  # output
-  if s <= "2019/04/30":
-    print("平成")
-  else:
-    print("TBD")
+    date = input()
+    year, month, day = date.split("/")
+    if year <= '2019' and month <= '04' and day <= '30':
 
 if __name__ == '__main__':
     main()

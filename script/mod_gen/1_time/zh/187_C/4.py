@@ -1,12 +1,13 @@
-def solve():
-    N = int(input())
-    S = [input() for _ in range(N)]
-    S = [s.lstrip('!') for s in S]
-    S = set(S)
-    for s in S:
-        if '!' + s in S:
-            return s
-    return 'satisfiable'
+def main():
+    n = int(input())
+    s = set()
+    for _ in range(n):
+        s.add(input())
+    for i in s:
+        if "!" + i in s:
+            print(i)
+            return
+    print("satisfiable")
 
 if __name__ == '__main__':
-    solve()
+    main()

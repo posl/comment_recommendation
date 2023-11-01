@@ -1,9 +1,9 @@
-def problem179_a():
-    s = input()
-    if s[-1] == 's':
-        print(s + 'es')
+def main():
+    S = input()
+    if S.endswith('s'):
+        print(S+'es')
     else:
-        print(s + 's')
+        print(S+'s')
 
 if __name__ == '__main__':
-    problem179_a()
+    main()

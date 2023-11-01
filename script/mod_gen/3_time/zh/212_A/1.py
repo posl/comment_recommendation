@@ -1,13 +1,10 @@
-def main():
-    a, b = map(int, input().split())
-    if a == 0 and b == 0:
-        print("error")
-    elif a == 0:
-        print("silver")
-    elif b == 0:
-        print("gold")
+def problem212_a():
+    A,B=map(int,input().split())
+    if A>0 and B==0:
+        print("Gold")
+    elif A==0 and B>0:
+        print("Silver")
     else:
-        print("alloy")
 
 if __name__ == '__main__':
-    main()
+    problem212_a()

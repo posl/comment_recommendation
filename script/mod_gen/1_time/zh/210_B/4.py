@@ -1,10 +1,10 @@
 def main():
     n = int(input())
     s = input()
-    if s.count('1') % 2 == 0:
-        print('Takahashi')
+    if s.find('1') % 2 == 0:
+        print("Takahashi")
     else:
-        print('Aoki')
+        print("Aoki")
 
 if __name__ == '__main__':
     main()

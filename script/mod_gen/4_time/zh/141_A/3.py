@@ -1,9 +1,11 @@
-def next_weather(weather):
-    if weather == "晴天":
-        return "阴天"
-    elif weather == "阴天":
-        return "雨天"
+def main():
+    weather = input()
+    if weather == 'Sunny':
+        print('Cloudy')
+    elif weather == 'Cloudy':
+        print('Rainy')
     else:
-        return "晴天"
-weather = input()
-print(next_weather(weather))
+        print('Sunny')
+
+if __name__ == '__main__':
+    main()

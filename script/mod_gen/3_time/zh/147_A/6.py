@@ -1,11 +1,7 @@
-def main():
-    a = input()
-    a = a.split(" ")
-    a = [int(n) for n in a]
-    if sum(a) >= 22:
-        print("bust")
-    else:
-        print("win")
+def judge_bust_or_win(a1, a2, a3):
+    if (a1 + a2 + a3) >= 22:
+        return 'bust'
+    e
 
 if __name__ == '__main__':
-    main()
+    judge_bust_or_win()

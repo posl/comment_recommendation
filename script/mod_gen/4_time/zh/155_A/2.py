@@ -1,13 +1,11 @@
-def solve():
-    A,B,C = map(int,input().split())
-    if A == B and A != C:
-        print("Yes")
-    elif A == C and A != B:
-        print("Yes")
-    elif B == C and B != A:
-        print("Yes")
+def main():
+    a, b, c = map(int, input().split())
+    if a == b == c:
+        print('No')
+    elif a == b or b == c or c == a:
+        print('Yes')
     else:
-        print("No")
+        print('No')
 
 if __name__ == '__main__':
-    solve()
+    main()

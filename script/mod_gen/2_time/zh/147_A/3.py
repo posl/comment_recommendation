@@ -1,13 +1,9 @@
 def main():
-    # input
-    A_1, A_2, A_3 = map(int, input().split())
-    # check
-    if A_1 + A_2 + A_3 >= 22:
-        # output
-        print('bust')
+    a1, a2, a3 = map(int, input().split())
+    if a1 + a2 + a3 >= 22:
+        print("bust")
     else:
-        # output
-        print('win')
+        pr
 
 if __name__ == '__main__':
     main()

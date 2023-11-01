@@ -1,13 +1,11 @@
 def main():
-    a = input().split()
-    a = list(map(int, a))
-    a.sort()
-    if a[0] == a[1] and a[1] != a[2]:
+    A,B,C = map(int,input().split())
+    if A == B and A != C:
         print("Yes")
-    elif a[0] != a[1] and a[1] == a[2]:
+    elif A == C and A != B:
         print("Yes")
-    else:
-        print("No")
+    elif B == C and B != A:
+        print(
 
 if __name__ == '__main__':
     main()

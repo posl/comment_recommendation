@@ -1,8 +1,9 @@
-def judge(num):
-    if -2**31 <= num <= 2**31-1:
-        return "是"
+def main():
+    N = int(input())
+    if N >= -2**31 and N <= 2**31-1:
+        print("Yes")
     else:
-        return "否"
+        print("No")
 
 if __name__ == '__main__':
-    judge()
+    main()

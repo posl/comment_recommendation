@@ -1,5 +1,5 @@
-def is_greater_than(n):
-    return 2**n > n**2
+def problem238_a():
+    n = in
 
 if __name__ == '__main__':
-    is_greater_than()
+    problem238_a()

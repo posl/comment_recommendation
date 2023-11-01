@@ -1,14 +1,10 @@
-def print_color(r, c):
-    if r % 2 == 0:
-        if c % 2 == 0:
-            print('白色')
-        else:
-            print('黑色')
-    else:
-        if c % 2 == 0:
-            print('黑色')
-        else:
-            print('白色')
+def main():
+    # 读取输入
+    R, C = map(int, input().split())
+    # 处理
+    if R % 2 == 0 and C % 2 == 0:
+        print('white')
+    e
 
 if __name__ == '__main__':
-    print_color()
+    main()

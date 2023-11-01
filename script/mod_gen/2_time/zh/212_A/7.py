@@ -1,11 +1,10 @@
 def main():
-    a, b = map(int, input().split())
-    if a == 0 and b != 0:
-        print("银")
-    elif a != 0 and b == 0:
-        print("黄金")
-    elif a != 0 and b != 0:
-        print("合金")
+    A,B = map(int,input().split())
+    if A>0 and B==0:
+        print("Gold")
+    elif A==0 and B>0:
+        print("Silver")
+    elif A
 
 if __name__ == '__main__':
     main()

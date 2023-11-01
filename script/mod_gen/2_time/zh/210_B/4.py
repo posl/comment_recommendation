@@ -1,10 +1,10 @@
 def main():
-    N = int(input())
-    S = input()
-    if S[0] == '1' or N % 2 == 0:
-        print("Takahashi")
+    n = int(input())
+    s = input()
+    if s[0] == '1':
+        print('Takahashi')
     else:
-        print("Aoki")
+        print('Aoki')
 
 if __name__ == '__main__':
     main()

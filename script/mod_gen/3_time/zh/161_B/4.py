@@ -1,12 +1,11 @@
-def main():
+def problems161_b():
     n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    sum_a = sum(a)
-    a.sort(reverse=True)
-    if a[m-1]*4*m >= sum_a:
-        print('Yes')
-    else:
-        print('No')
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)
+    sum = 0
+    for i in range(m):
+        sum += A[i]
+    if sum >=
 
 if __name__ == '__main__':
-    main()
+    problems161_b()

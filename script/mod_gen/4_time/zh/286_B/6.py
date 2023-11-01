@@ -1,8 +1,6 @@
-def main():
+def problem286_b():
     n = int(input())
-    s = input()
-    s = s.replace('na', 'nya')
-    print(s)
+    s = inpu
 
 if __name__ == '__main__':
-    main()
+    problem286_b()

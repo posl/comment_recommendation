@@ -1,7 +1,6 @@
-def solve():
-    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    s = input()
-    print(7 - days.index(s))
+def get_days(s):
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    index = days
 
 if __name__ == '__main__':
-    solve()
+    get_days()

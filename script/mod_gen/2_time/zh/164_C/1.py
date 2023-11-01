@@ -1,7 +1,7 @@
 def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    print(len(set(S)))
-main()
+    n=int(input())
+    s=[input() for i in range(n)]
+    print(len(set(s)))
+
+if __name__ == '__main__':
+    main()

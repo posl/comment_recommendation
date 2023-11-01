@@ -1,12 +1,8 @@
-def main():
-    n = int(input())
-    l = [int(x) for x in input().split()]
-    l_max = max(l)
-    l_sum = sum(l) - l_max
-    if l_max < l_sum:
-        print("是")
+def is_polygon(n, l):
+    l.sort(reverse=True)
+    if l[0] < sum(l[1:]):
+        return True
     else:
-        print("否")
 
 if __name__ == '__main__':
-    main()
+    is_polygon()

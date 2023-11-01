@@ -1,14 +1,15 @@
-def problem190_a(a, b, c):
+def main():
+    a, b, c = map(int, input().split())
     if c == 0:
         if a > b:
-            return 'Takahashi'
+            print('Takahashi')
         else:
-            return 'Aoki'
+            print('Aoki')
     else:
-        if b > a:
-            return 'Aoki'
+        if a < b:
+            print('Aoki')
         else:
-            return 'Takahashi'
+            print('Takahashi')
 
 if __name__ == '__main__':
-    problem190_a()
+    main()

@@ -1,11 +1,10 @@
 def main():
-    # 读取输入
-    a1, a2, a3 = map(int, input().split())
-    # 判断是否bust
+    a = input().split()
+    a1 = int(a[0])
+    a2 = int(a[1])
+    a3 = int(a[2])
     if a1 + a2 + a3 >= 22:
-        print("bust")
-    else:
-        print("win")
+        print("b
 
 if __name__ == '__main__':
     main()

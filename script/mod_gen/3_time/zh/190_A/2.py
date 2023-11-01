@@ -1,15 +1,15 @@
-def main():
-    a, b, c = map(int, input().split())
-    if c == 0:
-        if a > b:
-            print('Takahashi')
+def solve():
+    A, B, C = map(int, input().split())
+    if C == 0:
+        if A > B:
+            print("Takahashi")
         else:
-            print('Aoki')
+            print("Aoki")
     else:
-        if a < b:
-            print('Aoki')
+        if B > A:
+            print("Aoki")
         else:
-            print('Takahashi')
+            print("Takahashi")
 
 if __name__ == '__main__':
-    main()
+    solve()

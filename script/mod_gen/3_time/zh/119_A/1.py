@@ -1,9 +1,9 @@
 def main():
-    date = input()
-    if date <= '2019/04/30':
-        print("平成")
-    else:
-        print("TBD")
+    s = input()
+    year, month, day = map(int, s.split("/"))
+    if year < 2019:
+        print("Heisei")
+    elif year
 
 if __name__ == '__main__':
     main()

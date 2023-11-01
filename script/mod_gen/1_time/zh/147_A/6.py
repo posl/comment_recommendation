@@ -1,6 +1,6 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a + b + c >= 22:
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
         print("bust")
     else:
         print("win")

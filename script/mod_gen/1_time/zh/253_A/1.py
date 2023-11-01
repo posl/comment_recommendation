@@ -1,8 +1,6 @@
-def median(a,b,c):
-    if ((a>b and a<c) or (a>c and a<b)):
-        return True
-    else:
-        return False
+def main():
+    a, b, c = map(int, input().split())
+    if b == max(a, b, c) or b == min(a, b, c):
 
 if __name__ == '__main__':
-    median()
+    main()

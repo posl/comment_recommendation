@@ -1,10 +1,5 @@
-def check(s):
-    while '()' in s:
-        s = s.replace('()','')
-    if s == '':
-        return True
-    else:
-        return False
+def solve():
+    s =
 
 if __name__ == '__main__':
-    check()
+    solve()

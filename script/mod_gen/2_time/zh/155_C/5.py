@@ -1,5 +1,10 @@
-def problems155_c():
-    pass
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    cou
 
 if __name__ == '__main__':
-    problems155_c()
+    main()

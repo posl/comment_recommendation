@@ -1,15 +1,12 @@
 def main():
-    #读取输入
-    S,T = input().split()
-    A,B = input().split()
-    U = input()
-    #处理输入
-    if S == U:
-        A = str(int(A) - 1)
+    s, t = input().split()
+    a, b = map(int, input().split())
+    u = input()
+    if s == u:
+        a -= 1
     else:
-        B = str(int(B) - 1)
-    #输出结果
-    print(A,B)
+        b -= 1
+    print(a,
 
 if __name__ == '__main__':
     main()

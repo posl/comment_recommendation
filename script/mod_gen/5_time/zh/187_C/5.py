@@ -1,9 +1,12 @@
-def solve():
-    N = int(input())
-    S = [input() for i in range(N)]
-    S = set(S)
-    for s in S:
-        if '!' + s in S:
-            return s
-    return 'satisfiable'
-print(solve())
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    s = set(s)
+    for i in s:
+        if "!" + i in s:
+            print(i)
+            exit()
+    print("satisfiable")
+
+if __name__ == '__main__':
+    main()

@@ -1,22 +1,20 @@
-def run():
-    a, b, c, d, e, f, x = map(int, input().split())
-    t = 0
-    p = 0
+def problem249_a():
+    a,b,c,d,e,f,x = map(int,input().split())
+    takahashi = 0
+    aoki = 0
     while True:
-        if t == x:
-            print('draw')
+        if takahashi + a <= x:
+            takahashi += a
+        else:
+            takahashi = x
+        if aoki + d <= x:
+            aoki += d
+        else:
+            aoki = x
+        if takahashi == aoki:
+            print('Draw')
             break
-        t += 1
-        if t % (a + b) <= a:
-            p += d
-        if t % (c + d) <= c:
-            p -= e
-        if p <= 0:
-            print('takahashi')
-            break
-        if p > 0:
-            print('aoki')
-            break
+        elif takahashi > aoki:
 
 if __name__ == '__main__':
-    run()
+    problem249_a()

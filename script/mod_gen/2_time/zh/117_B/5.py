@@ -1,9 +1,8 @@
-def is_polygon(L):
-    max_length = max(L)
-    if max_length < sum(L)-max_length:
-        return True
-    else:
-        return False
+def main():
+    n=int(input())
+    l=list(map(int,input().split()))
+    l.sort()
+    if l[-1]<sum(l[:-1]):
 
 if __name__ == '__main__':
-    is_polygon()
+    main()

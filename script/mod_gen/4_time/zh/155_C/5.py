@@ -1,17 +1,15 @@
 def main():
     n = int(input())
-    s = [input() for _ in range(n)]
+    words = []
+    for i in range(n):
+        words.append(input())
+    words.sort()
     max_count = 0
-    for i in range(n):
-        if s.count(s[i]) > max_count:
-            max_count = s.count(s[i])
-    max_s = []
-    for i in range(n):
-        if s.count(s[i]) == max_count and s[i] not in max_s:
-            max_s.append(s[i])
-    max_s.sort()
-    for i in max_s:
-        print(i)
+    max_words = []
+    count = 1
+    for i in range(1, n):
+        if words[i] == words[i - 1]:
+            count += 1
 
 if __name__ == '__main__':
     main()

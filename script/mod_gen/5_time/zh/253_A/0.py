@@ -1,9 +1,8 @@
 def main():
-    a,b,c = map(int,input().split())
-    if a <= b <= c:
-        print("是")
-    elif c <= b <= a:
-        print("是")
-    else:
-        print("没有")
-main()
+    a = input("输入a: ")
+    b = input("输入b: ")
+    c = input("输入c: ")
+    if (a<=b and
+
+if __name__ == '__main__':
+    main()

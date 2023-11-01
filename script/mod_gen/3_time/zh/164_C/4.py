@@ -1,9 +1,8 @@
 def main():
     n = int(input())
-    items = []
+    s = set()
     for i in range(n):
-        items.append(input())
-    print(len(set(items)))
+        s.add(input()
 
 if __name__ == '__main__':
     main()

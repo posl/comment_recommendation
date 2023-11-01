@@ -1,8 +1,6 @@
-def is_divisible_by_8(number):
-    if number % 8 == 0:
-        return True
-    else:
-        return False
+def main():
+    s = input()
+    l = list(s)
 
 if __name__ == '__main__':
-    is_divisible_by_8()
+    main()

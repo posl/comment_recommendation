@@ -1,13 +1,5 @@
-def problems284_b():
-    T = int(input())
-    for i in range(T):
-        N = int(input())
-        A = list(map(int, input().split()))
-        cnt = 0
-        for j in range(N):
-            if A[j] % 2 != 0:
-                cnt += 1
-        print(cnt)
+def count_odd(num):
+    if num % 2 == 0:
 
 if __name__ == '__main__':
-    problems284_b()
+    count_odd()

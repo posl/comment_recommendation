@@ -6,10 +6,8 @@ def main():
         else:
             print('Aoki')
     else:
-        if b > a:
-            print('Aoki')
-        else:
-            print('Takahashi')
+        if a >= b:
+            print('Takahashi'
 
 if __name__ == '__main__':
     main()

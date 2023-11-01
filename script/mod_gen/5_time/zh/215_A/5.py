@@ -1,8 +1,7 @@
 def main():
-    # 读入字符串
-    s = input()
-    # 判断是否与Hello,World！完全匹配
-    if s == "Hello,World!":
+    str = input()
+    str1 = "Hello,World!"
+    if str == str1:
         print("AC")
     else:
         print("WA")

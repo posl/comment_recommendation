@@ -1,6 +1,8 @@
-def main():
-    n = int(input())
-    print("是" if 2**n > n**2 else "否")
+def check(n):
+    if 2**n > n**2:
+        return "Yes"
+    else:
+        return "No"
 
 if __name__ == '__main__':
-    main()
+    check()

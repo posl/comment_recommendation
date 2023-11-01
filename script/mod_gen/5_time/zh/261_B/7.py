@@ -1,22 +1,16 @@
 def main():
-    n = int(input())
-    result = [input() for i in range(n)]
-    for i in range(n):
-        for j in range(n):
-            if result[i][j] == 'W':
-                if result[j][i] != 'L':
-                    print('不正确')
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(input())
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if A[i][j] == "W" and A[j][i] != "L":
+                    print("incorrect")
                     return
-            elif result[i][j] == 'L':
-                if result[j][i] != 'W':
-                    print('不正确')
-                    return
-            elif result[i][j] == 'D':
-                if result[j][i] != 'D':
-                    print('不正确')
-                    return
-    print('正确')
-    return
+                elif A[i][j] == "L" and A[j][i] != "W":
+                    print("incorrect")
 
 if __name__ == '__main__':
     main()

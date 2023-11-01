@@ -1,9 +1,9 @@
-def solve():
+def main():
     n = int(input())
-    s = set()
+    item = set()
     for i in range(n):
-        s.add(input())
-    print(len(s))
+        item.add(input())
+    print(len(item))
 
 if __name__ == '__main__':
-    solve()
+    main()

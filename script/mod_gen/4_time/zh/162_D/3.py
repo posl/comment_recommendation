@@ -1,17 +1,13 @@
-def main():
-    N = int(input())
-    S = input()
-    r = S.count('R')
-    g = S.count('G')
-    b = S.count('B')
-    ans = r * g * b
-    for i in range(N):
-        for j in range(i+1, N):
-            k = 2 * j - i
-            if k < N:
-                if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
-                    ans -= 1
-    print(ans)
+def count_triples(s):
+    count = 0
+    n = len(s)
+    for i in range(n-2):
+        for j in range(i+1,n-1):
+            k = j + (j-i)
+            if k < n:
+                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k]:
+                    count += 1
+    return count
 
 if __name__ == '__main__':
-    main()
+    count_triples()

@@ -1,9 +1,9 @@
-def is_polygon(n, ls):
-    ls.sort()
-    if ls[-1] < sum(ls[:-1]):
-        return '是'
-    else:
-        return '否'
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort(reverse=True)
+    max_l = l[0]
+    sum_l =
 
 if __name__ == '__main__':
-    is_polygon()
+    main()

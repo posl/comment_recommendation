@@ -1,9 +1,9 @@
 def main():
-    S = input()
-    if S == "Hello,World":
-        print("AC")
+    input = raw_input()
+    if input == "Hello,World!":
+        print "AC"
     else:
-        print("WA")
+        print "WA"
 
 if __name__ == '__main__':
     main()

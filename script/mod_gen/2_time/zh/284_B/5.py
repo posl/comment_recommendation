@@ -1,8 +1,8 @@
-def is_odd(x):
-    if x % 2 == 0:
-        return False
-    else:
-        return True
+def problems284_b():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
 
 if __name__ == '__main__':
-    is_odd()
+    problems284_b()

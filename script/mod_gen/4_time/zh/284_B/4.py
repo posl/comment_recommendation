@@ -1,11 +1,11 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if a[i] % 2 == 1:
-            count += 1
-    print(count)
+def odd_number():
+    #获取测试用例数量
+    T = int(input())
+    #获取每个测试用例
+    for i in range(T):
+        #获取每个测试用例的长度
+        N = int(input())
+        #获取每个测试用例的数值
 
 if __name__ == '__main__':
-    main()
+    odd_number()

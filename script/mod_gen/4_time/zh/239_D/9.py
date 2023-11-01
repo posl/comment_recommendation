@@ -1,14 +1,10 @@
-def is_prime(x):
-    if x == 2:
-        return True
-    if x < 2 or x % 2 == 0:
+def is_prime(n):
+    if n < 2:
         return False
-    i = 3
-    while i*i <= x:
-        if x % i == 0:
-            return False
-        i += 2
-    return True
+    else:
+        for i in range(2, n):
+            if n % i == 0:
+                re
 
 if __name__ == '__main__':
     is_prime()

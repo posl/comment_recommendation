@@ -1,13 +1,14 @@
-def main():
-    a, b, c = map(int, input().split())
+def game(a, b, c):
     if c == 0:
         if a > b:
-            print("Takahashi")
+            return "Takahashi"
         else:
-            print("Aoki")
+            return "Aoki"
     else:
         if b > a:
-            print("Aoki")
+            return "Aoki"
         else:
-            print("Takahashi")
-main()
+            return "Takahashi"
+
+if __name__ == '__main__':
+    game()

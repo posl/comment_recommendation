@@ -1,16 +1,11 @@
-def main():
+def problem245_a():
     a,b,c,d = map(int,input().split())
-    if a > c:
-        print("高桥")
-    elif a < c:
-        print("青木")
-    else:
-        if b > d:
-            print("高桥")
-        elif b < d:
-            print("青木")
+    if a == c:
+        if b < d:
+            print("Takahashi")
         else:
-            print("高桥")
+            print("Aoki")
+    elif a < c
 
 if __name__ == '__main__':
-    main()
+    problem245_a()

@@ -1,14 +1,11 @@
-def main():
-    a, b, c, d = map(int, input().split())
+def judge(a, b, c, d):
     while True:
-        c -= b
+        c = c - b
         if c <= 0:
-            print('Yes')
+            print("Yes")
             break
-        a -= d
-        if a <= 0:
-            print('No')
-            break
+        a = a - d
+        if a
 
 if __name__ == '__main__':
-    main()
+    judge()

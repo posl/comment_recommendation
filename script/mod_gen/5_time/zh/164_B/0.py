@@ -1,14 +1,11 @@
-def main():
-    a,b,c,d = map(int, input().split())
+def attack(a,b,c,d):
     while True:
-        c = c-b
+        c -= b
         if c <= 0:
-            print("Yes")
-            break
-        a = a-d
+            return "Yes"
+        a -= d
         if a <= 0:
-            print("No")
-            break
+            return "No"
 
 if __name__ == '__main__':
-    main()
+    attack()

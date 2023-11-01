@@ -1,9 +1,10 @@
-def main():
-    n = int(input())
-    if 2**n > n**2:
-        print('是')
+def f(n):
+    if n==1:
+        return True
+    elif n%2==0:
+        return f(n/2)
     else:
-        print('否')
+        return F
 
 if __name__ == '__main__':
-    main()
+    f()

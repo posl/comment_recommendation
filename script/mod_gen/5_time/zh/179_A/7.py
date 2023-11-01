@@ -1,9 +1,5 @@
-def solve():
-    s = input()
-    if s[-1] == 's':
-        print(s + 'es')
-    else:
-        print(s + 's')
+def pluralize(s):
+    if s.endswith('s') or s.endswith('sh') or s.endswith('ch') or s.endswith('o') or s.e
 
 if __name__ == '__main__':
-    solve()
+    pluralize()

@@ -1,11 +1,9 @@
 def main():
-	# get input
-	sheep, wolf = map(int, input().split())
-	# judge
-	if wolf >= sheep:
-		print("不安全")
-	else:
-		print("安全")
+    s, w = map(int, input().split())
+    if s <= w:
+        print('unsafe')
+    else:
+        print('safe')
 
 if __name__ == '__main__':
     main()

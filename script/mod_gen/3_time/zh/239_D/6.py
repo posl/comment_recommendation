@@ -1,11 +1,8 @@
-def check_prime(num):
-    if num == 1:
+def is_prime(n):
+    if n==1:
         return False
-    for i in range(2,num):
-        if num % i == 0:
-            return False
-    else:
-        return True
+    for k in range(2, int(n**0.5)+1):
+        if n % k == 0:
 
 if __name__ == '__main__':
-    check_prime()
+    is_prime()

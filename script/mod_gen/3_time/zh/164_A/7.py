@@ -1,6 +1,6 @@
 def main():
     s,w = map(int,input().split())
-    if s<=w:
+    if w >= s:
         print('unsafe')
     else:
         print('safe')

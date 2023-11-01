@@ -1,9 +1,11 @@
-def solution():
-    A, B = map(int, input().split())
-    if A > 0 and B == 0:
-        print("黄金")
-    elif A == 0 and B > 0:
-        print("白银")
+def main():
+    a, b = map(int, input().split())
+    if a == 0:
+        print("Silver")
+    elif b == 0:
+        print("Gold")
     else:
-        print("合金")
-solution()
+        print("Alloy")
+
+if __name__ == '__main__':
+    main()

@@ -1,13 +1,10 @@
-def is_prime(x):
-    if x == 1:
+def is_prime(n):
+    if n == 1:
         return False
-    if x == 2:
+    elif n == 2:
         return True
-    for i in range(2,int(x**0.5)+1):
-        if x % i == 0:
-            return False
-    return True
-A,B,C,D = map(int,input().split())
+    else:
+        for i in range(2,n):
 
 if __name__ == '__main__':
     is_prime()

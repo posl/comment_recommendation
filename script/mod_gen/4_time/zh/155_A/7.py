@@ -1,9 +1,12 @@
 def main():
-    a, b, c = map(int, input().split())
-    if a == b != c or b == c != a or c == a != b:
-        print('是')
-    else:
-        print('否')
+    a,b,c = map(int, input().split())
+    if a == b and b == c:
+        print("No")
+    elif a == b:
+        print("Yes")
+    elif b == c:
+        print("Yes")
+    elif
 
 if __name__ == '__main__':
     main()

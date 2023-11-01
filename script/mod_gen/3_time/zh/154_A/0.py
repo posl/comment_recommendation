@@ -1,10 +1,10 @@
 def main():
     S,T = input().split()
-    A,B = map(int,input().split())
+    A,B = map(int, input().split())
     U = input()
-    if U == S:
+    if S == U:
         A -= 1
-    else:
+    elif T == U:
         B -= 1
     print(A,B)
 

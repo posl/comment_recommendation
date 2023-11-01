@@ -1,16 +1,13 @@
-def solve(n, a):
-    for i in range(n):
-        for j in range(n):
-            if a[i][j] == 'W':
-                if a[j][i] != 'L':
-                    return '不正确'
-            elif a[i][j] == 'L':
-                if a[j][i] != 'W':
-                    return '不正确'
-            elif a[i][j] == 'D':
-                if a[j][i] != 'D':
-                    return '不正确'
-    return '正确'
+def problem261_b():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(input())
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if A[i][j] == 'W' and A[j][i] != 'L':
+                    print("incorrect")
 
 if __name__ == '__main__':
-    solve()
+    problem261_b()

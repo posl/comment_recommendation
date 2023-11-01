@@ -1,9 +1,6 @@
-def get_input():
+def main():
     n = int(input())
-    arr = []
-    for i in range(n):
-        arr.append(input())
-    return arr
+    s = [input() for _ in ran
 
 if __name__ == '__main__':
-    get_input()
+    main()

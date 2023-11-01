@@ -1,10 +1,11 @@
-def monster(A, B, C, D):
+def main():
+    a,b,c,d = map(int, input().split())
     while True:
-        C = C - B
-        if C <= 0:
-            return "Yes"
-        A = A - D
-        if A <= 0:
-            return "No"
-A, B, C, D = map(int, input().split())
-print(monster(A, B, C, D))
+        c = c-b
+        if c <= 0:
+            print("Yes")
+            break
+        a = a-d
+
+if __name__ == '__main__':
+    main()

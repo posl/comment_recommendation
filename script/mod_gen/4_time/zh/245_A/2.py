@@ -1,9 +1,14 @@
 def main():
-    a,b,c,d = map(int,input().split())
-    if a*60+b<c*60+d:
-        print("高桥")
+    a,b,c,d = map(int, input().split())
+    if a > c:
+        print("Takahashi")
+    elif a < c:
+        print("Aoki")
     else:
-        print("青木")
+        if b > d:
+            print("Takahashi")
+        elif b < d:
+            print("Aok
 
 if __name__ == '__main__':
     main()

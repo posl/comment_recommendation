@@ -1,8 +1,9 @@
-def count_num():
+def f():
     n = int(input())
-    s = []
-    for _ in range(n):
-        s.append(input())
-    s_set = set(s)
-    return len(s_set)
-print(count_num())
+    l = []
+    for i in range(n):
+        l.append(input())
+    print(len(set(l))
+
+if __name__ == '__main__':
+    f()

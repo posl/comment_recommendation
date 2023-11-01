@@ -1,12 +1,7 @@
-def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    a.sort(reverse=True)
-    total = sum(a)
-    if a[m-1] >= total/(4*m):
-        print("是")
-    else:
-        print("否")
+def get_input():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    return n,m,a
 
 if __name__ == '__main__':
-    main()
+    get_input()

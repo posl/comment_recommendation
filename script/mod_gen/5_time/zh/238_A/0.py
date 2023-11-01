@@ -1,8 +1,9 @@
-def is_greater(n):
+def main():
+    n = int(input())
     if 2**n > n**2:
-        return True
+        print('Yes')
     else:
-        return False
+        print('No')
 
 if __name__ == '__main__':
-    is_greater()
+    main()

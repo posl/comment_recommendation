@@ -1,12 +1,9 @@
-def findPrime(n):
-    prime = []
-    for i in range(2, n+1):
-        for j in range(2, i):
-            if i%j == 0:
-                break
-        else:
-            prime.append(i)
-    return prime
+def is_prime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for k in range(3, int(n ** 0.5) + 1, 2):
 
 if __name__ == '__main__':
-    findPrime()
+    is_prime()

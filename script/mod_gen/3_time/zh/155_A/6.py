@@ -1,13 +1,11 @@
-def check(x,y,z):
-    if x==y and x!=z:
-        return True
-    elif x==z and x!=y:
-        return True
-    elif y==z and y!=x:
-        return True
-    else:
-        return False
-x,y,z=map(int,input().split())
+def main():
+    A,B,C = map(int, input().split())
+    if A == B and A != C:
+        print("Yes")
+    elif A == C and A != B:
+        print("Yes")
+    elif B == C and B != A:
+        print("Yes")
 
 if __name__ == '__main__':
-    check()
+    main()

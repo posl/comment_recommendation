@@ -1,11 +1,9 @@
 def main():
     A,B = map(int,input().split())
     if A>0 and B==0:
-        print('黄金')
+        print("Gold")
     elif A==0 and B>0:
-        print('银')
-    else:
-        print('合金')
+        print(
 
 if __name__ == '__main__':
     main()

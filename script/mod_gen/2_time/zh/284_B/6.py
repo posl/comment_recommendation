@@ -1,9 +1,9 @@
-def count_odd(nums):
-    count = 0
-    for i in nums:
-        if i % 2 != 0:
-            count += 1
-    return count
+def odd_number():
+    # 获取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 判断奇数
+    count
 
 if __name__ == '__main__':
-    count_odd()
+    odd_number()

@@ -1,9 +1,9 @@
-def main():
-    num = int(input())
-    if num % 10 == 7:
-        print("是")
-    else:
-        print("否")
+def is_seven(n):
+    if n%10 == 7:
+        return True
+    elif n < 10:
+        return False
+    els
 
 if __name__ == '__main__':
-    main()
+    is_seven()

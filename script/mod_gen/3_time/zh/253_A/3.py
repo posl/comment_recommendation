@@ -1,11 +1,9 @@
-def is_middle(a,b,c):
-    if b < a:
-        if b > c:
-            return True
-    if b > a:
-        if b < c:
-            return True
-    return False
+def main():
+    a,b,c=input().split()
+    a=int(a)
+    b=int(b)
+    c=int(c)
+    if b>=a and b<=c
 
 if __name__ == '__main__':
-    is_middle()
+    main()

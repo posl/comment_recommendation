@@ -1,12 +1,8 @@
-def main():
-    N = int(input())
-    L = list(map(int, input().split()))
-    maxL = max(L)
-    sumL = sum(L)
-    if maxL < sumL - maxL:
-        print('是')
-    else:
-        print('否')
+def judge_polygon(n, l):
+    l_max = max(l)
+    l_sum = sum(l) - l_max
+    if l_max < l_sum:
+        return
 
 if __name__ == '__main__':
-    main()
+    judge_polygon()

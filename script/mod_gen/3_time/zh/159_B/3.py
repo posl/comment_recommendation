@@ -1,7 +1,5 @@
-def is_palindrome(s):
-    return s == s[::-1]
-s = input()
-n = len(s)
+def check_palindrome(s):
+    for i in range(le
 
 if __name__ == '__main__':
-    is_palindrome()
+    check_palindrome()

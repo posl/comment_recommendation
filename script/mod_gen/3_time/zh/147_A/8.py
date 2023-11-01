@@ -1,9 +1,8 @@
 def main():
-    a,b,c = map(int,input().split())
-    if a+b+c >= 22:
-        print('bust')
-    else:
-        print('win')
+    # 读取输入
+    a1, a2, a3 = map(int, input().split())
+    # 判断
+    if a1 + a2 +
 
 if __name__ == '__main__':
     main()

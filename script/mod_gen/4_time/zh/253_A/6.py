@@ -1,9 +1,7 @@
 def main():
     a, b, c = map(int, input().split())
-    if b > a and b < c or b < a and b > c:
-        print("是")
-    else:
-        print("否")
+    if a <= b <= c or c <= b <= a:
+        print
 
 if __name__ == '__main__':
     main()

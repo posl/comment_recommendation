@@ -1,13 +1,11 @@
-def main():
-    x = int(input())
-    if 0 <= x < 40:
-        print(40 - x)
-    elif 40 <= x < 70:
-        print(70 - x)
-    elif 70 <= x < 90:
-        print(90 - x)
-    else:
-        print("专家")
+def get_score(grade):
+    if grade == 'D':
+        return 0
+    elif grade == 'C':
+        return 1
+    elif grade == 'B':
+        return 2
+    elif grade == 'A':
 
 if __name__ == '__main__':
-    main()
+    get_score()

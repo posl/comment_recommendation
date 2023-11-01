@@ -1,11 +1,8 @@
-def main():
-    a = input()
-    a_list = a.split()
-    a_list = [int(i) for i in a_list]
-    if sum(a_list) >= 22:
-        print("bust")
+def judge_bust(a1, a2, a3):
+    if a1 + a2 + a3 >= 22:
+        return 'bust'
     else:
-        print("win")
+        return 'win'
 
 if __name__ == '__main__':
-    main()
+    judge_bust()

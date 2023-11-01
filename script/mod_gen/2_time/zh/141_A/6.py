@@ -1,11 +1,10 @@
-def main():
-    weather = input()
-    if weather == '晴天':
-        print('阴天')
-    elif weather == '阴天':
-        print('雨天')
-    elif weather == '雨天':
-        print('晴天')
+def weather_prediction(weather):
+    if weather == "Sunny":
+        return "Cloudy"
+    elif weather == "Cloudy":
+        return "Rainy"
+    elif weather == "Rainy":
+        return "Sunny"
 
 if __name__ == '__main__':
-    main()
+    weather_prediction()

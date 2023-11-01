@@ -1,8 +1,7 @@
-def problems164_c():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s = set(s)
-    print(len(s))
-problems164_c()
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    print(len(set(S)))
+
+if __name__ == '__main__':
+    main()

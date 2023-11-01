@@ -1,19 +1,12 @@
 def main():
-    n = int(input())
-    s = input()
-    r = s.count('R')
-    g = s.count('G')
-    b = s.count('B')
-    #print(r,g,b)
-    ans = r * g * b
-    for i in range(n):
-        for j in range(i+1,n):
-            k = j + (j - i)
-            if k >= n:
-                continue
-            if s[i] != s[j] and s[j] != s[k] and s[i] != s[k]:
-                ans -= 1
-    print(ans)
+    N = int(input())
+    S = input()
+    R = S.count("R")
+    G = S.count("G")
+    B = S.count("B")
+    ans = R * G * B
+    for i in range(N):
+        for j in
 
 if __name__ == '__main__':
     main()

@@ -6,9 +6,8 @@ def main():
     e = int(input())
     k = int(input())
     if e - a <= k:
-        print('Yay!')
-    else:
-        print(':(')
+        print("Yay!")
+    else
 
 if __name__ == '__main__':
     main()

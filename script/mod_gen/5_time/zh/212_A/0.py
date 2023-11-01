@@ -1,11 +1,10 @@
-def main():
-    a,b = map(int, input().split())
-    if a>0 and b==0:
-        print('黄金')
-    elif a==0 and b>0:
-        print('银')
+def alloy(a,b):
+    if a == 0:
+        return 'Silver'
+    elif b == 0:
+        return 'Gold'
     else:
-        print('合金')
+        return 'Alloy'
 
 if __name__ == '__main__':
-    main()
+    alloy()

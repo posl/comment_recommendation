@@ -5,12 +5,6 @@ def check(a):
                 if a[j][i] != "L":
                     return False
             elif a[i][j] == "L":
-                if a[j][i] != "W":
-                    return False
-            elif a[i][j] == "D":
-                if a[j][i] != "D":
-                    return False
-    return True
 
 if __name__ == '__main__':
     check()

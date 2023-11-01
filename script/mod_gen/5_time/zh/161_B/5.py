@@ -1,7 +1,7 @@
-def get_input():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    return n, m, a
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse
 
 if __name__ == '__main__':
-    get_input()
+    solve()

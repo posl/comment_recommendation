@@ -1,11 +1,14 @@
 def main():
     a,b,c,d = map(int,input().split())
     if a > c:
-        print("高桥")
-    elif a == c and b > d:
-        print("高桥")
+        print('Takahashi')
+    elif a < c:
+        print('Aoki')
     else:
-        print("青木")
+        if b > d:
+            print('Takahashi')
+        elif b < d:
+            print('Aoki
 
 if __name__ == '__main__':
     main()

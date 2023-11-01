@@ -1,5 +1,5 @@
-def solve():
-    print('No')
+def judge(A):
+    for
 
 if __name__ == '__main__':
-    solve()
+    judge()

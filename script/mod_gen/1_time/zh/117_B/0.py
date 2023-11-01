@@ -1,9 +1,8 @@
-def solve():
-    N = int(input())
-    L = [int(i) for i in input().split()]
-    L.sort()
-    if L[N-1] < sum(L[:N-1]):
-        print("是")
-    else:
-        print("否")
-solve()
+def main():
+    n = int(input())
+    ls = list(map(int, input().split()))
+    ls.sort()
+    if ls[-1] < sum(ls[:-1]):
+
+if __name__ == '__main__':
+    main()

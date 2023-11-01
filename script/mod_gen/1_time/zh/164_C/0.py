@@ -1,9 +1,8 @@
 def main():
     n = int(input())
-    s = set()
+    s = []
     for i in range(n):
-        s.add(input())
-    print(len(s))
+        s.append(input())
 
 if __name__ == '__main__':
     main()

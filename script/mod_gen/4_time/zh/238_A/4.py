@@ -1,8 +1,8 @@
-def f(n):
+def is_2n_bigger_n2(n):
     if 2**n > n**2:
-        print("是")
+        return 'Yes'
     else:
-        print("否")
-f(5)
-f(2)
-f(623947744)
+        return 'No'
+
+if __name__ == '__main__':
+    is_2n_bigger_n2()

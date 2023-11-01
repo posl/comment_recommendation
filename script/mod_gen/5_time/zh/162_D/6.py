@@ -1,14 +1,14 @@
-def solve():
-    N = int(input())
-    S = input()
-    cnt = 0
-    for i in range(N):
-        for j in range(i+1,N):
-            for k in range(j+1,N):
-                if S[i] != S[j] and S[j] != S[k] and S[i] != S[k]:
-                    if j - i != k - j:
-                        cnt += 1
-    print(cnt)
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(1, n):
+            k = 2 * j - i
+            if k < n and s[i] != s[j]
 
 if __name__ == '__main__':
-    solve()
+    main()

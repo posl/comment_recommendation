@@ -1,6 +1,7 @@
-def get_days_to_saturday(day):
-    days = {"星期一":5, "星期二":4, "星期三":3, "星期四":2, "星期五":1}
-    return days[day]
+def problem267_a():
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    day = input()
+    print(5 - week.index(day))
 
 if __name__ == '__main__':
-    get_days_to_saturday()
+    problem267_a()

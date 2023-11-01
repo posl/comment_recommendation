@@ -1,5 +1,5 @@
-def solution():
-    pass
+def solve():
+    N = int
 
 if __name__ == '__main__':
-    solution()
+    solve()

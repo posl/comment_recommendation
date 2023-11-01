@@ -1,9 +1,10 @@
 def main():
-    A, B, C, D = map(int, input().split())
-    if A > C or (A == C and B > D):
-        print("高桥")
-    else:
-        print("青木")
+    a,b,c,d = map(int,input().split())
+    taka = a*60+b
+    aoki = c*60+d+1
+    if taka >= aoki:
+        print('Takahashi')
+    e
 
 if __name__ == '__main__':
     main()

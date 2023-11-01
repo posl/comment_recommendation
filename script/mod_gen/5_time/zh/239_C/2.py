@@ -1,9 +1,8 @@
-def f(x1,y1,x2,y2):
-    if x1==x2 or y1==y2:
-        return "No"
-    if abs(x1-x2)==abs(y1-y2):
-        return "Yes"
-    else:
-        return "No"
-x1,y1,x2,y2=map(int,input().split())
-print(f(x1,y1,x2,y2))
+def is_square(n):
+    if n < 0:
+        return False
+    if n == 0:
+        return True
+
+if __name__ == '__main__':
+    is_square()

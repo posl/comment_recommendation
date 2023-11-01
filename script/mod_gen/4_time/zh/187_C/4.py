@@ -1,13 +1,12 @@
-def isSatisfy(strs):
-    #print(strs)
-    for i in range(len(strs)):
-        if strs[i][0] == '!':
-            if strs[i][1:] in strs:
-                return strs[i][1:]
-        else:
-            if '!' + strs[i] in strs:
-                return strs[i]
-    return 'satisfy'
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    for i in s:
+        if i[0] == '!':
+            if i[1:] in s:
+                print(i[1:])
 
 if __name__ == '__main__':
-    isSatisfy()
+    main()

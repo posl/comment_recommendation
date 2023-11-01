@@ -1,17 +1,13 @@
-def main():
-    n = int(input())
-    s = input()
-    r = s.count("R")
-    g = s.count("G")
-    b = s.count("B")
-    ans = r * g * b
-    for i in range(n):
-        for j in range(i+1,n):
-            k = 2 * j - i
-            if k < n:
-                if s[i] != s[j] and s[j] != s[k] and s[i] != s[k]:
-                    ans -= 1
-    print(ans)
+def solve():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            k = 2*j - i
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
 
 if __name__ == '__main__':
-    main()
+    solve()

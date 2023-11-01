@@ -1,9 +1,11 @@
 def main():
-    a, b, c, d = map(int, input().split())
-    while a > 0 and c > 0:
+    a,b,c,d = map(int, input().split())
+    while 1:
         c -= b
+        if c <= 0:
+            print("Yes")
+            break
         a -= d
-    print("是" if c <= 0 else "否")
 
 if __name__ == '__main__':
     main()

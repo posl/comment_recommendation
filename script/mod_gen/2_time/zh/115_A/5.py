@@ -1,13 +1,12 @@
-def main():
-    D = int(input())
-    if D == 25:
-        print("圣诞节")
-    elif D == 24:
-        print("平安夜")
-    elif D == 23:
-        print("平安夜")
-    elif D == 22:
-        print("平安夜的前夜")
+def print_christmas(n):
+    if n == 25:
+        print("Christmas")
+    elif n == 24:
+        print("Christmas Eve")
+    elif n == 23:
+        print("Christmas Eve Eve")
+    elif n == 22:
+        print("Christmas Eve Eve Eve")
 
 if __name__ == '__main__':
-    main()
+    print_christmas()

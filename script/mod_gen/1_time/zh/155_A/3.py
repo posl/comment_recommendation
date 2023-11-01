@@ -1,12 +1,12 @@
-def answer(A,B,C):
-    if A == B and B != C:
-        return "是"
-    elif A == C and B != C:
-        return "是"
-    elif B == C and A != B:
-        return "是"
-    else:
-        return "否"
+def main():
+    A, B, C = map(int, input().split())
+    if A == B and A != C:
+        print("Yes")
+    elif B == C and B != A:
+        print("Yes")
+    elif A == C and A != B:
+        print("Yes")
+    els
 
 if __name__ == '__main__':
-    answer()
+    main()

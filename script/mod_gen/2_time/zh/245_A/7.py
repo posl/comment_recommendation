@@ -1,9 +1,10 @@
 def main():
-    A,B,C,D = map(int, input().split())
-    if (A > C) or (A == C and B > D):
-        print("高桥")
-    else:
-        print("青木")
+    A,B,C,D = map(int,input().split())
+    if A > C:
+        print("Takahashi")
+    elif A == C:
+        if B > D:
+            print("Takahashi")
 
 if __name__ == '__main__':
     main()

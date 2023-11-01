@@ -1,9 +1,9 @@
-def main():
-    n = int(input())
+def solve():
+    n = int(raw_input())
     if n % 2 == 0:
-        print("白色")
+        print "White"
     else:
-        print("黑色")
+        print "Black"
 
 if __name__ == '__main__':
-    main()
+    solve()

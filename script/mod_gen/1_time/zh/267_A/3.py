@@ -1,7 +1,7 @@
-def problem267_a():
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    s = input()
-    print(6 - week.index(s))
+def get_days():
+    day = input()
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    if day in days:
 
 if __name__ == '__main__':
-    problem267_a()
+    get_days()

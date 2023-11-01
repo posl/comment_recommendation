@@ -1,7 +1,8 @@
 def main():
-    days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    day = 0
     s = input()
-    print(7 - days.index(s))
+    for i in range(le
 
 if __name__ == '__main__':
     main()

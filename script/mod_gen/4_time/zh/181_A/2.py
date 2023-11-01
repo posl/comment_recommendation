@@ -1,9 +1,7 @@
-def problem181_a():
+def problems181_a():
     n = int(input())
-    if n%2 == 0:
-        print('白色')
-    else:
-        print('黑色')
+    if n % 2 == 0:
+        print("White")
 
 if __name__ == '__main__':
-    problem181_a()
+    problems181_a()

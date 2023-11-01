@@ -1,10 +1,8 @@
 def main():
-    N = int(input())
-    S = input()
-    if S[0] == '1':
-        print('高桥')
-    else:
-        print('青木')
+    n = input()
+    s = input()
+    for i in range(len(s)):
+        if s[i] =
 
 if __name__ == '__main__':
     main()

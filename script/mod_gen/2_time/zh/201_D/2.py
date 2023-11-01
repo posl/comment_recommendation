@@ -1,9 +1,5 @@
-def readinput():
-    h,w=map(int,input().split())
-    a=[]
-    for _ in range(h):
-        a.append(input())
-    return h,w,a
+def main():
+    print
 
 if __name__ == '__main__':
-    readinput()
+    main()
