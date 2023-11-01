@@ -1,31 +1,20 @@
 def main():
-    a,b,c,d,e,f,x = map(int, input().split())
-    taka = 0
-    aoki = 0
-    while x > 0:
-        if a > x:
-            taka += x
-            x = 0
-        else:
-            taka += a
-            x -= a
-            if c > x:
-                x = 0
-            else:
-                x -= c
-        if d > x:
-            aoki += x
-            x = 0
-        else:
-            aoki += d
-            x -= d
-            if f > x:
-                x = 0
-            else:
-                x -= f
-    if taka > aoki:
-        print('高桥')
-    elif taka < aoki:
-        print('青木')
-    else:
-        print('画')
+    # 读入数据
+    A,B,C,D,E,F,X = map(int,input().split())
+    # 计算高桥走的距离
+    T = 0
+    disT = 0
+    while T < X:
+        if T % (A+C) < A:
+            disT += B
+        T += 1
+    # 计算青木走的距离
+    T = 0
+    disA = 0
+    while T < X:
+        if T % (D+F) < D:
+            disA += E
+        T += 1
+    # 判断谁走的距离多
+    if disT > disA:
+        prin

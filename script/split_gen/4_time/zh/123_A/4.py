@@ -1,13 +1,11 @@
 def main():
-    # 读取输入
     a = int(input())
     b = int(input())
     c = int(input())
     d = int(input())
     e = int(input())
     k = int(input())
-    # 比较
-    if e - a > k:
-        print(':(')
+    if e - a <= k:
+        print("Yay!")
     else:
-        print('Yay!')
+        print(":(")

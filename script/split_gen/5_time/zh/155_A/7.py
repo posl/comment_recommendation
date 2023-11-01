@@ -1,9 +1,9 @@
-def is_diff(a,b,c):
-    if a == b and b != c:
+def check(a,b,c):
+    if a==b and a!=c:
         return True
-    elif b == c and c != a:
+    elif a==c and a!=b:
         return True
-    elif c == a and a != b:
+    elif b==c and b!=a:
         return True
     else:
         return False

@@ -1,4 +1,4 @@
-def main():
+def game():
     a,b,c = map(int,input().split())
     if c == 0:
         if a > b:
@@ -8,5 +8,3 @@ def main():
     else:
         if a >= b:
             print('Takahashi')
-        else:
-            print('Aoki')

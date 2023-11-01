@@ -1,6 +1,6 @@
 def main():
-    a,b,c = map(int,input().split())
-    if a<=b<=c or c<=b<=a:
-        print("是")
-    else:
-        print("没有")
+    a = input()
+    a = a.split()
+    a = [int(i) for i in a]
+    a.sort()
+    if a[1]

@@ -1,8 +1,8 @@
 def main():
-    A, B = map(int, input().split())
-    if 0 < A and B == 0:
-        print("黄金")
-    elif A == 0 and 0 < B:
-        print("白银")
+    A,B = map(int,input().split())
+    if A == 0:
+        print("Silver")
+    elif B == 0:
+        print("Gold")
     else:
-        print("合金")
+        print("Alloy")

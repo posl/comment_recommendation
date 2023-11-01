@@ -1,8 +1,8 @@
-def judge_win(a,b,c,d):
+def check(A,B,C,D):
     while True:
-        c -= b
-        if c <= 0:
+        C -= B
+        if C <= 0:
             return True
-        a -= d
-        if a <= 0:
+        A -= D
+        if A <= 0:
             return False

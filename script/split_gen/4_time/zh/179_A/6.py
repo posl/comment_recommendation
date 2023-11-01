@@ -1,5 +1,6 @@
-def plural_form(s):
-    if s[-1] == "s":
-        return s + "es"
+def pluralize(s):
+    if s[-1] == 's':
+        s += 'es'
     else:
-        return s + "s"
+        s += 's'
+    return s

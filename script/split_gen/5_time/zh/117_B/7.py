@@ -1,6 +1,5 @@
-def is_polygon_possible(n, l):
-    l.sort()
-    if l[-1] < sum(l[:-1]):
-        print('是')
-    else:
-        print('否')
+def main():
+    n = int(input())
+    ls = list(map(int, input().split()))
+    ls.sort(reverse=True)
+    if

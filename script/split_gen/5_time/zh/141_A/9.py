@@ -1,8 +1,0 @@
-def main():
-    s = input()
-    if s == '晴天':
-        print('阴天')
-    elif s == '阴天':
-        print('雨天')
-    else:
-        print('晴天')

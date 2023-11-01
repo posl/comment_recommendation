@@ -1,2 +1,3 @@
-def replace_na(s):
-    return s.replace("na", "nya")
+def main():
+    n = int(input())
+    s = input()

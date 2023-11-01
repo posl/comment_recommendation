@@ -1,11 +1,7 @@
-def weather():
-    weather = input()
-    if weather == '晴天':
-        print('阴天')
-    elif weather == '阴天':
-        print('雨天')
-    elif weather == '雨天':
-        print('晴天')
+def weather(S):
+    if S == 'Sunny':
+        return 'Cloudy'
+    elif S == 'Cloudy':
+        return 'Rainy'
     else:
-        print('Error')
-weather()
+        return 'Sunny'

@@ -1,17 +1,11 @@
 def main():
-    A, B, C, D, E, F, X = map(int, input().split())
-    taka = 0
+    a,b,c,d,e,f,x = map(int,input().split())
+    takahashi = 0
     aoki = 0
-    taka_speed = A * B
-    aoki_speed = D * E
-    for i in range(X):
-        if i % (A + C) < A:
-            taka += B
-        if i % (D + F) < D:
-            aoki += E
-    if taka > aoki:
-        print("高桥")
-    elif taka < aoki:
-        print("青木")
-    else:
-        print("画")
+    for i in range(1,x+1):
+        if i%a==0:
+            takahashi += b
+        if i%d==0:
+            aoki += e
+        if i%c==0:
+            takahashi -= f

@@ -1,2 +1,2 @@
-def problems201_d():
-    return None
+def main():
+    print("start")

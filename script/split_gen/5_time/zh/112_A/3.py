@@ -1,8 +1,8 @@
-def main():
-    N = int(input())
-    if N == 1:
+def problem112_a():
+    n = int(input())
+    if n == 1:
         print("Hello World")
     else:
-        A = int(input())
-        B = int(input())
-        print(A+B)
+        a = int(input())
+        b = int(input())
+        pri

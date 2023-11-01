@@ -1,12 +1,7 @@
-def main():
-    a, b, c = map(int, input().split())
-    if c == 0:
-        if a > b:
-            print('Takahashi')
+def game(A, B, C):
+    if C == 0:
+        if A > B:
+            return 'Takahashi'
         else:
-            print('Aoki')
+            return 'Aoki'
     else:
-        if b > a:
-            print('Aoki')
-        else:
-            print('Takahashi')

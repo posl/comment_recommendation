@@ -1,5 +1,5 @@
-def plural_form(s):
-    if s[-1] == 's':
-        return s + 'es'
+def getPluralForm(input):
+    if input[-1] == "s":
+        return input + "es"
     else:
-        return s + 's'
+        return input + "s"

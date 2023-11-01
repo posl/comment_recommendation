@@ -1,9 +1,8 @@
-def level(x):
+def main():
+    x = int(input())
     if x >= 0 and x < 40:
-        return 1
+        print(40 - x)
     elif x >= 40 and x < 70:
-        return 2
+        print(70 - x)
     elif x >= 70 and x < 90:
-        return 3
-    else:
-        return 4
+        print(90 - x)

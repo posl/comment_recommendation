@@ -1,16 +1,11 @@
-def main():
-    # 输入
-    a, b, c = map(int, input().split())
-    # 处理
-    if c == 0:
-        # 高桥先做
-        if a > b:
-            print("Takahashi")
+def solve():
+    # 从标准输入读取
+    A, B, C = map(int, input().split())
+    # 解决问题
+    if C == 0:
+        if A > B:
+            return 'Takahashi'
         else:
-            print("Aoki")
+            return 'Aoki'
     else:
-        # 青木先做
-        if b > a:
-            print("Aoki")
-        else:
-            print("Takahashi")
+        if A < B:

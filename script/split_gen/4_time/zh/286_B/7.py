@@ -1,5 +1,3 @@
-def main():
-    N = int(input())
-    S = input()
-    S = S.replace("na", "nya")
-    print(S)
+def nya(s):
+    s = s.replace('na','nya')
+    return s

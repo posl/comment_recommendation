@@ -1,15 +1,11 @@
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s = set(s)
-    for i in s:
-        if i[0] == '!':
-            if i[1:] in s:
-                print(i[1:])
-                return
-        elif '!' + i in s:
-            print(i)
-            return
-    print('satisfiable')
+    # 读取输入
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    # 解决问题
+    # 1. 检查是否有重复元素
+    # 2. 检查是否有元素和它的逆元素
+    S_set = set(S)
+    if len(S_

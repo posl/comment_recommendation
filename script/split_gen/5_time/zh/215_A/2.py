@@ -1,7 +1,6 @@
 def main():
     str = input()
-    if str == "Hello,World":
-        print("AC")
+    if str == 'Hello,World!':
+        print('AC')
     else:
-        print("WA")
-main()
+        print('WA')

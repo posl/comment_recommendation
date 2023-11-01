@@ -1,6 +1,3 @@
 def problem150_a():
-    k,x = map(int,input().split())
-    if k*500>=x:
-        print("Yes")
-    else:
-        print("No")
+    k, x = map(int, input().split())
+    print("Yes" if k * 500 >= x else "No")

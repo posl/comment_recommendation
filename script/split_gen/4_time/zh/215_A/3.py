@@ -1,6 +1,6 @@
 def main():
     S = input()
-    if S == "Hello,World!":
-        print("AC")
+    if S == 'Hello,World!':
+        print('AC')
     else:
-        print("WA")
+        print('WA')

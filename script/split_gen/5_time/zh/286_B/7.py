@@ -1,4 +1,3 @@
-def main():
-    N = int(input())
-    S = input()
-    print(S.replace('na', 'nya'))
+def replace_na(s):
+    if len(s) <= 2:
+        return

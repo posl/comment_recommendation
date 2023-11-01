@@ -3,6 +3,5 @@ def main():
     a, b = map(int, input().split())
     u = input()
     if u == s:
-        print(a - 1, b)
+        a -= 1
     else:
-        print(a, b - 1)

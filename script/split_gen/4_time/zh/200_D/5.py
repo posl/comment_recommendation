@@ -1,2 +1,1 @@
-def main():
-    pass
+def check(a, b):

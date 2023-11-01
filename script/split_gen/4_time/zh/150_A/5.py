@@ -1,9 +1,4 @@
-def main():
-    input_str = input()
-    input_list = input_str.split()
-    k = int(input_list[0])
-    x = int(input_list[1])
-    if k * 500 >= x:
+def problem150_a():
+    K, X = map(int, input().split())
+    if K*500 >= X:
         print("Yes")
-    else:
-        print("No")

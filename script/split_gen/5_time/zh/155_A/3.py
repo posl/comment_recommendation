@@ -1,9 +1,10 @@
-def is_triple_double(A, B, C):
-    if A == B and B != C:
-        return "是"
-    elif B == C and C != A:
-        return "是"
-    elif C == A and A != B:
-        return "是"
-    else:
-        return "否"
+def check():
+    a,b,c=input().split()
+    a=int(a)
+    b=int(b)
+    c=int(c)
+    if a==b and b!=c:
+        print("Yes")
+    elif a==c and b!=c:
+        print("Yes")
+    elif b=

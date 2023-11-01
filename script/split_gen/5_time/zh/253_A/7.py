@@ -1,6 +1,4 @@
 def main():
-    a,b,c = map(int,input().split())
-    if b in [a,c]:
-        print('是')
-    else:
-        print('没有')
+    a = input("Please input a:")
+    b = input("Please input b:")
+    c = input("Please input

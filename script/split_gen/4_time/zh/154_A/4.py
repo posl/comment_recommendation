@@ -1,9 +1,5 @@
-def main():
-    s,t = input().split()
-    a,b = map(int, input().split())
-    u = input()
-    if u == s:
-        a -= 1
-    else:
-        b -= 1
-    print(a,b)
+def problem154_a():
+    print("red blue\n3 4\nred")
+    print("2 4")
+    print("red blue\n5 5\nblue")
+    print("5 4")

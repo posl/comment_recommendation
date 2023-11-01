@@ -1,13 +1,13 @@
 def main():
     n = int(input())
-    s_list = []
+    d = {}
     for i in range(n):
-        s_list.append(input())
-    s_list.sort()
-    max = 0
-    for i in range(n):
-        if s_list.count(s_list[i]) > max:
-            max = s_list.count(s_list[i])
-    for i in range(n):
-        if s_list.count(s_list[i]) == max:
-            print(s_list[i])
+        s = input()
+        if s in d:
+            d[s] += 1
+        else:
+            d[s] = 1
+    m = max(d.values())
+    for k in sorted(d.keys()):
+        if d[k] == m:
+            print(k)

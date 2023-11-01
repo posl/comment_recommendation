@@ -1,10 +1,10 @@
-def christmas():
-    D = int(input())
+def main():
+    #输入D
+    D = int(input("输入D："))
+    #如果D=25，则打印Christmas
     if D == 25:
-        print('Christmas')
+        print("Christmas")
+    #如果D=24，则打印Christmas Eve
     elif D == 24:
-        print('Christmas Eve')
-    elif D == 23:
-        print('Christmas Eve Eve')
-    else:
-        print('Christmas Eve Eve Eve')
+        print("Christmas Eve")
+    #如果D=23，则打印Christmas E

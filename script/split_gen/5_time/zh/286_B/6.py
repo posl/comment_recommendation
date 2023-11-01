@@ -1,2 +1,2 @@
 def replace_na(s):
-    return s.replace('na', 'nya')
+    s = s.replace("na", "nya")

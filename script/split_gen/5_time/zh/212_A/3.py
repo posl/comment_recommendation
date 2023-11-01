@@ -1,7 +1,5 @@
-def judge(A,B):
-    if 0<A and B==0:
-        print("黄金")
-    elif A==0 and 0<B:
-        print("银")
-    else:
-        print("合金")
+def main():
+    a,b = map(int,input().split())
+    if a == 0 and b != 0:
+        print('Silver')
+    elif a != 0 and b == 0:

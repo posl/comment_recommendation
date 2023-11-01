@@ -1,6 +1,6 @@
 def main():
-    s = input()
-    if s[-1] == 's':
-        print(s + 'es')
+    word = input()
+    if word[-1] == 's':
+        print(word + 'es')
     else:
-        print(s + 's')
+        print(word + 's')

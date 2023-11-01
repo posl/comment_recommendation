@@ -1,5 +1,7 @@
-def check_unique(a):
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
     if len(a) == len(set(a)):
-        print("Yes")
+        print("YES")
     else:
-        print("No")
+        print("NO")

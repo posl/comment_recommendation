@@ -1,10 +1,11 @@
-def solve():
-    n = int(input())
-    s = [input() for _ in range(n)]
-    s = set(s)
-    for i in s:
-        if '!' + i in s:
-            print(i)
-            break
+def check(s):
+    if s[0] == '!':
+        if s[1:] in dict:
+            return True
+        else:
+            return False
     else:
-        print('satisfiable')
+        if '!'+s in dict:
+            return True
+        else:
+            return False

@@ -1,20 +1,13 @@
-def solve():
-    N = int(input())
-    A = []
-    for i in range(N):
-        A.append(input())
-    for i in range(N):
-        for j in range(N):
-            if A[i][j] == 'W':
-                if A[j][i] != 'L':
-                    print('不正确')
-                    return
-            elif A[i][j] == 'L':
-                if A[j][i] != 'W':
-                    print('不正确')
-                    return
-            elif A[i][j] == 'D':
-                if A[j][i] != 'D':
-                    print('不正确')
-                    return
-    print('正确')
+def check_table(table):
+    for i in range(len(table)):
+        for j in range(len(table)):
+            if table[i][j] == 'W':
+                if table[j][i] != 'L':
+                    return False
+            elif table[i][j] == 'L':
+                if table[j][i] != 'W':
+                    return False
+            elif table[i][j] == 'D':
+                if table[j][i] != 'D':
+                    return False
+    return True

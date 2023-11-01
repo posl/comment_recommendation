@@ -1,6 +1,5 @@
-def has_seven(n):
-    while n > 0:
-        if n % 10 == 7:
-            return True
-        n //= 10
-    return False
+def main():
+    N = int(input())
+    if N % 10 == 7:
+        print("Yes")
+    elif N // 10 % 10 == 7

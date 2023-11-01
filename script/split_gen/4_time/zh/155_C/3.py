@@ -1,20 +1,13 @@
 def main():
     n = int(input())
-    d = {}
+    s = []
     for i in range(n):
-        s = input()
-        if s in d:
-            d[s] += 1
-        else:
-            d[s] = 1
+        s.append(input())
+    s = sorted(s)
+    #print(s)
     max = 0
-    for k in d:
-        if d[k] > max:
-            max = d[k]
-    l = []
-    for k in d:
-        if d[k] == max:
-            l.append(k)
-    l.sort()
-    for i in l:
-        print(i)
+    for i in range(n):
+        cnt = 0
+        for j in range(i, n):
+            if s[i] == s[j]:
+                cnt += 1

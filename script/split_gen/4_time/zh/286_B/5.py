@@ -1,3 +1,2 @@
-def replaceNa(s):
-    s = s.replace('na', 'nya')
-    return s
+def replaceNaWithNya(S):
+    S = S.replace('na', 'nya')

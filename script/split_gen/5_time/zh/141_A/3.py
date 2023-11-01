@@ -1,8 +1,7 @@
-def main():
-    s = input()
-    if s == "晴天":
-        print("阴天")
-    elif s == "阴天":
-        print("雨天")
-    else:
-        print("晴天")
+def get_weather(str):
+    if str == "Sunny":
+        return "Cloudy"
+    elif str == "Cloudy":
+        return "Rainy"
+    elif str == "Rainy":
+        return "Sunny"

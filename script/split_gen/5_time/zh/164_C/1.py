@@ -3,5 +3,3 @@ def main():
     s = []
     for i in range(n):
         s.append(input())
-    print(len(set(s)))
-main()

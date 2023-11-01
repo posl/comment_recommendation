@@ -1,9 +1,8 @@
-def is_triple_double(x, y, z):
-    if x == y and y != z:
+def is_diff(a, b, c):
+    if a == b and b != c:
         return True
-    if x == z and x != y:
+    elif a == c and c != b:
         return True
-    if y == z and y != x:
+    elif b == c and c != a:
         return True
-    return False
-x, y, z = map(int, input().split())
+    else:

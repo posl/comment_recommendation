@@ -1,10 +1,7 @@
 def main():
-    T = int(input())
-    for i in range(T):
-        N = int(input())
-        A = input().split()
-        count = 0
-        for num in A:
-            if int(num) % 2 == 1:
-                count += 1
-        print(count)
+    n = int(input())
+    list1 = []
+    for i in range(n):
+        list1.append(int(input()))
+    for i in range(n):
+        print(list1[i]//2)

@@ -1,9 +1,5 @@
-def isContainSeven(num):
-    if num % 10 == 7:
-        return True
-    elif num // 10 % 10 == 7:
-        return True
-    elif num // 100 % 10 == 7:
-        return True
-    else:
-        return False
+def main():
+    n = int(input())
+    if n % 10 == 7:
+        print("Yes")
+    elif n // 10 % 10 == 7

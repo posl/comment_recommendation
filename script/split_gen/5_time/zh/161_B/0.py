@@ -1,6 +1,4 @@
-def isPopular(items, m):
-    total = sum(items)
-    for item in items:
-        if item < total/(4*m):
-            return False
-    return True
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True

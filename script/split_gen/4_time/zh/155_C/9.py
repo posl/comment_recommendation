@@ -1,13 +1,13 @@
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort()
-    max = 0
-    for i in range(n):
-        if s.count(s[i]) > max:
-            max = s.count(s[i])
-    for i in range(n):
-        if s.count(s[i]) == max:
-            print(s[i])
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    # print(S)
+    # print(set(S))
+    # print(len(set(S)))
+    # 1. 有重复的字符串
+    if len(set(S)) < N:
+        # print("1")
+        # 1.1 有多个重复的字符串
+        if len(set(S

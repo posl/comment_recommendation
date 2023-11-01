@@ -1,10 +1,8 @@
 def main():
+    #输入
     T = int(input())
+    #循环T次
     for i in range(T):
+        #输入
         N = int(input())
-        A = list(map(int, input().split()))
-        count = 0
-        for i in range(N):
-            if A[i] % 2 != 0:
-                count += 1
-        print(count)
+        A = lis

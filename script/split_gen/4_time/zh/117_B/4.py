@@ -1,6 +1,5 @@
-def judgePolygon(L):
-    L.sort(reverse=True)
-    if L[0] < sum(L[1:]):
-        return "是"
-    else:
-        return "否"
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    if l[n-1] < sum

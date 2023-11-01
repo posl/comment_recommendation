@@ -1,11 +1,8 @@
-def getLevel(score):
-    if score >= 0 and score < 40:
-        return '新手'
-    elif score >= 40 and score < 70:
-        return '中级'
-    elif score >= 70 and score < 90:
-        return '高级'
-    elif score >= 90 and score <= 100:
-        return '专家'
-    else:
-        return '输入错误'
+def main():
+    X = int(input())
+    if X >= 0 and X < 40:
+        print(40 - X)
+    elif X >= 40 and X < 70:
+        print(70 - X)
+    elif X >= 70 and X < 90:
+        print(90 - X)

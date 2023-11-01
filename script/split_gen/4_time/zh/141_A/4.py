@@ -1,7 +1,7 @@
-def weather(s):
-    if s == "晴天":
-        return "阴天"
-    elif s == "阴天":
-        return "雨天"
-    elif s == "雨天":
-        return "晴天"
+def weather_tomorrow(weather):
+    if weather == 'Sunny':
+        return 'Cloudy'
+    elif weather == 'Cloudy':
+        return 'Rainy'
+    else:
+        return 'Sunny'

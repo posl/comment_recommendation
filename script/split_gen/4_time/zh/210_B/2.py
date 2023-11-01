@@ -1,4 +1,6 @@
 def main():
     N = int(input())
     S = input()
-    print("高桥" if S[0] == "0" else "青木")
+    for i in range(N):
+        if S[i] == '1':
+            if i % 2 == 0:

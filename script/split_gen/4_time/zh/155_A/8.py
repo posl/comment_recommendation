@@ -1,9 +1,8 @@
-def is_diff(a,b,c):
-    if a == b and b != c:
-        return True
-    elif a == c and b != c:
-        return True
-    elif b == c and a != b:
-        return True
-    else:
-        return False
+def main():
+    a,b,c = map(int,input().split())
+    if a==b and a!=c:
+        print("Yes")
+    elif a==c and a!=b:
+        print("Yes")
+    elif b==c and b!=a:
+        print("Yes"

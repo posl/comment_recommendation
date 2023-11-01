@@ -1,9 +1,10 @@
-def solve():
-    N = int(input())
-    S = [input() for _ in range(N)]
-    S = set(S)
-    for s in S:
-        if "!" + s in S:
-            print(s)
-            exit()
-    print("satisfiable")
+def main():
+  n = int(input())
+  s = [input() for i in range(n)]
+  s.sort()
+  #print(s)
+  for i in range(n):
+    if s[i][0] != '!':
+      if s[i][1:] in s:
+        print(s[i][1:])
+        exit()

@@ -1,11 +1,8 @@
-def main():
-    a,b,c,d = map(int, input().split())
+def fight(a,b,c,d):
     while True:
         c -= b
         if c <= 0:
-            print('Yes')
-            break
+            return True
         a -= d
         if a <= 0:
-            print('No')
-            break
+            return False

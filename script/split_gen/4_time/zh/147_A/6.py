@@ -1,10 +1,6 @@
 def main():
-    line = input()
-    a = line.split(" ")
-    sum = 0
-    for i in range(3):
-        sum += int(a[i])
-    if sum >= 22:
-        print("bust")
+    a,b,c = map(int, input().split())
+    if a+b+c >= 22:
+        print('bust')
     else:
-        print("win")
+        print('win')

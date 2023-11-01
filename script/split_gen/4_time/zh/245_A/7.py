@@ -1,9 +1,11 @@
 def main():
-    A, B, C, D = map(int, input().split())
-    t1 = A * 60 + B
-    t2 = C * 60 + D
-    if t1 < t2:
-        print("青木")
+    a, b, c, d = map(int, input().split())
+    if a > c:
+        print('Takahashi')
+    elif a < c:
+        print('Aoki')
     else:
-        print("高桥")
-main()
+        if b > d:
+            print('Takahashi')
+        elif b < d:
+            print('

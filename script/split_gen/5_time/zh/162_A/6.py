@@ -1,5 +1,6 @@
-def isSeven(n):
-    if n % 10 == 7 or (n // 10) % 10 == 7 or n // 100 == 7:
-        return True
+def main():
+    s = input()
+    if '7' in s:
+        print("Yes")
     else:
-        return False
+        print("No")

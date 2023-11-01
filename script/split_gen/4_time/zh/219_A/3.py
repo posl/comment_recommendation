@@ -1,4 +1,4 @@
-def main():
+def problems219_a():
     x = int(input())
     if x < 40:
         print(40-x)
@@ -7,4 +7,4 @@ def main():
     elif x < 90:
         print(90-x)
     else:
-        print("专家")
+        print("

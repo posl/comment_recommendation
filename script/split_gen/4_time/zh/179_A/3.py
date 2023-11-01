@@ -1,6 +1,6 @@
-def solve():
+def main():
     S = input()
-    if S.endswith('s'):
+    if S[-1] == 's':
         print(S + 'es')
     else:
         print(S + 's')

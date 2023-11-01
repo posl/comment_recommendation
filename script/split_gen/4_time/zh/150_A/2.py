@@ -1,6 +1,5 @@
-def main():
-    k,x = map(int, input().split())
-    if k*500 >= x:
-        print('Yes')
+def problems150_a(k, x):
+    if k * 500 >= x:
+        return "Yes"
     else:
-        print('No')
+        return "No"

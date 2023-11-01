@@ -1,18 +1,9 @@
-def main():
-    n = int(input())
-    a = [input() for _ in range(n)]
+def check(a, n):
     for i in range(n):
         for j in range(n):
-            if i == j:
-                continue
-            if a[i][j] == "W" and a[j][i] != "L":
-                print("不正确")
-                return
-            if a[i][j] == "L" and a[j][i] != "W":
-                print("不正确")
-                return
-            if a[i][j] == "D" and a[j][i] != "D":
-                print("不正确")
-                return
-    print("正确")
-    return
+            if a[i][j] == 'W':
+                if a[j][i] != 'L':
+                    return False
+            elif a[i][j] == 'L':
+                if a[j][i] != 'W':
+                    return False

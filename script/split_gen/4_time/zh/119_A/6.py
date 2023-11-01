@@ -1,2 +1,3 @@
-def get_year(s):
-    return int(s.split('/')[0])
+def main():
+    S = input()
+    if S

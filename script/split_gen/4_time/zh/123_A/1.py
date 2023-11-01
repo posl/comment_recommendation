@@ -1,4 +1,4 @@
-def problems123_a():
+def main():
     a = int(input())
     b = int(input())
     c = int(input())

@@ -1,9 +1,5 @@
-def isSeven(number):
-    if number % 10 == 7:
+def isSevenExist(n):
+    if n % 10 == 7:
         return True
-    elif number / 10 == 7:
-        return True
-    elif number / 100 == 7:
-        return True
-    else:
-        return False
+    elif n // 10 == 0:
+        return F

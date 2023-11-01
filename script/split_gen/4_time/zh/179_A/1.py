@@ -1,5 +1,5 @@
-def pluralize(S):
-    if S[-1] == 's':
-        return S + 'es'
+def pluralize(s):
+    if s[-1] == 's':
+        return s + 'es'
     else:
-        return S + 's'
+        return s + 's'

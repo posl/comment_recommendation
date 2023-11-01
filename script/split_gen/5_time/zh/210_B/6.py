@@ -1,7 +1,5 @@
 def main():
-    N = int(input())
-    S = input()
-    if S.count('1') % 2 == 0:
-        print('高桥')
-    else:
-        print('青木')
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if s[i] =

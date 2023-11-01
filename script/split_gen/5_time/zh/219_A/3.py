@@ -1,9 +1,10 @@
-def get_score(score):
-    if score < 40:
-        return 40 - score
-    elif score < 70:
-        return 70 - score
-    elif score < 90:
-        return 90 - score
+def main():
+    X = int(input())
+    if X >= 90:
+        print('expert')
+    elif X >= 70:
+        print(90 - X)
+    elif X >= 40:
+        print(70 - X)
     else:
-        return 'expert'
+        print(40 - X)

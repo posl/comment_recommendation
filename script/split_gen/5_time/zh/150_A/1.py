@@ -1,6 +1,7 @@
 def main():
-    K, X = map(int, input().split())
-    if K * 500 >= X:
-        print('是')
+    K, X = input().split()
+    K = int(K)
+    X = int(X)
+    if X >= K*500:
+        print("Yes")
     else:
-        print('否')

@@ -1,9 +1,5 @@
-def main():
-    S, T = raw_input().split()
-    A, B = map(int, raw_input().split())
-    U = raw_input()
-    if U == S:
-        A -= 1
-    else:
-        B -= 1
-    print A, B
+def readinput():
+    s,t=input().split()
+    a,b=map(int,input().split())
+    u=input()
+    return s,t,a,b,u

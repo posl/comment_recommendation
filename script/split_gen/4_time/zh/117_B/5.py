@@ -1,8 +1,6 @@
-def main():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort(reverse=True)
-    if l[0] < sum(l[1:]):
-        print('是')
-    else:
-        print('否')
+def judge_polygon(n, l):
+    max_len = max(l)
+    l.remove(max_len)
+    sum_len = sum(l)
+    if max_len < sum_len:
+        print("

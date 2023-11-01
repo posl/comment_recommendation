@@ -1,7 +1,5 @@
-def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S = set(S)
-    print(len(S))
+def countItem():
+    n = int(input())
+    items = []
+    for i in range(n):
+        items.append(input())

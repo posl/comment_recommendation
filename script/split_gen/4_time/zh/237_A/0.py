@@ -1,5 +1,6 @@
-def is_integer(num):
-    if num >= -2**31 and num <= 2**31 -1:
-        print('是')
+def main():
+    n = int(input())
+    if -2**31 <= n <= 2**31 - 1:
+        print("Yes")
     else:
-        print('否')
+        print("No")

@@ -1,9 +1,6 @@
-def is_prime(n):
-    if n == 1:
-        return False
-    else:
-        for i in range(2, int(n**0.5)+1):
-            if n % i == 0:
-                return False
+def isPrime(n):
+    if n == 2 or n == 3:
         return True
-a, b, c, d = map(int, input().split())
+    if n % 6 != 1 and n % 6 != 5:
+        return False
+    for i in range

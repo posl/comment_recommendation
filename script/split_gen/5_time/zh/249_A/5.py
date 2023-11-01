@@ -1,17 +1,14 @@
 def main():
-    A, B, C, D, E, F, X = map(int, input().split())
-    sumA = 0
-    sumB = 0
-    for i in range(X):
-        if (i % (A + B)) < A:
-            sumA += 1
-        if (i % (D + E)) < D:
-            sumB += 1
-        if sumA > sumB:
-            print("高桥")
-            break
-        elif sumA < sumB:
-            print("青木")
-            break
-    else:
-        print("画")
+    a,b,c,d,e,f,x = input().split()
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    d = int(d)
+    e = int(e)
+    f = int(f)
+    x = int(x)
+    taka = 0
+    aoki = 0
+    while x > 0:
+        if x > a:
+            taka += a*b

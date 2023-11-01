@@ -3,4 +3,3 @@ def plural(s):
         return s + 'es'
     else:
         return s + 's'
-print(plural(input()))

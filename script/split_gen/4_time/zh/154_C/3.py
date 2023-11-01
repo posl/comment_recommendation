@@ -1,7 +1,6 @@
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    if len(set(a)) == n:
-        print("Yes")
-    else:
-        print("No")
+def check_pair(n, a):
+    a.sort()
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            return False
+    return True

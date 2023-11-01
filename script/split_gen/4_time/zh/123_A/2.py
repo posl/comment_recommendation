@@ -1,15 +1,9 @@
 def main():
-    # 读取输入
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
+    antennas = []
+    for i in range(5):
+        antennas.append(int(input()))
     k = int(input())
-    # 求出最大的距离
-    max_distance = e - a
-    # 输出结果
-    if max_distance <= k:
-        print("Yay!")
-    else:
-        print(":(")
+    for i in range(4):
+        for j in range(i+1,5):
+            if antennas[j] - antennas[i] > k:
+                print

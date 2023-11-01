@@ -1,5 +1,13 @@
-def find_next_char(s, i, c):
-    for j in range(i+1, len(s)):
-        if s[j] != c:
-            return j
-    return -1
+def main():
+    n = int(input())
+    s = input()
+    r, g, b = 0, 0, 0
+    for i in range(n):
+        if s[i] == 'R':
+            r += 1
+        elif s[i] == 'G':
+            g += 1
+        else:
+            b += 1
+    ans = r * g * b
+    for i in

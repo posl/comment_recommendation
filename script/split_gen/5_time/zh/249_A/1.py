@@ -1,17 +1,13 @@
 def main():
-    a, b, c, d, e, f, x = map(int, input().split())
-    t = 0
-    while x > 0:
-        if t % (a + b + c) < a:
-            x -= 1
-        if x == 0:
-            print('高桥')
-            break
-        if t % (d + e + f) < d:
-            x -= 1
-        if x == 0:
-            print('青木')
-            break
-        t += 1
-    else:
-        print('画')
+    # 读取输入
+    line = input()
+    # 用空格分割输入
+    line_list = line.split(' ')
+    # 将输入转换为整数
+    line_list = [int(x) for x in line_list]
+    # 依次赋值
+    A, B, C, D, E, F, X = line_list
+    # 高桥的总距离
+    takahashi = 0
+    # 青木的总距离
+    aoki =

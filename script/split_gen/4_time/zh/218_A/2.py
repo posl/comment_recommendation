@@ -1,5 +1,4 @@
-def answer(n, seven_days):
-    if seven_days[n-1] == 'o':
-        return 'Yes'
-    else:
-        return 'No'
+def main():
+    n = int(input())
+    s = input()
+    print("Yes" if s[n-1] == 'o' else "No")

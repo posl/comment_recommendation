@@ -1,4 +1,8 @@
 def main():
-    day = input()
-    day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-    print(5 - day_list.index(day))
+    # 读取输入
+    week = input()
+    # 判断输出
+    if week == "Monday":
+        print(5)
+    elif week == "Tuesday":
+        print(

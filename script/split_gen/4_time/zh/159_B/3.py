@@ -1,3 +1,2 @@
-def is_reversed(s):
-    s = s[::-1]
-    return s
+def is_palindrome(s):
+    if s == s[::-1]:

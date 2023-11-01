@@ -1,6 +1,5 @@
-def main():
-    N = int(input())
-    if N % 10 == 7 or N // 10 % 10 == 7 or N // 100 % 10 == 7:
-        print("是")
+def printYesOrNo(number):
+    if "7" in number:
+        print("Yes")
     else:
-        print("否")
+        print("No")

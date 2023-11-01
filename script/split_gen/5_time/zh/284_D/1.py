@@ -1,9 +1,6 @@
 def isPrime(n):
-    if n == 2:
-        return True
-    i = 2
-    while i*i <= n:
-        if n % i == 0:
-            return False
-        i += 1
-    return True
+    if n <= 3:
+        return n > 1
+    if n % 6 != 1 and n % 6 != 5:
+        return False
+    for i in range(5, int(n**0.5)+1,

@@ -1,5 +1,5 @@
-def is_polygon(n, l):
-    if max(l) < sum(l) - max(l):
-        return "是"
-    else:
-        return "否"
+def judge(n, l):
+    if n <= 2:
+        return False
+    l.sort(reverse=True)
+    max_l = l[0]

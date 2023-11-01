@@ -1,6 +1,5 @@
-def is_drawable(lengths):
-    max_length = max(lengths)
-    if sum(lengths) - max_length > max_length:
-        return '是'
+def is_polygon(n, l):
+    l.sort()
+    if l[-1] < sum(l[:-1]):
+        return True
     else:
-        return '否'

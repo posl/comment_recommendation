@@ -1,6 +1,7 @@
 def main():
-    count = int(input())
-    for i in range(count):
-        input()
-        l = input().split()
-        print(len([x for x in l if int(x) % 2 != 0]))
+    n = int(input())
+    for i in range(n):
+        num = int(input())
+        nums = list(map(int, input().split()))
+        count = 0
+        for

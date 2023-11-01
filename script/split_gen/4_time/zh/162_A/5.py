@@ -1,6 +1,6 @@
-def isIncludeSeven(num):
-    numStr = str(num)
-    for i in numStr:
-        if i == '7':
-            return True
-    return False
+def main():
+    num = input()
+    if '7' in num:
+        print('Yes')
+    else:
+        print('No')

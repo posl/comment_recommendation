@@ -1,7 +1,3 @@
-def problem119_a():
+def main():
     s = input()
-    s1 = s.split('/')
-    if int(s1[1]) < 5:
-        print('Heisei')
-    else:
-        print('TBD')
+    s =

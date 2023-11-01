@@ -1,8 +1,9 @@
-def problem212_a():
-    A,B = map(int,input().split())
-    if A > 0 and B == 0:
-        print("黄金")
-    elif A == 0 and B > 0:
-        print("银")
+def main():
+    # 读入数据
+    a, b = map(int, input().split())
+    # 输出结果
+    if a == 0:
+        print('Silver')
+    elif b == 0:
+        print('Gold')
     else:
-        print("合金")

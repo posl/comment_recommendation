@@ -1,27 +1,18 @@
 def main():
-    a,b,c,d,e,f,x = map(int,input().split())
-    taka = 0
-    aoki = 0
-    while True:
-        if taka >= x and aoki >= x:
-            print('DRAW')
+    a,b,c,d,e,f,x = map(int, input().split())
+    t = 0
+    while x > 0:
+        if a > 0:
+            x -= b
+            t += a
+        if x <= 0:
             break
-        taka += a
-        aoki += d
-        if taka >= x and aoki >= x:
-            print('DRAW')
+        x -= c
+        if d > 0:
+            t -= d
+        if x <= 0:
             break
-        aoki += e
-        if taka >= x and aoki >= x:
-            print('DRAW')
-            break
-        taka += b
-        if taka >= x and aoki >= x:
-            print('DRAW')
-            break
-        if taka > aoki:
-            print('TAKAHASHI')
-            break
-        elif taka < aoki:
-            print('AOKI')
-            break
+        x -= e
+        t += f
+    if t > 0:
+        print("Takahashi")

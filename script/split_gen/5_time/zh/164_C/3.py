@@ -1,11 +1,7 @@
-def count_num():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.sort()
-    num = 1
-    for i in range(N-1):
-        if S[i] != S[i+1]:
-            num += 1
-    print(num)
+def main():
+    #读取输入
+    n = int(input())
+    s = [input() for i in range(n)]
+    #去重
+    s = list(set(s))
+    #输出

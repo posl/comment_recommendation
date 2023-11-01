@@ -1,11 +1,9 @@
-def test():
-    x = int(input())
-    if x >= 90:
-        print('专家')
-    elif x >= 70:
-        print(90 - x)
-    elif x >= 40:
-        print(70 - x)
+def get_next_level_score(score):
+    if score >= 90:
+        return "expert"
+    elif score >= 70:
+        return 90 - score
+    elif score >= 40:
+        return 70 - score
     else:
-        print(40 - x)
-test()
+        return 40 - score

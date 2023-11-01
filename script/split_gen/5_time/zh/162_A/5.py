@@ -1,2 +1,5 @@
-def is_7_in(n):
-    return "是" if "7" in str(n) else "否"
+def main():
+    num = int(input())
+    if num % 10 == 7:
+        print("Yes")
+    elif (num // 1

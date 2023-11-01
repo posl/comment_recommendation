@@ -1,11 +1,6 @@
-def is_polygon(n, l):
-    sum = 0
-    max = 0
-    for i in range(n):
-        sum += l[i]
-        if l[i] > max:
-            max = l[i]
-    if max < sum - max:
-        return "是"
+def can_draw_poly(n, l):
+    max_len = max(l)
+    if max_len < sum(l) - max_len:
+        return True
     else:
-        return "否"
+        return False

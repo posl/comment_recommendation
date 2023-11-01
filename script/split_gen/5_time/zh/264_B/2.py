@@ -1,12 +1,7 @@
-def main():
-    R,C = map(int,input().split())
+def print_color(R,C):
     if R%2 == 0:
         if C%2 == 0:
-            print('白色')
+            print('black')
         else:
-            print('黑色')
-    else:
-        if C%2 == 0:
-            print('黑色')
-        else:
-            print('白色')
+            print('white')
+    e

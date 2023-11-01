@@ -1,5 +1,5 @@
-def problem181_a(n):
+def main():
+    n = int(raw_input())
     if n % 2 == 0:
-        print("白色")
-    else:
-        print("黑色")
+        print "White"
+    else

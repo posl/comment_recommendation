@@ -1,12 +1,7 @@
 def main():
-    R, C = map(int, input().split())
-    if R % 2 == 1:
-        if C % 2 == 1:
-            print("黑色")
-        else:
-            print("白色")
-    else:
-        if C % 2 == 1:
-            print("白色")
-        else:
-            print("黑色")
+    R,C = input().split()
+    R = int(R)
+    C = int(C)
+    if R%2 == 0:
+        if C%2 == 0:
+            print("w

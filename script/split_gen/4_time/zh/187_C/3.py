@@ -1,16 +1,10 @@
 def main():
     N = int(input())
-    S = []
+    s = set()
     for i in range(N):
-        S.append(input())
-    S.sort()
-    for i in range(N):
-        if S[i][0] == '!':
-            if S[i][1:] in S:
-                print(S[i][1:])
+        S = input()
+        if S[0] == '!':
+            if S[1:] in s:
+                print(S[1:])
                 return
-        else:
-            if '!' + S[i] in S:
-                print(S[i])
-                return
-    print('satisfiable')
+            else

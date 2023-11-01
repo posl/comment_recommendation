@@ -1,9 +1,9 @@
-def is_triple_double(x, y, z):
-    if x == y and x != z:
-        return True
-    elif x == z and x != y:
-        return True
-    elif y == z and y != x:
-        return True
-    else:
-        return False
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 判断
+    if a == b and b != c:
+        print("Yes")
+    elif a == c and b != c:
+        print("Yes")
+    elif b

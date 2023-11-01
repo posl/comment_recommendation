@@ -1,16 +1,8 @@
-def judge(s):
-    if s[0] == '!':
-        s = s[1:]
-    else:
-        s = '!' + s
-    return s
-n = int(input())
-s = []
-for i in range(n):
-    s.append(input())
-s.sort()
-for i in range(n-1):
-    if s[i] == s[i+1]:
-        print(s[i])
-        exit()
-print('satisfiable')
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    s.sort()
+    for i in range(n):
+        if s[i][0] == "!":
+            if s[i][1:] in s:
+                print(s[i][1:])
