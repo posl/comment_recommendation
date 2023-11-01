@@ -1,108 +1,74 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def judge(n, l):
-    l.sort()
-    if l[-1] < sum(l[:-1]):
-        return '是'
-    else:
-        return '否'
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort(reverse=True)
+    if L[0
 
 =======
 Suggestion 2
 
-def judge(n, l):
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
     l.sort()
-    if l[n-1] < sum(l[:n-1]):
-        return "是"
-    else:
-        return "否"
+    if l[-1] < sum(l[:
 
 =======
 Suggestion 3
 
-def main():
+def solve():
+    #读入数据
     n = int(input())
-    l = list(map(int, input().split()))
-    l.sort()
-    if l[-1] < sum(l[:-1]):
-        print('是')
-    else:
-        print('否')
+    ls = list(map(int, input().split()))
+    #判断
+    if max(ls)
 
 =======
 Suggestion 4
 
-def check_polygon(n, l):
-    l.sort(reverse = True)
-    if l[0] < sum(l[1:]):
-        return True
-    else:
-        return False
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort(reverse=True)
+    if l[0
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    l = [int(i) for i in input().split()]
-    l.sort()
-    if l[-1] < sum(l[:-1]):
-        print('是')
-    else:
-        print('否')
+def solution():
+    n = int(raw_input())
+    ls = map(int, raw_input().split())
+    ls.sort()
+    if ls[-1] < sum
 
 =======
 Suggestion 6
 
-def is_polygon(L):
-    max_length = max(L)
-    if max_length < sum(L)-max_length:
-        return True
-    else:
-        return False
+def main():
+    n=int(input())
+    l=list(map(int,input().split()))
+    l.sort()
+    if l[-1]<sum(l[:-1]):
 
 =======
 Suggestion 7
 
-def main():
-    N = int(input())
-    L = list(map(int, input().split()))
-    maxL = max(L)
-    sumL = sum(L)
-    if maxL < sumL - maxL:
-        print('是')
-    else:
-        print('否')
+def judge_polygon(n, l):
+    l_max = max(l)
+    l_sum = sum(l) - l_max
+    if l_max < l_sum:
+        return
 
 =======
 Suggestion 8
 
-def problem117_b():
-    n = int(input())
-    l = list(map(int, input().split()))
-    l.sort(reverse=True)
-    if l[0] < sum(l[1:]):
-        print("是")
-    else:
-        print("否")
-
-=======
-Suggestion 9
-
-def is_drawable(n, l):
-    # l.sort()
-    max_l = max(l)
-    sum_l = sum(l) - max_l
-    return max_l < sum_l
-
-=======
-Suggestion 10
-
-def is_polygon(n, l):
-    if max(l) < sum(l) - max(l):
+def triangle(a, b, c):
+    if a+b>c and b+c>a and c+a>b:
         return True
     else:
         return False

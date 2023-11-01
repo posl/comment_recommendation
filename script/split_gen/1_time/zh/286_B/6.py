@@ -1,3 +1,4 @@
-def replace_na(s):
-    s = s.replace('na', 'nya')
-    return s
+def main():
+    # 读入数据
+    n = int(input())
+    s = in

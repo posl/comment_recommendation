@@ -1,116 +1,106 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def solution():
-    A, B = map(int, input().split())
-    if A > 0 and B == 0:
-        print("黄金")
-    elif A == 0 and B > 0:
-        print("白银")
+def main():
+    a, b = map(int, input().split())
+    if a == 0:
+        print("Silver")
+    elif b == 0:
+        print("Gold")
     else:
-        print("合金")
-
-
-solution()
+        print("Alloy")
 
 =======
 Suggestion 2
 
 def main():
-    a,b = map(int,input().split())
+    a, b = map(int, input().split())
     if a > 0 and b == 0:
-        print("黄金")
+        print('Gold')
     elif a == 0 and b > 0:
-        print("银")
-    else:
-        print("合金")
+        print('Silver')
 
 =======
 Suggestion 3
 
-def main():
-    # 读取输入
-    a, b = map(int, input().split())
-    if a > 0 and b > 0:
-        print("合金")
-    elif a > 0 and b == 0:
-        print("黄金")
-    elif a == 0 and b > 0:
-        print("银")
-    else:
-        print("输入错误")
+def problem212_a():
+    a,b = map(int, input().split())
+    if a != 0 and b == 0:
+        print("Gold")
+    elif a == 0 and b != 0:
+        print("
 
 =======
 Suggestion 4
 
-def problem212_a():
-    a,b = map(int,input().split())
+def func(a, b):
     if a > 0 and b == 0:
-        print("黄金")
+        return "Gold"
     elif a == 0 and b > 0:
-        print("白银")
+        return "Silver"
     else:
-        print("合金")
+        return "Alloy"
 
 =======
 Suggestion 5
 
 def main():
-    A,B = map(int,input().split())
-    if A>0 and B==0:
-        print('黄金')
-    elif A==0 and B>0:
-        print('银')
-    else:
-        print('合金')
+    a,b = map(int,input().split())
+    if a == 0 and b != 0:
+        print('Silver')
+    elif a != 0 and b == 0:
+        print('Gold')
 
 =======
 Suggestion 6
 
-def problem():
-    a, b = map(int, input().split())
-    if a > 0 and b == 0:
-        print('黄金')
-    elif a == 0 and b > 0:
-        print('银')
-    else:
-        print('合金')
+def main():
+    A,B = map(int, input().split())
+    if A > 0 and B == 0:
+        print("Gold")
+    elif A == 0 and B > 0:
+        print("Silver")
 
 =======
 Suggestion 7
 
-def main():
-    a,b = map(int,input().split())
-    if a == 0:
-        print('银')
-    elif b == 0:
-        print('黄金')
+def judge(a,b):
+    if a != 0 and b == 0:
+        print("Gold")
+    elif a == 0 and b != 0:
+        print("Silver")
     else:
-        print('合金')
+        print("Alloy")
 
 =======
 Suggestion 8
 
 def main():
-    a, b = map(int, input().split())
-    if a == 0 and b != 0:
-        print("银")
-    elif a != 0 and b == 0:
-        print("黄金")
-    elif a != 0 and b != 0:
-        print("合金")
+    A,B = map(int,input().split())
+    if A>0 and B==0:
+        print("Gold")
+    elif A==0 and B>0:
+        print("Silver")
+    elif A
 
 =======
 Suggestion 9
 
-def main():
-    A, B = map(int, input().split())
+def get_input():
+    input_str = input('请输入两个整数，用空格分隔:')
+    input_str = input_str.split(' ')
+    input_num = []
+    for i in input_str:
+        input
 
-    if A > 0 and B == 0:
-        print("黄金")
-    elif A == 0 and B > 0:
-        print("银")
-    else:
-        print("合金")
+=======
+Suggestion 10
+
+def main():
+    A,B = map(int,input().split())
+    if A == 0 and B > 0:
+        print("Silver")
+    elif A > 0 and B == 0:
+        print("Gold")

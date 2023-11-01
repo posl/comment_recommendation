@@ -1,45 +1,35 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    # 读取数据
-    r, c = map(int, input().split())
-    # 逻辑处理
-    if (r + c) % 2 == 0:
-        print("黑色")
-    else:
-        print("白色")
-    # 输出结果
+    R, C = map(int, input().split())
+    if R % 2 == 0:
+        if C % 2 == 0:
+            print('black')
+        else:
 
 =======
 Suggestion 2
 
-def main():
+def problems264_b():
     R,C = map(int,input().split())
-    if R%2==0 and C%2==0:
-        print("白色")
-    elif R%2==1 and C%2==1:
-        print("白色")
+    if (R+C)%2 == 0:
+        print("black")
     else:
-        print("黑色")
+        print("white")
 
 =======
 Suggestion 3
 
-def main():
-    R,C = map(int,input().split())
+def print_color(R,C):
     if R%2 == 0:
         if C%2 == 0:
-            print('白色')
+            print('black')
         else:
-            print('黑色')
-    else:
-        if C%2 == 0:
-            print('黑色')
-        else:
-            print('白色')
+            print('white')
+    e
 
 =======
 Suggestion 4
@@ -47,87 +37,72 @@ Suggestion 4
 def main():
     R, C = map(int, input().split())
     if (R + C) % 2 == 0:
-        print("黑色")
+        print("black")
     else:
-        print("白色")
+        print("white")
 
 =======
 Suggestion 5
 
-def print_color(r, c):
-    if r % 2 == 0:
-        if c % 2 == 0:
-            print('白色')
-        else:
-            print('黑色')
-    else:
-        if c % 2 == 0:
-            print('黑色')
-        else:
-            print('白色')
+def main():
+    # 读取输入
+    R, C = map(int, input().split())
+    # 处理
+    if R % 2 == 0 and C % 2 == 0:
+        print('white')
+    e
 
 =======
 Suggestion 6
 
 def main():
-    # 读取输入
-    a = input()
-    # 用空格分割
-    b = a.split()
-    # 转换成整数
-    c = [int(i) for i in b]
-    # print(c)
-    # 读取行数
-    R = c[0]
-    # 读取列数
-    C = c[1]
-    # print(R)
-    # print(C)
-    # 判断
-    if R % 2 == 0:
-        if C % 2 == 0:
-            print("黑色")
+    r,c = map(int,input().split(" "))
+    if r%2==0:
+        if c%2==0:
+            print("white")
         else:
-            print("白色")
-    else:
-        if C % 2 == 0:
-            print("白色")
-        else:
-            print("黑色")
-
-main()
+            print
 
 =======
 Suggestion 7
 
 def main():
-    # 读取输入
-    line = input().split()
-    # 转换为整数
-    r = int(line[0])
-    c = int(line[1])
-    # 如果行列均为偶数，输出黑色
-    if r % 2 == 0 and c % 2 == 0:
+    # 输入
+    r, c = map(int, input().split())
+    # 输出
+    if (r + c) % 2 == 0:
         print("black")
-    # 如果行列均为奇数，输出黑色
-    elif r % 2 == 1 and c % 2 == 1:
-        print("black")
-    # 否则输出白色
     else:
-        print("white")
 
 =======
 Suggestion 8
 
 def main():
-    R,C = map(int,input().split())
-    if R%2 == 0:
-        if C%2 == 0:
-            print("白色")
-        else:
-            print("黑色")
+    # input
+    r, c = map(int, input().split())
+
+    # process
+    if (r + c) % 2 == 0:
+        ans = "white"
+    else
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    R, C = map(int, input().split())
+    # 判断
+    if (R+C) % 2 == 0:
+        print("black")
     else:
-        if C%2 == 0:
-            print("黑色")
-        else:
-            print("白色")
+
+=======
+Suggestion 10
+
+def main():
+    R, C = map(int, input().split())
+    if (R+C) % 2 == 0:
+        print("white")
+    else:
+        print("black")

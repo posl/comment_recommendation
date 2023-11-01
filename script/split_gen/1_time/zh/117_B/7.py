@@ -1,6 +1,6 @@
-def is_polygon(n, edges):
-    edges.sort()
-    if edges[-1] < sum(edges[:-1]):
-        return '是'
-    else:
-        return '否'
+def main():
+    n = int(input())
+    L = list(map(int, input().split()))
+    max_L = max(L)
+    sum_L = sum(L)
+    if ma

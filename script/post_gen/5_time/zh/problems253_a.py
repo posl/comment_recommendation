@@ -1,86 +1,83 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    a,b,c = map(int,input().split())
-    if a <= b <= c:
-        print("是")
-    elif c <= b <= a:
-        print("是")
-    else:
-        print("没有")
-
-main()
+    a = input("输入a: ")
+    b = input("输入b: ")
+    c = input("输入c: ")
+    if (a<=b and
 
 =======
 Suggestion 2
 
-def main():
-    a,b,c = map(int, input().split())
+def median(a,b,c):
     if a<=b<=c or c<=b<=a:
-        print("是")
-    else:
-        print("没有")
-
-=======
-Suggestion 3
-
-def is_median(a, b, c):
-    if a <= b <= c or c <= b <= a:
         return True
     else:
         return False
 
-a, b, c = map(int, input().split())
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    if (a <= b and b <= c) or (c <= b and b <
 
 =======
 Suggestion 4
 
-def main():
-    a,b,c = map(int,input().split())
-    if b >= a and b <= c or b >= c and b <= a:
-        print("是")
+def median(a, b, c):
+    if a <= b <= c or c <= b <= a:
+        return True
     else:
-        print("没有")
+        ret
 
 =======
 Suggestion 5
 
 def main():
-    a,b,c = map(int,input().split())
-    if a<=b<=c or c<=b<=a:
-        print("Yes")
-    else:
-        print("No")
+    a,b,c = map(int,input().split(" "))
+    if a <= b <= c or c <= b <= a:
+        print
 
 =======
 Suggestion 6
 
 def main():
     a,b,c = map(int, input().split())
-    if b == max(a,b,c) or b == min(a,b,c):
-        print("NO")
-    else:
-        print("YES")
+    if a <= b <= c or c <= b <= a:
+        prin
 
 =======
 Suggestion 7
 
-def main():
-    a,b,c = map(int,input().split())
-    if a < b < c or c < b < a:
-        print("是")
-    else:
-        print("否")
+def problems253_a():
+    a,b,c = map(int, input().split())
+    if (b >= a and b <= c) or (b <= a
 
 =======
 Suggestion 8
 
 def main():
+    a = input("Please input a:")
+    b = input("Please input b:")
+    c = input("Please input
+
+=======
+Suggestion 9
+
+def main():
     a,b,c = map(int,input().split())
-    if b in [a,c]:
-        print('是')
-    else:
-        print('没有')
+    if a<=b<=c or c<=b<=a:
+        print("Yes")
+
+=======
+Suggestion 10
+
+def median(a, b, c):
+    if a < b:
+        if b < c:
+            return b
+        elif c < a:

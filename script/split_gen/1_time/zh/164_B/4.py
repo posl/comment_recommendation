@@ -1,11 +1,8 @@
 def main():
-    a,b,c,d = map(int,input().split())
-    while a > 0 and c > 0:
-        c -= b
-        if c <= 0:
+    A,B,C,D = map(int,input().split())
+    while True:
+        C -= B
+        if C <= 0:
             print("Yes")
             break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
+        A -= D

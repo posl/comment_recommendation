@@ -1,6 +1,7 @@
 def main():
-    A,B,C,D = map(int, input().split())
-    if (A > C) or (A == C and B > D):
-        print("高桥")
-    else:
-        print("青木")
+    # 读入数据
+    # 读入一行数据，包含4个整数
+    a, b, c, d = map(int, input().split())
+    # 处理数据
+    if a > c:
+        print("Takahashi")

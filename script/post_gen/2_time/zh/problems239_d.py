@@ -3,55 +3,35 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def is_prime(num):
-    if num == 2:
-        return True
-    if num % 2 == 0:
+def is_prime(n):
+    if n == 1:
         return False
-    for x in range(3, int(num ** 0.5) + 1):
-        if num % x == 0:
-            return False
-    return True
-
-a, b, c, d = map(int, input().split())
+    elif n == 2:
+        return True
+    elif n % 2 ==0:
+        return False
+    else:
+        for i i
 
 =======
 Suggestion 2
 
-def is_prime(x):
-    if x == 1:
+def is_prime(n):
+    if n <= 1:
         return False
-    else:
-        for i in range(2, int(x**0.5)+1):
-            if x % i == 0:
-                return False
-        else:
-            return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(a, b+1):
-    if is_prime(i):
-        for j in range(c, d+1):
-            if is_prime(j):
-                print('Y')
-                break
-        else:
-            print('N')
-        break
-else:
-    print('N')
+    for i in range(2, int(n**0.5)+1): #int(n**0.5)+1 为了提高效率
+        if n % i == 0:
+            return False
 
 =======
 Suggestion 3
 
-def is_prime(num):
-    if num == 1:
+def isPrime(n):
+    if n == 1:
         return False
-    else:
-        for i in range(2, num):
-            if num % i == 0:
-                return False
+    for i in range(2, int(n ** 0.5)+1):
+        if n % i == 0:
+            return False
     return True
 
 =======
@@ -62,99 +42,77 @@ def is_prime(n):
         return False
     if n == 2:
         return True
-    if n%2 == 0:
-        return False
-    for i in range(3, n, 2):
-        if n%i == 0:
-            return False
-    return True
+    for i in range(2,n):
+        if n % i == 0:
+            return F
 
 =======
 Suggestion 5
 
-def is_prime(x):
-    if x <= 1:
+def is_prime(n):
+    if n <= 1:
         return False
-    else:
-        for i in range(2, x):
-            if x % i == 0:
-                return False
-        else:
-            return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(a, b+1):
-    for j in range(c, d+1):
-        if is_prime(i+j):
-            print("高桥")
-            exit()
-else:
-    print("青木")
+    i = 2
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
 
 =======
 Suggestion 6
 
-def is_prime(x):
-    if x == 1:
+def is_prime(n):
+    if n == 1:
         return False
-    else:
-        for i in range(2, int(x ** 0.5) + 1):
-            if x % i == 0:
-                return False
-
-    return True
+    if n == 2:
+        return True
+    if n % 2 ==0:
+        return False
+    i = 3
+    while i * i <= n:
 
 =======
 Suggestion 7
 
-def is_prime(x):
-    if x < 2:
+def is_prime(n):
+    if n <= 1:
         return False
-    elif x == 2:
-        return True
     else:
-        for i in range(2, x):
-            if x % i == 0:
-                return False
-        return True
+        for i in range(2, int(n**0.5)+1):
+            if n % i == 0:
+                return F
 
 =======
 Suggestion 8
 
-def is_prime(n):
-    if n == 1:
+def isPrime(num):
+    if num == 2:
+        return True
+    if num == 1 or num % 2 == 0:
         return False
-    for i in range(2, int(n**0.5)+1): # 从2开始到n的平方根+1
-        if n % i == 0:
-            return False
-    return True
+    i = 3
+    while i <= num ** 0.5:
+        if num %
 
 =======
 Suggestion 9
 
 def is_prime(n):
-    if n == 1:
+    if n == 2:
+        return True
+    if n % 2 == 0 or n < 2:
         return False
-    for i in range(2,int(n**0.5)+1):
-        if n%i == 0:
-            return False
-    return True
-
-a,b,c,d = map(int,input().split())
-for i in range(a,b+1):
-    for j in range(c,d+1):
-        if is_prime(i+j):
-            print("高桥")
-            exit()
-print("青木")
+    for i in range(2, int(n ** 0.5) + 1, 2):
+        if n % i
 
 =======
 Suggestion 10
 
-def is_prime(n):
-    if n % 2 == 0 and n > 2:
+def isPrime(n):
+    if n <= 1:
         return False
-    return all(n % i for i in range(3, int(n**0.5)+1,2))
-
-a,b,c,d = map(int,input().split())
+    for i in range(2, int(n**0.5)+1):
+        if not n%i:
+            return False
+    return True

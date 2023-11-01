@@ -4,46 +4,30 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    n = int(raw_input())
-    if n % 2 == 0:
-        print 'white'
-    else:
-        print 'black'
+    n = int(input())
+    if n%2 == 0:
+        print("White")
 
 =======
 Suggestion 2
 
-def main():
-    n = input()
-    n = int(n)
-    if n % 2 == 0:
-        print("白色")
-    else:
-        print("黑色")
+def solve():
+    n = int(input())
+    print("White" if n%2==0 else "Black")
 
 =======
 Suggestion 3
 
 def main():
     n = int(input())
-    print('白色' if n % 2 == 0 else '黑色')
+    if n % 2 == 0:
+        print('White')
 
 =======
 Suggestion 4
 
-def main():
-    n = int(input())
+def solve():
+    n=int(input())
     if n%2==0:
-        print('白色')
-    else:
-        print('黑色')
-
-=======
-Suggestion 5
-
-def main():
-    n = int(input())
-    if n % 2 == 0:
-        print("白色")
-    else:
-        print("黑色")
+        print('White')
+    el

@@ -1,6 +1,5 @@
-def main():
-    a,b,c = map(int,input().split())
-    if b>a and b<c or b<a and b>c:
-        print('是')
+def median(a,b,c):
+    if a <= b <= c or c <= b <= a:
+        return True
     else:
-        print('没有')
+        return False

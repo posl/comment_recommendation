@@ -1,4 +1,4 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
@@ -18,33 +18,29 @@ def main():
     s = []
     for i in range(n):
         s.append(input())
-    print(len(set(s)))
-main()
 
 =======
 Suggestion 3
 
 def main():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    print(len(set(S)))
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    print(len(s))
 
 =======
 Suggestion 4
 
-def count_num():
-    N = int(input())
-    S = []
-    for i in range(N):
-        S.append(input())
-    S.sort()
-    num = 1
-    for i in range(N-1):
-        if S[i] != S[i+1]:
-            num += 1
-    print(num)
+def main():
+    #读取输入
+    n = int(input())
+    s = [input() for i in range(n)]
+
+    #去重
+    s = list(set(s))
+
+    #输出
 
 =======
 Suggestion 5
@@ -57,56 +53,19 @@ def main():
 =======
 Suggestion 6
 
-def solve():
+def main():
     n = int(input())
-    s = set()
+    item = set()
     for i in range(n):
-        s.add(input())
-    print(len(s))
+        item.add(input())
+    print(len(item))
 
 =======
 Suggestion 7
 
-def get_input():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    return n, s
-
-=======
-Suggestion 8
-
 def main():
-    n = int(input())
-    s = set()
-    for _ in range(n):
-        s.add(input())
-    print(len(s))
-
-main()
-
-=======
-Suggestion 9
-
-def main():
-    n = int(input())
-    s = set()
-    for i in range(n):
-        s.add(input())
-    print(len(s))
-
-=======
-Suggestion 10
-
-def problems164_c():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    s.sort()
-    ans = 0
-    for i in range(n):
-        if i == 0 or s[i] != s[i-1]:
-            ans += 1
-    print(ans)
+    N = int(input())
+    S = set()
+    for i in range(N):
+        S.add(input())
+    print(len(S))

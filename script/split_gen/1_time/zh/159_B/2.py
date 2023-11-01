@@ -1,4 +1,2 @@
-def is_palindrome(s):
-    return s == s[::-1]
-s = input()
-n = len(s)
+def is_palindrome(str):
+    if len(str) == 1:

@@ -1,6 +1,4 @@
 def main():
-    input = raw_input()
-    if input == "Hello,World":
-        print "AC"
-    else:
-        print "WA"
+    s = input()
+    if len(s) == 13:
+        if s[0:5] == "Hello" and s[5] == "," and s[6] ==

@@ -1,14 +1,10 @@
-def calc(s):
-    n = len(s)
-    cnt = 0
+def solve():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
     for i in range(n):
-        for j in range(i+1, n):
-            if s[i] == s[j]:
-                continue
-            k = 2*j - i
-            if k >= n:
-                continue
-            if s[i] == s[k] or s[j] == s[k]:
-                continue
-            cnt += 1
-    return cnt
+        for j in range(i + 1, n):
+            k

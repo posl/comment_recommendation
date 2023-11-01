@@ -1,6 +1,5 @@
-def solution():
-    n = int(input())
-    if n%10 == 7:
-        print("是")
+def isContainSeven(num):
+    if num % 10 == 7 or num // 10 % 10 == 7 or num // 100 == 7:
+        return True
     else:
-        print("否")
+        return False

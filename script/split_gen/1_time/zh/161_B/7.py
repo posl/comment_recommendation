@@ -1,7 +1,4 @@
-def get_input():
-    n,m = input().split()
-    n = int(n)
-    m = int(m)
-    A = input().split()
-    A = [int(i) for i in A]
-    return n,m,A
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)

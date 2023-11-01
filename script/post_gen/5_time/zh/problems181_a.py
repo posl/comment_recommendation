@@ -6,28 +6,26 @@ Suggestion 1
 def main():
     N = int(input())
     if N % 2 == 0:
-        print('白色')
+        print('White')
     else:
-        print('黑色')
 
 =======
 Suggestion 2
 
-def color(n):
-    if n%2 == 0:
-        print("白色")
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print('White')
     else:
-        print("黑色")
 
 =======
 Suggestion 3
 
-def solve():
+def problems181_a():
     n = int(input())
-    if n % 2 == 0:
-        print("白色")
-    else:
-        print("黑色")
+    if n%2 == 0:
+        print("White")
+    else
 
 =======
 Suggestion 4
@@ -35,34 +33,23 @@ Suggestion 4
 def main():
     n = int(input())
     if n % 2 == 0:
-        print('白色')
+        print("White")
     else:
-        print('黑色')
 
 =======
 Suggestion 5
 
-def colorofclothes(n):
-    if n % 2 == 0:
-        return "white"
-    else:
-        return "black"
+def problem181_a():
+    n = input()
+    if int(n) % 2 == 0:
+        print('White')
+    el
 
 =======
 Suggestion 6
 
-def main():
-    n = int(input())
-    if n%2 == 0:
-        print("白色")
-    else:
-        print("黑色")
-
-=======
-Suggestion 7
-
-def problem181_a(n):
+def color(n):
     if n % 2 == 0:
-        print("白色")
+        print("White")
     else:
-        print("黑色")
+        print("Black")

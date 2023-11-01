@@ -1,67 +1,65 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    a,b,c,d = map(int,input().split())
-    if a == c:
-        if b == d:
-            print("高桥")
-        elif b < d:
-            print("高桥")
-        else:
-            print("青木")
+    a, b, c, d = map(int, input().split())
+    if a > c:
+        print("Takahashi")
     elif a < c:
-        print("高桥")
+        print("Aoki")
+    elif b > d:
+        print("Takahashi")
+    elif b < d:
+        print("Aoki")
     else:
-        print("青木")
 
 =======
 Suggestion 2
 
 def main():
     a,b,c,d = map(int,input().split())
-    if a<c:
-        print("高桥")
-    elif a>c:
-        print("青木")
+    if a > c:
+        print("Takahashi")
+    elif a < c:
+        print("Aoki")
     else:
-        if b<d:
-            print("高桥")
-        else:
-            print("青木")
-
-main()
+        if b > d:
+            print("Takahashi")
+        elif b < d:
+            print("Aoki
 
 =======
 Suggestion 3
 
 def main():
-    a,b,c,d = map(int,input().split())
-    if a*60+b<c*60+d:
-        print("高桥")
+    a,b,c,d = map(int, input().split())
+    if a > c:
+        print("Takahashi")
+    elif a < c:
+        print("Aoki")
     else:
-        print("青木")
+        if b > d:
+            print("Takahashi")
+        elif b < d:
+            print("Aok
 
 =======
 Suggestion 4
 
 def main():
-    # 读取输入
-    a, b, c, d = map(int, input().split())
-    # 比较
-    if a < c:
-        print("高桥")
-    elif a > c:
-        print("青木")
+    A,B,C,D = map(int,input().split())
+    if A > C:
+        print("Takahashi")
+    elif A < C:
+        print("Aoki")
+    elif B > D:
+        print("Takahashi")
+    elif B < D:
+        print("Aoki")
     else:
-        if b < d:
-            print("高桥")
-        elif b > d:
-            print("青木")
-        else:
-            print("高桥")
+        print("Same")
 
 =======
 Suggestion 5
@@ -69,63 +67,85 @@ Suggestion 5
 def main():
     a,b,c,d = map(int,input().split())
     if a > c:
-        print("高桥")
-    elif a == c and b > d:
-        print("高桥")
+        print('Takahashi')
+    elif a < c:
+        print('Aoki')
     else:
-        print("青木")
+        if b > d:
+            print('Takahashi')
+        elif b < d:
+            print('Aoki
 
 =======
 Suggestion 6
 
 def main():
-    a,b,c,d = map(int, input().split())
-    if a < c:
-        print("高桥")
-    elif a == c:
-        if b <= d:
-            print("高桥")
+    a,b,c,d=map(int,input().split())
+    if a<c:
+        print("Takahashi")
+    elif a==c:
+        if b<d:
+            print("Takahashi")
+        elif b==d:
+            print("Same")
         else:
-            print("青木")
-    else:
-        print("青木")
+            print("Aoki
 
 =======
 Suggestion 7
 
-def problem245_a():
-    a,b,c,d = map(int,input().split())
-    if a*60+b < c*60+d:
-        print("高桥")
+def getup():
+    A,B,C,D = map(int,input().split())
+    if A == C:
+        if B < D:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    elif A < C:
+        print("Takahashi")
     else:
-        print("青木")
-
-problem245_a()
+        print("Aoki")
 
 =======
 Suggestion 8
 
 def main():
-    A, B, C, D = map(int, input().split())
-    t1 = A * 60 + B
-    t2 = C * 60 + D
-    if t1 < t2:
-        print("青木")
+    a, b, c, d = map(int, input().split())
+    if a > c:
+        print('Takahashi')
+    elif a < c:
+        print('Aoki')
     else:
-        print("高桥")
-main()
+        if b > d:
+            print('Takahashi')
+        elif b < d:
+            print('
 
 =======
 Suggestion 9
 
 def main():
-    a,b,c,d=map(int,input().split())
-    if a<c:
-        print("高桥")
-    elif a>c:
-        print("青木")
-    else:
-        if b<d:
-            print("高桥")
+    a,b,c,d = map(int, input().split())
+    if a > c:
+        print('Takahashi')
+    elif a == c:
+        if b >= d:
+            print('Takahashi')
         else:
-            print("青木")
+            print('Aoki')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 10
+
+def main():
+    a, b, c, d = map(int, input().split())
+    if a > c:
+        print("Takahashi")
+    elif a < c:
+        print("Aoki")
+    elif a == c:
+        if b > d:
+            print("Takahashi")
+        elif b < d:

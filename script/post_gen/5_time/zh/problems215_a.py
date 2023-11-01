@@ -5,7 +5,7 @@ Suggestion 1
 
 def main():
     s = input()
-    if s == "Hello,World":
+    if s == "Hello,World!":
         print("AC")
     else:
         print("WA")
@@ -15,7 +15,7 @@ Suggestion 2
 
 def main():
     s = input()
-    if s == 'Hello,World':
+    if s == 'Hello,World!':
         print('AC')
     else:
         print('WA')
@@ -25,19 +25,17 @@ Suggestion 3
 
 def main():
     str = input()
-    if str == "Hello,World":
-        print("AC")
+    if str == 'Hello,World!':
+        print('AC')
     else:
-        print("WA")
-
-main()
+        print('WA')
 
 =======
 Suggestion 4
 
 def main():
-    s = input()
-    if s == "Hello,World!":
+    str = input()
+    if str == "Hello,World!":
         print("AC")
     else:
         print("WA")
@@ -46,22 +44,19 @@ def main():
 Suggestion 5
 
 def main():
-    s = input()
-    if s == "Hello,World":
+    S = input()
+    if S == "Hello,World!":
         print("AC")
     else:
         print("WA")
-
-main()
 
 =======
 Suggestion 6
 
 def main():
-    # 读入字符串
-    s = input()
-    # 判断是否与Hello,World！完全匹配
-    if s == "Hello,World!":
+    str = input()
+    str1 = "Hello,World!"
+    if str == str1:
         print("AC")
     else:
         print("WA")

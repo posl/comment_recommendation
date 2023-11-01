@@ -1,6 +1,5 @@
-def main():
-    s = input()
+def pluralize(s):
     if s[-1] == 's':
-        print(s + 'es')
+        return s + 'es'
     else:
-        print(s + 's')
+        return s + 's'

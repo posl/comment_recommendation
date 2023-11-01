@@ -4,39 +4,37 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
     a.sort(reverse=True)
-    sum_a = sum(a)
-    for i in range(m):
-        if a[i] < sum_a / (4 * m):
-            print("否")
-            break
+    if a[m-1]*4*m>=sum(a):
+        print("Yes")
     else:
-        print("是")
+        print("No")
 
 =======
 Suggestion 2
 
-def solve():
-    n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    a.sort(reverse=True)
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)
     sum = 0
-    for i in range(n):
-        sum += a[i]
-    if a[m-1] * 4 * m >= sum:
-        print('是')
-    else:
-        print('否')
+    for i in range(N):
+        sum += A[i]
+    for i in range(M):
 
 =======
 Suggestion 3
 
-def get_input():
+def main():
     n,m = map(int,input().split())
     a = list(map(int,input().split()))
-    return n,m,a
+    a.sort(reverse=True)
+    total = sum(a)
+    if a[m-1] >= total/(4*m):
+        print("Yes")
+    else
 
 =======
 Suggestion 4
@@ -45,69 +43,60 @@ def main():
     n,m = map(int,input().split())
     a = list(map(int,input().split()))
     a.sort(reverse=True)
-    sum = 0
-    for i in range(m):
-        sum += a[i]
-    if sum >= sum(a) * 0.25:
-        print("是")
-    else:
-        print("否")
+    sum_a = sum(a)
+    if a[m-1] >= sum_a/(4*m):
+        print("Yes")
+    else
 
 =======
 Suggestion 5
 
-def main():
+def problems161_b():
     n,m = map(int,input().split())
-    a = list(map(int,input().split()))
-    sum_a = sum(a)
-    a.sort(reverse=True)
-    if a[m-1]*4*m >= sum_a:
-        print('Yes')
-    else:
-        print('No')
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)
+    sum = 0
+    for i in range(m):
+        sum += A[i]
+    if sum >=
 
 =======
 Suggestion 6
 
 def main():
-    # 读取输入
     n, m = map(int, input().split())
     a = list(map(int, input().split()))
-    # 排序
     a.sort(reverse=True)
-    # 计算总票数
-    total = sum(a)
-    # 判断是否为受欢迎的项目
-    if a[m-1] >= total / (4 * m):
-        print("Yes")
-    else:
-        print("No")
+    sum_a = sum(a)
+    for i in range(m):
+        if a[i] < sum_a / (4 * m)
 
 =======
 Suggestion 7
 
 def main():
-    n,m = map(int, input().split())
+    n, m = map(int, input().split())
     a = list(map(int, input().split()))
-    sum_a = sum(a)
+
     a.sort(reverse=True)
-    if a[m-1] >= sum_a/(4*m):
-        print("是")
-    else:
-        print("否")
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    if a[m-1] >= su
 
 =======
 Suggestion 8
 
 def main():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
+    n,m=input().split()
+    n=int(n)
+    m=int(m)
+    a=list(map(int,input().split()))
     a.sort(reverse=True)
-    total = sum(a)
-    if a[m-1] >= total / (4*m):
-        print('是')
-    else:
-        print('否')
+    sum=0
+    for i in range(m):
+        sum+=a[i]
+    for i in r
 
 =======
 Suggestion 9
@@ -117,26 +106,18 @@ def main():
     A = list(map(int, input().split()))
     A.sort(reverse=True)
     sum = 0
-    for i in range(M):
+    for i in range(N):
         sum += A[i]
-    if sum >= sum(A) / (4 * M):
-        print("Yes")
-    else:
-        print("No")
+    if A[M-1] >= sum
 
 =======
 Suggestion 10
 
-def main():
+def problems161_b():
     n,m = map(int,input().split())
     a = list(map(int,input().split()))
     a.sort(reverse=True)
-    total = sum(a)
-    count = 0
-    for i in range(m):
-        if a[i]*4*m >= total:
-            count += 1
-    if count == m:
-        print("是")
-    else:
-        print("否")
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    for i in r

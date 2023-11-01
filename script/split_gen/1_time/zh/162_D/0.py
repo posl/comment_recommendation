@@ -1,10 +1,8 @@
-def count(s):
-    c = [0]*3
-    for i in range(len(s)):
-        if s[i] == 'R':
-            c[0] += 1
-        elif s[i] == 'G':
-            c[1] += 1
-        else:
-            c[2] += 1
-    return c[0]*c[1]*c[2]
+def count_triad(s):
+    n = len(s)
+    c = 0
+    for i in range(0, n):
+        for j in range(i+1, n):
+            k = 2*j - i
+            if k < n:
+                if s[i] != s[j] and s[i] !=

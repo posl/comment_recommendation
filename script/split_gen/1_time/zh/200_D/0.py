@@ -1,2 +1,2 @@
-def solve():
-    print('No')
+def judge(A):
+    for

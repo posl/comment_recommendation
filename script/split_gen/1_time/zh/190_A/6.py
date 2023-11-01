@@ -1,12 +1,5 @@
-def main():
-    A,B,C = map(int,input().split())
+def solve(A, B, C):
     if C == 0:
         if A > B:
-            print("Takahashi")
+            return 'Takahashi'
         else:
-            print("Aoki")
-    else:
-        if A >= B:
-            print("Takahashi")
-        else:
-            print("Aoki")

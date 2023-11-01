@@ -3,60 +3,29 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    a, b, c, d = map(int, input().split())
+def judge(a, b, c, d):
     while True:
-        c -= b
+        c = c - b
         if c <= 0:
-            print('Yes')
+            print("Yes")
             break
-        a -= d
-        if a <= 0:
-            print('No')
-            break
+        a = a - d
+        if a
 
 =======
 Suggestion 2
 
 def main():
     a,b,c,d = map(int,input().split())
-    if (c-1)//b > (a-1)//d:
-        print("否")
-    else:
-        print("是")
-
-=======
-Suggestion 3
-
-def main():
-    a,b,c,d = map(int,input().split())
     while True:
         c -= b
         if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
-
-=======
-Suggestion 4
-
-def problem164_b():
-    A, B, C, D = map(int, input().split())
-    while True:
-        C = C - B
-        if C <= 0:
             print('Yes')
             break
-        A = A - D
-        if A <= 0:
-            print('No')
-            break
+        a -= d
 
 =======
-Suggestion 5
+Suggestion 3
 
 def main():
     a,b,c,d = map(int,input().split())
@@ -64,23 +33,74 @@ def main():
         c -= b
         if c <= 0:
             print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
 
 =======
-Suggestion 6
+Suggestion 4
 
 def main():
-    a, b, c, d = map(int, input().strip().split())
+    a,b,c,d = map(int,input().split())
     while True:
         c -= b
         if c <= 0:
             print("Yes")
             break
         a -= d
-        if a <= 0:
-            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    A,B,C,D = map(int,input().split())
+    while True:
+        C -= B
+        if C <= 0:
+            print("Yes")
+            break
+        A -= D
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    a, b, c, d = map(int, input().split())
+
+    # 一直战斗直到有一方死亡
+    while True:
+        # 高桥的怪物攻击青木的怪物
+        c -= b
+        #
+
+=======
+Suggestion 7
+
+def f(A,B,C,D):
+    while True:
+        C -= B
+        if C <= 0:
+            return True
+        A -= D
+        if A <= 0:
+            return False
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c, d = map(int, input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+
+=======
+Suggestion 9
+
+def main():
+    a, b, c, d = map(int, input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print('Yes')
             break

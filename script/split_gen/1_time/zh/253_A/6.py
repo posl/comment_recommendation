@@ -1,6 +1,5 @@
-def main():
-    a, b, c = map(int, input().split())
-    if b > a and b < c or b < a and b > c:
-        print("是")
-    else:
-        print("没有")
+def find_mid(a,b,c):
+    if a<b<c or c<b<a:
+        return b
+    elif b<a<c or c<a<b:
+        return a

@@ -3,6 +3,34 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
+def solve():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    if s[n-1]=='o':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    print("Yes" if s[n-1] == "o" else "No")
+
+=======
+Suggestion 4
+
 def main():
     N = int(input())
     S = input()
@@ -12,45 +40,13 @@ def main():
         print('No')
 
 =======
-Suggestion 2
-
-def main():
-    n = int(input())
-    s = input()
-    if s[n-1] == 'o':
-        print("Yes")
-    else:
-        print("No")
-
-=======
-Suggestion 3
+Suggestion 5
 
 def main():
     n = int(input())
     s = input()
     if s[n-1] == "o":
-        print("是")
-    else:
-        print("否")
-
-=======
-Suggestion 4
-
-def main():
-    n = int(input())
-    s = input()
-    print("是" if s[n-1] == "o" else "否")
-
-=======
-Suggestion 5
-
-def problem218_a():
-    n = int(input())
-    s = input()
-    if s[n-1] == 'o':
-        print('yes')
-    else:
-        print('no')
+        print("Yes")
 
 =======
 Suggestion 6
@@ -58,7 +54,8 @@ Suggestion 6
 def main():
     n = int(input())
     s = input()
-    print('是' if s[n-1] == 'o' else '否')
+    if s[n-1] == 'o':
+        print('Yes')
 
 =======
 Suggestion 7
@@ -66,15 +63,14 @@ Suggestion 7
 def main():
     N = int(input())
     S = input()
-    print("是" if S[N-1] == "o" else "否")
+    if S[N-1] == 'o':
+        print("Yes")
 
 =======
 Suggestion 8
 
 def main():
-    n = int(input())
-    s = input()
-    if s[n-1] == 'o':
+    N = int(input())
+    S = input()
+    if S[N-1] == 'o':
         print('Yes')
-    else:
-        print('No')

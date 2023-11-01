@@ -1,8 +1,8 @@
 def main():
     s,t = input().split()
-    a,b = input().split()
+    a,b = map(int,input().split())
     u = input()
-    if s == u:
-        print(int(a)-1,b)
-    else:
-        print(a,int(b)-1)
+    if u == s:
+        a = a-1
+    elif u == t:
+        b = b-1

@@ -1,109 +1,107 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    s = raw_input()
-    if s == 'Sunny':
-        print 'Cloudy'
-    elif s == 'Cloudy':
-        print 'Rainy'
-    elif s == 'Rainy':
-        print 'Sunny'
-    else:
-        print 'error'
+def weather(s):
+    if s == "Sunny":
+        return "Cloudy"
+    elif s == "Cloudy":
+        return "Rainy"
+    elif s == "Rai
 
 =======
 Suggestion 2
 
-def weatherPredict(s):
-    if s == '晴天':
-        print('阴天')
-    elif s == '阴天':
-        print('雨天')
-    else:
-        print('晴天')
+def weather():
+    weather = input()
+    if weather == "Sunny":
+        print("Cloudy")
+    elif weather == "Cloudy":
+        print("Rainy")
+    else
 
 =======
 Suggestion 3
 
-def weather():
-    weather_dict = {'晴天':'阴天', '阴天':'雨天', '雨天':'晴天'}
-    weather = input()
-    print(weather_dict[weather])
-
-weather()
+def main():
+    weather = ['Sunny', 'Cloudy', 'Rainy']
+    today = input()
+    print(weather[(weather.index(today) + 1) % 3])
 
 =======
 Suggestion 4
 
-def next_weather(weather):
-    if weather == "晴天":
-        return "阴天"
-    elif weather == "阴天":
-        return "雨天"
+def main():
+    weather = input()
+    if weather == 'Sunny':
+        print('Cloudy')
+    elif weather == 'Cloudy':
+        print('Rainy')
     else:
-        return "晴天"
-
-weather = input()
-print(next_weather(weather))
+        print('Sunny')
 
 =======
 Suggestion 5
 
-def weather(s):
-    if s == "晴天":
-        return "阴天"
-    elif s == "阴天":
-        return "雨天"
-    elif s == "雨天":
-        return "晴天"
+def weather_tomorrow(weather):
+    if weather == 'Sunny':
+        return 'Cloudy'
+    elif weather == 'Cloudy':
+        return 'Rainy'
+    else:
+        return 'Sunny'
 
 =======
 Suggestion 6
 
-def weather(s):
-    if s == "晴天":
-        return "阴天"
-    elif s == "阴天":
-        return "雨天"
-    else:
-        return "晴天"
+def main():
+    weather = input()
+    if weather == "Sunny":
+        print("Cloudy")
+    elif weather == "Cloudy":
+        print("Rainy")
+    elif weather == "Rainy":
 
 =======
 Suggestion 7
 
-def main():
-    weather = input()
-    if weather == "晴天":
-        print("阴天")
-    elif weather == "阴天":
-        print("雨天")
+def weather(S):
+    if S == "Sunny":
+        return "Cloudy"
+    elif S == "Cloudy":
+        return "Rainy"
     else:
-        print("晴天")
 
 =======
 Suggestion 8
 
 def main():
-    weather = input()
-    if weather == '晴天':
-        print('阴天')
-    elif weather == '阴天':
-        print('雨天')
-    else:
-        print('晴天')
+    s = input()
+    if s == 'Sunny':
+        print('Cloudy')
+    elif s == 'Cloudy':
+        print('Rainy')
+    else
 
 =======
 Suggestion 9
 
-def next_weather(weather):
-    if weather == '晴天':
-        return '阴天'
-    elif weather == '阴天':
-        return '雨天'
-    elif weather == '雨天':
-        return '晴天'
+def weather():
+    weather = input("请输入天气：")
+    if weather == "Sunny":
+        print("Cloudy")
+    elif weather == "Cloudy":
+        print("Rainy")
     else:
-        return '输入错误'
+        print("Sunny")
+
+=======
+Suggestion 10
+
+def nextWeather(weather):
+    if weather == "Sunny":
+        return "Cloudy"
+    elif weather == "Cloudy":
+        return "Rainy"
+    elif weather

@@ -1,8 +1,4 @@
 def main():
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    week = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
     day = input()
-    index = days.index(day)
-    if index < 5:
-        print(5 - index)
-    else:
-        print(7 - index + 5)
+    print(5-week.index(day))

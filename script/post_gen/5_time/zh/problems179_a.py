@@ -1,49 +1,26 @@
-Synthesizing 10/10 solutions
+Synthesizing 10/10 solutions (Duplicates hidden)
 
 =======
 Suggestion 1
 
-def main():
-    S = input()
-    if S[-1] == 's':
-        print(S + 'es')
+def plural_form(string):
+    if string[-1] == 's':
+        return string + 'es'
     else:
-        print(S + 's')
+        return string + 's'
 
 =======
 Suggestion 2
 
 def main():
-    # 读取数据
-    S = input()
-    # 计算结果
-    if S[-1] == "s":
-        print(S + "es")
+    s = input()
+    if s[-1] == 's':
+        print(s + 'es')
     else:
-        print(S + "s")
+        print(s + 's')
 
 =======
 Suggestion 3
-
-def plural_form(S):
-    if S[-1] == 's':
-        return S + 'es'
-    else:
-        return S + 's'
-
-=======
-Suggestion 4
-
-def main():
-    S = input()
-    if S[-1] == "s":
-        S = S + "es"
-    else:
-        S = S + "s"
-    print(S)
-
-=======
-Suggestion 5
 
 def pluralize(s):
     if s[-1] == "s":
@@ -51,8 +28,26 @@ def pluralize(s):
     else:
         return s + "s"
 
-s = input()
-print(pluralize(s))
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s.endswith("s"):
+        print(s + "es")
+    else:
+        print(s + "s")
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    s = input()
+    # 处理数据
+    if s[-1] == 's':
+        s += 'es'
+    else:
 
 =======
 Suggestion 6
@@ -63,41 +58,26 @@ def plural(s):
     else:
         return s + 's'
 
-print(plural(input()))
-
 =======
 Suggestion 7
 
-def pluralForm(S):
-    if S[-1] == "s":
-        return S + "es"
+def plural_form(word):
+    if word[-1] == "s":
+        return word + "es"
     else:
-        return S + "s"
+        return word + "s"
 
 =======
 Suggestion 8
 
-def solve():
-    s = input()
-    if s[-1] == 's':
-        print(s + 'es')
-    else:
-        print(s + 's')
+def pluralize(s):
+    if s.endswith('s') or s.endswith('sh') or s.endswith('ch') or s.endswith('o') or s.e
 
 =======
 Suggestion 9
 
-def plural_form(s):
-    if s[-1] == 's':
-        return s + 'es'
+def getPluralForm(input):
+    if input[-1] == "s":
+        return input + "es"
     else:
-        return s + 's'
-
-=======
-Suggestion 10
-
-def pluralize(s):
-    if s[-1] == 's':
-        return s + 'es'
-    else:
-        return s + 's'
+        return input + "s"

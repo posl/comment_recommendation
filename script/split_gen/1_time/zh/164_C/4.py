@@ -1,6 +1,5 @@
 def main():
-    n = int(input())
-    s = []
-    for i in range(n):
-        s.append(input())
-    print(len(set(s)))
+    N = int(input())
+    S = []
+    for i in range(0,N):
+        S.append(input(

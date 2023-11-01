@@ -1,6 +1,6 @@
 def main():
-    R, C = map(int, input().split())
-    if (R + C) % 2 == 0:
-        print("黑色")
+    R,C = map(int,input().split())
+    if (R+C)%2 == 0:
+        print("white")
     else:
-        print("白色")
+        print("black")

@@ -3,31 +3,26 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def main():
+def problems253_a():
     a,b,c = map(int,input().split())
     if a <= b <= c or c <= b <= a:
-        print("是")
-    else:
-        print("否")
+        print
 
 =======
 Suggestion 2
 
 def main():
-    a, b, c = map(int, input().split())
-    if b in [a, c]:
-        print("没有")
-    else:
-        print("是")
+    a,b,c = map(int,input().split())
+    if (a<=b<=c) or (c<=b<=a):
+        print("Yes"
 
 =======
 Suggestion 3
 
-def is_middle(a, b, c):
-    if (a <= b and b <= c) or (c <= b and b <= a):
-        return True
-    else:
-        return False
+def main():
+    a,b,c = map(int,input().split())
+    if a <= b <= c or c <= b <= a:
+        print("Yes
 
 =======
 Suggestion 4
@@ -35,66 +30,53 @@ Suggestion 4
 def main():
     a, b, c = map(int, input().split())
     if a <= b <= c or c <= b <= a:
-        print('是')
-    else:
-        print('没有')
+        pr
 
 =======
 Suggestion 5
 
 def main():
-    a,b,c = map(int,input().split())
-    if a <= b <= c or c <= b <= a:
-        print('是')
-    else:
-        print('否')
+    a,b,c = map(int, input().split())
+    if b > a and b < c:
+        print("Yes")
 
 =======
 Suggestion 6
 
-def main():
+def problems253_a():
     a, b, c = map(int, input().split())
-    if a < b < c or c < b < a:
-        print("是")
-    else:
-        print("没有")
+    if a <= b <= c or c <= b <= a:
 
 =======
 Suggestion 7
 
 def main():
     a, b, c = map(int, input().split())
-    if b > a and b < c or b < a and b > c:
-        print("是")
-    else:
-        print("否")
+    if a <= b <= c or c <= b <= a:
+        print
 
 =======
 Suggestion 8
 
 def main():
-    a,b,c = map(int,input().split())
-    if a<=b<=c or c<=b<=a:
-        print("是")
-    else:
-        print("没有")
+    a = input()
+    a = a.split()
+    a = [int(i) for i in a]
+    a.sort()
+    if a[1]
 
 =======
 Suggestion 9
 
-def main():
-    a,b,c = map(int,input().split())
-    if b in [a,c]:
-        print('是')
+def middle(a,b,c):
+    if a<=b<=c or c<=b<=a:
+        return 'Yes'
     else:
-        print('没有')
+        return 'No'
 
 =======
 Suggestion 10
 
 def main():
-    a,b,c = map(int,input().split())
-    if b == max(a,b,c) or b == min(a,b,c):
-        print("没有")
-    else:
-        print("是")
+    a,b,c = map(int, input().split())
+    print("Yes" if a<=b<=c or c<=b<=a else "No")

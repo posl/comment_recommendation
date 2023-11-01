@@ -1,12 +1,7 @@
 def main():
     week = input()
-    if week == "星期一":
+    if week == "Monday":
         print(5)
-    elif week == "星期二":
+    elif week == "Tuesday":
         print(4)
-    elif week == "星期三":
-        print(3)
-    elif week == "星期四":
-        print(2)
-    elif week == "星期五":
-        print(1)
+    e

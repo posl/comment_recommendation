@@ -1,6 +1,5 @@
-def isPolygon(L):
-    L.sort(reverse=True)
-    return L[0] < sum(L[1:])
-N = int(input())
-L = list(map(int, input().split()))
-print("是" if isPolygon(L) else "否")
+def main():
+    num = int(input())
+    length = [int(i) for i in input().split()]
+    length.sort(reverse=True)
+    if l

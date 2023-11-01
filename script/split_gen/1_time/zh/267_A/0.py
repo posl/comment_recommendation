@@ -1,3 +1,7 @@
-def get_weekday(weekday):
-    weekdays = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
-    return weekdays.index(weekday)
+def main():
+    s = input()
+    if s == "Monday":
+        print(5)
+    elif s == "Tuesday":
+        print(4)
+    elif s == "Wednesday":

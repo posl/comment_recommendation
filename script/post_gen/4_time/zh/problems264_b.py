@@ -4,111 +4,86 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    R, C = map(int, input().split())
-    if R % 2 == 1:
-        if C % 2 == 1:
-            print("黑色")
-        else:
-            print("白色")
-    else:
-        if C % 2 == 1:
-            print("白色")
-        else:
-            print("黑色")
+    R,C = input().split()
+    R = int(R)
+    C = int(C)
+    if R%2 == 0:
+        if C%2 == 0:
+            print("w
 
 =======
 Suggestion 2
 
 def main():
-    # 读取输入
-    r, c = map(int, input().split())
-    # 判断是否为黑色
-    if (r+c)%2 == 0:
-        print("黑色")
-    else:
-        print("白色")
+    R, C = map(int, input().split())
+    if R % 2 == 0:
+        if C % 2 == 0:
+            print("black")
 
 =======
 Suggestion 3
 
-def print_color(row, col):
-    if row % 2 == 0:
-        if col % 2 == 0:
-            print("白色")
-        else:
-            print("黑色")
+def main():
+    R, C = map(int, input().split())
+    if (R + C) % 2 == 0:
+        print("black")
     else:
-        if col % 2 == 0:
-            print("黑色")
-        else:
-            print("白色")
+        print("whit
 
 =======
 Suggestion 4
 
 def main():
     R, C = map(int, input().split())
-    if R % 2 == 0:
-        if C % 2 == 0:
-            print("白色")
-        else:
-            print("黑色")
+    if (R+C)%2 == 0:
+        print('black')
     else:
-        if C % 2 == 0:
-            print("黑色")
-        else:
-            print("白色")
+        print('white')
 
 =======
 Suggestion 5
 
 def main():
-    R,C = map(int,input().split())
+    R, C = map(int, input().split())
     if (R+C)%2 == 0:
-        print("黑色")
+        print("black")
     else:
-        print("白色")
+        print("white")
 
 =======
 Suggestion 6
 
-def main():
-    R, C = map(int, input().split())
-    if R % 2 == 0:
-        if C % 2 == 0:
-            print('白色')
-        else:
-            print('黑色')
-    else:
-        if C % 2 == 0:
-            print('黑色')
-        else:
-            print('白色')
+def print_color(row, col):
+    if row % 2 == 0:
+        if col % 2 == 0:
+            print("white")
+        els
 
 =======
 Suggestion 7
 
 def main():
-    # 读取输入
-    R, C = map(int, input().strip().split())
-    # 处理
+    R, C = map(int, input().split())
     if (R + C) % 2 == 0:
-        print("黑色")
+        print("white")
     else:
-        print("白色")
+        print("blac
 
 =======
 Suggestion 8
 
-def main():
-    r, c = map(int, input().split())
-    if r % 2 == 0:
-        if c % 2 == 0:
-            print("black")
-        else:
-            print("white")
+def get_color(row, col):
+    if (row + col) % 2 == 0:
+        return 'black'
     else:
+        return 'white'
+
+=======
+Suggestion 9
+
+def print_color(r, c):
+    # 1. 判断奇偶
+    if r % 2 == 0:
+        # 2. 偶数行
         if c % 2 == 0:
-            print("white")
-        else:
-            print("black")
+            # 4. 偶数列

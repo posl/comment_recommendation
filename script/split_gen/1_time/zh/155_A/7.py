@@ -1,10 +1,10 @@
 def main():
-    a,b,c = map(int,input().split())
+    a,b,c=map(int,input().split())
     if a==b and a!=c:
-        print("是")
+        print("Yes")
     elif a==c and a!=b:
-        print("是")
+        print("Yes")
     elif b==c and b!=a:
-        print("是")
+        print("Yes")
     else:
-        print("否")
+        print("No")

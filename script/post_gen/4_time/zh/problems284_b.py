@@ -1,115 +1,110 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def count_odd(list):
-    count = 0
-    for i in list:
-        if i % 2 == 1:
-            count += 1
-    return count
+def solve():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        count = 0
+        for
 
 =======
 Suggestion 2
 
-def count_odd_num(arr):
-    count = 0
-    for i in arr:
-        if i%2 == 1:
-            count += 1
-    return count
-
-T = int(input())
-for i in range(T):
-    N = int(input())
-    arr = list(map(int, input().split()))
-    print(count_odd_num(arr))
+def print_odd_num():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = [int(a) for a in input().split()]
+        print(sum([1
 
 =======
 Suggestion 3
 
 def main():
-    T = int(input())
-    for i in range(T):
-        N = int(input())
-        A = [int(n) for n in input().split()]
-        result = 0
-        for a in A:
-            if a % 2 == 1:
-                result += 1
-        print(result)
+    t = int(input())
+    a = []
+    for i in range(t):
+        n = int(input())
+        a.append(input().split())
+    for i in range(t):
 
 =======
 Suggestion 4
 
-def count_odd_number(a_list):
+def count_odd(l):
     count = 0
-    for a in a_list:
-        if a % 2 == 1:
+    for i in range(len(l)):
+        if l[i] % 2 == 1:
             count += 1
     return count
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if a[i] % 2 == 1:
-            count += 1
-    print(count)
+def odd_number():
+    #获取测试用例数量
+    T = int(input())
+    #获取每个测试用例
+    for i in range(T):
+        #获取每个测试用例的长度
+        N = int(input())
+        #获取每个测试用例的数值
 
 =======
 Suggestion 6
 
 def main():
-    count = int(input())
-    for i in range(count):
-        input()
-        l = input().split()
-        print(len([x for x in l if int(x) % 2 != 0]))
+    n = int(input())
+    for i in range(n):
+        num = int(input())
+        nums = list(map(int, input().split()))
+        count = 0
+        for
 
 =======
 Suggestion 7
 
 def main():
+    #输入
     T = int(input())
+    #循环T次
     for i in range(T):
+        #输入
         N = int(input())
-        A = list(map(int, input().split()))
-        count = 0
-        for i in range(N):
-            if A[i] % 2 != 0:
-                count += 1
-        print(count)
+        A = lis
 
 =======
 Suggestion 8
 
 def main():
-    T = int(input())
-    for i in range(T):
-        N = int(input())
-        A = input().split()
-        count = 0
-        for num in A:
-            if int(num) % 2 == 1:
-                count += 1
-        print(count)
+    n = int(input())
+    list1 = []
+    for i in range(n):
+        list1.append(int(input()))
+    for i in range(n):
+        print(list1[i]//2)
 
 =======
 Suggestion 9
 
-def mymain():
+def odd_number():
+    n = int(input())
+    a = input().split()
+    count = 0
+    for i in range(n):
+        if int(a[i])%2 == 1
+
+=======
+Suggestion 10
+
+def odd_number():
     T = int(input())
+    N = []
+    A = []
     for i in range(T):
-        N = int(input())
-        A = list(map(int, input().split()))
-        count = 0
-        for j in range(N):
-            if A[j] % 2 != 0:
-                count += 1
-        print(count)
+        N.append(int(input()))
+        A.append(input().split

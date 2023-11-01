@@ -1,6 +1,5 @@
-def main():
-    s = input()
-    if s[-1] == "s":
-        print(s + "es")
+def getPluralForm(s):
+    if s[-1] == 's':
+        return s + 'es'
     else:
-        print(s + "s")
+        return s + 's'

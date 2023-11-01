@@ -11,15 +11,15 @@ def main():
     e = int(input())
     k = int(input())
 
-    if e - a > k:
-        print(':(')
-    else:
+    if e - a <= k:
         print('Yay!')
+    else:
+        print(':(')
 
 =======
 Suggestion 2
 
-def problems123_a():
+def main():
     a = int(input())
     b = int(input())
     c = int(input())
@@ -36,25 +36,31 @@ def problems123_a():
 Suggestion 3
 
 def main():
-    # 读取输入
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
+    antennas = []
+    for i in range(5):
+        antennas.append(int(input()))
     k = int(input())
 
-    # 求出最大的距离
-    max_distance = e - a
-
-    # 输出结果
-    if max_distance <= k:
-        print("Yay!")
-    else:
-        print(":(")
+    for i in range(4):
+        for j in range(i+1,5):
+            if antennas[j] - antennas[i] > k:
+                print
 
 =======
 Suggestion 4
+
+def main():
+    antenna_a = int(input())
+    antenna_b = int(input())
+    antenna_c = int(input())
+    antenna_d = int(input())
+    antenna_e = int(input())
+    antenna_k = int(input())
+    if antenna_e - antenna_a <= antenna_k:
+        print("Y
+
+=======
+Suggestion 5
 
 def main():
     a = int(input())
@@ -63,50 +69,17 @@ def main():
     d = int(input())
     e = int(input())
     k = int(input())
+
     if e - a <= k:
         print("Yay!")
     else:
         print(":(")
 
 =======
-Suggestion 5
-
-def main():
-    # 读取输入
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    k = int(input())
-
-    # 比较
-    if e - a > k:
-        print(':(')
-    else:
-        print('Yay!')
-
-=======
 Suggestion 6
 
-def problems123_a():
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
-    k = int(input())
-    if e-a > k:
-        print(":(")
-    else:
-        print("Yay!")
-    return
-
-=======
-Suggestion 7
-
 def main():
-    # 读取输入
+    #输入
     a = int(input())
     b = int(input())
     c = int(input())
@@ -114,19 +87,7 @@ def main():
     e = int(input())
     k = int(input())
 
-    # 用列表保存天线坐标
-    antenna = [a, b, c, d, e]
-
-    # 用列表保存天线之间的距离
-    distance = []
-
-    # 计算天线之间的距离
-    for i in range(len(antenna)):
-        for j in range(i + 1, len(antenna)):
-            distance.append(antenna[j] - antenna[i])
-
-    # 如果存在天线之间的距离大于k，则输出 :(，否则输出 Yay!
-    if max(distance) > k:
-        print(':(')
+    #判断
+    if e-a <= k:
+        print("Yay!")
     else:
-        print('Yay!')

@@ -1,6 +1,5 @@
-def main():
-    S = input()
-    if S[-1] == 's':
-        print(S + 'es')
+def plural_form(s):
+    if s[-1] == 's':
+        return s + 'es'
     else:
-        print(S + 's')
+        return s + 's'

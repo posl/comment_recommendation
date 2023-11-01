@@ -1,4 +1,4 @@
-def problem179_a():
+def main():
     s = input()
     if s[-1] == 's':
         print(s + 'es')

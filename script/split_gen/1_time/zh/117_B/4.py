@@ -1,9 +1,5 @@
-def main():
-    # input
-    n = int(input())
-    l = list(map(int, input().split()))
-    # output
-    if max(l) < sum(l) - max(l):
-        print('是')
-    else:
-        print('否')
+def is_polygon(n,l):
+    if n < 3 or n > 10:
+        return False
+    for i in l:
+        if i < 1 or i > 100:

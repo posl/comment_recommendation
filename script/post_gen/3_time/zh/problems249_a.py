@@ -4,233 +4,209 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    a, b, c, d, e, f, x = map(int, input().split())
-    taka = 0
-    aoki = 0
-    while True:
-        if taka >= x:
-            print("draw")
-            break
-        if a > 0:
-            taka += b
-            a -= 1
-        if taka >= x:
-            print("taka")
-            break
-        if c > 0:
-            taka += 0
-            c -= 1
-        if taka >= x:
-            print("taka")
-            break
-        if d > 0:
-            aoki += e
-            d -= 1
-        if aoki >= x:
-            print("aoki")
-            break
-        if f > 0:
-            aoki += 0
-            f -= 1
-        if aoki >= x:
-            print("aoki")
-            break
+    #输入
+    A,B,C,D,E,F,X = map(int,input().split())
+
+    #计算
+    #高桥
+    Takahashi = 0
+    Takahashi = (A+B)*C
+    #青木
+    Aoki = 0
+    Aoki = (D+E)*F
+
+    #比较
+    if Takahashi > Aoki:
+        print('Takahashi')
+    elif Takahashi < Aoki:
+        print('Aoki')
+    else:
+        print('Draw')
 
 =======
 Suggestion 2
 
-def run():
+def main():
     a,b,c,d,e,f,x = map(int, input().split())
     taka = 0
     aoki = 0
-    for i in range(10000):
-        if i % (a+b+c) < a:
-            taka += 1
-        if i % (d+e+f) < d:
-            aoki += 1
-        if taka * x > aoki * x:
-            print("高桥")
-            return
-        elif taka * x < aoki * x:
-            print("青木")
-            return
-    print("画")
+    while True:
+        if taka >= x:
+            print('Takahashi')
+            break
+        elif aoki >= x:
+            print('Aoki')
+            break
+        else:
+            taka += a
+            aoki += d
+            if taka >= x:
+                print('Takahashi')
+                break
+            elif aoki >= x:
 
 =======
 Suggestion 3
 
-def get_input():
-    input_str = input()
-    input_list = input_str.split(' ')
-    return input_list
+def main():
+    a,b,c,d,e,f,x = map(int, input().split())
+    t = 0
+    while True:
+        if a > 0:
+            x -= b
+            if x <= 0:
+                print("Takahashi")
+                break
+            x += c
+            if x <= 0:
+                print("Aoki")
+                break
+        if d > 0:
+            x -= e
+            if x <= 0:
+                print("Takahashi")
+                break
+            x
 
 =======
 Suggestion 4
 
 def main():
-    a, b, c, d, e, f, x = map(int, input().split())
-    h = 0
-    q = 0
-    for i in range(x):
-        if i % (a + b) < a:
-            h += 1
-        if i % (d + e) < d:
-            q += 1
-    if h > q:
-        print("高桥")
-    elif h < q:
-        print("青木")
-    else:
-        print("画")
+    A,B,C,D,E,F,X = map(int,input().split())
+    taka = 0
+    aoki = 0
+    while True:
+        if taka >= X:
+            print('Draw')
+            break
+        elif aoki >= X:
+            print('Takahashi')
+            break
+        else:
+            taka += A
+            aoki += D
+            if taka >= X:
+                print('Takahashi')
+                break
+            elif aoki >= X:
 
 =======
 Suggestion 5
 
 def main():
-    a,b,c,d,e,f,x = map(int,input().split())
-    taka = 0
-    aoki = 0
-    for i in range(x):
-        if i % (a + b) < a:
-            taka += 1
-        if i % (d + e) < d:
-            aoki += 1
-    if taka > aoki:
-        print("高桥")
-    elif taka < aoki:
-        print("青木")
-    else:
-        print("画")
+    a,b,c,d,e,f,x = map(int, input().split())
+    t = 0
+    ta = 0
+    ao = 0
+    while True:
+        if t >= x:
+            break
+        ta += a
+        t += 1
+        if t >= x:
+            break
+        ao += d
+        t += 1
+    if ta > ao:
+        print('Takahashi')
+    elif ta < ao:
+        print('Aoki')
+    else
 
 =======
 Suggestion 6
 
-def main():
-    A,B,C,D,E,F,X = map(int,input().split())
-    taka = 0
-    ao = 0
+def run():
+    A, B, C, D, E, F, X = map(int, input().split())
+    takahashi = 0
+    aoki = 0
     for i in range(X):
-        if i % (A + B + C) < A:
-            taka += 1
-        if i % (D + E + F) < D:
-            ao += 1
-    if taka > ao:
-        print("高桥")
-    elif taka < ao:
-        print("青木")
+        if i % (A + B) < A:
+            takahashi += 1
+        if i % (D + E) < D:
+            aoki += 1
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
     else:
-        print("画")
+        print("Draw")
 
 =======
 Suggestion 7
 
 def main():
-    A,B,C,D,E,F,X = map(int, input().split())
-    time = 0
-    while X > 0:
-        if A > 0:
-            X -= B
-            time += A
-        if X <= 0:
-            break
-        X -= C
-        if X <= 0:
-            break
-        if D > 0:
-            X -= E
-            time += D
-        if X <= 0:
-            break
-        X -= F
-    if time > 0:
-        print("高桥")
-    elif time < 0:
-        print("青木")
-    else:
-        print("画")
+    # 读取输入
+    line = input()
+    a,b,c,d,e,f,x = line.split()
+    # 转换为整数
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    d = int(d)
+    e = int(e)
+    f = int(f)
+    x = int(x)
+    # 计算高桥和青木的距离
+    taka = 0
+    aoki = 0
+    for i in range(x):
+        if i % (a+c) < a:
+            taka += b
+        if i % (d+f) < d:
+            aoki += e
 
 =======
 Suggestion 8
 
 def main():
-    a,b,c,d,e,f,x = map(int,input().split())
-    taka = 0
+    A,B,C,D,E,F,X = map(int, input().split())
+    takahashi = 0
     aoki = 0
-    while True:
-        taka += a
-        if taka >= x:
-            print("高桥")
-            break
-        aoki += d
-        if aoki >= x:
-            print("青木")
-            break
-        taka -= c
-        aoki -= f
-        if taka >= x and aoki >= x:
-            print("画")
-            break
+    for i in range(1,X+1):
+        if i % (A+B) <= A and i % (A+B) != 0:
+            takahashi += 1
+        if i % (D+E) <= D and i % (D+E) != 0:
+            aoki += 1
+    if takahashi > aoki:
+        print('Takahashi')
 
 =======
 Suggestion 9
 
-def main():
-    a,b,c,d,e,f,x = map(int, input().split())
+def run():
+    a,b,c,d,e,f,x = map(int,input().split())
     taka = 0
     aoki = 0
-    for i in range(0,x):
+    for i in range(x):
         if i%(a+b) < a:
-            taka = taka + e
-        if i%(c+d) < d:
-            aoki = aoki + f
+            taka += 1
+        if i%(d+e) < d:
+            aoki += 1
     if taka > aoki:
-        print("高桥")
+        print('Takahashi')
     elif taka < aoki:
-        print("青木")
+        print('Aoki')
     else:
-        print("画")
+        print('Draw')
 
 =======
 Suggestion 10
 
 def main():
-    a,b,c,d,e,f,x = map(int, input().split())
-    taka = 0
-    aoki = 0
-    while True:
-        if taka > x and aoki > x:
-            print("DRAW")
-            break
-        elif taka > x:
-            print("AOKI")
-            break
-        elif aoki > x:
-            print("TAKAHASHI")
-            break
+    A, B, C, D, E, F, X = map(int, input().split())
+    if (A > B):
+        A = B
+    if (D > E):
+        D = E
+    if (X <= A):
+        print("Takahashi")
+    elif (X <= D):
+        print("Draw")
+    else:
+        if (B > E):
+            print("Takahashi")
+        elif (B < E):
+            print("Aoki")
         else:
-            taka += a
-            aoki += d
-            if taka > x and aoki > x:
-                print("DRAW")
-                break
-            elif taka > x:
-                print("AOKI")
-                break
-            elif aoki > x:
-                print("TAKAHASHI")
-                break
-            else:
-                taka += b
-                aoki += e
-                if taka > x and aoki > x:
-                    print("DRAW")
-                    break
-                elif taka > x:
-                    print("AOKI")
-                    break
-                elif aoki > x:
-                    print("TAKAHASHI")
-                    break
-                else:
-                    taka += c
-                    aoki += f
+            print("Draw")

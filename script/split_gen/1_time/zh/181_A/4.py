@@ -1,5 +1,6 @@
-def color_of_cloth(n):
+def problem181_a():
+    n = int(input())
     if n % 2 == 0:
-        print("白色")
+        print('White')
     else:
-        print("黑色")
+        print(

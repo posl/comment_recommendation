@@ -4,107 +4,87 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    week = ['星期一','星期二','星期三','星期四','星期五','星期六','星期天']
-    day = input()
-    day = week.index(day)
-    print(5-day)
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    s = input()
+    index = week.index(
 
 =======
 Suggestion 2
 
 def get_days_to_saturday(day):
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    return 7 - days.index(day) if days.index(day) < 5 else 0
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    return (7 - days
 
 =======
 Suggestion 3
 
 def main():
-    # 读取输入
-    s = input()
-    # 处理
-    if s == "星期一":
-        print(5)
-    elif s == "星期二":
-        print(4)
-    elif s == "星期三":
-        print(3)
-    elif s == "星期四":
-        print(2)
-    else:
-        print(1)
+    week = input()
+    week_list = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    print(5 - week_list.index(week))
 
 =======
 Suggestion 4
 
 def main():
-    week = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-    s = input()
-    print(6-week.index(s))
+    day = input()
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    print(5 - days.index(day))
 
 =======
 Suggestion 5
 
-def get_days_of_week(week_day):
-    week_days = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
-    return week_days.index(week_day)+1
+def solve():
+    # 请在这里编写代码
+    # 请不要使用input，请使用sys.stdin.readline()读取标准输入
+    import sys
+    s = sys.stdin.readline().strip()
+    week = ['M
 
 =======
 Suggestion 6
 
 def main():
-    days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    day = 0
     s = input()
-    print(7 - days.index(s))
+    for i in range(le
 
 =======
 Suggestion 7
 
-def main():
-    day = input()
-    if day == "星期一":
-        print(5)
-    elif day == "星期二":
-        print(4)
-    elif day == "星期三":
-        print(3)
-    elif day == "星期四":
-        print(2)
-    elif day == "星期五":
-        print(1)
-    else:
-        print(0)
+def get_days(day):
+    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    index = days.index(day
 
 =======
 Suggestion 8
 
-def main():
-    day = input()
-    if day == "星期一":
-        print(5)
-    elif day == "星期二":
-        print(4)
-    elif day == "星期三":
-        print(3)
-    elif day == "星期四":
-        print(2)
-    elif day == "星期五":
-        print(1)
-    else:
-        pass
+def f(s):
+    if s == 'Monday':
+        return 5
+    elif s == 'Tuesday':
+        return 4
+    elif s == 'Wednesday':
+        return 3
+    el
 
 =======
 Suggestion 9
 
 def main():
-    week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     s = input()
-    print(week.index('SAT') - week.index(s))
+    if s == 'Monday':
+        print(5)
+    elif s == 'Tuesday':
+        print(4)
+    elif s == 'Wedne
 
 =======
 Suggestion 10
 
 def main():
-    week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-    S = input()
-    print(week.index('Saturday') - week.index(S))
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    day = input()
+    count = 0
+    for i in week

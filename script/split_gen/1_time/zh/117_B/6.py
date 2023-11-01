@@ -1,8 +1,5 @@
-def main():
-    n = int(input())
-    L = list(map(int, input().split()))
-    L.sort()
-    if L[-1] < sum(L[:-1]):
-        print("是")
+def judge_polygon(N, L):
+    if max(L) < sum(L) - max(L):
+        return "Yes"
     else:
-        print("否")
+        return "No"

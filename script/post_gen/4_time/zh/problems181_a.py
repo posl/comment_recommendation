@@ -3,66 +3,61 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def white_or_black(n):
-    if n % 2 == 0:
-        print("white")
-    else:
-        print("black")
+def problem181_a():
+    N = int(input())
+    if N%2 == 0:
+        print('White')
+    else
 
 =======
 Suggestion 2
 
-def solve():
+def main():
     n = int(input())
     if n % 2 == 0:
-        print('白色')
+        print('White')
     else:
-        print('黑色')
 
 =======
 Suggestion 3
 
-def problem181_a():
+def problems181_a():
     n = int(input())
-    if n%2 == 0:
-        print('白色')
-    else:
-        print('黑色')
+    if n % 2 == 0:
+        print("White")
 
 =======
 Suggestion 4
 
 def main():
-    n = int(input())
-    if n % 2 == 0:
-        print("白色")
+    a = int(input())
+    if a % 2 == 0:
+        print("White")
     else:
-        print("黑色")
 
 =======
 Suggestion 5
 
-def main():
-    n = int(input())
+def f(n):
     if n % 2 == 0:
-        print('白色')
+        print("White")
     else:
-        print('黑色')
+        print("Black")
 
 =======
 Suggestion 6
 
-def solve(n):
+def main():
+    n = int(input())
     if n%2 == 0:
-        print("白色")
+        print("White")
     else:
-        print("黑色")
 
 =======
 Suggestion 7
 
-def problem181_a(n):
+def main():
+    n = int(raw_input())
     if n % 2 == 0:
-        print("白色")
-    else:
-        print("黑色")
+        print "White"
+    else

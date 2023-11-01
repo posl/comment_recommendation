@@ -1,66 +1,47 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
-def main():
-    a,b,c,d = map(int,input().split())
-    while a>0 and c>0:
-        c-=b
-        a-=d
-    if a<=0:
-        print("否")
+def judge_win(a, b, c, d):
+    if a % d == 0:
+        return True
+    elif c % b == 0:
+        return False
     else:
-        print("是")
-
-main()
+        return False
 
 =======
 Suggestion 2
 
 def main():
-    a,b,c,d = map(int, input().split())
+    a, b, c, d = map(int, input().split())
     while True:
         c -= b
         if c <= 0:
             print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
-
-main()
 
 =======
 Suggestion 3
 
-def main():
-    a,b,c,d = map(int,input().split())
+def battle(A,B,C,D):
     while True:
-        c -= b
-        if c <= 0:
-            print('Yes')
+        C=C-B
+        if C<=0:
+            return "Yes"
             break
-        a -= d
-        if a <= 0:
-            print('No')
-            break
+        A=A-D
+        if A<=0:
 
 =======
 Suggestion 4
 
 def main():
-    a,b,c,d = map(int,input().split())
-    while a > 0 and c > 0:
-        c -= b
-        if c <= 0:
-            print("Yes")
-            break
-        a -= d
-        if a <= 0:
-            print("No")
-            break
+    a,b,c,d = map(int, input().split())
+    if (a-1)//d >= (c-1)//b:
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 5
@@ -70,19 +51,62 @@ def main():
     while True:
         c = c - b
         if c <= 0:
-            print('Yes')
-            break
-        a = a - d
-        if a <= 0:
-            print('No')
+            print("Yes")
             break
 
 =======
 Suggestion 6
 
 def main():
-    a, b, c, d = map(int, input().split())
+    a,b,c,d = map(int, input().split())
+    while 1:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c,d = map(int, input().split())
     while a > 0 and c > 0:
         c -= b
         a -= d
-    print("是" if c <= 0 else "否")
+    if a > 0:
+        p
+
+=======
+Suggestion 8
+
+def main():
+    A, B, C, D = map(int, input().split())
+    while True:
+        C -= B
+        if C <= 0:
+            print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print('Yes')
+            break
+        a -= d
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d

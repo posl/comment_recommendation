@@ -3,39 +3,29 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def main():
-    n = int(input())
-    s = input()
-    print(s.replace("na", "nya"))
+def replace_na(s):
+    result = ""
+    for i in range
 
 =======
 Suggestion 2
 
-def solve():
-    n = int(input())
-    s = input()
-    s = s.replace('na', 'nya')
-    print(s)
+def replace_na(s):
+    return s.replace('na', 'nya')
 
 =======
 Suggestion 3
 
-def problem():
-    n = int(input())
-    s = input()
-    print(s.replace('na', 'nya'))
+def replace_na(s):
+    if len(s) < 2:
+        return
 
 =======
 Suggestion 4
 
-def replace_na(s):
-    if len(s) < 2:
-        return s
-    else:
-        if s[0:2] == 'na':
-            return 'nya' + replace_na(s[2:])
-        else:
-            return s[0] + replace_na(s[1:])
+def main():
+    N = int(input())
+    S = input()
 
 =======
 Suggestion 5
@@ -43,26 +33,22 @@ Suggestion 5
 def main():
     n = int(input())
     s = input()
-    s = s.replace("na", "nya")
-    print(s)
 
 =======
 Suggestion 6
 
-def replace_na(s):
-    s = s.replace('na', 'nya')
-    return s
+def replaceNa(s):
+    s = s.replace("na", "nya")
 
 =======
 Suggestion 7
 
 def replace_na(s):
-    return s.replace('na', 'nya')
+    s = s.replace("na", "nya")
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    S = input()
-    print(S.replace('na', 'nya'))
+def replace_na(s):
+    if len(s) <= 2:
+        return

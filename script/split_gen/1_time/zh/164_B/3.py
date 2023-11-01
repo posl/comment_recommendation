@@ -1,11 +1,8 @@
-def problem164_b():
-    A, B, C, D = map(int, input().split())
+def main():
+    a,b,c,d = map(int,input().split())
     while True:
-        C = C - B
-        if C <= 0:
-            print('Yes')
+        c -= b
+        if c <= 0:
+            print("Yes")
             break
-        A = A - D
-        if A <= 0:
-            print('No')
-            break
+        a -= d

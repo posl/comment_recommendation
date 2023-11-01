@@ -5,37 +5,35 @@ Suggestion 1
 
 def main():
     s = input()
-    if s == 'Hello,World':
-        print('AC')
+    if s == "Hello,World!":
+        print("AC")
     else:
-        print('WA')
+        print("WA")
 
 =======
 Suggestion 2
 
 def main():
     s = input()
-    if s == "Hello,World":
-        print("AC")
+    if s == 'Hello,World!':
+        print('AC')
     else:
-        print("WA")
+        print('WA')
 
 =======
 Suggestion 3
 
 def main():
-    input = raw_input()
-    if input == "Hello,World":
-        print "AC"
-    else:
-        print "WA"
+    s = input()
+    if len(s) == 13:
+        if s[0:5] == "Hello" and s[5] == "," and s[6] ==
 
 =======
 Suggestion 4
 
 def main():
-    s = input()
-    if s == "Hello,World!":
-        print("AC")
-    else:
-        print("WA")
+    #获取输入
+    string = input()
+    #判断是否匹配
+    if string == "Hello,World!":
+        print("AC"

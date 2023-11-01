@@ -1,6 +1,8 @@
 def main():
+    # 读取输入
     n = int(input())
+    # 计算并输出
     if n % 2 == 0:
-        print('白色')
+        print('White')
     else:
-        print('黑色')
+        pr

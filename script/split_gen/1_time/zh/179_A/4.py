@@ -1,6 +1,6 @@
-def plural(s):
-    if s[-1] == 's':
-        return s+'es'
+def main():
+    s = input()
+    if s.endswith('s'):
+        print(s + 'es')
     else:
-        return s+'s'
-print(plural(input()))
+        print(s + 's')

@@ -6,130 +6,74 @@ Suggestion 1
 def main():
     R, C = map(int, input().split())
     if (R + C) % 2 == 0:
-        print("黑色")
-    else:
-        print("白色")
+        print("black")
 
 =======
 Suggestion 2
 
-def problems264_b():
-    r,c=input().split()
-    r=int(r)
-    c=int(c)
-    if r%2==0:
-        if c%2==0:
-            print('黑色')
-        else:
-            print('白色')
-    else:
-        if c%2==0:
-            print('白色')
-        else:
-            print('黑色')
+def main():
+    R,C=map(int,input().split())
+    if R%2==0:
+        if C%2==0:
+            print(
 
 =======
 Suggestion 3
 
 def main():
     r,c = map(int,input().split())
-    if (r+c)%2 == 0:
-        print('黑色')
-    else:
-        print('白色')
+    if r % 2 == 0:
+        if c % 2 == 0:
 
 =======
 Suggestion 4
 
-def get_color(r, c):
-    if r % 2 == 0:
-        if c % 2 == 0:
-            return "black"
-        else:
-            return "white"
-    else:
-        if c % 2 == 0:
-            return "white"
-        else:
-            return "black"
+def main():
+    r,c = map(int,input().split())
+    if (r+c)%2 == 0:
+        print("black")
+    el
 
 =======
 Suggestion 5
 
-def main():
-    # 读取输入
+def problems264_b():
     R, C = map(int, input().split())
-
-    # 逻辑处理
     if (R + C) % 2 == 0:
-        print('黑色')
-    else:
-        print('白色')
+        print(
 
 =======
 Suggestion 6
 
 def main():
-    # 读取输入
-    R, C = map(int, input().split())
-    # print(R, C)
-    # 判断
-    if R % 2 == 0:
-        if C % 2 == 0:
-            print("白色")
-        else:
-            print("黑色")
-    else:
-        if C % 2 == 0:
-            print("黑色")
-        else:
-            print("白色")
+  R,C = map(int, input().split())
+  if (R+C)%2 == 0:
+    print('black')
+  else:
+    p
 
 =======
 Suggestion 7
 
-def main():
-    r, c = map(int, input().split())
-    if r % 2 == 0:
-        if c % 2 == 0:
-            print("白色")
-        else:
-            print("黑色")
+def get_color(r,c):
+    if (r+c)%2 == 0:
+        return "black"
     else:
-        if c % 2 == 0:
-            print("黑色")
-        else:
-            print("白色")
+        return "white"
 
 =======
 Suggestion 8
 
 def main():
-    row, col = map(int, input().split())
-    if row % 2 == 0:
-        if col % 2 == 0:
-            print('black')
-        else:
-            print('white')
-    else:
-        if col % 2 == 0:
-            print('white')
-        else:
-            print('black')
-main()
+    R,C = map(int,input().split())
+    if (R+C)%2 == 0:
+        print('black')
+    el
 
 =======
 Suggestion 9
 
 def main():
     R, C = map(int, input().split())
-    if R % 2 == 0:
-        if C % 2 == 0:
-            print('白色')
-        else:
-            print('黑色')
-    else:
-        if C % 2 == 0:
-            print('黑色')
-        else:
-            print('白色')
+    if (R + C) % 2 == 0:
+        print('black')

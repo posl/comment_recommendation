@@ -1,6 +1,7 @@
-def main():
-    N = int(input())
-    if N % 10 == 7:
-        print("是")
+def checkSeven(n):
+    if n % 10 == 7:
+        return True
+    elif n < 10:
+        return False
     else:
-        print("否")
+        return checkSeven(n // 10)

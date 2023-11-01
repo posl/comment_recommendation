@@ -1,13 +1,8 @@
-def getScore():
-    score = int(input())
-    if score >= 0 and score < 40:
-        print(40-score)
-    elif score >= 40 and score < 70:
-        print(70-score)
-    elif score >= 70 and score < 90:
-        print(90-score)
-    elif score >= 90 and score <= 100:
-        print('专家')
+def grade(x):
+    if x >= 0 and x < 40:
+        return 40 - x
+    elif x >= 40 and x < 70:
+        return 70 - x
+    elif x >= 70 and x < 90:
+        return 90 - x
     else:
-        print('输入错误')
-getScore()

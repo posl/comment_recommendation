@@ -3,61 +3,61 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def replace_na(s):
-    return s.replace("na", "nya")
+def main():
+    n = int(input())
+    s = input()
 
 =======
 Suggestion 2
 
-def replace_na_by_nya(s):
-    return s.replace('na', 'nya')
-
-print(replace_na_by_nya(input()))
+def replace_na(s):
+    result = ""
+    i = 0
+    while i < l
 
 =======
 Suggestion 3
 
-def replace_na(s):
-    return s.replace('na', 'nya')
+def replace_na():
+    N = int(input())
+    S = input(
 
 =======
 Suggestion 4
 
-def replace_na(s):
-    while 'na' in s:
-        s = s.replace('na','nya')
-    return s
+def replace_na_to_nya(s):
+    return s.replace('na', 'nya')
 
 =======
 Suggestion 5
 
-def replacestr(s):
-    if "na" not in s:
-        return s
-    else:
-        return replacestr(s.replace("na","nya",1))
+def replace_na(s):
+    return s.replace('na', 'nya')
 
 =======
 Suggestion 6
 
-def replaceNa(s):
-    s = s.replace('na', 'nya')
-    return s
+def replaceNaWithNya(S):
+    S = S.replace('na', 'nya')
 
 =======
 Suggestion 7
 
-def main():
+def problem286_b():
     n = int(input())
-    s = input()
-    s = s.replace('na', 'nya')
-    print(s)
+    s = inpu
 
 =======
 Suggestion 8
 
-def main():
-    N = int(input())
-    S = input()
-    S = S.replace("na", "nya")
-    print(S)
+def nya(s):
+    s = s.replace('na','nya')
+    return s
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    s = input()
+    print(

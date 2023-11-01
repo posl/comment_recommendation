@@ -1,106 +1,81 @@
-Synthesizing 10/10 solutions (Duplicates hidden)
+Synthesizing 10/10 solutions
 
 =======
 Suggestion 1
 
 def main():
-    a = input()
-    b = input()
-    c = input()
-    if int(a) + int(b) + int(c) >= 22:
-        print("bust")
-    else:
-        print("win")
+    a = sum(map(int, input().split()))
+    print('bust' if a >= 22 else 'win')
 
 =======
 Suggestion 2
 
 def main():
-    a = input()
-    a = a.split(" ")
-    a[0] = int(a[0])
-    a[1] = int(a[1])
-    a[2] = int(a[2])
-    if (a[0] + a[1] + a[2] >= 22):
-        print("bust")
-    else:
-        print("win")
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print('bus
 
 =======
 Suggestion 3
 
 def main():
-    a = input().split()
-    sum = 0
-    for i in a:
-        sum += int(i)
-    if sum >= 22:
-        print("bust")
-    else:
-        print("win")
+    a = input()
+    a = a.split()
+    a = list(map(int, a))
+    if sum(a) >= 22
 
 =======
 Suggestion 4
 
-def main():
-    a,b,c = map(int,input().split())
-
-    if a+b+c >= 22:
-        print("bust")
+def problem147_a(a1, a2, a3):
+    if a1 + a2 + a3 >= 22:
+        return "bust"
     else:
-        print("win")
 
 =======
 Suggestion 5
 
-def main():
-    a = list(map(int, input().split()))
-    if sum(a) >= 22:
-        print('bust')
-    else:
-        print('win')
+def problem147_a():
+    A = input().split()
+    if int(A[0])+int(A[1])+int(A[2])>=22:
 
 =======
 Suggestion 6
 
 def main():
-    a = input().split()
-    sum = 0
-    for i in range(3):
-        sum += int(a[i])
-    if sum >= 22:
-        print("bust")
-    else:
-        print("win")
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print("bus
 
 =======
 Suggestion 7
 
-def main():
-    a = input()
-    a = a.split(" ")
-    a = [int(n) for n in a]
-    if sum(a) >= 22:
-        print("bust")
-    else:
-        print("win")
+def judge_bust_or_win(a1, a2, a3):
+    if (a1 + a2 + a3) >= 22:
+        return 'bust'
+    e
 
 =======
 Suggestion 8
 
 def main():
-    a = list(map(int, input().split()))
-    if sum(a) >= 22:
-        print("bust")
-    else:
-        print("win")
+    a1, a2, a3 = map(int, input().split())
+    if a1 + a2 + a3 >= 22:
+        p
 
 =======
 Suggestion 9
 
 def main():
-    a,b,c = map(int,input().split())
-    if a+b+c >= 22:
-        print('bust')
-    else:
-        print('win')
+    # 读取输入
+    a1, a2, a3 = map(int, input().split())
+    # 判断
+    if a1 + a2 +
+
+=======
+Suggestion 10
+
+def main():
+    a1, a2, a3 = map(int, input().split())
+    if a1+a2+a3 >= 22:
+        print

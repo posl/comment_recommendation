@@ -1,10 +1,8 @@
 def main():
     n = int(input())
     a = list(map(int, input().split()))
-    a.sort()
-    for i in range(1, n):
-        if a[i-1] == a[i]:
-            print('NO')
-            break
+    b = set(a)
+    if len(a) == len(b):
+        print("YES")
     else:
-        print('YES')
+        print("NO")

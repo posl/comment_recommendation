@@ -1,2 +1,6 @@
-def get_color(r,c):
-    return "黑色" if (r+c)%2 == 0 else "白色"
+def main():
+    r,c = map(int,input().split())
+    if (r+c)%2 == 0:
+        print('black')
+    else:
+        print('white')

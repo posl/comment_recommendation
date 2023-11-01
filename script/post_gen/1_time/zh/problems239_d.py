@@ -3,62 +3,34 @@ Synthesizing 10/10 solutions
 =======
 Suggestion 1
 
-def prime(n):
+def is_prime(n):
     if n == 1:
         return False
-    for i in range(2, n):
-        if n % i==0:
+    for i in range(2, int(pow(n, 0.5)) + 1):
+        if n % i == 0:
             return False
-    return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(100):
-    if prime(a + b - i):
-        print('高桥')
-        break
-    elif prime(c + d - i):
-        print('青木')
-        break
 
 =======
 Suggestion 2
 
-def is_prime(n):
-    if n == 1:
+def is_prime(num):
+    if num == 2:
+        return True
+    elif num % 2 == 0:
         return False
     else:
-        for i in range(2, int(n**(1/2))+1):
-            if n % i == 0:
-                return False
-        return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(a, b+1):
-    if is_prime(i+c) == True:
-        print("高桥")
-        exit()
-print("青木")
+        for i in range(3, num, 2):
 
 =======
 Suggestion 3
 
-def is_prime(x):
-    if x == 1:
+def isPrime(n):
+    if n <= 1:
         return False
-    for i in range(2,int(x**0.5)+1):
-        if x % i == 0:
-            return False
-    return True
-
-A,B,C,D = map(int,input().split())
-for i in range(B+1,D+2):
-    if is_prime(i):
-        if i == A+C or i == A+D or i == B+C or i == B+D:
-            print("High")
-            exit()
-print("Low")
+    if n == 2:
+        return True
+    for i in xrange(2, n):
+        if n % i == 0:
 
 =======
 Suggestion 4
@@ -66,19 +38,10 @@ Suggestion 4
 def is_prime(n):
     if n == 1:
         return False
-    for i in range(2, n):
-        if n%i == 0:
+    for i in range(2,int(n ** 0.5) + 1):
+        if n % i == 0:
             return False
-    return True
-
-a, b, c, d = map(int, input().split())
-
-for i in range(a, b+1):
-    for j in range(c, d+1):
-        if is_prime(i+j):
-            print("高桥")
-            exit(0)
-print("青木")
+    re
 
 =======
 Suggestion 5
@@ -86,95 +49,63 @@ Suggestion 5
 def isPrime(n):
     if n <= 1:
         return False
-    for i in range(2, n):
-        if n % i ==0:
-            return False
-    return True
-
-a, b, c, d = map(int, input().split())
-for i in range(a, b+1):
-    if isPrime(i):
-        for j in range(c, d+1):
-            if isPrime(j):
-                if i+j == 9:
-                    print("高桥")
-                    exit()
-                else:
-                    print("青木")
-                    exit()
+    if n == 2:
+        return True
+    for i in range(2,n):
+        if n % i == 0:
+            r
 
 =======
 Suggestion 6
 
-def isPrime(n):
+def is_prime(n):
     if n == 1:
         return False
-    for i in range(2, int(n**0.5)+1): #平方根まで
-        if n%i == 0:
+    for k in range(2, int(n**0.5)+1):
+        if n % k == 0:
             return False
-    return True
-
-a, b, c, d = map(int, input().split())
+    retur
 
 =======
 Suggestion 7
 
-def is_prime(n):
-    if n == 1:
+def isPrime(number):
+    if number < 2:
         return False
-    for i in range(2, int(n**0.5)+1): # n**0.5+1
-        if n % i == 0:
+    for i in range(2, number):
+        if number % i == 0:
             return False
     return True
-
-A, B, C, D = map(int, input().split())
 
 =======
 Suggestion 8
 
 def is_prime(n):
-    if n == 2:
-        return True
-    if n % 2 == 0 or n < 2:
+    if n <= 1:
         return False
-    for i in range(3, n, 2):
+    for i in range(2, n//2+1):
         if n % i == 0:
             return False
     return True
 
-a, b, c, d = map(int, input().split())
-
-for n in range(1, 100):
-    if a <= n <= b and c <= n <= d:
-        print('High') if is_prime(n) else print('Low')
-        exit()
-
 =======
 Suggestion 9
 
-def is_prime(n):
-    if n == 1:
+def is_prime(num):
+    if num == 1:
         return False
-    elif n == 2:
+    if num == 2:
         return True
-    elif n%2 == 0:
-        return False
     else:
-        for i in range(3,int(n**0.5)+1,2):
-            if n%i == 0:
-                return False
-        return True
+        for i in range(2, num):
+            if num
 
 =======
 Suggestion 10
 
-def isPrime(n):
-    if n < 2:
+def is_prime(num):
+    if num == 1:
         return False
-    elif n == 2:
-        return True
     else:
-        for i in range(2,int(n**0.5)+1):
-            if n%i == 0:
-                return False
-        return True
+        for i in range(2,int(num**0.5)+1):
+            if num % i == 0:

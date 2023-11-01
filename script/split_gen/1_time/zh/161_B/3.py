@@ -1,4 +1,5 @@
-def readinput():
-    n,m=list(map(int,input().split()))
-    a=list(map(int,input().split()))
-    return n,m,a
+def problems161_b():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    s

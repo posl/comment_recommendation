@@ -4,8 +4,8 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    a1, a2, a3 = map(int, input().split())
-    if a1 + a2 + a3 >= 22:
+    a,b,c = map(int,input().split())
+    if a+b+c >= 22:
         print("bust")
     else:
         print("win")
@@ -14,22 +14,24 @@ def main():
 Suggestion 2
 
 def main():
-    A = input().split()
-    A = [int(a) for a in A]
-    if sum(A) >= 22:
-        print("bust")
-    else:
-        print("win")
+    a = input()
+    b = input()
+    c = input()
+    sum = int(a) + int(b) + int(c)
+    if sum >= 22:
+        pr
 
 =======
 Suggestion 3
 
 def main():
-    A = list(map(int, input().split()))
-    if sum(A) >= 22:
-        print('bust')
-    else:
-        print('win')
+    # input
+    a1, a2, a3 = map(int, input().split())
+
+    # output
+    if a1 + a2 + a3 >= 22:
+        print("bust")
+    el
 
 =======
 Suggestion 4
@@ -37,54 +39,48 @@ Suggestion 4
 def main():
     a = list(map(int, input().split()))
     if sum(a) >= 22:
-        print("bust")
+        print('bust')
     else:
-        print("win")
+        print('win')
 
 =======
 Suggestion 5
 
 def main():
-    # 读取输入
-    a1, a2, a3 = map(int, input().split())
-    # 判断是否bust
+    a = input().split()
+    a1 = int(a[0])
+    a2 = int(a[1])
+    a3 = int(a[2])
     if a1 + a2 + a3 >= 22:
-        print("bust")
-    else:
-        print("win")
+        print("b
 
 =======
 Suggestion 6
 
 def main():
-    A = list(map(int, input().split()))
+    A = input().split()
+    A = list(map(int, A))
     if sum(A) >= 22:
-        print("bust")
+        print('bust')
     else:
-        print("win")
+        print('win')
 
 =======
 Suggestion 7
 
 def main():
-    line = input()
-    a = line.split(" ")
-    sum = 0
-    for i in range(3):
-        sum += int(a[i])
-    if sum >= 22:
-        print("bust")
+    a,b,c = map(int, input().split())
+    if a+b+c >= 22:
+        print('bust')
     else:
-        print("win")
+        print('win')
 
 =======
 Suggestion 8
 
-def main():
-    a = input()
-    b = input()
-    c = input()
-    if a + b + c >= 22:
+def solve():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
         print('bust')
     else:
         print('win')

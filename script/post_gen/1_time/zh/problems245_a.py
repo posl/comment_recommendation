@@ -4,111 +4,92 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    A,B,C,D = map(int, input().split())
-    if A > C:
-        print("高桥")
-    elif A < C:
-        print("青木")
+    a,b,c,d = map(int,input().split())
+    if (a*60+b) < (c*60+d):
+        print("Takahashi")
     else:
-        if B > D:
-            print("高桥")
-        elif B < D:
-            print("青木")
-        else:
-            print("高桥")
+        print("Aoki")
 
 =======
 Suggestion 2
 
 def main():
-    a,b,c,d = map(int,input().split())
-    if a < c:
-        print("高桥")
-    elif a > c:
-        print("青木")
-    else:
-        if b < d:
-            print("高桥")
-        else:
-            print("青木")
+    A, B, C, D = map(int, input().split())
+    if A > C:
+        print("Takahashi")
+    elif A < C:
+        print("Aoki")
 
 =======
 Suggestion 3
 
 def main():
-    a,b,c,d = map(int,input().split())
+    a, b, c, d = map(int, input().split())
     if a > c:
-        print("高桥")
-    elif a < c:
-        print("青木")
-    else:
-        if b > d:
-            print("高桥")
-        elif b < d:
-            print("青木")
-        else:
-            print("高桥")
+        print('Takahashi')
+    elif a == c:
+        if b >= d:
 
 =======
 Suggestion 4
 
 def main():
-    A,B,C,D = map(int, input().split())
-    if (A > C) or (A == C and B > D):
-        print("高桥")
-    else:
-        print("青木")
+    # 读入数据
+    # 读入一行数据，包含4个整数
+    a, b, c, d = map(int, input().split())
+    # 处理数据
+    if a > c:
+        print("Takahashi")
 
 =======
 Suggestion 5
 
 def main():
-    a,b,c,d = map(int,input().split())
-    if a > c:
-        print("高桥")
-    elif a == c:
-        if b > d:
-            print("高桥")
-        elif b == d:
-            print("同时")
-        else:
-            print("青木")
+    a,b,c,d=map(int,input().split())
+    if a*60+b<c*60+d:
+        print("Takahashi")
     else:
-        print("青木")
+        print("Aoki")
 
 =======
 Suggestion 6
 
-def get_time():
-    time = input()
-    time = time.split()
-    return time
+def main():
+    # 输入
+    input_str = input()
+    input_list = input_str.split(" ")
+
+    # 处理
+    a = int(input_list[0])
+    b = int(input_
 
 =======
 Suggestion 7
 
 def main():
-    a, b, c, d = map(int, input().split())
-    if a < c:
-        print('高桥')
-    elif a > c:
-        print('青木')
+    A,B,C,D = map(int,input().split())
+    if A*60+B < C*60+D:
+        print("Takahashi")
     else:
-        if b < d:
-            print('高桥')
-        elif b > d:
-            print('青木')
-        else:
-            print('高桥')
+        print("Aoki")
 
 =======
 Suggestion 8
 
 def main():
-    a,b,c,d = map(int, input().split())
+    a,b,c,d = map(int,input().split())
     if a > c:
-        print("高桥")
-    elif a == c and b > d:
-        print("高桥")
-    else:
-        print("青木")
+        print('Takahashi')
+    elif a < c:
+        print('Aoki')
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c,d = map(int, input().split())
+    if a == c:
+        if b < d:
+            print("Takahashi")
+        else:
+            print("

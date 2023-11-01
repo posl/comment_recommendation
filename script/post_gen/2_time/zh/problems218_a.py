@@ -6,7 +6,10 @@ Suggestion 1
 def main():
     N = int(input())
     S = input()
-    print('是' if S[N-1] == 'o' else '否')
+    if S[N-1] == 'o':
+        print('Yes')
+    else:
+        print('No')
 
 =======
 Suggestion 2
@@ -14,15 +17,19 @@ Suggestion 2
 def main():
     n = int(input())
     s = input()
-    print("是" if s[n-1] == "o" else "否")
+    if s[n-1] == 'o':
+        print('Yes')
 
 =======
 Suggestion 3
 
-def main():
-    N = int(input())
-    S = input()
-    print("是" if S[N-1] == "o" else "否")
+def weather_prediction():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print("Yes")
+    else:
+        print("No")
 
 =======
 Suggestion 4
@@ -38,10 +45,11 @@ def main():
 =======
 Suggestion 5
 
-def solve():
-    n = int(input())
-    s = input()
-    print("是" if s[n-1] == "o" else "否")
+def main():
+    N = int(input())
+    S = input()
+    if S[N-1] == 'o':
+        print('Yes')
 
 =======
 Suggestion 6
@@ -49,7 +57,24 @@ Suggestion 6
 def main():
     n = int(input())
     s = input()
-    if s[n-1] == 'o':
-        print('Yes')
+    print("Yes" if s[n-1] == "o" else "No")
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    S = input()
+    if S[N-1] == "o":
+        print("Yes")
     else:
-        print('No')
+        print("No")
+
+=======
+Suggestion 8
+
+def problem218_a():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print(

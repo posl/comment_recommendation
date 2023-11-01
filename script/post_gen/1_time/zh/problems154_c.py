@@ -4,53 +4,42 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    for i in range(N-1):
-        if A[i] == A[i+1]:
-            print("NO")
-            return
-    print("YES")
-    return
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n - 1):
+        if a[i] == a[i + 1]:
 
 =======
 Suggestion 2
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    if len(set(a)) == n:
-        print("Yes")
-    else:
-        print("No")
+def is_all_different(n, a):
+    a.sort()
+    for i in range(0, n-1):
+        if a[i] == a[i+1]:
+            return False
+    return True
 
 =======
 Suggestion 3
 
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
+    a = [int(x) for x in input().split()]
     a.sort()
-    for i in range(n - 1):
-        if a[i] == a[i + 1]:
-            print('NO')
-            return
-    print('YES')
-    return
+    for i in range(n-1):
+        if a[i] == a[i+1]:
 
 =======
 Suggestion 4
 
 def main():
     N = int(input())
-    A = list(map(int, input().split()))
-    A.sort()
-    for i in range(N - 1):
-        if A[i] == A[i + 1]:
-            print("NO")
-            return
-    print("YES")
+    A = [int(i) for i in input().split()]
+    if len(set(A)) == N:
+        print("YES")
+    else:
+        print("NO")
 
 =======
 Suggestion 5
@@ -58,56 +47,8 @@ Suggestion 5
 def main():
     n = int(input())
     a = list(map(int, input().split()))
-    a.sort()
-    for i in range(1, n):
-        if a[i-1] == a[i]:
-            print('NO')
-            break
+    b = set(a)
+    if len(a) == len(b):
+        print("YES")
     else:
-        print('YES')
-
-=======
-Suggestion 6
-
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    for i in range(n - 1):
-        if a[i] == a[i + 1]:
-            print("No")
-            return
-    print("Yes")
-
-=======
-Suggestion 7
-
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    for i in range(n-1):
-        if a[i] == a[i+1]:
-            print('NO')
-            exit()
-    print('YES')
-main()
-
-=======
-Suggestion 8
-
-def main():
-    n = int(input())
-    a = input().split()
-    if len(set(a)) == n:
-        print("Yes")
-    else:
-        print("No")
-
-=======
-Suggestion 9
-
-def main():
-    n = int(input())
-    a = list(map(int,input().split()))
-    print("Yes" if len(set(a)) == n else "No")
+        print("NO")

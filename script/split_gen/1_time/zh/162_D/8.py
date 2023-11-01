@@ -1,8 +1,10 @@
-def countRGB(s):
-    count = 0
-    for i in range(len(s)):
-        for j in range(i+1, len(s)):
-            for k in range(j+1, len(s)):
-                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k] and j - i != k - j:
-                    count += 1
-    return count
+def main():
+    N = int(input())
+    S = input()
+    r, g, b = 0, 0, 0
+    for i in range(N):
+        if S[i] == 'R':
+            r += 1
+        elif S[i] == 'G':
+            g += 1
+        else

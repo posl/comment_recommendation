@@ -84,7 +84,7 @@ if __name__ == '__main__':
         if language == 'end':
             break
         language_l.append(language)
-    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
+    base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
     
     for language in language_l:
         if os.path.exists('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language)):
@@ -111,8 +111,6 @@ if __name__ == '__main__':
             problem_l.remove('234_D')
             #543 = 234_D
             #problem_l = problem_l[544:]
-        #print(problem_l)
-        #problem_l = ['099_A', '099_B', '099_C', '099_D', '100_A', '100_B']
         if language == 'zh_mod':
             problem_l = ['112_a', '115_a', '117_b', '119_a', '123_a', '141_a', '147_a', '150_a', '154_a', '154_c',  
                          '155_a', '155_c', '159_b', '161_b', '162_a', '162_d', '164_a', '164_b', '164_c', '179_a', 
@@ -121,15 +119,6 @@ if __name__ == '__main__':
                          '267_a', '283_d', '284_b', '284_d', '286_b']
             for i in range(len(problem_l)):
                 problem_l[i] = problem_l[i].upper()
-        
-        '''
-        new = []
-        for problem in problem_l:
-            if 'A' in problem:
-                new.append(problem)
-        problem_l = new
-        '''
-    
         
         for each_problem in problem_l:
             base_each_suggestion_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem)))
@@ -145,7 +134,3 @@ if __name__ == '__main__':
             print(each_problem, language)
             #break
     
-    '''
-    a = test_script('/Users/keikoyanagi/Desktop/comment_recommendation/test_close_app/script/mod_gen/en/problems101_a_1.py', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/in/1.txt', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/out/1.txt')
-    print(a.pyexe())
-    '''

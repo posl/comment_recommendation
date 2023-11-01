@@ -1,2 +1,2 @@
-def is_palindrome(str):
-    return str == str[::-1]
+def is_palindrome(s):
+    for i in range(len(s

@@ -5,10 +5,10 @@ Suggestion 1
 
 def main():
     k, x = map(int, input().split())
-    if k * 500 >= x:
-        print("Yes")
+    if k*500 >= x:
+        print('Yes')
     else:
-        print("No")
+        print('No')
 
 =======
 Suggestion 2
@@ -16,56 +16,16 @@ Suggestion 2
 def main():
     k, x = map(int, input().split())
     if k * 500 >= x:
-        print('是')
+        print("Yes")
     else:
-        print('否')
+        print("No")
 
 =======
 Suggestion 3
 
-def problem150_a():
-    k,x = map(int,input().split())
-    if k*500 >= x:
-        print("Yes")
-    else:
-        print("No")
-
-=======
-Suggestion 4
-
-def main():
-    K,X = map(int,input().split())
-    if K*500 >= X:
-        print("Yes")
-    else:
-        print("No")
-
-=======
-Suggestion 5
-
-def main():
-    k,x = map(int,input().split())
+def solve():
+    k, x = map(int, input().split())
     if k * 500 >= x:
-        print("是")
+        print("Yes")
     else:
-        print("否")
-
-=======
-Suggestion 6
-
-def problem150_a():
-    k,x = map(int,input().split())
-    if k*500 >= x:
-        print('Yes')
-    else:
-        print('No')
-
-=======
-Suggestion 7
-
-def main():
-    k,x = map(int, input().split())
-    if k*500 >= x:
-        print('Yes')
-    else:
-        print('No')
+        print("No")

@@ -3,82 +3,37 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 =======
 Suggestion 1
 
-def solve(n):
+def func(n):
     if 2**n > n**2:
-        return '是'
+        return "Yes"
     else:
-        return '否'
+        return "No"
 
 =======
 Suggestion 2
 
-def f(n):
+def main():
+    n = int(input())
     if 2**n > n**2:
-        print("是")
+        print("Yes")
     else:
-        print("否")
+        print("No")
 
 =======
 Suggestion 3
 
-def main():
-    n = int(input())
-    if 2**n > n**2:
-        print("是")
+def power2(n):
+    if n == 0:
+        return 1
     else:
-        print("否")
+        return 2 * power2(n-1)
 
 =======
 Suggestion 4
 
-def print_result(n):
-    if pow(2,n) > pow(n,2):
-        print("是")
-    else:
-        print("否")
-
-=======
-Suggestion 5
-
-def is_greater_than(n):
-    return 2**n > n**2
-
-=======
-Suggestion 6
-
-def solve(n):
-    if n>1:
-        return "是"
-    else:
-        return "否"
-
-=======
-Suggestion 7
-
-def problems238_a():
+def main():
     n = int(input())
     if 2**n > n**2:
-        print('是')
+        print('Yes')
     else:
-        print('否')
-
-=======
-Suggestion 8
-
-def is_2n_gt_n2(n):
-    return 2**n > n**2
-
-=======
-Suggestion 9
-
-def f(n):
-    if n < 2:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return f(n/2)
-    else:
-        return f((n-1)/2)
-
-n = int(input())
+        print('No')

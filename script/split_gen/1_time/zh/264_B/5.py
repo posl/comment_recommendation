@@ -1,8 +1,5 @@
 def main():
-    R, C = input().split()
-    R = int(R)
-    C = int(C)
-    if (R + C) % 2 == 0:
-        print("黑色")
-    else:
-        print("白色")
+    R, C = map(int, input().split())
+    if R % 2 == 1 and C % 2 == 1:
+        print('black')
+    elif R % 2 == 0

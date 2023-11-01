@@ -4,101 +4,83 @@ Synthesizing 10/10 solutions
 Suggestion 1
 
 def main():
-    a, b, c = map(int, input().split())
-    if (b >= a and b <= c) or (b >= c and b <= a):
-        print("是")
-    else:
-        print("否")
+    a,b,c = map(int,input().split())
+    if ((a <= b and b <= c) or (c <= b and b <=
 
 =======
 Suggestion 2
 
-def main():
-    a, b, c = map(int, input().split())
-    if ((a <= b and b <= c) or (c <= b and b <= a)):
-        print('是')
+def problems253_a(a,b,c):
+    if b == a or b == c:
+        return "Yes"
     else:
-        print('没有')
+        return "No"
 
 =======
 Suggestion 3
 
 def main():
-    a, b, c = map(int, input().split())
-    if a <= b <= c or c <= b <= a:
-        print('是')
-    else:
-        print('否')
+    a,b,c = map(int,input().split())
+    if b == max(a,b,c) or b == min(a,b,c):
 
 =======
 Suggestion 4
 
-def is_middle(a,b,c):
-    if b < a:
-        if b > c:
-            return True
-    if b > a:
-        if b < c:
-            return True
-    return False
+def main():
+    a,b,c=input().split()
+    a=int(a)
+    b=int(b)
+    c=int(c)
+    if b>=a and b<=c
 
 =======
 Suggestion 5
 
-def median(a,b,c):
-    if (b>=a and b<=c) or (b<=a and b>=c):
-        return True
-    else:
-        return False
+def main():
+    a, b, c = map(int, input().split())
+    if b < a:
+        a, b = b, a
+    if c <
 
 =======
 Suggestion 6
 
 def main():
     a,b,c = map(int,input().split())
-    if a < b and b < c:
-        print("はい")
-    else:
-        print("いいえ")
+    if a<=b<=c or c<=b<=a:
+        print("Yes")
 
 =======
 Suggestion 7
 
 def main():
     a,b,c = map(int, input().split())
-    if (a <= b and b <= c) or (c <= b and b <= a):
-        print("是")
-    else:
-        print("否")
+    if a > b:
+        tmp = a
+        a = b
 
 =======
 Suggestion 8
 
-def is_median(a,b,c):
-    if a<b<c or c<b<a:
-        return True
+def median(a,b,c):
+    if a<=b<=c or c<=b<=a:
+        print("Yes")
     else:
-        return False
+        print("No")
 
 =======
 Suggestion 9
 
 def main():
-    a,b,c = map(int,input().split())
-    if b >= min(a,c) and b <= max(a,c):
-        print('是')
-    else:
-        print('没有')
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[1] == a[0] + a[2]:
 
 =======
 Suggestion 10
 
-def median(a,b,c):
-    if b>=a and b<=c:
+def med(a,b,c):
+    if b >= a and b <= c:
         return True
-    elif b<=a and b>=c:
-        return True
-    else:
-        return False
-
-a,b,c = map(int,input().split())
+    elif b <= a and b >= c:
+        retu

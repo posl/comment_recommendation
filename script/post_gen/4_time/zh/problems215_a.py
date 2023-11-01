@@ -4,18 +4,6 @@ Synthesizing 10/10 solutions (Duplicates hidden)
 Suggestion 1
 
 def main():
-    # input
-    s = input()
-    # output
-    if s == 'Hello,World':
-        print('AC')
-    else:
-        print('WA')
-
-=======
-Suggestion 2
-
-def main():
     s = input()
     if s == "Hello,World!":
         print("AC")
@@ -23,11 +11,20 @@ def main():
         print("WA")
 
 =======
-Suggestion 3
+Suggestion 2
 
 def main():
     s = input()
-    if s == 'Hello,World':
+    if s == 'Hello,World!':
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 3
+
+def check(s):
+    if s == 'Hello,World!':
         print('AC')
     else:
         print('WA')
@@ -37,38 +34,27 @@ Suggestion 4
 
 def main():
     S = input()
-    if S == "Hello,World!":
-        print("AC")
+    if S == 'Hello,World!':
+        print('AC')
     else:
-        print("WA")
+        print('WA')
 
 =======
 Suggestion 5
 
 def main():
+    # input
     s = input()
-    if s == "Hello,World!":
-        print("AC")
-    else:
-        print("WA")
-main()
+    # process
+    if s == 'Hello,World!':
+        print('AC')
 
 =======
 Suggestion 6
 
-def main():
-    s = input()
-    if s == "Hello,World":
+def hello_world():
+    S = input()
+    if S == "Hello,World!":
         print("AC")
     else:
         print("WA")
-
-=======
-Suggestion 7
-
-def main():
-    S = input()
-    if S == 'Hello,World!':
-        print('AC')
-    else:
-        print('WA')

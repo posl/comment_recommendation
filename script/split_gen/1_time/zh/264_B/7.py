@@ -1,12 +1,8 @@
 def main():
-    r,c = map(int,input().split())
-    if r%2==0:
-        if c%2==0:
-            print("白色")
-        else:
-            print("黑色")
-    else:
-        if c%2==0:
-            print("黑色")
-        else:
-            print("白色")
+    # 声明变量
+    r = 0
+    c = 0
+    # 输入数据
+    r, c = map(int, input().split())
+    # 判断
+    if (r + c) % 2 == 0:

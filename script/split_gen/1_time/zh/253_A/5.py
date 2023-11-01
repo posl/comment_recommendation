@@ -1,6 +1,5 @@
 def main():
-    a,b,c = map(int, input().split())
-    if b == a or b == c:
-        print("是")
-    else:
-        print("没有")
+    a,b,c = map(int, raw_input().split())
+    list = [a,b,c]
+    list.sort()
+    if b == list
