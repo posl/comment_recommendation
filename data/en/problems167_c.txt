@@ -1,4 +1,5 @@
-ProblemTakahashi, who is a novice in competitive programming, wants to learn M algorithms.
+Problem
+Takahashi, who is a novice in competitive programming, wants to learn M algorithms.
 Initially, his understanding level of each of the M algorithms is 0.
 Takahashi is visiting a bookstore, where he finds N books on algorithms.
 The i-th book (1≦ i≦ N) is sold for C_i yen (the currency of Japan). If he buys and reads it, his understanding level of the j-th algorithm will increase by A_{i,j} for each j (1≦ j≦ M).

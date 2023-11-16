@@ -23,13 +23,13 @@ if __name__ == '__main__':
     time = input() + '_time'
     language_l = []
     while True:
-        print('input language (en, ja, zh, zh_mod or end)')
+        print('input language (en, ja, zh, or end)')
         language = input()
         if language == 'end':
             break
         language_l.append(language)
 
-    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
+    base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     for language in language_l:
         

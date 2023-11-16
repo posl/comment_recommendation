@@ -95,10 +95,7 @@ class specific_test_script:
         accuracy = 0
         accuracy_l = [self.language, self.problem_number, self.difficulty, self.suggestion]
         seg_test_case_l = []
-        """
-        print('input check or exec')
-        flag = input()
-        """
+
         if flag == 'check':
             print(self.input_path_l)
             print('input fault number')
@@ -181,7 +178,7 @@ if __name__ == '__main__':
         print('input fault number')
         fault_number = int(input())
     
-    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
+    base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     if not os.path.exists('{0}/result/accuracy/each/{1}/{2}'.format(base_path, times, language)):
         os.makedirs('{0}/result/accuracy/each/{1}/{2}'.format(base_path, times, language))
@@ -257,15 +254,6 @@ if __name__ == '__main__':
                     a.write()
                 a.pyexe()
                 print(each_suggestion, language)
-            """
-            with open('{0}/result/ALL/{1}/{2}/{3}.csv'.format(base_path, times, language, each_problem), 'a') as f:
-                writer = csv.writer(f)
-                writer.writerow([language, each_problem.split('_')[0], each_problem.split('_')[1], fault_number, '', 0, '', '', 'segmentation fault', 0])
-            
-            with open('{0}/result/accuracy/each/{1}/{2}/{3}_seg_accuracy.csv'.format(base_path, times, language, each_problem.split('_')[0]), 'a') as f:
-                writer = csv.writer(f)
-                writer.writerow([language, each_problem.split('_')[0], each_problem.split('_')[1], fault_number, 0, test_case_num, 0])
-            """
 
             script_path = '{0}/script/mod_gen/{1}/{2}/{3}/{4}'.format(base_path, times, language, each_problem, each_suggestion_l[fault_number])
             a = specific_test_script(script_path, input_path, output_path, all_result_path, accu_result_path)

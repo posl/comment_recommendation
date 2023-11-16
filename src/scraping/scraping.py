@@ -31,10 +31,10 @@ class Scraping():
         self.url = url + self.number + '/tasks/abc' + self.number + '_'
     
     # 42~
-    # 42 ~ 50のc,dはabcではなくarc　だいたい　問題番号 + 16 + a,b
-    # 52 ~ 53のc,dはabcではなくarc　だいたい　問題番号 + 15 + a,b
-    # 55 ~ 56のc,dはabcではなくarc　だいたい　問題番号 + 14 + a,b 
-    # 58 ~ 60　は　　+ 13
+    # almost c and d of 42 ~ 50  is not abc but arc. So, it is problem number + 16 + a,b
+    # almost c and d of 52 ~ 53 is not abc but arc. So, it is problem number + 15 + a,b
+    # almost c and d of 55 ~ 56 is not abc but arc. So, it is problem number + 14 + a,b
+    # 58 ~ 60　is　+ 13
 
     def get_problem(self):
         #print(self.url + self.difficulty)
@@ -164,6 +164,13 @@ class Scraping():
 
             
         else:
+            problem_list = list(map(lambda x: x.replace('Problem', 'Problem\n'), problem_list))
+
+            for i in [' Statement']:
+                problem_list = list(map(lambda x: x.replace('Problem\n' + i, 'Problem' + i), problem_list))
+
+            problem_list = list(re.sub(r'Problem\n\s(\w+)', 'Problem ' + r'\1', i) for i in problem_list)
+
             for i in ['Problem Statement', 'Constraints', 'Notes', 'Output']:
                 problem_list = list(map(lambda x: x.replace(i, i + '\n'), problem_list))
 
@@ -254,7 +261,9 @@ if __name__ == '__main__':
         os.remove('../../data/errors.txt')
     url = 'https://atcoder.jp/contests/abc'
     add_id = 16
-    
+
+    os.makedirs('../../data/ja', exist_ok=True)
+    os.makedirs('../../data/en', exist_ok=True)
     
     '''
     for number_of_problem in range(42, 51):
@@ -701,7 +710,7 @@ if __name__ == '__main__':
             problem = scraping.get_problem()
             scraping.write_problem(problem)
         print(number_of_problem)
-
+    
     # 1 -> 0
     add_id = 0
     for number_of_problem in range(97, 99):
@@ -728,6 +737,7 @@ if __name__ == '__main__':
             scraping.change_difficulty()
             scraping.write_problem(problem)
         print(number_of_problem)
+    '''
     
     for number_of_problem in range(99, 101):
         for difficulty in ['a', 'b', 'c', 'd']:
@@ -741,7 +751,6 @@ if __name__ == '__main__':
     
     # 0 -> -2
     add_id = -2
-    
     for number_of_problem in range(101, 103):
         for difficulty in ['a', 'b']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
@@ -841,8 +850,9 @@ if __name__ == '__main__':
             scraping.write_problem(problem)
         print(number_of_problem)
     #'''
+    for number_of_problem in range(112, 288):
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(290, 296):
+    #for number_of_problem in range(290, 296):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
