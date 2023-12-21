@@ -22,6 +22,8 @@ class Sum_accuracy:
 
             for i, difficulty in enumerate(['A', 'B', 'C', 'D']):
                 df = main_df[main_df['difficulty'] == difficulty]
+                if not self.all_frag:
+                    df = df[df['suggestion_number'] == 0]
                 pass_num = len(df[df['accuracy'] == 1])
                 total_num = len(df)
                 sum_accuracy_l[i][0] += pass_num
