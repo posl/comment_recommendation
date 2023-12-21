@@ -3,9 +3,13 @@ import os
 import pandas as pd
 
 class Sum_accuracy:
-    def __init__(self, base_path, times, language):
+    def __init__(self, base_path, times, language, all_frag):
         self.base_path = base_path
-        self.result_path = base_path + '/result/accuracy/all/{0}/{1}/'.format(times, language)
+        self.all_frag = all_frag
+        if self.all_frag:
+            self.result_path = base_path + '/result/accuracy/all/{0}/{1}/'.format(times, language)
+        else:
+            self.result_path = base_path + '/result/accuracy/top/{0}/{1}/'.format(times, language)
         self.times = times
         self.language = language
         self.each_result_l = sorted(os.listdir('{0}/result/accuracy/each/{1}/{2}/'.format(self.base_path, self.times, self.language)))
@@ -45,7 +49,7 @@ if __name__ == '__main__':
             break
         language_l.append(language)
     for language in language_l:
-        sum_accuracy = Sum_accuracy(base_path, times, language)
+        sum_accuracy = Sum_accuracy(base_path, times, language, False)
         sum_accuracy_l = sum_accuracy.sum_accuracy()
         sum_accuracy.write(sum_accuracy_l)
     

@@ -57,7 +57,7 @@ if __name__ == '__main__':
             break
         language_l.append(language)
     for language in language_l:
-        sum_accuracy = Sum_each_accuracy(base_path, times, language)
+        sum_accuracy = Sum_each_accuracy(base_path, times, language, False)
         sum_accuracy_l = sum_accuracy.sum_accuracy()
         sum_accuracy.write(sum_accuracy_l)
     
