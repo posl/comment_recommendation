@@ -3,9 +3,13 @@ import os
 import pandas as pd
 
 class Sum_each_accuracy:
-    def __init__(self, base_path, times, language):
+    def __init__(self, base_path, times, language, all_frag):
         self.base_path = base_path
-        self.result_path = base_path + '/result/accuracy/all/{0}/{1}/'.format(times, language)
+        self.all_frag = all_frag
+        if self.all_frag:
+            self.result_path = '{0}/result/accuracy/all/{1}/{2}/'.format(base_path, times, language)
+        else:
+            self.result_path = '{0}/result/accuracy/top/{1}/{2}/'.format(base_path, times, language)
         self.times = times
         self.language = language
         self.each_result_l = sorted(os.listdir('{0}/result/accuracy/each/{1}/{2}/'.format(self.base_path, self.times, self.language)))
@@ -18,6 +22,8 @@ class Sum_each_accuracy:
             problem_number = each_result.split('_')[0]
             for i, difficulty in enumerate(['A', 'B', 'C', 'D']):
                 df = main_df[main_df['difficulty'] == difficulty]
+                if not self.all_frag:
+                    df = df[df['suggestion_number'] == 0]
                 pass_num = len(df[df['accuracy'] == 1])
                 total_num = len(df)
                 if (pass_num == total_num) and (pass_num != 0):
